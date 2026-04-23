@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mundial 2026 Fantasy Pitch</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Mundial 2026</p>
+        <h1>Reserva zonas del campo y gana puntos según lo que pase de verdad.</h1>
+        <p class="hero-text">
+          Primer prototipo del juego: cada zona del terreno tiene un valor de entrada y una puntuación
+          asociada a eventos reales del partido. Reservas, registras acciones y calculas el ranking.
+        </p>
+      </div>
+      <div class="hero-card">
+        <p class="hero-card-label">Modo actual</p>
+        <strong>Demo jugable del sistema</strong>
+        <span>Base para conectar después con datos reales del Mundial 2026.</span>
+      </div>
+    </section>
+
+    <section class="layout">
+      <div class="panel panel-field">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">1. Divisiones del terreno</p>
+            <h2>Mapa de zonas reservables</h2>
+          </div>
+          <button id="clear-reservations" class="ghost-button">Limpiar reservas</button>
+        </div>
+        <div class="pitch-wrapper">
+          <div id="pitch-grid" class="pitch-grid" aria-label="Mapa del campo"></div>
+        </div>
+        <div id="zone-detail" class="zone-detail">
+          <h3>Selecciona una zona</h3>
+          <p>Verás aquí su valor de reserva, eventos puntuables y estado actual.</p>
+        </div>
+      </div>
+
+      <div class="panel panel-sidebar">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">2. Sistema de reserva</p>
+            <h2>Asignar propietario</h2>
+          </div>
+        </div>
+        <form id="reservation-form" class="stack">
+          <label>
+            Zona seleccionada
+            <input id="selected-zone" type="text" readonly placeholder="Pulsa una zona del campo">
+          </label>
+          <label>
+            Jugador / usuario
+            <input id="owner-name" type="text" placeholder="Ej. Ana">
+          </label>
+          <button type="submit" class="primary-button">Reservar zona</button>
+        </form>
+
+        <div class="section-heading compact">
+          <div>
+            <p class="section-kicker">3. Actos del partido</p>
+            <h2>Registrar evento real</h2>
+          </div>
+        </div>
+        <form id="event-form" class="stack">
+          <label>
+            Zona
+            <select id="event-zone"></select>
+          </label>
+          <label>
+            Tipo de acción
+            <select id="event-type"></select>
+          </label>
+          <label>
+            Minuto
+            <input id="event-minute" type="number" min="1" max="130" value="12">
+          </label>
+          <button type="submit" class="secondary-button">Añadir evento</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="results-layout">
+      <div class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">4. Partidos y scoring</p>
+            <h2>Eventos registrados</h2>
+          </div>
+          <button id="seed-events" class="ghost-button">Cargar demo</button>
+        </div>
+        <div id="events-list" class="events-list empty-state">
+          Todavía no hay acciones registradas.
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">5. Resultados</p>
+            <h2>Ranking por puntos</h2>
+          </div>
+        </div>
+        <div id="scoreboard" class="scoreboard empty-state">
+          Reserva alguna zona y añade eventos para calcular resultados.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
