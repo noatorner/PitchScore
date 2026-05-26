@@ -1,50 +1,55 @@
 # PitchScore
 
-Juego/prototipo inspirado en el Mundial 2026 donde los usuarios reservan zonas de un campo de futbol y suman puntos segun lo que ocurre en esas zonas durante un partido real.
+PitchScore es un prototipo de juego inspirado en el Mundial 2026 donde cada usuario reserva zonas de un campo de futbol y gana puntos segun lo que pase en esas zonas durante un partido real.
 
-Esta primera version sirve como base de producto y validacion de mecanica.
+Esta version ya no es solo una demo visual. Introduce mercado, presupuesto, un campo normalizado por coordenadas, fixture real inicial del Mundial 2026 y desglose de resultados por propietario.
 
-## Que incluye esta primera version
+## Que incluye ahora
 
-- Divisiones base del terreno con valor de entrada distinto.
-- Sistema de reserva por zona.
-- Catalogo inicial de acciones puntuables segun la zona.
-- Ranking automatico por usuario.
-- Demo local para validar la mecanica.
+- Campo completo dividido en una malla de `30 x 20` micro-celdas.
+- Macrozonas calculadas geometricamente y alineadas con las lineas del campo: porteria, area pequena, area, punto de penalti, punto de saque, zona caliente frontal, corners, bandas, half-spaces, circulo central, carril central y salida.
+- Panel lateral de seleccion para entender mejor cada activo al clicar.
+- Coste de reserva por tipo de celda, tier y peso tactico.
+- Jugadores con presupuesto inicial configurable.
+- Sistema de acceso local por jugador.
+- Compra de activos desde el panel lateral con control de presupuesto.
+- Activos premium dibujados como bloques unicos: porteria, punto de penalti, punto de saque y corners.
+- Fixture real inicial del Mundial 2026 cargado con partidos oficiales.
+- Registro manual de eventos del partido.
+- Clasificacion neta por jugador.
+- Desglose de valor por propiedad y por acto.
+- Persistencia local con `localStorage`.
 
-## Modelo inicial
+## Modelo actual de juego
 
-Las zonas incluidas ahora mismo son:
+Cada celda tiene:
 
-- Porteria
-- Area pequena
-- Punto de penalti
-- Area
-- Circulo del area
-- Circulo central
-- Zona amplia 1
-- Zona amplia 2
-- Corner izquierdo
-- Corner derecho
+- `macroZone`: tipo de activo tactico.
+- `entryCost`: coste de compra o reserva.
+- `tier`: nivel de valor del activo.
+- `weight`: importancia relativa.
+- `eventScores`: acciones que puntuan dentro de esa division.
+- `x/y`: coordenadas de campo normalizadas.
 
-Cada zona tiene:
+La puntuacion actual sigue esta formula:
 
-- `entryCost`: coste de reserva
-- `weight`: importancia relativa
-- `eventScores`: acciones reales que dan puntos en esa zona
+- Cada reserva descuenta `entryCost / 10` como coste de entrada.
+- Cada evento real suma los puntos definidos en la zona donde ocurre.
+- El ranking se ordena por `puntos brutos - coste de reserva`.
 
-La puntuacion actual usa una regla simple:
+## Flujo de uso
 
-- Reservar una zona descuenta `entryCost / 10` como coste de entrada.
-- Cada evento real suma los puntos definidos para esa zona.
+1. Seleccionar partido y presupuesto de ronda.
+2. Crear jugadores.
+3. Entrar como uno de los jugadores.
+4. Comprar activos desde el panel lateral al clicar en el campo.
+5. Registrar eventos reales del partido en la celda correspondiente.
+6. Consultar clasificacion y detalle por propiedad.
 
-## Como abrirlo
+## Proximos pasos recomendados
 
-Abre [index.html](C:/Users/ntorner/Documents/Codex/2026-04-23-vamos-a-construir-una-app-relacionada/index.html) en el navegador.
-
-## Siguientes pasos recomendados
-
-1. Definir el mapa exacto del campo con mas granularidad por filas y columnas.
-2. Separar reglas por tipo de competicion o partido del Mundial 2026.
-3. Conectar la app a una fuente real de eventos.
-4. Añadir autenticacion, persistencia y marketplace de reservas.
+1. Conectar una fuente de eventos en directo con coordenadas `x/y`.
+2. Mapear automaticamente cada evento recibido a una celda y macrozona.
+3. Definir reglas de reventa, bloqueo de mercado y rondas cerradas.
+4. Cargar el fixture completo y sincronizarlo con una API real de eventos de futbol.
+5. Guardar partidas en backend y permitir ligas privadas.
