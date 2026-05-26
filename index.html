@@ -3,113 +3,176 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mundial 2026 Fantasy Pitch</title>
+  <title>PitchScore</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <main class="app-shell">
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">Mundial 2026</p>
-        <h1>Reserva zonas del campo y gana puntos según lo que pase de verdad.</h1>
+        <p class="eyebrow">PitchScore · Mundial 2026</p>
+        <h1>Convierte cada zona del campo en un activo jugable.</h1>
         <p class="hero-text">
-          Primer prototipo del juego: cada zona del terreno tiene un valor de entrada y una puntuación
-          asociada a eventos reales del partido. Reservas, registras acciones y calculas el ranking.
+          Esta version ya no es solo una demo visual. Ahora puedes montar una ronda,
+          crear jugadores con presupuesto, reservar zonas premium, registrar eventos
+          del partido y calcular resultados con desglose real por propietario.
         </p>
       </div>
-      <div class="hero-card">
-        <p class="hero-card-label">Modo actual</p>
-        <strong>Demo jugable del sistema</strong>
-        <span>Base para conectar después con datos reales del Mundial 2026.</span>
-      </div>
+      <div class="hero-stats" id="hero-stats"></div>
     </section>
 
-    <section class="layout">
-      <div class="panel panel-field">
+    <section class="top-layout">
+      <article class="panel">
         <div class="section-heading">
           <div>
-            <p class="section-kicker">1. Divisiones del terreno</p>
-            <h2>Mapa de zonas reservables</h2>
+            <p class="section-kicker">1. Configuracion</p>
+            <h2>Ronda y mercado</h2>
           </div>
-          <button id="clear-reservations" class="ghost-button">Limpiar reservas</button>
+          <button id="reset-all" class="ghost-button">Reiniciar ronda</button>
         </div>
-        <div class="pitch-wrapper">
-          <div id="pitch-grid" class="pitch-grid" aria-label="Mapa del campo"></div>
-        </div>
-        <div id="zone-detail" class="zone-detail">
-          <h3>Selecciona una zona</h3>
-          <p>Verás aquí su valor de reserva, eventos puntuables y estado actual.</p>
-        </div>
-      </div>
 
-      <div class="panel panel-sidebar">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker">2. Sistema de reserva</p>
-            <h2>Asignar propietario</h2>
-          </div>
+        <div class="stack two-columns">
+          <label>
+            Partido activo
+            <select id="match-select"></select>
+          </label>
+          <label>
+            Presupuesto inicial por jugador
+            <input id="budget-input" type="number" min="50" step="10" value="320">
+          </label>
         </div>
-        <form id="reservation-form" class="stack">
-          <label>
-            Zona seleccionada
-            <input id="selected-zone" type="text" readonly placeholder="Pulsa una zona del campo">
+
+        <form id="player-form" class="stack inline-form">
+          <label class="grow">
+            Nuevo jugador
+            <input id="player-name" type="text" placeholder="Ej. Ana">
           </label>
-          <label>
-            Jugador / usuario
-            <input id="owner-name" type="text" placeholder="Ej. Ana">
-          </label>
-          <button type="submit" class="primary-button">Reservar zona</button>
+          <button type="submit" class="primary-button">Anadir jugador</button>
         </form>
 
-        <div class="section-heading compact">
+        <div id="players-list" class="player-list empty-state">
+          Todavia no hay jugadores en la ronda.
+        </div>
+      </article>
+
+      <article class="panel">
+        <div class="section-heading">
           <div>
-            <p class="section-kicker">3. Actos del partido</p>
-            <h2>Registrar evento real</h2>
+            <p class="section-kicker">2. Acceso de jugador</p>
+            <h2>Entrar en la ronda</h2>
           </div>
         </div>
+
+        <form id="session-form" class="stack">
+          <label>
+            Jugador activo
+            <select id="active-player"></select>
+          </label>
+          <button type="submit" class="primary-button">Entrar como jugador</button>
+        </form>
+
+        <div id="session-card" class="zone-detail">
+          <h3>Sin sesion activa</h3>
+          <p>Selecciona un jugador para comprar activos desde el panel del campo.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="pitch-section">
+      <article class="panel pitch-panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">3. Mapa del campo</p>
+            <h2>Terreno dividido en micro-activos</h2>
+          </div>
+        </div>
+        <div class="pitch-layout">
+          <div class="pitch-wrapper">
+            <div id="pitch-grid" class="pitch-grid" aria-label="Mapa del campo"></div>
+          </div>
+          <aside id="selection-overlay" class="selection-overlay">
+            <h3>Selecciona una celda</h3>
+            <p>Al pulsar una zona del campo veras aqui el tipo de activo, su valor y sus coordenadas.</p>
+          </aside>
+        </div>
+      </article>
+    </section>
+
+    <section class="middle-layout">
+      <article class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">4. Libro de reglas</p>
+            <h2>Actos y valor por tipo de parcela</h2>
+          </div>
+        </div>
+        <div id="zone-catalog" class="catalog-grid"></div>
+      </article>
+
+      <article class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">5. Analisis del partido</p>
+            <h2>Registrar evento real</h2>
+          </div>
+          <button id="load-demo-match" class="ghost-button">Cargar demo</button>
+        </div>
+
         <form id="event-form" class="stack">
           <label>
             Zona
             <select id="event-zone"></select>
           </label>
           <label>
-            Tipo de acción
+            Accion
             <select id="event-type"></select>
           </label>
-          <label>
-            Minuto
-            <input id="event-minute" type="number" min="1" max="130" value="12">
-          </label>
-          <button type="submit" class="secondary-button">Añadir evento</button>
+          <div class="stack two-columns">
+            <label>
+              Minuto
+              <input id="event-minute" type="number" min="1" max="130" value="12">
+            </label>
+            <label>
+              Equipo
+              <select id="event-team">
+                <option value="home">Local</option>
+                <option value="away">Visitante</option>
+              </select>
+            </label>
+          </div>
+          <button type="submit" class="secondary-button">Registrar evento</button>
         </form>
-      </div>
+
+        <div id="events-list" class="events-list empty-state">
+          Todavia no hay eventos en este partido.
+        </div>
+      </article>
     </section>
 
-    <section class="results-layout">
-      <div class="panel">
+    <section class="bottom-layout">
+      <article class="panel">
         <div class="section-heading">
           <div>
-            <p class="section-kicker">4. Partidos y scoring</p>
-            <h2>Eventos registrados</h2>
-          </div>
-          <button id="seed-events" class="ghost-button">Cargar demo</button>
-        </div>
-        <div id="events-list" class="events-list empty-state">
-          Todavía no hay acciones registradas.
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="section-heading">
-          <div>
-            <p class="section-kicker">5. Resultados</p>
-            <h2>Ranking por puntos</h2>
+            <p class="section-kicker">6. Resultados</p>
+            <h2>Clasificacion de la ronda</h2>
           </div>
         </div>
         <div id="scoreboard" class="scoreboard empty-state">
-          Reserva alguna zona y añade eventos para calcular resultados.
+          Crea jugadores, reparte activos y registra eventos para generar la tabla.
         </div>
-      </div>
+      </article>
+
+      <article class="panel">
+        <div class="section-heading">
+          <div>
+            <p class="section-kicker">7. Desglose</p>
+            <h2>Valor por propiedad</h2>
+          </div>
+        </div>
+        <div id="breakdown-panel" class="breakdown-panel empty-state">
+          El detalle por jugador aparecera aqui.
+        </div>
+      </article>
     </section>
   </main>
 
