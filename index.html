@@ -11,92 +11,58 @@
 </head>
 <body>
 
-  <!-- SIDEBAR -->
+  <!-- ═══ SIDEBAR ═════════════════════════════════════════════ -->
   <nav class="sidebar">
+
     <div class="sidebar-brand">
-      <div class="brand-badge">
-        <span class="brand-ball">⚽</span>
-        <div>
-          <div class="brand-name">PITCHSCORE</div>
-          <div class="brand-sub">MUNDIAL 2026</div>
-          <div class="brand-stars">★ ★ ★ ★ ★</div>
-        </div>
-      </div>
+      <div class="brand-name">PITCHSCORE</div>
+      <div class="brand-sub">MUNDIAL 2026</div>
+      <div class="brand-stars">★ ★ ★ ★ ★</div>
     </div>
 
     <ul class="sidebar-nav">
-      <li class="nav-item active"><span class="nav-icon">⌂</span> Inicio</li>
-      <li class="nav-item"><span class="nav-icon">▦</span> Partidos</li>
-      <li class="nav-item"><span class="nav-icon">◈</span> Mis Reservas</li>
-      <li class="nav-item"><span class="nav-icon">⊕</span> Ranking</li>
-      <li class="nav-item"><span class="nav-icon">◎</span> Amigos</li>
-      <li class="nav-item"><span class="nav-icon">◷</span> Historial</li>
+      <li class="nav-item active"><span class="nav-icon">⌂</span>INICIO</li>
+      <li class="nav-item"><span class="nav-icon">▦</span>PARTIDOS</li>
+      <li class="nav-item"><span class="nav-icon">◈</span>MIS RESERVAS</li>
+      <li class="nav-item"><span class="nav-icon">⊕</span>RANKING</li>
+      <li class="nav-item"><span class="nav-icon">◎</span>AMIGOS</li>
+      <li class="nav-item"><span class="nav-icon">◷</span>HISTORIAL</li>
     </ul>
 
-    <!-- Auth en sidebar -->
-    <div class="sidebar-auth">
-      <form id="auth-form" class="auth-form-inline">
-        <input id="auth-name" type="text" placeholder="Tu nombre para jugar…">
-        <button class="btn-auth" type="submit">Entrar →</button>
-      </form>
-      <div id="room-list" class="room-list-sidebar"></div>
-    </div>
-
-    <!-- Poster promo -->
     <div class="sidebar-poster">
-      <div class="poster-inner">
-        <div class="poster-text">EL MUNDIAL<br><span>LO VIVIMOS</span><br>JUNTOS</div>
-      </div>
+      <div class="poster-text">EL MUNDIAL<br><span>LO VIVIMOS</span><br>JUNTOS</div>
     </div>
 
-    <button class="sidebar-logout">↩ Cerrar sesión</button>
+    <button class="sidebar-logout">↩ CERRAR SESIÓN</button>
+
   </nav>
 
-  <!-- MAIN CONTENT -->
-  <main class="app-shell">
+  <!-- ═══ APP SHELL ════════════════════════════════════════════ -->
+  <div class="app-shell">
 
-    <!-- TOP HEADER -->
-    <header class="match-header">
+    <!-- ─── COLUMNA CENTRAL ──────────────────────────────────── -->
+    <main class="col-center">
 
-      <!-- Partido actual (columna izquierda) -->
-      <div class="header-fixture-col">
-        <div class="header-fixture-label">PARTIDO ACTUAL</div>
-        <div id="fixture-list" class="fixture-list-header"></div>
+      <!-- Partido actual -->
+      <div class="fixture-header">
+        <div class="fixture-section-label">PARTIDO ACTUAL ∧</div>
+        <div id="fixture-list" class="fixture-active-wrap"></div>
 
-        <div class="header-fixture-label upcoming-label">PRÓXIMOS PARTIDOS</div>
-        <div id="fixture-list-upcoming" class="fixture-list-upcoming"></div>
+        <div class="fixture-section-label upcoming-label">PRÓXIMOS PARTIDOS ∨</div>
+        <div id="fixture-list-upcoming" class="fixture-upcoming-list"></div>
+
+        <div class="fixture-see-all">VER TODO EL FIXTURE ∨</div>
       </div>
 
-      <!-- Partido activo (centro) -->
-      <div class="header-match-center">
-        <div class="match-trophy">🏆</div>
-        <div class="match-stage-label" id="match-meta">Grupo A · Jornada 1</div>
-        <h1 id="match-title">Elige partido</h1>
-        <div class="match-datetime">
-          <span class="match-venue-line">11 JUNIO 2026 · 18:00 &nbsp;·&nbsp; MEXICO CITY STADIUM</span>
-        </div>
-        <div class="countdown-block">
-          <span class="countdown-label">RESERVAS CIERRAN EN</span>
-          <div id="countdown-display" class="countdown-digits">-- -- --</div>
-        </div>
-      </div>
-
-      <!-- Player HUD (columna derecha) -->
-      <div id="player-hud" class="player-hud"></div>
-    </header>
-
-    <!-- GAME AREA -->
-    <section class="game-layout">
-
-      <!-- Campo central -->
-      <section class="field-stage">
+      <!-- Campo -->
+      <div class="field-stage">
 
         <div class="field-tab-bar">
           <button class="field-tab active" type="button">MAPA DEL CAMPO</button>
           <button class="field-tab" type="button">LISTA DE ZONAS</button>
-          <div class="field-limit-badge">
+          <div class="field-tab-right">
             <button id="demo-open-match" class="mini-button" type="button">Demo</button>
-            <span id="reservation-limit">3 ZONAS MÁX.</span>
+            <span id="reservation-limit" class="limit-badge">3 ZONAS MÁX.</span>
           </div>
         </div>
 
@@ -122,7 +88,7 @@
           <div id="zone-layer" class="zone-layer" aria-label="Zonas reservables"></div>
         </div>
 
-        <!-- Leyenda de precio -->
+        <!-- Llegenda -->
         <div class="price-legend">
           <span class="legend-label">MENOR PRECIO</span>
           <div class="legend-dots">
@@ -136,57 +102,100 @@
           <span class="legend-label">MAYOR PRECIO</span>
         </div>
 
-        <!-- How it works -->
+        <!-- Com funciona -->
         <div class="how-it-works">
           <div class="hiw-title">¿CÓMO FUNCIONA?</div>
           <div class="hiw-steps">
-            <div class="hiw-step"><span class="hiw-icon">☞</span><span class="hiw-n">1</span><span class="hiw-t">ELIGE TUS ZONAS</span><span class="hiw-d">Reserva hasta 3 zonas con tu presupuesto.</span></div>
+            <div class="hiw-step">
+              <span class="hiw-icon">☞</span>
+              <span class="hiw-n">1</span>
+              <span class="hiw-t">ELIGE TUS ZONAS</span>
+              <span class="hiw-d">Reserva hasta 3 zonas con tu presupuesto.</span>
+            </div>
             <div class="hiw-arrow">→</div>
-            <div class="hiw-step"><span class="hiw-icon">⊡</span><span class="hiw-n">2</span><span class="hiw-t">MIRA EL PARTIDO</span><span class="hiw-d">En vivo o desde donde quieras.</span></div>
+            <div class="hiw-step">
+              <span class="hiw-icon">⊡</span>
+              <span class="hiw-n">2</span>
+              <span class="hiw-t">MIRA EL PARTIDO</span>
+              <span class="hiw-d">En vivo o desde donde quieras.</span>
+            </div>
             <div class="hiw-arrow">→</div>
-            <div class="hiw-step"><span class="hiw-icon">⚽</span><span class="hiw-n">3</span><span class="hiw-t">SUMA PUNTOS</span><span class="hiw-d">Cada acción que ocurra en tus zonas suma.</span></div>
+            <div class="hiw-step">
+              <span class="hiw-icon">⚽</span>
+              <span class="hiw-n">3</span>
+              <span class="hiw-t">SUMA PUNTOS</span>
+              <span class="hiw-d">Cada acción en tus zonas suma.</span>
+            </div>
             <div class="hiw-arrow">→</div>
-            <div class="hiw-step"><span class="hiw-icon">🏆</span><span class="hiw-n">4</span><span class="hiw-t">GANA EL MARCADOR</span><span class="hiw-d">Quien más puntos tenga al final del partido.</span></div>
+            <div class="hiw-step">
+              <span class="hiw-icon">🏆</span>
+              <span class="hiw-n">4</span>
+              <span class="hiw-t">GANA EL MARCADOR</span>
+              <span class="hiw-d">Quien más puntos tenga al final.</span>
+            </div>
           </div>
         </div>
 
         <div id="live-feed" class="live-feed"></div>
-      </section>
 
-      <!-- Panel derecho -->
-      <aside class="rail rail-right">
-        <div id="zone-panel" class="zone-panel"></div>
+      </div><!-- /field-stage -->
+    </main>
 
-        <div class="panel-block scoreboard-block">
-          <div class="panel-title">EVENTOS DEL PARTIDO</div>
+    <!-- ─── COLUMNA DRETA ─────────────────────────────────────── -->
+    <aside class="col-right">
+
+      <!-- Auth + HUD -->
+      <div class="right-block hud-block">
+        <div class="hud-stats-row">
+          <div class="hud-stat-box">
+            <span class="hud-stat-label">MI PRESUPUESTO</span>
+            <strong class="hud-stat-val" id="hud-budget">— puntos</strong>
+          </div>
+          <div class="hud-stat-box">
+            <span class="hud-stat-label">ZONAS RESERVADAS</span>
+            <strong class="hud-stat-val" id="hud-zones">0/3</strong>
+          </div>
+        </div>
+        <div class="hud-actions-row">
+          <button class="hud-how-btn">¿CÓMO JUGAR? ❓</button>
+          <button class="hud-bell">🔔</button>
+          <div class="hud-avatar">👤</div>
+          <div id="hud-user-info" class="hud-user-info">
+            <form id="auth-form" class="auth-inline">
+              <input id="auth-name" type="text" placeholder="Tu nombre…">
+              <button class="btn-auth" type="submit">→</button>
+            </form>
+          </div>
+        </div>
+        <div id="room-list" class="room-list-inline"></div>
+      </div>
+
+      <!-- Zone panel -->
+      <div id="zone-panel" class="right-block zone-panel-block"></div>
+
+      <!-- Eventos del partido -->
+      <div class="right-block events-accordion">
+        <button class="accordion-header" type="button">
+          EVENTOS DEL PARTIDO ∨
+        </button>
+        <div class="accordion-body">
           <div id="scoreboard" class="scoreboard"></div>
         </div>
-      </aside>
+      </div>
 
-    </section>
+    </aside>
 
-    <!-- ADMIN -->
-    <section class="admin-band">
-      <details>
-        <summary>Panel admin de eventos</summary>
-        <form id="event-form" class="admin-form">
-          <select id="event-match"></select>
-          <input id="event-minute" type="number" min="1" max="130" value="12" aria-label="Minuto">
-          <input id="event-player" type="text" placeholder="Jugador real">
-          <select id="event-team"></select>
-          <select id="event-type"></select>
-          <input id="event-x" type="number" min="0" max="120" value="12" aria-label="Coordenada x">
-          <input id="event-y" type="number" min="0" max="80" value="40" aria-label="Coordenada y">
-          <button class="secondary-button" type="submit">Lanzar evento</button>
-        </form>
-      </details>
-    </section>
-
-  </main>
+  </div><!-- /app-shell -->
 
   <script src="app.js"></script>
   <script>
-    // Countdown timer hacia el partido
+    // Accordion
+    document.querySelector('.accordion-header').addEventListener('click', function() {
+      this.classList.toggle('open');
+      this.nextElementSibling.classList.toggle('open');
+    });
+
+    // Countdown
     function updateCountdown() {
       const match = window._currentMatch;
       if (!match) return;

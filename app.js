@@ -275,9 +275,6 @@ const ScoreService = {
 };
 
 const dom = {
-  matchTitle: document.querySelector("#match-title"),
-  matchMeta: document.querySelector("#match-meta"),
-  playerHud: document.querySelector("#player-hud"),
   fixtureList: document.querySelector("#fixture-list"),
   fixtureListUpcoming: document.querySelector("#fixture-list-upcoming"),
   demoOpenMatch: document.querySelector("#demo-open-match"),
@@ -290,15 +287,7 @@ const dom = {
   zoneLayer: document.querySelector("#zone-layer"),
   liveFeed: document.querySelector("#live-feed"),
   zonePanel: document.querySelector("#zone-panel"),
-  scoreboard: document.querySelector("#scoreboard"),
-  eventForm: document.querySelector("#event-form"),
-  eventMatch: document.querySelector("#event-match"),
-  eventMinute: document.querySelector("#event-minute"),
-  eventPlayer: document.querySelector("#event-player"),
-  eventTeam: document.querySelector("#event-team"),
-  eventType: document.querySelector("#event-type"),
-  eventX: document.querySelector("#event-x"),
-  eventY: document.querySelector("#event-y")
+  scoreboard: document.querySelector("#scoreboard")
 };
 
 function clamp(value, min, max) {
@@ -362,7 +351,6 @@ function render() {
   renderZonePanel();
   renderLiveFeed();
   renderScoreboard();
-  renderAdmin();
 }
 
 function renderHeader() {
@@ -370,31 +358,47 @@ function renderHeader() {
   const user = AuthService.currentUser();
   const room = RoomService.current();
   const status = MatchService.getStatus(match);
-  dom.matchTitle.textContent = match.label;
-  dom.matchMeta.textContent = `${match.stage} - ${formatDate(match.date)} - ${match.venue}`;
-  dom.roomLabel.textContent = room.name;
-  dom.matchStatus.textContent = statusLabel(status);
-  dom.matchStatus.className = `status-pill status-${status}`;
-  dom.reservationLimit.textContent = `${MAX_RESERVATIONS_PER_PLAYER} zonas max.`;
 
-  if (!user) {
-    dom.playerHud.innerHTML = `
-      <div class="hud-name">Entra para jugar</div>
-      <p class="match-meta">Reserva 3 zonas y sigue el marcador en directo.</p>
-    `;
-    return;
+  if (dom.roomLabel)  dom.roomLabel.textContent = room.name;
+  if (dom.matchStatus) {
+    dom.matchStatus.textContent = statusLabel(status);
+    dom.matchStatus.className = `status-pill status-${status}`;
+  }
+  if (dom.reservationLimit) {
+    dom.reservationLimit.textContent = `${MAX_RESERVATIONS_PER_PLAYER} ZONAS MÁX.`;
   }
 
-  const wallet = ScoreService.wallet(user.id);
-  const reservations = ReservationService.forUser(user.id);
-  dom.playerHud.innerHTML = `
-    <div class="hud-name">${user.name}</div>
-    <div class="hud-grid">
-      <div class="hud-stat"><span>Puntos</span><strong>${ScoreService.scoreForUser(user.id)}</strong></div>
-      <div class="hud-stat"><span>Te quedan</span><strong>${wallet.remaining}</strong></div>
-      <div class="hud-stat"><span>Zonas</span><strong>${reservations.length}/${MAX_RESERVATIONS_PER_PLAYER}</strong></div>
-    </div>
-  `;
+  // HUD dreta: pressupost + zones + usuari
+  const budgetEl  = document.querySelector("#hud-budget");
+  const zonesEl   = document.querySelector("#hud-zones");
+  const userInfoEl = document.querySelector("#hud-user-info");
+
+  if (user) {
+    const wallet = ScoreService.wallet(user.id);
+    const reservations = ReservationService.forUser(user.id);
+    if (budgetEl)  budgetEl.textContent  = `${wallet.remaining} puntos`;
+    if (zonesEl)   zonesEl.textContent   = `${reservations.length}/${MAX_RESERVATIONS_PER_PLAYER}`;
+    if (userInfoEl) userInfoEl.innerHTML = `
+      <div class="hud-name-display">${user.name}</div>
+      <div class="hud-rank-display">Jugador activo</div>
+    `;
+  } else {
+    if (budgetEl)  budgetEl.textContent  = `${DEFAULT_BUDGET} puntos`;
+    if (zonesEl)   zonesEl.textContent   = `0/${MAX_RESERVATIONS_PER_PLAYER}`;
+    if (userInfoEl) userInfoEl.innerHTML = `
+      <form id="auth-form" class="auth-inline">
+        <input id="auth-name" type="text" placeholder="Tu nombre…">
+        <button class="btn-auth" type="submit">→</button>
+      </form>
+    `;
+    // re-bind after re-render
+    const af = document.querySelector("#auth-form");
+    if (af) af.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const input = document.querySelector("#auth-name");
+      if (input) { AuthService.login(input.value); input.value = ""; }
+    });
+  }
 }
 
 function renderFixture() {
@@ -490,31 +494,48 @@ function renderZonePanel() {
         : "Reservar zona";
 
   const potentialLabel = zone.multiplier >= 1.7 ? "MUY ALTO" : zone.multiplier >= 1.3 ? "ALTO" : zone.multiplier >= 1.0 ? "MEDIO" : "BAJO";
+  const potentialClass = zone.multiplier >= 1.3 ? "potential-high" : "";
+  const dotColor = zone.color === "legend" ? "#c0392b" : zone.color === "premium" ? "#d4a847" : zone.color === "hot" ? "#d47020" : "#4caf87";
+
   const myZoneRows = userReservations.map(r => {
     const z = getZone(r.zoneId);
-    const dotColor = z.color === "legend" ? "#c0392b" : z.color === "premium" ? "#d4a847" : z.color === "hot" ? "#d47020" : "#4caf87";
+    const dc = z.color === "legend" ? "#c0392b" : z.color === "premium" ? "#d4a847" : z.color === "hot" ? "#d47020" : "#4caf87";
     return `<div class="my-zone-row">
-      <span class="my-zone-dot" style="background:${dotColor}"></span>
+      <span class="my-zone-dot" style="background:${dc}"></span>
       <span class="my-zone-name">${z.name}</span>
       <span class="my-zone-pts">${r.price} pts</span>
+      <button class="my-zone-remove" type="button">✕</button>
     </div>`;
   }).join("");
   const totalSpent = userReservations.reduce((s, r) => s + r.price, 0);
 
   dom.zonePanel.innerHTML = `
-    <h2>${zone.name}</h2>
-    <p>${zone.vibe}</p>
-    <div class="zone-stats">
-      <div class="zone-stat"><span>Precio</span><strong>${price} pts</strong></div>
-      <div class="zone-stat"><span>Potencial</span><strong style="color:var(--red);font-size:0.9rem">${potentialLabel}</strong></div>
-      <div class="zone-stat"><span>Plazas</span><strong>${reservations.length}/${zone.capacity}</strong></div>
+    <div class="zone-panel-top">
+      <span class="zone-color-dot" style="background:${dotColor}"></span>
+      <span class="zone-panel-name">${zone.name}</span>
     </div>
-    <button class="reserve-button" type="button" data-reserve-zone="${zone.id}" ${disabled ? "disabled" : ""}>${buttonText}</button>
+    <div class="zone-panel-vibe">${zone.vibe}</div>
+    <div class="zone-stats">
+      <div class="zone-stat"><span>PRECIO</span><strong>${price} pts</strong></div>
+      <div class="zone-stat"><span>POTENCIAL</span><strong class="${potentialClass}">${potentialLabel}</strong></div>
+      <div class="zone-stat"><span>PLAZAS</span><strong>${reservations.length}/${zone.capacity}</strong></div>
+    </div>
+    <div class="actions-title">ACCIONES QUE SUMAN</div>
+    <div class="actions-grid">
+      <div class="action-tag"><span class="action-icon">⚽</span><span class="action-name">GOL</span><span class="action-pts">+40</span></div>
+      <div class="action-tag"><span class="action-icon">🥅</span><span class="action-name">TIRO</span><span class="action-pts">+25</span></div>
+      <div class="action-tag"><span class="action-icon">🔴</span><span class="action-name">PENALTI</span><span class="action-pts">+50</span></div>
+      <div class="action-tag"><span class="action-icon">👟</span><span class="action-name">ASISTENCIA</span><span class="action-pts">+15</span></div>
+      <div class="action-tag"><span class="action-icon">🎯</span><span class="action-name">PASE CLAVE</span><span class="action-pts">+10</span></div>
+      <div class="action-tag"><span class="action-icon">💪</span><span class="action-name">RECUPERAC.</span><span class="action-pts">+5</span></div>
+    </div>
+    <button class="reserve-button" type="button" data-reserve-zone="${zone.id}" ${disabled ? "disabled" : ""}>RESERVAR ESTA ZONA</button>
     <span class="reserve-cost">Te costará ${price} puntos</span>
     ${userReservations.length ? `
     <div class="my-zones-block">
       <div class="my-zones-header">
         <span>MIS ZONAS (${userReservations.length}/${MAX_RESERVATIONS_PER_PLAYER})</span>
+        <button class="my-zones-clear" type="button">LIMPIAR</button>
       </div>
       ${myZoneRows}
       <div class="my-zones-total">
@@ -563,14 +584,6 @@ function renderScoreboard() {
   `).join("");
 }
 
-function renderAdmin() {
-  dom.eventMatch.innerHTML = matches.map((match) => `<option value="${match.id}" ${match.id === state.currentMatchId ? "selected" : ""}>${match.label}</option>`).join("");
-  dom.eventTeam.innerHTML = `
-    <option value="${MatchService.current().home}">${MatchService.current().home}</option>
-    <option value="${MatchService.current().away}">${MatchService.current().away}</option>
-  `;
-  dom.eventType.innerHTML = Object.entries(eventTypes).map(([id, type]) => `<option value="${id}">${type.label}</option>`).join("");
-}
 
 document.addEventListener("click", (event) => {
   const btn = event.target.closest("[data-match-id]");
@@ -602,27 +615,11 @@ dom.zonePanel.addEventListener("click", (event) => {
   if (button) ReservationService.reserve(button.dataset.reserveZone);
 });
 
-dom.authForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  AuthService.login(dom.authName.value);
-  dom.authName.value = "";
-});
+// Auth form lives inside HUD — bound dynamically in renderHeader()
 
 dom.demoOpenMatch.addEventListener("click", () => {
   MatchService.toggleDemoOpen(state.currentMatchId);
 });
 
-dom.eventForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  EventService.create({
-    matchId: dom.eventMatch.value,
-    minute: dom.eventMinute.value,
-    player: dom.eventPlayer.value,
-    team: dom.eventTeam.value,
-    eventType: dom.eventType.value,
-    x: dom.eventX.value,
-    y: dom.eventY.value
-  });
-});
 
 render();
