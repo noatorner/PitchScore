@@ -404,15 +404,27 @@ function renderHeader() {
 function renderFixture() {
   const current = MatchService.current();
   const currentStatus = MatchService.getStatus(current);
+  window._currentMatch = current;
+
   dom.fixtureList.innerHTML = `
-    <button class="fixture-item active" type="button" data-match-id="${current.id}">
-      <span class="fixture-main">
-        <span>${current.home} vs ${current.away}</span>
+    <div class="match-hero-card">
+      <div class="match-hero-top">
+        <span class="match-hero-stage">${current.stage}</span>
         <span class="status-pill status-${currentStatus}">${statusLabel(currentStatus)}</span>
-      </span>
-      <span class="fixture-meta">${formatDate(current.date)} · ${current.venue}</span>
-    </button>
+      </div>
+      <div class="match-hero-title">${current.home} <span class="vs-sep">vs</span> ${current.away}</div>
+      <div class="match-hero-info">
+        <span>📅 ${formatDate(current.date)}</span>
+        <span class="mh-sep">·</span>
+        <span>🏟️ ${current.venue}</span>
+      </div>
+      <div class="match-hero-countdown-wrap">
+        <span class="countdown-label">CIERRE RESERVAS EN</span>
+        <span id="countdown-display" class="countdown-val">--H --M --S</span>
+      </div>
+    </div>
   `;
+
   const upcomingEl = document.querySelector("#fixture-list-upcoming");
   if (upcomingEl) {
     upcomingEl.innerHTML = MatchService.all()

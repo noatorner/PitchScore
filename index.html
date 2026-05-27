@@ -15,7 +15,7 @@
   <nav class="sidebar">
 
     <div class="sidebar-brand">
-      <div class="brand-name">PITCHSCORE</div>
+      <div class="brand-name"><span class="brand-ball">⚽</span>PITCHSCORE</div>
       <div class="brand-sub">MUNDIAL 2026</div>
       <div class="brand-stars">★ ★ ★ ★ ★</div>
     </div>
@@ -43,14 +43,15 @@
     <!-- ─── COLUMNA CENTRAL ──────────────────────────────────── -->
     <main class="col-center">
 
-      <!-- Partido actual -->
-      <div class="fixture-header">
-        <div class="fixture-section-label">PARTIDO ACTUAL ∧</div>
-        <div id="fixture-list" class="fixture-active-wrap"></div>
+      <!-- Partido activo destacado -->
+      <div class="match-hero-section">
+        <div id="fixture-list" class="match-hero-inner"></div>
+      </div>
 
-        <div class="fixture-section-label upcoming-label">PRÓXIMOS PARTIDOS ∨</div>
+      <!-- Próximos partidos -->
+      <div class="fixture-strip">
+        <div class="fixture-section-label">PRÓXIMOS PARTIDOS ∨</div>
         <div id="fixture-list-upcoming" class="fixture-upcoming-list"></div>
-
         <div class="fixture-see-all">VER TODO EL FIXTURE ∨</div>
       </div>
 

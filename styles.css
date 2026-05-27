@@ -4,7 +4,7 @@
    Layout: sidebar 200px | center flex | right 320px — NO SCROLL
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;600;700&family=Source+Serif+4:ital,wght@0,300;0,400;1,300&display=swap');
+/* Fuentes cargadas via <link> en el HTML — no duplicar con @import */
 
 :root {
   --cream:        #f2ead8;
@@ -51,9 +51,9 @@ body {
   font-family: 'Oswald', sans-serif;
   font-weight: 400;
   color: var(--ink);
-  background: var(--cream);
+  background-color: #f2ead8;
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='4' height='4' fill='%23f2ead8'/%3E%3Ccircle cx='1' cy='1' r='0.5' fill='%23c8ba96' opacity='0.28'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='8'%3E%3Crect width='8' height='8' fill='%23f2ead8'/%3E%3Ccircle cx='1' cy='2' r='0.7' fill='%23bfad88' opacity='0.38'/%3E%3Ccircle cx='5' cy='6' r='0.5' fill='%23bfad88' opacity='0.32'/%3E%3Ccircle cx='3' cy='1' r='0.45' fill='%23c8b89a' opacity='0.22'/%3E%3Ccircle cx='7' cy='4' r='0.6' fill='%23bfad88' opacity='0.28'/%3E%3Ccircle cx='2' cy='7' r='0.5' fill='%23c8b89a' opacity='0.3'/%3E%3Ccircle cx='6' cy='1' r='0.4' fill='%23bfad88' opacity='0.2'/%3E%3C/svg%3E");
 }
 
 button, input, select { font: inherit; }
@@ -82,11 +82,20 @@ button { border: 0; cursor: pointer; background: none; }
 }
 
 .brand-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   font-family: 'Bebas Neue', sans-serif;
   font-size: 2rem;
   color: #fff;
   letter-spacing: 0.06em;
   line-height: 1;
+}
+
+.brand-ball {
+  font-size: 1.45rem;
+  line-height: 1;
+  flex-shrink: 0;
 }
 
 .brand-sub {
@@ -208,16 +217,94 @@ button { border: 0; cursor: pointer; background: none; }
   border-right: 1px solid rgba(26,18,8,0.09);
 }
 
-/* Fixture header */
-.fixture-header {
+/* ── MATCH HERO — partido activo destacado ─────────────────── */
+.match-hero-section {
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--sidebar) 0%, #2a1a0e 100%);
+  border-bottom: 2px solid rgba(212,168,71,0.22);
+}
+
+.match-hero-inner {
+  padding: 12px 14px 10px;
+}
+
+.match-hero-card { position: relative; }
+
+.match-hero-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.match-hero-stage {
+  font-size: 0.57rem;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: var(--gold);
+  text-transform: uppercase;
+}
+
+.match-hero-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  line-height: 1;
+  color: #fff;
+  letter-spacing: 0.03em;
+  margin-bottom: 5px;
+}
+
+.match-hero-title .vs-sep {
+  color: var(--red);
+  font-size: 1.35rem;
+}
+
+.match-hero-info {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  font-family: 'Source Serif 4', serif;
+  font-size: 0.68rem;
+  font-style: italic;
+  color: var(--sidebar-text);
+  margin-bottom: 8px;
+}
+
+.mh-sep { color: rgba(212,168,71,0.4); }
+
+.match-hero-countdown-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.countdown-label {
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: rgba(180,160,120,0.75);
+  text-transform: uppercase;
+}
+
+.countdown-val {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--gold-light);
+  letter-spacing: 0.06em;
+}
+
+/* ── FIXTURE STRIP — próximos partidos ─────────────────────── */
+.fixture-strip {
+  flex-shrink: 0;
   background: var(--cream-dark);
   border-bottom: 1px solid rgba(26,18,8,0.1);
-  padding: 10px 14px 8px;
-  flex-shrink: 0;
+  padding: 8px 14px 7px;
 }
 
 .fixture-section-label {
-  font-size: 0.64rem;
+  font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.2em;
   color: var(--ink-muted);
@@ -227,21 +314,11 @@ button { border: 0; cursor: pointer; background: none; }
   border-bottom: 1px solid rgba(26,18,8,0.08);
 }
 
-.upcoming-label {
-  margin-top: 8px;
-}
-
-.fixture-active-wrap {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
 .fixture-upcoming-list {
   display: flex;
   flex-direction: column;
   gap: 3px;
-  max-height: 96px;
+  max-height: 160px;
   overflow-y: auto;
 }
 
@@ -250,7 +327,7 @@ button { border: 0; cursor: pointer; background: none; }
 .fixture-upcoming-list::-webkit-scrollbar-thumb { background: var(--ink-light); border-radius: 99px; }
 
 .fixture-see-all {
-  margin-top: 7px;
+  margin-top: 6px;
   font-size: 0.62rem;
   font-weight: 700;
   letter-spacing: 0.18em;
