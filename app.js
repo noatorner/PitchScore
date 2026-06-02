@@ -1,1023 +1,671 @@
-const STORAGE_KEY = "pitchscore-state-v6";
+const STORAGE_KEY = "pitchscore-redesign-v1";
 
+const flagMap = {
+  "Mexico": "🇲🇽", "South Africa": "🇿🇦", "Korea Republic": "🇰🇷",
+  "Czechia": "🇨🇿", "Canada": "🇨🇦", "Bosnia and Herzegovina": "🇧🇦",
+  "USA": "🇺🇸", "Paraguay": "🇵🇾", "Haiti": "🇭🇹", "Scotland": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+  "Australia": "🇦🇺", "Turkiye": "🇹🇷", "Brazil": "🇧🇷", "Morocco": "🇲🇦",
+  "Qatar": "🇶🇦", "Switzerland": "🇨🇭", "Cote d'Ivoire": "🇨🇮",
+  "Ecuador": "🇪🇨", "Germany": "🇩🇪", "Curacao": "🇨🇼",
+  "Netherlands": "🇳🇱", "Japan": "🇯🇵", "Sweden": "🇸🇪", "Tunisia": "🇹🇳",
+  "Saudi Arabia": "🇸🇦", "Uruguay": "🇺🇾", "Spain": "🇪🇸", "Cabo Verde": "🇨🇻",
+  "IR Iran": "🇮🇷", "New Zealand": "🇳🇿", "Belgium": "🇧🇪", "Egypt": "🇪🇬",
+};
+function flag(team) { return flagMap[team] || "🏳️"; }
+const MAX_RESERVATIONS_PER_PLAYER = 3;
+const DEFAULT_BUDGET = 420;
 const PITCH_LENGTH = 120;
 const PITCH_WIDTH = 80;
-const GRID_COLS = 30;
-const GRID_ROWS = 20;
-const CELL_LENGTH = PITCH_LENGTH / GRID_COLS;
-const CELL_WIDTH = PITCH_WIDTH / GRID_ROWS;
-
-const macroZones = {
-  corner: {
-    label: "Corner",
-    short: "CO",
-    tier: "alta",
-    entryCost: 84,
-    weight: 6,
-    note: "Activo de 4 celdas en la esquina del campo.",
-    eventScores: { cornerKick: 16, cross: 12, assistChance: 14, duelWon: 7 }
-  },
-  wing: {
-    label: "Banda",
-    short: "BA",
-    tier: "media",
-    entryCost: 58,
-    weight: 4,
-    note: "Banda abierta para progresion, desborde y centro.",
-    eventScores: { progressiveCarry: 10, cross: 12, duelWon: 7, recovery: 6 }
-  },
-  halfspace: {
-    label: "Half-space",
-    short: "HS",
-    tier: "media-alta",
-    entryCost: 72,
-    weight: 5,
-    note: "Carril interior para diagonales, ultimo pase y recepciones.",
-    eventScores: { throughBall: 12, progressiveCarry: 9, touchInBox: 9, duelWon: 8 }
-  },
-  hotzone: {
-    label: "Zona caliente frontal",
-    short: "ZH",
-    tier: "alta",
-    entryCost: 94,
-    weight: 7,
-    note: "Frente del area y arco. Ideal para faltas peligrosas y disparos.",
-    eventScores: { longShot: 16, foulWon: 13, throughBall: 11, shotOnTarget: 12 }
-  },
-  box: {
-    label: "Area",
-    short: "AR",
-    tier: "premium",
-    entryCost: 108,
-    weight: 8,
-    note: "Area grande, solo celdas claramente dentro del area.",
-    eventScores: { finish: 18, touchInBox: 11, foulWon: 10, duelWon: 8 }
-  },
-  sixyard: {
-    label: "Area pequena",
-    short: "AP",
-    tier: "premium",
-    entryCost: 126,
-    weight: 9,
-    note: "Area pequena para rebotes, remates y tiros de maximo peligro.",
-    eventScores: { finish: 22, rebound: 16, touchInBox: 12, shotOnTarget: 12 }
-  },
-  goalmouth: {
-    label: "Porteria",
-    short: "PO",
-    tier: "legendaria",
-    entryCost: 142,
-    weight: 10,
-    note: "Activo de 4 celdas centrado en la porteria.",
-    eventScores: { goal: 32, save: 18, shotOnTarget: 12, rebound: 10 }
-  },
-  penaltyspot: {
-    label: "Punto de penalti",
-    short: "PP",
-    tier: "legendaria",
-    entryCost: 164,
-    weight: 12,
-    note: "Activo de 4 celdas centrado en el punto de penalti.",
-    eventScores: { penalty: 35, finish: 24, foulWon: 15, shotOnTarget: 14 }
-  },
-  kickoffspot: {
-    label: "Punto de saque",
-    short: "PS",
-    tier: "alta",
-    entryCost: 88,
-    weight: 6,
-    note: "Activo de 4 celdas centrado en el punto de saque.",
-    eventScores: { kickoff: 8, throughBall: 10, progressiveCarry: 8, duelWon: 6 }
-  },
-  centercircle: {
-    label: "Circulo central",
-    short: "CC",
-    tier: "base",
-    entryCost: 46,
-    weight: 3,
-    note: "Corona del circulo central alrededor del punto de saque.",
-    eventScores: { kickoff: 5, recovery: 7, throughBall: 10, progressiveCarry: 8 }
-  },
-  central: {
-    label: "Carril central",
-    short: "CE",
-    tier: "base",
-    entryCost: 52,
-    weight: 4,
-    note: "Canal central intermedio para progresion y recuperacion.",
-    eventScores: { recovery: 8, throughBall: 9, progressiveCarry: 8, duelWon: 6 }
-  },
-  buildup: {
-    label: "Salida",
-    short: "SA",
-    tier: "base",
-    entryCost: 48,
-    weight: 3,
-    note: "Zona base de salida y circulacion temprana.",
-    eventScores: { recovery: 7, progressiveCarry: 8, throughBall: 8, duelWon: 6 }
-  }
-};
+const GRID_COLS = 60;
+const GRID_ROWS = 40;
 
 const matches = [
-  { id: "wc26-001", label: "Mexico vs South Africa", stage: "Grupo A", home: "Mexico", away: "South Africa", venue: "Mexico City Stadium", date: "2026-06-11" },
-  { id: "wc26-002", label: "Korea Republic vs Czechia", stage: "Grupo A", home: "Korea Republic", away: "Czechia", venue: "Estadio Guadalajara", date: "2026-06-11" },
-  { id: "wc26-003", label: "Canada vs Bosnia and Herzegovina", stage: "Grupo B", home: "Canada", away: "Bosnia and Herzegovina", venue: "Toronto Stadium", date: "2026-06-12" },
-  { id: "wc26-004", label: "USA vs Paraguay", stage: "Grupo D", home: "USA", away: "Paraguay", venue: "Los Angeles Stadium", date: "2026-06-12" },
-  { id: "wc26-005", label: "Haiti vs Scotland", stage: "Grupo C", home: "Haiti", away: "Scotland", venue: "Boston Stadium", date: "2026-06-13" },
-  { id: "wc26-006", label: "Australia vs Turkiye", stage: "Grupo D", home: "Australia", away: "Turkiye", venue: "BC Place Vancouver", date: "2026-06-13" },
-  { id: "wc26-007", label: "Brazil vs Morocco", stage: "Grupo C", home: "Brazil", away: "Morocco", venue: "New York New Jersey Stadium", date: "2026-06-13" },
-  { id: "wc26-008", label: "Qatar vs Switzerland", stage: "Grupo B", home: "Qatar", away: "Switzerland", venue: "San Francisco Bay Area Stadium", date: "2026-06-13" },
-  { id: "wc26-009", label: "Cote d'Ivoire vs Ecuador", stage: "Grupo E", home: "Cote d'Ivoire", away: "Ecuador", venue: "Philadelphia Stadium", date: "2026-06-14" },
-  { id: "wc26-010", label: "Germany vs Curacao", stage: "Grupo E", home: "Germany", away: "Curacao", venue: "Houston Stadium", date: "2026-06-14" },
-  { id: "wc26-011", label: "Netherlands vs Japan", stage: "Grupo F", home: "Netherlands", away: "Japan", venue: "Dallas Stadium", date: "2026-06-14" },
-  { id: "wc26-012", label: "Sweden vs Tunisia", stage: "Grupo F", home: "Sweden", away: "Tunisia", venue: "Estadio Monterrey", date: "2026-06-14" },
-  { id: "wc26-013", label: "Saudi Arabia vs Uruguay", stage: "Grupo H", home: "Saudi Arabia", away: "Uruguay", venue: "Miami Stadium", date: "2026-06-15" },
-  { id: "wc26-014", label: "Spain vs Cabo Verde", stage: "Grupo H", home: "Spain", away: "Cabo Verde", venue: "Atlanta Stadium", date: "2026-06-15" },
-  { id: "wc26-015", label: "IR Iran vs New Zealand", stage: "Grupo G", home: "IR Iran", away: "New Zealand", venue: "Los Angeles Stadium", date: "2026-06-15" },
-  { id: "wc26-016", label: "Belgium vs Egypt", stage: "Grupo G", home: "Belgium", away: "Egypt", venue: "Seattle Stadium", date: "2026-06-15" },
-  { id: "wc26-017", label: "France vs Senegal", stage: "Grupo I", home: "France", away: "Senegal", venue: "New York New Jersey Stadium", date: "2026-06-16" },
-  { id: "wc26-018", label: "Iraq vs Norway", stage: "Grupo I", home: "Iraq", away: "Norway", venue: "Boston Stadium", date: "2026-06-16" },
-  { id: "wc26-019", label: "Argentina vs Algeria", stage: "Grupo J", home: "Argentina", away: "Algeria", venue: "Kansas City Stadium", date: "2026-06-16" },
-  { id: "wc26-020", label: "Austria vs Jordan", stage: "Grupo J", home: "Austria", away: "Jordan", venue: "San Francisco Bay Area Stadium", date: "2026-06-16" },
-  { id: "wc26-021", label: "Ghana vs Panama", stage: "Grupo L", home: "Ghana", away: "Panama", venue: "Toronto Stadium", date: "2026-06-17" },
-  { id: "wc26-022", label: "England vs Croatia", stage: "Grupo L", home: "England", away: "Croatia", venue: "Dallas Stadium", date: "2026-06-17" },
-  { id: "wc26-023", label: "Portugal vs Congo DR", stage: "Grupo K", home: "Portugal", away: "Congo DR", venue: "Houston Stadium", date: "2026-06-17" },
-  { id: "wc26-024", label: "Uzbekistan vs Colombia", stage: "Grupo K", home: "Uzbekistan", away: "Colombia", venue: "Mexico City Stadium", date: "2026-06-17" },
-  { id: "wc26-025", label: "Czechia vs South Africa", stage: "Grupo A", home: "Czechia", away: "South Africa", venue: "Atlanta Stadium", date: "2026-06-18" },
-  { id: "wc26-026", label: "Switzerland vs Bosnia and Herzegovina", stage: "Grupo B", home: "Switzerland", away: "Bosnia and Herzegovina", venue: "Los Angeles Stadium", date: "2026-06-18" },
-  { id: "wc26-027", label: "Canada vs Qatar", stage: "Grupo B", home: "Canada", away: "Qatar", venue: "BC Place Vancouver", date: "2026-06-18" },
-  { id: "wc26-028", label: "Mexico vs Korea Republic", stage: "Grupo A", home: "Mexico", away: "Korea Republic", venue: "Estadio Guadalajara", date: "2026-06-18" }
+  { id: "wc26-001", label: "Mexico vs South Africa", stage: "Grupo A", home: "Mexico", away: "South Africa", venue: "Mexico City Stadium", date: "2026-06-11", kickoff: "2026-06-11T21:00:00+02:00" },
+  { id: "wc26-002", label: "Korea Republic vs Czechia", stage: "Grupo A", home: "Korea Republic", away: "Czechia", venue: "Estadio Guadalajara", date: "2026-06-11", kickoff: "2026-06-12T03:00:00+02:00" },
+  { id: "wc26-003", label: "Canada vs Bosnia and Herzegovina", stage: "Grupo B", home: "Canada", away: "Bosnia and Herzegovina", venue: "Toronto Stadium", date: "2026-06-12", kickoff: "2026-06-12T23:00:00+02:00" },
+  { id: "wc26-004", label: "USA vs Paraguay", stage: "Grupo D", home: "USA", away: "Paraguay", venue: "Los Angeles Stadium", date: "2026-06-12", kickoff: "2026-06-13T03:00:00+02:00" },
+  { id: "wc26-005", label: "Haiti vs Scotland", stage: "Grupo C", home: "Haiti", away: "Scotland", venue: "Boston Stadium", date: "2026-06-13", kickoff: "2026-06-13T18:00:00+02:00" },
+  { id: "wc26-006", label: "Australia vs Turkiye", stage: "Grupo D", home: "Australia", away: "Turkiye", venue: "BC Place Vancouver", date: "2026-06-13", kickoff: "2026-06-13T21:00:00+02:00" },
+  { id: "wc26-007", label: "Brazil vs Morocco", stage: "Grupo C", home: "Brazil", away: "Morocco", venue: "New York New Jersey Stadium", date: "2026-06-13", kickoff: "2026-06-14T00:00:00+02:00" },
+  { id: "wc26-008", label: "Qatar vs Switzerland", stage: "Grupo B", home: "Qatar", away: "Switzerland", venue: "San Francisco Bay Area Stadium", date: "2026-06-13", kickoff: "2026-06-14T03:00:00+02:00" },
+  { id: "wc26-009", label: "Cote d'Ivoire vs Ecuador", stage: "Grupo E", home: "Cote d'Ivoire", away: "Ecuador", venue: "Philadelphia Stadium", date: "2026-06-14", kickoff: "2026-06-14T18:00:00+02:00" },
+  { id: "wc26-010", label: "Germany vs Curacao", stage: "Grupo E", home: "Germany", away: "Curacao", venue: "Houston Stadium", date: "2026-06-14", kickoff: "2026-06-14T21:00:00+02:00" },
+  { id: "wc26-011", label: "Netherlands vs Japan", stage: "Grupo F", home: "Netherlands", away: "Japan", venue: "Dallas Stadium", date: "2026-06-14", kickoff: "2026-06-15T00:00:00+02:00" },
+  { id: "wc26-012", label: "Sweden vs Tunisia", stage: "Grupo F", home: "Sweden", away: "Tunisia", venue: "Estadio Monterrey", date: "2026-06-14", kickoff: "2026-06-15T03:00:00+02:00" },
+  { id: "wc26-013", label: "Saudi Arabia vs Uruguay", stage: "Grupo H", home: "Saudi Arabia", away: "Uruguay", venue: "Miami Stadium", date: "2026-06-15", kickoff: "2026-06-15T18:00:00+02:00" },
+  { id: "wc26-014", label: "Spain vs Cabo Verde", stage: "Grupo H", home: "Spain", away: "Cabo Verde", venue: "Atlanta Stadium", date: "2026-06-15", kickoff: "2026-06-15T21:00:00+02:00" },
+  { id: "wc26-015", label: "IR Iran vs New Zealand", stage: "Grupo G", home: "IR Iran", away: "New Zealand", venue: "Los Angeles Stadium", date: "2026-06-15", kickoff: "2026-06-16T00:00:00+02:00" },
+  { id: "wc26-016", label: "Belgium vs Egypt", stage: "Grupo G", home: "Belgium", away: "Egypt", venue: "Seattle Stadium", date: "2026-06-15", kickoff: "2026-06-16T03:00:00+02:00" }
 ];
 
-const eventCatalog = {
-  goal: "Gol",
-  save: "Parada",
-  shotOnTarget: "Tiro a puerta",
-  rebound: "Rebote",
-  finish: "Remate",
-  touchInBox: "Toque en area",
-  foulWon: "Falta recibida",
-  penalty: "Penalti",
-  cross: "Centro",
-  duelWon: "Duelo ganado",
-  longShot: "Disparo lejano",
-  recovery: "Recuperacion",
-  foul: "Falta",
-  throughBall: "Pase filtrado",
-  cornerKick: "Saque de esquina",
-  assistChance: "Ocasion creada",
-  progressiveCarry: "Conduccion",
-  kickoff: "Saque inicial"
+const eventTypes = {
+  goal: { label: "Gol", points: 38, energy: "Gol en la zona!" },
+  shot: { label: "Tiro peligroso", points: 18, energy: "Tiro peligroso!" },
+  save: { label: "Parada", points: 18, energy: "Paradon!" },
+  foul: { label: "Falta peligrosa", points: 16, energy: "Falta caliente!" },
+  penalty: { label: "Penalti", points: 34, energy: "Penalti!" },
+  corner: { label: "Corner", points: 16, energy: "Corner ganado!" },
+  cross: { label: "Centro", points: 12, energy: "Centro al area!" },
+  recovery: { label: "Recuperacion", points: 8, energy: "Robo importante!" },
+  carry: { label: "Conduccion", points: 9, energy: "Avanza el balon!" },
+  pass: { label: "Pase clave", points: 13, energy: "Pase que rompe lineas!" }
 };
 
+const visibleZones = [
+  { id: "corner-tl", name: "Corner norte izq.", short: "CN", rect: [0, 0, 9, 16], price: 110, capacity: 8, multiplier: 1.35, vibe: "Mucho valor en corners, centros y segundas jugadas.", color: "premium" },
+  { id: "corner-bl", name: "Corner sur izq.", short: "CS", rect: [0, 84, 9, 16], price: 110, capacity: 8, multiplier: 1.35, vibe: "Zona pequena, cara y con premio alto si hay balon parado.", color: "premium" },
+  { id: "box-left", name: "Area izquierda", short: "AR", rect: [0, 22.5, 15, 55], price: 115, capacity: 14, multiplier: 1.35, vibe: "Todo lo que pasa dentro del area pesa mas.", color: "hot" },
+  { id: "goal-left", name: "Porteria izquierda", short: "PO", rect: [0, 42, 6, 16], price: 150, capacity: 6, multiplier: 1.7, vibe: "La zona mas dramatica: goles, paradas y rebotes.", color: "legend" },
+  { id: "penalty-left", name: "Punto penalti izq.", short: "PP", rect: [8, 44, 6, 12], price: 165, capacity: 6, multiplier: 1.85, vibe: "Activo especial: penalti, remate frontal y maxima tension.", color: "legend" },
+  { id: "hot-left", name: "Frontal izquierda", short: "FR", rect: [15, 28, 13, 44], price: 95, capacity: 12, multiplier: 1.2, vibe: "Ideal para faltas peligrosas y tiros desde la frontal.", color: "hot" },
+  { id: "wing-top", name: "Banda norte", short: "BN", rect: [9, 0, 82, 22.5], price: 62, capacity: 28, multiplier: 0.9, vibe: "Carril para centros, conducciones y duelos.", color: "base" },
+  { id: "wing-bottom", name: "Banda sur", short: "BS", rect: [9, 77.5, 82, 22.5], price: 62, capacity: 28, multiplier: 0.9, vibe: "Menos cara, muy viva si el partido se abre por banda.", color: "base" },
+  { id: "middle", name: "Medio campo", short: "MC", rect: [28, 22.5, 44, 55], price: 58, capacity: 26, multiplier: 0.8, vibe: "Zona de ritmo: recuperaciones, conducciones y pases.", color: "base" },
+  { id: "center-spot", name: "Punto central", short: "PC", rect: [43, 32, 14, 36], price: 88, capacity: 12, multiplier: 1.05, vibe: "El centro del partido. Buen equilibrio entre precio y accion.", color: "premium" },
+  { id: "hot-right", name: "Frontal derecha", short: "FR", rect: [72, 28, 13, 44], price: 95, capacity: 12, multiplier: 1.2, vibe: "Ideal para faltas peligrosas y tiros desde la frontal.", color: "hot" },
+  { id: "box-right", name: "Area derecha", short: "AR", rect: [85, 22.5, 15, 55], price: 115, capacity: 14, multiplier: 1.35, vibe: "Todo lo que pasa dentro del area pesa mas.", color: "hot" },
+  { id: "penalty-right", name: "Punto penalti der.", short: "PP", rect: [86, 44, 6, 12], price: 165, capacity: 6, multiplier: 1.85, vibe: "Activo especial: penalti, remate frontal y maxima tension.", color: "legend" },
+  { id: "goal-right", name: "Porteria derecha", short: "PO", rect: [94, 42, 6, 16], price: 150, capacity: 6, multiplier: 1.7, vibe: "La zona mas dramatica: goles, paradas y rebotes.", color: "legend" },
+  { id: "corner-tr", name: "Corner norte der.", short: "CN", rect: [91, 0, 9, 16], price: 110, capacity: 8, multiplier: 1.35, vibe: "Mucho valor en corners, centros y segundas jugadas.", color: "premium" },
+  { id: "corner-br", name: "Corner sur der.", short: "CS", rect: [91, 84, 9, 16], price: 110, capacity: 8, multiplier: 1.35, vibe: "Zona pequena, cara y con premio alto si hay balon parado.", color: "premium" }
+];
+
+const zonePriority = [
+  "goal-left", "goal-right", "penalty-left", "penalty-right", "center-spot",
+  "corner-tl", "corner-bl", "corner-tr", "corner-br",
+  "box-left", "box-right", "hot-left", "hot-right",
+  "wing-top", "wing-bottom", "middle"
+];
+
 const defaultState = {
-  config: {
-    budget: 420,
-    currentMatchId: "wc26-014"
-  },
-  selectedCellId: null,
-  activePlayerId: null,
-  players: [],
-  reservations: {},
+  currentUserId: null,
+  currentMatchId: "wc26-001",
+  currentRoomId: "room-wc26-001-public",
+  selectedZoneId: "center-spot",
+  demoOpenMatchIds: ["wc26-001"],
+  lastEventZoneId: null,
+  users: [],
+  gameRooms: [],
+  reservations: [],
   events: []
 };
 
-function distance(x1, y1, x2, y2) {
-  return Math.hypot(x1 - x2, y1 - y2);
-}
-
-function cellFullyInside(cell, minX, maxX, minY, maxY) {
-  return cell.minX >= minX && cell.maxX <= maxX && cell.minY >= minY && cell.maxY <= maxY;
-}
-
-function buildCell(row, col, sequence) {
-  const minX = col * CELL_LENGTH;
-  const maxX = minX + CELL_LENGTH;
-  const minY = row * CELL_WIDTH;
-  const maxY = minY + CELL_WIDTH;
-  const centerX = minX + CELL_LENGTH / 2;
-  const centerY = minY + CELL_WIDTH / 2;
-  const code = `${String.fromCharCode(65 + row)}${String(col + 1).padStart(2, "0")}`;
-
-  return {
-    id: `cell-${sequence}`,
-    code,
-    row,
-    col,
-    minX,
-    maxX,
-    minY,
-    maxY,
-    centerX,
-    centerY
-  };
-}
-
-function getSpecialAsset(cell) {
-  const row = cell.row;
-  const col = cell.col;
-
-  if (row <= 1 && col <= 1) return { assetId: "corner-nw", macroZoneId: "corner" };
-  if (row <= 1 && col >= 28) return { assetId: "corner-ne", macroZoneId: "corner" };
-  if (row >= 18 && col <= 1) return { assetId: "corner-sw", macroZoneId: "corner" };
-  if (row >= 18 && col >= 28) return { assetId: "corner-se", macroZoneId: "corner" };
-
-  if (row >= 9 && row <= 10 && col <= 1) return { assetId: "goal-left", macroZoneId: "goalmouth" };
-  if (row >= 9 && row <= 10 && col >= 28) return { assetId: "goal-right", macroZoneId: "goalmouth" };
-
-  if (row >= 9 && row <= 10 && col >= 2 && col <= 3) return { assetId: "penalty-left", macroZoneId: "penaltyspot" };
-  if (row >= 9 && row <= 10 && col >= 26 && col <= 27) return { assetId: "penalty-right", macroZoneId: "penaltyspot" };
-
-  if (row >= 9 && row <= 10 && col >= 14 && col <= 15) return { assetId: "kickoff-center", macroZoneId: "kickoffspot" };
-
-  return null;
-}
-
-function detectMacroZone(cell) {
-  const special = getSpecialAsset(cell);
-  if (special) return special;
-
-  if (cellFullyInside(cell, 0, 8, 32, 48) || cellFullyInside(cell, 112, 120, 32, 48)) {
-    return { assetId: `sixyard-${cell.code}`, macroZoneId: "sixyard" };
-  }
-
-  if (cellFullyInside(cell, 0, 20, 16, 64) || cellFullyInside(cell, 100, 120, 16, 64)) {
-    return { assetId: `box-${cell.code}`, macroZoneId: "box" };
-  }
-
-  const leftArc = cell.centerX >= 20 && cell.centerX <= 32 && distance(cell.centerX, cell.centerY, 12, 40) >= 8 && distance(cell.centerX, cell.centerY, 12, 40) <= 11;
-  const rightArc = cell.centerX >= 88 && cell.centerX <= 100 && distance(cell.centerX, cell.centerY, 108, 40) >= 8 && distance(cell.centerX, cell.centerY, 108, 40) <= 11;
-  const leftFrontal = cellFullyInside(cell, 20, 32, 24, 56);
-  const rightFrontal = cellFullyInside(cell, 88, 100, 24, 56);
-  if (leftArc || rightArc || leftFrontal || rightFrontal) {
-    return { assetId: `hot-${cell.code}`, macroZoneId: "hotzone" };
-  }
-
-  const withinCenterCircle = distance(cell.centerX, cell.centerY, 60, 40) <= 10;
-  if (withinCenterCircle) {
-    return { assetId: `cc-${cell.code}`, macroZoneId: "centercircle" };
-  }
-
-  if (cell.maxY <= 16 || cell.minY >= 64) {
-    return { assetId: `wing-${cell.code}`, macroZoneId: "wing" };
-  }
-
-  if ((cell.minY >= 16 && cell.maxY <= 24) || (cell.minY >= 56 && cell.maxY <= 64)) {
-    return { assetId: `hs-${cell.code}`, macroZoneId: "halfspace" };
-  }
-
-  if (cell.minX >= 44 && cell.maxX <= 76) {
-    return { assetId: `ce-${cell.code}`, macroZoneId: "central" };
-  }
-
-  return { assetId: `sa-${cell.code}`, macroZoneId: "buildup" };
-}
-
-function buildCells() {
-  const cells = [];
-  let sequence = 1;
-
-  for (let row = 0; row < GRID_ROWS; row += 1) {
-    for (let col = 0; col < GRID_COLS; col += 1) {
-      const cell = buildCell(row, col, sequence);
-      const { assetId, macroZoneId } = detectMacroZone(cell);
-      cells.push({
-        ...cell,
-        assetId,
-        macroZoneId,
-        macroZone: macroZones[macroZoneId],
-        label: `${macroZones[macroZoneId].label} ${cell.code}`
-      });
-      sequence += 1;
+const StorageService = {
+  load() {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return structuredClone(defaultState);
+      return { ...structuredClone(defaultState), ...JSON.parse(raw) };
+    } catch {
+      return structuredClone(defaultState);
     }
+  },
+  save(nextState) {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(nextState));
   }
+};
 
-  return cells;
-}
+const state = StorageService.load();
 
-const cells = buildCells();
-const state = loadState();
-
-const heroStats = document.querySelector("#hero-stats");
-const matchSelect = document.querySelector("#match-select");
-const budgetInput = document.querySelector("#budget-input");
-const playerForm = document.querySelector("#player-form");
-const playerNameInput = document.querySelector("#player-name");
-const playersList = document.querySelector("#players-list");
-const sessionForm = document.querySelector("#session-form");
-const activePlayerSelect = document.querySelector("#active-player");
-const sessionCard = document.querySelector("#session-card");
-const selectionOverlay = document.querySelector("#selection-overlay");
-const pitchGrid = document.querySelector("#pitch-grid");
-const zoneCatalog = document.querySelector("#zone-catalog");
-const eventForm = document.querySelector("#event-form");
-const eventZoneSelect = document.querySelector("#event-zone");
-const eventTypeSelect = document.querySelector("#event-type");
-const eventMinuteInput = document.querySelector("#event-minute");
-const eventTeamSelect = document.querySelector("#event-team");
-const eventsList = document.querySelector("#events-list");
-const scoreboard = document.querySelector("#scoreboard");
-const breakdownPanel = document.querySelector("#breakdown-panel");
-const loadDemoMatchButton = document.querySelector("#load-demo-match");
-const resetAllButton = document.querySelector("#reset-all");
-
-function loadState() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return structuredClone(defaultState);
-
-  try {
-    const parsed = JSON.parse(raw);
-    return {
-      config: {
-        budget: parsed.config?.budget ?? defaultState.config.budget,
-        currentMatchId: parsed.config?.currentMatchId ?? defaultState.config.currentMatchId
-      },
-      selectedCellId: parsed.selectedCellId ?? null,
-      activePlayerId: parsed.activePlayerId ?? null,
-      players: Array.isArray(parsed.players) ? parsed.players : [],
-      reservations: parsed.reservations ?? {},
-      events: Array.isArray(parsed.events) ? parsed.events : []
+const AuthService = {
+  login(name) {
+    const cleanName = name.trim();
+    if (!cleanName) return null;
+    const existing = state.users.find((user) => user.name.toLowerCase() === cleanName.toLowerCase());
+    const user = existing ?? {
+      id: `user-${Date.now()}-${Math.random().toString(16).slice(2, 7)}`,
+      name: cleanName,
+      createdAt: new Date().toISOString()
     };
-  } catch {
-    return structuredClone(defaultState);
+    if (!existing) state.users.push(user);
+    state.currentUserId = user.id;
+    saveAndRender();
+    return user;
+  },
+  currentUser() {
+    return state.users.find((user) => user.id === state.currentUserId) ?? null;
   }
-}
+};
 
-function saveState() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-}
+const MatchService = {
+  all() {
+    return matches;
+  },
+  current() {
+    return matches.find((match) => match.id === state.currentMatchId) ?? matches[0];
+  },
+  select(matchId) {
+    state.currentMatchId = matchId;
+    const publicRoom = RoomService.ensureRoomsForMatch(matchId)[0];
+    state.currentRoomId = publicRoom.id;
+    state.selectedZoneId = "center-spot";
+    saveAndRender();
+  },
+  getStatus(match) {
+    if (state.demoOpenMatchIds.includes(match.id)) return "open_for_reservations";
+    const kickoff = new Date(match.kickoff);
+    const now = new Date();
+    const openAt = new Date(kickoff.getTime() - 48 * 60 * 60 * 1000);
+    const lockAt = new Date(kickoff.getTime() - 15 * 60 * 1000);
+    const finishAt = new Date(kickoff.getTime() + 130 * 60 * 1000);
 
-function getCell(cellId) {
-  return cells.find((cell) => cell.id === cellId);
-}
+    if (now < openAt) return "upcoming";
+    if (now >= openAt && now < lockAt) return "open_for_reservations";
+    if (now >= lockAt && now < kickoff) return "locked";
+    if (now >= kickoff && now < finishAt) return "live";
+    return "finished";
+  },
+  toggleDemoOpen(matchId) {
+    if (!state.demoOpenMatchIds.includes(matchId)) state.demoOpenMatchIds.push(matchId);
+    saveAndRender();
+  }
+};
 
-function getAssetCells(assetId) {
-  return cells.filter((cell) => cell.assetId === assetId);
-}
+const RoomService = {
+  ensureRoomsForMatch(matchId) {
+    const existing = state.gameRooms.filter((room) => room.matchId === matchId);
+    if (existing.length) return existing;
 
-function getPlayer(playerId) {
-  return state.players.find((player) => player.id === playerId);
-}
+    const nextRooms = [
+      { id: `room-${matchId}-public`, matchId, name: "Sala publica", type: "public", createdAt: new Date().toISOString() },
+      { id: `room-${matchId}-friends`, matchId, name: "Sala amigos", type: "private", createdAt: new Date().toISOString() }
+    ];
+    state.gameRooms.push(...nextRooms);
+    return nextRooms;
+  },
+  current() {
+    return state.gameRooms.find((room) => room.id === state.currentRoomId) ?? this.ensureRoomsForMatch(state.currentMatchId)[0];
+  },
+  select(roomId) {
+    state.currentRoomId = roomId;
+    saveAndRender();
+  },
+  forCurrentMatch() {
+    return this.ensureRoomsForMatch(state.currentMatchId);
+  }
+};
 
-function getCurrentMatch() {
-  return matches.find((match) => match.id === state.config.currentMatchId) ?? matches[0];
-}
+const ReservationService = {
+  forRoom(roomId = state.currentRoomId) {
+    return state.reservations.filter((reservation) => reservation.roomId === roomId);
+  },
+  forUser(userId, roomId = state.currentRoomId) {
+    return this.forRoom(roomId).filter((reservation) => reservation.userId === userId);
+  },
+  forZone(zoneId, roomId = state.currentRoomId) {
+    return this.forRoom(roomId).filter((reservation) => reservation.zoneId === zoneId);
+  },
+  dynamicPrice(zoneId, roomId = state.currentRoomId) {
+    const zone = getZone(zoneId);
+    const demand = this.forZone(zoneId, roomId).length;
+    return zone.price + demand * 12;
+  },
+  reserve(zoneId) {
+    const user = AuthService.currentUser();
+    const match = MatchService.current();
+    const status = MatchService.getStatus(match);
+    const zone = getZone(zoneId);
+    if (!user || !zone) return showToast("Entra como jugador para reservar.");
+    if (status !== "open_for_reservations") return showToast("Este partido aun no acepta reservas.");
+    if (this.forUser(user.id).length >= MAX_RESERVATIONS_PER_PLAYER) return showToast("Modo rapido: solo 3 zonas por jugador.");
+    if (this.forUser(user.id).some((item) => item.zoneId === zoneId)) return showToast("Ya tienes esta zona reservada.");
+    if (this.forZone(zoneId).length >= zone.capacity) return showToast("Zona completa. Prueba otra.");
 
-function getReservationOwnerByAsset(assetId) {
-  const playerId = state.reservations[assetId];
-  return playerId ? getPlayer(playerId) : null;
-}
+    const price = this.dynamicPrice(zoneId);
+    const wallet = ScoreService.wallet(user.id);
+    if (wallet.remaining < price) return showToast("No tienes puntos suficientes para esta zona.");
 
-function getReservationOwnerByCell(cell) {
-  return getReservationOwnerByAsset(cell.assetId);
-}
-
-function formatMatchDate(dateString) {
-  const date = new Date(`${dateString}T12:00:00`);
-  return new Intl.DateTimeFormat("es-ES", { day: "2-digit", month: "short", year: "numeric" }).format(date);
-}
-
-function computePlayerLedger(playerId) {
-  const ownedAssetIds = Object.entries(state.reservations)
-    .filter(([, ownerId]) => ownerId === playerId)
-    .map(([assetId]) => assetId);
-
-  const ownedAssets = ownedAssetIds.map((assetId) => {
-    const assetCells = getAssetCells(assetId);
-    const sample = assetCells[0];
-    return {
-      assetId,
-      assetCells,
-      sample,
-      macroZone: sample.macroZone
-    };
-  });
-
-  const invested = ownedAssets.reduce((sum, asset) => sum + asset.macroZone.entryCost, 0);
-  const eventRows = state.events
-    .filter((event) => event.matchId === state.config.currentMatchId && state.reservations[event.assetId] === playerId)
-    .map((event) => {
-      const cell = getCell(event.cellId);
-      return { ...event, cell, points: cell.macroZone.eventScores[event.eventType] ?? 0 };
+    state.reservations.push({
+      id: `reservation-${Date.now()}-${Math.random().toString(16).slice(2, 7)}`,
+      roomId: state.currentRoomId,
+      matchId: state.currentMatchId,
+      userId: user.id,
+      zoneId,
+      price,
+      createdAt: new Date().toISOString()
     });
+    showToast(`${zone.name} reservada. A jugar.`);
+    saveAndRender();
+  }
+};
 
-  const grossPoints = eventRows.reduce((sum, row) => sum + row.points, 0);
-  const reservationPenalty = ownedAssets.reduce((sum, asset) => sum + Math.round(asset.macroZone.entryCost / 10), 0);
+const EventService = {
+  forMatch(matchId = state.currentMatchId) {
+    return state.events.filter((event) => event.matchId === matchId);
+  },
+  create({ matchId, minute, player, team, eventType, x, y }) {
+    const zone = mapCoordinatesToZone(Number(x), Number(y));
+    const event = {
+      id: `event-${Date.now()}-${Math.random().toString(16).slice(2, 7)}`,
+      matchId,
+      roomId: state.currentRoomId,
+      minute: Number(minute) || 1,
+      player: player.trim() || "Jugador",
+      team,
+      eventType,
+      x: clamp(Number(x), 0, PITCH_LENGTH),
+      y: clamp(Number(y), 0, PITCH_WIDTH),
+      zoneId: zone.id,
+      createdAt: new Date().toISOString()
+    };
+    state.events.push(event);
+    state.lastEventZoneId = zone.id;
+    showToast(`${eventTypes[eventType].energy} ${zone.name}`);
+    saveAndRender();
+    window.setTimeout(() => {
+      state.lastEventZoneId = null;
+      saveAndRender();
+    }, 1200);
+  }
+};
 
+const ScoreService = {
+  wallet(userId) {
+    const spent = ReservationService.forUser(userId).reduce((sum, reservation) => sum + reservation.price, 0);
+    return { budget: DEFAULT_BUDGET, spent, remaining: DEFAULT_BUDGET - spent };
+  },
+  pointsForEvent(event, userId) {
+    const reserved = ReservationService.forUser(userId, state.currentRoomId).some((reservation) => reservation.zoneId === event.zoneId);
+    if (!reserved || event.matchId !== state.currentMatchId) return 0;
+    const zone = getZone(event.zoneId);
+    const base = eventTypes[event.eventType]?.points ?? 0;
+    return Math.round(base * zone.multiplier);
+  },
+  scoreForUser(userId) {
+    return EventService.forMatch(state.currentMatchId).reduce((sum, event) => sum + this.pointsForEvent(event, userId), 0);
+  },
+  ranking() {
+    return state.users
+      .map((user) => ({
+        user,
+        points: this.scoreForUser(user.id),
+        wallet: this.wallet(user.id),
+        reservations: ReservationService.forUser(user.id)
+      }))
+      .filter((row) => row.reservations.length || row.points > 0 || userIsCurrent(row.user.id))
+      .sort((a, b) => b.points - a.points || b.wallet.remaining - a.wallet.remaining);
+  }
+};
+
+const dom = {
+  fixtureList: document.querySelector("#fixture-list"),
+  fixtureListUpcoming: document.querySelector("#fixture-list-upcoming"),
+  matchHero: document.querySelector("#match-hero"),
+  demoOpenMatch: document.querySelector("#demo-open-match"),
+  authForm: document.querySelector("#auth-form"),
+  authName: document.querySelector("#auth-name"),
+  roomList: document.querySelector("#room-list"),
+  roomLabel: document.querySelector("#room-label"),
+  matchStatus: document.querySelector("#match-status"),
+  reservationLimit: document.querySelector("#reservation-limit"),
+  zoneLayer: document.querySelector("#zone-layer"),
+  liveFeed: document.querySelector("#live-feed"),
+  zonePanel: document.querySelector("#zone-panel"),
+  scoreboard: document.querySelector("#scoreboard")
+};
+
+function clamp(value, min, max) {
+  if (Number.isNaN(value)) return min;
+  return Math.min(max, Math.max(min, value));
+}
+
+function getZone(zoneId) {
+  return visibleZones.find((zone) => zone.id === zoneId);
+}
+
+function userIsCurrent(userId) {
+  return state.currentUserId === userId;
+}
+
+function saveAndRender() {
+  StorageService.save(state);
+  render();
+}
+
+function formatDate(dateString) {
+  return new Intl.DateTimeFormat("es-ES", { day: "2-digit", month: "short" }).format(new Date(`${dateString}T12:00:00`));
+}
+
+function statusLabel(status) {
   return {
-    ownedAssets,
-    invested,
-    eventRows,
-    grossPoints,
-    reservationPenalty,
-    netPoints: grossPoints - reservationPenalty,
-    remainingBudget: state.config.budget - invested
-  };
+    upcoming: "Proximamente",
+    open_for_reservations: "Reservas abiertas",
+    locked: "Cerrado",
+    live: "En directo",
+    finished: "Finalizado"
+  }[status] ?? status;
 }
 
-function computeRanking() {
-  return state.players
-    .map((player) => ({ player, ...computePlayerLedger(player.id) }))
-    .sort((a, b) => b.netPoints - a.netPoints);
+function showToast(message) {
+  dom.liveFeed.dataset.toast = message;
+  window.setTimeout(() => {
+    if (dom.liveFeed.dataset.toast === message) delete dom.liveFeed.dataset.toast;
+    renderLiveFeed();
+  }, 1800);
+  renderLiveFeed();
 }
 
-function getMarketSummary() {
-  const reservedCount = Object.keys(state.reservations).length;
-  const totalInvestment = Object.keys(state.reservations)
-    .map((assetId) => getAssetCells(assetId)[0])
-    .filter(Boolean)
-    .reduce((sum, cell) => sum + cell.macroZone.entryCost, 0);
-
-  return {
-    players: state.players.length,
-    reservedCount,
-    freeCount: new Set(cells.map((cell) => cell.assetId)).size - reservedCount,
-    totalInvestment
-  };
+function mapCoordinatesToZone(x, y) {
+  const px = clamp(x, 0, PITCH_LENGTH) / PITCH_LENGTH * 100;
+  const py = clamp(y, 0, PITCH_WIDTH) / PITCH_WIDTH * 100;
+  for (const zoneId of zonePriority) {
+    const zone = getZone(zoneId);
+    const [left, top, width, height] = zone.rect;
+    if (px >= left && px <= left + width && py >= top && py <= top + height) return zone;
+  }
+  return getZone("middle");
 }
 
-function renderHeroStats() {
-  const currentMatch = getCurrentMatch();
-  const summary = getMarketSummary();
+function render() {
+  RoomService.ensureRoomsForMatch(state.currentMatchId);
+  renderHeader();
+  renderFixture();
+  renderRooms();
+  renderZones();
+  renderZonePanel();
+  renderLiveFeed();
+  renderScoreboard();
+}
 
-  heroStats.innerHTML = `
-    <article class="hero-stat">
-      <div class="hero-stat-value">${summary.players}</div>
-      <div class="hero-stat-label">jugadores activos</div>
-    </article>
-    <article class="hero-stat">
-      <div class="hero-stat-value">${summary.reservedCount}</div>
-      <div class="hero-stat-label">activos comprados</div>
-    </article>
-    <article class="hero-stat">
-      <div class="hero-stat-value">${currentMatch.home} vs ${currentMatch.away}</div>
-      <div class="hero-stat-label">${formatMatchDate(currentMatch.date)} · ${currentMatch.venue}</div>
-    </article>
+function renderHeader() {
+  const match = MatchService.current();
+  const user = AuthService.currentUser();
+  const room = RoomService.current();
+  const status = MatchService.getStatus(match);
+
+  if (dom.roomLabel)  dom.roomLabel.textContent = room.name;
+  if (dom.matchStatus) {
+    dom.matchStatus.textContent = statusLabel(status);
+    dom.matchStatus.className = `status-pill status-${status}`;
+  }
+  if (dom.reservationLimit) {
+    dom.reservationLimit.textContent = `${MAX_RESERVATIONS_PER_PLAYER} ZONAS MÁX.`;
+  }
+
+  // HUD dreta: pressupost + zones + usuari
+  const budgetEl  = document.querySelector("#hud-budget");
+  const zonesEl   = document.querySelector("#hud-zones");
+  const userInfoEl = document.querySelector("#hud-user-info");
+
+  if (user) {
+    const wallet = ScoreService.wallet(user.id);
+    const reservations = ReservationService.forUser(user.id);
+    if (budgetEl)  budgetEl.textContent  = `${wallet.remaining} puntos`;
+    if (zonesEl)   zonesEl.textContent   = `${reservations.length}/${MAX_RESERVATIONS_PER_PLAYER}`;
+    if (userInfoEl) userInfoEl.innerHTML = `
+      <div class="hud-name-display">${user.name}</div>
+      <div class="hud-rank-display">Jugador activo</div>
+    `;
+  } else {
+    if (budgetEl)  budgetEl.textContent  = `${DEFAULT_BUDGET} puntos`;
+    if (zonesEl)   zonesEl.textContent   = `0/${MAX_RESERVATIONS_PER_PLAYER}`;
+    if (userInfoEl) userInfoEl.innerHTML = `
+      <form id="auth-form" class="auth-inline">
+        <input id="auth-name" type="text" placeholder="Tu nombre…">
+        <button class="btn-auth" type="submit">→</button>
+      </form>
+    `;
+    // re-bind after re-render
+    const af = document.querySelector("#auth-form");
+    if (af) af.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const input = document.querySelector("#auth-name");
+      if (input) { AuthService.login(input.value); input.value = ""; }
+    });
+  }
+}
+
+function renderFixture() {
+  const current = MatchService.current();
+  const currentStatus = MatchService.getStatus(current);
+  window._currentMatch = current;
+
+  // Tarjeta compacta en col-fixture
+  if (dom.fixtureList) {
+    dom.fixtureList.innerHTML = `
+      <div class="active-match-card">
+        <div class="amc-teams">
+          <div class="amc-team-row">
+            <span class="amc-flag">${flag(current.home)}</span>
+            <span class="amc-team-name">${current.home}</span>
+          </div>
+          <div class="amc-vs-row">vs</div>
+          <div class="amc-team-row">
+            <span class="amc-flag">${flag(current.away)}</span>
+            <span class="amc-team-name">${current.away}</span>
+          </div>
+        </div>
+        <div class="amc-meta">${formatDate(current.date)} · ${current.venue}</div>
+        <span class="status-pill status-${currentStatus}">${statusLabel(currentStatus)}</span>
+      </div>
+    `;
+  }
+
+  // Hero central grande
+  if (dom.matchHero) {
+    dom.matchHero.innerHTML = `
+      <div class="hero-trophy">🏆</div>
+      <div class="hero-group">${current.stage} · JORNADA 1</div>
+      <div class="hero-title-row">
+        <span class="hero-flag">${flag(current.home)}</span>
+        <span class="hero-team">${current.home.toUpperCase()}</span>
+        <span class="hero-vs">VS</span>
+        <span class="hero-team">${current.away.toUpperCase()}</span>
+        <span class="hero-flag">${flag(current.away)}</span>
+      </div>
+      <div class="hero-meta">${formatDate(current.date)} · ${current.venue.toUpperCase()}</div>
+      <div class="hero-countdown-label">RESERVAS CIERRAN EN</div>
+      <div class="hero-countdown"><span id="countdown-display">--H --M --S</span></div>
+    `;
+  }
+
+  // Lista de próximos (todos los partidos)
+  const upcomingEl = document.querySelector("#fixture-list-upcoming");
+  if (upcomingEl) {
+    upcomingEl.innerHTML = MatchService.all()
+      .filter(m => m.id !== current.id)
+      .map((match) => {
+        const status = MatchService.getStatus(match);
+        return `
+          <button class="fixture-item ${match.id === state.currentMatchId ? "active" : ""}" type="button" data-match-id="${match.id}">
+            <div class="fi-teams">
+              <div class="fi-team"><span class="fi-flag">${flag(match.home)}</span>${match.home}</div>
+              <div class="fi-team"><span class="fi-flag">${flag(match.away)}</span>${match.away}</div>
+            </div>
+            <div class="fi-meta">${formatDate(match.date)} · ${match.venue}</div>
+            <span class="status-pill status-${status}">${statusLabel(status)}</span>
+          </button>
+        `;
+      }).join("");
+  }
+}
+
+function renderRooms() {
+  dom.roomList.innerHTML = RoomService.forCurrentMatch().map((room) => {
+    const reservations = ReservationService.forRoom(room.id).length;
+    return `
+      <button class="room-item ${room.id === state.currentRoomId ? "active" : ""}" type="button" data-room-id="${room.id}">
+        <span class="fixture-main">
+          <span>${room.name}</span>
+          <span>${room.type === "public" ? "publica" : "privada"}</span>
+        </span>
+        <span class="room-meta">${reservations} reservas en esta sala</span>
+      </button>
+    `;
+  }).join("");
+}
+
+function renderZones() {
+  dom.zoneLayer.innerHTML = visibleZones.map((zone) => {
+    const [left, top, width, height] = zone.rect;
+    const demand = ReservationService.forZone(zone.id).length;
+    const hasUserReservation = AuthService.currentUser() && ReservationService.forUser(AuthService.currentUser().id).some((item) => item.zoneId === zone.id);
+    const classes = [
+      "visible-zone",
+      `zone-${zone.color}`,
+      zone.id === state.selectedZoneId ? "selected" : "",
+      hasUserReservation ? "reserved" : "",
+      state.lastEventZoneId === zone.id ? "event-glow" : ""
+    ].filter(Boolean).join(" ");
+
+    return `
+      <button
+        type="button"
+        class="${classes}"
+        data-zone-id="${zone.id}"
+        style="left:${left}%;top:${top}%;width:${width}%;height:${height}%;"
+        aria-label="${zone.name}"
+      >
+        <span class="zone-label">${zone.name}</span>
+        <span class="zone-price">${ReservationService.dynamicPrice(zone.id)} pts</span>
+        <span class="zone-fill">${demand}/${zone.capacity}</span>
+      </button>
+    `;
+  }).join("");
+}
+
+function renderZonePanel() {
+  const zone = getZone(state.selectedZoneId);
+  const user = AuthService.currentUser();
+  const price = ReservationService.dynamicPrice(zone.id);
+  const reservations = ReservationService.forZone(zone.id);
+  const userReservations = user ? ReservationService.forUser(user.id) : [];
+  const alreadyReserved = userReservations.some((item) => item.zoneId === zone.id);
+  const status = MatchService.getStatus(MatchService.current());
+  const disabled = !user || alreadyReserved || status !== "open_for_reservations" || userReservations.length >= MAX_RESERVATIONS_PER_PLAYER || reservations.length >= zone.capacity;
+  const buttonText = !user
+    ? "Entra para reservar"
+    : alreadyReserved
+      ? "Ya es tuya"
+      : status !== "open_for_reservations"
+        ? "Reservas cerradas"
+        : "Reservar zona";
+
+  const potentialLabel = zone.multiplier >= 1.7 ? "MUY ALTO" : zone.multiplier >= 1.3 ? "ALTO" : zone.multiplier >= 1.0 ? "MEDIO" : "BAJO";
+  const potentialClass = zone.multiplier >= 1.3 ? "potential-high" : "";
+  const dotColor = zone.color === "legend" ? "#c0392b" : zone.color === "premium" ? "#d4a847" : zone.color === "hot" ? "#d47020" : "#4caf87";
+
+  const myZoneRows = userReservations.map(r => {
+    const z = getZone(r.zoneId);
+    const dc = z.color === "legend" ? "#c0392b" : z.color === "premium" ? "#d4a847" : z.color === "hot" ? "#d47020" : "#4caf87";
+    return `<div class="my-zone-row">
+      <span class="my-zone-dot" style="background:${dc}"></span>
+      <span class="my-zone-name">${z.name}</span>
+      <span class="my-zone-pts">${r.price} pts</span>
+      <button class="my-zone-remove" type="button">✕</button>
+    </div>`;
+  }).join("");
+  const totalSpent = userReservations.reduce((s, r) => s + r.price, 0);
+
+  dom.zonePanel.innerHTML = `
+    <div class="zone-panel-top">
+      <span class="zone-color-dot" style="background:${dotColor}"></span>
+      <span class="zone-panel-name">${zone.name}</span>
+    </div>
+    <div class="zone-panel-vibe">${zone.vibe}</div>
+    <div class="zone-stats">
+      <div class="zone-stat"><span>PRECIO</span><strong>${price} pts</strong></div>
+      <div class="zone-stat"><span>POTENCIAL</span><strong class="${potentialClass}">${potentialLabel}</strong></div>
+      <div class="zone-stat"><span>PLAZAS</span><strong>${reservations.length}/${zone.capacity}</strong></div>
+    </div>
+    <div class="actions-title">ACCIONES QUE SUMAN</div>
+    <div class="actions-grid">
+      <div class="action-tag"><span class="action-icon">⚽</span><span class="action-name">GOL</span><span class="action-pts">+40</span></div>
+      <div class="action-tag"><span class="action-icon">🥅</span><span class="action-name">TIRO</span><span class="action-pts">+25</span></div>
+      <div class="action-tag"><span class="action-icon">🔴</span><span class="action-name">PENALTI</span><span class="action-pts">+50</span></div>
+      <div class="action-tag"><span class="action-icon">👟</span><span class="action-name">ASISTENCIA</span><span class="action-pts">+15</span></div>
+      <div class="action-tag"><span class="action-icon">🎯</span><span class="action-name">PASE CLAVE</span><span class="action-pts">+10</span></div>
+      <div class="action-tag"><span class="action-icon">💪</span><span class="action-name">RECUPERAC.</span><span class="action-pts">+5</span></div>
+    </div>
+    <button class="reserve-button" type="button" data-reserve-zone="${zone.id}" ${disabled ? "disabled" : ""}>RESERVAR ESTA ZONA</button>
+    <span class="reserve-cost">Te costará ${price} puntos</span>
+    ${userReservations.length ? `
+    <div class="my-zones-block">
+      <div class="my-zones-header">
+        <span>MIS ZONAS (${userReservations.length}/${MAX_RESERVATIONS_PER_PLAYER})</span>
+        <button class="my-zones-clear" type="button">LIMPIAR</button>
+      </div>
+      ${myZoneRows}
+      <div class="my-zones-total">
+        <span>TOTAL</span>
+        <strong>${totalSpent} PUNTOS</strong>
+      </div>
+      <button class="confirm-button" type="button">CONFIRMAR RESERVAS</button>
+    </div>` : ""}
   `;
 }
 
-function renderMatchSelect() {
-  matchSelect.innerHTML = matches
-    .map((match) => `
-      <option value="${match.id}" ${match.id === state.config.currentMatchId ? "selected" : ""}>
-        ${formatMatchDate(match.date)} · ${match.home} vs ${match.away}
-      </option>
-    `)
-    .join("");
-
-  budgetInput.value = String(state.config.budget);
-}
-
-function renderPlayers() {
-  if (!state.players.length) {
-    playersList.className = "player-list empty-state";
-    playersList.textContent = "Todavia no hay jugadores en la ronda.";
+function renderLiveFeed() {
+  const toast = dom.liveFeed.dataset.toast;
+  const events = EventService.forMatch(state.currentMatchId).slice(-5).reverse();
+  if (toast) {
+    dom.liveFeed.innerHTML = `<article class="feed-item event-glow"><strong>${toast}</strong><span class="feed-meta">Celebracion PitchScore</span></article>`;
     return;
   }
-
-  playersList.className = "player-list";
-  playersList.innerHTML = computeRanking()
-    .map(({ player, ownedAssets, invested, remainingBudget, netPoints }) => `
-      <article class="player-card ${state.activePlayerId === player.id ? "active-player-card" : ""}">
-        <div class="player-main">
-          <strong>${player.name}</strong>
-          <span class="player-budget ${remainingBudget < 70 ? "low-budget" : ""}">
-            ${remainingBudget} libres
-          </span>
-        </div>
-        <div class="muted-line">
-          Activos: ${ownedAssets.length} · Inversion: ${invested} · Puntos netos: ${netPoints}
-        </div>
+  if (!events.length) {
+    dom.liveFeed.innerHTML = `<article class="feed-item"><strong>Esperando el primer evento</strong><span class="feed-meta">El panel admin permite simular acciones reales con coordenadas x/y.</span></article>`;
+    return;
+  }
+  dom.liveFeed.innerHTML = events.map((event) => {
+    const zone = getZone(event.zoneId);
+    const type = eventTypes[event.eventType];
+    return `
+      <article class="feed-item">
+        <strong>${type.label} - ${zone.name}</strong>
+        <span class="feed-meta">Min ${event.minute} - ${event.player} - x${event.x}, y${event.y}</span>
       </article>
-    `)
-    .join("");
-}
-
-function renderActivePlayerSelect() {
-  if (!state.players.length) {
-    activePlayerSelect.innerHTML = `<option value="">Crea primero un jugador</option>`;
-    return;
-  }
-
-  activePlayerSelect.innerHTML = state.players
-    .map((player) => `<option value="${player.id}" ${state.activePlayerId === player.id ? "selected" : ""}>${player.name}</option>`)
-    .join("");
-}
-
-function renderSessionCard() {
-  const activePlayer = getPlayer(state.activePlayerId);
-  if (!activePlayer) {
-    sessionCard.innerHTML = `
-      <h3>Sin sesion activa</h3>
-      <p>Selecciona un jugador para comprar activos desde el panel del campo.</p>
     `;
-    return;
-  }
-
-  const ledger = computePlayerLedger(activePlayer.id);
-  sessionCard.innerHTML = `
-    <h3>Jugando como ${activePlayer.name}</h3>
-    <p>Presupuesto libre: ${ledger.remainingBudget} creditos</p>
-    <div class="detail-line"><strong>Activos comprados:</strong> ${ledger.ownedAssets.length}</div>
-    <div class="detail-line"><strong>Puntos netos:</strong> ${ledger.netPoints}</div>
-  `;
-}
-
-function buildPitchMarkup() {
-  const specialAssetIds = new Set(["corner-nw", "corner-ne", "corner-sw", "corner-se", "goal-left", "goal-right", "penalty-left", "penalty-right", "kickoff-center"]);
-  const specialAssetMarkup = [...specialAssetIds]
-    .map((assetId) => {
-      const assetCells = getAssetCells(assetId);
-      if (!assetCells.length) return "";
-
-      const owner = getReservationOwnerByAsset(assetId);
-      const representativeCell = assetCells[0];
-      const minRow = Math.min(...assetCells.map((cell) => cell.row)) + 1;
-      const maxRow = Math.max(...assetCells.map((cell) => cell.row)) + 2;
-      const minCol = Math.min(...assetCells.map((cell) => cell.col)) + 1;
-      const maxCol = Math.max(...assetCells.map((cell) => cell.col)) + 2;
-      const isSelected = state.selectedCellId && getCell(state.selectedCellId)?.assetId === assetId;
-
-      const classes = [
-        "pitch-special-asset",
-        `zone-${representativeCell.macroZoneId}`,
-        isSelected ? "selected" : "",
-        owner ? "owned" : ""
-      ].filter(Boolean).join(" ");
-
-      return `
-        <button
-          type="button"
-          class="${classes}"
-          data-cell-id="${representativeCell.id}"
-          data-asset-id="${assetId}"
-          style="grid-row:${minRow} / ${maxRow}; grid-column:${minCol} / ${maxCol};"
-          title="${representativeCell.macroZone.label} · activo premium"
-          aria-label="${representativeCell.macroZone.label}"
-        >
-          <span class="special-code">${representativeCell.macroZone.short}</span>
-          <span class="special-name">${representativeCell.macroZone.label}</span>
-          <span class="special-price">${representativeCell.macroZone.entryCost} cr</span>
-          ${owner ? `<span class="special-owner">${owner.name}</span>` : ""}
-        </button>
-      `;
-    })
-    .join("");
-
-  return `
-    <div class="pitch-markings">
-      <div class="halfway-line"></div>
-      <div class="center-ring"></div>
-      <div class="left-penalty-box"></div>
-      <div class="left-goal-box"></div>
-      <div class="right-penalty-box"></div>
-      <div class="right-goal-box"></div>
-      <div class="left-spot"></div>
-      <div class="right-spot"></div>
-      <div class="kickoff-spot"></div>
-      <div class="left-arc"></div>
-      <div class="right-arc"></div>
-    </div>
-    ${cells.map((cell) => {
-      const isCoveredBySpecialAsset = specialAssetIds.has(cell.assetId);
-      const owner = getReservationOwnerByCell(cell);
-      const classes = [
-        "pitch-zone",
-        `zone-${cell.macroZoneId}`,
-        isCoveredBySpecialAsset ? "under-special-asset" : "",
-        state.selectedCellId === cell.id ? "selected" : "",
-        owner ? "owned" : ""
-      ].filter(Boolean).join(" ");
-
-      const showCode = ["penaltyspot", "kickoffspot", "goalmouth", "corner"].includes(cell.macroZoneId);
-
-      return `
-        <button
-          type="button"
-          class="${classes}"
-          data-cell-id="${cell.id}"
-          title="${cell.code} · ${cell.macroZone.label} · activo ${cell.assetId}"
-          aria-label="${cell.code} ${cell.macroZone.label}"
-        >
-          ${showCode ? `<span class="cell-code">${cell.macroZone.short}</span>` : ""}
-          ${owner ? `<span class="cell-owner">${owner.name.slice(0, 1).toUpperCase()}</span>` : ""}
-        </button>
-      `;
-    }).join("")}
-    ${specialAssetMarkup}
-  `;
-}
-
-function renderPitch() {
-  pitchGrid.innerHTML = buildPitchMarkup();
-}
-
-function buildCellDetailMarkup(cell, owner) {
-  const assetCells = getAssetCells(cell.assetId);
-  const activePlayer = getPlayer(state.activePlayerId);
-  const isOwnedByActive = activePlayer && owner && owner.id === activePlayer.id;
-  const canBuy = Boolean(activePlayer) && !owner;
-  let actionLabel = "Comprar activo";
-  if (!activePlayer) actionLabel = "Entra como jugador para comprar";
-  if (owner && !isOwnedByActive) actionLabel = `Reservado por ${owner.name}`;
-  if (isOwnedByActive) actionLabel = "Ya es tuyo";
-
-  return `
-    <h3>${cell.code} · ${cell.macroZone.short} · ${cell.macroZone.label}</h3>
-    <p>${cell.macroZone.note}</p>
-    <div class="detail-line"><strong>Activo:</strong> ${cell.assetId}</div>
-    <div class="detail-line"><strong>Celdas del activo:</strong> ${assetCells.map((item) => item.code).join(", ")}</div>
-    <div class="detail-line"><strong>Coordenadas:</strong> x ${cell.minX}-${cell.maxX} · y ${cell.minY}-${cell.maxY}</div>
-    <div class="detail-line"><strong>Tier:</strong> ${cell.macroZone.tier}</div>
-    <div class="detail-line"><strong>Coste:</strong> ${cell.macroZone.entryCost} creditos</div>
-    <div class="detail-line"><strong>Propietario:</strong> ${owner ? owner.name : "Sin asignar"}</div>
-    <div class="detail-line"><strong>Sesion activa:</strong> ${activePlayer ? activePlayer.name : "Ninguna"}</div>
-    <div class="tag-list">
-      ${Object.entries(cell.macroZone.eventScores)
-        .map(([eventType, points]) => `<span class="tag ${points >= 16 ? "gold" : ""}">${eventCatalog[eventType]} +${points}</span>`)
-        .join("")}
-    </div>
-    <button
-      type="button"
-      id="buy-asset-button"
-      class="primary-button overlay-buy-button"
-      data-cell-id="${cell.id}"
-      ${canBuy ? "" : "disabled"}
-    >
-      ${actionLabel}
-    </button>
-  `;
-}
-
-function renderZoneDetail() {
-  if (!state.selectedCellId) {
-    selectionOverlay.innerHTML = `
-      <h3>Selecciona una celda</h3>
-      <p>Al pulsar una zona del campo veras aqui el tipo de activo, el bloque que compras y sus reglas.</p>
-    `;
-    return;
-  }
-
-  const cell = getCell(state.selectedCellId);
-  const owner = getReservationOwnerByCell(cell);
-  selectionOverlay.innerHTML = buildCellDetailMarkup(cell, owner);
-}
-
-function renderZoneCatalog() {
-  zoneCatalog.innerHTML = Object.entries(macroZones)
-    .map(([macroZoneId, macroZone]) => {
-      const assetCount = new Set(cells.filter((cell) => cell.macroZoneId === macroZoneId).map((cell) => cell.assetId)).size;
-      return `
-        <article class="catalog-card">
-          <div class="player-main">
-            <strong>${macroZone.short} · ${macroZone.label}</strong>
-            <span class="zone-cost">${macroZone.entryCost}</span>
-          </div>
-          <p>${macroZone.note}</p>
-          <p class="muted-line">Tier ${macroZone.tier} · Peso ${macroZone.weight}/12 · ${assetCount} activos</p>
-          <ul>
-            ${Object.entries(macroZone.eventScores)
-              .map(([eventType, points]) => `<li>${eventCatalog[eventType]}: +${points}</li>`)
-              .join("")}
-          </ul>
-        </article>
-      `;
-    })
-    .join("");
-}
-
-function renderEventSelectors() {
-  eventZoneSelect.innerHTML = cells
-    .map((cell) => `
-      <option value="${cell.id}">
-        ${cell.code} · ${cell.macroZone.short} · ${cell.macroZone.label}
-      </option>
-    `)
-    .join("");
-
-  if (state.selectedCellId) {
-    eventZoneSelect.value = state.selectedCellId;
-  }
-
-  const uniqueEvents = [...new Set(Object.values(macroZones).flatMap((macroZone) => Object.keys(macroZone.eventScores)))];
-  eventTypeSelect.innerHTML = uniqueEvents
-    .map((eventType) => `<option value="${eventType}">${eventCatalog[eventType]}</option>`)
-    .join("");
-
-  const currentMatch = getCurrentMatch();
-  eventTeamSelect.innerHTML = `
-    <option value="home">${currentMatch.home}</option>
-    <option value="away">${currentMatch.away}</option>
-  `;
-}
-
-function renderEvents() {
-  const currentMatchEvents = state.events.filter((event) => event.matchId === state.config.currentMatchId);
-
-  if (!currentMatchEvents.length) {
-    eventsList.className = "events-list empty-state";
-    eventsList.textContent = "Todavia no hay eventos en este partido.";
-    return;
-  }
-
-  const currentMatch = getCurrentMatch();
-  eventsList.className = "events-list";
-  eventsList.innerHTML = currentMatchEvents
-    .slice()
-    .reverse()
-    .map((event) => {
-      const cell = getCell(event.cellId);
-      const owner = getReservationOwnerByCell(cell);
-      const points = cell.macroZone.eventScores[event.eventType] ?? 0;
-      const teamLabel = event.team === "home" ? currentMatch.home : currentMatch.away;
-
-      return `
-        <article class="event-row">
-          <div class="event-main">
-            <strong>${eventCatalog[event.eventType]}</strong>
-            <span>Min ${event.minute}</span>
-          </div>
-          <small>${cell.code} · ${cell.macroZone.short} · ${cell.macroZone.label} · ${teamLabel}</small>
-          <small>Activo: ${cell.assetId} · Propietario: ${owner ? owner.name : "sin propietario"} · Valor: +${points}</small>
-        </article>
-      `;
-    })
-    .join("");
+  }).join("");
 }
 
 function renderScoreboard() {
-  const ranking = computeRanking();
-
+  const ranking = ScoreService.ranking();
   if (!ranking.length) {
-    scoreboard.className = "scoreboard empty-state";
-    scoreboard.textContent = "Crea jugadores, reparte activos y registra eventos para generar la tabla.";
+    dom.scoreboard.innerHTML = `<article class="score-row"><strong>Sin marcador aun</strong><span class="score-meta">Entra, reserva zonas y lanza eventos.</span></article>`;
     return;
   }
-
-  scoreboard.className = "scoreboard";
-  scoreboard.innerHTML = ranking
-    .map(({ player, netPoints, grossPoints, reservationPenalty, ownedAssets, eventRows }, index) => `
-      <article class="score-row">
-        <div class="score-main">
-          <strong>#${index + 1} ${player.name}</strong>
-          <span class="score-points">${netPoints}</span>
-        </div>
-        <div class="score-meta">
-          Activos: ${ownedAssets.length} · Eventos cobrados: ${eventRows.length} · Bruto: ${grossPoints} · Coste: -${reservationPenalty}
-        </div>
-      </article>
-    `)
-    .join("");
+  dom.scoreboard.innerHTML = ranking.map((row, index) => `
+    <article class="score-row">
+      <div class="score-main"><strong>#${index + 1} ${row.user.name}</strong><span>${row.points}</span></div>
+      <span class="score-meta">${row.reservations.length} zonas - ${row.wallet.remaining} pts libres</span>
+    </article>
+  `).join("");
 }
 
-function renderBreakdown() {
-  const ranking = computeRanking();
 
-  if (!ranking.length) {
-    breakdownPanel.className = "breakdown-panel empty-state";
-    breakdownPanel.textContent = "El detalle por jugador aparecera aqui.";
-    return;
-  }
-
-  breakdownPanel.className = "breakdown-panel";
-  breakdownPanel.innerHTML = ranking
-    .map(({ player, ownedAssets, eventRows, invested, remainingBudget, netPoints }) => `
-      <article class="breakdown-card">
-        <div class="breakdown-main">
-          <strong>${player.name}</strong>
-          <span class="player-budget">${netPoints} netos</span>
-        </div>
-        <p>Invertido: ${invested} · Presupuesto libre: ${remainingBudget}</p>
-        <p>Activos: ${
-          ownedAssets.length
-            ? ownedAssets.slice(0, 10).map((asset) => `${asset.sample.macroZone.short} (${asset.assetCells.map((cell) => cell.code).join("/")})`).join(", ")
-            : "ninguno"
-        }</p>
-        <ul>
-          ${
-            eventRows.length
-              ? eventRows
-                .map((row) => `<li>Min ${row.minute} · ${row.cell.code} · ${row.cell.macroZone.label} · ${eventCatalog[row.eventType]} = +${row.points}</li>`)
-                .join("")
-              : "<li>Sin eventos puntuados todavia.</li>"
-          }
-        </ul>
-      </article>
-    `)
-    .join("");
-}
-
-function refreshAll() {
-  renderHeroStats();
-  renderMatchSelect();
-  renderPlayers();
-  renderActivePlayerSelect();
-  renderSessionCard();
-  renderPitch();
-  renderZoneDetail();
-  renderZoneCatalog();
-  renderEventSelectors();
-  renderEvents();
-  renderScoreboard();
-  renderBreakdown();
-}
-
-function addPlayer(name) {
-  const normalized = name.trim();
-  if (!normalized) return;
-  if (state.players.some((player) => player.name.toLowerCase() === normalized.toLowerCase())) {
-    alert("Ese jugador ya existe en la ronda.");
-    return;
-  }
-
-  state.players.push({
-    id: `player-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
-    name: normalized
-  });
-
-  if (!state.activePlayerId) {
-    state.activePlayerId = state.players[state.players.length - 1].id;
-  }
-}
-
-function reserveAssetFromCell(cellId, playerId) {
-  const cell = getCell(cellId);
-  const player = getPlayer(playerId);
-  if (!cell || !player) return;
-
-  const assetId = cell.assetId;
-  const owner = getReservationOwnerByAsset(assetId);
-  if (owner && owner.id !== playerId) {
-    alert("Ese activo ya esta reservado. Reinicia la ronda si quieres reasignarlo.");
-    return;
-  }
-
-  const ledger = computePlayerLedger(playerId);
-  if (!owner && ledger.remainingBudget < cell.macroZone.entryCost) {
-    alert("Ese jugador no tiene presupuesto suficiente para este activo.");
-    return;
-  }
-
-  state.reservations[assetId] = playerId;
-}
-
-function addEvent(cellId, eventType, minute, team) {
-  const cell = getCell(cellId);
-  if (!cell) return;
-
-  state.events.push({
-    id: `event-${Date.now()}-${Math.random().toString(16).slice(2, 8)}`,
-    matchId: state.config.currentMatchId,
-    cellId,
-    assetId: cell.assetId,
-    eventType,
-    minute,
-    team
-  });
-}
-
-function findCellByRowCol(row, col) {
-  return cells.find((cell) => cell.row === row && cell.col === col);
-}
-
-function loadDemoRound() {
-  const kickoffCell = findCellByRowCol(9, 14);
-  const leftPenaltyCell = findCellByRowCol(9, 2);
-  const leftGoalCell = findCellByRowCol(9, 0);
-  const leftSixCell = findCellByRowCol(9, 1);
-  const rightCornerCell = findCellByRowCol(0, 28);
-  const leftHotZoneCell = findCellByRowCol(9, 5);
-  const rightHalfspaceCell = findCellByRowCol(4, 22);
-
-  state.players = [
-    { id: "player-ana", name: "Ana" },
-    { id: "player-luis", name: "Luis" },
-    { id: "player-marta", name: "Marta" },
-    { id: "player-javi", name: "Javi" }
-  ];
-
-  state.config.budget = 420;
-  state.config.currentMatchId = "wc26-014";
-  state.selectedCellId = leftPenaltyCell?.id ?? null;
-  state.activePlayerId = "player-ana";
-  state.reservations = Object.fromEntries(
-    [
-      [leftPenaltyCell?.assetId, "player-ana"],
-      [leftGoalCell?.assetId, "player-luis"],
-      [rightCornerCell?.assetId, "player-marta"],
-      [kickoffCell?.assetId, "player-javi"],
-      [leftSixCell?.assetId, "player-ana"],
-      [leftHotZoneCell?.assetId, "player-luis"],
-      [rightHalfspaceCell?.assetId, "player-marta"]
-    ].filter(([assetId]) => assetId)
-  );
-
-  state.events = [
-    { id: "demo-1", matchId: "wc26-014", cellId: kickoffCell?.id, assetId: kickoffCell?.assetId, eventType: "kickoff", minute: 1, team: "home" },
-    { id: "demo-2", matchId: "wc26-014", cellId: rightHalfspaceCell?.id, assetId: rightHalfspaceCell?.assetId, eventType: "progressiveCarry", minute: 11, team: "away" },
-    { id: "demo-3", matchId: "wc26-014", cellId: leftSixCell?.id, assetId: leftSixCell?.assetId, eventType: "finish", minute: 13, team: "home" },
-    { id: "demo-4", matchId: "wc26-014", cellId: leftGoalCell?.id, assetId: leftGoalCell?.assetId, eventType: "save", minute: 24, team: "away" },
-    { id: "demo-5", matchId: "wc26-014", cellId: leftPenaltyCell?.id, assetId: leftPenaltyCell?.assetId, eventType: "penalty", minute: 67, team: "home" },
-    { id: "demo-6", matchId: "wc26-014", cellId: rightCornerCell?.id, assetId: rightCornerCell?.assetId, eventType: "cornerKick", minute: 78, team: "away" },
-    { id: "demo-7", matchId: "wc26-014", cellId: leftHotZoneCell?.id, assetId: leftHotZoneCell?.assetId, eventType: "foulWon", minute: 83, team: "home" }
-  ].filter((event) => event.cellId && event.assetId);
-}
-
-playerForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  addPlayer(playerNameInput.value);
-  playerNameInput.value = "";
-  saveState();
-  refreshAll();
+document.addEventListener("click", (event) => {
+  const btn = event.target.closest("[data-match-id]");
+  if (btn) MatchService.select(btn.dataset.matchId);
+});
+// keep legacy listener stub
+const _legacyFixture = { addEventListener: () => {} };
+_legacyFixture.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-match-id]");
+  if (button) MatchService.select(button.dataset.matchId);
 });
 
-sessionForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  if (!state.players.length) {
-    alert("Crea al menos un jugador antes de entrar.");
-    return;
-  }
-  state.activePlayerId = activePlayerSelect.value;
-  saveState();
-  refreshAll();
+dom.roomList.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-room-id]");
+  if (button) RoomService.select(button.dataset.roomId);
 });
 
-eventForm.addEventListener("submit", (event) => {
-  event.preventDefault();
-  addEvent(eventZoneSelect.value, eventTypeSelect.value, Number(eventMinuteInput.value) || 1, eventTeamSelect.value);
-  saveState();
-  renderEvents();
-  renderScoreboard();
-  renderBreakdown();
-  renderPlayers();
-  renderHeroStats();
+dom.zoneLayer.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-zone-id]");
+  if (!button) return;
+  state.selectedZoneId = button.dataset.zoneId;
+  saveAndRender();
 });
 
-matchSelect.addEventListener("change", () => {
-  state.config.currentMatchId = matchSelect.value;
-  saveState();
-  renderHeroStats();
-  renderPlayers();
-  renderEventSelectors();
-  renderEvents();
-  renderScoreboard();
-  renderBreakdown();
+dom.zonePanel.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-reserve-zone]");
+  if (button) ReservationService.reserve(button.dataset.reserveZone);
 });
 
-budgetInput.addEventListener("change", () => {
-  const nextBudget = Number(budgetInput.value) || defaultState.config.budget;
-  state.config.budget = Math.max(50, nextBudget);
-  saveState();
-  renderPlayers();
-  renderScoreboard();
-  renderBreakdown();
+// Auth form lives inside HUD — bound dynamically in renderHeader()
+
+dom.demoOpenMatch.addEventListener("click", () => {
+  MatchService.toggleDemoOpen(state.currentMatchId);
 });
 
-loadDemoMatchButton.addEventListener("click", () => {
-  loadDemoRound();
-  saveState();
-  refreshAll();
-});
 
-resetAllButton.addEventListener("click", () => {
-  localStorage.removeItem(STORAGE_KEY);
-  state.config = structuredClone(defaultState.config);
-  state.selectedCellId = null;
-  state.players = [];
-  state.reservations = {};
-  state.events = [];
-  selectedZoneInput.value = "";
-  refreshAll();
-});
-
-pitchGrid.addEventListener("click", (event) => {
-  const target = event.target.closest("[data-cell-id]");
-  if (!target) return;
-
-  const cellId = target.getAttribute("data-cell-id");
-  const cell = getCell(cellId);
-  if (!cell) return;
-
-  state.selectedCellId = cellId;
-  renderPitch();
-  renderZoneDetail();
-  renderEventSelectors();
-  saveState();
-});
-
-selectionOverlay.addEventListener("click", (event) => {
-  const target = event.target.closest("#buy-asset-button");
-  if (!target) return;
-
-  const cellId = target.getAttribute("data-cell-id");
-  if (!state.activePlayerId) {
-    alert("Entra primero como jugador.");
-    return;
-  }
-
-  reserveAssetFromCell(cellId, state.activePlayerId);
-  saveState();
-  refreshAll();
-});
-
-refreshAll();
+render();
