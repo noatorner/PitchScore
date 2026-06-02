@@ -11,7 +11,7 @@
 </head>
 <body>
 
-  <!-- ═══ SIDEBAR ═════════════════════════════════════════════ -->
+  <!-- ═══ SIDEBAR ═══════════════════════════════════════════════ -->
   <nav class="sidebar">
 
     <div class="sidebar-brand">
@@ -37,23 +37,31 @@
 
   </nav>
 
-  <!-- ═══ APP SHELL ════════════════════════════════════════════ -->
+  <!-- ═══ APP SHELL ══════════════════════════════════════════════ -->
   <div class="app-shell">
 
-    <!-- ─── COLUMNA CENTRAL ──────────────────────────────────── -->
+    <!-- ─── COLUMNA FIXTURE ─────────────────────────────────────── -->
+    <aside class="col-fixture">
+
+      <div class="fpanel-section">
+        <div class="fpanel-header">PARTIDO ACTUAL <span class="fpanel-arrow">∧</span></div>
+        <div id="fixture-list" class="fixture-active-area"></div>
+      </div>
+
+      <div class="fpanel-section fpanel-section--upcoming">
+        <div class="fpanel-header">PRÓXIMOS PARTIDOS <span class="fpanel-arrow">∨</span></div>
+        <div id="fixture-list-upcoming" class="fixture-upcoming-list"></div>
+      </div>
+
+      <div class="fixture-see-all">VER TODO EL FIXTURE <span class="fpanel-arrow">∨</span></div>
+
+    </aside>
+
+    <!-- ─── COLUMNA CENTRAL ──────────────────────────────────────── -->
     <main class="col-center">
 
-      <!-- Partido activo destacado -->
-      <div class="match-hero-section">
-        <div id="fixture-list" class="match-hero-inner"></div>
-      </div>
-
-      <!-- Próximos partidos -->
-      <div class="fixture-strip">
-        <div class="fixture-section-label">PRÓXIMOS PARTIDOS ∨</div>
-        <div id="fixture-list-upcoming" class="fixture-upcoming-list"></div>
-        <div class="fixture-see-all">VER TODO EL FIXTURE ∨</div>
-      </div>
+      <!-- Match hero -->
+      <div id="match-hero" class="match-hero"></div>
 
       <!-- Campo -->
       <div class="field-stage">
@@ -89,7 +97,6 @@
           <div id="zone-layer" class="zone-layer" aria-label="Zonas reservables"></div>
         </div>
 
-        <!-- Llegenda -->
         <div class="price-legend">
           <span class="legend-label">MENOR PRECIO</span>
           <div class="legend-dots">
@@ -103,7 +110,6 @@
           <span class="legend-label">MAYOR PRECIO</span>
         </div>
 
-        <!-- Com funciona -->
         <div class="how-it-works">
           <div class="hiw-title">¿CÓMO FUNCIONA?</div>
           <div class="hiw-steps">
@@ -142,11 +148,25 @@
       </div><!-- /field-stage -->
     </main>
 
-    <!-- ─── COLUMNA DRETA ─────────────────────────────────────── -->
+    <!-- ─── COLUMNA DERECHA ──────────────────────────────────────── -->
     <aside class="col-right">
 
-      <!-- Auth + HUD -->
+      <!-- HUD superior -->
       <div class="right-block hud-block">
+        <div class="hud-top-row">
+          <button class="hud-how-btn">¿CÓMO JUGAR? ❓</button>
+          <button class="hud-bell">
+            🔔
+            <span class="bell-badge">3</span>
+          </button>
+          <div class="hud-avatar">👤</div>
+          <div id="hud-user-info" class="hud-user-info">
+            <form id="auth-form" class="auth-inline">
+              <input id="auth-name" type="text" placeholder="Tu nombre…">
+              <button class="btn-auth" type="submit">→</button>
+            </form>
+          </div>
+        </div>
         <div class="hud-stats-row">
           <div class="hud-stat-box">
             <span class="hud-stat-label">MI PRESUPUESTO</span>
@@ -155,17 +175,6 @@
           <div class="hud-stat-box">
             <span class="hud-stat-label">ZONAS RESERVADAS</span>
             <strong class="hud-stat-val" id="hud-zones">0/3</strong>
-          </div>
-        </div>
-        <div class="hud-actions-row">
-          <button class="hud-how-btn">¿CÓMO JUGAR? ❓</button>
-          <button class="hud-bell">🔔</button>
-          <div class="hud-avatar">👤</div>
-          <div id="hud-user-info" class="hud-user-info">
-            <form id="auth-form" class="auth-inline">
-              <input id="auth-name" type="text" placeholder="Tu nombre…">
-              <button class="btn-auth" type="submit">→</button>
-            </form>
           </div>
         </div>
         <div id="room-list" class="room-list-inline"></div>

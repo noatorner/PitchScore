@@ -1,4 +1,17 @@
 const STORAGE_KEY = "pitchscore-redesign-v1";
+
+const flagMap = {
+  "Mexico": "🇲🇽", "South Africa": "🇿🇦", "Korea Republic": "🇰🇷",
+  "Czechia": "🇨🇿", "Canada": "🇨🇦", "Bosnia and Herzegovina": "🇧🇦",
+  "USA": "🇺🇸", "Paraguay": "🇵🇾", "Haiti": "🇭🇹", "Scotland": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+  "Australia": "🇦🇺", "Turkiye": "🇹🇷", "Brazil": "🇧🇷", "Morocco": "🇲🇦",
+  "Qatar": "🇶🇦", "Switzerland": "🇨🇭", "Cote d'Ivoire": "🇨🇮",
+  "Ecuador": "🇪🇨", "Germany": "🇩🇪", "Curacao": "🇨🇼",
+  "Netherlands": "🇳🇱", "Japan": "🇯🇵", "Sweden": "🇸🇪", "Tunisia": "🇹🇳",
+  "Saudi Arabia": "🇸🇦", "Uruguay": "🇺🇾", "Spain": "🇪🇸", "Cabo Verde": "🇨🇻",
+  "IR Iran": "🇮🇷", "New Zealand": "🇳🇿", "Belgium": "🇧🇪", "Egypt": "🇪🇬",
+};
+function flag(team) { return flagMap[team] || "🏳️"; }
 const MAX_RESERVATIONS_PER_PLAYER = 3;
 const DEFAULT_BUDGET = 420;
 const PITCH_LENGTH = 120;
@@ -277,6 +290,7 @@ const ScoreService = {
 const dom = {
   fixtureList: document.querySelector("#fixture-list"),
   fixtureListUpcoming: document.querySelector("#fixture-list-upcoming"),
+  matchHero: document.querySelector("#match-hero"),
   demoOpenMatch: document.querySelector("#demo-open-match"),
   authForm: document.querySelector("#auth-form"),
   authName: document.querySelector("#auth-name"),
@@ -406,25 +420,46 @@ function renderFixture() {
   const currentStatus = MatchService.getStatus(current);
   window._currentMatch = current;
 
-  dom.fixtureList.innerHTML = `
-    <div class="match-hero-card">
-      <div class="match-hero-top">
-        <span class="match-hero-stage">${current.stage}</span>
+  // Tarjeta compacta en col-fixture
+  if (dom.fixtureList) {
+    dom.fixtureList.innerHTML = `
+      <div class="active-match-card">
+        <div class="amc-teams">
+          <div class="amc-team-row">
+            <span class="amc-flag">${flag(current.home)}</span>
+            <span class="amc-team-name">${current.home}</span>
+          </div>
+          <div class="amc-vs-row">vs</div>
+          <div class="amc-team-row">
+            <span class="amc-flag">${flag(current.away)}</span>
+            <span class="amc-team-name">${current.away}</span>
+          </div>
+        </div>
+        <div class="amc-meta">${formatDate(current.date)} · ${current.venue}</div>
         <span class="status-pill status-${currentStatus}">${statusLabel(currentStatus)}</span>
       </div>
-      <div class="match-hero-title">${current.home} <span class="vs-sep">vs</span> ${current.away}</div>
-      <div class="match-hero-info">
-        <span>📅 ${formatDate(current.date)}</span>
-        <span class="mh-sep">·</span>
-        <span>🏟️ ${current.venue}</span>
-      </div>
-      <div class="match-hero-countdown-wrap">
-        <span class="countdown-label">CIERRE RESERVAS EN</span>
-        <span id="countdown-display" class="countdown-val">--H --M --S</span>
-      </div>
-    </div>
-  `;
+    `;
+  }
 
+  // Hero central grande
+  if (dom.matchHero) {
+    dom.matchHero.innerHTML = `
+      <div class="hero-trophy">🏆</div>
+      <div class="hero-group">${current.stage} · JORNADA 1</div>
+      <div class="hero-title-row">
+        <span class="hero-flag">${flag(current.home)}</span>
+        <span class="hero-team">${current.home.toUpperCase()}</span>
+        <span class="hero-vs">VS</span>
+        <span class="hero-team">${current.away.toUpperCase()}</span>
+        <span class="hero-flag">${flag(current.away)}</span>
+      </div>
+      <div class="hero-meta">${formatDate(current.date)} · ${current.venue.toUpperCase()}</div>
+      <div class="hero-countdown-label">RESERVAS CIERRAN EN</div>
+      <div class="hero-countdown"><span id="countdown-display">--H --M --S</span></div>
+    `;
+  }
+
+  // Lista de próximos (todos los partidos)
   const upcomingEl = document.querySelector("#fixture-list-upcoming");
   if (upcomingEl) {
     upcomingEl.innerHTML = MatchService.all()
@@ -433,11 +468,12 @@ function renderFixture() {
         const status = MatchService.getStatus(match);
         return `
           <button class="fixture-item ${match.id === state.currentMatchId ? "active" : ""}" type="button" data-match-id="${match.id}">
-            <span class="fixture-main">
-              <span>${match.home} vs ${match.away}</span>
-              <span class="status-pill status-${status}">${statusLabel(status)}</span>
-            </span>
-            <span class="fixture-meta">${formatDate(match.date)} · ${match.venue}</span>
+            <div class="fi-teams">
+              <div class="fi-team"><span class="fi-flag">${flag(match.home)}</span>${match.home}</div>
+              <div class="fi-team"><span class="fi-flag">${flag(match.away)}</span>${match.away}</div>
+            </div>
+            <div class="fi-meta">${formatDate(match.date)} · ${match.venue}</div>
+            <span class="status-pill status-${status}">${statusLabel(status)}</span>
           </button>
         `;
       }).join("");
@@ -599,9 +635,7 @@ function renderScoreboard() {
 
 document.addEventListener("click", (event) => {
   const btn = event.target.closest("[data-match-id]");
-  if (btn && (btn.closest("#fixture-list") || btn.closest("#fixture-list-upcoming"))) {
-    MatchService.select(btn.dataset.matchId);
-  }
+  if (btn) MatchService.select(btn.dataset.matchId);
 });
 // keep legacy listener stub
 const _legacyFixture = { addEventListener: () => {} };
