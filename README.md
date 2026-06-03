@@ -1,6 +1,6 @@
-# PitchScore
+# Kancha
 
-PitchScore es un prototipo de juego inspirado en el Mundial 2026 donde cada usuario reserva zonas de un campo de futbol y gana puntos segun lo que pase en esas zonas durante un partido real.
+Kanch es un prototipo de juego inspirado en el Mundial 2026 donde cada usuario reserva zonas de un campo de futbol y gana puntos segun lo que pase en esas zonas durante un partido real.
 
 Esta version ya no es solo una demo visual. Introduce mercado, presupuesto, un campo normalizado por coordenadas, fixture real inicial del Mundial 2026 y desglose de resultados por propietario.
 
