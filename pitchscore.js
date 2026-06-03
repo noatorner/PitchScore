@@ -180,7 +180,7 @@ function Sidebar({ page, onNav }) {
     <aside className="ps-sidebar">
       <div className="ps-brand kn-brand">
         <div className="kn-eyebrow">FÚTBOL EN JUEGO</div>
-       <svg className="kn-logo-img" viewBox="0 0 156.63 18.31" fill="#f0e7d0" role="img" aria-label="KANCHA" xmlns="http://www.w3.org/2000/svg">
+       <svg className="kn-logo-img" viewBox="0 0 156.63 18.31" fill="#EFE5CC" role="img" aria-label="KANCHA" xmlns="http://www.w3.org/2000/svg">
           <title>KANCHA</title>
           <polygon points="18.72 1.03 14.31 1.03 7.08 8.03 3.35 8.03 3.35 1.03 0 1.03 0 18.31 3.35 18.31 3.35 10.97 7.08 10.97 15.29 18.31 19.8 18.31 10 9.49 18.72 1.03"/>
           <path d="M20,18.31h4.24l5.17-5.17c2.29,1.82,5.16,2.82,8.11,2.82s5.81-1,8.11-2.82l5.17,5.17h4.24L37.52.79l-17.52,17.52ZM31.55,11l5.97-5.97,5.97,5.97c-1.73,1.29-3.78,1.96-5.97,1.96s-4.24-.68-5.97-1.96Z"/>
