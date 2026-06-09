@@ -4,6 +4,24 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KANCHA — Antes de que pase.</title>
+  <!-- Auth guard: hide body until session confirmed, redirect to /login if none -->
+  <style id="kn-auth-guard">body { visibility: hidden; }</style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script>
+    (async function () {
+      try {
+        const c = supabase.createClient(
+          "https://hmjyfdcbmqtoddnprtlq.supabase.co",
+          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhtanlmZGNibXF0b2RkbnBydGxxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODA5ODQ3MjQsImV4cCI6MjA5NjU2MDcyNH0.ZkdAX_lDk1t89mbEUWIznRuiAbVQagp--1pXas2yrso"
+        );
+        const { data: { session } } = await c.auth.getSession();
+        if (!session) { window.location.replace("/login"); return; }
+        document.getElementById("kn-auth-guard").remove();
+      } catch (e) {
+        window.location.replace("/login");
+      }
+    })();
+  </script>
   <style>
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Saira:wght@300;400;500;600;700&display=swap');
 

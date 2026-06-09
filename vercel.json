@@ -1,6 +1,7 @@
 {
   "redirects": [
     { "source": "/",      "destination": "/landing.html"    },
-    { "source": "/jugar", "destination": "/PITCHSCORE.html" }
+    { "source": "/jugar", "destination": "/PITCHSCORE.html" },
+    { "source": "/login", "destination": "/login.html"      }
   ]
 }
