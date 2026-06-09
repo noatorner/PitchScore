@@ -1,8 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 /* ============================================================
    KANCHA — Landing (entrada al juego)
    Vintage / editorial / futbolera — same system as the app.
    Everything scoped under .kn-landing so it never touches .ps-*
    ============================================================ */
+
+:root {
+  --kn-display:  'Saira', sans-serif;
+  --kn-body:     'Saira', sans-serif;
+  --kn-numeral:  'Anton', sans-serif;
+}
 
 .kn-landing {
   --accent: #c8442e;
@@ -21,10 +30,30 @@
   --beige-soft: #cabf9f;
   --gold: #ffd27a;
 
-  font-family: var(--kn-body);
+  font-family: 'Saira', sans-serif;
   color: var(--ink);
   background: var(--cream);
   -webkit-font-smoothing: antialiased;
+}
+
+.kn-landing * {
+  font-family: 'Saira', sans-serif;
+}
+
+.kn-landing .kn-hero-logo,
+.kn-landing .kn-footer-logo,
+.kn-landing .kn-wordmark {
+  font-family: inherit; /* SVG — no font needed */
+}
+
+/* Anton for numerals only */
+.kn-landing .kn-step-n,
+.kn-landing .kn-fact-v,
+.kn-landing .kn-pod-pts,
+.kn-landing .kn-pod-step,
+.kn-landing .kn-you-rank,
+.kn-landing .kn-fh-team {
+  font-family: 'Anton', sans-serif;
 }
 
 /* ---------- shared atoms ---------- */
