@@ -16,6 +16,13 @@
         );
         const { data: { session } } = await c.auth.getSession();
         if (!session) { window.location.replace("/login"); return; }
+        // Expose authenticated user to the app (ME.name reads this)
+        const { data: { user } } = await c.auth.getUser();
+        if (user) {
+          var name = (user.user_metadata && user.user_metadata.name)
+            || user.email.split('@')[0];
+          window.__KN_USER = { email: user.email, name: name };
+        }
         document.getElementById("kn-auth-guard").remove();
       } catch (e) {
         window.location.replace("/login");

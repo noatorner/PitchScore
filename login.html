@@ -232,8 +232,10 @@
 
     let mode = "login";
 
-    // Redirect to app if already authenticated
-    sb.auth.getSession().then(({ data: { session } }) => {
+    // onAuthStateChange catches both: existing sessions AND hash-token exchanges
+    // (email confirmation, magic links). Supabase v2 processes #access_token
+    // from the URL automatically and fires SIGNED_IN — we redirect then.
+    sb.auth.onAuthStateChange(function (event, session) {
       if (session) window.location.replace("/jugar");
     });
 
