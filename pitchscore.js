@@ -460,7 +460,14 @@ function PageInicio({ onNav }) {
       });
       const{error}=await db.from('reservations')
         .upsert(rows,{onConflict:'user_id,match_id,zone_id'});
-      return!error;
+      if(error)return false;
+      // Register / update user in scores so they appear in the ranking
+      const userName=(window.__KN_USER&&window.__KN_USER.name)||user.email.split('@')[0];
+      await db.from('scores').upsert(
+        {user_id:user.id,name:userName},
+        {onConflict:'user_id'}
+      );
+      return true;
     }catch(e){return false;}
   }
   function toggleZone(z) {
@@ -897,35 +904,86 @@ function PageReservas({ onNav }) {
   );
 }
 
+function levelFromPts(p){return p>=10000?"Maestro":p>=5000?"Veterano":p>=1000?"Rookie":"Novato";}
+
 function PageRanking() {
-  const [scope,setScope]=React.useState("global");
-  const me=RANKING.find(r=>r.isMe),top3=RANKING.slice(0,3),rest=RANKING.filter(r=>!r.isMe&&r.rank>3);
+  const [rankData,setRankData]=React.useState(null); // null=loading
+
+  React.useEffect(()=>{
+    const db=window.supabaseClient;
+    if(!db){setRankData({scores:[],myId:null});return;}
+    (async()=>{
+      const[{data:scores},{data:{user}}]=await Promise.all([
+        db.from('scores').select('user_id,name,total_points,matches_played')
+          .order('total_points',{ascending:false}).limit(50),
+        db.auth.getUser()
+      ]);
+      setRankData({scores:scores||[],myId:user?.id});
+    })();
+  },[]);
+
+  if(rankData===null) return (
+    <div className="ps-page"><div className="ps-empty-state"><div className="ps-empty-t">Cargando ranking…</div></div></div>
+  );
+
+  const {scores,myId}=rankData;
+  const medals=["🥇","🥈","🥉"];
+  const podiumOrder=[1,0,2]; // 2nd · 1st · 3rd visually
+  const podiumHeights=[180,220,150];
+  const showPodium=scores.length>=3;
+
   return (
     <div className="ps-page">
       <div className="ps-page-head">
-        <div><div className="ps-page-eyebrow">MUNDIAL 2026 · LEADERBOARD</div><div className="ps-page-title">RANKING GLOBAL</div><div className="ps-page-sub">Compite con jugadores de todo el mundo. Top 100 reciben recompensas semanales.</div></div>
-        <div className="ps-tabs ps-tabs-inline">
-          <button className={"ps-tab"+(scope==="global"?" is-on":"")} onClick={()=>setScope("global")}>GLOBAL</button>
-          <button className={"ps-tab"+(scope==="amigos"?" is-on":"")} onClick={()=>setScope("amigos")}>AMIGOS</button>
-          <button className={"ps-tab"+(scope==="pais"?" is-on":"")} onClick={()=>setScope("pais")}>MI PAÍS</button>
+        <div><div className="ps-page-eyebrow">MUNDIAL 2026 · LEADERBOARD</div><div className="ps-page-title">RANKING GLOBAL</div><div className="ps-page-sub">Jugadores reales ordenados por puntos acumulados.</div></div>
+      </div>
+
+      {scores.length===0&&(
+        <div className="ps-empty-state">
+          <div className="ps-empty-icon">🏆</div>
+          <div className="ps-empty-t">El ranking está vacío</div>
+          <div className="ps-empty-d">Confirma reservas en un partido para aparecer aquí.</div>
         </div>
-      </div>
-      <div className="ps-podium">
-        {[1,0,2].map((idx,pos)=>{const r=top3[idx],heights=[180,220,150];return(
-          <div className={"ps-podium-col ps-podium-"+(idx+1)} key={r.rank}>
-            <div className="ps-podium-card"><div className="ps-podium-medal">{idx===0?"🥇":idx===1?"🥈":"🥉"}</div><div className="ps-podium-flag"><Flag code={r.country} h={24}/></div><div className="ps-podium-name">{r.name}</div><div className="ps-podium-handle">@{r.handle}</div><div className="ps-podium-pts">{r.points.toLocaleString()}</div><div className="ps-podium-pts-l">PUNTOS</div></div>
-            <div className="ps-podium-step" style={{height:heights[pos]}}><span className="ps-podium-step-num">{r.rank}</span></div>
-          </div>
-        );})}
-      </div>
-      <div className="ps-rank-table">
-        <div className="ps-rank-head"><span>PUESTO</span><span>JUGADOR</span><span>NIVEL</span><span>TENDENCIA</span><span>PUNTOS</span></div>
-        {rest.map(r=><RankRow key={r.rank} r={r}/>)}
-        <div className="ps-rank-divider">TU POSICIÓN</div>
-        <RankRow r={me} isMe/>
-        <div className="ps-rank-divider">JUGADORES CERCA DE TI</div>
-        {[{rank:45,name:"Olivia M.",handle:"oliviam",points:4421,country:"FRA",level:"Rookie",trend:2},{rank:46,name:"Rafa B.",handle:"rafab",points:4356,country:"BRA",level:"Rookie",trend:-1},{rank:48,name:"Inés T.",handle:"inest",points:4198,country:"ESP",level:"Rookie",trend:4},{rank:49,name:"Karim D.",handle:"karimd",points:4102,country:"FRA",level:"Rookie",trend:0}].map(r=><RankRow key={r.rank} r={r}/>)}
-      </div>
+      )}
+
+      {showPodium&&(
+        <div className="ps-podium">
+          {podiumOrder.map((idx,pos)=>{
+            const r=scores[idx];if(!r)return null;
+            return(
+              <div className={"ps-podium-col ps-podium-"+(idx+1)} key={r.user_id}>
+                <div className="ps-podium-card">
+                  <div className="ps-podium-medal">{medals[idx]}</div>
+                  <div className="ps-podium-name">{r.name}</div>
+                  <div className="ps-podium-pts">{(r.total_points||0).toLocaleString()}</div>
+                  <div className="ps-podium-pts-l">PUNTOS</div>
+                </div>
+                <div className="ps-podium-step" style={{height:podiumHeights[pos]}}>
+                  <span className="ps-podium-step-num">{idx+1}</span>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {scores.length>0&&(
+        <div className="ps-rank-table">
+          <div className="ps-rank-head"><span>PUESTO</span><span>JUGADOR</span><span>NIVEL</span><span>PARTIDOS</span><span>PUNTOS</span></div>
+          {scores.map((r,i)=>{
+            const isMe=r.user_id===myId;
+            return(
+              <div className={"ps-rank-row"+(isMe?" is-me":"")} key={r.user_id}>
+                <span className="ps-rr-rank">{i+1}</span>
+                <span className="ps-rr-player"><span><div className="ps-rr-name">{r.name}{isMe?" 👤":""}</div></span></span>
+                <span className="ps-rr-level">{levelFromPts(r.total_points||0).toUpperCase()}</span>
+                <span className="ps-rr-trend">{r.matches_played||0}</span>
+                <span className="ps-rr-pts">{(r.total_points||0).toLocaleString()}<span>pts</span></span>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
@@ -979,18 +1037,99 @@ function FriendCard({ f }) {
 }
 
 function PageHistorial() {
-  const totalPoints=HISTORY.reduce((s,h)=>s+h.points,0),wins=HISTORY.filter(h=>h.status==="WIN").length,avgRank=Math.round(HISTORY.reduce((s,h)=>s+h.rank,0)/HISTORY.length);
+  const [resData,setResData]=React.useState(null); // null=loading
+
+  React.useEffect(()=>{
+    const db=window.supabaseClient;
+    if(!db){setResData([]);return;}
+    (async()=>{
+      try{
+        const{data:{user}}=await db.auth.getUser();
+        if(!user){setResData([]);return;}
+        const{data}=await db.from('reservations')
+          .select('match_id,zone_id,price')
+          .eq('user_id',user.id)
+          .order('match_id');
+        setResData(data||[]);
+      }catch(e){setResData([]);}
+    })();
+  },[]);
+
+  if(resData===null) return (
+    <div className="ps-page"><div className="ps-empty-state"><div className="ps-empty-t">Cargando historial…</div></div></div>
+  );
+
+  // Group by match_id
+  const byMatch=resData.reduce((acc,r)=>{
+    (acc[r.match_id]=acc[r.match_id]||[]).push(r);return acc;
+  },{});
+  const matchIds=Object.keys(byMatch);
+  const totalZones=resData.length;
+  const totalSpent=resData.reduce((s,r)=>s+(r.price||0),0);
+
   return (
     <div className="ps-page">
       <div className="ps-page-head">
-        <div><div className="ps-page-eyebrow">TU CAMINO EN EL MUNDIAL</div><div className="ps-page-title">HISTORIAL</div><div className="ps-page-sub">Todos tus partidos jugados, puntos ganados y posiciones finales.</div></div>
-        <div className="ps-stats-grid"><div className="ps-big-stat"><div className="ps-bs-l">PARTIDOS JUGADOS</div><div className="ps-bs-v">{HISTORY.length}</div></div><div className="ps-big-stat"><div className="ps-bs-l">PUNTOS TOTALES</div><div className="ps-bs-v">{totalPoints.toLocaleString()}</div></div><div className="ps-big-stat"><div className="ps-bs-l">PARTIDOS GANADOS</div><div className="ps-bs-v">{wins}/{HISTORY.length}</div></div><div className="ps-big-stat"><div className="ps-bs-l">PUESTO MEDIO</div><div className="ps-bs-v">#{avgRank}</div></div></div>
+        <div><div className="ps-page-eyebrow">TU CAMINO EN EL MUNDIAL</div><div className="ps-page-title">HISTORIAL</div><div className="ps-page-sub">Tus zonas reservadas por partido.</div></div>
+        <div className="ps-stats-grid">
+          <div className="ps-big-stat"><div className="ps-bs-l">PARTIDOS</div><div className="ps-bs-v">{matchIds.length}</div></div>
+          <div className="ps-big-stat"><div className="ps-bs-l">ZONAS TOTALES</div><div className="ps-bs-v">{totalZones}</div></div>
+          <div className="ps-big-stat"><div className="ps-bs-l">PUNTOS INVERTIDOS</div><div className="ps-bs-v">{totalSpent.toLocaleString()}</div></div>
+        </div>
       </div>
-      <div className="ps-hist-chart"><div className="ps-hist-chart-title">EVOLUCIÓN DE PUNTOS · ÚLTIMOS {HISTORY.length} PARTIDOS</div><PointsChart history={HISTORY}/></div>
-      <div className="ps-hist-timeline">
-        <div className="ps-hist-timeline-title">TIMELINE</div>
-        {HISTORY.map((h,i)=>(<div className="ps-timeline-row" key={h.id}><div className="ps-tl-dot-col"><div className={"ps-tl-dot "+(h.status==="WIN"?"is-win":"is-loss")}></div>{i<HISTORY.length-1&&<div className="ps-tl-line"></div>}</div><div className="ps-tl-card"><div className="ps-tl-head"><div className="ps-tl-date">{h.date}</div><div className="ps-tl-match"><span><Flag code={h.home} h={18}/> {COUNTRY_NAME[h.home]}</span><span className="ps-tl-score">{h.score}</span><span>{COUNTRY_NAME[h.away]} <Flag code={h.away} h={18}/></span></div><div className={"ps-tl-badge "+(h.status==="WIN"?"is-win":"is-loss")}>{h.status==="WIN"?"VICTORIA":"DERROTA"}</div></div><div className="ps-tl-body"><div className="ps-tl-zones"><div className="ps-tl-zones-l">ZONAS RESERVADAS</div><div className="ps-tl-zones-list">{h.zones.map(z=><span className="ps-tl-zone-pill" key={z}>{z}</span>)}</div></div><div className="ps-tl-result"><div><div className="ps-tl-stat-l">PUNTOS</div><div className="ps-tl-stat-v">+{h.points}</div></div><div><div className="ps-tl-stat-l">PUESTO</div><div className="ps-tl-stat-v">#{h.rank}</div></div></div></div></div></div>))}
-      </div>
+
+      {matchIds.length===0&&(
+        <div className="ps-empty-state">
+          <div className="ps-empty-icon">🏟️</div>
+          <div className="ps-empty-t">Sin reservas aún</div>
+          <div className="ps-empty-d">Confirma tus primeras zonas en el partido activo para verlas aquí.</div>
+        </div>
+      )}
+
+      {matchIds.length>0&&(
+        <div className="ps-hist-timeline">
+          <div className="ps-hist-timeline-title">RESERVAS POR PARTIDO</div>
+          {matchIds.map((mid,i)=>{
+            const match=FIXTURE.find(m=>m.id===mid);
+            const zones=byMatch[mid];
+            const spent=zones.reduce((s,r)=>s+(r.price||0),0);
+            return(
+              <div className="ps-timeline-row" key={mid}>
+                <div className="ps-tl-dot-col">
+                  <div className="ps-tl-dot is-win"></div>
+                  {i<matchIds.length-1&&<div className="ps-tl-line"></div>}
+                </div>
+                <div className="ps-tl-card">
+                  <div className="ps-tl-head">
+                    <div className="ps-tl-date">{match?match.date:"—"}</div>
+                    <div className="ps-tl-match">
+                      {match
+                        ?<><span><Flag code={match.home} h={18}/> {COUNTRY_NAME[match.home]}</span><span className="ps-tl-score">VS</span><span>{COUNTRY_NAME[match.away]} <Flag code={match.away} h={18}/></span></>
+                        :<span>{mid}</span>}
+                    </div>
+                    <div className="ps-tl-badge is-win">ACTIVA</div>
+                  </div>
+                  <div className="ps-tl-body">
+                    <div className="ps-tl-zones">
+                      <div className="ps-tl-zones-l">ZONAS RESERVADAS</div>
+                      <div className="ps-tl-zones-list">
+                        {zones.map(r=>{
+                          const z=ZONES.find(z=>z.id===r.zone_id);
+                          return <span className="ps-tl-zone-pill" key={r.zone_id}>{z?z.name:r.zone_id}</span>;
+                        })}
+                      </div>
+                    </div>
+                    <div className="ps-tl-result">
+                      <div><div className="ps-tl-stat-l">INVERTIDO</div><div className="ps-tl-stat-v">{spent}</div></div>
+                      <div><div className="ps-tl-stat-l">ZONAS</div><div className="ps-tl-stat-v">{zones.length}</div></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 }
