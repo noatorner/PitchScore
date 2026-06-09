@@ -434,7 +434,7 @@ function PageInicio({ onNav }) {
         if(!user){setSelectedZones([]);return;}
         const{data}=await db.from('reservations').select('zone_id')
           .eq('user_id',user.id).eq('match_id',FIXTURE[0].id);
-        setSelectedZones(data&&data.length?data.map(r=>r.zone_id):[]);
+        setSelectedZones(data&&data.length?data.map(r=>r.zone_id).slice(0,ME.zonesMax):[]);
       }catch(e){setSelectedZones([]);}
     })();
   },[]);
@@ -493,16 +493,16 @@ function PageInicio({ onNav }) {
           </div>
           {view==="mapa"?(
             <>
-              <PitchField zones={ZONES.map(z=>({...z,taken:selectedZones.includes(z.id)?Math.min(z.slots,z.taken+1):z.taken,overBudget:!selectedZones.includes(z.id)&&z.price>remainingBudget}))} selectedIds={selectedZones} onZoneClick={toggleZone}/>
+              <PitchField zones={ZONES.map(z=>({...z,taken:selectedZones.includes(z.id)?Math.min(z.slots,z.taken+1):z.taken,overBudget:!selectedZones.includes(z.id)&&(z.price>remainingBudget||selectedZones.length>=ME.zonesMax)}))} selectedIds={selectedZones} onZoneClick={toggleZone}/>
               <PitchLegend/>
             </>
           ):(
-            <ZoneList zones={ZONES.map(z=>({...z,overBudget:!selectedZones.includes(z.id)&&z.price>remainingBudget}))} selectedIds={selectedZones} onPick={toggleZone}/>
+            <ZoneList zones={ZONES.map(z=>({...z,overBudget:!selectedZones.includes(z.id)&&(z.price>remainingBudget||selectedZones.length>=ME.zonesMax)}))} selectedIds={selectedZones} onPick={toggleZone}/>
           )}
         </main>
         <aside className="ps-col-right">
           <BudgetCard selectedCount={selectedZones.length} remaining={remainingBudget}/>
-          <ZoneDetail zone={focused} selected={selectedZones.includes(focusZone)} onAdd={()=>toggleZone(focused)} totalCost={totalCost} remainingBudget={remainingBudget}/>
+          <ZoneDetail zone={focused} selected={selectedZones.includes(focusZone)} atMax={selectedZones.length>=ME.zonesMax} onAdd={()=>toggleZone(focused)} totalCost={totalCost} remainingBudget={remainingBudget}/>
           <CartCard selectedIds={selectedZones} onRemove={(id)=>setSelectedZones(prev=>prev.filter(x=>x!==id))} onClear={()=>setSelectedZones([])} onConfirm={confirmReservations}/>
         </aside>
       </div>
@@ -604,11 +604,12 @@ function BudgetCard({ selectedCount, remaining }) {
   );
 }
 
-function ZoneDetail({ zone, selected, onAdd, totalCost, remainingBudget }) {
+function ZoneDetail({ zone, selected, atMax, onAdd, totalCost, remainingBudget }) {
   if(!zone) return null;
   const isFull=zone.taken>=zone.slots;
   const noFunds=!selected&&zone.price>remainingBudget;
-  const disabled=isFull||noFunds;
+  const atLimit=!selected&&atMax;
+  const disabled=isFull||noFunds||atLimit;
   const potential=zone.tier==="premium"?"MUY ALTO":zone.tier==="high"?"ALTO":zone.tier==="mid"?"MEDIO":"BAJO";
   return (
     <div className="ps-card ps-detail">
@@ -621,7 +622,7 @@ function ZoneDetail({ zone, selected, onAdd, totalCost, remainingBudget }) {
       </div>
       <div className="ps-detail-actions-label">ACCIONES QUE SUMAN</div>
       <div className="ps-actions-row">{ACTIONS.map(a=>(<div className="ps-action" key={a.name}><div className="ps-action-icon">{a.icon}</div><div className="ps-action-name">{a.name.toUpperCase()}</div><div className="ps-action-pts">+{a.points}</div></div>))}</div>
-      <button className="ps-btn ps-btn-primary" disabled={disabled} onClick={onAdd}>{selected?"QUITAR DE LA SELECCIÓN":isFull?"ZONA AGOTADA":noFunds?"PRESUPUESTO INSUFICIENTE":"RESERVAR ESTA ZONA"}</button>
+      <button className="ps-btn ps-btn-primary" disabled={disabled} onClick={onAdd}>{selected?"QUITAR DE LA SELECCIÓN":isFull?"ZONA AGOTADA":noFunds?"PRESUPUESTO INSUFICIENTE":atLimit?"LÍMITE DE ZONAS":"RESERVAR ESTA ZONA"}</button>
       <div className="ps-detail-cost">Te costará <strong>{zone.price} puntos</strong></div>
     </div>
   );
