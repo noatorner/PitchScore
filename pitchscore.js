@@ -220,7 +220,7 @@ function Sidebar({ page, onNav }) {
           </div>
         </div>
       </div>
-      <button className="ps-logout"><SidebarIcon name="logout" /> CERRAR SESIÓN</button>
+      <button className="ps-logout" onClick={()=>window.supabaseClient.auth.signOut().then(()=>window.location.replace('/login'))}><SidebarIcon name="logout" /> CERRAR SESIÓN</button>
     </aside>
   );
 }
