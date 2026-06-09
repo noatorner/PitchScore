@@ -1,0 +1,2502 @@
+{
+  "meta": {
+    "matchId": 3869685,
+    "teams": [
+      "Argentina",
+      "France"
+    ],
+    "totalEvents": 4407,
+    "keptEvents": 161,
+    "fetchedAt": "2026-06-09T22:12:53.715Z"
+  },
+  "events": [
+    {
+      "id": "bb6c636e-debd-427b-bfcf-a5ca8113f014",
+      "index": 57,
+      "period": 1,
+      "minute": 1,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Theo Bernard François Hernández",
+      "location": [
+        67,
+        7.2
+      ]
+    },
+    {
+      "id": "a7662e03-749e-4f52-8430-aafc00de72de",
+      "index": 93,
+      "period": 1,
+      "minute": 2,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        94.4,
+        56
+      ]
+    },
+    {
+      "id": "ed4a4d4e-82a6-4033-a204-cfbbe36c4440",
+      "index": 137,
+      "period": 1,
+      "minute": 3,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        69.6,
+        59.4
+      ]
+    },
+    {
+      "id": "befa4b3d-e0e2-4df1-99f8-15c2e45b3d9b",
+      "index": 163,
+      "period": 1,
+      "minute": 4,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Kylian Mbappé Lottin",
+      "location": [
+        37.5,
+        45.1
+      ]
+    },
+    {
+      "id": "b8d55d4b-37dc-4491-ad9c-baa235eec9df",
+      "index": 189,
+      "period": 1,
+      "minute": 4,
+      "second": 38,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Julián Álvarez",
+      "location": [
+        98.7,
+        19.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "545c2c84-018f-4570-a01c-753823feaeac",
+      "index": 192,
+      "period": 1,
+      "minute": 4,
+      "second": 40,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        92.4,
+        30
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "052e30e2-4bf0-4a73-90de-dd0352a0fa73",
+      "index": 197,
+      "period": 1,
+      "minute": 4,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        63.4,
+        36.9
+      ]
+    },
+    {
+      "id": "c9d1f3d6-33b5-44fc-8363-c9eff067db64",
+      "index": 202,
+      "period": 1,
+      "minute": 4,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Adrien Rabiot",
+      "location": [
+        53.7,
+        37.2
+      ]
+    },
+    {
+      "id": "771875b7-e679-45ef-b2f8-494cd35e1926",
+      "index": 304,
+      "period": 1,
+      "minute": 7,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        35.1,
+        53
+      ]
+    },
+    {
+      "id": "a2ce05f8-e1cd-4efb-865a-257a45a38cc0",
+      "index": 337,
+      "period": 1,
+      "minute": 7,
+      "second": 32,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        115.1,
+        21.3
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "4ad26294-8aaf-4d69-83dd-bbf9ef797b32",
+      "index": 340,
+      "period": 1,
+      "minute": 7,
+      "second": 36,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        99.2,
+        47.9
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "86bc0033-db47-4b02-a6ae-b893a3a1b37b",
+      "index": 372,
+      "period": 1,
+      "minute": 11,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Cristian Gabriel Romero",
+      "location": [
+        35.6,
+        30.7
+      ]
+    },
+    {
+      "id": "2e99f182-aa98-4789-a02b-552214c8e7c7",
+      "index": 421,
+      "period": 1,
+      "minute": 11,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        103.2,
+        17.5
+      ]
+    },
+    {
+      "id": "fae3fe64-6ac9-4439-bcbc-3efb5a2f1498",
+      "index": 436,
+      "period": 1,
+      "minute": 12,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Raphaël Varane",
+      "location": [
+        45.6,
+        51.5
+      ]
+    },
+    {
+      "id": "fa1512c8-265f-4727-9d5a-2bb720e165da",
+      "index": 451,
+      "period": 1,
+      "minute": 12,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Ousmane Dembélé",
+      "location": [
+        75.1,
+        69.3
+      ]
+    },
+    {
+      "id": "34297e73-9411-4909-984d-00ec174f2206",
+      "index": 519,
+      "period": 1,
+      "minute": 14,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Julián Álvarez",
+      "location": [
+        45.8,
+        22.2
+      ]
+    },
+    {
+      "id": "edc5ee78-9e1e-48e0-9777-36ea070ae49e",
+      "index": 594,
+      "period": 1,
+      "minute": 16,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        87.8,
+        62
+      ]
+    },
+    {
+      "id": "5a4677a2-9ac1-44d4-81b4-d12c587b5131",
+      "index": 601,
+      "period": 1,
+      "minute": 16,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        104.9,
+        36.3
+      ]
+    },
+    {
+      "id": "6d498191-05f0-432c-8764-03aea4ef9fb8",
+      "index": 602,
+      "period": 1,
+      "minute": 16,
+      "second": 15,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        103.1,
+        34.6
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "68746ce6-7faf-4c25-a3d0-61a5730e3590",
+      "index": 607,
+      "period": 1,
+      "minute": 16,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Raphaël Varane",
+      "location": [
+        37.7,
+        53
+      ]
+    },
+    {
+      "id": "0925615a-c5bd-430b-83b7-9b64a9948eed",
+      "index": 770,
+      "period": 1,
+      "minute": 20,
+      "second": 53,
+      "type": "Foul Won",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        112.6,
+        20.9
+      ],
+      "foul_won": {
+        "penalty": true
+      }
+    },
+    {
+      "id": "6d527ebc-a948-4cd8-ac82-daced35bb715",
+      "index": 771,
+      "period": 1,
+      "minute": 22,
+      "second": 24,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        108,
+        40
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "f2bed2ec-d7a0-42e9-bd5f-71707c1543e6",
+      "index": 797,
+      "period": 1,
+      "minute": 24,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Cristian Gabriel Romero",
+      "location": [
+        15.5,
+        51.7
+      ]
+    },
+    {
+      "id": "91dd26a4-6353-46d5-b881-381913845afc",
+      "index": 871,
+      "period": 1,
+      "minute": 28,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        74.3,
+        56.8
+      ]
+    },
+    {
+      "id": "1309a242-14ad-4a9c-b91c-45a568c57574",
+      "index": 977,
+      "period": 1,
+      "minute": 31,
+      "second": 33,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Nicolás Alejandro Tagliafico",
+      "location": [
+        100.4,
+        20.5
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "f227a92e-d86c-4f3d-aa75-5ccb71adcae6",
+      "index": 979,
+      "period": 1,
+      "minute": 31,
+      "second": 35,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        94.3,
+        23.5
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c9953a7f-061c-4de2-bb36-3109083a6bc8",
+      "index": 989,
+      "period": 1,
+      "minute": 32,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        88.4,
+        31.2
+      ]
+    },
+    {
+      "id": "e472211a-03f8-4e7c-a5d5-46e9d088d4aa",
+      "index": 1009,
+      "period": 1,
+      "minute": 32,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nicolás Hernán Otamendi",
+      "location": [
+        67.2,
+        35
+      ]
+    },
+    {
+      "id": "08c49b0b-da07-48c9-89c0-f625436ae22e",
+      "index": 1118,
+      "period": 1,
+      "minute": 34,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        80.3,
+        27.7
+      ]
+    },
+    {
+      "id": "41b092f7-6041-4149-9413-60fbe48d6b50",
+      "index": 1163,
+      "period": 1,
+      "minute": 35,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Dayotchanculle Upamecano",
+      "location": [
+        69.1,
+        7
+      ]
+    },
+    {
+      "id": "ed70825d-8a40-470d-8b30-fd315ab5f0a6",
+      "index": 1176,
+      "period": 1,
+      "minute": 35,
+      "second": 20,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        99.3,
+        54.9
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "ef86f4d9-7acd-4ed0-a5ec-9129079e8fbe",
+      "index": 1178,
+      "period": 1,
+      "minute": 35,
+      "second": 22,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        111.8,
+        32.1
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "91bfb020-f76d-49c6-b755-63885c5b0728",
+      "index": 1441,
+      "period": 1,
+      "minute": 43,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Aurélien Djani Tchouaméni",
+      "location": [
+        73.4,
+        17.7
+      ]
+    },
+    {
+      "id": "7fa0a2bb-f05c-4059-b2a6-dfb2500e9317",
+      "index": 1509,
+      "period": 1,
+      "minute": 44,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Aurélien Djani Tchouaméni",
+      "location": [
+        83.7,
+        60.9
+      ]
+    },
+    {
+      "id": "db3daa90-0949-451a-95f7-48513c5d5359",
+      "index": 1553,
+      "period": 1,
+      "minute": 45,
+      "second": 40,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Hugo Lloris",
+      "location": [
+        7.3,
+        61.1
+      ]
+    },
+    {
+      "id": "c93061c1-24a3-4e59-93be-e8821ecb84eb",
+      "index": 1590,
+      "period": 1,
+      "minute": 46,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Kylian Mbappé Lottin",
+      "location": [
+        87.1,
+        6.2
+      ]
+    },
+    {
+      "id": "2dd2bc1d-2b18-4eb7-9787-dc97d3dbc2f9",
+      "index": 1606,
+      "period": 1,
+      "minute": 47,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nahuel Molina Lucero",
+      "location": [
+        67,
+        65.4
+      ]
+    },
+    {
+      "id": "07ccc406-ad57-4ad0-b865-aaedbf417327",
+      "index": 1624,
+      "period": 1,
+      "minute": 48,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Adrien Rabiot",
+      "location": [
+        18.9,
+        8.3
+      ]
+    },
+    {
+      "id": "8a9b363d-883c-40ea-a526-6d0dae9df9d7",
+      "index": 1702,
+      "period": 1,
+      "minute": 50,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Aurélien Djani Tchouaméni",
+      "location": [
+        28.1,
+        73.5
+      ]
+    },
+    {
+      "id": "a1ba9ab5-a2a6-48bf-82b1-41d5c63ed537",
+      "index": 1785,
+      "period": 2,
+      "minute": 45,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        58,
+        27.5
+      ]
+    },
+    {
+      "id": "94a79124-c927-42ef-a006-cb0fe5aac537",
+      "index": 1869,
+      "period": 2,
+      "minute": 48,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Raphaël Varane",
+      "location": [
+        18,
+        26
+      ]
+    },
+    {
+      "id": "7cb4b99c-477d-4ba0-9391-cb2d5a8e5430",
+      "index": 1896,
+      "period": 2,
+      "minute": 48,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        74.9,
+        11.3
+      ]
+    },
+    {
+      "id": "108fa32d-d745-4e79-9a18-c1ed7f76ab8c",
+      "index": 1901,
+      "period": 2,
+      "minute": 48,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Jules Koundé",
+      "location": [
+        43.9,
+        71.8
+      ]
+    },
+    {
+      "id": "d2e57de9-01bc-4d2e-8383-3822d5cb21b7",
+      "index": 1914,
+      "period": 2,
+      "minute": 48,
+      "second": 48,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        106.8,
+        20.9
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "13a4889d-ad08-41be-9125-24c4c7d7879a",
+      "index": 1916,
+      "period": 2,
+      "minute": 48,
+      "second": 49,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        103.3,
+        52.3
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "248f1f4f-b355-4dc5-82b6-5acd3c89dd76",
+      "index": 1940,
+      "period": 2,
+      "minute": 49,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Antoine Griezmann",
+      "location": [
+        69.8,
+        17.9
+      ]
+    },
+    {
+      "id": "2bb042e9-fe09-42eb-80db-6e1e1f5cb51e",
+      "index": 1945,
+      "period": 2,
+      "minute": 49,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Damián Emiliano Martínez",
+      "location": [
+        3.3,
+        52.1
+      ]
+    },
+    {
+      "id": "352e7886-65fc-40f2-8ec2-934867caa382",
+      "index": 2000,
+      "period": 2,
+      "minute": 50,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        56.3,
+        6.8
+      ]
+    },
+    {
+      "id": "bf4fb51b-234d-4b3f-b761-b86ed1a971d6",
+      "index": 2047,
+      "period": 2,
+      "minute": 53,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Marcus Thuram",
+      "location": [
+        8.2,
+        9.3
+      ]
+    },
+    {
+      "id": "b83137bf-5df1-4921-beb2-3da9448ffcca",
+      "index": 2051,
+      "period": 2,
+      "minute": 53,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nicolás Hernán Otamendi",
+      "location": [
+        58,
+        62.2
+      ]
+    },
+    {
+      "id": "c2ff23dd-59e1-4ad3-89fc-8909d6dff7b3",
+      "index": 2086,
+      "period": 2,
+      "minute": 53,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Aurélien Djani Tchouaméni",
+      "location": [
+        77.5,
+        22.2
+      ]
+    },
+    {
+      "id": "253d0088-a91a-4375-90ed-150eac3402e0",
+      "index": 2152,
+      "period": 2,
+      "minute": 56,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Randal Kolo Muani",
+      "location": [
+        100.8,
+        66
+      ]
+    },
+    {
+      "id": "6927b0fd-c43c-43d1-9cd1-b6a0d22b97cd",
+      "index": 2201,
+      "period": 2,
+      "minute": 58,
+      "second": 18,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        84.7,
+        20.3
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "43691970-1dad-4e11-bd29-48f640c55ea1",
+      "index": 2204,
+      "period": 2,
+      "minute": 58,
+      "second": 21,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Julián Álvarez",
+      "location": [
+        110.5,
+        24.9
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "fae50a7c-334c-4b1f-9f33-57cfa86af990",
+      "index": 2231,
+      "period": 2,
+      "minute": 59,
+      "second": 49,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        112.1,
+        22.4
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "9615ffbc-b513-45e6-9ccc-015234483f95",
+      "index": 2235,
+      "period": 2,
+      "minute": 59,
+      "second": 51,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        109.7,
+        46
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "b62c3647-1b26-401f-99e2-62c3eb4ccf03",
+      "index": 2285,
+      "period": 2,
+      "minute": 61,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Marcus Thuram",
+      "location": [
+        73.4,
+        5.7
+      ]
+    },
+    {
+      "id": "e486f960-8f8c-46a5-ace3-5d4e6447628d",
+      "index": 2305,
+      "period": 2,
+      "minute": 62,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        31.9,
+        28.6
+      ]
+    },
+    {
+      "id": "aab701af-7d5f-47a7-a03f-f0b7330d10a9",
+      "index": 2315,
+      "period": 2,
+      "minute": 62,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Jules Koundé",
+      "location": [
+        17,
+        50.6
+      ]
+    },
+    {
+      "id": "bb6429b8-443f-472f-b8f8-81b2a4c736fc",
+      "index": 2360,
+      "period": 2,
+      "minute": 64,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nicolás Alejandro Tagliafico",
+      "location": [
+        57.2,
+        10.4
+      ]
+    },
+    {
+      "id": "c7561be6-27f5-48f0-a44b-dcce35a86478",
+      "index": 2394,
+      "period": 2,
+      "minute": 64,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        90.7,
+        16.9
+      ]
+    },
+    {
+      "id": "40d8fab4-bab8-40b0-b905-ed1a9d36ab22",
+      "index": 2464,
+      "period": 2,
+      "minute": 66,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nicolás Alejandro Tagliafico",
+      "location": [
+        13.7,
+        5.1
+      ]
+    },
+    {
+      "id": "ad04069d-4470-432b-861f-4ebff91043f1",
+      "index": 2468,
+      "period": 2,
+      "minute": 66,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        3,
+        10.9
+      ]
+    },
+    {
+      "id": "1de1485b-b5c7-4f38-850f-dea8b0fb1f66",
+      "index": 2472,
+      "period": 2,
+      "minute": 66,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Aurélien Djani Tchouaméni",
+      "location": [
+        86.5,
+        60.5
+      ]
+    },
+    {
+      "id": "c9b65458-c8c6-48b0-a94d-0b6ca28cfc1b",
+      "index": 2514,
+      "period": 2,
+      "minute": 67,
+      "second": 13,
+      "type": "Pass",
+      "team": "France",
+      "player": "Antoine Griezmann",
+      "location": [
+        120,
+        0.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "9f6285ff-9b32-4a46-a4a0-74c1ca89276c",
+      "index": 2517,
+      "period": 2,
+      "minute": 67,
+      "second": 15,
+      "type": "Shot",
+      "team": "France",
+      "player": "Randal Kolo Muani",
+      "location": [
+        113.4,
+        34.6
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f4c3b3e9-ffe2-415c-90c7-09a1e1012765",
+      "index": 2590,
+      "period": 2,
+      "minute": 69,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Adrien Rabiot",
+      "location": [
+        62.5,
+        13.6
+      ]
+    },
+    {
+      "id": "ec85616d-c95d-4458-94b1-be7cd0268ed4",
+      "index": 2606,
+      "period": 2,
+      "minute": 69,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        15,
+        74.4
+      ]
+    },
+    {
+      "id": "9e2d32d8-49ae-4286-8b36-9c45519de62c",
+      "index": 2641,
+      "period": 2,
+      "minute": 69,
+      "second": 54,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Aurélien Djani Tchouaméni",
+      "location": [
+        81.1,
+        13.2
+      ]
+    },
+    {
+      "id": "74beb1fe-1cf0-498e-9602-a5f438db684d",
+      "index": 2655,
+      "period": 2,
+      "minute": 70,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Kylian Mbappé Lottin",
+      "location": [
+        104.2,
+        19.8
+      ]
+    },
+    {
+      "id": "b2d43671-a3e6-4709-9c0c-646442c1074c",
+      "index": 2658,
+      "period": 2,
+      "minute": 70,
+      "second": 9,
+      "type": "Shot",
+      "team": "France",
+      "player": "Kylian Mbappé Lottin",
+      "location": [
+        102.5,
+        27.9
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "6df8ce2d-052e-42fe-ab80-f3ff68526fd2",
+      "index": 2688,
+      "period": 2,
+      "minute": 71,
+      "second": 29,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        106.8,
+        23.9
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "43b2d123-6945-4a7c-8292-f7792af341f9",
+      "index": 2691,
+      "period": 2,
+      "minute": 71,
+      "second": 31,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        98.9,
+        32.2
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "cdb9b2e8-10c6-4d64-b5b2-67ef3a59f0c8",
+      "index": 2773,
+      "period": 2,
+      "minute": 74,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Kylian Mbappé Lottin",
+      "location": [
+        59.1,
+        7.6
+      ]
+    },
+    {
+      "id": "a03c443c-8b66-49e9-810a-0e43eb7e3dd5",
+      "index": 2778,
+      "period": 2,
+      "minute": 74,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Cristian Gabriel Romero",
+      "location": [
+        29.6,
+        76.3
+      ]
+    },
+    {
+      "id": "debab857-eeed-4aeb-8a7f-2b499a42023c",
+      "index": 2795,
+      "period": 2,
+      "minute": 74,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Kingsley Coman",
+      "location": [
+        33.4,
+        24.5
+      ]
+    },
+    {
+      "id": "b91b164a-93bd-4ac3-a08d-73a4dfb1a191",
+      "index": 2816,
+      "period": 2,
+      "minute": 75,
+      "second": 42,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nicolás Hernán Otamendi",
+      "location": [
+        49.2,
+        20.5
+      ]
+    },
+    {
+      "id": "6ab6c8b5-432a-499a-9617-7d46f849c828",
+      "index": 2820,
+      "period": 2,
+      "minute": 75,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Eduardo Camavinga",
+      "location": [
+        38.8,
+        41.9
+      ]
+    },
+    {
+      "id": "c29c389f-0939-4154-b0b5-256a7224ee53",
+      "index": 2866,
+      "period": 2,
+      "minute": 77,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Hugo Lloris",
+      "location": [
+        2.2,
+        38
+      ]
+    },
+    {
+      "id": "8dc5ebdd-6e9a-4ea1-93b9-84feb6e4bf8b",
+      "index": 2869,
+      "period": 2,
+      "minute": 77,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        47.1,
+        22.8
+      ]
+    },
+    {
+      "id": "5ad522ff-fb73-4463-bc48-a23d212b80e5",
+      "index": 2927,
+      "period": 2,
+      "minute": 78,
+      "second": 13,
+      "type": "Foul Won",
+      "team": "France",
+      "player": "Randal Kolo Muani",
+      "location": [
+        107.4,
+        23.2
+      ],
+      "foul_won": {
+        "penalty": true
+      }
+    },
+    {
+      "id": "6cc0d5e2-6999-4006-8a7a-34de4cbe3ffd",
+      "index": 2928,
+      "period": 2,
+      "minute": 79,
+      "second": 24,
+      "type": "Shot",
+      "team": "France",
+      "player": "Kylian Mbappé Lottin",
+      "location": [
+        108,
+        40
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "e157f15d-5984-4bf5-bac4-80fcb006b250",
+      "index": 2970,
+      "period": 2,
+      "minute": 80,
+      "second": 40,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        46.5,
+        47.2
+      ]
+    },
+    {
+      "id": "7b1441f1-4911-44d7-ac4b-f3f8f11daa76",
+      "index": 2985,
+      "period": 2,
+      "minute": 80,
+      "second": 57,
+      "type": "Pass",
+      "team": "France",
+      "player": "Marcus Thuram",
+      "location": [
+        94.8,
+        36.3
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "03fb2918-e1e7-4ec8-89ff-7bc5531e853d",
+      "index": 2987,
+      "period": 2,
+      "minute": 80,
+      "second": 59,
+      "type": "Shot",
+      "team": "France",
+      "player": "Kylian Mbappé Lottin",
+      "location": [
+        104.8,
+        30.1
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "6ff70f7d-1758-4b58-868d-66c08167fb4a",
+      "index": 3028,
+      "period": 2,
+      "minute": 83,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Julián Álvarez",
+      "location": [
+        100.6,
+        19.2
+      ]
+    },
+    {
+      "id": "79c08284-37ea-4a68-8d22-4c6a7de3f863",
+      "index": 3034,
+      "period": 2,
+      "minute": 83,
+      "second": 21,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Marcos Javier Acuña",
+      "location": [
+        107.8,
+        14.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "fe277079-395a-4ff3-bb29-e99d93014014",
+      "index": 3037,
+      "period": 2,
+      "minute": 83,
+      "second": 23,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        92.2,
+        35.9
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "174c5935-ebc4-4c19-9dcf-0029ca57b331",
+      "index": 3045,
+      "period": 2,
+      "minute": 83,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nicolás Hernán Otamendi",
+      "location": [
+        73.4,
+        47.9
+      ]
+    },
+    {
+      "id": "da999739-804b-49bb-9ed9-cb441af8afdf",
+      "index": 3054,
+      "period": 2,
+      "minute": 83,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Adrien Rabiot",
+      "location": [
+        35.6,
+        19
+      ]
+    },
+    {
+      "id": "6e252daf-a64f-4a75-a41f-2409e4118396",
+      "index": 3059,
+      "period": 2,
+      "minute": 83,
+      "second": 40,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Marcus Thuram",
+      "location": [
+        48.8,
+        4.6
+      ]
+    },
+    {
+      "id": "dafead35-247b-4c50-9a30-4672cee79138",
+      "index": 3077,
+      "period": 2,
+      "minute": 83,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Marcus Thuram",
+      "location": [
+        61.9,
+        13.8
+      ]
+    },
+    {
+      "id": "d734fd9b-c7ab-41f7-bf6e-c66dd3ede180",
+      "index": 3108,
+      "period": 2,
+      "minute": 85,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Aurélien Djani Tchouaméni",
+      "location": [
+        63.8,
+        19.2
+      ]
+    },
+    {
+      "id": "15a956b2-2122-4808-b905-23fe5621d45d",
+      "index": 3131,
+      "period": 2,
+      "minute": 85,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Jules Koundé",
+      "location": [
+        43.7,
+        69
+      ]
+    },
+    {
+      "id": "e89d3470-3932-4b92-b522-d3e8da6659ee",
+      "index": 3233,
+      "period": 2,
+      "minute": 92,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        20.1,
+        29.9
+      ]
+    },
+    {
+      "id": "70e35d26-931a-4887-b898-f11eaf352187",
+      "index": 3254,
+      "period": 2,
+      "minute": 92,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Kylian Mbappé Lottin",
+      "location": [
+        76.4,
+        7
+      ]
+    },
+    {
+      "id": "5dbcde3d-ba75-483d-a65f-72d2b99ff713",
+      "index": 3257,
+      "period": 2,
+      "minute": 92,
+      "second": 57,
+      "type": "Shot",
+      "team": "France",
+      "player": "Kylian Mbappé Lottin",
+      "location": [
+        95.9,
+        32.2
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "3a07f6fb-7e16-4c19-b096-941cc2d01968",
+      "index": 3262,
+      "period": 2,
+      "minute": 93,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Aurélien Djani Tchouaméni",
+      "location": [
+        92,
+        32.2
+      ]
+    },
+    {
+      "id": "a67188a4-cc46-490a-a507-f0578fe89668",
+      "index": 3281,
+      "period": 2,
+      "minute": 93,
+      "second": 44,
+      "type": "Pass",
+      "team": "France",
+      "player": "Eduardo Camavinga",
+      "location": [
+        113.6,
+        19.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "8d2a6599-cc25-41a2-acde-41d10194b5bd",
+      "index": 3283,
+      "period": 2,
+      "minute": 93,
+      "second": 45,
+      "type": "Shot",
+      "team": "France",
+      "player": "Adrien Rabiot",
+      "location": [
+        108.9,
+        28.5
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "0f5c6756-1996-410c-acd0-b7e80d5135a9",
+      "index": 3323,
+      "period": 2,
+      "minute": 95,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Kylian Mbappé Lottin",
+      "location": [
+        108.7,
+        17
+      ]
+    },
+    {
+      "id": "c1ae9be1-bea2-4d7d-921c-001a24c58628",
+      "index": 3334,
+      "period": 2,
+      "minute": 95,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nahuel Molina Lucero",
+      "location": [
+        18.7,
+        69.5
+      ]
+    },
+    {
+      "id": "482b934b-9cec-4ebc-a750-67348cf50d41",
+      "index": 3386,
+      "period": 2,
+      "minute": 96,
+      "second": 34,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        89.5,
+        31
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "867b8791-49c0-4d98-a976-c0b4cfc1cb5a",
+      "index": 3389,
+      "period": 2,
+      "minute": 96,
+      "second": 37,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        96.2,
+        40.9
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "54de75e0-2c14-453e-9afb-bc20be010a81",
+      "index": 3393,
+      "period": 2,
+      "minute": 97,
+      "second": 31,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Kingsley Coman",
+      "location": [
+        21.9,
+        49.1
+      ]
+    },
+    {
+      "id": "4e19329c-8fc8-497e-b9f3-7a5fb5fd7a29",
+      "index": 3525,
+      "period": 3,
+      "minute": 92,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        98.9,
+        25.2
+      ]
+    },
+    {
+      "id": "d8c05bb0-ddb1-4ff2-9dbf-ba17b00a5359",
+      "index": 3526,
+      "period": 3,
+      "minute": 92,
+      "second": 5,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        98.2,
+        23.8
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "09230de5-ddb8-4223-904f-312e6d2c94cd",
+      "index": 3583,
+      "period": 3,
+      "minute": 93,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Dayotchanculle Upamecano",
+      "location": [
+        53.1,
+        25.4
+      ]
+    },
+    {
+      "id": "756ec4dd-76ad-4f54-ac1d-38e57bd1dfdc",
+      "index": 3603,
+      "period": 3,
+      "minute": 94,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Cristian Gabriel Romero",
+      "location": [
+        24,
+        32.4
+      ]
+    },
+    {
+      "id": "bc32525b-db26-4de0-8a8a-d2e1daa4b6dd",
+      "index": 3610,
+      "period": 3,
+      "minute": 94,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Randal Kolo Muani",
+      "location": [
+        80,
+        23.1
+      ]
+    },
+    {
+      "id": "293d87b4-0fcd-4dc4-b331-6d51071c8e60",
+      "index": 3723,
+      "period": 3,
+      "minute": 97,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Kingsley Coman",
+      "location": [
+        79.6,
+        74.6
+      ]
+    },
+    {
+      "id": "36a1e326-92de-4d53-a3e2-f826b5102646",
+      "index": 3727,
+      "period": 3,
+      "minute": 97,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Damián Emiliano Martínez",
+      "location": [
+        4.3,
+        30.5
+      ]
+    },
+    {
+      "id": "d916bebd-a049-4a22-a77c-5d0e9a7c0208",
+      "index": 3746,
+      "period": 3,
+      "minute": 98,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Randal Kolo Muani",
+      "location": [
+        98.2,
+        8.9
+      ]
+    },
+    {
+      "id": "4646a879-196e-4628-8e67-899ae4079f45",
+      "index": 3766,
+      "period": 3,
+      "minute": 98,
+      "second": 42,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Eduardo Camavinga",
+      "location": [
+        54.6,
+        4.4
+      ]
+    },
+    {
+      "id": "c0aca3a2-0b28-46db-9cfb-35b842bdb383",
+      "index": 3790,
+      "period": 3,
+      "minute": 99,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Gonzalo Ariel Montiel",
+      "location": [
+        8.4,
+        72.7
+      ]
+    },
+    {
+      "id": "065b3deb-2e86-474f-9189-ad01bfe0b44a",
+      "index": 3800,
+      "period": 3,
+      "minute": 99,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Youssouf Fofana",
+      "location": [
+        87.7,
+        41.7
+      ]
+    },
+    {
+      "id": "db8267ad-256a-450d-997f-382a4d545634",
+      "index": 3802,
+      "period": 3,
+      "minute": 99,
+      "second": 54,
+      "type": "Shot",
+      "team": "France",
+      "player": "Youssouf Fofana",
+      "location": [
+        89.8,
+        39.9
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f861c0ff-d714-453e-99cb-d1f753d3b05b",
+      "index": 3820,
+      "period": 3,
+      "minute": 101,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Marcus Thuram",
+      "location": [
+        48.6,
+        9.6
+      ]
+    },
+    {
+      "id": "88133e33-747d-4c84-b691-88594e73ed56",
+      "index": 3829,
+      "period": 3,
+      "minute": 101,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        38.6,
+        61.5
+      ]
+    },
+    {
+      "id": "c4530742-e28a-45ad-91ce-f618f780a5a1",
+      "index": 3853,
+      "period": 3,
+      "minute": 102,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Youssouf Fofana",
+      "location": [
+        55,
+        13.6
+      ]
+    },
+    {
+      "id": "4e6f7152-55da-4cb7-80be-b7f3291ecc71",
+      "index": 3858,
+      "period": 3,
+      "minute": 102,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Damián Emiliano Martínez",
+      "location": [
+        14.2,
+        35.2
+      ]
+    },
+    {
+      "id": "3b9e2fdb-7e8d-4f4c-860a-b683bd38c4e8",
+      "index": 3873,
+      "period": 3,
+      "minute": 103,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        78.3,
+        21.5
+      ]
+    },
+    {
+      "id": "4110d7e1-c550-49c4-a07f-80df35b94088",
+      "index": 3927,
+      "period": 3,
+      "minute": 104,
+      "second": 26,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        103.4,
+        37.6
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "d3ba40fa-09d6-4488-b17d-672aaa2928d7",
+      "index": 3930,
+      "period": 3,
+      "minute": 104,
+      "second": 28,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lautaro Javier Martínez",
+      "location": [
+        108.8,
+        45.3
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "dde10945-cac8-4e3e-a858-5aeb78cd1554",
+      "index": 3933,
+      "period": 3,
+      "minute": 104,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Gonzalo Ariel Montiel",
+      "location": [
+        99.3,
+        53
+      ]
+    },
+    {
+      "id": "a1654330-3747-4a25-b244-26ba2884c91c",
+      "index": 3934,
+      "period": 3,
+      "minute": 104,
+      "second": 30,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Gonzalo Ariel Montiel",
+      "location": [
+        96.3,
+        49.4
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "84eb35f8-60c4-4fbf-bfb1-bafe811664c6",
+      "index": 3964,
+      "period": 3,
+      "minute": 105,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Marcos Javier Acuña",
+      "location": [
+        67.2,
+        3.8
+      ]
+    },
+    {
+      "id": "3607594a-faed-4ae3-8b21-8beb96f52e86",
+      "index": 3966,
+      "period": 3,
+      "minute": 105,
+      "second": 38,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Marcos Javier Acuña",
+      "location": [
+        71.5,
+        8.3
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "5d7d4f2f-62da-4de9-90e3-3660ba17c4f3",
+      "index": 3970,
+      "period": 3,
+      "minute": 105,
+      "second": 41,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lautaro Javier Martínez",
+      "location": [
+        105.1,
+        33.5
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "ac864605-aae0-4c24-b0a9-dc3f1e8e1c99",
+      "index": 4004,
+      "period": 4,
+      "minute": 105,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nicolás Alejandro Tagliafico",
+      "location": [
+        102.5,
+        5.1
+      ]
+    },
+    {
+      "id": "9757031a-9738-49c1-b305-c84a78b06992",
+      "index": 4040,
+      "period": 4,
+      "minute": 106,
+      "second": 52,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Gonzalo Ariel Montiel",
+      "location": [
+        111.7,
+        80
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "8bb8c7b5-9c14-4dfa-9279-0548ee8076db",
+      "index": 4042,
+      "period": 4,
+      "minute": 106,
+      "second": 55,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        103.6,
+        55.8
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "468e755e-fd87-4d95-a529-fdad284c33e0",
+      "index": 4051,
+      "period": 4,
+      "minute": 107,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Leandro Daniel Paredes",
+      "location": [
+        42.8,
+        43.4
+      ]
+    },
+    {
+      "id": "25ac6afd-9d87-4d4a-a79d-13d413233505",
+      "index": 4064,
+      "period": 4,
+      "minute": 107,
+      "second": 54,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        95.4,
+        49.4
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "40cbfd91-87d9-4df8-a575-533b5c26767f",
+      "index": 4067,
+      "period": 4,
+      "minute": 107,
+      "second": 57,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lautaro Javier Martínez",
+      "location": [
+        114.4,
+        52
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "76da9889-5445-4515-9144-d3f705fe6dcb",
+      "index": 4069,
+      "period": 4,
+      "minute": 107,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        116.8,
+        44
+      ]
+    },
+    {
+      "id": "54b889ec-6026-49ea-a913-e883dbe6e301",
+      "index": 4070,
+      "period": 4,
+      "minute": 107,
+      "second": 58,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        116.6,
+        43
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d7e4a49c-22d2-48a2-90ea-7899d605d568",
+      "index": 4136,
+      "period": 4,
+      "minute": 111,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Raphaël Varane",
+      "location": [
+        26.6,
+        60.9
+      ]
+    },
+    {
+      "id": "521b763a-fb41-4b40-9587-06954224e3ed",
+      "index": 4172,
+      "period": 4,
+      "minute": 114,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Youssouf Fofana",
+      "location": [
+        86,
+        47.8
+      ]
+    },
+    {
+      "id": "4dae2518-f467-4cef-a575-cd480fac746c",
+      "index": 4197,
+      "period": 4,
+      "minute": 115,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Kylian Mbappé Lottin",
+      "location": [
+        103.8,
+        25.6
+      ]
+    },
+    {
+      "id": "08f2f203-cdc9-4146-99b6-818c5c32bf70",
+      "index": 4199,
+      "period": 4,
+      "minute": 115,
+      "second": 38,
+      "type": "Shot",
+      "team": "France",
+      "player": "Kylian Mbappé Lottin",
+      "location": [
+        101.4,
+        26.6
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d9b92dbd-4fea-4f48-b2fb-d7222eab2dbd",
+      "index": 4203,
+      "period": 4,
+      "minute": 117,
+      "second": 5,
+      "type": "Shot",
+      "team": "France",
+      "player": "Kylian Mbappé Lottin",
+      "location": [
+        108,
+        40
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "8162f512-3c8a-44ab-a889-03238e9c16fa",
+      "index": 4223,
+      "period": 4,
+      "minute": 118,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Leandro Daniel Paredes",
+      "location": [
+        73,
+        53.4
+      ]
+    },
+    {
+      "id": "b61858f4-1456-477f-8f1f-c20297b9bf6d",
+      "index": 4228,
+      "period": 4,
+      "minute": 118,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Eduardo Camavinga",
+      "location": [
+        38.1,
+        6.1
+      ]
+    },
+    {
+      "id": "e29462d6-0cbd-4a1d-ba36-b43c488e9fad",
+      "index": 4242,
+      "period": 4,
+      "minute": 118,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Lautaro Javier Martínez",
+      "location": [
+        87.7,
+        33.5
+      ]
+    },
+    {
+      "id": "af882e89-9da4-4b18-bc0f-56a5336ec900",
+      "index": 4313,
+      "period": 4,
+      "minute": 121,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Marcos Javier Acuña",
+      "location": [
+        55.7,
+        5.7
+      ]
+    },
+    {
+      "id": "8c906542-f417-4498-8380-aaebd72b1092",
+      "index": 4333,
+      "period": 4,
+      "minute": 122,
+      "second": 40,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Ibrahima Konaté",
+      "location": [
+        61.7,
+        43.4
+      ]
+    },
+    {
+      "id": "d56cde7d-5b7b-45d7-9a28-49b6d4dcfc69",
+      "index": 4335,
+      "period": 4,
+      "minute": 122,
+      "second": 41,
+      "type": "Pass",
+      "team": "France",
+      "player": "Ibrahima Konaté",
+      "location": [
+        62.7,
+        42.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "959edead-09fb-40b0-b6a3-72e73bd30d5a",
+      "index": 4337,
+      "period": 4,
+      "minute": 122,
+      "second": 44,
+      "type": "Shot",
+      "team": "France",
+      "player": "Randal Kolo Muani",
+      "location": [
+        103.7,
+        45.1
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "1d83faaa-e707-4bef-9f88-e131da4595ec",
+      "index": 4339,
+      "period": 4,
+      "minute": 122,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nicolás Hernán Otamendi",
+      "location": [
+        22.7,
+        39.7
+      ]
+    },
+    {
+      "id": "fc143837-ac4c-4606-84d0-8d4d2c4c1f22",
+      "index": 4355,
+      "period": 4,
+      "minute": 122,
+      "second": 58,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Gonzalo Ariel Montiel",
+      "location": [
+        109.3,
+        61.6
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "449f2702-ad18-4bc8-a9ef-59fb1dc1a707",
+      "index": 4357,
+      "period": 4,
+      "minute": 122,
+      "second": 59,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lautaro Javier Martínez",
+      "location": [
+        110.8,
+        41.6
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "dd6151be-5128-4f0c-88bd-3fd07d12d7b8",
+      "index": 4366,
+      "period": 4,
+      "minute": 123,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "France",
+      "player": "Aurélien Djani Tchouaméni",
+      "location": [
+        61,
+        55.8
+      ]
+    },
+    {
+      "id": "d0f76056-0d67-4aae-b44a-83bef0b1cf27",
+      "index": 4389,
+      "period": 5,
+      "minute": 120,
+      "second": 13,
+      "type": "Shot",
+      "team": "France",
+      "player": "Kylian Mbappé Lottin",
+      "location": [
+        108.1,
+        40.1
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "2a15edb5-2a54-41d5-afe9-87e447389b18",
+      "index": 4391,
+      "period": 5,
+      "minute": 121,
+      "second": 2,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        108.1,
+        40.1
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "97439112-dfb5-4bd5-9967-554095296096",
+      "index": 4393,
+      "period": 5,
+      "minute": 121,
+      "second": 42,
+      "type": "Shot",
+      "team": "France",
+      "player": "Kingsley Coman",
+      "location": [
+        108.1,
+        40.1
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "50dcde1a-faa3-4eec-a0cd-3f09a7cf763a",
+      "index": 4395,
+      "period": 5,
+      "minute": 122,
+      "second": 27,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Paulo Bruno Exequiel Dybala",
+      "location": [
+        108.1,
+        40.1
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "54e27ba9-b9ae-44a3-ac8d-fc91e76a1b91",
+      "index": 4397,
+      "period": 5,
+      "minute": 123,
+      "second": 29,
+      "type": "Shot",
+      "team": "France",
+      "player": "Aurélien Djani Tchouaméni",
+      "location": [
+        108.1,
+        40.1
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "bcc6d4ae-f71c-4566-bf2d-c12f910eb526",
+      "index": 4399,
+      "period": 5,
+      "minute": 124,
+      "second": 16,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Leandro Daniel Paredes",
+      "location": [
+        108.1,
+        40.1
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "59ebe83e-616a-4288-89fd-a0246b53d48f",
+      "index": 4402,
+      "period": 5,
+      "minute": 125,
+      "second": 9,
+      "type": "Shot",
+      "team": "France",
+      "player": "Randal Kolo Muani",
+      "location": [
+        108.1,
+        40.1
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "66eaf262-999f-4953-a924-f1b596de4dbf",
+      "index": 4404,
+      "period": 5,
+      "minute": 125,
+      "second": 57,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Gonzalo Ariel Montiel",
+      "location": [
+        108.1,
+        40.1
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    }
+  ]
+}
