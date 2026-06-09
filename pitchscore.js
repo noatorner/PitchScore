@@ -427,10 +427,42 @@ Object.assign(window, { PitchField, PitchLegend });
 
 // ===== PAGE INICIO =====
 function PageInicio({ onNav }) {
-  const [selectedZones,setSelectedZones]=React.useState(ME.reservations.map(r=>r.zoneId));
+  const [selectedZones,setSelectedZones]=React.useState([]);
   const [view,setView]=React.useState("mapa");
   const [focusZone,setFocusZone]=React.useState("penspot_izq");
   const featured=FIXTURE[0],focused=ZONES.find(z=>z.id===focusZone);
+
+  // Load saved reservations for the active match from Supabase on mount
+  React.useEffect(()=>{
+    const db=window.supabaseClient;
+    if(!db){setSelectedZones(ME.reservations.map(r=>r.zoneId));return;}
+    (async()=>{
+      try{
+        const{data:{user}}=await db.auth.getUser();
+        if(!user){setSelectedZones(ME.reservations.map(r=>r.zoneId));return;}
+        const{data}=await db.from('reservations').select('zone_id')
+          .eq('user_id',user.id).eq('match_id',FIXTURE[0].id);
+        setSelectedZones(data&&data.length?data.map(r=>r.zone_id):[]);
+      }catch(e){setSelectedZones(ME.reservations.map(r=>r.zoneId));}
+    })();
+  },[]);
+
+  async function confirmReservations(){
+    const db=window.supabaseClient;
+    if(!db||!selectedZones.length)return false;
+    try{
+      const{data:{user}}=await db.auth.getUser();
+      if(!user)return false;
+      const match_id=FIXTURE[0].id;
+      const rows=selectedZones.map(zone_id=>{
+        const z=ZONES.find(z=>z.id===zone_id);
+        return{user_id:user.id,match_id,zone_id,price:z?z.price:0};
+      });
+      const{error}=await db.from('reservations')
+        .upsert(rows,{onConflict:'user_id,match_id,zone_id'});
+      return!error;
+    }catch(e){return false;}
+  }
   function toggleZone(z) {
     if(z.taken>=z.slots) return;
     setFocusZone(z.id);
@@ -469,7 +501,7 @@ function PageInicio({ onNav }) {
         <aside className="ps-col-right">
           <BudgetCard selectedCount={selectedZones.length}/>
           <ZoneDetail zone={focused} selected={selectedZones.includes(focusZone)} onAdd={()=>toggleZone(focused)} totalCost={totalCost}/>
-          <CartCard selectedIds={selectedZones} onRemove={(id)=>setSelectedZones(prev=>prev.filter(x=>x!==id))} onClear={()=>setSelectedZones([])}/>
+          <CartCard selectedIds={selectedZones} onRemove={(id)=>setSelectedZones(prev=>prev.filter(x=>x!==id))} onClear={()=>setSelectedZones([])} onConfirm={confirmReservations}/>
         </aside>
       </div>
       <LiveMatch match={featured}/>
@@ -585,9 +617,21 @@ function ZoneDetail({ zone, selected, onAdd, totalCost }) {
   );
 }
 
-function CartCard({ selectedIds, onRemove, onClear }) {
+function CartCard({ selectedIds, onRemove, onClear, onConfirm }) {
+  const [saveState,setSaveState]=React.useState("idle"); // idle | saving | saved | error
   const items=selectedIds.map(id=>ZONES.find(z=>z.id===id)).filter(Boolean);
   const total=items.reduce((s,z)=>s+z.price,0);
+
+  async function handleConfirm(){
+    if(!items.length)return;
+    setSaveState("saving");
+    const ok=await onConfirm();
+    setSaveState(ok?"saved":"error");
+    if(ok)setTimeout(()=>setSaveState("idle"),3000);
+  }
+
+  const btnLabel=saveState==="saving"?"GUARDANDO…":saveState==="saved"?"✓ RESERVAS GUARDADAS":saveState==="error"?"ERROR — REINTENTAR":"CONFIRMAR RESERVAS";
+
   return (
     <div className="ps-card ps-cart">
       <div className="ps-cart-head"><span>MIS ZONAS ({items.length}/{ME.zonesMax})</span><button className="ps-clear" onClick={onClear}>LIMPIAR</button></div>
@@ -596,7 +640,11 @@ function CartCard({ selectedIds, onRemove, onClear }) {
         {items.length===0&&<div className="ps-empty">Aún no has seleccionado zonas.</div>}
       </div>
       <div className="ps-cart-total"><span>TOTAL</span><span className="ps-cart-total-num">{total} PUNTOS</span></div>
-      <button className="ps-btn ps-btn-dark">CONFIRMAR RESERVAS</button>
+      <button
+        className={"ps-btn "+(saveState==="saved"?"ps-btn-primary":saveState==="error"?"ps-btn-ghost":"ps-btn-dark")}
+        onClick={handleConfirm}
+        disabled={saveState==="saving"||!items.length}
+      >{btnLabel}</button>
     </div>
   );
 }
