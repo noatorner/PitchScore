@@ -148,7 +148,7 @@ const MATCH_EVENTS = [
 const ME = {
   name: (window.__KN_USER && window.__KN_USER.name) || "JuanP",
   handle:"juanp", country:"MEX", level:"Rookie", rank:47,
-  totalPoints:4287, budget:50, zonesReserved:3, zonesMax:5,
+  totalPoints:4287, budget:250, zonesReserved:3, zonesMax:5,
   reservations:[
     { zoneId:"penspot_izq",  name:"Punto de penalti izquierdo", price:175 },
     { zoneId:"med_2",        name:"Mediocampo · sector 3",       price:87 },
