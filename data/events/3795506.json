@@ -1,0 +1,2058 @@
+{
+  "meta": {
+    "matchId": 3795506,
+    "teams": [
+      "Italy",
+      "England"
+    ],
+    "totalEvents": 4796,
+    "keptEvents": 132,
+    "fetchedAt": "2026-06-09T22:25:15.389Z"
+  },
+  "events": [
+    {
+      "id": "782da551-4871-4a1e-91e3-507b36cee275",
+      "index": 69,
+      "period": 1,
+      "minute": 1,
+      "second": 55,
+      "type": "Pass",
+      "team": "England",
+      "player": "Kieran Trippier",
+      "location": [
+        101.7,
+        62.4
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "6605af47-8d44-4f52-9b8d-65598a9c0ef1",
+      "index": 71,
+      "period": 1,
+      "minute": 1,
+      "second": 57,
+      "type": "Shot",
+      "team": "England",
+      "player": "Luke Shaw",
+      "location": [
+        113.1,
+        30.8
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "e688bdb4-4f77-47c3-ada6-89b02aa2294a",
+      "index": 129,
+      "period": 1,
+      "minute": 4,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Harry Kane",
+      "location": [
+        106,
+        3.5
+      ]
+    },
+    {
+      "id": "05abc9f5-6f38-4f7e-a99e-5d51e976d91a",
+      "index": 204,
+      "period": 1,
+      "minute": 6,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Federico Chiesa",
+      "location": [
+        84.1,
+        54.2
+      ]
+    },
+    {
+      "id": "43cfe556-8ddb-4555-9b06-916fdc87cec0",
+      "index": 209,
+      "period": 1,
+      "minute": 7,
+      "second": 4,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Lorenzo Insigne",
+      "location": [
+        95,
+        54.7
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "7101e253-aeac-47f3-87b9-369dc72da2db",
+      "index": 366,
+      "period": 1,
+      "minute": 12,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "John Stones",
+      "location": [
+        52.6,
+        42.6
+      ]
+    },
+    {
+      "id": "f248f7bc-7bf0-4dc1-81bb-fc9428cd658a",
+      "index": 421,
+      "period": 1,
+      "minute": 14,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Gianluigi Donnarumma",
+      "location": [
+        3.3,
+        40
+      ]
+    },
+    {
+      "id": "cc181cca-2cd5-48c4-9bde-2548fed75ea9",
+      "index": 469,
+      "period": 1,
+      "minute": 15,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Gianluigi Donnarumma",
+      "location": [
+        24.4,
+        12
+      ]
+    },
+    {
+      "id": "b33cc1d7-f2df-4876-9155-40bd01db683c",
+      "index": 746,
+      "period": 1,
+      "minute": 24,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Raheem Sterling",
+      "location": [
+        65.6,
+        44.5
+      ]
+    },
+    {
+      "id": "bda39a92-af84-4c43-bfde-eb61e2445a90",
+      "index": 762,
+      "period": 1,
+      "minute": 24,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Lorenzo Insigne",
+      "location": [
+        55.9,
+        4.4
+      ]
+    },
+    {
+      "id": "49c5ad3b-0d6c-4fd5-89c5-fa0026ff59fc",
+      "index": 817,
+      "period": 1,
+      "minute": 26,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Harry Maguire",
+      "location": [
+        45.6,
+        27.5
+      ]
+    },
+    {
+      "id": "4b52dd21-cd2f-4a9e-90a8-37a4c70542ff",
+      "index": 823,
+      "period": 1,
+      "minute": 26,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Nicolò Barella",
+      "location": [
+        58,
+        32.5
+      ]
+    },
+    {
+      "id": "ba2f9281-667f-4e18-9759-546a26e361c2",
+      "index": 876,
+      "period": 1,
+      "minute": 27,
+      "second": 11,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Marco Verratti",
+      "location": [
+        76.4,
+        40.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "86fd78d6-b940-4466-b784-63c027a314da",
+      "index": 879,
+      "period": 1,
+      "minute": 27,
+      "second": 13,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Lorenzo Insigne",
+      "location": [
+        88.1,
+        39.5
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "4bd4488c-7915-4caf-8413-b9169a69111c",
+      "index": 890,
+      "period": 1,
+      "minute": 27,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Harry Kane",
+      "location": [
+        44.4,
+        73
+      ]
+    },
+    {
+      "id": "5b380b66-4d88-41fe-8add-5531bbb1ecc0",
+      "index": 894,
+      "period": 1,
+      "minute": 27,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Kyle Walker",
+      "location": [
+        26.5,
+        63.3
+      ]
+    },
+    {
+      "id": "99b5f472-b621-4f54-a2a2-7b3cd77ece3a",
+      "index": 907,
+      "period": 1,
+      "minute": 27,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Giovanni Di Lorenzo",
+      "location": [
+        25.7,
+        74.9
+      ]
+    },
+    {
+      "id": "6992d079-d14d-4844-8a1d-58829cbcfbc0",
+      "index": 961,
+      "period": 1,
+      "minute": 28,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Jorge Luiz Frello Filho",
+      "location": [
+        27.2,
+        60
+      ]
+    },
+    {
+      "id": "38462268-577e-4b87-a002-bb3bab743ebb",
+      "index": 1027,
+      "period": 1,
+      "minute": 30,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Raheem Sterling",
+      "location": [
+        57.3,
+        61.1
+      ]
+    },
+    {
+      "id": "46e91e0d-2e71-4716-aac9-65183293fdb5",
+      "index": 1102,
+      "period": 1,
+      "minute": 31,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Marco Verratti",
+      "location": [
+        104.3,
+        22.4
+      ]
+    },
+    {
+      "id": "2398cf57-ebf0-4bca-90ff-cac901fc9a91",
+      "index": 1185,
+      "period": 1,
+      "minute": 32,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Kyle Walker",
+      "location": [
+        18.3,
+        66.2
+      ]
+    },
+    {
+      "id": "11eabe23-9711-42d3-bd51-ed399321bde7",
+      "index": 1239,
+      "period": 1,
+      "minute": 34,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Giorgio Chiellini",
+      "location": [
+        8.9,
+        8.7
+      ]
+    },
+    {
+      "id": "e9daa0c7-17b2-4003-bf22-bedd804266d6",
+      "index": 1281,
+      "period": 1,
+      "minute": 34,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Federico Chiesa",
+      "location": [
+        71.1,
+        56.6
+      ]
+    },
+    {
+      "id": "25b8b5ce-f785-40cf-944c-21927bde4792",
+      "index": 1287,
+      "period": 1,
+      "minute": 34,
+      "second": 39,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Federico Chiesa",
+      "location": [
+        95.9,
+        46.8
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "26d58b00-574c-486f-a57d-7dcc7fc15fc3",
+      "index": 1315,
+      "period": 1,
+      "minute": 35,
+      "second": 42,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Luke Shaw",
+      "location": [
+        112.9,
+        10.2
+      ]
+    },
+    {
+      "id": "b28a7a27-d5c9-4819-8217-560f4590c472",
+      "index": 1372,
+      "period": 1,
+      "minute": 37,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Harry Kane",
+      "location": [
+        80.9,
+        13.8
+      ]
+    },
+    {
+      "id": "bcb70634-e21a-4336-913e-ec5e9293e4cc",
+      "index": 1408,
+      "period": 1,
+      "minute": 38,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Lorenzo Insigne",
+      "location": [
+        53.8,
+        21.6
+      ]
+    },
+    {
+      "id": "2310b464-f43c-40e9-a405-e6923dfea6fc",
+      "index": 1447,
+      "period": 1,
+      "minute": 39,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Kalvin Phillips",
+      "location": [
+        13.2,
+        54
+      ]
+    },
+    {
+      "id": "5d8f23e1-f603-4d4d-94ef-e621f042ae57",
+      "index": 1491,
+      "period": 1,
+      "minute": 40,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Ciro Immobile",
+      "location": [
+        89.7,
+        61.7
+      ]
+    },
+    {
+      "id": "f0e1cc18-d060-4469-966f-bced64244329",
+      "index": 1557,
+      "period": 1,
+      "minute": 42,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Marco Verratti",
+      "location": [
+        57.6,
+        33
+      ]
+    },
+    {
+      "id": "91741db6-120f-487d-b685-cb1458745127",
+      "index": 1564,
+      "period": 1,
+      "minute": 42,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "John Stones",
+      "location": [
+        42.7,
+        49
+      ]
+    },
+    {
+      "id": "663a55e9-1dc8-441a-887f-c08e3d2662fc",
+      "index": 1581,
+      "period": 1,
+      "minute": 43,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Gianluigi Donnarumma",
+      "location": [
+        3.3,
+        29.4
+      ]
+    },
+    {
+      "id": "a916a585-1f66-4e09-a5cd-3dd7760ddef8",
+      "index": 1709,
+      "period": 1,
+      "minute": 45,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Lorenzo Insigne",
+      "location": [
+        92.3,
+        10.7
+      ]
+    },
+    {
+      "id": "8eaf1e40-6bce-4caf-a8e3-ac332453e5f4",
+      "index": 1719,
+      "period": 1,
+      "minute": 45,
+      "second": 53,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Giovanni Di Lorenzo",
+      "location": [
+        100.7,
+        71.6
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "89226b23-db53-4e2e-865e-4dda2d1dbaa9",
+      "index": 1721,
+      "period": 1,
+      "minute": 45,
+      "second": 54,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Ciro Immobile",
+      "location": [
+        106.4,
+        41.6
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "7f1ed1c0-174c-4229-9130-412661251f42",
+      "index": 1724,
+      "period": 1,
+      "minute": 45,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Jorge Luiz Frello Filho",
+      "location": [
+        95.3,
+        50.8
+      ]
+    },
+    {
+      "id": "5c37548f-87b5-458e-bab2-00bf83f9f12b",
+      "index": 1726,
+      "period": 1,
+      "minute": 45,
+      "second": 57,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Jorge Luiz Frello Filho",
+      "location": [
+        95.3,
+        50.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "40b40285-f562-46ab-ba45-100aa4094c71",
+      "index": 1731,
+      "period": 1,
+      "minute": 45,
+      "second": 58,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Marco Verratti",
+      "location": [
+        100.7,
+        39.4
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "63685966-6317-4c1a-8896-cc9297fc2916",
+      "index": 1737,
+      "period": 1,
+      "minute": 46,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Declan Rice",
+      "location": [
+        68.1,
+        7.3
+      ]
+    },
+    {
+      "id": "7b4bf551-8b88-41be-bcbc-9395f3d288df",
+      "index": 1770,
+      "period": 1,
+      "minute": 46,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Harry Kane",
+      "location": [
+        93.2,
+        14.6
+      ]
+    },
+    {
+      "id": "1d7d5c60-13aa-4b58-8c04-6b4ba22e66b7",
+      "index": 1787,
+      "period": 1,
+      "minute": 47,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "John Stones",
+      "location": [
+        46,
+        52.1
+      ]
+    },
+    {
+      "id": "d392742e-416d-4b76-8d17-84c992c49d14",
+      "index": 1798,
+      "period": 1,
+      "minute": 47,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Kalvin Phillips",
+      "location": [
+        54.9,
+        64.9
+      ]
+    },
+    {
+      "id": "a4c9ef4a-bf6d-46a3-820f-1c55d9aee469",
+      "index": 1841,
+      "period": 1,
+      "minute": 47,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Federico Chiesa",
+      "location": [
+        80.2,
+        23
+      ]
+    },
+    {
+      "id": "604e4a3a-0b42-4e68-a4bf-889a23195e34",
+      "index": 1876,
+      "period": 1,
+      "minute": 48,
+      "second": 17,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Giovanni Di Lorenzo",
+      "location": [
+        85.7,
+        57.6
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "b414bbbc-2594-456f-a9a9-861836d6685a",
+      "index": 1879,
+      "period": 1,
+      "minute": 48,
+      "second": 19,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Leonardo Bonucci",
+      "location": [
+        87.8,
+        51.1
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "ae5d4c20-7bc8-41db-8bb3-5847b5b55e1b",
+      "index": 1885,
+      "period": 1,
+      "minute": 48,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Emerson Palmieri dos Santos",
+      "location": [
+        25.3,
+        6.8
+      ]
+    },
+    {
+      "id": "ecfdced7-d35a-4b94-bc0b-81c23b701463",
+      "index": 1900,
+      "period": 1,
+      "minute": 49,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Ciro Immobile",
+      "location": [
+        64.1,
+        6
+      ]
+    },
+    {
+      "id": "ab32ba23-7fe0-419e-abda-38ce05fa306a",
+      "index": 1963,
+      "period": 2,
+      "minute": 46,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Harry Kane",
+      "location": [
+        40.6,
+        9.7
+      ]
+    },
+    {
+      "id": "1217ace3-08bc-4e72-8c75-9d198d123515",
+      "index": 2081,
+      "period": 2,
+      "minute": 50,
+      "second": 11,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Lorenzo Insigne",
+      "location": [
+        97.8,
+        36.8
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "b2cfd054-c815-4e55-90f3-e8b56584396a",
+      "index": 2121,
+      "period": 2,
+      "minute": 51,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Nicolò Barella",
+      "location": [
+        26.1,
+        72.1
+      ]
+    },
+    {
+      "id": "a06c74ff-8267-4677-a451-2da1c5752bb6",
+      "index": 2126,
+      "period": 2,
+      "minute": 51,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Declan Rice",
+      "location": [
+        77.7,
+        15.2
+      ]
+    },
+    {
+      "id": "13a9ed4a-e3d5-4d1c-bf4f-bd499380e5e8",
+      "index": 2135,
+      "period": 2,
+      "minute": 51,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Federico Chiesa",
+      "location": [
+        29.1,
+        68.6
+      ]
+    },
+    {
+      "id": "f429f5e0-c6d7-4f39-8c6b-ab6d5a1436d3",
+      "index": 2158,
+      "period": 2,
+      "minute": 52,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Giorgio Chiellini",
+      "location": [
+        78.1,
+        16.5
+      ]
+    },
+    {
+      "id": "0fc4db50-2271-47c2-aa0b-9c8f4d8f07e4",
+      "index": 2176,
+      "period": 2,
+      "minute": 52,
+      "second": 32,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Emerson Palmieri dos Santos",
+      "location": [
+        98.7,
+        15.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "d9ebf773-edd5-4626-9708-3ba8fbc7d2c4",
+      "index": 2179,
+      "period": 2,
+      "minute": 52,
+      "second": 37,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Lorenzo Insigne",
+      "location": [
+        105.8,
+        23.8
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "0769c386-aeb3-4c55-b3f8-175edc4a8b89",
+      "index": 2220,
+      "period": 2,
+      "minute": 55,
+      "second": 36,
+      "type": "Pass",
+      "team": "England",
+      "player": "Luke Shaw",
+      "location": [
+        102.1,
+        4.9
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "4a5df73c-ad9c-47d7-a2b9-d08e018c1899",
+      "index": 2223,
+      "period": 2,
+      "minute": 55,
+      "second": 38,
+      "type": "Shot",
+      "team": "England",
+      "player": "Harry Maguire",
+      "location": [
+        110.7,
+        41
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "61f49e33-4fbf-45a9-9b8d-d656143d34d4",
+      "index": 2242,
+      "period": 2,
+      "minute": 56,
+      "second": 7,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Lorenzo Insigne",
+      "location": [
+        77.8,
+        66.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "ef5399e2-0749-43cf-be85-abbb865c01fc",
+      "index": 2245,
+      "period": 2,
+      "minute": 56,
+      "second": 14,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Federico Chiesa",
+      "location": [
+        107.3,
+        21.2
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "37575866-bc16-414c-a3d5-c5df56505d19",
+      "index": 2249,
+      "period": 2,
+      "minute": 56,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Lorenzo Insigne",
+      "location": [
+        110.6,
+        34.3
+      ]
+    },
+    {
+      "id": "17c2e87d-2979-43e6-9594-f32d7e5bb80e",
+      "index": 2251,
+      "period": 2,
+      "minute": 56,
+      "second": 16,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Lorenzo Insigne",
+      "location": [
+        117.9,
+        29.8
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "a75082b4-e608-4d7c-b37d-fb737237459f",
+      "index": 2253,
+      "period": 2,
+      "minute": 56,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Declan Rice",
+      "location": [
+        0.5,
+        53.8
+      ]
+    },
+    {
+      "id": "08ad3908-a6e8-4c22-974b-d61b86b5e2f5",
+      "index": 2418,
+      "period": 2,
+      "minute": 60,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Gianluigi Donnarumma",
+      "location": [
+        3.5,
+        52.1
+      ]
+    },
+    {
+      "id": "e80caa11-27eb-4a79-a752-05121e8e441d",
+      "index": 2470,
+      "period": 2,
+      "minute": 61,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Jordan Pickford",
+      "location": [
+        2.3,
+        16.9
+      ]
+    },
+    {
+      "id": "47f0d7f9-c8d9-42c9-aef1-a14e0b59cffb",
+      "index": 2473,
+      "period": 2,
+      "minute": 61,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Leonardo Bonucci",
+      "location": [
+        47.7,
+        54.9
+      ]
+    },
+    {
+      "id": "5b103834-250e-49f0-aede-cf6be18aaf52",
+      "index": 2478,
+      "period": 2,
+      "minute": 61,
+      "second": 20,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Marco Verratti",
+      "location": [
+        72.6,
+        27.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "1ff8f1f1-a983-4ca2-9bd6-94e2bd60b5fd",
+      "index": 2482,
+      "period": 2,
+      "minute": 61,
+      "second": 27,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Federico Chiesa",
+      "location": [
+        103.7,
+        34.9
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "41121d4f-a7a0-4dae-93e9-d473ceecc539",
+      "index": 2498,
+      "period": 2,
+      "minute": 61,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Jordan Pickford",
+      "location": [
+        3.1,
+        31.8
+      ]
+    },
+    {
+      "id": "81372419-3d1a-408e-91e5-9717f9437d93",
+      "index": 2516,
+      "period": 2,
+      "minute": 63,
+      "second": 11,
+      "type": "Pass",
+      "team": "England",
+      "player": "Kieran Trippier",
+      "location": [
+        120,
+        0.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "dc30e4af-d57a-4e93-98c6-63d4ca831975",
+      "index": 2519,
+      "period": 2,
+      "minute": 63,
+      "second": 13,
+      "type": "Shot",
+      "team": "England",
+      "player": "John Stones",
+      "location": [
+        112.8,
+        39.1
+      ],
+      "shot": {
+        "outcome": "Saved Off Target",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "59eaeb2c-b571-46da-ad55-e37cc3cf35da",
+      "index": 2523,
+      "period": 2,
+      "minute": 63,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Luke Shaw",
+      "location": [
+        77.2,
+        7.1
+      ]
+    },
+    {
+      "id": "4f7eb115-f8e2-47a3-b86e-3a607a7397f3",
+      "index": 2642,
+      "period": 2,
+      "minute": 66,
+      "second": 16,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Marco Verratti",
+      "location": [
+        115,
+        33.9
+      ],
+      "shot": {
+        "outcome": "Saved to Post",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "46197798-d6e0-4776-ae62-760b7296dcab",
+      "index": 2645,
+      "period": 2,
+      "minute": 66,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Leonardo Bonucci",
+      "location": [
+        117.8,
+        37.1
+      ]
+    },
+    {
+      "id": "a221a567-b43e-45d6-97f2-07b1cab75d21",
+      "index": 2646,
+      "period": 2,
+      "minute": 66,
+      "second": 17,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Leonardo Bonucci",
+      "location": [
+        118.5,
+        38.2
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "aa4ec5a0-967e-49f2-becc-26d7311e48f6",
+      "index": 2759,
+      "period": 2,
+      "minute": 70,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Harry Kane",
+      "location": [
+        55.4,
+        46.4
+      ]
+    },
+    {
+      "id": "dceb84c3-93cb-42f4-9282-86b58439ea6e",
+      "index": 2763,
+      "period": 2,
+      "minute": 70,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Giorgio Chiellini",
+      "location": [
+        54,
+        27.5
+      ]
+    },
+    {
+      "id": "0cfad255-9244-40ea-aa5a-7775e74588cf",
+      "index": 2806,
+      "period": 2,
+      "minute": 71,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Jordan Pickford",
+      "location": [
+        4.9,
+        53.7
+      ]
+    },
+    {
+      "id": "79f02368-3ab8-4f21-be7e-94ec5354a878",
+      "index": 2873,
+      "period": 2,
+      "minute": 72,
+      "second": 45,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Leonardo Bonucci",
+      "location": [
+        54.9,
+        29.5
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "49ce38ff-305d-4f69-9ca9-8cee1bd23851",
+      "index": 2875,
+      "period": 2,
+      "minute": 72,
+      "second": 48,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Domenico Berardi",
+      "location": [
+        106.1,
+        39.4
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "678e262f-2eeb-470e-941a-bc8f6257eba5",
+      "index": 2916,
+      "period": 2,
+      "minute": 74,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Jordan Pickford",
+      "location": [
+        3.4,
+        43
+      ]
+    },
+    {
+      "id": "3d3dda93-58f1-40f8-b082-8fb21fffb434",
+      "index": 2949,
+      "period": 2,
+      "minute": 74,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Kyle Walker",
+      "location": [
+        7.2,
+        58.7
+      ]
+    },
+    {
+      "id": "f54e508c-54c0-4049-8e77-b125c4b20ccb",
+      "index": 2991,
+      "period": 2,
+      "minute": 75,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Harry Maguire",
+      "location": [
+        22.3,
+        45.6
+      ]
+    },
+    {
+      "id": "79d46663-f50f-4320-8ec5-811b6e4e7bfd",
+      "index": 3100,
+      "period": 2,
+      "minute": 77,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Harry Maguire",
+      "location": [
+        43.5,
+        45
+      ]
+    },
+    {
+      "id": "5553bd2e-e3a6-4bba-8a18-adaca5e7a053",
+      "index": 3153,
+      "period": 2,
+      "minute": 79,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Federico Chiesa",
+      "location": [
+        42.9,
+        12
+      ]
+    },
+    {
+      "id": "ae05f0cb-37ff-4a63-8f8d-b5a00b868149",
+      "index": 3169,
+      "period": 2,
+      "minute": 79,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Bukayo Saka",
+      "location": [
+        18.8,
+        61.5
+      ]
+    },
+    {
+      "id": "dc16fd38-2ae4-4867-9a59-f77d69e8d5bf",
+      "index": 3271,
+      "period": 2,
+      "minute": 84,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Luke Shaw",
+      "location": [
+        98.6,
+        22.9
+      ]
+    },
+    {
+      "id": "3b1ab1b3-0cd1-4d89-8029-dc4949eed21b",
+      "index": 3272,
+      "period": 2,
+      "minute": 84,
+      "second": 36,
+      "type": "Shot",
+      "team": "England",
+      "player": "Luke Shaw",
+      "location": [
+        97.1,
+        25.1
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "cf07cc08-1963-4791-8b20-2cab162e2959",
+      "index": 3311,
+      "period": 2,
+      "minute": 86,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Jordan Pickford",
+      "location": [
+        15.4,
+        35.2
+      ]
+    },
+    {
+      "id": "d093aaf0-1207-43ab-9cdb-2f497bdb8042",
+      "index": 3398,
+      "period": 2,
+      "minute": 89,
+      "second": 31,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Marco Verratti",
+      "location": [
+        26.4,
+        68.6
+      ]
+    },
+    {
+      "id": "c8064446-a80c-4b9f-8a1d-25ce0c77b12d",
+      "index": 3415,
+      "period": 2,
+      "minute": 90,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Giovanni Di Lorenzo",
+      "location": [
+        56.3,
+        71.2
+      ]
+    },
+    {
+      "id": "a73744a1-dd03-4e99-b9c7-69572bc9d66a",
+      "index": 3495,
+      "period": 2,
+      "minute": 92,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Kyle Walker",
+      "location": [
+        18,
+        70.4
+      ]
+    },
+    {
+      "id": "f920e5d2-ea53-4ccd-9afe-54f07379786e",
+      "index": 3661,
+      "period": 2,
+      "minute": 94,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Gianluigi Donnarumma",
+      "location": [
+        16,
+        30.9
+      ]
+    },
+    {
+      "id": "3807cee1-4603-4fb1-a98e-2ff3730d1846",
+      "index": 3768,
+      "period": 3,
+      "minute": 91,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Federico Bernardeschi",
+      "location": [
+        102.2,
+        3.9
+      ]
+    },
+    {
+      "id": "6a2c8049-e8f6-43f1-a428-f8a24df62446",
+      "index": 3887,
+      "period": 3,
+      "minute": 94,
+      "second": 42,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Jordan Pickford",
+      "location": [
+        11.8,
+        28.4
+      ]
+    },
+    {
+      "id": "9bf9e477-f1bc-4b84-b6ad-0504b1f4e9e9",
+      "index": 3919,
+      "period": 3,
+      "minute": 96,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Kalvin Phillips",
+      "location": [
+        94.6,
+        53.3
+      ]
+    },
+    {
+      "id": "ba8fedf5-c25e-41e1-beb4-177208f18187",
+      "index": 3921,
+      "period": 3,
+      "minute": 96,
+      "second": 10,
+      "type": "Shot",
+      "team": "England",
+      "player": "Kalvin Phillips",
+      "location": [
+        95.6,
+        51.2
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c23f9318-039b-4645-bd0e-527f8b08a4bb",
+      "index": 3964,
+      "period": 3,
+      "minute": 97,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Kalvin Phillips",
+      "location": [
+        55.2,
+        4.3
+      ]
+    },
+    {
+      "id": "9e928066-11bb-4b3c-9842-5632121bf45e",
+      "index": 3999,
+      "period": 3,
+      "minute": 98,
+      "second": 13,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Domenico Berardi",
+      "location": [
+        77.4,
+        72.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "0da3415e-0717-4c37-a50f-a9422549e108",
+      "index": 4003,
+      "period": 3,
+      "minute": 98,
+      "second": 17,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Andrea Belotti",
+      "location": [
+        95,
+        54.8
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2b51e4fc-6291-4a00-97f7-f705b473c977",
+      "index": 4006,
+      "period": 3,
+      "minute": 98,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Jordan Pickford",
+      "location": [
+        3,
+        48.7
+      ]
+    },
+    {
+      "id": "96b53eb5-666d-42f7-9bc9-7a01065afe38",
+      "index": 4018,
+      "period": 3,
+      "minute": 99,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Luke Shaw",
+      "location": [
+        95.3,
+        1.8
+      ]
+    },
+    {
+      "id": "cfa81d7e-06bb-4eaf-b4d6-ffaf58e9c18a",
+      "index": 4024,
+      "period": 3,
+      "minute": 99,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Kalvin Phillips",
+      "location": [
+        91.7,
+        34.9
+      ]
+    },
+    {
+      "id": "e3224d1a-a7e7-48a2-902f-f811db50b5a8",
+      "index": 4146,
+      "period": 3,
+      "minute": 102,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Emerson Palmieri dos Santos",
+      "location": [
+        105.9,
+        10.3
+      ]
+    },
+    {
+      "id": "20a22fee-5506-4420-8295-5aec86278952",
+      "index": 4152,
+      "period": 3,
+      "minute": 102,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Andrea Belotti",
+      "location": [
+        107.7,
+        42.2
+      ]
+    },
+    {
+      "id": "b69275a4-fa06-4c3e-ae39-ba2d8b5e7efc",
+      "index": 4153,
+      "period": 3,
+      "minute": 102,
+      "second": 52,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Andrea Belotti",
+      "location": [
+        107.2,
+        41.7
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "7538286c-721a-4f53-ad8e-7ceb1556f2df",
+      "index": 4192,
+      "period": 3,
+      "minute": 104,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Federico Bernardeschi",
+      "location": [
+        89.5,
+        30.2
+      ]
+    },
+    {
+      "id": "430ce842-800a-464f-9447-e6c3dfbe2732",
+      "index": 4195,
+      "period": 3,
+      "minute": 104,
+      "second": 19,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Federico Bernardeschi",
+      "location": [
+        89.5,
+        35.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "63245100-891a-4e23-ae92-082308a37710",
+      "index": 4199,
+      "period": 3,
+      "minute": 104,
+      "second": 21,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Manuel Locatelli",
+      "location": [
+        100.5,
+        37.5
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d3148e17-36f9-4011-8f4e-8ec7ee40b88c",
+      "index": 4289,
+      "period": 4,
+      "minute": 106,
+      "second": 39,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Federico Bernardeschi",
+      "location": [
+        89.3,
+        42
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "e3d89411-928d-417f-abde-56a2d13ca50b",
+      "index": 4301,
+      "period": 4,
+      "minute": 107,
+      "second": 31,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Jack Grealish",
+      "location": [
+        107.2,
+        29.5
+      ]
+    },
+    {
+      "id": "0534ee98-f526-4f61-affa-a30f67ec02e0",
+      "index": 4302,
+      "period": 4,
+      "minute": 107,
+      "second": 31,
+      "type": "Shot",
+      "team": "England",
+      "player": "Jack Grealish",
+      "location": [
+        107.6,
+        37.4
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c76f3bd0-ccd7-4398-ad5a-f5b229d9db79",
+      "index": 4306,
+      "period": 4,
+      "minute": 107,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Bukayo Saka",
+      "location": [
+        102.1,
+        27.5
+      ]
+    },
+    {
+      "id": "64889093-5d61-471e-b4d6-30f18b9e95dc",
+      "index": 4321,
+      "period": 4,
+      "minute": 107,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Kalvin Phillips",
+      "location": [
+        83.2,
+        61.3
+      ]
+    },
+    {
+      "id": "bbca4ffb-4eee-4454-9448-0780bed7c74a",
+      "index": 4356,
+      "period": 4,
+      "minute": 109,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Harry Maguire",
+      "location": [
+        51.8,
+        56.1
+      ]
+    },
+    {
+      "id": "37b96e88-b99b-4863-8843-e1ddc020f72a",
+      "index": 4451,
+      "period": 4,
+      "minute": 111,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Harry Maguire",
+      "location": [
+        45.2,
+        8.6
+      ]
+    },
+    {
+      "id": "8869c662-e3f9-4af8-a669-937c34dc69af",
+      "index": 4543,
+      "period": 4,
+      "minute": 115,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Federico Bernardeschi",
+      "location": [
+        68.9,
+        36.8
+      ]
+    },
+    {
+      "id": "dd1a178c-5fb1-43d4-b92d-6b1e4b58f9c3",
+      "index": 4584,
+      "period": 4,
+      "minute": 116,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Jordan Pickford",
+      "location": [
+        1.7,
+        54.1
+      ]
+    },
+    {
+      "id": "2ad07f30-1c62-42fb-9ed2-fc9bd64f9aab",
+      "index": 4594,
+      "period": 4,
+      "minute": 116,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Bukayo Saka",
+      "location": [
+        86.4,
+        10.6
+      ]
+    },
+    {
+      "id": "559748a3-3362-4f30-9097-3e231e3bed9a",
+      "index": 4666,
+      "period": 4,
+      "minute": 120,
+      "second": 7,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Federico Bernardeschi",
+      "location": [
+        120,
+        0.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "cca343ef-7d94-4ab6-86d6-be31f8ce702c",
+      "index": 4668,
+      "period": 4,
+      "minute": 120,
+      "second": 8,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Bryan Cristante",
+      "location": [
+        114.6,
+        32.4
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "480a001d-0eef-45b9-8802-39aa7fde3a4f",
+      "index": 4670,
+      "period": 4,
+      "minute": 120,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Andrea Belotti",
+      "location": [
+        115,
+        78.9
+      ]
+    },
+    {
+      "id": "239014d3-d1b8-42a0-a7bc-7b15794c1272",
+      "index": 4675,
+      "period": 4,
+      "minute": 120,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Kalvin Phillips",
+      "location": [
+        2.6,
+        28.9
+      ]
+    },
+    {
+      "id": "31f47d70-db4b-4304-99d6-3a28c1ba1edd",
+      "index": 4775,
+      "period": 5,
+      "minute": 120,
+      "second": 1,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Domenico Berardi",
+      "location": [
+        107.8,
+        39.8
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "526593d2-c545-4433-aa71-f923a7dd7811",
+      "index": 4777,
+      "period": 5,
+      "minute": 120,
+      "second": 43,
+      "type": "Shot",
+      "team": "England",
+      "player": "Harry Kane",
+      "location": [
+        108,
+        40
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "4811f0d8-75a6-49c9-b8c1-31a74b3d065b",
+      "index": 4779,
+      "period": 5,
+      "minute": 121,
+      "second": 36,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Andrea Belotti",
+      "location": [
+        107.9,
+        40
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "7ca98b9e-d86b-4557-a73a-6b612d0f56ec",
+      "index": 4781,
+      "period": 5,
+      "minute": 122,
+      "second": 26,
+      "type": "Shot",
+      "team": "England",
+      "player": "Harry Maguire",
+      "location": [
+        108.1,
+        40
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "f21ac35f-5ca3-4965-bf47-17786bef12ab",
+      "index": 4783,
+      "period": 5,
+      "minute": 123,
+      "second": 17,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Leonardo Bonucci",
+      "location": [
+        107.8,
+        40
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "c7b6763e-e914-4c82-a51a-4ea6cb7b062f",
+      "index": 4785,
+      "period": 5,
+      "minute": 124,
+      "second": 11,
+      "type": "Shot",
+      "team": "England",
+      "player": "Marcus Rashford",
+      "location": [
+        108,
+        39.9
+      ],
+      "shot": {
+        "outcome": "Post",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "b33f93a9-ea61-4f99-952c-298712335e8e",
+      "index": 4787,
+      "period": 5,
+      "minute": 125,
+      "second": 2,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Federico Bernardeschi",
+      "location": [
+        107.9,
+        40.2
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "baa64791-3eb8-485b-aa0b-5b150e119621",
+      "index": 4789,
+      "period": 5,
+      "minute": 125,
+      "second": 47,
+      "type": "Shot",
+      "team": "England",
+      "player": "Jadon Sancho",
+      "location": [
+        107.8,
+        40
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "0775e2bc-d360-4b80-85d7-e82874fb5723",
+      "index": 4791,
+      "period": 5,
+      "minute": 126,
+      "second": 57,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Jorge Luiz Frello Filho",
+      "location": [
+        108.1,
+        40.1
+      ],
+      "shot": {
+        "outcome": "Saved to Post",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "572d5967-c7c5-4d86-ab60-c0b841a63a4a",
+      "index": 4793,
+      "period": 5,
+      "minute": 127,
+      "second": 43,
+      "type": "Shot",
+      "team": "England",
+      "player": "Bukayo Saka",
+      "location": [
+        108.1,
+        40
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Penalty"
+      }
+    }
+  ]
+}

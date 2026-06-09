@@ -1,0 +1,1872 @@
+{
+  "meta": {
+    "matchId": 3750191,
+    "teams": [
+      "Argentina",
+      "England"
+    ],
+    "totalEvents": 2748,
+    "keptEvents": 121,
+    "fetchedAt": "2026-06-09T22:25:14.289Z"
+  },
+  "events": [
+    {
+      "id": "64511bd0-a873-4a8f-8d38-dff214d348a8",
+      "index": 86,
+      "period": 1,
+      "minute": 1,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Óscar Alfredo Ruggeri Zocola",
+      "location": [
+        42.6,
+        20
+      ]
+    },
+    {
+      "id": "47183e20-e0ff-4206-990d-dd0a77340afe",
+      "index": 93,
+      "period": 1,
+      "minute": 2,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Neri Alberto Pumpido Barrinat",
+      "location": [
+        10.5,
+        26.7
+      ]
+    },
+    {
+      "id": "d8d18c60-37b0-4ad4-a7a8-fe65fa8f4b4d",
+      "index": 181,
+      "period": 1,
+      "minute": 4,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ricardo Omar Giusti",
+      "location": [
+        95.6,
+        70.2
+      ]
+    },
+    {
+      "id": "6b928406-ebba-46ec-9e17-c7faafcff100",
+      "index": 213,
+      "period": 1,
+      "minute": 5,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Glenn Hoddle",
+      "location": [
+        85.4,
+        24.1
+      ]
+    },
+    {
+      "id": "5bf87d45-9807-417d-9a3b-256d44a77828",
+      "index": 254,
+      "period": 1,
+      "minute": 6,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Terry Fenwick",
+      "location": [
+        85.9,
+        32.3
+      ]
+    },
+    {
+      "id": "72698c6e-8248-42d5-b901-e8c2397b7e9f",
+      "index": 255,
+      "period": 1,
+      "minute": 6,
+      "second": 45,
+      "type": "Shot",
+      "team": "England",
+      "player": "Terry Fenwick",
+      "location": [
+        81.9,
+        38.1
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "458c3a24-a80e-4077-848d-f1e8f4c98917",
+      "index": 330,
+      "period": 1,
+      "minute": 7,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Terry Fenwick",
+      "location": [
+        43.7,
+        68.2
+      ]
+    },
+    {
+      "id": "27154478-0a31-427c-bdd9-624845371822",
+      "index": 338,
+      "period": 1,
+      "minute": 8,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Óscar Alfredo Ruggeri Zocola",
+      "location": [
+        4.9,
+        70.5
+      ]
+    },
+    {
+      "id": "37a6fefc-f5d1-4c5b-90ab-e92517f36fc3",
+      "index": 357,
+      "period": 1,
+      "minute": 8,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "José Luis Cuciuffo",
+      "location": [
+        41.1,
+        60.2
+      ]
+    },
+    {
+      "id": "02f413d7-e2d7-4cef-9c11-77fcad3f405c",
+      "index": 375,
+      "period": 1,
+      "minute": 9,
+      "second": 17,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        93.9,
+        55.3
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "7b0bfc46-be78-4d05-be83-2bd7f88548dd",
+      "index": 381,
+      "period": 1,
+      "minute": 9,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Julio Jorge Olarticoechea",
+      "location": [
+        77.3,
+        5.9
+      ]
+    },
+    {
+      "id": "18b92ed1-caf6-425b-b900-dd85f5a402bf",
+      "index": 388,
+      "period": 1,
+      "minute": 9,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        105.4,
+        7.9
+      ]
+    },
+    {
+      "id": "e09bea8e-b52a-431a-8681-3456733924e8",
+      "index": 390,
+      "period": 1,
+      "minute": 9,
+      "second": 59,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        115,
+        5.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "7ef25b17-241b-441d-a2d9-8c8090bf9d6e",
+      "index": 393,
+      "period": 1,
+      "minute": 10,
+      "second": 1,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Ricardo Omar Giusti",
+      "location": [
+        110.5,
+        39.9
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "226a5085-e56e-47ee-8d9e-1741e224d6ca",
+      "index": 475,
+      "period": 1,
+      "minute": 12,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Peter Beardsley",
+      "location": [
+        111.9,
+        67.3
+      ]
+    },
+    {
+      "id": "f4f8ef7f-5be2-4e70-8fe8-995ff3c2a7a8",
+      "index": 478,
+      "period": 1,
+      "minute": 12,
+      "second": 8,
+      "type": "Shot",
+      "team": "England",
+      "player": "Peter Beardsley",
+      "location": [
+        110.2,
+        74.7
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "4c35286e-c605-45b1-95e9-1e6a7548afe2",
+      "index": 530,
+      "period": 1,
+      "minute": 13,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Héctor Adolfo Enrique",
+      "location": [
+        26.7,
+        18.8
+      ]
+    },
+    {
+      "id": "d2f45abd-19df-4392-a1e6-266835ea556d",
+      "index": 586,
+      "period": 1,
+      "minute": 15,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Jorge Luis Burruchaga",
+      "location": [
+        75.3,
+        28.3
+      ]
+    },
+    {
+      "id": "98199eba-c0a6-4df4-9f0e-44ba30b53868",
+      "index": 599,
+      "period": 1,
+      "minute": 15,
+      "second": 21,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        105,
+        13.2
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "c26bd24c-e2ff-44b9-811e-71ce588f0bbd",
+      "index": 601,
+      "period": 1,
+      "minute": 15,
+      "second": 23,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Héctor Adolfo Enrique",
+      "location": [
+        88,
+        28.4
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f4769296-34fb-4b8c-ab18-bd743085a9d3",
+      "index": 604,
+      "period": 1,
+      "minute": 15,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Peter Beardsley",
+      "location": [
+        34,
+        40.7
+      ]
+    },
+    {
+      "id": "e8efdac6-d024-4c3c-a4f4-0b02db4d80e9",
+      "index": 633,
+      "period": 1,
+      "minute": 16,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ricardo Omar Giusti",
+      "location": [
+        74.1,
+        61.1
+      ]
+    },
+    {
+      "id": "6897d9fa-164a-4b9b-93b8-9d521781d60c",
+      "index": 637,
+      "period": 1,
+      "minute": 16,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ricardo Omar Giusti",
+      "location": [
+        99.6,
+        76.7
+      ]
+    },
+    {
+      "id": "6f675bb9-6494-4e01-b2aa-859dd4f9aa37",
+      "index": 657,
+      "period": 1,
+      "minute": 17,
+      "second": 34,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        120,
+        80
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "befdc18d-bb9d-48ed-8c53-0794382f93f9",
+      "index": 660,
+      "period": 1,
+      "minute": 17,
+      "second": 37,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Héctor Adolfo Enrique",
+      "location": [
+        98.9,
+        47.5
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2ba12a07-2a1a-40ec-8467-fd9a5301367f",
+      "index": 663,
+      "period": 1,
+      "minute": 17,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Peter Beardsley",
+      "location": [
+        32.2,
+        32.7
+      ]
+    },
+    {
+      "id": "7e62a5c0-ea63-4cad-b2e3-8a1f0d89d69c",
+      "index": 673,
+      "period": 1,
+      "minute": 17,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Óscar Alfredo Ruggeri Zocola",
+      "location": [
+        13.1,
+        43
+      ]
+    },
+    {
+      "id": "eefbe3e5-f66a-4821-91be-b7571f25c785",
+      "index": 698,
+      "period": 1,
+      "minute": 18,
+      "second": 32,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Ricardo Omar Giusti",
+      "location": [
+        77.3,
+        37
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "cf38b4b0-6e4d-4de3-af28-041b2da8a24d",
+      "index": 701,
+      "period": 1,
+      "minute": 18,
+      "second": 35,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Héctor Adolfo Enrique",
+      "location": [
+        92.6,
+        59.8
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "5729f3f4-d420-402c-820b-e93c45df85cd",
+      "index": 728,
+      "period": 1,
+      "minute": 19,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Glenn Hoddle",
+      "location": [
+        34.4,
+        25.9
+      ]
+    },
+    {
+      "id": "f35ddc4b-6b84-4b6e-aed6-5e3b5ed7071e",
+      "index": 778,
+      "period": 1,
+      "minute": 20,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "José Luis Cuciuffo",
+      "location": [
+        18.7,
+        72.4
+      ]
+    },
+    {
+      "id": "43751de8-1095-4a76-8df9-7d1550c530f4",
+      "index": 850,
+      "period": 1,
+      "minute": 21,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Peter Reid",
+      "location": [
+        25.9,
+        45.6
+      ]
+    },
+    {
+      "id": "a5700d09-f0cc-4e3c-9a9e-16bea84d62d1",
+      "index": 880,
+      "period": 1,
+      "minute": 22,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Trevor Steven",
+      "location": [
+        7.3,
+        53.2
+      ]
+    },
+    {
+      "id": "98ab10c3-8656-40a0-81ae-2a4c828b7544",
+      "index": 902,
+      "period": 1,
+      "minute": 24,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Peter Beardsley",
+      "location": [
+        104.5,
+        51
+      ]
+    },
+    {
+      "id": "d44c05f4-c609-4358-a413-12eaee93b76f",
+      "index": 905,
+      "period": 1,
+      "minute": 24,
+      "second": 3,
+      "type": "Shot",
+      "team": "England",
+      "player": "Peter Beardsley",
+      "location": [
+        103.2,
+        48.5
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "7ee212e3-e30a-49a7-a175-abbad0105a9d",
+      "index": 910,
+      "period": 1,
+      "minute": 24,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Neri Alberto Pumpido Barrinat",
+      "location": [
+        3.6,
+        23.7
+      ]
+    },
+    {
+      "id": "23000cab-9b46-4088-8649-8d34a5121018",
+      "index": 931,
+      "period": 1,
+      "minute": 25,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Sergio Daniel Batista",
+      "location": [
+        48.3,
+        26.2
+      ]
+    },
+    {
+      "id": "771dad56-2840-4655-9366-cc334f47371f",
+      "index": 963,
+      "period": 1,
+      "minute": 25,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Héctor Adolfo Enrique",
+      "location": [
+        21.6,
+        54.6
+      ]
+    },
+    {
+      "id": "3bf08ef1-6792-46c3-94ba-9bb338f950fc",
+      "index": 993,
+      "period": 1,
+      "minute": 26,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "José Luis Brown",
+      "location": [
+        54.1,
+        22.9
+      ]
+    },
+    {
+      "id": "e5db67c9-032f-4775-8110-07119b31dc68",
+      "index": 1018,
+      "period": 1,
+      "minute": 27,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Jorge Luis Burruchaga",
+      "location": [
+        66.7,
+        61.8
+      ]
+    },
+    {
+      "id": "d9b23a41-4971-402f-83f9-87a2942c9044",
+      "index": 1108,
+      "period": 1,
+      "minute": 29,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        104.6,
+        2.3
+      ]
+    },
+    {
+      "id": "317cddd5-d44d-4478-85bd-3c6e605f7124",
+      "index": 1177,
+      "period": 1,
+      "minute": 32,
+      "second": 19,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        97.9,
+        47.7
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "5bbfba13-9363-4eea-b7ed-69c39f1b49e8",
+      "index": 1208,
+      "period": 1,
+      "minute": 33,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Terry Butcher",
+      "location": [
+        31.1,
+        28.4
+      ]
+    },
+    {
+      "id": "5aae95f6-2c11-49d1-b77c-32fc7986dcd0",
+      "index": 1226,
+      "period": 1,
+      "minute": 33,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ricardo Omar Giusti",
+      "location": [
+        68.8,
+        54.6
+      ]
+    },
+    {
+      "id": "cadbf804-ca86-4f4d-bcb3-bc3309fa0d23",
+      "index": 1239,
+      "period": 1,
+      "minute": 34,
+      "second": 4,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        98.5,
+        61.2
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "dddadee0-376e-4e5e-afed-473197ed8514",
+      "index": 1258,
+      "period": 1,
+      "minute": 35,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        38.2,
+        34
+      ]
+    },
+    {
+      "id": "02392ada-111c-4df3-ab85-24554c86b8c7",
+      "index": 1260,
+      "period": 1,
+      "minute": 36,
+      "second": 6,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        101.4,
+        25.4
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f70a61ef-cd25-486b-9f93-89bc91b1a8d4",
+      "index": 1310,
+      "period": 1,
+      "minute": 38,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Sergio Daniel Batista",
+      "location": [
+        32.6,
+        37.3
+      ]
+    },
+    {
+      "id": "bed5e857-14e6-4fae-ba82-daf05ca0918b",
+      "index": 1316,
+      "period": 1,
+      "minute": 38,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Gary Michael Stevens",
+      "location": [
+        50.2,
+        72.7
+      ]
+    },
+    {
+      "id": "ff00f7d9-b254-446d-a548-cbc2ea331f37",
+      "index": 1366,
+      "period": 1,
+      "minute": 39,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ricardo Omar Giusti",
+      "location": [
+        50.5,
+        12.8
+      ]
+    },
+    {
+      "id": "b4753a1f-f63d-4a5e-8b2e-ed751d9eabeb",
+      "index": 1375,
+      "period": 1,
+      "minute": 39,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Julio Jorge Olarticoechea",
+      "location": [
+        54.1,
+        14
+      ]
+    },
+    {
+      "id": "b9a9425d-064d-4815-9b24-e18b20b0d739",
+      "index": 1380,
+      "period": 1,
+      "minute": 39,
+      "second": 51,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        82.8,
+        30.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "d893ee3c-745a-4d76-b958-43dfea8bc490",
+      "index": 1383,
+      "period": 1,
+      "minute": 39,
+      "second": 54,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "José Luis Cuciuffo",
+      "location": [
+        95.7,
+        56.9
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "e0c117c9-1554-4ab5-8f4f-2c3ad8fb1463",
+      "index": 1401,
+      "period": 1,
+      "minute": 41,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Julio Jorge Olarticoechea",
+      "location": [
+        41.1,
+        5
+      ]
+    },
+    {
+      "id": "1fa1c151-bf1e-47ad-94a0-e5a313a2d26d",
+      "index": 1451,
+      "period": 1,
+      "minute": 42,
+      "second": 50,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        86.3,
+        31.5
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "10c34f38-ce6a-401d-b8ba-ecb2af97b491",
+      "index": 1453,
+      "period": 1,
+      "minute": 42,
+      "second": 51,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Sergio Daniel Batista",
+      "location": [
+        88.3,
+        38.2
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "18708f33-bb87-42a9-8db3-f3d29d0e0e51",
+      "index": 1462,
+      "period": 1,
+      "minute": 42,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        94.8,
+        10.7
+      ]
+    },
+    {
+      "id": "67129037-6e04-4702-9cfb-8c7710b24ff8",
+      "index": 1494,
+      "period": 1,
+      "minute": 43,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Peter Beardsley",
+      "location": [
+        62.9,
+        39.6
+      ]
+    },
+    {
+      "id": "f01178f7-124f-4d88-951d-3019d90e1d08",
+      "index": 1515,
+      "period": 1,
+      "minute": 43,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Trevor Steven",
+      "location": [
+        48.4,
+        72.7
+      ]
+    },
+    {
+      "id": "1c369f32-c59b-41aa-95af-afbc06fde87c",
+      "index": 1619,
+      "period": 2,
+      "minute": 46,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Peter Reid",
+      "location": [
+        84,
+        71.2
+      ]
+    },
+    {
+      "id": "2d437f89-70a2-4be4-81ce-f993846ce8bf",
+      "index": 1654,
+      "period": 2,
+      "minute": 47,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Gary Michael Stevens",
+      "location": [
+        25.5,
+        42
+      ]
+    },
+    {
+      "id": "67aa1140-782b-4988-b710-5bc80bd1addb",
+      "index": 1735,
+      "period": 2,
+      "minute": 48,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Jorge Alberto Francisco Valdano Castellano",
+      "location": [
+        77.7,
+        54.3
+      ]
+    },
+    {
+      "id": "ac3393f5-5811-4f32-80ab-6ba111638f23",
+      "index": 1749,
+      "period": 2,
+      "minute": 49,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Julio Jorge Olarticoechea",
+      "location": [
+        98.3,
+        5.8
+      ]
+    },
+    {
+      "id": "c62fb871-dab7-4026-9aa1-8a04d9af721b",
+      "index": 1793,
+      "period": 2,
+      "minute": 50,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ricardo Omar Giusti",
+      "location": [
+        29.1,
+        72.5
+      ]
+    },
+    {
+      "id": "2377a112-8955-416e-8858-63b3ff5e3568",
+      "index": 1820,
+      "period": 2,
+      "minute": 50,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        111.8,
+        41.2
+      ]
+    },
+    {
+      "id": "04c702f7-3b5d-4d86-a00b-c428c398c620",
+      "index": 1822,
+      "period": 2,
+      "minute": 50,
+      "second": 27,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        110.8,
+        40.1
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "ff7080ea-7e30-4bf5-bfbb-de17e2907a23",
+      "index": 1847,
+      "period": 2,
+      "minute": 51,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Gary Lineker",
+      "location": [
+        108.8,
+        34.6
+      ]
+    },
+    {
+      "id": "b343a386-80e1-4e8b-b297-76355be9ab98",
+      "index": 1848,
+      "period": 2,
+      "minute": 51,
+      "second": 38,
+      "type": "Shot",
+      "team": "England",
+      "player": "Gary Lineker",
+      "location": [
+        107,
+        37.7
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "1e4a5100-1fdd-450e-9db4-4b7fcdac0ce7",
+      "index": 1851,
+      "period": 2,
+      "minute": 51,
+      "second": 42,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Gary Michael Stevens",
+      "location": [
+        109,
+        71.7
+      ]
+    },
+    {
+      "id": "5fd44669-0857-4e06-9f19-6fc28383b6a6",
+      "index": 1881,
+      "period": 2,
+      "minute": 52,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Óscar Alfredo Ruggeri Zocola",
+      "location": [
+        41.7,
+        47.2
+      ]
+    },
+    {
+      "id": "49fdf89e-8000-4923-9a33-2bc8b72c7005",
+      "index": 1919,
+      "period": 2,
+      "minute": 53,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Sergio Daniel Batista",
+      "location": [
+        33.3,
+        30.6
+      ]
+    },
+    {
+      "id": "fd6523e8-c91b-48fc-aa6e-9794dc09c436",
+      "index": 1948,
+      "period": 2,
+      "minute": 54,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "José Luis Cuciuffo",
+      "location": [
+        35.2,
+        50.4
+      ]
+    },
+    {
+      "id": "3c9db676-5edd-49af-8508-ab7d462ce25d",
+      "index": 1953,
+      "period": 2,
+      "minute": 54,
+      "second": 6,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Héctor Adolfo Enrique",
+      "location": [
+        46.2,
+        60.5
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "f7c68c94-1db5-477f-aabe-f97733605571",
+      "index": 1971,
+      "period": 2,
+      "minute": 54,
+      "second": 18,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        113.4,
+        49.5
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "846c5294-709d-450d-9073-4bedb500a623",
+      "index": 1985,
+      "period": 2,
+      "minute": 55,
+      "second": 35,
+      "type": "Pass",
+      "team": "England",
+      "player": "Peter Beardsley",
+      "location": [
+        113.1,
+        3.3
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "b731b0b3-9546-4e99-8b0f-c1919b378208",
+      "index": 1988,
+      "period": 2,
+      "minute": 55,
+      "second": 39,
+      "type": "Shot",
+      "team": "England",
+      "player": "Kenny Sansom",
+      "location": [
+        101.6,
+        22.7
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "173fe675-45af-4089-a6b9-c039164d732f",
+      "index": 1998,
+      "period": 2,
+      "minute": 56,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Glenn Hoddle",
+      "location": [
+        97.4,
+        31.5
+      ]
+    },
+    {
+      "id": "ab45b605-4c5b-4100-a15a-878d632bb697",
+      "index": 2025,
+      "period": 2,
+      "minute": 57,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Terry Butcher",
+      "location": [
+        50.6,
+        9.4
+      ]
+    },
+    {
+      "id": "fd340601-c6c8-4e94-93e5-ee8aa09b027e",
+      "index": 2056,
+      "period": 2,
+      "minute": 59,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Peter Shilton",
+      "location": [
+        9.1,
+        31.9
+      ]
+    },
+    {
+      "id": "4200c3af-f85d-49bb-8e71-73a63b9f15cb",
+      "index": 2072,
+      "period": 2,
+      "minute": 60,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Peter Reid",
+      "location": [
+        95.7,
+        58.3
+      ]
+    },
+    {
+      "id": "d9eb6abc-06a4-45d1-8fd6-c9ba3e7f9cf4",
+      "index": 2077,
+      "period": 2,
+      "minute": 60,
+      "second": 43,
+      "type": "Pass",
+      "team": "England",
+      "player": "Glenn Hoddle",
+      "location": [
+        113.9,
+        73.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "82f117b6-3594-4159-91aa-0fcf622f272d",
+      "index": 2079,
+      "period": 2,
+      "minute": 60,
+      "second": 45,
+      "type": "Shot",
+      "team": "England",
+      "player": "Peter Beardsley",
+      "location": [
+        105.2,
+        42.8
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "1f56ddc5-2d96-4c40-ad9f-5d636a871542",
+      "index": 2094,
+      "period": 2,
+      "minute": 61,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Jorge Luis Burruchaga",
+      "location": [
+        66.4,
+        71.5
+      ]
+    },
+    {
+      "id": "944353fb-ec9d-4085-a94b-111b13c27d1d",
+      "index": 2098,
+      "period": 2,
+      "minute": 61,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Peter Shilton",
+      "location": [
+        8.3,
+        29.7
+      ]
+    },
+    {
+      "id": "ba9f109a-31e9-4d2e-82b6-436c683c2e4e",
+      "index": 2131,
+      "period": 2,
+      "minute": 62,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Julio Jorge Olarticoechea",
+      "location": [
+        36.6,
+        14.7
+      ]
+    },
+    {
+      "id": "66f7bfa7-3e2a-4a64-b974-f025c2c006b5",
+      "index": 2146,
+      "period": 2,
+      "minute": 62,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Terry Butcher",
+      "location": [
+        32.8,
+        28.6
+      ]
+    },
+    {
+      "id": "53787955-9aa3-4a11-aa48-0f490a31a65c",
+      "index": 2166,
+      "period": 2,
+      "minute": 63,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Jorge Luis Burruchaga",
+      "location": [
+        85.6,
+        36.6
+      ]
+    },
+    {
+      "id": "31961c67-bb31-4327-8558-3c3dfbff7668",
+      "index": 2180,
+      "period": 2,
+      "minute": 63,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Terry Butcher",
+      "location": [
+        13.8,
+        7.6
+      ]
+    },
+    {
+      "id": "96f1c6eb-0d5d-4ed8-a807-6ee9efb6c64c",
+      "index": 2192,
+      "period": 2,
+      "minute": 64,
+      "second": 31,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Peter Beardsley",
+      "location": [
+        115.6,
+        7
+      ]
+    },
+    {
+      "id": "7b400b04-2baa-4faf-9951-fe52ff9c3ac7",
+      "index": 2209,
+      "period": 2,
+      "minute": 66,
+      "second": 16,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Jorge Luis Burruchaga",
+      "location": [
+        97.5,
+        15.7
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "c4e7c2a4-43c8-4cf1-9f3e-8a30ce2c396f",
+      "index": 2224,
+      "period": 2,
+      "minute": 66,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Neri Alberto Pumpido Barrinat",
+      "location": [
+        5.1,
+        48.6
+      ]
+    },
+    {
+      "id": "d2a47219-7205-4ffd-b75f-3671d82ad476",
+      "index": 2230,
+      "period": 2,
+      "minute": 67,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Terry Fenwick",
+      "location": [
+        32.6,
+        52.7
+      ]
+    },
+    {
+      "id": "2f9ab0ce-cf81-4d3b-a519-5d3a9d17a5f1",
+      "index": 2245,
+      "period": 2,
+      "minute": 67,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Glenn Hoddle",
+      "location": [
+        73.9,
+        30.7
+      ]
+    },
+    {
+      "id": "cbbc075a-53f9-4976-b001-c5eddd2e29e6",
+      "index": 2249,
+      "period": 2,
+      "minute": 67,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Chris Waddle",
+      "location": [
+        92.1,
+        20.5
+      ]
+    },
+    {
+      "id": "b647afdb-c90f-4c5f-b88a-3794b84e3639",
+      "index": 2253,
+      "period": 2,
+      "minute": 67,
+      "second": 33,
+      "type": "Pass",
+      "team": "England",
+      "player": "Glenn Hoddle",
+      "location": [
+        86.1,
+        43.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "3aec4fd6-7dd4-48d6-be9d-21e84fdd3475",
+      "index": 2256,
+      "period": 2,
+      "minute": 67,
+      "second": 37,
+      "type": "Shot",
+      "team": "England",
+      "player": "Gary Michael Stevens",
+      "location": [
+        93.2,
+        56.7
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2f33e4a6-ed46-463d-82dd-1523e42abc9b",
+      "index": 2262,
+      "period": 2,
+      "minute": 67,
+      "second": 40,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Glenn Hoddle",
+      "location": [
+        90.8,
+        49.5
+      ]
+    },
+    {
+      "id": "649a0cd0-7051-4e7f-b363-96fedd26e4c1",
+      "index": 2266,
+      "period": 2,
+      "minute": 68,
+      "second": 16,
+      "type": "Shot",
+      "team": "England",
+      "player": "Glenn Hoddle",
+      "location": [
+        94.4,
+        52
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "390edf16-80b5-4c09-8881-62ba4e6db764",
+      "index": 2270,
+      "period": 2,
+      "minute": 68,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Chris Waddle",
+      "location": [
+        104.5,
+        73.6
+      ]
+    },
+    {
+      "id": "7c368d4a-1770-4a61-af0d-541d07fd6a15",
+      "index": 2299,
+      "period": 2,
+      "minute": 69,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "José Luis Cuciuffo",
+      "location": [
+        35,
+        70.9
+      ]
+    },
+    {
+      "id": "d8c4d200-3233-442a-9fbf-41bbe8ea30b3",
+      "index": 2322,
+      "period": 2,
+      "minute": 72,
+      "second": 5,
+      "type": "Pass",
+      "team": "England",
+      "player": "Glenn Hoddle",
+      "location": [
+        120,
+        80
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "6dedbacd-d596-4ea2-9a50-5ac73d278410",
+      "index": 2325,
+      "period": 2,
+      "minute": 72,
+      "second": 7,
+      "type": "Shot",
+      "team": "England",
+      "player": "Terry Fenwick",
+      "location": [
+        111.6,
+        33.9
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "0ad59af0-5c80-442c-a6ad-24a7bd373753",
+      "index": 2353,
+      "period": 2,
+      "minute": 73,
+      "second": 25,
+      "type": "Pass",
+      "team": "England",
+      "player": "Kenny Sansom",
+      "location": [
+        106.2,
+        0.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "7d242b60-b564-438e-934f-5d659cd318ff",
+      "index": 2355,
+      "period": 2,
+      "minute": 73,
+      "second": 27,
+      "type": "Shot",
+      "team": "England",
+      "player": "Glenn Hoddle",
+      "location": [
+        88,
+        25.8
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "55058bef-97fb-44ca-8a42-1ecdc36bd5f5",
+      "index": 2379,
+      "period": 2,
+      "minute": 74,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Terry Butcher",
+      "location": [
+        20.6,
+        12.5
+      ]
+    },
+    {
+      "id": "d0a48746-83e4-4fa0-9002-b2ae6f6a30f1",
+      "index": 2425,
+      "period": 2,
+      "minute": 76,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Terry Butcher",
+      "location": [
+        110.3,
+        34.4
+      ]
+    },
+    {
+      "id": "baf7eb1c-30d7-48a2-adc2-46075edd10ab",
+      "index": 2426,
+      "period": 2,
+      "minute": 76,
+      "second": 38,
+      "type": "Shot",
+      "team": "England",
+      "player": "Terry Butcher",
+      "location": [
+        112.8,
+        35
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "9659fa9f-946b-40ba-875f-75b270515286",
+      "index": 2449,
+      "period": 2,
+      "minute": 78,
+      "second": 42,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Peter Shilton",
+      "location": [
+        7.9,
+        51.5
+      ]
+    },
+    {
+      "id": "5c4186dd-53fe-407a-aff5-eef973b010b2",
+      "index": 2469,
+      "period": 2,
+      "minute": 79,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ricardo Omar Giusti",
+      "location": [
+        17.6,
+        56
+      ]
+    },
+    {
+      "id": "dd0466b2-7939-4922-8d91-ac1659f6ffa6",
+      "index": 2492,
+      "period": 2,
+      "minute": 80,
+      "second": 36,
+      "type": "Pass",
+      "team": "England",
+      "player": "John Barnes",
+      "location": [
+        116.2,
+        14.3
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "c8a81609-2f7a-4947-8420-aff60160197a",
+      "index": 2494,
+      "period": 2,
+      "minute": 80,
+      "second": 37,
+      "type": "Shot",
+      "team": "England",
+      "player": "Gary Lineker",
+      "location": [
+        116.2,
+        39.5
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "fed61aa9-e3d7-48cf-b262-87508d43762b",
+      "index": 2516,
+      "period": 2,
+      "minute": 81,
+      "second": 22,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        87.5,
+        39.6
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "8f13fb32-4b9f-4062-8bbb-add7aff57af6",
+      "index": 2522,
+      "period": 2,
+      "minute": 81,
+      "second": 26,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Carlos Daniel Tapia",
+      "location": [
+        102.1,
+        34.9
+      ],
+      "shot": {
+        "outcome": "Post",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "34779aff-ff33-4357-93a6-d146e9b0c110",
+      "index": 2525,
+      "period": 2,
+      "minute": 81,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "John Barnes",
+      "location": [
+        2.6,
+        6.6
+      ]
+    },
+    {
+      "id": "737cf039-9015-414e-bf22-5d03106ff74b",
+      "index": 2591,
+      "period": 2,
+      "minute": 84,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Gary Michael Stevens",
+      "location": [
+        26.1,
+        53.6
+      ]
+    },
+    {
+      "id": "2ded605a-5521-427c-9f05-806316f7f589",
+      "index": 2600,
+      "period": 2,
+      "minute": 84,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Jorge Alberto Francisco Valdano Castellano",
+      "location": [
+        34,
+        61.1
+      ]
+    },
+    {
+      "id": "e26629be-4b90-4384-ae8d-86c601d83868",
+      "index": 2615,
+      "period": 2,
+      "minute": 85,
+      "second": 58,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Diego Armando Maradona",
+      "location": [
+        97.3,
+        52.8
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "591fe909-45b3-407e-9e75-35e25ce517de",
+      "index": 2683,
+      "period": 2,
+      "minute": 89,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "John Barnes",
+      "location": [
+        64.7,
+        4.1
+      ]
+    },
+    {
+      "id": "76e9c736-4899-44cf-a4e0-b56bca813991",
+      "index": 2694,
+      "period": 2,
+      "minute": 89,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "José Luis Cuciuffo",
+      "location": [
+        33.3,
+        53.5
+      ]
+    },
+    {
+      "id": "1d920d16-9b63-48ab-ba20-8cfb604b4cfe",
+      "index": 2719,
+      "period": 2,
+      "minute": 90,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Glenn Hoddle",
+      "location": [
+        73.7,
+        34.8
+      ]
+    },
+    {
+      "id": "e37483e2-2959-4c93-8792-ccd33bb11734",
+      "index": 2742,
+      "period": 2,
+      "minute": 90,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "England",
+      "player": "Peter Shilton",
+      "location": [
+        3.2,
+        55
+      ]
+    }
+  ]
+}

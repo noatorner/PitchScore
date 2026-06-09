@@ -30,17 +30,20 @@ const ACTION_META = {
 
 function classify(ev) {
   switch (ev.type) {
-    case "Shot":          return ev.shot && ev.shot.outcome === "Goal" ? "Gol" : "Tiro a puerta";
-    case "Pass":          return ev.pass && ev.pass.goal_assist ? "Asistencia" : "Pase clave";
-    case "Ball Recovery": return "Recuperación";
-    case "Foul Won":      return "Penalti señalado";
-    default:              return null;
+    case "Shot":             return ev.shot && ev.shot.outcome === "Goal" ? "Gol" : "Tiro a puerta";
+    case "Own Goal Against": return "Gol";
+    case "Pass":             return ev.pass && ev.pass.goal_assist ? "Asistencia" : "Pase clave";
+    case "Ball Recovery":    return "Recuperación";
+    case "Foul Won":         return "Penalti señalado";
+    default:                 return null;
   }
 }
 
 // StatsBomb codifica cada evento con el equipo en posesión atacando de
 // izquierda a derecha. Para situar a los dos equipos en el campo fijo de
 // Kancha, al segundo equipo se le invierten las coordenadas.
+// En un gol en propia (Own Goal Against) el evento es del equipo que se
+// marca: la zona usa sus coordenadas pero el gol se acredita al rival.
 function toKanchaEvent(ev, teams) {
   const action = classify(ev);
   if (!action || !ev.location) return null;
@@ -48,13 +51,14 @@ function toKanchaEvent(ev, teams) {
   if (ev.team === teams[1]) { x = 120 - x; y = 80 - y; }
   const zone = locateZone(x, y);
   const meta = ACTION_META[action];
+  const isOG = ev.type === "Own Goal Against";
   return {
     min: ev.minute,
     period: ev.period,
     type: "act",
     icon: meta.icon,
     action,
-    team: ev.team,
+    team: isOG ? (ev.team === teams[0] ? teams[1] : teams[0]) : ev.team,
     player: ev.player,
     zoneId: zone ? zone.id : null,
     zone: zone ? zone.name : "Fuera del campo",

@@ -4,7 +4,7 @@ const FLAGS = {
   USA:"🇺🇸",PAR:"🇵🇾",HAI:"🇭🇹",SCO:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",BRA:"🇧🇷",ARG:"🇦🇷",
   ESP:"🇪🇸",FRA:"🇫🇷",GER:"🇩🇪",ITA:"🇮🇹",POR:"🇵🇹",NED:"🇳🇱",
   ENG:"🇬🇧",BEL:"🇧🇪",URU:"🇺🇾",COL:"🇨🇴",JPN:"🇯🇵",AUS:"🇦🇺",
-  CRC:"🇨🇷",PAN:"🇵🇦",NOR:"🇳🇴",SUI:"🇨🇭",
+  CRC:"🇨🇷",PAN:"🇵🇦",NOR:"🇳🇴",SUI:"🇨🇭",CRO:"🇭🇷",
 };
 const COUNTRY_NAME = {
   MEX:"México",RSA:"Sudáfrica",KOR:"Corea del Sur",CZE:"Rep. Checa",
@@ -13,14 +13,14 @@ const COUNTRY_NAME = {
   ESP:"España",FRA:"Francia",GER:"Alemania",ITA:"Italia",
   POR:"Portugal",NED:"Países Bajos",ENG:"Inglaterra",BEL:"Bélgica",
   URU:"Uruguay",COL:"Colombia",JPN:"Japón",AUS:"Australia",
-  CRC:"Costa Rica",PAN:"Panamá",NOR:"Noruega",SUI:"Suiza",
+  CRC:"Costa Rica",PAN:"Panamá",NOR:"Noruega",SUI:"Suiza",CRO:"Croacia",
 };
 const FLAG_ISO = {
   MEX:"mx",RSA:"za",KOR:"kr",CZE:"cz",CAN:"ca",BIH:"ba",
   USA:"us",PAR:"py",HAI:"ht",SCO:"gb-sct",BRA:"br",ARG:"ar",
   ESP:"es",FRA:"fr",GER:"de",ITA:"it",POR:"pt",NED:"nl",
   ENG:"gb-eng",BEL:"be",URU:"uy",COL:"co",JPN:"jp",AUS:"au",
-  CRC:"cr",PAN:"pa",NOR:"no",SUI:"ch",
+  CRC:"cr",PAN:"pa",NOR:"no",SUI:"ch",CRO:"hr",
 };
 
 const KANCHA_LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ4AAAATCAYAAABhq7R9AAAACXBIWXMAAAsSAAALEgHS3X78AAAFDklEQVRogc2az3HjNhTGf87sMTNyKrB8Ym6rsAHJDXC1FSxdQZwKLFewTgVSKojNBkwXsFz5Zp4iVRB7JnfngAcvBAIiCZKyvxnNLLHgx2fiw/sHHr28vPDeUBbZGHiK4uSpB57UGLpuy+ngWEVxsvHMnQNzYAJ8dEx5BtbADXCzhycFxvo6ipNFG5uFw7wnj+Ikb8vh4Bz7bG6LD2WR5cBUD0RxctTEANTLM1/uAzDrQSwTIAc2ZZF15RsDl8b1PIDT5siBjTmhLLILYAGMarhGqHc9Bb6WRXYPpI7FTDHWRLjb4tK6zgM4XiGbYVkW2XkUJ6suXAA/BRgwQe3aIUU3Ev68LLLjLpwWeuUsi+y4LLI18JV60bkwBf6RRX230KKTy2Uf9rYSniUMjSFEpzGU+NbyvGCITTnVkLoF/gQ+A79JBPkFOAPOgVsHXS+LOQQs0Wl0tvdDCwMOLToNLb7OzzFwYnCuAzkWVEX3RxQn1/ZEsTuXy5WkKtfAJ2PasiyyTR+5WF/wiE5jWRYZoWG3kcd7A9H9JfwafXm+Z+PfI+Fs7flEOL9bw2cu0bkQxckmipM56u80sWhry1DwiM62N9jz1QrvLUQXxUkKzOhffKnFqcWXBvCYuArxVPJ3bo2hac9pRRA8ojsXe8+t8SDx7Q21e7zRxcCiI4qTp7LIZuzmUV3D7hNK0Ct+hLkR7cPGzLpuep8L16jiRKPigeU9HAR7RLcCiOJkVRYZ1pzWYbcivLLI9jX2XoXRBXWi0xhCfHLPvCyyFfDF+K/QnGXbpbcl4XknRMvCmrgL5W+DOtFp9CG+NlXt9pCi0xChzOg57MrzXDnLoiVVXwXPm6Kp6DRkPDjsthHeSVlknRa7reg0BhbflTV8Kd6wKVwnFI0hvcCZ8Tt4jtdWdBpdxFcJtebJhUMoUwLD3J6WyUT48hqKCWAvSudWSxQni7LINuy++C8SNlLPbRuMk4WyyNIO3fwFuxXymcPG2tMkGzUpkzkvxd0ymZRFdrzvvcomGTv+qzbsHj1+u83Zc2S2p6pNm/bAavp0JucN1aOdGaqKPKm5tyI+yQ/N/OjMJ3DPAtyiCoe/TQ7UBjDHtsAkcDN+N4aeozg5DjnGdHCbwrtynffW9OlAtZ/0mmyM8TFqXebsX1Ov16wNtSKuCe4wV9sD84ju1uLTnJcooZi/S6qiu/fY0yXsrlBhw+z1fcJRsUZxcsNuG0Q3pMdNn2cUTSYa9QH7QMM+3QhVgC3ZXZOljNuia9zna5TjSdU2w90Dm/nu25PTzaM4maDyq2fXvR5sUbto5rCnL/HNqDaaXZhb1x9R564r34aUfG4uHu2OahQ5iPBq+nSnqI3dBveo48GUhjlf4+LCSPBNVY+AOxdxk0JC3P+YH2eYphfR2MozP0dxMjb6SUMVHGuq4vPNs18yKE/wvSyyFynG9G8D/IsK0VPrnl4a8k3QoE+3kY19inIMPhHeo86kT6M4eT16bFpw1OZ4HuNX7PbAdowPrV5D4Dmsf0CJZ0LDHM/BO0HlN3aY3+GQeSvCq9srrO8Eh8rxQqvXENQ9q/VnUeBtQyyNMJNzANGJLV7PB/zcgdeV2zrnSdrg+/LEhQfU+zuN4mTxHjxd36jzfEeP325TAr92LdUXt3Y+8x+7C/7U9PC8C8TzXVjDj8CvxrX36+EWvLUcsvmO2T1a28hvXSe0coAvkKke862lSBoUHo1c/w+ZJkA4KukbKQAAAABJRU5ErkJggg==";
@@ -145,6 +145,17 @@ const MATCH_EVENTS = [
   { min:1,  type:"info",icon:"🟢", label:"¡Comienza el partido!" },
 ];
 
+// Partidos reales de StatsBomb open-data; los eventos se sirven desde /data/events/{id}.json
+// (descargados con data/fetch-match.js). sbHome/sbAway son los nombres de equipo de StatsBomb.
+const HISTORIC_MATCHES = [
+  { id:3869685, home:"ARG", away:"FRA", sbHome:"Argentina", sbAway:"France",  title:"Argentina 3-3 Francia",    comp:"FINAL · MUNDIAL 2022" },
+  { id:8658,    home:"FRA", away:"CRO", sbHome:"France",    sbAway:"Croatia", title:"Francia 4-2 Croacia",      comp:"FINAL · MUNDIAL 2018" },
+  { id:3943043, home:"ESP", away:"ENG", sbHome:"Spain",     sbAway:"England", title:"España 2-1 Inglaterra",    comp:"FINAL · EURO 2024" },
+  { id:3795506, home:"ITA", away:"ENG", sbHome:"Italy",     sbAway:"England", title:"Italia 1-1 Inglaterra",    comp:"FINAL · EURO 2020" },
+  { id:3750191, home:"ARG", away:"ENG", sbHome:"Argentina", sbAway:"England", title:"Argentina 2-1 Inglaterra", comp:"CUARTOS · MUNDIAL 1986" },
+  { id:3888702, home:"BRA", away:"ITA", sbHome:"Brazil",    sbAway:"Italy",   title:"Brasil 4-1 Italia",        comp:"FINAL · MUNDIAL 1970" },
+];
+
 const ME = {
   name: (window.__KN_USER && window.__KN_USER.name) || "JuanP",
   handle:"juanp", country:"MEX", level:"Rookie", rank:47,
@@ -157,7 +168,7 @@ const ME = {
   notifications:3, streak:4,
 };
 
-Object.assign(window, { FLAGS, FLAG_ISO, Flag, COUNTRY_NAME, FIXTURE, RANKING, FRIENDS, FRIEND_REQUESTS, ZONES, ACTIONS, MATCH_EVENTS, ME, KANCHA_LOGO });
+Object.assign(window, { FLAGS, FLAG_ISO, Flag, COUNTRY_NAME, FIXTURE, RANKING, FRIENDS, FRIEND_REQUESTS, ZONES, ACTIONS, MATCH_EVENTS, HISTORIC_MATCHES, ME, KANCHA_LOGO });
 
 // ===== SIDEBAR =====
 function Sidebar({ page, onNav }) {
@@ -289,6 +300,26 @@ function bboxOf(z) {
   return {...r,cx:r.x+r.w/2,cy:r.y+r.h/2};
 }
 
+// ===== STATSBOMB → ZONA =====
+// Coordenadas StatsBomb (campo 120x80) → zona de Kancha. Misma lógica que
+// data/kancha-zones.js: las zonas pequeñas (puntos, córners, áreas) se
+// comprueban antes que las rejillas que tienen debajo.
+const SB_PRIORITY = { spot:0, cspot:0, corner:1, box6:2, boxfront:2, boxband:2, grid:3 };
+const SB_ORDERED = [...ZONES].sort((a,b)=>SB_PRIORITY[a.kind]-SB_PRIORITY[b.kind]);
+function sbZoneContains(z,px,py) {
+  if (z.kind==="corner") { const cx=z.h==="izq"?PF.PX0:PF.PX1, cy=z.v==="n"?PF.PY0:PF.PY1; return Math.hypot(px-cx,py-cy)<=PF.CORNER_R; }
+  const c=circleFor(z);
+  if (c) return Math.hypot(px-c.cx,py-c.cy)<=c.r;
+  const r=rectFor(z);
+  return px>=r.x&&px<=r.x+r.w&&py>=r.y&&py<=r.y+r.h;
+}
+function sbLocateZone(x,y) {
+  const cl=(v,lo,hi)=>Math.min(hi,Math.max(lo,v));
+  const px=cl(PF.PX0+(x/120)*PF.PW,PF.PX0,PF.PX1), py=cl(PF.PY0+(y/80)*PF.PH,PF.PY0,PF.PY1);
+  for (const z of SB_ORDERED) if (sbZoneContains(z,px,py)) return z;
+  return null;
+}
+
 function RegionZone({zone,selected,isHover,onHover,onClick}) {
   const r=rectFor(zone); if(!r) return null;
   const color=TIER_COLOR[zone.tier],isFull=zone.taken>=zone.slots,isOff=isFull||zone.overBudget;
@@ -329,7 +360,15 @@ function PointZone({zone,selected,isHover,onHover,onClick}) {
   );
 }
 
-function PitchField({zones,selectedIds,onZoneClick}) {
+function ZoneFlash({zone}) {
+  if (zone.kind==="corner") { const g=cornerGeo(zone); return <path className="ps-zone-flash" d={g.d}/>; }
+  const c=circleFor(zone);
+  if (c) return <circle className="ps-zone-flash" cx={c.cx} cy={c.cy} r={c.r+6}/>;
+  const r=rectFor(zone);
+  return r?<rect className="ps-zone-flash" x={r.x} y={r.y} width={r.w} height={r.h}/>:null;
+}
+
+function PitchField({zones,selectedIds,onZoneClick,flash={}}) {
   const [hoverId,setHoverId]=React.useState(null);
   const byId={};
   zones.forEach(z=>{byId[z.id]=z;});
@@ -383,6 +422,7 @@ function PitchField({zones,selectedIds,onZoneClick}) {
         </g>
         {corners.map(z=>(<CornerZone key={z.id} zone={z} selected={sel(z.id)} isHover={hov(z.id)} onHover={setHoverId} onClick={onZoneClick}/>))}
         {points.map(z=>(<PointZone key={z.id} zone={z} selected={sel(z.id)} isHover={hov(z.id)} onHover={setHoverId} onClick={onZoneClick}/>))}
+        {Object.entries(flash).map(([id,ts])=>byId[id]&&<ZoneFlash key={id+"-"+ts} zone={byId[id]}/>)}
         {hoverId&&byId[hoverId]&&<ZoneTip zone={byId[hoverId]} box={bboxOf(byId[hoverId])} W={p.W}/>}
       </svg>
     </div>
@@ -417,12 +457,145 @@ function PitchLegend() {
 
 Object.assign(window, { PitchField, PitchLegend });
 
+// ===== SIMULADOR DE PARTIDOS HISTÓRICOS =====
+const SIM_SPEEDS = [ {label:"1x",ms:3000}, {label:"3x",ms:1000}, {label:"10x",ms:300} ];
+const SIM_PERIOD_LABEL = { 1:"1ª PARTE", 2:"2ª PARTE", 3:"PRÓRROGA", 4:"PRÓRROGA", 5:"PENALTIS" };
+const SIM_ACTION_META = {
+  "Gol":{icon:"⚽",pts:40}, "Tiro a puerta":{icon:"🥅",pts:25}, "Penalti señalado":{icon:"🎯",pts:50},
+  "Asistencia":{icon:"👟",pts:15}, "Pase clave":{icon:"🪡",pts:10}, "Recuperación":{icon:"🛡",pts:5},
+};
+
+function sbClassify(ev) {
+  switch (ev.type) {
+    case "Shot":             return ev.shot&&ev.shot.outcome==="Goal"?"Gol":"Tiro a puerta";
+    case "Own Goal Against": return "Gol";
+    case "Pass":             return ev.pass&&ev.pass.goal_assist?"Asistencia":"Pase clave";
+    case "Ball Recovery":    return "Recuperación";
+    case "Foul Won":         return "Penalti señalado";
+    default:                 return null;
+  }
+}
+
+// StatsBomb codifica cada evento con el equipo en posesión atacando de
+// izquierda a derecha: al visitante se le invierten las coordenadas para
+// fijarlo en el campo. En un gol en propia el evento es del equipo que se
+// marca: la zona usa sus coordenadas pero el gol se acredita al rival.
+function sbToKanchaEvent(ev,hm) {
+  const action=sbClassify(ev);
+  if (!action||!ev.location) return null;
+  let [x,y]=ev.location;
+  if (ev.team===hm.sbAway) { x=120-x; y=80-y; }
+  const zone=sbLocateZone(x,y), meta=SIM_ACTION_META[action];
+  const evHome=ev.team===hm.sbHome, isOG=ev.type==="Own Goal Against";
+  return { min:ev.minute, period:ev.period, type:"act", icon:meta.icon, action,
+    team:(evHome!==isOG)?hm.home:hm.away, zoneId:zone?zone.id:null, zone:zone?zone.name:"", pts:meta.pts };
+}
+
+function useHistoricSim(onActEvent) {
+  const [sim,setSim]=React.useState({status:"idle",match:null,events:[],minute:0,period:1,progress:0,total:0});
+  const ref=React.useRef({queue:[],idx:0,timer:null});
+
+  const clear=()=>{ if(ref.current.timer){clearInterval(ref.current.timer);ref.current.timer=null;} };
+  React.useEffect(()=>clear,[]);
+
+  const run=(ms)=>{
+    clear();
+    ref.current.timer=setInterval(()=>{
+      const r=ref.current;
+      if (r.idx>=r.queue.length) {
+        clear();
+        setSim(s=>({...s,status:"done",events:[{type:"info",icon:"🏁",label:"Final del partido",min:s.minute},...s.events]}));
+        return;
+      }
+      const ev=r.queue[r.idx++];
+      if (ev.zoneId&&onActEvent) onActEvent(ev);
+      setSim(s=>({...s,events:[ev,...s.events],minute:ev.min,period:ev.period,progress:r.idx}));
+    },ms);
+  };
+
+  async function start(hm,ms) {
+    clear();
+    setSim({status:"loading",match:hm,events:[],minute:0,period:1,progress:0,total:0});
+    try {
+      const res=await fetch(`/data/events/${hm.id}.json`);
+      if (!res.ok) throw new Error("HTTP "+res.status);
+      const {events}=await res.json();
+      const queue=events.slice()
+        .sort((a,b)=>a.period-b.period||a.minute-b.minute||a.second-b.second||a.index-b.index)
+        .map(e=>sbToKanchaEvent(e,hm)).filter(Boolean);
+      ref.current={queue,idx:0,timer:null};
+      setSim({status:"running",match:hm,events:[{type:"info",icon:"🟢",label:"¡Comienza el partido!",min:0}],minute:0,period:1,progress:0,total:queue.length});
+      run(ms);
+    } catch(e) {
+      setSim({status:"error",match:hm,events:[],minute:0,period:1,progress:0,total:0});
+    }
+  }
+
+  function setSpeed(ms){ if(ref.current.timer) run(ms); }
+  function stop(){ clear(); setSim({status:"idle",match:null,events:[],minute:0,period:1,progress:0,total:0}); }
+
+  return {sim,start,setSpeed,stop};
+}
+
+function HistoricMatchesBar({ sim, speedIdx, onSpeed, onStart, onStop }) {
+  const [selId,setSelId]=React.useState(HISTORIC_MATCHES[0].id);
+  const busy=sim.status==="running"||sim.status==="loading";
+  const status=
+    sim.status==="loading"?"Cargando eventos…":
+    sim.status==="running"?`Evento ${sim.progress}/${sim.total} · min ${sim.minute}'`:
+    sim.status==="done"?"Partido finalizado":
+    sim.status==="error"?"No se pudieron cargar los eventos":
+    "Datos reales · StatsBomb open-data";
+  return (
+    <section className="ps-hist-sim">
+      <div className="ps-hist-sim-l">
+        <span className="ps-hist-sim-title">PARTIDOS HISTÓRICOS</span>
+        <span className={"ps-hist-sim-sub"+(sim.status==="error"?" is-error":"")}>{status}</span>
+      </div>
+      <select className="ps-hist-sim-select" value={selId} onChange={e=>setSelId(Number(e.target.value))} disabled={busy}>
+        {HISTORIC_MATCHES.map(m=><option key={m.id} value={m.id}>{m.comp} — {m.title}</option>)}
+      </select>
+      <div className="ps-seg">
+        {SIM_SPEEDS.map((s,i)=>(<button key={s.label} className={i===speedIdx?"is-on":""} onClick={()=>onSpeed(i)}>{s.label}</button>))}
+      </div>
+      {busy?(
+        <button className="ps-btn ps-btn-sm ps-hist-sim-btn ps-hist-sim-stop" onClick={onStop}>DETENER</button>
+      ):sim.status==="done"?(
+        <button className="ps-btn ps-btn-sm ps-hist-sim-btn ps-hist-sim-stop" onClick={onStop}>SALIR</button>
+      ):(
+        <button className="ps-btn ps-btn-primary ps-btn-sm ps-hist-sim-btn" onClick={()=>onStart(HISTORIC_MATCHES.find(m=>m.id===selId))}>SIMULAR</button>
+      )}
+    </section>
+  );
+}
+
+Object.assign(window, { useHistoricSim, HistoricMatchesBar, sbLocateZone, sbToKanchaEvent });
+
 // ===== PAGE INICIO =====
 function PageInicio({ onNav }) {
   const [selectedZones,setSelectedZones]=React.useState([]);
   const [view,setView]=React.useState("mapa");
   const [focusZone,setFocusZone]=React.useState("penspot_izq");
   const featured=FIXTURE[0],focused=ZONES.find(z=>z.id===focusZone);
+
+  // --- Simulación de partidos históricos ---
+  const [speedIdx,setSpeedIdx]=React.useState(0);
+  const [flash,setFlash]=React.useState({});
+  const selectedRef=React.useRef([]);
+  React.useEffect(()=>{ selectedRef.current=selectedZones; },[selectedZones]);
+  const flashTimers=React.useRef({});
+  React.useEffect(()=>()=>{ Object.values(flashTimers.current).forEach(clearTimeout); },[]);
+  const handleSimEvent=React.useCallback((ev)=>{
+    if (!selectedRef.current.includes(ev.zoneId)) return;
+    setFlash(f=>({...f,[ev.zoneId]:Date.now()}));
+    clearTimeout(flashTimers.current[ev.zoneId]);
+    flashTimers.current[ev.zoneId]=setTimeout(()=>{
+      setFlash(f=>{ const n={...f}; delete n[ev.zoneId]; return n; });
+    },1600);
+  },[]);
+  const {sim,start:startSim,setSpeed:setSimSpeed,stop:stopSim}=useHistoricSim(handleSimEvent);
+  const simOn=sim.match&&(sim.status==="running"||sim.status==="done"||sim.status==="loading");
+  const simReservations=selectedZones.map(id=>{ const z=ZONES.find(zz=>zz.id===id); return {zoneId:id,name:z?z.name:id,price:z?z.price:0}; });
 
   // Load saved reservations for the active match from Supabase on mount
   React.useEffect(()=>{
@@ -493,7 +666,7 @@ function PageInicio({ onNav }) {
           </div>
           {view==="mapa"?(
             <>
-              <PitchField zones={ZONES.map(z=>({...z,taken:selectedZones.includes(z.id)?Math.min(z.slots,z.taken+1):z.taken,overBudget:!selectedZones.includes(z.id)&&(z.price>remainingBudget||selectedZones.length>=ME.zonesMax)}))} selectedIds={selectedZones} onZoneClick={toggleZone}/>
+              <PitchField zones={ZONES.map(z=>({...z,taken:selectedZones.includes(z.id)?Math.min(z.slots,z.taken+1):z.taken,overBudget:!selectedZones.includes(z.id)&&(z.price>remainingBudget||selectedZones.length>=ME.zonesMax)}))} selectedIds={selectedZones} onZoneClick={toggleZone} flash={flash}/>
               <PitchLegend/>
             </>
           ):(
@@ -506,7 +679,22 @@ function PageInicio({ onNav }) {
           <CartCard selectedIds={selectedZones} onRemove={(id)=>setSelectedZones(prev=>prev.filter(x=>x!==id))} onClear={()=>setSelectedZones([])} onConfirm={confirmReservations}/>
         </aside>
       </div>
-      <LiveMatch match={featured}/>
+      <HistoricMatchesBar sim={sim} speedIdx={speedIdx}
+        onSpeed={(i)=>{ setSpeedIdx(i); setSimSpeed(SIM_SPEEDS[i].ms); }}
+        onStart={(m)=>startSim(m,SIM_SPEEDS[speedIdx].ms)}
+        onStop={stopSim}/>
+      {simOn?(
+        <LiveMatch
+          match={{home:sim.match.home,away:sim.match.away}}
+          events={sim.events}
+          reservations={simReservations}
+          minute={sim.minute}
+          half={sim.status==="done"?"FINAL":(SIM_PERIOD_LABEL[sim.period]||"1ª PARTE")}
+          tag={sim.status==="loading"?"CARGANDO":"SIMULACIÓN"}
+        />
+      ):(
+        <LiveMatch match={featured}/>
+      )}
     </div>
   );
 }
@@ -711,25 +899,26 @@ function useCountUp(target,ms=900) {
   return v;
 }
 
-function LiveMatch({ match }) {
-  const myZones=ME.reservations.map(r=>r.zoneId);
-  const goals=MATCH_EVENTS.filter(e=>e.type==="act"&&e.action==="Gol");
+function LiveMatch({ match, events=MATCH_EVENTS, reservations=ME.reservations, minute=45, half="DESCANSO", tag="EN DIRECTO" }) {
+  const myZones=reservations.map(r=>r.zoneId);
+  // Los goles de una tanda de penaltis (period 5) no cuentan en el marcador
+  const goals=events.filter(e=>e.type==="act"&&e.action==="Gol"&&(e.period==null||e.period<5));
   const homeGoals=goals.filter(e=>e.team===match.home).length;
   const awayGoals=goals.filter(e=>e.team===match.away).length;
-  const zoneStats=ME.reservations.map(r=>{
-    const evs=MATCH_EVENTS.filter(e=>e.type==="act"&&e.zoneId===r.zoneId);
+  const zoneStats=reservations.map(r=>{
+    const evs=events.filter(e=>e.type==="act"&&e.zoneId===r.zoneId);
     const pts=evs.reduce((s,e)=>s+e.pts,0),lastMin=evs.length?Math.max(...evs.map(e=>e.min)):null;
     return {...r,tier:ZONE_TIER[r.zoneId]||"mid",pts,count:evs.length,lastMin};
   }).sort((a,b)=>b.pts-a.pts);
   const liveTotal=zoneStats.reduce((s,z)=>s+z.pts,0);
   const maxZone=Math.max(1,...zoneStats.map(z=>z.pts));
-  const liveCount=MATCH_EVENTS.filter(e=>e.type==="act"&&myZones.includes(e.zoneId)).length;
+  const liveCount=events.filter(e=>e.type==="act"&&myZones.includes(e.zoneId)).length;
   const animTotal=useCountUp(liveTotal);
   return (
     <section className="ps-lm">
-      <LiveScoreboard match={match} home={homeGoals} away={awayGoals} total={animTotal} liveCount={liveCount}/>
+      <LiveScoreboard match={match} home={homeGoals} away={awayGoals} total={animTotal} liveCount={liveCount} minute={minute} half={half} tag={tag}/>
       <div className="ps-lm-grid">
-        <LiveFeed match={match} myZones={myZones}/>
+        <LiveFeed events={events} myZones={myZones}/>
         <LiveZones zoneStats={zoneStats} total={liveTotal} max={maxZone}/>
         <ScoringPanel zoneStats={zoneStats} myZones={myZones}/>
       </div>
@@ -737,16 +926,16 @@ function LiveMatch({ match }) {
   );
 }
 
-function LiveScoreboard({ match, home, away, total, liveCount }) {
+function LiveScoreboard({ match, home, away, total, liveCount, minute=45, half="DESCANSO", tag="EN DIRECTO" }) {
   return (
     <div className="ps-lm-board">
-      <div className="ps-lm-board-tag"><span className="ps-live-pulse"></span>EN DIRECTO</div>
+      <div className="ps-lm-board-tag"><span className="ps-live-pulse"></span>{tag}</div>
       <div className="ps-lm-score">
         <div className="ps-lm-team ps-lm-team-h"><span className="ps-lm-team-name">{COUNTRY_NAME[match.home].toUpperCase()}</span><Flag code={match.home} h={26}/></div>
         <div className="ps-lm-nums"><span>{home}</span><i>—</i><span>{away}</span></div>
         <div className="ps-lm-team ps-lm-team-a"><Flag code={match.away} h={26}/><span className="ps-lm-team-name">{COUNTRY_NAME[match.away].toUpperCase()}</span></div>
       </div>
-      <div className="ps-lm-clock"><span className="ps-lm-min">45'</span><span className="ps-lm-half">DESCANSO</span></div>
+      <div className="ps-lm-clock"><span className="ps-lm-min">{minute}'</span><span className="ps-lm-half">{half}</span></div>
       <div className="ps-lm-mypts">
         <div className="ps-lm-mypts-l">TUS PUNTOS EN VIVO</div>
         <div className="ps-lm-mypts-v">+{total}</div>
@@ -756,12 +945,12 @@ function LiveScoreboard({ match, home, away, total, liveCount }) {
   );
 }
 
-function LiveFeed({ match, myZones }) {
+function LiveFeed({ events, myZones }) {
   return (
     <div className="ps-card ps-lm-feed">
       <div className="ps-lm-panel-head"><span className="ps-lm-panel-title">FEED DEL PARTIDO</span><span className="ps-lm-panel-sub">EN TIEMPO REAL</span></div>
       <div className="ps-lm-feed-list">
-        {MATCH_EVENTS.map((e,i)=>{
+        {events.map((e,i)=>{
           if(e.type==="info") return (<div className="ps-lm-info" key={i}><span className="ps-lm-info-min">{e.min}'</span><span className="ps-lm-info-ic">{e.icon}</span><span className="ps-lm-info-lab">{e.label}</span></div>);
           const mine=myZones.includes(e.zoneId);
           return (

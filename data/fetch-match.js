@@ -14,11 +14,13 @@ const OUT_DIR = path.join(__dirname, "events");
 // Eventos que puntúan en Kancha:
 //  - Shot (incluye goles: outcome "Goal")
 //  - Pass solo si es pase clave (shot_assist) o asistencia (goal_assist)
+//  - Own Goal Against (gol en propia: cuenta para el rival)
 //  - Ball Recovery (descartando las recuperaciones fallidas)
 //  - Foul Won solo si señala penalti
 function isRelevant(ev) {
   const t = ev.type && ev.type.name;
   if (t === "Shot") return true;
+  if (t === "Own Goal Against") return true;
   if (t === "Pass") return !!(ev.pass && (ev.pass.shot_assist || ev.pass.goal_assist));
   if (t === "Ball Recovery") return !(ev.ball_recovery && ev.ball_recovery.recovery_failure);
   if (t === "Foul Won") return !!(ev.foul_won && ev.foul_won.penalty);
