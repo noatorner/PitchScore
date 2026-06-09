@@ -1,6 +1,6 @@
 // KANCHA — Landing (entrada al juego). Reuses PitchField, HowIcon, Flag + data from the app.
 
-const APP_URL = "KANCHA.html";
+const APP_URL = "/jugar";
 
 /* ---- KANCHA wordmark (inline so it recolors via currentColor) ---- */
 function Kancha({ className = "kn-wordmark" }) {

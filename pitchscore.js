@@ -1021,4 +1021,6 @@ function PageTopbar({ eyebrow, title, onHelp }) {
   );
 }
 
-ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+if (!window.__SKIP_APP_RENDER) {
+  ReactDOM.createRoot(document.getElementById("root")).render(<App/>);
+}

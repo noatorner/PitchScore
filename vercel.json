@@ -1,5 +1,6 @@
 {
-  "redirects": [
-    { "source": "/", "destination": "/PITCHSCORE.html" }
+  "rewrites": [
+    { "source": "/",      "destination": "/landing.html"    },
+    { "source": "/jugar", "destination": "/PITCHSCORE.html" }
   ]
 }
