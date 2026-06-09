@@ -259,6 +259,10 @@
 
     <!-- form -->
     <form class="kn-form" id="kn-form" onsubmit="handleSubmit(event)">
+      <div class="kn-field" id="field-name" style="display:none">
+        <label class="kn-label" for="name">Nombre</label>
+        <input class="kn-input" type="text" id="name" name="name" placeholder="Tu nombre" autocomplete="name" />
+      </div>
       <div class="kn-field">
         <label class="kn-label" for="email">Email</label>
         <input class="kn-input" type="email" id="email" name="email" placeholder="tu@email.com" required autocomplete="email" />
@@ -303,6 +307,10 @@
       document.getElementById("tab-signup").classList.toggle("is-active", m === "signup");
       document.getElementById("kn-submit").textContent = m === "login" ? "ENTRAR" : "CREAR CUENTA";
       document.getElementById("password").autocomplete = m === "login" ? "current-password" : "new-password";
+      var nameField = document.getElementById("field-name");
+      var nameInput = document.getElementById("name");
+      nameField.style.display = m === "signup" ? "flex" : "none";
+      nameInput.required = m === "signup";
       showMsg("", "");
     }
 
@@ -324,6 +332,7 @@
       e.preventDefault();
       const email    = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value;
+      const name     = document.getElementById("name").value.trim();
       showMsg("", "");
       setLoading(true);
 
@@ -332,7 +341,7 @@
         if (mode === "login") {
           ({ error } = await sb.auth.signInWithPassword({ email, password }));
         } else {
-          ({ error } = await sb.auth.signUp({ email, password }));
+          ({ error } = await sb.auth.signUp({ email, password, options: { data: { name } } }));
         }
 
         if (error) {
