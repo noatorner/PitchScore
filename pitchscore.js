@@ -148,7 +148,7 @@ const MATCH_EVENTS = [
 const ME = {
   name: (window.__KN_USER && window.__KN_USER.name) || "JuanP",
   handle:"juanp", country:"MEX", level:"Rookie", rank:47,
-  totalPoints:4287, budget:250, zonesReserved:3, zonesMax:5,
+  totalPoints:4287, budget:500, zonesReserved:3, zonesMax:5,
   reservations:[
     { zoneId:"penspot_izq",  name:"Punto de penalti izquierdo", price:175 },
     { zoneId:"med_2",        name:"Mediocampo · sector 3",       price:87 },
@@ -291,11 +291,11 @@ function bboxOf(z) {
 
 function RegionZone({zone,selected,isHover,onHover,onClick}) {
   const r=rectFor(zone); if(!r) return null;
-  const color=TIER_COLOR[zone.tier],isFull=zone.taken>=zone.slots;
+  const color=TIER_COLOR[zone.tier],isFull=zone.taken>=zone.slots,isOff=isFull||zone.overBudget;
   const fillOp=selected?0.66:isHover?0.44:0.26,showOutline=selected||isHover;
   const stroke=selected?"#ffd27a":"#f6f0dc",strokeW=selected?2.6:2;
   return (
-    <g onMouseEnter={()=>onHover(zone.id)} onMouseLeave={()=>onHover(null)} onClick={()=>!isFull&&onClick(zone)} style={{cursor:isFull?"not-allowed":"pointer",opacity:isFull?0.5:1}}>
+    <g onMouseEnter={()=>onHover(zone.id)} onMouseLeave={()=>onHover(null)} onClick={()=>!isOff&&onClick(zone)} style={{cursor:isOff?"not-allowed":"pointer",opacity:isOff?0.4:1}}>
       <rect x={r.x} y={r.y} width={r.w} height={r.h} fill={color} fillOpacity={fillOp} stroke={showOutline?stroke:"none"} strokeWidth={showOutline?strokeW:0}/>
       {selected?(<text x={r.x+r.w/2} y={r.y+r.h/2+6} textAnchor="middle" fontFamily="Anton,sans-serif" fontSize="17" fill="#ffd27a" style={{pointerEvents:"none",filter:"drop-shadow(0 1px 2px rgba(0,0,0,0.8))"}}>{zone.price}</text>)
         :isHover?(<text x={r.x+r.w/2} y={r.y+r.h/2+5} textAnchor="middle" fontFamily="Saira,sans-serif" fontWeight="700" fontSize="14" fill="#f6f0dc" style={{pointerEvents:"none"}}>{zone.price}</text>)
@@ -305,10 +305,10 @@ function RegionZone({zone,selected,isHover,onHover,onClick}) {
 }
 
 function CornerZone({zone,selected,isHover,onHover,onClick}) {
-  const g=cornerGeo(zone),color=TIER_COLOR[zone.tier],isFull=zone.taken>=zone.slots;
+  const g=cornerGeo(zone),color=TIER_COLOR[zone.tier],isFull=zone.taken>=zone.slots,isOff=isFull||zone.overBudget;
   const fillOp=selected?0.74:isHover?0.5:0.32,stroke=selected?"#ffd27a":isHover?"#f6f0dc":"#f3ecd5";
   return (
-    <g onMouseEnter={()=>onHover(zone.id)} onMouseLeave={()=>onHover(null)} onClick={()=>!isFull&&onClick(zone)} style={{cursor:isFull?"not-allowed":"pointer",opacity:isFull?0.5:1}}>
+    <g onMouseEnter={()=>onHover(zone.id)} onMouseLeave={()=>onHover(null)} onClick={()=>!isOff&&onClick(zone)} style={{cursor:isOff?"not-allowed":"pointer",opacity:isOff?0.4:1}}>
       <path d={g.d} fill={color} fillOpacity={fillOp} stroke={stroke} strokeWidth={selected?2.6:1.6}/>
       {(selected||isHover)&&(<text x={g.mx} y={g.my+4} textAnchor="middle" fontFamily={selected?"Anton,sans-serif":"Saira,sans-serif"} fontWeight="700" fontSize={selected?"14":"12"} fill={selected?"#ffd27a":"#f6f0dc"} style={{pointerEvents:"none",filter:"drop-shadow(0 1px 2px rgba(0,0,0,0.8))"}}>{zone.price}</text>)}
     </g>
@@ -317,10 +317,10 @@ function CornerZone({zone,selected,isHover,onHover,onClick}) {
 
 function PointZone({zone,selected,isHover,onHover,onClick}) {
   const c=circleFor(zone); if(!c) return null;
-  const color=TIER_COLOR[zone.tier],isFull=zone.taken>=zone.slots;
+  const color=TIER_COLOR[zone.tier],isFull=zone.taken>=zone.slots,isOff=isFull||zone.overBudget;
   const ringR=c.r+(selected?3:isHover?2:0);
   return (
-    <g onMouseEnter={()=>onHover(zone.id)} onMouseLeave={()=>onHover(null)} onClick={()=>!isFull&&onClick(zone)} style={{cursor:isFull?"not-allowed":"pointer"}}>
+    <g onMouseEnter={()=>onHover(zone.id)} onMouseLeave={()=>onHover(null)} onClick={()=>!isOff&&onClick(zone)} style={{cursor:isOff?"not-allowed":"pointer",opacity:isOff&&!selected?0.4:1}}>
       {(selected||isHover)&&(<circle cx={c.cx} cy={c.cy} r={ringR+5} fill="none" stroke={selected?"#ffd27a":"#f6f0dc"} strokeWidth="1.4" strokeDasharray="2 3" opacity="0.85"/>)}
       <circle cx={c.cx} cy={c.cy} r={ringR} fill={color} fillOpacity={selected?0.95:isHover?0.7:0.5} stroke="#f3ecd5" strokeWidth={selected?2.4:1.6}/>
       <circle cx={c.cx} cy={c.cy} r="2.4" fill="#fff" style={{pointerEvents:"none"}}/>
@@ -468,10 +468,13 @@ function PageInicio({ onNav }) {
     setSelectedZones(prev=>{
       if(prev.includes(z.id)) return prev.filter(id=>id!==z.id);
       if(prev.length>=ME.zonesMax) return prev;
+      const spent=prev.reduce((s,id)=>{const zz=ZONES.find(z=>z.id===id);return s+(zz?zz.price:0);},0);
+      if(z.price>ME.budget-spent) return prev; // not enough budget
       return [...prev,z.id];
     });
   }
   const totalCost=selectedZones.reduce((sum,id)=>{const z=ZONES.find(zz=>zz.id===id);return sum+(z?z.price:0);},0);
+  const remainingBudget=ME.budget-totalCost;
   return (
     <div className="ps-inicio">
       <div className="ps-inicio-screen">
@@ -490,16 +493,16 @@ function PageInicio({ onNav }) {
           </div>
           {view==="mapa"?(
             <>
-              <PitchField zones={ZONES.map(z=>({...z,taken:selectedZones.includes(z.id)?Math.min(z.slots,z.taken+1):z.taken}))} selectedIds={selectedZones} onZoneClick={toggleZone}/>
+              <PitchField zones={ZONES.map(z=>({...z,taken:selectedZones.includes(z.id)?Math.min(z.slots,z.taken+1):z.taken,overBudget:!selectedZones.includes(z.id)&&z.price>remainingBudget}))} selectedIds={selectedZones} onZoneClick={toggleZone}/>
               <PitchLegend/>
             </>
           ):(
-            <ZoneList zones={ZONES} selectedIds={selectedZones} onPick={toggleZone}/>
+            <ZoneList zones={ZONES.map(z=>({...z,overBudget:!selectedZones.includes(z.id)&&z.price>remainingBudget}))} selectedIds={selectedZones} onPick={toggleZone}/>
           )}
         </main>
         <aside className="ps-col-right">
-          <BudgetCard selectedCount={selectedZones.length}/>
-          <ZoneDetail zone={focused} selected={selectedZones.includes(focusZone)} onAdd={()=>toggleZone(focused)} totalCost={totalCost}/>
+          <BudgetCard selectedCount={selectedZones.length} remaining={remainingBudget}/>
+          <ZoneDetail zone={focused} selected={selectedZones.includes(focusZone)} onAdd={()=>toggleZone(focused)} totalCost={totalCost} remainingBudget={remainingBudget}/>
           <CartCard selectedIds={selectedZones} onRemove={(id)=>setSelectedZones(prev=>prev.filter(x=>x!==id))} onClear={()=>setSelectedZones([])} onConfirm={confirmReservations}/>
         </aside>
       </div>
@@ -586,18 +589,26 @@ function MatchHero({ match }) {
   );
 }
 
-function BudgetCard({ selectedCount }) {
+function BudgetCard({ selectedCount, remaining }) {
+  const pct=Math.max(0,Math.round((remaining/ME.budget)*100));
+  const color=pct>50?"#3d7a3a":pct>20?"#c8a73f":"#b94234";
   return (
     <div className="ps-budget-row">
-      <div className="ps-stat-box"><div className="ps-stat-label">MI PRESUPUESTO</div><div className="ps-stat-num">{ME.budget}</div><div className="ps-stat-unit">PUNTOS</div></div>
+      <div className="ps-stat-box">
+        <div className="ps-stat-label">PRESUPUESTO RESTANTE</div>
+        <div className="ps-stat-num" style={{color}}>{remaining}</div>
+        <div className="ps-stat-unit">DE {ME.budget} PUNTOS</div>
+      </div>
       <div className="ps-stat-box"><div className="ps-stat-label">ZONAS RESERVADAS</div><div className="ps-stat-num">{selectedCount} / {ME.zonesMax}</div></div>
     </div>
   );
 }
 
-function ZoneDetail({ zone, selected, onAdd, totalCost }) {
+function ZoneDetail({ zone, selected, onAdd, totalCost, remainingBudget }) {
   if(!zone) return null;
   const isFull=zone.taken>=zone.slots;
+  const noFunds=!selected&&zone.price>remainingBudget;
+  const disabled=isFull||noFunds;
   const potential=zone.tier==="premium"?"MUY ALTO":zone.tier==="high"?"ALTO":zone.tier==="mid"?"MEDIO":"BAJO";
   return (
     <div className="ps-card ps-detail">
@@ -610,7 +621,7 @@ function ZoneDetail({ zone, selected, onAdd, totalCost }) {
       </div>
       <div className="ps-detail-actions-label">ACCIONES QUE SUMAN</div>
       <div className="ps-actions-row">{ACTIONS.map(a=>(<div className="ps-action" key={a.name}><div className="ps-action-icon">{a.icon}</div><div className="ps-action-name">{a.name.toUpperCase()}</div><div className="ps-action-pts">+{a.points}</div></div>))}</div>
-      <button className="ps-btn ps-btn-primary" disabled={isFull} onClick={onAdd}>{selected?"QUITAR DE LA SELECCIÓN":isFull?"ZONA AGOTADA":"RESERVAR ESTA ZONA"}</button>
+      <button className="ps-btn ps-btn-primary" disabled={disabled} onClick={onAdd}>{selected?"QUITAR DE LA SELECCIÓN":isFull?"ZONA AGOTADA":noFunds?"PRESUPUESTO INSUFICIENTE":"RESERVAR ESTA ZONA"}</button>
       <div className="ps-detail-cost">Te costará <strong>{zone.price} puntos</strong></div>
     </div>
   );
@@ -651,7 +662,7 @@ function CartCard({ selectedIds, onRemove, onClear, onConfirm }) {
 function ZoneList({ zones, selectedIds, onPick }) {
   return (
     <div className="ps-zone-list">
-      {zones.map(z=>(<button key={z.id} className={"ps-zone-row"+(selectedIds.includes(z.id)?" is-on":"")+(z.taken>=z.slots?" is-full":"")} onClick={()=>onPick(z)}><span className={`ps-dot ps-dot-${z.tier}`}></span><span className="ps-zl-name">{z.name}</span><span className="ps-zl-tier">{z.tier.toUpperCase()}</span><span className="ps-zl-slots">{z.taken}/{z.slots}</span><span className="ps-zl-price">{z.price} pts</span></button>))}
+      {zones.map(z=>(<button key={z.id} className={"ps-zone-row"+(selectedIds.includes(z.id)?" is-on":"")+(z.taken>=z.slots||z.overBudget?" is-full":"")} onClick={()=>!(z.taken>=z.slots||z.overBudget)&&onPick(z)}><span className={`ps-dot ps-dot-${z.tier}`}></span><span className="ps-zl-name">{z.name}</span><span className="ps-zl-tier">{z.tier.toUpperCase()}</span><span className="ps-zl-slots">{z.taken}/{z.slots}</span><span className="ps-zl-price">{z.price} pts</span></button>))}
     </div>
   );
 }
