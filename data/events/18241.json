@@ -1,0 +1,2903 @@
+{
+  "meta": {
+    "matchId": 18241,
+    "teams": [
+      "Real Madrid",
+      "Atlético Madrid"
+    ],
+    "totalEvents": 4263,
+    "keptEvents": 191,
+    "fetchedAt": "2026-06-10T06:54:42.192Z"
+  },
+  "events": [
+    {
+      "id": "ca5bdb8e-0c59-4e51-b45f-fcf902586136",
+      "index": 80,
+      "period": 1,
+      "minute": 1,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Jorge Resurrección Merodio",
+      "location": [
+        49,
+        5
+      ]
+    },
+    {
+      "id": "e74e43b8-8d40-4035-8c1f-fe2c4146b7dd",
+      "index": 135,
+      "period": 1,
+      "minute": 2,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Filipe Luís Kasmirski",
+      "location": [
+        24,
+        10
+      ]
+    },
+    {
+      "id": "ef8990ad-b89e-49b2-a5b6-dc772c0cba3d",
+      "index": 210,
+      "period": 1,
+      "minute": 3,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Diego da Silva Costa",
+      "location": [
+        44,
+        47
+      ]
+    },
+    {
+      "id": "5668dcb5-562b-4484-88df-51b7b94781d1",
+      "index": 243,
+      "period": 1,
+      "minute": 3,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "João Miranda de Souza Filho",
+      "location": [
+        30,
+        57
+      ]
+    },
+    {
+      "id": "0c0f1fca-47cb-47f2-9b4a-b0920fc25943",
+      "index": 281,
+      "period": 1,
+      "minute": 4,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "João Miranda de Souza Filho",
+      "location": [
+        37,
+        61
+      ]
+    },
+    {
+      "id": "c31a88d4-7d2e-4fe9-8c1b-9a6e90a1a41a",
+      "index": 284,
+      "period": 1,
+      "minute": 5,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Raphaël Varane",
+      "location": [
+        40,
+        33
+      ]
+    },
+    {
+      "id": "e5c0136c-312e-4619-b94c-251249bd8484",
+      "index": 296,
+      "period": 1,
+      "minute": 5,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Thibaut Courtois",
+      "location": [
+        10,
+        37
+      ]
+    },
+    {
+      "id": "b9df4230-8908-40e8-be38-8f38b2c9954d",
+      "index": 301,
+      "period": 1,
+      "minute": 5,
+      "second": 42,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Juan Francisco Torres Belén",
+      "location": [
+        51,
+        76
+      ]
+    },
+    {
+      "id": "95aeaf1c-b0c1-4bf3-b3c4-2162e7e7e696",
+      "index": 316,
+      "period": 1,
+      "minute": 5,
+      "second": 54,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Fábio Alexandre da Silva Coentrão",
+      "location": [
+        26,
+        8
+      ]
+    },
+    {
+      "id": "ca796621-fae3-4d72-b294-854d33b810e9",
+      "index": 320,
+      "period": 1,
+      "minute": 5,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        22,
+        9
+      ]
+    },
+    {
+      "id": "1831e9b0-8d09-4f49-a3f7-116abe220e9c",
+      "index": 327,
+      "period": 1,
+      "minute": 6,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        79,
+        65
+      ]
+    },
+    {
+      "id": "deb855ab-e9e9-4d35-adc2-0a6358ea4227",
+      "index": 339,
+      "period": 1,
+      "minute": 6,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Gareth Frank Bale",
+      "location": [
+        42,
+        34
+      ]
+    },
+    {
+      "id": "394e3621-f0df-43c2-b016-67c91dd837e6",
+      "index": 345,
+      "period": 1,
+      "minute": 6,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        51,
+        41
+      ]
+    },
+    {
+      "id": "b015e202-9bcb-4fe7-b9d3-42efea66a833",
+      "index": 361,
+      "period": 1,
+      "minute": 7,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Diego da Silva Costa",
+      "location": [
+        101,
+        46
+      ]
+    },
+    {
+      "id": "90fb6df8-4534-4b15-a217-92da573541e9",
+      "index": 367,
+      "period": 1,
+      "minute": 7,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Diego da Silva Costa",
+      "location": [
+        116,
+        60
+      ]
+    },
+    {
+      "id": "6be86c4f-94b1-4176-9858-0215e73509ce",
+      "index": 404,
+      "period": 1,
+      "minute": 8,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "David Villa Sánchez",
+      "location": [
+        41,
+        33
+      ]
+    },
+    {
+      "id": "aac1c2e3-b5c8-4798-87c6-2f6c74adb3aa",
+      "index": 412,
+      "period": 1,
+      "minute": 8,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Tiago Cardoso Mendes",
+      "location": [
+        39,
+        37
+      ]
+    },
+    {
+      "id": "cb46e3c6-cb1a-46ea-8302-6bc5d2740efc",
+      "index": 419,
+      "period": 1,
+      "minute": 8,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        56,
+        52
+      ]
+    },
+    {
+      "id": "f674f45c-c2bd-44bf-bbfa-8a2000a434fe",
+      "index": 482,
+      "period": 1,
+      "minute": 9,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Ramos García",
+      "location": [
+        57,
+        32
+      ]
+    },
+    {
+      "id": "64c12046-9513-41ac-8091-adaaaadc11ff",
+      "index": 507,
+      "period": 1,
+      "minute": 9,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Filipe Luís Kasmirski",
+      "location": [
+        65,
+        3
+      ]
+    },
+    {
+      "id": "6c6d5ec8-9538-4bc5-bef8-b67ef69a6b36",
+      "index": 543,
+      "period": 1,
+      "minute": 10,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        64,
+        68
+      ]
+    },
+    {
+      "id": "890c183b-f514-4185-bdbc-d43d0086c28c",
+      "index": 551,
+      "period": 1,
+      "minute": 11,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Filipe Luís Kasmirski",
+      "location": [
+        40,
+        21
+      ]
+    },
+    {
+      "id": "762b7b5a-662b-4018-88ac-57cc5dc56d56",
+      "index": 562,
+      "period": 1,
+      "minute": 11,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Ramos García",
+      "location": [
+        49,
+        29
+      ]
+    },
+    {
+      "id": "728323d8-7da8-47f3-bd73-f2921d9f5147",
+      "index": 599,
+      "period": 1,
+      "minute": 12,
+      "second": 37,
+      "type": "Pass",
+      "team": "Atlético Madrid",
+      "player": "Adrián López Álvarez",
+      "location": [
+        78,
+        49
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "64999eef-a759-4227-ab59-85f3134f06c6",
+      "index": 603,
+      "period": 1,
+      "minute": 12,
+      "second": 41,
+      "type": "Shot",
+      "team": "Atlético Madrid",
+      "player": "Raúl García Escudero",
+      "location": [
+        85,
+        60
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2009febe-0e48-4c41-91d7-c970ba72220e",
+      "index": 608,
+      "period": 1,
+      "minute": 13,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "João Miranda de Souza Filho",
+      "location": [
+        35,
+        48
+      ]
+    },
+    {
+      "id": "644560f1-73f5-4e71-bc71-e30dd9a57e81",
+      "index": 627,
+      "period": 1,
+      "minute": 13,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Thibaut Courtois",
+      "location": [
+        3,
+        54
+      ]
+    },
+    {
+      "id": "89cee483-6531-403f-b38d-afb9abae97ab",
+      "index": 771,
+      "period": 1,
+      "minute": 18,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Karim Benzema",
+      "location": [
+        75,
+        12
+      ]
+    },
+    {
+      "id": "9b7d279d-3168-4de1-aa94-ef79728eccce",
+      "index": 812,
+      "period": 1,
+      "minute": 19,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        57,
+        51
+      ]
+    },
+    {
+      "id": "475e785a-fe2d-4b70-af3e-1c4dce27b633",
+      "index": 838,
+      "period": 1,
+      "minute": 19,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Thibaut Courtois",
+      "location": [
+        7,
+        39
+      ]
+    },
+    {
+      "id": "ff560860-980f-4269-acf5-e97642f583ff",
+      "index": 874,
+      "period": 1,
+      "minute": 20,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Gareth Frank Bale",
+      "location": [
+        80,
+        70
+      ]
+    },
+    {
+      "id": "503f3c07-1993-4a19-ab53-15dd5fc8ef6f",
+      "index": 881,
+      "period": 1,
+      "minute": 20,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Thibaut Courtois",
+      "location": [
+        3,
+        39
+      ]
+    },
+    {
+      "id": "4a271ab0-8b58-453a-94fa-2d82d6a06f41",
+      "index": 929,
+      "period": 1,
+      "minute": 22,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Thibaut Courtois",
+      "location": [
+        3,
+        40
+      ]
+    },
+    {
+      "id": "c284ea84-6839-419e-aee9-8ec8782934cd",
+      "index": 949,
+      "period": 1,
+      "minute": 23,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "David Villa Sánchez",
+      "location": [
+        91,
+        7
+      ]
+    },
+    {
+      "id": "361e8980-bf62-4c05-bd7f-470eb26efce2",
+      "index": 960,
+      "period": 1,
+      "minute": 23,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        37,
+        61
+      ]
+    },
+    {
+      "id": "2d937257-06c8-407b-87ab-a06da76ee337",
+      "index": 967,
+      "period": 1,
+      "minute": 23,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Gareth Frank Bale",
+      "location": [
+        98,
+        55
+      ]
+    },
+    {
+      "id": "f2069d56-e738-4160-b683-c77ea52ae3fa",
+      "index": 1025,
+      "period": 1,
+      "minute": 24,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        11,
+        64
+      ]
+    },
+    {
+      "id": "9a948c7f-46fb-4b62-b393-e4ba308bb041",
+      "index": 1030,
+      "period": 1,
+      "minute": 24,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Diego Roberto Godín Leal",
+      "location": [
+        61,
+        4
+      ]
+    },
+    {
+      "id": "15735f78-b009-429c-a352-c00516c472c1",
+      "index": 1051,
+      "period": 1,
+      "minute": 25,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        28,
+        14
+      ]
+    },
+    {
+      "id": "6752a685-ea76-4b9c-b304-8ce69167d9f3",
+      "index": 1066,
+      "period": 1,
+      "minute": 27,
+      "second": 19,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        94,
+        22
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "7f61f955-c91a-45df-bed0-8f0ab3e0348b",
+      "index": 1074,
+      "period": 1,
+      "minute": 27,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        35,
+        67
+      ]
+    },
+    {
+      "id": "f3e4c638-fd5c-4d92-964d-5231bed3f3f3",
+      "index": 1170,
+      "period": 1,
+      "minute": 30,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        24,
+        59
+      ]
+    },
+    {
+      "id": "85aacce5-5feb-476b-a7ec-3915b30d45b3",
+      "index": 1199,
+      "period": 1,
+      "minute": 31,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Adrián López Álvarez",
+      "location": [
+        97,
+        53
+      ]
+    },
+    {
+      "id": "b1561913-553b-4681-a8ab-4bd960b191f5",
+      "index": 1200,
+      "period": 1,
+      "minute": 31,
+      "second": 3,
+      "type": "Shot",
+      "team": "Atlético Madrid",
+      "player": "Adrián López Álvarez",
+      "location": [
+        97,
+        50
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "b8fcb901-9619-48a8-8328-d69b9cabe33e",
+      "index": 1202,
+      "period": 1,
+      "minute": 31,
+      "second": 4,
+      "type": "Shot",
+      "team": "Atlético Madrid",
+      "player": "Jorge Resurrección Merodio",
+      "location": [
+        107,
+        40
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "3e4fec6d-8218-463c-a6e6-0661051c7cc4",
+      "index": 1209,
+      "period": 1,
+      "minute": 31,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        41,
+        60
+      ]
+    },
+    {
+      "id": "cf0d3a2f-e6e6-4c23-9802-077ffd26c591",
+      "index": 1221,
+      "period": 1,
+      "minute": 31,
+      "second": 29,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Gareth Frank Bale",
+      "location": [
+        108,
+        45
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "ee08f6a0-6f99-4798-a1a8-6bdbd259097d",
+      "index": 1296,
+      "period": 1,
+      "minute": 35,
+      "second": 24,
+      "type": "Pass",
+      "team": "Atlético Madrid",
+      "player": "Juan Francisco Torres Belén",
+      "location": [
+        92,
+        42
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "00c46063-3591-4aad-a950-76bea28b84d9",
+      "index": 1299,
+      "period": 1,
+      "minute": 35,
+      "second": 26,
+      "type": "Shot",
+      "team": "Atlético Madrid",
+      "player": "Diego Roberto Godín Leal",
+      "location": [
+        109,
+        39
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d7981c7a-4fe8-4c8b-b18f-06ffc8dd1728",
+      "index": 1335,
+      "period": 1,
+      "minute": 37,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Adrián López Álvarez",
+      "location": [
+        28,
+        16
+      ]
+    },
+    {
+      "id": "ebca1b18-5177-4946-9efd-40071dbcc313",
+      "index": 1342,
+      "period": 1,
+      "minute": 37,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Raphaël Varane",
+      "location": [
+        61,
+        76
+      ]
+    },
+    {
+      "id": "c2bca9f4-d246-4fab-a15f-96ade793c5b8",
+      "index": 1382,
+      "period": 1,
+      "minute": 40,
+      "second": 29,
+      "type": "Pass",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        120,
+        80
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "8b0373f0-1ad3-4721-8669-f680d29a1287",
+      "index": 1385,
+      "period": 1,
+      "minute": 40,
+      "second": 31,
+      "type": "Shot",
+      "team": "Atlético Madrid",
+      "player": "Adrián López Álvarez",
+      "location": [
+        112,
+        42
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "a4a3ba69-0747-4285-ad95-a3a3ca613e5c",
+      "index": 1399,
+      "period": 1,
+      "minute": 40,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        51,
+        60
+      ]
+    },
+    {
+      "id": "88ed992d-bee3-4e58-89eb-46a32a5fd750",
+      "index": 1452,
+      "period": 1,
+      "minute": 42,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        62,
+        51
+      ]
+    },
+    {
+      "id": "53fce142-1549-4da5-8c92-bcfcf6f539da",
+      "index": 1509,
+      "period": 1,
+      "minute": 43,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        53,
+        9
+      ]
+    },
+    {
+      "id": "26b8008c-a23f-46aa-bf46-8e08f2f807e4",
+      "index": 1672,
+      "period": 2,
+      "minute": 45,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Juan Francisco Torres Belén",
+      "location": [
+        103,
+        74
+      ]
+    },
+    {
+      "id": "21f754c5-4738-4c00-b7fd-149a021ffe01",
+      "index": 1676,
+      "period": 2,
+      "minute": 45,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        18,
+        9
+      ]
+    },
+    {
+      "id": "9a5ddf10-bf97-421e-981b-09977d6e6c6c",
+      "index": 1699,
+      "period": 2,
+      "minute": 46,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Ramos García",
+      "location": [
+        23,
+        15
+      ]
+    },
+    {
+      "id": "14e52c12-fce4-459d-9c52-c08e72c71a94",
+      "index": 1735,
+      "period": 2,
+      "minute": 46,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Iker Casillas Fernández",
+      "location": [
+        2,
+        48
+      ]
+    },
+    {
+      "id": "4f64fb27-4071-4fc9-9094-335dab857d6d",
+      "index": 1764,
+      "period": 2,
+      "minute": 47,
+      "second": 54,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "David Villa Sánchez",
+      "location": [
+        36,
+        48
+      ]
+    },
+    {
+      "id": "690794a5-2ede-4ee3-9298-25b43f03f0ed",
+      "index": 1772,
+      "period": 2,
+      "minute": 48,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        61,
+        19
+      ]
+    },
+    {
+      "id": "b2e60283-4089-48ef-9de8-1b44c8036bd1",
+      "index": 1788,
+      "period": 2,
+      "minute": 48,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        38,
+        49
+      ]
+    },
+    {
+      "id": "b433dd38-975b-4aa3-bd09-04dd58214878",
+      "index": 1819,
+      "period": 2,
+      "minute": 49,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Adrián López Álvarez",
+      "location": [
+        74,
+        54
+      ]
+    },
+    {
+      "id": "c6dd0550-4daf-4586-bc47-865c428d47c9",
+      "index": 1828,
+      "period": 2,
+      "minute": 49,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Ramos García",
+      "location": [
+        2,
+        11
+      ]
+    },
+    {
+      "id": "c9f2c4d0-5146-4a3e-91f5-ac26fc6ac3d0",
+      "index": 1866,
+      "period": 2,
+      "minute": 49,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Jorge Resurrección Merodio",
+      "location": [
+        100,
+        7
+      ]
+    },
+    {
+      "id": "05d12c72-197c-4ce6-a1da-12ac08cd0a1c",
+      "index": 1871,
+      "period": 2,
+      "minute": 50,
+      "second": 2,
+      "type": "Pass",
+      "team": "Atlético Madrid",
+      "player": "Jorge Resurrección Merodio",
+      "location": [
+        107,
+        8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "0c27e236-e547-4ab4-8c3c-cc09c817a976",
+      "index": 1873,
+      "period": 2,
+      "minute": 50,
+      "second": 4,
+      "type": "Shot",
+      "team": "Atlético Madrid",
+      "player": "Raúl García Escudero",
+      "location": [
+        100,
+        51
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "3f7319d9-5e19-47f2-834f-d3b6b97db29b",
+      "index": 1923,
+      "period": 2,
+      "minute": 51,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Thibaut Courtois",
+      "location": [
+        5,
+        29
+      ]
+    },
+    {
+      "id": "612b0406-b960-4a0f-9004-41615a3876fb",
+      "index": 1952,
+      "period": 2,
+      "minute": 53,
+      "second": 45,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        93,
+        29
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "59d3ada3-f541-435e-a15a-913da769365f",
+      "index": 1959,
+      "period": 2,
+      "minute": 54,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        109,
+        36
+      ]
+    },
+    {
+      "id": "6c131097-ab39-4e14-9d28-d9bb9f2c9413",
+      "index": 1960,
+      "period": 2,
+      "minute": 54,
+      "second": 4,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        107,
+        37
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "02fa4cc0-a8d5-4429-820d-7607d95750b8",
+      "index": 1963,
+      "period": 2,
+      "minute": 54,
+      "second": 16,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        120,
+        1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "c2b55c9b-ef26-4e80-9726-4f085bd43390",
+      "index": 1966,
+      "period": 2,
+      "minute": 54,
+      "second": 18,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        108,
+        45
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "754208be-08a2-4073-af3c-0461b3c5e032",
+      "index": 1975,
+      "period": 2,
+      "minute": 54,
+      "second": 54,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Filipe Luís Kasmirski",
+      "location": [
+        67,
+        22
+      ]
+    },
+    {
+      "id": "111a6579-c3ff-49bf-b365-6f191715bc65",
+      "index": 1994,
+      "period": 2,
+      "minute": 55,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Filipe Luís Kasmirski",
+      "location": [
+        87,
+        13
+      ]
+    },
+    {
+      "id": "5cae8b86-e6bb-4c74-98dd-dd474d0a2198",
+      "index": 2019,
+      "period": 2,
+      "minute": 55,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        102,
+        17
+      ]
+    },
+    {
+      "id": "dedf3120-1215-4f1b-86e4-886cb170f278",
+      "index": 2027,
+      "period": 2,
+      "minute": 56,
+      "second": 3,
+      "type": "Pass",
+      "team": "Atlético Madrid",
+      "player": "Diego Roberto Godín Leal",
+      "location": [
+        110,
+        45
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "ee01e3d7-51f7-4866-a935-04b024f9d7e4",
+      "index": 2029,
+      "period": 2,
+      "minute": 56,
+      "second": 5,
+      "type": "Shot",
+      "team": "Atlético Madrid",
+      "player": "Adrián López Álvarez",
+      "location": [
+        110,
+        29
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2b4bc375-41e2-42d1-b00b-0d2721636e5b",
+      "index": 2034,
+      "period": 2,
+      "minute": 56,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        26,
+        16
+      ]
+    },
+    {
+      "id": "5616ed0b-e524-49ca-98f3-7b49953885d1",
+      "index": 2160,
+      "period": 2,
+      "minute": 59,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        69,
+        5
+      ]
+    },
+    {
+      "id": "fce5dc72-a671-4dfd-ac89-63e58e34cdb6",
+      "index": 2186,
+      "period": 2,
+      "minute": 60,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        93,
+        28
+      ]
+    },
+    {
+      "id": "14af7895-12f2-4be0-96d2-908a2903f553",
+      "index": 2196,
+      "period": 2,
+      "minute": 60,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Juan Francisco Torres Belén",
+      "location": [
+        113,
+        74
+      ]
+    },
+    {
+      "id": "7ab1a1c7-9c4b-4e81-80e8-42046bc5640b",
+      "index": 2201,
+      "period": 2,
+      "minute": 60,
+      "second": 31,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        96,
+        67
+      ]
+    },
+    {
+      "id": "b5e6f530-ae6b-44f5-914a-5342a2c47e2d",
+      "index": 2223,
+      "period": 2,
+      "minute": 60,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Gareth Frank Bale",
+      "location": [
+        29,
+        57
+      ]
+    },
+    {
+      "id": "676ec77e-636d-43ca-905b-1cc677e97743",
+      "index": 2268,
+      "period": 2,
+      "minute": 61,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        26,
+        59
+      ]
+    },
+    {
+      "id": "b25c02a4-99c5-4041-9561-d7bc3d9d9c9e",
+      "index": 2275,
+      "period": 2,
+      "minute": 61,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Ramos García",
+      "location": [
+        74,
+        20
+      ]
+    },
+    {
+      "id": "35fa65a6-d1a2-4b3e-bdda-022d039bf6ef",
+      "index": 2288,
+      "period": 2,
+      "minute": 61,
+      "second": 48,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Sergio Ramos García",
+      "location": [
+        105,
+        9
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "d2a794a3-36fe-4096-b4a1-738668ca7a84",
+      "index": 2291,
+      "period": 2,
+      "minute": 61,
+      "second": 49,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        114,
+        39
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "5b546067-47bb-41d7-be61-d7a2bc8d0750",
+      "index": 2354,
+      "period": 2,
+      "minute": 63,
+      "second": 36,
+      "type": "Pass",
+      "team": "Atlético Madrid",
+      "player": "Jorge Resurrección Merodio",
+      "location": [
+        120,
+        1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "4bf421f0-15c3-4434-87fc-9cd8843bf2ae",
+      "index": 2357,
+      "period": 2,
+      "minute": 63,
+      "second": 37,
+      "type": "Shot",
+      "team": "Atlético Madrid",
+      "player": "João Miranda de Souza Filho",
+      "location": [
+        118,
+        36
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "6f81a788-ed11-4c6b-8006-1e4465bdb5da",
+      "index": 2362,
+      "period": 2,
+      "minute": 64,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        86,
+        9
+      ]
+    },
+    {
+      "id": "ae04ba5c-f0d3-4da6-980e-9e503ef6d93c",
+      "index": 2410,
+      "period": 2,
+      "minute": 65,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        105,
+        6
+      ]
+    },
+    {
+      "id": "e6b97977-8d6d-4756-a0dc-6a92469ed0aa",
+      "index": 2420,
+      "period": 2,
+      "minute": 66,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Francisco Román Alarcón Suárez",
+      "location": [
+        89,
+        55
+      ]
+    },
+    {
+      "id": "daf16a79-2e47-40b9-b561-4efb9b30f2cb",
+      "index": 2434,
+      "period": 2,
+      "minute": 66,
+      "second": 22,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Karim Benzema",
+      "location": [
+        105,
+        46
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "1dee886e-6bd1-4781-ab8c-ddb1c11a9829",
+      "index": 2438,
+      "period": 2,
+      "minute": 66,
+      "second": 24,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Francisco Román Alarcón Suárez",
+      "location": [
+        97,
+        42
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "68f78c25-b4ac-4c53-83ed-bf034b28cd6d",
+      "index": 2454,
+      "period": 2,
+      "minute": 67,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Juan Francisco Torres Belén",
+      "location": [
+        15,
+        68
+      ]
+    },
+    {
+      "id": "6724af13-a05c-4f3b-b8d2-e961bb9e6d5d",
+      "index": 2479,
+      "period": 2,
+      "minute": 67,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Thibaut Courtois",
+      "location": [
+        4,
+        59
+      ]
+    },
+    {
+      "id": "2729e31d-1aae-433c-ab86-b4b151841a48",
+      "index": 2553,
+      "period": 2,
+      "minute": 69,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "José Ernesto Sosa",
+      "location": [
+        24,
+        73
+      ]
+    },
+    {
+      "id": "324b1a0b-341b-4473-a7ef-5f3274e34278",
+      "index": 2627,
+      "period": 2,
+      "minute": 71,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "José Ernesto Sosa",
+      "location": [
+        39,
+        76
+      ]
+    },
+    {
+      "id": "4a5aa3af-7a80-4c3a-8309-1b408a5592bd",
+      "index": 2631,
+      "period": 2,
+      "minute": 71,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        78,
+        9
+      ]
+    },
+    {
+      "id": "e3f29aa1-bc35-481e-96bb-cdfbc155e227",
+      "index": 2663,
+      "period": 2,
+      "minute": 72,
+      "second": 34,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        100,
+        53
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "5bdc06a7-48bb-4f39-a0e7-966538aeada5",
+      "index": 2666,
+      "period": 2,
+      "minute": 72,
+      "second": 35,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Gareth Frank Bale",
+      "location": [
+        99,
+        47
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "44b58f65-9332-4b07-9b3a-1823a43deb36",
+      "index": 2670,
+      "period": 2,
+      "minute": 73,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Marcelo Vieira da Silva Júnior",
+      "location": [
+        42,
+        34
+      ]
+    },
+    {
+      "id": "b2dd9fcd-4a9f-4051-a428-14f0d67d12eb",
+      "index": 2703,
+      "period": 2,
+      "minute": 74,
+      "second": 0,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Raphaël Varane",
+      "location": [
+        116,
+        53
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "3f5d727a-36c1-4ad1-9d53-42c3bac46e49",
+      "index": 2705,
+      "period": 2,
+      "minute": 74,
+      "second": 1,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        109,
+        46
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2b6556f0-834f-4a05-8587-080f69ebfb55",
+      "index": 2756,
+      "period": 2,
+      "minute": 75,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Juan Francisco Torres Belén",
+      "location": [
+        24,
+        73
+      ]
+    },
+    {
+      "id": "9086a944-1da0-4a34-bd9d-67c9fd943cfe",
+      "index": 2796,
+      "period": 2,
+      "minute": 76,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Raphaël Varane",
+      "location": [
+        44,
+        70
+      ]
+    },
+    {
+      "id": "8444c547-d39a-4efd-a796-68e6eba44022",
+      "index": 2798,
+      "period": 2,
+      "minute": 76,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Filipe Luís Kasmirski",
+      "location": [
+        47,
+        10
+      ]
+    },
+    {
+      "id": "ef8ce8c4-7cc2-4cd7-962a-14600a0e5475",
+      "index": 2805,
+      "period": 2,
+      "minute": 76,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Gareth Frank Bale",
+      "location": [
+        58,
+        75
+      ]
+    },
+    {
+      "id": "cee9cb95-e001-4aee-9ed9-fb0bf5685b38",
+      "index": 2811,
+      "period": 2,
+      "minute": 76,
+      "second": 57,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        73,
+        62
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "58115687-62b1-4e96-9b28-ce01df82cfdc",
+      "index": 2818,
+      "period": 2,
+      "minute": 77,
+      "second": 2,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Gareth Frank Bale",
+      "location": [
+        109,
+        56
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "b5b30502-ebf8-4026-985e-117cc22f3ad1",
+      "index": 2826,
+      "period": 2,
+      "minute": 77,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "João Miranda de Souza Filho",
+      "location": [
+        35,
+        55
+      ]
+    },
+    {
+      "id": "e92d7638-2515-40e5-b877-ef0ce1e4c44b",
+      "index": 2866,
+      "period": 2,
+      "minute": 78,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        85,
+        4
+      ]
+    },
+    {
+      "id": "aadc4a52-e7c4-4167-a42e-2ace5c4b0f42",
+      "index": 2923,
+      "period": 2,
+      "minute": 80,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Ramos García",
+      "location": [
+        44,
+        29
+      ]
+    },
+    {
+      "id": "e9993176-2c7f-4960-9460-757bdd67cc83",
+      "index": 2942,
+      "period": 2,
+      "minute": 82,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Raphaël Varane",
+      "location": [
+        25,
+        60
+      ]
+    },
+    {
+      "id": "d0111541-3496-48b9-a304-538f3b99391d",
+      "index": 3001,
+      "period": 2,
+      "minute": 83,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Raphaël Varane",
+      "location": [
+        54,
+        68
+      ]
+    },
+    {
+      "id": "401081cd-67f5-411f-be2c-5650376c75d7",
+      "index": 3017,
+      "period": 2,
+      "minute": 84,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Francisco Román Alarcón Suárez",
+      "location": [
+        83,
+        38
+      ]
+    },
+    {
+      "id": "19339d53-425c-49a2-a215-057161ae9bcf",
+      "index": 3030,
+      "period": 2,
+      "minute": 84,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "David Villa Sánchez",
+      "location": [
+        20,
+        38
+      ]
+    },
+    {
+      "id": "a4c61e7a-d635-4e80-8839-a18d7f940f2a",
+      "index": 3037,
+      "period": 2,
+      "minute": 85,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        85,
+        25
+      ]
+    },
+    {
+      "id": "af9ed4e8-1558-4cd7-a7e2-f344e4ec3dcd",
+      "index": 3052,
+      "period": 2,
+      "minute": 85,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        32,
+        22
+      ]
+    },
+    {
+      "id": "b0bf7eda-6fcd-47bd-8b4e-ec1f7ccd2081",
+      "index": 3056,
+      "period": 2,
+      "minute": 85,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        43,
+        77
+      ]
+    },
+    {
+      "id": "ae48d2bd-ad96-4328-96ef-e278796789c4",
+      "index": 3097,
+      "period": 2,
+      "minute": 86,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        94,
+        7
+      ]
+    },
+    {
+      "id": "82acd8ff-a3d2-417d-9cb9-e27f46a0bc4c",
+      "index": 3114,
+      "period": 2,
+      "minute": 87,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        18,
+        16
+      ]
+    },
+    {
+      "id": "438162a9-2e64-4b0e-bb1b-ecea8ea84d5b",
+      "index": 3122,
+      "period": 2,
+      "minute": 87,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        76,
+        70
+      ]
+    },
+    {
+      "id": "813d1b3e-7730-4406-995b-22cc1ba56c32",
+      "index": 3139,
+      "period": 2,
+      "minute": 88,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        33,
+        7
+      ]
+    },
+    {
+      "id": "5916684e-8c51-45c6-9a97-fbd44bc0b053",
+      "index": 3148,
+      "period": 2,
+      "minute": 88,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        41,
+        18
+      ]
+    },
+    {
+      "id": "bba623b0-f903-47c0-a321-a3c0f9f82a92",
+      "index": 3179,
+      "period": 2,
+      "minute": 90,
+      "second": 15,
+      "type": "Shot",
+      "team": "Atlético Madrid",
+      "player": "José Ernesto Sosa",
+      "location": [
+        100,
+        24
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "95f454dd-2148-4f4c-ab31-32e6e598fba6",
+      "index": 3219,
+      "period": 2,
+      "minute": 91,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Francisco Román Alarcón Suárez",
+      "location": [
+        80,
+        19
+      ]
+    },
+    {
+      "id": "9b092933-feab-4385-ba59-d4c8cf583803",
+      "index": 3234,
+      "period": 2,
+      "minute": 91,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        83,
+        53
+      ]
+    },
+    {
+      "id": "ae357a29-8aae-445c-a06d-0857b0782e55",
+      "index": 3242,
+      "period": 2,
+      "minute": 91,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Diego Roberto Godín Leal",
+      "location": [
+        10,
+        36
+      ]
+    },
+    {
+      "id": "acb4427c-ef36-46d8-8d90-41698663e647",
+      "index": 3250,
+      "period": 2,
+      "minute": 91,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Francisco Román Alarcón Suárez",
+      "location": [
+        89,
+        28
+      ]
+    },
+    {
+      "id": "340e0bef-57f0-47e5-a45b-825dc7547cba",
+      "index": 3281,
+      "period": 2,
+      "minute": 91,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Iker Casillas Fernández",
+      "location": [
+        43,
+        8
+      ]
+    },
+    {
+      "id": "41c3f51b-0115-4406-9756-15584c090560",
+      "index": 3302,
+      "period": 2,
+      "minute": 92,
+      "second": 26,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Francisco Román Alarcón Suárez",
+      "location": [
+        97,
+        50
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "92a52dca-8623-4215-9e02-f8eb87575d48",
+      "index": 3305,
+      "period": 2,
+      "minute": 92,
+      "second": 28,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        104,
+        23
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "52c82eda-75ed-4d33-8072-b730c1962f7b",
+      "index": 3309,
+      "period": 2,
+      "minute": 92,
+      "second": 46,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        120,
+        80
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "421efef6-f7c1-4616-b1f1-82ea9c3367fa",
+      "index": 3311,
+      "period": 2,
+      "minute": 92,
+      "second": 48,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Sergio Ramos García",
+      "location": [
+        108,
+        41
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "7dd4443c-f2e7-4956-b09e-6e3da6088a3b",
+      "index": 3335,
+      "period": 2,
+      "minute": 94,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "João Miranda de Souza Filho",
+      "location": [
+        39,
+        65
+      ]
+    },
+    {
+      "id": "008e34fc-a844-440f-8098-06dbe76e021d",
+      "index": 3355,
+      "period": 2,
+      "minute": 94,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Francisco Román Alarcón Suárez",
+      "location": [
+        13,
+        19
+      ]
+    },
+    {
+      "id": "f406fdee-b50a-422d-86f1-f2c72c5f3cb5",
+      "index": 3381,
+      "period": 3,
+      "minute": 90,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        43,
+        60
+      ]
+    },
+    {
+      "id": "78baeb39-b3fa-4b1e-bcaa-030ab87ad1a9",
+      "index": 3453,
+      "period": 3,
+      "minute": 92,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "José Ernesto Sosa",
+      "location": [
+        18,
+        59
+      ]
+    },
+    {
+      "id": "1a999c86-c626-41fe-9431-77fc4ba1b5d5",
+      "index": 3491,
+      "period": 3,
+      "minute": 93,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Tiago Cardoso Mendes",
+      "location": [
+        72,
+        37
+      ]
+    },
+    {
+      "id": "eb092f02-6702-488a-ac4d-f007a4bd0c62",
+      "index": 3500,
+      "period": 3,
+      "minute": 93,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        30,
+        24
+      ]
+    },
+    {
+      "id": "cd1c629a-aa10-48fe-b41f-aaf0943dd6f9",
+      "index": 3580,
+      "period": 3,
+      "minute": 96,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Adrián López Álvarez",
+      "location": [
+        25,
+        53
+      ]
+    },
+    {
+      "id": "9224c239-07ff-419d-b7fd-0134d776c780",
+      "index": 3594,
+      "period": 3,
+      "minute": 96,
+      "second": 16,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Francisco Román Alarcón Suárez",
+      "location": [
+        81,
+        51
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "af4fb09e-6209-459a-94b8-4b636bd8d964",
+      "index": 3598,
+      "period": 3,
+      "minute": 96,
+      "second": 18,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        88,
+        54
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "9b91bf43-e246-49cc-a630-ac69638ae178",
+      "index": 3644,
+      "period": 3,
+      "minute": 98,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        63,
+        47
+      ]
+    },
+    {
+      "id": "52780483-35f7-4e46-86fa-c27bde7ba36a",
+      "index": 3685,
+      "period": 3,
+      "minute": 100,
+      "second": 0,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        99,
+        21
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "be57758b-38f4-4b02-95db-fa7d90979ca0",
+      "index": 3690,
+      "period": 3,
+      "minute": 100,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Francisco Román Alarcón Suárez",
+      "location": [
+        77,
+        73
+      ]
+    },
+    {
+      "id": "fb2ca87f-d45e-4e72-8758-fda3696615af",
+      "index": 3701,
+      "period": 3,
+      "minute": 100,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Jorge Resurrección Merodio",
+      "location": [
+        36,
+        14
+      ]
+    },
+    {
+      "id": "6d0b0311-dbd3-4259-9579-8afd64319753",
+      "index": 3719,
+      "period": 3,
+      "minute": 101,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "José Ernesto Sosa",
+      "location": [
+        75,
+        31
+      ]
+    },
+    {
+      "id": "2500b5c6-e950-41e4-bb72-b65d49e30f1f",
+      "index": 3723,
+      "period": 3,
+      "minute": 101,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        19,
+        76
+      ]
+    },
+    {
+      "id": "dd55a243-a4a1-463d-ab86-dcf1d9d7518b",
+      "index": 3740,
+      "period": 3,
+      "minute": 102,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Jorge Resurrección Merodio",
+      "location": [
+        97,
+        2
+      ]
+    },
+    {
+      "id": "c1fed003-56d5-4ad2-992f-6b2c70df63ba",
+      "index": 3744,
+      "period": 3,
+      "minute": 102,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Toby Alderweireld",
+      "location": [
+        95,
+        2
+      ]
+    },
+    {
+      "id": "1b8ddc95-fe20-418f-b44a-8d2a0d46ae33",
+      "index": 3750,
+      "period": 3,
+      "minute": 102,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        75,
+        19
+      ]
+    },
+    {
+      "id": "87de96d3-12ac-438d-90fe-c6e3e50d6381",
+      "index": 3754,
+      "period": 3,
+      "minute": 102,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        14,
+        71
+      ]
+    },
+    {
+      "id": "f068cf85-3593-4d53-8916-e833407b32bc",
+      "index": 3770,
+      "period": 3,
+      "minute": 103,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        18,
+        58
+      ]
+    },
+    {
+      "id": "bbc4f95a-9dd4-4558-88bd-2613034ec72e",
+      "index": 3774,
+      "period": 3,
+      "minute": 103,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        88,
+        15
+      ]
+    },
+    {
+      "id": "29b63cab-ec8c-46c1-9199-84cedf89ad6d",
+      "index": 3782,
+      "period": 3,
+      "minute": 104,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        36,
+        45
+      ]
+    },
+    {
+      "id": "15fe08fe-2aeb-4121-83ce-d7f342e1bea9",
+      "index": 3859,
+      "period": 3,
+      "minute": 105,
+      "second": 31,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Ramos García",
+      "location": [
+        55,
+        46
+      ]
+    },
+    {
+      "id": "601e0e21-fbcf-4685-82d1-cb216ff90697",
+      "index": 3876,
+      "period": 3,
+      "minute": 106,
+      "second": 10,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        120,
+        1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "095d38e2-2cf8-4567-8f59-9d0010eed198",
+      "index": 3879,
+      "period": 3,
+      "minute": 106,
+      "second": 12,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Raphaël Varane",
+      "location": [
+        109,
+        43
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "47718f43-64aa-4c69-b230-2bf6b1211abc",
+      "index": 3918,
+      "period": 4,
+      "minute": 105,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "João Miranda de Souza Filho",
+      "location": [
+        16,
+        46
+      ]
+    },
+    {
+      "id": "456dc20c-8cfe-4e67-a466-531e244a8510",
+      "index": 3924,
+      "period": 4,
+      "minute": 105,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Adrián López Álvarez",
+      "location": [
+        31,
+        16
+      ]
+    },
+    {
+      "id": "7221c624-0b0b-421d-9df9-a55ef53bf947",
+      "index": 3972,
+      "period": 4,
+      "minute": 106,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        63,
+        14
+      ]
+    },
+    {
+      "id": "fc7f1555-a448-48cf-be9c-018d94c0227d",
+      "index": 4011,
+      "period": 4,
+      "minute": 107,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        79,
+        26
+      ]
+    },
+    {
+      "id": "1870cd9e-18dc-46d6-9715-59eaba1ebbab",
+      "index": 4014,
+      "period": 4,
+      "minute": 107,
+      "second": 39,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        92,
+        45
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "be0b8f50-275c-4601-aab8-fde3a7f97554",
+      "index": 4019,
+      "period": 4,
+      "minute": 108,
+      "second": 45,
+      "type": "Pass",
+      "team": "Atlético Madrid",
+      "player": "Gabriel Fernández Arenas",
+      "location": [
+        82,
+        68
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "0d64fc55-2ac0-4c75-9e64-d1d97dd3d1bd",
+      "index": 4022,
+      "period": 4,
+      "minute": 108,
+      "second": 47,
+      "type": "Shot",
+      "team": "Atlético Madrid",
+      "player": "Diego Roberto Godín Leal",
+      "location": [
+        114,
+        37
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "6233efce-286d-451b-8467-1fa39ce46b21",
+      "index": 4034,
+      "period": 4,
+      "minute": 109,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Toby Alderweireld",
+      "location": [
+        23,
+        15
+      ]
+    },
+    {
+      "id": "df3ed44e-631f-4f66-b9bf-11117f46839c",
+      "index": 4067,
+      "period": 4,
+      "minute": 109,
+      "second": 42,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        53,
+        11
+      ]
+    },
+    {
+      "id": "efd59697-eeea-4978-b7db-d9dd9eab3d17",
+      "index": 4070,
+      "period": 4,
+      "minute": 109,
+      "second": 44,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        61,
+        5
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "149fc400-919b-4eef-aa7d-982d76b64f4c",
+      "index": 4077,
+      "period": 4,
+      "minute": 109,
+      "second": 51,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        109,
+        27
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "5e9be1b2-f071-4043-a3c3-c4fe29561fb9",
+      "index": 4080,
+      "period": 4,
+      "minute": 109,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Gareth Frank Bale",
+      "location": [
+        114,
+        47
+      ]
+    },
+    {
+      "id": "c9e94df6-7244-4f4a-814a-0195a03d115c",
+      "index": 4081,
+      "period": 4,
+      "minute": 109,
+      "second": 53,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Gareth Frank Bale",
+      "location": [
+        117,
+        44
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "028cd9a0-725b-400a-a50b-3e53173bb66b",
+      "index": 4103,
+      "period": 4,
+      "minute": 113,
+      "second": 7,
+      "type": "Pass",
+      "team": "Atlético Madrid",
+      "player": "Diego Roberto Godín Leal",
+      "location": [
+        110,
+        32
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "4be95fb7-0e95-4bea-881d-7b53f6266258",
+      "index": 4106,
+      "period": 4,
+      "minute": 113,
+      "second": 8,
+      "type": "Shot",
+      "team": "Atlético Madrid",
+      "player": "Tiago Cardoso Mendes",
+      "location": [
+        113,
+        26
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "e25afb6e-9b61-4100-99a7-94196feb08c1",
+      "index": 4111,
+      "period": 4,
+      "minute": 113,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Tiago Cardoso Mendes",
+      "location": [
+        53,
+        41
+      ]
+    },
+    {
+      "id": "e7a3df80-44b0-4706-b0d7-f2e9193f2182",
+      "index": 4115,
+      "period": 4,
+      "minute": 113,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Diego Roberto Godín Leal",
+      "location": [
+        40,
+        33
+      ]
+    },
+    {
+      "id": "9c08b49e-7b3b-4ae6-b813-03fe011751fb",
+      "index": 4122,
+      "period": 4,
+      "minute": 114,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "João Miranda de Souza Filho",
+      "location": [
+        44,
+        54
+      ]
+    },
+    {
+      "id": "1276523e-91fa-4bbf-9564-f3d092a2ad2f",
+      "index": 4162,
+      "period": 4,
+      "minute": 115,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        86,
+        4
+      ]
+    },
+    {
+      "id": "b509acbe-e249-4f14-aa93-e5f0d4ad1de1",
+      "index": 4165,
+      "period": 4,
+      "minute": 115,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Tiago Cardoso Mendes",
+      "location": [
+        32,
+        51
+      ]
+    },
+    {
+      "id": "fcb5109d-7e54-4099-be78-9e9195282514",
+      "index": 4180,
+      "period": 4,
+      "minute": 116,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Atlético Madrid",
+      "player": "Diego Roberto Godín Leal",
+      "location": [
+        63,
+        10
+      ]
+    },
+    {
+      "id": "5156c532-5b29-4a8f-8680-ef1fe5b7b560",
+      "index": 4214,
+      "period": 4,
+      "minute": 116,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        82,
+        44
+      ]
+    },
+    {
+      "id": "6610bfac-462d-4e52-9cad-7a01d5b983cb",
+      "index": 4222,
+      "period": 4,
+      "minute": 116,
+      "second": 59,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        90,
+        11
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "d0959a47-bc79-48f6-8e6d-9c32531fcc19",
+      "index": 4225,
+      "period": 4,
+      "minute": 117,
+      "second": 7,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Marcelo Vieira da Silva Júnior",
+      "location": [
+        102,
+        34
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "290a81f3-0222-4d12-abd0-9ff060020e21",
+      "index": 4242,
+      "period": 4,
+      "minute": 118,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Gareth Frank Bale",
+      "location": [
+        53,
+        76
+      ]
+    },
+    {
+      "id": "e2f8dd4a-6e19-4ae7-ba72-f3c9a0716066",
+      "index": 4250,
+      "period": 4,
+      "minute": 119,
+      "second": 6,
+      "type": "Foul Won",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        108,
+        23
+      ],
+      "foul_won": {
+        "penalty": true
+      }
+    },
+    {
+      "id": "8b6b58dc-d2bd-48bf-851e-51227e31e6bd",
+      "index": 4252,
+      "period": 4,
+      "minute": 119,
+      "second": 53,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        108,
+        40
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "f701611c-36f7-4e3f-8880-2a3854748048",
+      "index": 4258,
+      "period": 4,
+      "minute": 123,
+      "second": 0,
+      "type": "Pass",
+      "team": "Atlético Madrid",
+      "player": "Adrián López Álvarez",
+      "location": [
+        60,
+        44
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "687a600e-e052-4247-9e2e-79cfacd14c99",
+      "index": 4260,
+      "period": 4,
+      "minute": 123,
+      "second": 3,
+      "type": "Shot",
+      "team": "Atlético Madrid",
+      "player": "Diego Roberto Godín Leal",
+      "location": [
+        56,
+        41
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    }
+  ]
+}

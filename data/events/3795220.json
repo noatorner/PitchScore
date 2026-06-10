@@ -1,0 +1,2140 @@
+{
+  "meta": {
+    "matchId": 3795220,
+    "teams": [
+      "Italy",
+      "Spain"
+    ],
+    "totalEvents": 4824,
+    "keptEvents": 139,
+    "fetchedAt": "2026-06-10T06:54:51.510Z"
+  },
+  "events": [
+    {
+      "id": "f457ede3-d409-4acc-8576-91dcbc73fb27",
+      "index": 76,
+      "period": 1,
+      "minute": 1,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Giorgio Chiellini",
+      "location": [
+        35.5,
+        31.2
+      ]
+    },
+    {
+      "id": "fa496310-970d-4161-b900-b71c02642fc9",
+      "index": 226,
+      "period": 1,
+      "minute": 5,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Eric García Martret",
+      "location": [
+        62.1,
+        70.1
+      ]
+    },
+    {
+      "id": "79c35eb5-2233-4151-bc81-778db7fc9f02",
+      "index": 399,
+      "period": 1,
+      "minute": 8,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Aymeric Laporte",
+      "location": [
+        61,
+        11.7
+      ]
+    },
+    {
+      "id": "388ba130-1e0d-480a-8bb4-131b658a06bb",
+      "index": 446,
+      "period": 1,
+      "minute": 9,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Ferrán Torres García",
+      "location": [
+        113.6,
+        6.6
+      ]
+    },
+    {
+      "id": "d40bb3b0-b55f-4fdc-9d2a-8a4df9ac32f9",
+      "index": 592,
+      "period": 1,
+      "minute": 11,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Eric García Martret",
+      "location": [
+        69.8,
+        17.3
+      ]
+    },
+    {
+      "id": "e1e6ba8e-83b5-46f9-a982-fa5adfadd511",
+      "index": 604,
+      "period": 1,
+      "minute": 12,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Emerson Palmieri dos Santos",
+      "location": [
+        14.2,
+        40.2
+      ]
+    },
+    {
+      "id": "9c207d20-ace6-47e8-813f-a7dad7579615",
+      "index": 701,
+      "period": 1,
+      "minute": 13,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Leonardo Bonucci",
+      "location": [
+        11.4,
+        63.3
+      ]
+    },
+    {
+      "id": "55e4cbaa-bbb3-4733-9fca-85da7a7c57d5",
+      "index": 731,
+      "period": 1,
+      "minute": 14,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Ferrán Torres García",
+      "location": [
+        79.6,
+        24.3
+      ]
+    },
+    {
+      "id": "450b71d9-abb7-414d-969c-340e32ea24db",
+      "index": 737,
+      "period": 1,
+      "minute": 14,
+      "second": 14,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Ferrán Torres García",
+      "location": [
+        96.9,
+        35.1
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "77ded765-317c-407e-95a2-bc11972042b0",
+      "index": 770,
+      "period": 1,
+      "minute": 15,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Unai Simón Mendibil",
+      "location": [
+        14.6,
+        34.4
+      ]
+    },
+    {
+      "id": "bed3cf3b-0f0c-4cc4-896e-b9ab7037a538",
+      "index": 845,
+      "period": 1,
+      "minute": 18,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Pedro González López",
+      "location": [
+        63.4,
+        75.7
+      ]
+    },
+    {
+      "id": "8320b113-a859-4728-9b52-eff9c806a6a8",
+      "index": 892,
+      "period": 1,
+      "minute": 19,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Mikel Oyarzabal Ugarte",
+      "location": [
+        59.5,
+        37.6
+      ]
+    },
+    {
+      "id": "c6f50e69-995d-4d11-9adc-908f2d5ac06d",
+      "index": 945,
+      "period": 1,
+      "minute": 20,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Pedro González López",
+      "location": [
+        27.4,
+        36.7
+      ]
+    },
+    {
+      "id": "530215b4-51c3-4c6d-9a65-c58fa4dbe7fb",
+      "index": 1064,
+      "period": 1,
+      "minute": 23,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Sergio Busquets i Burgos",
+      "location": [
+        28.5,
+        47.8
+      ]
+    },
+    {
+      "id": "560c564e-5b7c-49c8-bc31-135c3c0f167c",
+      "index": 1132,
+      "period": 1,
+      "minute": 24,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Eric García Martret",
+      "location": [
+        74.9,
+        49.1
+      ]
+    },
+    {
+      "id": "b717ee09-3802-4f31-8ca8-9c23d3847d1b",
+      "index": 1151,
+      "period": 1,
+      "minute": 24,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Gianluigi Donnarumma",
+      "location": [
+        7.5,
+        44.4
+      ]
+    },
+    {
+      "id": "5a41abd0-d7da-4eb3-8236-7847e5d7922f",
+      "index": 1158,
+      "period": 1,
+      "minute": 24,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Sergio Busquets i Burgos",
+      "location": [
+        73.4,
+        40.4
+      ]
+    },
+    {
+      "id": "8d971c5c-8c7a-4aac-8b1a-2ecac68adf68",
+      "index": 1171,
+      "period": 1,
+      "minute": 24,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Daniel Olmo Carvajal",
+      "location": [
+        105.9,
+        39.3
+      ]
+    },
+    {
+      "id": "cae870d5-10b5-440d-868a-0cfd6807a46e",
+      "index": 1172,
+      "period": 1,
+      "minute": 24,
+      "second": 44,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Daniel Olmo Carvajal",
+      "location": [
+        104.9,
+        43
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "066c7a66-f06d-4c13-9b1b-e4265d48b657",
+      "index": 1175,
+      "period": 1,
+      "minute": 24,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Daniel Olmo Carvajal",
+      "location": [
+        107,
+        39.7
+      ]
+    },
+    {
+      "id": "b20fabe9-dbb5-44b0-b51c-3fc626bcebef",
+      "index": 1176,
+      "period": 1,
+      "minute": 24,
+      "second": 44,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Daniel Olmo Carvajal",
+      "location": [
+        108,
+        41.3
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "12b9ae26-0f11-45cf-b012-117037194b8c",
+      "index": 1232,
+      "period": 1,
+      "minute": 26,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Giovanni Di Lorenzo",
+      "location": [
+        49.2,
+        57.3
+      ]
+    },
+    {
+      "id": "f8635d8c-9c39-4961-aac8-89de36cee935",
+      "index": 1238,
+      "period": 1,
+      "minute": 26,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Eric García Martret",
+      "location": [
+        68.3,
+        50
+      ]
+    },
+    {
+      "id": "d16f310b-86a3-461d-b8f4-9e1d9e9553a7",
+      "index": 1245,
+      "period": 1,
+      "minute": 26,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Gianluigi Donnarumma",
+      "location": [
+        11.8,
+        41.9
+      ]
+    },
+    {
+      "id": "d2491fef-356a-4c80-b9d1-7a29d2df6ca9",
+      "index": 1254,
+      "period": 1,
+      "minute": 27,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Unai Simón Mendibil",
+      "location": [
+        14.8,
+        22
+      ]
+    },
+    {
+      "id": "24c57832-8450-42af-9279-a803c6ee9f70",
+      "index": 1359,
+      "period": 1,
+      "minute": 30,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Federico Chiesa",
+      "location": [
+        22.5,
+        74.8
+      ]
+    },
+    {
+      "id": "36022b21-7647-4384-9095-5c861c149c45",
+      "index": 1426,
+      "period": 1,
+      "minute": 31,
+      "second": 57,
+      "type": "Pass",
+      "team": "Spain",
+      "player": "Jorge Resurrección Merodio",
+      "location": [
+        65.9,
+        68.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "bab71c8f-4805-46a5-ad02-9d3dc417829b",
+      "index": 1429,
+      "period": 1,
+      "minute": 32,
+      "second": 1,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Daniel Olmo Carvajal",
+      "location": [
+        95.3,
+        56.5
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f554e60d-af52-4f89-a354-93a55d0750a8",
+      "index": 1494,
+      "period": 1,
+      "minute": 34,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Marco Verratti",
+      "location": [
+        72.6,
+        48.3
+      ]
+    },
+    {
+      "id": "a3479e5d-10ed-4d01-9337-1161a7629d03",
+      "index": 1600,
+      "period": 1,
+      "minute": 36,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Mikel Oyarzabal Ugarte",
+      "location": [
+        19.3,
+        33.5
+      ]
+    },
+    {
+      "id": "23d5f1d6-b6f6-4fdc-9f05-6284b511d10c",
+      "index": 1681,
+      "period": 1,
+      "minute": 37,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Federico Chiesa",
+      "location": [
+        21.4,
+        71.6
+      ]
+    },
+    {
+      "id": "ab9bdfe7-de5e-4ec4-837e-86cf3bde56fb",
+      "index": 1714,
+      "period": 1,
+      "minute": 38,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Ciro Immobile",
+      "location": [
+        56.1,
+        43.2
+      ]
+    },
+    {
+      "id": "69868cd7-8b42-42c4-8479-ed305797a407",
+      "index": 1731,
+      "period": 1,
+      "minute": 38,
+      "second": 50,
+      "type": "Pass",
+      "team": "Spain",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        91.6,
+        25.2
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "db52f5e0-e7d9-47ff-846f-6dbf8954b2d2",
+      "index": 1733,
+      "period": 1,
+      "minute": 38,
+      "second": 51,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Mikel Oyarzabal Ugarte",
+      "location": [
+        103,
+        53.7
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "3ce003e8-fb46-4a80-a2ae-4957d5ac02eb",
+      "index": 1748,
+      "period": 1,
+      "minute": 39,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Sergio Busquets i Burgos",
+      "location": [
+        48.2,
+        26
+      ]
+    },
+    {
+      "id": "e7751a8f-fee7-4bc7-9afc-e00e7cd1727f",
+      "index": 1846,
+      "period": 1,
+      "minute": 42,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Gianluigi Donnarumma",
+      "location": [
+        6.7,
+        49.2
+      ]
+    },
+    {
+      "id": "666fc3e2-40fa-41fa-9745-6f49166add52",
+      "index": 1914,
+      "period": 1,
+      "minute": 44,
+      "second": 9,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Lorenzo Insigne",
+      "location": [
+        103.4,
+        28.4
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "7880947f-7983-48e4-81d4-d86baaa598c8",
+      "index": 1917,
+      "period": 1,
+      "minute": 44,
+      "second": 11,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Emerson Palmieri dos Santos",
+      "location": [
+        114.1,
+        26.4
+      ],
+      "shot": {
+        "outcome": "Post",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "3c1899e8-74d1-4372-af50-d6d2afd24138",
+      "index": 2044,
+      "period": 2,
+      "minute": 47,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Lorenzo Insigne",
+      "location": [
+        107,
+        15.5
+      ]
+    },
+    {
+      "id": "0d0d4cb0-4afd-420f-8b2c-8730f3ac1df0",
+      "index": 2054,
+      "period": 2,
+      "minute": 48,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        50.9,
+        66.5
+      ]
+    },
+    {
+      "id": "006fa224-f3bc-4028-a936-37ff42e4e15a",
+      "index": 2061,
+      "period": 2,
+      "minute": 48,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Leonardo Bonucci",
+      "location": [
+        28.9,
+        3.8
+      ]
+    },
+    {
+      "id": "650eafe7-8fcd-4f7e-909b-7063138f5a16",
+      "index": 2070,
+      "period": 2,
+      "minute": 48,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Jorge Luiz Frello Filho",
+      "location": [
+        32.6,
+        9.3
+      ]
+    },
+    {
+      "id": "7e6319b9-a3eb-4cdc-a229-30ea9ca6127d",
+      "index": 2079,
+      "period": 2,
+      "minute": 48,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Ciro Immobile",
+      "location": [
+        98.9,
+        20
+      ]
+    },
+    {
+      "id": "e6b5127e-50d6-4d4f-a3ca-262df16ed59c",
+      "index": 2080,
+      "period": 2,
+      "minute": 48,
+      "second": 36,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Ciro Immobile",
+      "location": [
+        100.3,
+        25.9
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "5d64d99e-8112-4bf1-806f-ecb98b31a33d",
+      "index": 2098,
+      "period": 2,
+      "minute": 49,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Marco Verratti",
+      "location": [
+        76.9,
+        5.1
+      ]
+    },
+    {
+      "id": "5d7f83f4-bfb5-4a23-8927-fc1fb26ee457",
+      "index": 2108,
+      "period": 2,
+      "minute": 49,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Mikel Oyarzabal Ugarte",
+      "location": [
+        52.7,
+        70.8
+      ]
+    },
+    {
+      "id": "9a40a6fd-4f84-45b8-b0ca-738cb85d0d1f",
+      "index": 2179,
+      "period": 2,
+      "minute": 51,
+      "second": 51,
+      "type": "Pass",
+      "team": "Spain",
+      "player": "Mikel Oyarzabal Ugarte",
+      "location": [
+        108.5,
+        58.6
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "6878e42a-f50f-47f7-a769-9871bbe9ad10",
+      "index": 2181,
+      "period": 2,
+      "minute": 51,
+      "second": 52,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Sergio Busquets i Burgos",
+      "location": [
+        101.6,
+        46
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "6ca64daa-327b-4b7c-b287-10bce5664a47",
+      "index": 2196,
+      "period": 2,
+      "minute": 52,
+      "second": 37,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Nicolò Barella",
+      "location": [
+        91.8,
+        41.9
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "01f99bf8-6ea3-4cdd-88cf-d2d4d2d0c8f4",
+      "index": 2199,
+      "period": 2,
+      "minute": 52,
+      "second": 40,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Federico Chiesa",
+      "location": [
+        107.4,
+        55.5
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "db152baf-6ebf-4611-a420-9e64128a0dd2",
+      "index": 2384,
+      "period": 2,
+      "minute": 56,
+      "second": 20,
+      "type": "Pass",
+      "team": "Spain",
+      "player": "Pedro González López",
+      "location": [
+        85.4,
+        47.4
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "90cac8da-3672-4de4-9f62-63ac0038eda3",
+      "index": 2387,
+      "period": 2,
+      "minute": 56,
+      "second": 23,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Ferrán Torres García",
+      "location": [
+        100.5,
+        29.3
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "0318c6e1-8ecb-4803-91f2-2a09993cb43e",
+      "index": 2390,
+      "period": 2,
+      "minute": 56,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Lorenzo Insigne",
+      "location": [
+        23.4,
+        13.4
+      ]
+    },
+    {
+      "id": "c13a9e35-0d81-47fe-8bc3-b1fb5064a0a8",
+      "index": 2403,
+      "period": 2,
+      "minute": 56,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Jorge Luiz Frello Filho",
+      "location": [
+        19.5,
+        12.3
+      ]
+    },
+    {
+      "id": "2e43f50f-a9f1-492e-b95b-274c38dcf1da",
+      "index": 2422,
+      "period": 2,
+      "minute": 57,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Sergio Busquets i Burgos",
+      "location": [
+        69.6,
+        32.9
+      ]
+    },
+    {
+      "id": "b4166248-846b-4fb0-b435-a0f03c244967",
+      "index": 2427,
+      "period": 2,
+      "minute": 57,
+      "second": 29,
+      "type": "Pass",
+      "team": "Spain",
+      "player": "Jorge Resurrección Merodio",
+      "location": [
+        84.3,
+        42.5
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "fc72ceda-409e-4c89-ace3-c5d32bf986c5",
+      "index": 2434,
+      "period": 2,
+      "minute": 57,
+      "second": 33,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Mikel Oyarzabal Ugarte",
+      "location": [
+        94.7,
+        48.2
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "6dcf27bd-eb36-450f-b9ef-80a21345f8af",
+      "index": 2468,
+      "period": 2,
+      "minute": 58,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Daniel Olmo Carvajal",
+      "location": [
+        50.7,
+        26.9
+      ]
+    },
+    {
+      "id": "eb0c6757-5434-462b-bb64-eba5cc17826e",
+      "index": 2544,
+      "period": 2,
+      "minute": 59,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Federico Chiesa",
+      "location": [
+        105.9,
+        25.2
+      ]
+    },
+    {
+      "id": "51e7dde0-e2e5-4e4e-b00a-98a287e5813d",
+      "index": 2546,
+      "period": 2,
+      "minute": 59,
+      "second": 21,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Federico Chiesa",
+      "location": [
+        105.2,
+        28.5
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "483ae3b3-1bcb-45d7-9767-ff82fe8dc72b",
+      "index": 2628,
+      "period": 2,
+      "minute": 63,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Nicolò Barella",
+      "location": [
+        44.1,
+        63
+      ]
+    },
+    {
+      "id": "82987f30-e81a-429e-a4b9-75cefbc3b1e5",
+      "index": 2633,
+      "period": 2,
+      "minute": 63,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Nicolò Barella",
+      "location": [
+        41.6,
+        62.2
+      ]
+    },
+    {
+      "id": "9e2cd53d-b0de-4881-bc49-7f08d96947ca",
+      "index": 2698,
+      "period": 2,
+      "minute": 64,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Mikel Oyarzabal Ugarte",
+      "location": [
+        81.8,
+        60.7
+      ]
+    },
+    {
+      "id": "112436c9-a131-4220-8bc5-50e6c662d820",
+      "index": 2737,
+      "period": 2,
+      "minute": 65,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Aymeric Laporte",
+      "location": [
+        77,
+        27.1
+      ]
+    },
+    {
+      "id": "0ca6d2e2-d551-40d7-92e5-ef510c78701f",
+      "index": 2751,
+      "period": 2,
+      "minute": 65,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Eric García Martret",
+      "location": [
+        56.3,
+        75.7
+      ]
+    },
+    {
+      "id": "bc785c30-3fcc-485d-8cf2-8e670fb78a02",
+      "index": 2768,
+      "period": 2,
+      "minute": 65,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Daniel Olmo Carvajal",
+      "location": [
+        98.9,
+        46.2
+      ]
+    },
+    {
+      "id": "2d7c7f44-cdc8-4624-8a65-28a91339747d",
+      "index": 2769,
+      "period": 2,
+      "minute": 65,
+      "second": 59,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Daniel Olmo Carvajal",
+      "location": [
+        100.7,
+        45.7
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "01bdc401-6074-4a27-9727-c7addc64445e",
+      "index": 2788,
+      "period": 2,
+      "minute": 66,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Sergio Busquets i Burgos",
+      "location": [
+        58.9,
+        21.1
+      ]
+    },
+    {
+      "id": "47615529-995a-4a09-86ef-0d4d7eacaa12",
+      "index": 2800,
+      "period": 2,
+      "minute": 66,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Nicolò Barella",
+      "location": [
+        47.5,
+        64.1
+      ]
+    },
+    {
+      "id": "2727e086-166c-4d68-ad55-e0422213ae32",
+      "index": 2804,
+      "period": 2,
+      "minute": 66,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        79.2,
+        10.2
+      ]
+    },
+    {
+      "id": "91f86f42-f390-488a-b88e-eaccc9a845ea",
+      "index": 2814,
+      "period": 2,
+      "minute": 66,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Domenico Berardi",
+      "location": [
+        44.3,
+        69.2
+      ]
+    },
+    {
+      "id": "4331b167-16d8-45de-bc33-df90e25c56a6",
+      "index": 2838,
+      "period": 2,
+      "minute": 67,
+      "second": 15,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Federico Chiesa",
+      "location": [
+        104.9,
+        56.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "5f9dc81b-5479-4f98-b502-edbea3c8caaa",
+      "index": 2840,
+      "period": 2,
+      "minute": 67,
+      "second": 16,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Domenico Berardi",
+      "location": [
+        114.8,
+        52.2
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "14a21c0a-043e-4734-b76c-3072fbb9218f",
+      "index": 2843,
+      "period": 2,
+      "minute": 67,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Lorenzo Insigne",
+      "location": [
+        110.9,
+        74.8
+      ]
+    },
+    {
+      "id": "f676e69f-903e-4159-b9a4-a5250c82a71e",
+      "index": 2858,
+      "period": 2,
+      "minute": 67,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Unai Simón Mendibil",
+      "location": [
+        12.2,
+        45.5
+      ]
+    },
+    {
+      "id": "d5fa1fbf-21a5-4a52-bc5e-1d22766b8966",
+      "index": 3026,
+      "period": 2,
+      "minute": 72,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Nicolò Barella",
+      "location": [
+        104.4,
+        66
+      ]
+    },
+    {
+      "id": "bc581254-f573-4a89-ba6e-d501a55a06c3",
+      "index": 3063,
+      "period": 2,
+      "minute": 72,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Leonardo Bonucci",
+      "location": [
+        16.7,
+        68.8
+      ]
+    },
+    {
+      "id": "32851c6f-ba70-4f1e-92d0-0fb53d49a07f",
+      "index": 3077,
+      "period": 2,
+      "minute": 73,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Nicolò Barella",
+      "location": [
+        34.3,
+        58.3
+      ]
+    },
+    {
+      "id": "242602f0-48ac-4406-b54b-f578501891e9",
+      "index": 3191,
+      "period": 2,
+      "minute": 75,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Rodrigo Hernández Cascante",
+      "location": [
+        94.2,
+        76.5
+      ]
+    },
+    {
+      "id": "0ba19a74-9371-47a2-a197-b4080d74a82a",
+      "index": 3223,
+      "period": 2,
+      "minute": 76,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Daniel Olmo Carvajal",
+      "location": [
+        64,
+        76.5
+      ]
+    },
+    {
+      "id": "3d7c90e0-d147-49b2-895c-b7bb0542aad2",
+      "index": 3237,
+      "period": 2,
+      "minute": 76,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Gianluigi Donnarumma",
+      "location": [
+        8.2,
+        44.4
+      ]
+    },
+    {
+      "id": "b94868b4-510d-4497-bf24-39dc89fa569c",
+      "index": 3343,
+      "period": 2,
+      "minute": 79,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Nicolò Barella",
+      "location": [
+        92.9,
+        16.8
+      ]
+    },
+    {
+      "id": "658c0d7d-a187-4b77-824a-9007f32add7a",
+      "index": 3345,
+      "period": 2,
+      "minute": 79,
+      "second": 6,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Nicolò Barella",
+      "location": [
+        91.2,
+        17
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "ae562f5f-b0dc-4a9b-a8c1-24763fa0405f",
+      "index": 3348,
+      "period": 2,
+      "minute": 79,
+      "second": 8,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Domenico Berardi",
+      "location": [
+        101.7,
+        40.7
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "4e8db150-35b9-439b-9417-2da0b1e8f998",
+      "index": 3365,
+      "period": 2,
+      "minute": 79,
+      "second": 37,
+      "type": "Pass",
+      "team": "Spain",
+      "player": "Daniel Olmo Carvajal",
+      "location": [
+        96.1,
+        35.7
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "492b2a06-d434-4fc6-ad8f-e9dd5d6aa7d3",
+      "index": 3368,
+      "period": 2,
+      "minute": 79,
+      "second": 38,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        107.8,
+        36.9
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "ecac4e08-0fe7-481e-b448-fc5c8275e7d1",
+      "index": 3394,
+      "period": 2,
+      "minute": 81,
+      "second": 56,
+      "type": "Pass",
+      "team": "Spain",
+      "player": "Daniel Olmo Carvajal",
+      "location": [
+        120,
+        80
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "d368d0be-cb23-4136-aa1a-a0ce45152327",
+      "index": 3397,
+      "period": 2,
+      "minute": 81,
+      "second": 58,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Sergio Busquets i Burgos",
+      "location": [
+        113.3,
+        46.4
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "8f3efd5b-64e7-4665-ac08-d3a3d4484cf2",
+      "index": 3466,
+      "period": 2,
+      "minute": 83,
+      "second": 39,
+      "type": "Pass",
+      "team": "Spain",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        114.5,
+        60.9
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "549a7b87-20d6-4a72-a31d-03b640dbe7da",
+      "index": 3470,
+      "period": 2,
+      "minute": 83,
+      "second": 41,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Gerard Moreno Balaguero",
+      "location": [
+        100.3,
+        44.6
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "ea3d383e-e3b6-4205-9f34-6206557784cb",
+      "index": 3510,
+      "period": 2,
+      "minute": 85,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Jorge Luiz Frello Filho",
+      "location": [
+        62.1,
+        69
+      ]
+    },
+    {
+      "id": "1927eb3d-dac8-47ad-b8f1-729f64957847",
+      "index": 3519,
+      "period": 2,
+      "minute": 86,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Sergio Busquets i Burgos",
+      "location": [
+        6.2,
+        13.9
+      ]
+    },
+    {
+      "id": "4d56eec9-7050-40cb-a326-1e596d605bcd",
+      "index": 3535,
+      "period": 2,
+      "minute": 86,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Jorge Luiz Frello Filho",
+      "location": [
+        80.1,
+        70.3
+      ]
+    },
+    {
+      "id": "e5648a49-8d1d-4829-bf65-13349ca8fe5a",
+      "index": 3539,
+      "period": 2,
+      "minute": 86,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Pedro González López",
+      "location": [
+        37.5,
+        5.1
+      ]
+    },
+    {
+      "id": "7b4c1027-3113-4715-a457-72f8965eac67",
+      "index": 3561,
+      "period": 2,
+      "minute": 87,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        58.7,
+        9.4
+      ]
+    },
+    {
+      "id": "456ad8be-f876-4f73-b89c-7714d7c6c642",
+      "index": 3645,
+      "period": 2,
+      "minute": 89,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Giorgio Chiellini",
+      "location": [
+        44.6,
+        42.7
+      ]
+    },
+    {
+      "id": "970dc29e-c852-4755-bdaf-3e2fcac9d7f7",
+      "index": 3688,
+      "period": 2,
+      "minute": 90,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Pedro González López",
+      "location": [
+        23.4,
+        61.3
+      ]
+    },
+    {
+      "id": "685b1728-4a36-4c19-b876-248791722810",
+      "index": 3748,
+      "period": 2,
+      "minute": 91,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Gianluigi Donnarumma",
+      "location": [
+        6,
+        24.1
+      ]
+    },
+    {
+      "id": "cc2a1821-970f-4032-892e-69366e42a5d7",
+      "index": 3778,
+      "period": 2,
+      "minute": 92,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Matteo Pessina",
+      "location": [
+        71.5,
+        29.5
+      ]
+    },
+    {
+      "id": "9ad46368-ce66-4ea0-a050-6f6b53b85a08",
+      "index": 3866,
+      "period": 3,
+      "minute": 92,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Unai Simón Mendibil",
+      "location": [
+        16.5,
+        22.2
+      ]
+    },
+    {
+      "id": "8a411fcf-d618-4e56-82fd-3acb3ddf1e8e",
+      "index": 3946,
+      "period": 3,
+      "minute": 94,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Marcos Llorente Moreno",
+      "location": [
+        31.5,
+        50.6
+      ]
+    },
+    {
+      "id": "df32b65c-8d7a-4b26-a7e3-8dbb3c1d5714",
+      "index": 3959,
+      "period": 3,
+      "minute": 95,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Eric García Martret",
+      "location": [
+        48.2,
+        50.2
+      ]
+    },
+    {
+      "id": "a07d578e-0dbe-4830-b679-51d818588e35",
+      "index": 3977,
+      "period": 3,
+      "minute": 95,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Rafael Tolói",
+      "location": [
+        48.8,
+        65.2
+      ]
+    },
+    {
+      "id": "3d01baeb-acc7-4eb5-a2bc-62ad8584d194",
+      "index": 3996,
+      "period": 3,
+      "minute": 96,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Pedro González López",
+      "location": [
+        42.8,
+        4
+      ]
+    },
+    {
+      "id": "7ef8722d-de8f-45d3-b855-83da2a7d8975",
+      "index": 4008,
+      "period": 3,
+      "minute": 96,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Pedro González López",
+      "location": [
+        35.4,
+        17.9
+      ]
+    },
+    {
+      "id": "5a14d980-f055-499f-ae20-cdc3a99d0196",
+      "index": 4013,
+      "period": 3,
+      "minute": 96,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Domenico Berardi",
+      "location": [
+        85.2,
+        63.3
+      ]
+    },
+    {
+      "id": "a5698ea6-2b41-47f1-b9c6-a97264682c73",
+      "index": 4017,
+      "period": 3,
+      "minute": 96,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Pedro González López",
+      "location": [
+        43.3,
+        17.7
+      ]
+    },
+    {
+      "id": "a83dd73a-fe52-4c6d-8949-500036eaf10d",
+      "index": 4026,
+      "period": 3,
+      "minute": 97,
+      "second": 35,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Daniel Olmo Carvajal",
+      "location": [
+        98.8,
+        8.7
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "b546bfde-3832-4c9b-8499-701bce13dd7f",
+      "index": 4028,
+      "period": 3,
+      "minute": 97,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        110.9,
+        46.8
+      ]
+    },
+    {
+      "id": "ef98de2e-19a4-4475-872a-4b6c9084779e",
+      "index": 4030,
+      "period": 3,
+      "minute": 97,
+      "second": 39,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        109,
+        49.2
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "0f72a864-cf62-44da-94c1-5623c9601b97",
+      "index": 4059,
+      "period": 3,
+      "minute": 98,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Jorge Luiz Frello Filho",
+      "location": [
+        41.5,
+        72.9
+      ]
+    },
+    {
+      "id": "44e22e04-ba4b-499c-85fd-d8314da48634",
+      "index": 4073,
+      "period": 3,
+      "minute": 98,
+      "second": 54,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Jorge Luiz Frello Filho",
+      "location": [
+        55.7,
+        73.5
+      ]
+    },
+    {
+      "id": "ba049dc0-6079-432f-b453-3d39e3d21420",
+      "index": 4077,
+      "period": 3,
+      "minute": 98,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Pedro González López",
+      "location": [
+        63.8,
+        10.8
+      ]
+    },
+    {
+      "id": "c6519c08-3c27-44d8-827a-0d85ccd33e5a",
+      "index": 4188,
+      "period": 3,
+      "minute": 101,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Marcos Llorente Moreno",
+      "location": [
+        106.4,
+        45.1
+      ]
+    },
+    {
+      "id": "06bc4127-2875-46a1-9b6a-9f9699829795",
+      "index": 4189,
+      "period": 3,
+      "minute": 101,
+      "second": 22,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Marcos Llorente Moreno",
+      "location": [
+        103.1,
+        50.7
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "6df1b0ba-b919-4130-96ac-92bad3d8f6d4",
+      "index": 4193,
+      "period": 3,
+      "minute": 101,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Eric García Martret",
+      "location": [
+        72.1,
+        49.8
+      ]
+    },
+    {
+      "id": "bed74bb7-1abb-4e0e-b50a-39a9300945ff",
+      "index": 4212,
+      "period": 3,
+      "minute": 101,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Gianluigi Donnarumma",
+      "location": [
+        9.5,
+        35.9
+      ]
+    },
+    {
+      "id": "616cecf7-3d7e-467f-baa1-ed23795ffbb1",
+      "index": 4373,
+      "period": 4,
+      "minute": 106,
+      "second": 57,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Thiago Alcântara do Nascimento",
+      "location": [
+        86.3,
+        18.3
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "4bcbc707-a9df-4087-a17c-873887fa07d2",
+      "index": 4376,
+      "period": 4,
+      "minute": 107,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Gianluigi Donnarumma",
+      "location": [
+        3.3,
+        42.1
+      ]
+    },
+    {
+      "id": "e34d32ac-7fc7-4f8a-aa71-f35ce651cbc9",
+      "index": 4414,
+      "period": 4,
+      "minute": 109,
+      "second": 22,
+      "type": "Pass",
+      "team": "Italy",
+      "player": "Matteo Pessina",
+      "location": [
+        115.8,
+        70.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "eac55345-0a1b-4aff-9121-6e6264702ee5",
+      "index": 4421,
+      "period": 4,
+      "minute": 109,
+      "second": 26,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Domenico Berardi",
+      "location": [
+        105,
+        48.2
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "81e15949-fd0a-44f3-a259-ced3ebad6f16",
+      "index": 4477,
+      "period": 4,
+      "minute": 110,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Pau Francisco Torres",
+      "location": [
+        56.3,
+        23.3
+      ]
+    },
+    {
+      "id": "4476bab7-2651-45b8-9c67-3a0c342a1b89",
+      "index": 4514,
+      "period": 4,
+      "minute": 111,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        66.8,
+        19.6
+      ]
+    },
+    {
+      "id": "932f7465-c0ee-4ce0-9c3f-93ba52bb0a23",
+      "index": 4536,
+      "period": 4,
+      "minute": 112,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Matteo Pessina",
+      "location": [
+        44.3,
+        9.1
+      ]
+    },
+    {
+      "id": "a57cd84c-1a14-4317-ba9c-790230023ae7",
+      "index": 4571,
+      "period": 4,
+      "minute": 112,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Gianluigi Donnarumma",
+      "location": [
+        5.2,
+        49.8
+      ]
+    },
+    {
+      "id": "952ff921-d0d5-4a25-9bbb-60420ae7beca",
+      "index": 4634,
+      "period": 4,
+      "minute": 114,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Italy",
+      "player": "Manuel Locatelli",
+      "location": [
+        30.6,
+        12.1
+      ]
+    },
+    {
+      "id": "4140655b-4bb9-4c2d-a4ef-8a37f1f8285b",
+      "index": 4642,
+      "period": 4,
+      "minute": 114,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Rodrigo Hernández Cascante",
+      "location": [
+        55.9,
+        47.7
+      ]
+    },
+    {
+      "id": "a104a6a6-31bf-400a-9a2d-f9a5fa46c47c",
+      "index": 4663,
+      "period": 4,
+      "minute": 114,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Marcos Llorente Moreno",
+      "location": [
+        96.3,
+        53.4
+      ]
+    },
+    {
+      "id": "1baa4d81-9250-4c7f-a823-5b2fad60938c",
+      "index": 4715,
+      "period": 4,
+      "minute": 116,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Thiago Alcântara do Nascimento",
+      "location": [
+        65.9,
+        48.3
+      ]
+    },
+    {
+      "id": "5c94a770-8648-4e37-8676-e17a5295b0a4",
+      "index": 4790,
+      "period": 4,
+      "minute": 119,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Spain",
+      "player": "Thiago Alcântara do Nascimento",
+      "location": [
+        82.4,
+        57.3
+      ]
+    },
+    {
+      "id": "96ea39bc-8d53-4a09-91de-94b6395d179f",
+      "index": 4805,
+      "period": 5,
+      "minute": 120,
+      "second": 1,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Manuel Locatelli",
+      "location": [
+        107.9,
+        40
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "d53c6fc9-bb06-41d2-8701-9218744e0eee",
+      "index": 4807,
+      "period": 5,
+      "minute": 120,
+      "second": 52,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Daniel Olmo Carvajal",
+      "location": [
+        108,
+        40
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "6eeeba1c-0a42-42fd-962c-8f56c1adbd22",
+      "index": 4809,
+      "period": 5,
+      "minute": 121,
+      "second": 41,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Andrea Belotti",
+      "location": [
+        107.9,
+        39.8
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "5141291a-ae8c-479f-96fe-829ecd11b278",
+      "index": 4811,
+      "period": 5,
+      "minute": 122,
+      "second": 23,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Gerard Moreno Balaguero",
+      "location": [
+        107.9,
+        39.9
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "7ecd3882-9fba-44c2-b1cd-c9690a7fa702",
+      "index": 4813,
+      "period": 5,
+      "minute": 123,
+      "second": 6,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Leonardo Bonucci",
+      "location": [
+        108.1,
+        40.1
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "c0cbd80a-c644-4c1c-bb70-46c5a0d5e13c",
+      "index": 4815,
+      "period": 5,
+      "minute": 123,
+      "second": 43,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Thiago Alcântara do Nascimento",
+      "location": [
+        108,
+        40.1
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "7470b0f5-d1a9-470b-8613-951572fe6fd8",
+      "index": 4817,
+      "period": 5,
+      "minute": 124,
+      "second": 24,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Federico Bernardeschi",
+      "location": [
+        107.9,
+        39.9
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "5d6fa828-65c8-46f8-9842-3b8c5a0ca6ab",
+      "index": 4819,
+      "period": 5,
+      "minute": 125,
+      "second": 2,
+      "type": "Shot",
+      "team": "Spain",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        108,
+        40
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "365bba27-6691-4931-96e5-4b498b170ea3",
+      "index": 4821,
+      "period": 5,
+      "minute": 126,
+      "second": 0,
+      "type": "Shot",
+      "team": "Italy",
+      "player": "Jorge Luiz Frello Filho",
+      "location": [
+        107.8,
+        39.9
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    }
+  ]
+}

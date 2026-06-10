@@ -1,7 +1,7 @@
 // ===== DATA =====
 const FLAGS = {
   MEX:"🇲🇽",RSA:"🇿🇦",KOR:"🇰🇷",CZE:"🇨🇿",CAN:"🇨🇦",BIH:"🇧🇦",
-  USA:"🇺🇸",PAR:"🇵🇾",HAI:"🇭🇹",SCO:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",BRA:"🇧🇷",ARG:"🇦🇷",
+  USA:"🇺🇸",PAR:"🇵🇾",HAI:"🇭🇹",SCO:"🏴󠁧󠁢󠁳󠁣󠁴󠁿",BRA:"🇧🇷",ARG:"🇦🇷",MAR:"🇲🇦",
   ESP:"🇪🇸",FRA:"🇫🇷",GER:"🇩🇪",ITA:"🇮🇹",POR:"🇵🇹",NED:"🇳🇱",
   ENG:"🇬🇧",BEL:"🇧🇪",URU:"🇺🇾",COL:"🇨🇴",JPN:"🇯🇵",AUS:"🇦🇺",
   CRC:"🇨🇷",PAN:"🇵🇦",NOR:"🇳🇴",SUI:"🇨🇭",CRO:"🇭🇷",
@@ -13,15 +13,17 @@ const COUNTRY_NAME = {
   ESP:"España",FRA:"Francia",GER:"Alemania",ITA:"Italia",
   POR:"Portugal",NED:"Países Bajos",ENG:"Inglaterra",BEL:"Bélgica",
   URU:"Uruguay",COL:"Colombia",JPN:"Japón",AUS:"Australia",
-  CRC:"Costa Rica",PAN:"Panamá",NOR:"Noruega",SUI:"Suiza",CRO:"Croacia",
+  CRC:"Costa Rica",PAN:"Panamá",NOR:"Noruega",SUI:"Suiza",CRO:"Croacia",MAR:"Marruecos",
   FCB:"Barcelona",RMA:"Real Madrid",MUN:"Man. United",JUV:"Juventus",
+  LIV:"Liverpool",BAY:"Bayern Munich",BVB:"B. Dortmund",TOT:"Tottenham",
+  ATM:"Atlético Madrid",ACM:"AC Milan",INT:"Inter Milan",
 };
 // Escudos de club (crests.football-data.org) para los partidos históricos de clubes
-const CLUB_CREST = { FCB:81, RMA:86, MUN:66, JUV:109 };
+const CLUB_CREST = { FCB:81, RMA:86, MUN:66, JUV:109, LIV:64, BAY:5, BVB:4, TOT:73, ATM:78, ACM:98, INT:108 };
 const FLAG_ISO = {
   MEX:"mx",RSA:"za",KOR:"kr",CZE:"cz",CAN:"ca",BIH:"ba",
   USA:"us",PAR:"py",HAI:"ht",SCO:"gb-sct",BRA:"br",ARG:"ar",
-  ESP:"es",FRA:"fr",GER:"de",ITA:"it",POR:"pt",NED:"nl",
+  ESP:"es",FRA:"fr",GER:"de",ITA:"it",POR:"pt",NED:"nl",MAR:"ma",
   ENG:"gb-eng",BEL:"be",URU:"uy",COL:"co",JPN:"jp",AUS:"au",
   CRC:"cr",PAN:"pa",NOR:"no",SUI:"ch",CRO:"hr",
 };
@@ -153,19 +155,40 @@ const MATCH_EVENTS = [
 
 // Partidos reales de StatsBomb open-data; los eventos se sirven desde /data/events/{id}.json
 // (descargados con data/fetch-match.js). sbHome/sbAway son los nombres de equipo de StatsBomb.
+const HISTORIC_CATS = ["CHAMPIONS LEAGUE","MUNDIALES","EUROS","COPA AMÉRICA","LA LIGA"];
 const HISTORIC_MATCHES = [
-  { id:3869685, home:"ARG", away:"FRA", sbHome:"Argentina", sbAway:"France",  title:"Argentina 3-3 Francia",    score:"3-3", comp:"FINAL · MUNDIAL 2022" },
-  { id:8658,    home:"FRA", away:"CRO", sbHome:"France",    sbAway:"Croatia", title:"Francia 4-2 Croacia",      score:"4-2", comp:"FINAL · MUNDIAL 2018" },
-  { id:3943043, home:"ESP", away:"ENG", sbHome:"Spain",     sbAway:"England", title:"España 2-1 Inglaterra",    score:"2-1", comp:"FINAL · EURO 2024" },
-  { id:3795506, home:"ITA", away:"ENG", sbHome:"Italy",     sbAway:"England", title:"Italia 1-1 Inglaterra",    score:"1-1", comp:"FINAL · EURO 2020" },
-  { id:3750191, home:"ARG", away:"ENG", sbHome:"Argentina", sbAway:"England", title:"Argentina 2-1 Inglaterra", score:"2-1", comp:"CUARTOS · MUNDIAL 1986" },
-  { id:3888702, home:"BRA", away:"ITA", sbHome:"Brazil",    sbAway:"Italy",   title:"Brasil 4-1 Italia",        score:"4-1", comp:"FINAL · MUNDIAL 1970" },
-  { id:3750201, home:"FCB", away:"MUN", sbHome:"Barcelona",   sbAway:"Manchester United", title:"Barcelona 2-0 Manchester Utd.", score:"2-0", comp:"FINAL CHAMPIONS 2009 · ROMA" },
-  { id:18236,   home:"FCB", away:"MUN", sbHome:"Barcelona",   sbAway:"Manchester United", title:"Barcelona 3-1 Manchester Utd.", score:"3-1", comp:"FINAL CHAMPIONS 2011 · WEMBLEY" },
-  { id:18242,   home:"JUV", away:"FCB", sbHome:"Juventus",    sbAway:"Barcelona",         title:"Juventus 1-3 Barcelona",        score:"1-3", comp:"FINAL CHAMPIONS 2015 · BERLÍN" },
-  { id:267569,  home:"RMA", away:"FCB", sbHome:"Real Madrid", sbAway:"Barcelona",         title:"Real Madrid 2-3 Barcelona",     score:"2-3", comp:"LA LIGA 2016/17 · GOL 500 MESSI" },
-  { id:9736,    home:"RMA", away:"FCB", sbHome:"Real Madrid", sbAway:"Barcelona",         title:"Real Madrid 0-3 Barcelona",     score:"0-3", comp:"LA LIGA 2017/18" },
-  { id:16196,   home:"RMA", away:"FCB", sbHome:"Real Madrid", sbAway:"Barcelona",         title:"Real Madrid 0-1 Barcelona",     score:"0-1", comp:"LA LIGA 2018/19" },
+  // ── CHAMPIONS LEAGUE ──
+  { id:22912,   cat:"CHAMPIONS LEAGUE", home:"TOT", away:"LIV", sbHome:"Tottenham Hotspur", sbAway:"Liverpool",         title:"Tottenham 0-2 Liverpool",       score:"0-2", comp:"FINAL CHAMPIONS 2019 · MADRID" },
+  { id:18245,   cat:"CHAMPIONS LEAGUE", home:"RMA", away:"LIV", sbHome:"Real Madrid",       sbAway:"Liverpool",         title:"Real Madrid 3-1 Liverpool",     score:"3-1", comp:"FINAL CHAMPIONS 2018 · KIEV" },
+  { id:18243,   cat:"CHAMPIONS LEAGUE", home:"RMA", away:"ATM", sbHome:"Real Madrid",       sbAway:"Atlético Madrid",   title:"Real Madrid 1-1 Atlético",      score:"1-1", comp:"FINAL CHAMPIONS 2016 · MILÁN" },
+  { id:18242,   cat:"CHAMPIONS LEAGUE", home:"JUV", away:"FCB", sbHome:"Juventus",          sbAway:"Barcelona",         title:"Juventus 1-3 Barcelona",        score:"1-3", comp:"FINAL CHAMPIONS 2015 · BERLÍN" },
+  { id:18241,   cat:"CHAMPIONS LEAGUE", home:"RMA", away:"ATM", sbHome:"Real Madrid",       sbAway:"Atlético Madrid",   title:"Real Madrid 4-1 Atlético",      score:"4-1", comp:"FINAL CHAMPIONS 2014 · LISBOA" },
+  { id:18240,   cat:"CHAMPIONS LEAGUE", home:"BVB", away:"BAY", sbHome:"Borussia Dortmund", sbAway:"Bayern Munich",     title:"Dortmund 1-2 Bayern Munich",    score:"1-2", comp:"FINAL CHAMPIONS 2013 · WEMBLEY" },
+  { id:18236,   cat:"CHAMPIONS LEAGUE", home:"FCB", away:"MUN", sbHome:"Barcelona",         sbAway:"Manchester United", title:"Barcelona 3-1 Manchester Utd.", score:"3-1", comp:"FINAL CHAMPIONS 2011 · WEMBLEY" },
+  { id:3750201, cat:"CHAMPIONS LEAGUE", home:"FCB", away:"MUN", sbHome:"Barcelona",         sbAway:"Manchester United", title:"Barcelona 2-0 Manchester Utd.", score:"2-0", comp:"FINAL CHAMPIONS 2009 · ROMA" },
+  { id:2302764, cat:"CHAMPIONS LEAGUE", home:"ACM", away:"LIV", sbHome:"AC Milan",          sbAway:"Liverpool",         title:"AC Milan 3-3 Liverpool",        score:"3-3", comp:"FINAL CHAMPIONS 2005 · ESTAMBUL" },
+  // ── MUNDIALES ──
+  { id:3869685, cat:"MUNDIALES", home:"ARG", away:"FRA", sbHome:"Argentina", sbAway:"France",   title:"Argentina 3-3 Francia",    score:"3-3", comp:"FINAL · MUNDIAL 2022" },
+  { id:3869519, cat:"MUNDIALES", home:"ARG", away:"CRO", sbHome:"Argentina", sbAway:"Croatia",  title:"Argentina 3-0 Croacia",    score:"3-0", comp:"SEMIFINAL · MUNDIAL 2022" },
+  { id:3869486, cat:"MUNDIALES", home:"MAR", away:"POR", sbHome:"Morocco",   sbAway:"Portugal", title:"Marruecos 1-0 Portugal",   score:"1-0", comp:"CUARTOS · MUNDIAL 2022" },
+  { id:8658,    cat:"MUNDIALES", home:"FRA", away:"CRO", sbHome:"France",    sbAway:"Croatia",  title:"Francia 4-2 Croacia",      score:"4-2", comp:"FINAL · MUNDIAL 2018" },
+  { id:8650,    cat:"MUNDIALES", home:"BRA", away:"BEL", sbHome:"Brazil",    sbAway:"Belgium",  title:"Brasil 1-2 Bélgica",       score:"1-2", comp:"CUARTOS · MUNDIAL 2018" },
+  { id:3889149, cat:"MUNDIALES", home:"ARG", away:"GER", sbHome:"Argentina", sbAway:"Germany",  title:"Argentina 3-2 Alemania",   score:"3-2", comp:"FINAL · MUNDIAL 1986" },
+  { id:3750191, cat:"MUNDIALES", home:"ARG", away:"ENG", sbHome:"Argentina", sbAway:"England",  title:"Argentina 2-1 Inglaterra", score:"2-1", comp:"CUARTOS · MUNDIAL 1986" },
+  { id:3888702, cat:"MUNDIALES", home:"BRA", away:"ITA", sbHome:"Brazil",    sbAway:"Italy",    title:"Brasil 4-1 Italia",        score:"4-1", comp:"FINAL · MUNDIAL 1970" },
+  // ── EUROS ──
+  { id:3943043, cat:"EUROS", home:"ESP", away:"ENG", sbHome:"Spain", sbAway:"England", title:"España 2-1 Inglaterra", score:"2-1", comp:"FINAL · EURO 2024" },
+  { id:3942752, cat:"EUROS", home:"ESP", away:"FRA", sbHome:"Spain", sbAway:"France",  title:"España 2-1 Francia",    score:"2-1", comp:"SEMIFINAL · EURO 2024" },
+  { id:3942226, cat:"EUROS", home:"ESP", away:"GER", sbHome:"Spain", sbAway:"Germany", title:"España 2-1 Alemania",   score:"2-1", comp:"CUARTOS · EURO 2024" },
+  { id:3795506, cat:"EUROS", home:"ITA", away:"ENG", sbHome:"Italy", sbAway:"England", title:"Italia 1-1 Inglaterra", score:"1-1", comp:"FINAL · EURO 2020" },
+  { id:3795220, cat:"EUROS", home:"ITA", away:"ESP", sbHome:"Italy", sbAway:"Spain",   title:"Italia 1-1 España",     score:"1-1", comp:"SEMIFINAL · EURO 2020" },
+  // ── COPA AMÉRICA ──
+  { id:3943077, cat:"COPA AMÉRICA", home:"ARG", away:"COL", sbHome:"Argentina", sbAway:"Colombia", title:"Argentina 1-0 Colombia", score:"1-0", comp:"FINAL · COPA AMÉRICA 2024" },
+  { id:3942785, cat:"COPA AMÉRICA", home:"ARG", away:"CAN", sbHome:"Argentina", sbAway:"Canada",   title:"Argentina 2-0 Canadá",   score:"2-0", comp:"SEMIFINAL · COPA AMÉRICA 2024" },
+  // ── LA LIGA ──
+  { id:267569,  cat:"LA LIGA", home:"RMA", away:"FCB", sbHome:"Real Madrid", sbAway:"Barcelona", title:"Real Madrid 2-3 Barcelona", score:"2-3", comp:"LA LIGA 2016/17 · GOL 500 MESSI" },
+  { id:9736,    cat:"LA LIGA", home:"RMA", away:"FCB", sbHome:"Real Madrid", sbAway:"Barcelona", title:"Real Madrid 0-3 Barcelona", score:"0-3", comp:"LA LIGA 2017/18" },
+  { id:16196,   cat:"LA LIGA", home:"RMA", away:"FCB", sbHome:"Real Madrid", sbAway:"Barcelona", title:"Real Madrid 0-1 Barcelona", score:"0-1", comp:"LA LIGA 2018/19" },
 ];
 
 const ME = {
@@ -180,7 +203,7 @@ const ME = {
   notifications:3, streak:4,
 };
 
-Object.assign(window, { FLAGS, FLAG_ISO, Flag, COUNTRY_NAME, FIXTURE, RANKING, FRIENDS, FRIEND_REQUESTS, ZONES, ACTIONS, MATCH_EVENTS, HISTORIC_MATCHES, ME, KANCHA_LOGO });
+Object.assign(window, { FLAGS, FLAG_ISO, Flag, COUNTRY_NAME, FIXTURE, RANKING, FRIENDS, FRIEND_REQUESTS, ZONES, ACTIONS, MATCH_EVENTS, HISTORIC_MATCHES, HISTORIC_CATS, ME, KANCHA_LOGO });
 
 // ===== SIDEBAR =====
 function Sidebar({ page, onNav }) {
@@ -567,7 +590,11 @@ function HistoricMatchesBar({ sim, speedIdx, onSpeed, onStart, onStop }) {
         <span className={"ps-hist-sim-sub"+(sim.status==="error"?" is-error":"")}>{status}</span>
       </div>
       <select className="ps-hist-sim-select" value={selId} onChange={e=>setSelId(Number(e.target.value))} disabled={busy}>
-        {HISTORIC_MATCHES.map(m=><option key={m.id} value={m.id}>{m.comp} — {m.title}</option>)}
+        {HISTORIC_CATS.map(cat=>(
+          <optgroup key={cat} label={cat}>
+            {HISTORIC_MATCHES.filter(m=>m.cat===cat).map(m=><option key={m.id} value={m.id}>{m.comp} — {m.title}</option>)}
+          </optgroup>
+        ))}
       </select>
       <div className="ps-seg">
         {SIM_SPEEDS.map((s,i)=>(<button key={s.label} className={i===speedIdx?"is-on":""} onClick={()=>onSpeed(i)}>{s.label}</button>))}
@@ -1066,8 +1093,17 @@ function PagePartidos({ onNav }) {
           </div>
         </>
       ):(
-        <div className="ps-day-list">
-          {HISTORIC_MATCHES.map(m=><HistoricMatchCard key={m.id} m={m} onNav={onNav}/>)}
+        <div className="ps-partidos-grid">
+          {HISTORIC_CATS.map(cat=>{
+            const list=HISTORIC_MATCHES.filter(m=>m.cat===cat);
+            if(!list.length) return null;
+            return (
+              <div key={cat} className="ps-day-block">
+                <div className="ps-day-head"><span className="ps-day-num">{cat}</span><span className="ps-day-count">{list.length} {list.length===1?"partido":"partidos"}</span></div>
+                <div className="ps-day-list">{list.map(m=><HistoricMatchCard key={m.id} m={m} onNav={onNav}/>)}</div>
+              </div>
+            );
+          })}
         </div>
       )}
     </div>

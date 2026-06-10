@@ -1,0 +1,2240 @@
+{
+  "meta": {
+    "matchId": 3943077,
+    "teams": [
+      "Argentina",
+      "Colombia"
+    ],
+    "totalEvents": 4146,
+    "keptEvents": 143,
+    "fetchedAt": "2026-06-10T06:54:53.250Z"
+  },
+  "events": [
+    {
+      "id": "d898763d-eb70-4552-93d3-6f8631ddbcc9",
+      "index": 35,
+      "period": 1,
+      "minute": 0,
+      "second": 35,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Gonzalo Ariel Montiel",
+      "location": [
+        106.5,
+        68.5
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "a2dfefb1-3f71-47e7-81c9-527769703b8e",
+      "index": 37,
+      "period": 1,
+      "minute": 0,
+      "second": 36,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Julián Álvarez",
+      "location": [
+        105.6,
+        44
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "8347a9ff-c22e-4514-88a3-5ddccd79bd43",
+      "index": 88,
+      "period": 1,
+      "minute": 2,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "James David Rodríguez Rubio",
+      "location": [
+        15,
+        21.3
+      ]
+    },
+    {
+      "id": "51436365-58b8-4139-9112-ff3be0c26a6d",
+      "index": 182,
+      "period": 1,
+      "minute": 4,
+      "second": 51,
+      "type": "Pass",
+      "team": "Colombia",
+      "player": "Richard Rios Montoya",
+      "location": [
+        65.6,
+        50.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "942be062-07a0-494f-8785-70f5bf0a3eec",
+      "index": 185,
+      "period": 1,
+      "minute": 4,
+      "second": 56,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Luis Fernando Díaz Marulanda",
+      "location": [
+        98.6,
+        25.2
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "1ce38d62-28de-467e-af6b-0f6815bd064f",
+      "index": 240,
+      "period": 1,
+      "minute": 6,
+      "second": 10,
+      "type": "Pass",
+      "team": "Colombia",
+      "player": "Santiago Arias Naranjo",
+      "location": [
+        109.2,
+        56.9
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "91efac52-1075-4dc2-8f87-66fcf7e81d48",
+      "index": 244,
+      "period": 1,
+      "minute": 6,
+      "second": 12,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Jhon Andrés Córdoba Copete",
+      "location": [
+        105.5,
+        47.3
+      ],
+      "shot": {
+        "outcome": "Post",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "db523bec-61b8-430d-9902-b58bec6db1b5",
+      "index": 257,
+      "period": 1,
+      "minute": 6,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Richard Rios Montoya",
+      "location": [
+        100.8,
+        67.9
+      ]
+    },
+    {
+      "id": "63dc395e-cbf5-4ef9-b75d-1bc5d7fde707",
+      "index": 375,
+      "period": 1,
+      "minute": 9,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Camilo Andrés Vargas Gil",
+      "location": [
+        7.7,
+        44
+      ]
+    },
+    {
+      "id": "48c95ad4-3b2a-484b-88ea-6148f872ca98",
+      "index": 462,
+      "period": 1,
+      "minute": 11,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jefferson Andrés Lerma Solís",
+      "location": [
+        51.1,
+        36.3
+      ]
+    },
+    {
+      "id": "426280ad-774a-4411-8b11-892182b9c62b",
+      "index": 474,
+      "period": 1,
+      "minute": 12,
+      "second": 7,
+      "type": "Pass",
+      "team": "Colombia",
+      "player": "Jefferson Andrés Lerma Solís",
+      "location": [
+        109.6,
+        29.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "c6e9a843-d779-4c0b-9544-4b7678ec80dd",
+      "index": 477,
+      "period": 1,
+      "minute": 12,
+      "second": 7,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Carlos Eccehomo Cuesta Figueroa",
+      "location": [
+        113.4,
+        38.7
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c7122bae-7b07-42a4-9582-cc09ef4fb7c7",
+      "index": 533,
+      "period": 1,
+      "minute": 12,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jefferson Andrés Lerma Solís",
+      "location": [
+        33.4,
+        28.1
+      ]
+    },
+    {
+      "id": "cc3b3400-5d34-4278-bd6f-2b33aac94932",
+      "index": 612,
+      "period": 1,
+      "minute": 15,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        77.5,
+        4.1
+      ]
+    },
+    {
+      "id": "2b4b4839-584c-4e33-bd9c-dc29d20a640d",
+      "index": 620,
+      "period": 1,
+      "minute": 15,
+      "second": 40,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jefferson Andrés Lerma Solís",
+      "location": [
+        9,
+        69.3
+      ]
+    },
+    {
+      "id": "54dde788-1a4d-4229-9578-d8334dca9110",
+      "index": 642,
+      "period": 1,
+      "minute": 15,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Camilo Andrés Vargas Gil",
+      "location": [
+        5.7,
+        46.5
+      ]
+    },
+    {
+      "id": "00e3b3d1-7860-4f44-8e45-2208d9faa604",
+      "index": 677,
+      "period": 1,
+      "minute": 16,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Lisandro Martínez",
+      "location": [
+        27.9,
+        8
+      ]
+    },
+    {
+      "id": "171f2a40-dd86-4826-93e6-90991677a416",
+      "index": 833,
+      "period": 1,
+      "minute": 19,
+      "second": 42,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        113.2,
+        14.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "2d0cfdff-aabb-4b2b-9d20-c4c022c32254",
+      "index": 835,
+      "period": 1,
+      "minute": 19,
+      "second": 43,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        106.2,
+        36.8
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d6b6bc85-0cbb-4f76-ad3f-bb533a351a0f",
+      "index": 838,
+      "period": 1,
+      "minute": 19,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Camilo Andrés Vargas Gil",
+      "location": [
+        2.4,
+        42.3
+      ]
+    },
+    {
+      "id": "470e2eab-b1a0-4cc4-9c23-d968dc82fe40",
+      "index": 856,
+      "period": 1,
+      "minute": 20,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        39.2,
+        69.5
+      ]
+    },
+    {
+      "id": "9c53eca7-479a-47ff-97ba-c11a8c0a5d48",
+      "index": 919,
+      "period": 1,
+      "minute": 21,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Davinson Sánchez Mina",
+      "location": [
+        44.8,
+        62
+      ]
+    },
+    {
+      "id": "46cd6b4a-adbb-45c8-8ae8-c1e264b53775",
+      "index": 928,
+      "period": 1,
+      "minute": 21,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        39.4,
+        7.6
+      ]
+    },
+    {
+      "id": "79e754c4-e104-4322-9bb2-dffd276aff9a",
+      "index": 997,
+      "period": 1,
+      "minute": 23,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Damián Emiliano Martínez",
+      "location": [
+        5.8,
+        42.8
+      ]
+    },
+    {
+      "id": "bdfef7ee-c871-4dd1-9020-5971b1d29fb4",
+      "index": 1094,
+      "period": 1,
+      "minute": 24,
+      "second": 50,
+      "type": "Pass",
+      "team": "Colombia",
+      "player": "Johan Andrés Mojica Palacio",
+      "location": [
+        100.6,
+        3.2
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "0aaee6b2-0170-4a5a-8652-7ee9e3b1e7d2",
+      "index": 1097,
+      "period": 1,
+      "minute": 24,
+      "second": 51,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Jhon Andrés Córdoba Copete",
+      "location": [
+        108.3,
+        39
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "0561522a-435b-4419-80ed-8954b553f973",
+      "index": 1180,
+      "period": 1,
+      "minute": 29,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jhon Adolfo Arias Andrade",
+      "location": [
+        60.1,
+        63
+      ]
+    },
+    {
+      "id": "2e63dc58-b321-4d44-a620-795d87ab2a3c",
+      "index": 1289,
+      "period": 1,
+      "minute": 31,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Luis Fernando Díaz Marulanda",
+      "location": [
+        87.2,
+        20.2
+      ]
+    },
+    {
+      "id": "b66a44ba-3bc1-4abe-a879-c42b8058b3fe",
+      "index": 1295,
+      "period": 1,
+      "minute": 31,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nicolás Alejandro Tagliafico",
+      "location": [
+        25.7,
+        28.9
+      ]
+    },
+    {
+      "id": "4fd5e7be-5f0e-4705-8c91-8bd5c1c350b9",
+      "index": 1325,
+      "period": 1,
+      "minute": 32,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Luis Fernando Díaz Marulanda",
+      "location": [
+        76.1,
+        2.4
+      ]
+    },
+    {
+      "id": "8713f791-e57b-49e9-aea9-87381f7f3518",
+      "index": 1330,
+      "period": 1,
+      "minute": 32,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Johan Andrés Mojica Palacio",
+      "location": [
+        69.3,
+        6.8
+      ]
+    },
+    {
+      "id": "c7a633ba-4839-4cbb-b020-838d1f906623",
+      "index": 1332,
+      "period": 1,
+      "minute": 32,
+      "second": 16,
+      "type": "Pass",
+      "team": "Colombia",
+      "player": "Johan Andrés Mojica Palacio",
+      "location": [
+        68.6,
+        12
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "59215eb8-b928-4faa-a725-5391702a0f5c",
+      "index": 1335,
+      "period": 1,
+      "minute": 32,
+      "second": 19,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Jefferson Andrés Lerma Solís",
+      "location": [
+        85.6,
+        34.4
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c7c07c05-4c9b-4280-a2a1-468220fa5b88",
+      "index": 1337,
+      "period": 1,
+      "minute": 33,
+      "second": 13,
+      "type": "Pass",
+      "team": "Colombia",
+      "player": "James David Rodríguez Rubio",
+      "location": [
+        120,
+        0.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "83cbce61-2960-4c04-beff-2972f3ed3335",
+      "index": 1340,
+      "period": 1,
+      "minute": 33,
+      "second": 15,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Jhon Andrés Córdoba Copete",
+      "location": [
+        112.5,
+        42.5
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "cd06a09c-0cdb-40b1-ae7e-fc40ca8f0650",
+      "index": 1492,
+      "period": 1,
+      "minute": 38,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jhon Adolfo Arias Andrade",
+      "location": [
+        64.4,
+        11.2
+      ]
+    },
+    {
+      "id": "36333f90-0e55-4467-8110-f33b45de0c3d",
+      "index": 1516,
+      "period": 1,
+      "minute": 39,
+      "second": 20,
+      "type": "Pass",
+      "team": "Colombia",
+      "player": "Richard Rios Montoya",
+      "location": [
+        95.3,
+        65.5
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "1babbec9-0c65-48de-99f6-86d81c9f2f7d",
+      "index": 1518,
+      "period": 1,
+      "minute": 39,
+      "second": 22,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Jhon Adolfo Arias Andrade",
+      "location": [
+        106.1,
+        32.5
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "fae4d620-8570-46ac-80f6-8de2e2b81f17",
+      "index": 1520,
+      "period": 1,
+      "minute": 39,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Damián Emiliano Martínez",
+      "location": [
+        3.2,
+        52.6
+      ]
+    },
+    {
+      "id": "596908e8-c7d3-4629-aab1-e41414af6a42",
+      "index": 1546,
+      "period": 1,
+      "minute": 40,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Richard Rios Montoya",
+      "location": [
+        81.9,
+        53
+      ]
+    },
+    {
+      "id": "eb1b8c20-d6a7-4203-b73a-c1fd5c08ab00",
+      "index": 1547,
+      "period": 1,
+      "minute": 40,
+      "second": 15,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Richard Rios Montoya",
+      "location": [
+        83.5,
+        48
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "14c9899b-5a4e-4128-9dc7-752a06e6c2f2",
+      "index": 1608,
+      "period": 1,
+      "minute": 41,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jhon Adolfo Arias Andrade",
+      "location": [
+        20.5,
+        23.2
+      ]
+    },
+    {
+      "id": "c6ead15e-c8ea-4c29-aabb-e579a4db293a",
+      "index": 1617,
+      "period": 1,
+      "minute": 41,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        56.4,
+        55
+      ]
+    },
+    {
+      "id": "c0d9e81f-5588-48f9-8191-34e9222320ca",
+      "index": 1643,
+      "period": 1,
+      "minute": 41,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jhon Adolfo Arias Andrade",
+      "location": [
+        12.8,
+        26.7
+      ]
+    },
+    {
+      "id": "2fe6a2a9-3fa8-4f96-bd4f-9034beb68235",
+      "index": 1674,
+      "period": 1,
+      "minute": 43,
+      "second": 26,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        90.6,
+        20.9
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "b4e875ad-24aa-4198-a0cd-bc8d08d8338e",
+      "index": 1677,
+      "period": 1,
+      "minute": 43,
+      "second": 28,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Nicolás Alejandro Tagliafico",
+      "location": [
+        108.1,
+        39.3
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2d53b4c9-662f-495d-97e2-a2f4ed593b45",
+      "index": 1787,
+      "period": 1,
+      "minute": 45,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        58.8,
+        45.1
+      ]
+    },
+    {
+      "id": "0896dd06-cb05-4883-8b27-b99a80098a9f",
+      "index": 1886,
+      "period": 2,
+      "minute": 46,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Johan Andrés Mojica Palacio",
+      "location": [
+        83.9,
+        7.4
+      ]
+    },
+    {
+      "id": "3f0a21ee-5658-4003-9a53-b24ce6fa906a",
+      "index": 1902,
+      "period": 2,
+      "minute": 47,
+      "second": 0,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Santiago Arias Naranjo",
+      "location": [
+        105.5,
+        57.6
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "23b256a9-22a2-46d3-947d-3c1289bcd96b",
+      "index": 1940,
+      "period": 2,
+      "minute": 48,
+      "second": 1,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        110.8,
+        28.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "636d25c6-28ff-493a-837f-ebd931abd09d",
+      "index": 1942,
+      "period": 2,
+      "minute": 48,
+      "second": 2,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        110.9,
+        25.6
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "1eb346c2-9b72-432c-92b3-f69a2182ae87",
+      "index": 2073,
+      "period": 2,
+      "minute": 52,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jhon Adolfo Arias Andrade",
+      "location": [
+        43.9,
+        60.7
+      ]
+    },
+    {
+      "id": "0be3370c-91e3-455d-ac00-71982d7ac7cf",
+      "index": 2116,
+      "period": 2,
+      "minute": 53,
+      "second": 7,
+      "type": "Pass",
+      "team": "Colombia",
+      "player": "James David Rodríguez Rubio",
+      "location": [
+        81.7,
+        48.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "ec2fc8ce-4aa8-40c1-b2d5-10dcbb36c800",
+      "index": 2119,
+      "period": 2,
+      "minute": 53,
+      "second": 12,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Jhon Adolfo Arias Andrade",
+      "location": [
+        98.9,
+        24.9
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "7d288160-3958-44ee-b0b9-f61fbf1d1c8a",
+      "index": 2125,
+      "period": 2,
+      "minute": 53,
+      "second": 41,
+      "type": "Pass",
+      "team": "Colombia",
+      "player": "Jhon Andrés Córdoba Copete",
+      "location": [
+        114.9,
+        30.5
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "dd04d6fe-d8a7-4611-99f1-f0e82c4d8e19",
+      "index": 2128,
+      "period": 2,
+      "minute": 53,
+      "second": 42,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Davinson Sánchez Mina",
+      "location": [
+        114.8,
+        44.1
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "140fbc6f-a86f-4a91-b97e-2e779c2f4af7",
+      "index": 2133,
+      "period": 2,
+      "minute": 54,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        55.2,
+        36.9
+      ]
+    },
+    {
+      "id": "54ad7904-7d1f-4eb6-9034-b37de0e3a574",
+      "index": 2174,
+      "period": 2,
+      "minute": 55,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Gonzalo Ariel Montiel",
+      "location": [
+        38.2,
+        75.7
+      ]
+    },
+    {
+      "id": "25e658fe-14c7-4075-982f-41f17ae9289b",
+      "index": 2189,
+      "period": 2,
+      "minute": 56,
+      "second": 42,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        116.1,
+        6.4
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "cf340dc2-b5b6-4252-a85f-b90fba63b246",
+      "index": 2191,
+      "period": 2,
+      "minute": 56,
+      "second": 44,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        107.2,
+        35
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "b39ad4a9-b9bb-42f8-ac26-5cd2d8288da5",
+      "index": 2194,
+      "period": 2,
+      "minute": 56,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        111.1,
+        24.8
+      ]
+    },
+    {
+      "id": "32f09746-f1d1-453e-b2a1-6d9531359ad7",
+      "index": 2244,
+      "period": 2,
+      "minute": 57,
+      "second": 20,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Nicolás Alejandro Tagliafico",
+      "location": [
+        68.7,
+        18.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "c507dc8a-513c-4f6a-af74-d6130171ee96",
+      "index": 2248,
+      "period": 2,
+      "minute": 57,
+      "second": 25,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        107.5,
+        24.9
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c02a0ba4-f309-42a8-847e-739fe9598796",
+      "index": 2253,
+      "period": 2,
+      "minute": 58,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "James David Rodríguez Rubio",
+      "location": [
+        19.9,
+        8.5
+      ]
+    },
+    {
+      "id": "71547248-572e-4b85-9c09-f53937bfb63b",
+      "index": 2257,
+      "period": 2,
+      "minute": 58,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        63.1,
+        33.4
+      ]
+    },
+    {
+      "id": "7c45ed8b-d3ff-4539-8d5c-1d64a60dd6bc",
+      "index": 2265,
+      "period": 2,
+      "minute": 59,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        90.5,
+        21.3
+      ]
+    },
+    {
+      "id": "8051525f-8d74-4442-9ea3-cd1964fa5db3",
+      "index": 2307,
+      "period": 2,
+      "minute": 60,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "James David Rodríguez Rubio",
+      "location": [
+        95.3,
+        44.9
+      ]
+    },
+    {
+      "id": "a7798d05-522f-4805-8429-0d2347ae605a",
+      "index": 2312,
+      "period": 2,
+      "minute": 60,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        23.5,
+        28.4
+      ]
+    },
+    {
+      "id": "820c0ee5-44a8-4d19-9c75-1c9a971d36f7",
+      "index": 2334,
+      "period": 2,
+      "minute": 61,
+      "second": 53,
+      "type": "Pass",
+      "team": "Colombia",
+      "player": "Luis Fernando Díaz Marulanda",
+      "location": [
+        95.8,
+        30.5
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "a56a6568-ed95-4a03-8527-2fa71cdb03dd",
+      "index": 2337,
+      "period": 2,
+      "minute": 61,
+      "second": 55,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Jefferson Andrés Lerma Solís",
+      "location": [
+        88.5,
+        38.1
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c5a850b7-d67a-4789-ad02-243ae3d75c37",
+      "index": 2366,
+      "period": 2,
+      "minute": 62,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "James David Rodríguez Rubio",
+      "location": [
+        73.2,
+        24.5
+      ]
+    },
+    {
+      "id": "cb6f6cab-0877-4472-8bb9-7c76fced8999",
+      "index": 2375,
+      "period": 2,
+      "minute": 62,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Santiago Arias Naranjo",
+      "location": [
+        90.2,
+        56.5
+      ]
+    },
+    {
+      "id": "acc99b9e-4d1d-4eff-a9e1-934bf201feaa",
+      "index": 2406,
+      "period": 2,
+      "minute": 66,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "James David Rodríguez Rubio",
+      "location": [
+        40.1,
+        58.3
+      ]
+    },
+    {
+      "id": "b58ea7ae-f8fa-4f9a-a624-77fc6522a7da",
+      "index": 2546,
+      "period": 2,
+      "minute": 69,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jhon Adolfo Arias Andrade",
+      "location": [
+        6.3,
+        26.2
+      ]
+    },
+    {
+      "id": "add5d1ca-7f4f-49cc-890e-5aa16abb963c",
+      "index": 2561,
+      "period": 2,
+      "minute": 71,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jhon Adolfo Arias Andrade",
+      "location": [
+        84.3,
+        26.3
+      ]
+    },
+    {
+      "id": "ba7c2eb2-9889-4fe7-b9e5-1e78621d7ea1",
+      "index": 2609,
+      "period": 2,
+      "minute": 74,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Julián Álvarez",
+      "location": [
+        44.7,
+        32.7
+      ]
+    },
+    {
+      "id": "1e4bcef9-8fde-467e-bf5e-dc5afbaf192b",
+      "index": 2692,
+      "period": 2,
+      "minute": 77,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        8.4,
+        57
+      ]
+    },
+    {
+      "id": "5ad5b3bd-5b72-41b1-adf3-1d704e062805",
+      "index": 2707,
+      "period": 2,
+      "minute": 77,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jhon Adolfo Arias Andrade",
+      "location": [
+        88.9,
+        8
+      ]
+    },
+    {
+      "id": "69657147-2c06-42ca-b93e-bd052cc72c26",
+      "index": 2712,
+      "period": 2,
+      "minute": 78,
+      "second": 17,
+      "type": "Pass",
+      "team": "Colombia",
+      "player": "James David Rodríguez Rubio",
+      "location": [
+        86.3,
+        11.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "4409c64f-a73a-4acf-88a1-728498114871",
+      "index": 2715,
+      "period": 2,
+      "minute": 78,
+      "second": 18,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Carlos Eccehomo Cuesta Figueroa",
+      "location": [
+        109.6,
+        41.5
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "bc8aa024-718a-4876-967a-c9f8c29cf314",
+      "index": 2734,
+      "period": 2,
+      "minute": 79,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nicolás Iván González",
+      "location": [
+        94,
+        3.9
+      ]
+    },
+    {
+      "id": "7ce6632a-9f3b-4b3b-86cb-1dc2ee5765bc",
+      "index": 2739,
+      "period": 2,
+      "minute": 79,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Camilo Andrés Vargas Gil",
+      "location": [
+        2.9,
+        48.9
+      ]
+    },
+    {
+      "id": "9bafe41c-ec52-47c6-9b5d-d45ed9987731",
+      "index": 2747,
+      "period": 2,
+      "minute": 79,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        52.7,
+        39.1
+      ]
+    },
+    {
+      "id": "1d209fa9-b04b-4fe2-8a7f-77408b6b8c00",
+      "index": 2782,
+      "period": 2,
+      "minute": 80,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jhon Andrés Córdoba Copete",
+      "location": [
+        78.3,
+        53.3
+      ]
+    },
+    {
+      "id": "4a812c09-695e-469e-a38f-55a55ed54143",
+      "index": 2813,
+      "period": 2,
+      "minute": 81,
+      "second": 44,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "James David Rodríguez Rubio",
+      "location": [
+        94.8,
+        24.9
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "65f8e21a-fb46-4fe7-9600-079ffeae1a91",
+      "index": 2817,
+      "period": 2,
+      "minute": 81,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nicolás Iván González",
+      "location": [
+        12.2,
+        68.9
+      ]
+    },
+    {
+      "id": "581afa54-e093-4fb1-8c50-0d7bef3c7fc7",
+      "index": 2868,
+      "period": 2,
+      "minute": 84,
+      "second": 31,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Camilo Andrés Vargas Gil",
+      "location": [
+        14.5,
+        31.4
+      ]
+    },
+    {
+      "id": "c63aaa21-f1e7-4508-aba7-8ff5c7c2dd4c",
+      "index": 2912,
+      "period": 2,
+      "minute": 86,
+      "second": 40,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Damián Emiliano Martínez",
+      "location": [
+        14.4,
+        23.9
+      ]
+    },
+    {
+      "id": "531d4a01-14e1-48be-adcb-b4c3266ef596",
+      "index": 3008,
+      "period": 2,
+      "minute": 90,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        109.5,
+        55.3
+      ]
+    },
+    {
+      "id": "cef8d9ad-64b2-4341-92e4-dbb4b315e74b",
+      "index": 3013,
+      "period": 2,
+      "minute": 90,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jefferson Andrés Lerma Solís",
+      "location": [
+        20.9,
+        32.4
+      ]
+    },
+    {
+      "id": "a0931772-52b4-48fb-b2cb-81a6c96f24f3",
+      "index": 3062,
+      "period": 2,
+      "minute": 91,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jefferson Andrés Lerma Solís",
+      "location": [
+        16.4,
+        44.9
+      ]
+    },
+    {
+      "id": "6c9efd3f-6216-4cdb-8075-7424f3fcd358",
+      "index": 3068,
+      "period": 2,
+      "minute": 92,
+      "second": 6,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Cristian Gabriel Romero",
+      "location": [
+        109.1,
+        51.4
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "d6f95c00-a4a8-476f-8315-8fa93c881296",
+      "index": 3070,
+      "period": 2,
+      "minute": 92,
+      "second": 7,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Nicolás Iván González",
+      "location": [
+        111.1,
+        42
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "bfb29d16-ca4a-489a-96f4-539240833119",
+      "index": 3093,
+      "period": 2,
+      "minute": 93,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jhon Adolfo Arias Andrade",
+      "location": [
+        21.6,
+        6.1
+      ]
+    },
+    {
+      "id": "dbd3fd19-7a8a-4f8c-a023-e7f5f6a34a5a",
+      "index": 3172,
+      "period": 3,
+      "minute": 90,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        86.4,
+        65.2
+      ]
+    },
+    {
+      "id": "d15579bd-fe4d-4d6e-aaa0-da4696675bfa",
+      "index": 3193,
+      "period": 3,
+      "minute": 91,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jefferson Andrés Lerma Solís",
+      "location": [
+        61.9,
+        24.7
+      ]
+    },
+    {
+      "id": "38f69fd7-c5a1-4ec7-a2d2-90e03528c49b",
+      "index": 3221,
+      "period": 3,
+      "minute": 92,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jhon Adolfo Arias Andrade",
+      "location": [
+        89,
+        3.3
+      ]
+    },
+    {
+      "id": "2eb25ed3-1c19-44ca-97dc-7120c9d6aa2f",
+      "index": 3253,
+      "period": 3,
+      "minute": 92,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Davinson Sánchez Mina",
+      "location": [
+        40.2,
+        66.2
+      ]
+    },
+    {
+      "id": "70b682ea-9427-4a1d-917b-dfc12767d391",
+      "index": 3295,
+      "period": 3,
+      "minute": 93,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jhon Adolfo Arias Andrade",
+      "location": [
+        76.5,
+        12.9
+      ]
+    },
+    {
+      "id": "7f45d71f-4a33-4ffa-8a4b-f9ac91d37781",
+      "index": 3300,
+      "period": 3,
+      "minute": 93,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        37.9,
+        37.7
+      ]
+    },
+    {
+      "id": "7d0156ac-e4a7-43a9-b07f-5149d4ab0595",
+      "index": 3319,
+      "period": 3,
+      "minute": 94,
+      "second": 7,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        117.1,
+        55.6
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "06916203-7c7e-4a9c-acae-fc136e5c4a5c",
+      "index": 3322,
+      "period": 3,
+      "minute": 94,
+      "second": 8,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Nicolás Iván González",
+      "location": [
+        110.1,
+        35.3
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d29dc8b0-e911-4af5-8e7e-9242470f1205",
+      "index": 3353,
+      "period": 3,
+      "minute": 95,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Luis Fernando Díaz Marulanda",
+      "location": [
+        90.8,
+        48.8
+      ]
+    },
+    {
+      "id": "c8334208-01b3-4ce6-ab97-71e80f406b4d",
+      "index": 3367,
+      "period": 3,
+      "minute": 96,
+      "second": 46,
+      "type": "Pass",
+      "team": "Colombia",
+      "player": "Santiago Arias Naranjo",
+      "location": [
+        98.1,
+        80
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "603bb6e0-3368-4be4-9be8-a2993bc5062b",
+      "index": 3372,
+      "period": 3,
+      "minute": 96,
+      "second": 50,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Juan Fernando Quintero Paniagua",
+      "location": [
+        90.2,
+        41.4
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "46448dcf-fe52-4676-aeaf-765cc11302bf",
+      "index": 3395,
+      "period": 3,
+      "minute": 97,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        54.2,
+        61.7
+      ]
+    },
+    {
+      "id": "d62a0a2b-b5c1-4bbe-882f-9e3242720aa6",
+      "index": 3420,
+      "period": 3,
+      "minute": 99,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Johan Andrés Mojica Palacio",
+      "location": [
+        32.1,
+        26.3
+      ]
+    },
+    {
+      "id": "5fd969ad-9392-45b0-8299-0c4ee035c91b",
+      "index": 3425,
+      "period": 3,
+      "minute": 99,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Leandro Daniel Paredes",
+      "location": [
+        75,
+        24.4
+      ]
+    },
+    {
+      "id": "187207d5-4c9a-450f-9465-594eed534f00",
+      "index": 3432,
+      "period": 3,
+      "minute": 99,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nicolás Iván González",
+      "location": [
+        76.2,
+        20
+      ]
+    },
+    {
+      "id": "0224ea7d-7b81-4cea-b392-18198b579f02",
+      "index": 3445,
+      "period": 3,
+      "minute": 99,
+      "second": 34,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        103.7,
+        64.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "66c57fe2-4c44-4365-9bed-cedbc7854684",
+      "index": 3448,
+      "period": 3,
+      "minute": 99,
+      "second": 36,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Nicolás Alejandro Tagliafico",
+      "location": [
+        118.6,
+        31.5
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c29a9126-7203-4bb1-b29c-6ac0db2f91cd",
+      "index": 3459,
+      "period": 3,
+      "minute": 99,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nahuel Molina Lucero",
+      "location": [
+        51.6,
+        53.2
+      ]
+    },
+    {
+      "id": "8b6f88f5-d7f2-4452-a3f1-74ec31e3b5d0",
+      "index": 3465,
+      "period": 3,
+      "minute": 99,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Davinson Sánchez Mina",
+      "location": [
+        39.6,
+        40.4
+      ]
+    },
+    {
+      "id": "ef748fd6-b50c-4146-b22c-5ac42cee47b9",
+      "index": 3469,
+      "period": 3,
+      "minute": 100,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Carlos Eccehomo Cuesta Figueroa",
+      "location": [
+        19.1,
+        50.8
+      ]
+    },
+    {
+      "id": "127992fa-62b9-40c1-93d3-eb4983e26986",
+      "index": 3477,
+      "period": 3,
+      "minute": 100,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Kevin Duvan Castaño Gil",
+      "location": [
+        75.1,
+        69.5
+      ]
+    },
+    {
+      "id": "5e0d3725-b13e-4b77-b23c-d714a6a32084",
+      "index": 3488,
+      "period": 3,
+      "minute": 100,
+      "second": 56,
+      "type": "Pass",
+      "team": "Colombia",
+      "player": "Juan Fernando Quintero Paniagua",
+      "location": [
+        66.9,
+        40.4
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "120f2fdc-4c5c-4fea-bec5-9b92e7a7cc2c",
+      "index": 3491,
+      "period": 3,
+      "minute": 101,
+      "second": 0,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Jhon Adolfo Arias Andrade",
+      "location": [
+        94.3,
+        39.6
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "84fbb37c-3a98-46dc-b75d-c7ba29de8d9d",
+      "index": 3494,
+      "period": 3,
+      "minute": 101,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Damián Emiliano Martínez",
+      "location": [
+        2,
+        32.2
+      ]
+    },
+    {
+      "id": "78661bcc-48f8-46a8-b46c-6c2bb5471c24",
+      "index": 3611,
+      "period": 3,
+      "minute": 104,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jhon Adolfo Arias Andrade",
+      "location": [
+        97.1,
+        35.3
+      ]
+    },
+    {
+      "id": "9b2e3a04-60d1-4b3b-89fe-914f603cb126",
+      "index": 3615,
+      "period": 3,
+      "minute": 104,
+      "second": 31,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        28.1,
+        55.4
+      ]
+    },
+    {
+      "id": "a81142c7-db1a-4d66-aa4b-6836fde93edb",
+      "index": 3661,
+      "period": 3,
+      "minute": 105,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nicolás Iván González",
+      "location": [
+        37.7,
+        26.7
+      ]
+    },
+    {
+      "id": "d22cbfc3-2331-44a7-8235-4f484dda20b0",
+      "index": 3683,
+      "period": 3,
+      "minute": 105,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Davinson Sánchez Mina",
+      "location": [
+        44.9,
+        53.4
+      ]
+    },
+    {
+      "id": "bfcbf94f-df73-41f8-841f-a741910fef55",
+      "index": 3700,
+      "period": 3,
+      "minute": 105,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Giovani Lo Celso",
+      "location": [
+        26.1,
+        33.2
+      ]
+    },
+    {
+      "id": "6c7ee10e-0dee-444a-bc26-71c607ef0c38",
+      "index": 3810,
+      "period": 4,
+      "minute": 108,
+      "second": 39,
+      "type": "Pass",
+      "team": "Colombia",
+      "player": "Jorge Andrés Carrascal Guardo",
+      "location": [
+        94.6,
+        19.3
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "888117e5-1ddc-4fbd-81e6-e84320c24527",
+      "index": 3813,
+      "period": 4,
+      "minute": 108,
+      "second": 41,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Miguel Ángel Borja Hernández",
+      "location": [
+        108.5,
+        27.6
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "361cac9e-399a-4001-9d54-b09ae9eb4b85",
+      "index": 3846,
+      "period": 4,
+      "minute": 110,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        39.5,
+        63.8
+      ]
+    },
+    {
+      "id": "f3e1de53-5239-4265-8c71-4b1b38847daa",
+      "index": 3862,
+      "period": 4,
+      "minute": 110,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Lautaro Javier Martínez",
+      "location": [
+        96.2,
+        33.2
+      ]
+    },
+    {
+      "id": "ef5fa05d-46c0-439a-b76d-eda0c57a1439",
+      "index": 3890,
+      "period": 4,
+      "minute": 111,
+      "second": 10,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Giovani Lo Celso",
+      "location": [
+        75.3,
+        42.7
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "231b12e4-80a4-4457-bebe-4b58b7cd29f8",
+      "index": 3894,
+      "period": 4,
+      "minute": 111,
+      "second": 13,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lautaro Javier Martínez",
+      "location": [
+        105.5,
+        52.1
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "3da766f5-adb3-464d-9bd3-a0a2362f46e1",
+      "index": 3939,
+      "period": 4,
+      "minute": 116,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Davinson Sánchez Mina",
+      "location": [
+        2.8,
+        69.8
+      ]
+    },
+    {
+      "id": "782837a9-485f-4cfb-bf35-cb931652c444",
+      "index": 3954,
+      "period": 4,
+      "minute": 117,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        79.1,
+        53.9
+      ]
+    },
+    {
+      "id": "309cc8ca-d4df-41ab-930c-0a59c0526689",
+      "index": 4041,
+      "period": 4,
+      "minute": 119,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Jorge Andrés Carrascal Guardo",
+      "location": [
+        71.4,
+        10.1
+      ]
+    },
+    {
+      "id": "6fe5d64d-89d3-435c-9214-01c812eed293",
+      "index": 4043,
+      "period": 4,
+      "minute": 119,
+      "second": 26,
+      "type": "Pass",
+      "team": "Colombia",
+      "player": "Jorge Andrés Carrascal Guardo",
+      "location": [
+        71.5,
+        12.9
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "e98c2335-bfc5-4f83-a35d-e222df69d590",
+      "index": 4046,
+      "period": 4,
+      "minute": 119,
+      "second": 29,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Andrés Mateus Uribe Villa",
+      "location": [
+        87.6,
+        49
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "00536ab6-900d-43c7-9b48-2356090dd7f2",
+      "index": 4081,
+      "period": 4,
+      "minute": 120,
+      "second": 44,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        23,
+        51.6
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "272084f8-1804-4556-9a27-c853a9982bf9",
+      "index": 4084,
+      "period": 4,
+      "minute": 120,
+      "second": 46,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Leandro Daniel Paredes",
+      "location": [
+        30.2,
+        42.3
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "4a3a2a20-ecd2-480f-a7ff-b1b7c5cff3bd",
+      "index": 4086,
+      "period": 4,
+      "minute": 120,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Camilo Andrés Vargas Gil",
+      "location": [
+        10,
+        47.1
+      ]
+    },
+    {
+      "id": "72d0e0bb-fc02-4e48-a5e4-26d15bbca563",
+      "index": 4105,
+      "period": 4,
+      "minute": 121,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Andrés Mateus Uribe Villa",
+      "location": [
+        47.9,
+        30.7
+      ]
+    },
+    {
+      "id": "7e72c5d3-3b88-41b2-a163-5c55ed0ffd6d",
+      "index": 4115,
+      "period": 4,
+      "minute": 121,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Santiago Arias Naranjo",
+      "location": [
+        37.3,
+        63.3
+      ]
+    },
+    {
+      "id": "7e808b63-106e-4982-9c5b-27132d8886f4",
+      "index": 4133,
+      "period": 4,
+      "minute": 121,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Colombia",
+      "player": "Carlos Eccehomo Cuesta Figueroa",
+      "location": [
+        113.9,
+        34.8
+      ]
+    },
+    {
+      "id": "19f3b084-a547-4c5c-ba1c-89c988ed890f",
+      "index": 4135,
+      "period": 4,
+      "minute": 121,
+      "second": 46,
+      "type": "Shot",
+      "team": "Colombia",
+      "player": "Carlos Eccehomo Cuesta Figueroa",
+      "location": [
+        113.8,
+        36.7
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "982e7625-c975-426b-94be-c8729cc8d7d1",
+      "index": 4137,
+      "period": 4,
+      "minute": 121,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Damián Emiliano Martínez",
+      "location": [
+        2.9,
+        49.1
+      ]
+    },
+    {
+      "id": "5770f286-bde6-456c-a28a-65da52c4a551",
+      "index": 4141,
+      "period": 4,
+      "minute": 124,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Damián Emiliano Martínez",
+      "location": [
+        10.4,
+        51.6
+      ]
+    }
+  ]
+}

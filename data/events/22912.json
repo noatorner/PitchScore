@@ -1,0 +1,2072 @@
+{
+  "meta": {
+    "matchId": 22912,
+    "teams": [
+      "Tottenham Hotspur",
+      "Liverpool"
+    ],
+    "totalEvents": 3165,
+    "keptEvents": 133,
+    "fetchedAt": "2026-06-10T06:54:41.436Z"
+  },
+  "events": [
+    {
+      "id": "ea96e2b2-af1e-4157-a700-5919a9c075dc",
+      "index": 34,
+      "period": 1,
+      "minute": 1,
+      "second": 48,
+      "type": "Shot",
+      "team": "Liverpool",
+      "player": "Mohamed Salah",
+      "location": [
+        108.2,
+        40.1
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "679ccb6a-8d3c-43bd-b5c7-e0d5d057f6e7",
+      "index": 40,
+      "period": 1,
+      "minute": 2,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Christian Dannemann Eriksen",
+      "location": [
+        97.8,
+        68.2
+      ]
+    },
+    {
+      "id": "f8a31cbc-4699-434d-b1fd-00ab0ea324fe",
+      "index": 87,
+      "period": 1,
+      "minute": 3,
+      "second": 40,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Fábio Henrique Tavares",
+      "location": [
+        49.3,
+        53.2
+      ]
+    },
+    {
+      "id": "b2aad89a-22b8-4874-a50c-de0021bea359",
+      "index": 95,
+      "period": 1,
+      "minute": 3,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Jordan Brian Henderson",
+      "location": [
+        61.5,
+        57.8
+      ]
+    },
+    {
+      "id": "06cfb861-933d-46b0-8051-3678d9400cfa",
+      "index": 149,
+      "period": 1,
+      "minute": 4,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Bamidele Alli",
+      "location": [
+        104.3,
+        17.2
+      ]
+    },
+    {
+      "id": "c81f3c37-df21-46c2-8503-8374d8ebdc95",
+      "index": 163,
+      "period": 1,
+      "minute": 5,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Moussa Sissoko",
+      "location": [
+        82.5,
+        55.6
+      ]
+    },
+    {
+      "id": "31a52497-8438-4d02-8708-ad395e351321",
+      "index": 183,
+      "period": 1,
+      "minute": 5,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Fábio Henrique Tavares",
+      "location": [
+        56.7,
+        22.6
+      ]
+    },
+    {
+      "id": "e31e1996-b5aa-4544-899c-01e251fa6e03",
+      "index": 214,
+      "period": 1,
+      "minute": 6,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Bamidele Alli",
+      "location": [
+        90.9,
+        4.1
+      ]
+    },
+    {
+      "id": "8ffdaf4f-e377-4e03-bbd0-dbd9c8b2cfe6",
+      "index": 277,
+      "period": 1,
+      "minute": 8,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Moussa Sissoko",
+      "location": [
+        77.9,
+        10
+      ]
+    },
+    {
+      "id": "c4ff5bf9-1555-4a22-9b50-e3d8e2192084",
+      "index": 329,
+      "period": 1,
+      "minute": 8,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Christian Dannemann Eriksen",
+      "location": [
+        97.8,
+        31.5
+      ]
+    },
+    {
+      "id": "e20be728-652b-44fc-8c2b-acd15d77a9a4",
+      "index": 339,
+      "period": 1,
+      "minute": 9,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Moussa Sissoko",
+      "location": [
+        90.9,
+        44.1
+      ]
+    },
+    {
+      "id": "67b9cbde-0eb7-4800-9bfe-c2ce1ad406a6",
+      "index": 342,
+      "period": 1,
+      "minute": 9,
+      "second": 4,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Moussa Sissoko",
+      "location": [
+        91.9,
+        43.1
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "3903db3a-2fe0-43b0-9982-20e388ec6487",
+      "index": 389,
+      "period": 1,
+      "minute": 11,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Harry Kane",
+      "location": [
+        76.6,
+        6.7
+      ]
+    },
+    {
+      "id": "c05ba8ae-db74-4e02-8bf5-078980ce3818",
+      "index": 397,
+      "period": 1,
+      "minute": 12,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Andrew Robertson",
+      "location": [
+        15.8,
+        57.7
+      ]
+    },
+    {
+      "id": "c44abac7-fe3a-47cd-9997-9920a8d3a673",
+      "index": 483,
+      "period": 1,
+      "minute": 14,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Harry Winks",
+      "location": [
+        61,
+        62.1
+      ]
+    },
+    {
+      "id": "cc25a15f-a5f0-418d-9f89-2fc7ae4453a3",
+      "index": 521,
+      "period": 1,
+      "minute": 15,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Kieran Trippier",
+      "location": [
+        50.8,
+        62.6
+      ]
+    },
+    {
+      "id": "c89283e8-b874-48dc-be60-b6dc99b3cf05",
+      "index": 584,
+      "period": 1,
+      "minute": 16,
+      "second": 45,
+      "type": "Pass",
+      "team": "Liverpool",
+      "player": "Jordan Brian Henderson",
+      "location": [
+        77.1,
+        36.2
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "08c3746b-a125-4adb-991e-c8053578451a",
+      "index": 587,
+      "period": 1,
+      "minute": 16,
+      "second": 48,
+      "type": "Shot",
+      "team": "Liverpool",
+      "player": "Trent Alexander-Arnold",
+      "location": [
+        90.2,
+        59.3
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "869c5a34-fdd8-4f7e-bd4a-256fb65f389e",
+      "index": 606,
+      "period": 1,
+      "minute": 18,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Alisson Ramsés Becker",
+      "location": [
+        11.8,
+        54.9
+      ]
+    },
+    {
+      "id": "fdcfacde-7dec-443c-8236-5a8b5f6e861d",
+      "index": 629,
+      "period": 1,
+      "minute": 18,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Joël Andre Job Matip",
+      "location": [
+        36.1,
+        49.7
+      ]
+    },
+    {
+      "id": "c877f512-f362-4e2c-8414-4387ef8b8c5b",
+      "index": 679,
+      "period": 1,
+      "minute": 19,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Harry Winks",
+      "location": [
+        69.2,
+        47.8
+      ]
+    },
+    {
+      "id": "187df48f-eb6d-4f29-8595-88efee955ce4",
+      "index": 754,
+      "period": 1,
+      "minute": 20,
+      "second": 28,
+      "type": "Pass",
+      "team": "Liverpool",
+      "player": "Roberto Firmino Barbosa de Oliveira",
+      "location": [
+        93.1,
+        52.4
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "8fb3106d-10fb-42c6-bcf6-2ea34c7ff9a3",
+      "index": 758,
+      "period": 1,
+      "minute": 20,
+      "second": 31,
+      "type": "Shot",
+      "team": "Liverpool",
+      "player": "Mohamed Salah",
+      "location": [
+        95.2,
+        47.2
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "a6bac83c-96ee-4643-9fea-20d05dbcd0b0",
+      "index": 764,
+      "period": 1,
+      "minute": 21,
+      "second": 48,
+      "type": "Pass",
+      "team": "Liverpool",
+      "player": "Trent Alexander-Arnold",
+      "location": [
+        91.8,
+        80
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "4004264d-14a1-4e0d-b01d-a5d025e26c17",
+      "index": 768,
+      "period": 1,
+      "minute": 21,
+      "second": 53,
+      "type": "Shot",
+      "team": "Liverpool",
+      "player": "Mohamed Salah",
+      "location": [
+        113,
+        59.5
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "0f63dd89-f12e-424f-9005-779952dcc57b",
+      "index": 776,
+      "period": 1,
+      "minute": 22,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Roberto Firmino Barbosa de Oliveira",
+      "location": [
+        104,
+        10.4
+      ]
+    },
+    {
+      "id": "4c5bcc96-ffd9-49d0-a6f4-7cd93638583a",
+      "index": 782,
+      "period": 1,
+      "minute": 22,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Christian Dannemann Eriksen",
+      "location": [
+        28.9,
+        64.5
+      ]
+    },
+    {
+      "id": "da303db3-f136-4d4a-b399-34e422148721",
+      "index": 814,
+      "period": 1,
+      "minute": 23,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Georginio Wijnaldum",
+      "location": [
+        92.3,
+        53.5
+      ]
+    },
+    {
+      "id": "71d29df1-5b17-4355-a352-c14bbed42a0a",
+      "index": 877,
+      "period": 1,
+      "minute": 25,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Moussa Sissoko",
+      "location": [
+        58.1,
+        56.7
+      ]
+    },
+    {
+      "id": "d1891eea-9b43-4c2b-b623-0868cd191284",
+      "index": 913,
+      "period": 1,
+      "minute": 26,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Trent Alexander-Arnold",
+      "location": [
+        47.7,
+        60.2
+      ]
+    },
+    {
+      "id": "4cca3e6d-9147-41f7-af42-d9a0bb76547a",
+      "index": 1079,
+      "period": 1,
+      "minute": 30,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Trent Alexander-Arnold",
+      "location": [
+        66.2,
+        74.7
+      ]
+    },
+    {
+      "id": "4675c0e8-7076-45d2-9e07-53162429afcf",
+      "index": 1139,
+      "period": 1,
+      "minute": 32,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Moussa Sissoko",
+      "location": [
+        69.2,
+        30.8
+      ]
+    },
+    {
+      "id": "3611224a-f389-4d0b-8d9d-589525719ee9",
+      "index": 1145,
+      "period": 1,
+      "minute": 32,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Harry Winks",
+      "location": [
+        75.8,
+        41.3
+      ]
+    },
+    {
+      "id": "22693de6-7701-4cb2-84ec-274975d8558c",
+      "index": 1276,
+      "period": 1,
+      "minute": 36,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Alisson Ramsés Becker",
+      "location": [
+        3.6,
+        56
+      ]
+    },
+    {
+      "id": "7e63a5c2-2d3f-4512-989d-ed7dfcbeecaf",
+      "index": 1344,
+      "period": 1,
+      "minute": 37,
+      "second": 40,
+      "type": "Pass",
+      "team": "Liverpool",
+      "player": "Joël Andre Job Matip",
+      "location": [
+        22.5,
+        49.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "ac439699-4dde-42dd-9f67-dd9ef6b6e885",
+      "index": 1347,
+      "period": 1,
+      "minute": 37,
+      "second": 48,
+      "type": "Shot",
+      "team": "Liverpool",
+      "player": "Andrew Robertson",
+      "location": [
+        98.4,
+        20.4
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "6f2aca5e-6695-4ed5-909a-d2055829ac1e",
+      "index": 1352,
+      "period": 1,
+      "minute": 38,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Mohamed Salah",
+      "location": [
+        98.1,
+        38.1
+      ]
+    },
+    {
+      "id": "8f904ef7-277c-4da9-9508-758c51af8a1f",
+      "index": 1353,
+      "period": 1,
+      "minute": 38,
+      "second": 32,
+      "type": "Shot",
+      "team": "Liverpool",
+      "player": "Mohamed Salah",
+      "location": [
+        97.6,
+        37.4
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c3cb6f1d-16d7-404e-8193-384557e34f5a",
+      "index": 1390,
+      "period": 1,
+      "minute": 41,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Christian Dannemann Eriksen",
+      "location": [
+        29.1,
+        64.7
+      ]
+    },
+    {
+      "id": "babca90a-eef6-49a7-b7d6-7284626a4322",
+      "index": 1395,
+      "period": 1,
+      "minute": 41,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Heung-Min Son",
+      "location": [
+        34.4,
+        59.6
+      ]
+    },
+    {
+      "id": "2f696aaa-a944-401d-b940-25dc4e9577bf",
+      "index": 1400,
+      "period": 1,
+      "minute": 41,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Jordan Brian Henderson",
+      "location": [
+        79.6,
+        37.3
+      ]
+    },
+    {
+      "id": "25e13a1a-af67-47d7-b179-c0a6328f6d03",
+      "index": 1402,
+      "period": 1,
+      "minute": 41,
+      "second": 11,
+      "type": "Shot",
+      "team": "Liverpool",
+      "player": "Jordan Brian Henderson",
+      "location": [
+        89,
+        47.9
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "715e150a-2010-4fd9-a167-2ab4aaf37c4b",
+      "index": 1405,
+      "period": 1,
+      "minute": 41,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Roberto Firmino Barbosa de Oliveira",
+      "location": [
+        99,
+        33.9
+      ]
+    },
+    {
+      "id": "ddeb1893-81ee-44ad-ab8d-8aee766d8335",
+      "index": 1421,
+      "period": 1,
+      "minute": 41,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Mohamed Salah",
+      "location": [
+        93.9,
+        33.1
+      ]
+    },
+    {
+      "id": "35d86371-56e1-4f3f-a3c9-f4a9b1bb1e32",
+      "index": 1423,
+      "period": 1,
+      "minute": 41,
+      "second": 50,
+      "type": "Shot",
+      "team": "Liverpool",
+      "player": "Mohamed Salah",
+      "location": [
+        94,
+        31.3
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "cc8704a6-3539-478d-96c8-1cecea159489",
+      "index": 1491,
+      "period": 1,
+      "minute": 43,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Alisson Ramsés Becker",
+      "location": [
+        7.4,
+        53.9
+      ]
+    },
+    {
+      "id": "b9901361-f7e2-414d-8f74-5d738534703b",
+      "index": 1546,
+      "period": 1,
+      "minute": 45,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Moussa Sissoko",
+      "location": [
+        63.6,
+        42.6
+      ]
+    },
+    {
+      "id": "bf1aecdc-b3fd-40b0-a1b7-a32c5ced1dd7",
+      "index": 1557,
+      "period": 1,
+      "minute": 45,
+      "second": 17,
+      "type": "Pass",
+      "team": "Tottenham Hotspur",
+      "player": "Bamidele Alli",
+      "location": [
+        93.2,
+        32.3
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "1c2f8976-cb1e-41d2-90a8-4c587306d4bf",
+      "index": 1561,
+      "period": 1,
+      "minute": 45,
+      "second": 19,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Christian Dannemann Eriksen",
+      "location": [
+        96.1,
+        41.6
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "75137564-b633-4725-b354-0db654e10765",
+      "index": 1571,
+      "period": 1,
+      "minute": 45,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Danny Rose",
+      "location": [
+        42.3,
+        6.9
+      ]
+    },
+    {
+      "id": "ea770dcc-c471-4e0f-a63d-b344633e0e35",
+      "index": 1632,
+      "period": 1,
+      "minute": 46,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Trent Alexander-Arnold",
+      "location": [
+        5,
+        71.5
+      ]
+    },
+    {
+      "id": "8799438e-72c3-4c0e-a912-86b2fe247f31",
+      "index": 1655,
+      "period": 2,
+      "minute": 45,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Danny Rose",
+      "location": [
+        34.5,
+        41.2
+      ]
+    },
+    {
+      "id": "6f49a257-85df-49ef-aff1-fe444183356b",
+      "index": 1711,
+      "period": 2,
+      "minute": 46,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Toby Alderweireld",
+      "location": [
+        44.2,
+        37.7
+      ]
+    },
+    {
+      "id": "9d06f612-1e9f-4051-8234-d672e9c01ee6",
+      "index": 1745,
+      "period": 2,
+      "minute": 47,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Kieran Trippier",
+      "location": [
+        55.8,
+        76.2
+      ]
+    },
+    {
+      "id": "fe7d5bdc-98f6-4871-a312-1168cda10214",
+      "index": 1773,
+      "period": 2,
+      "minute": 48,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Jan Vertonghen",
+      "location": [
+        26.3,
+        21.7
+      ]
+    },
+    {
+      "id": "8c6e6b7b-e336-4554-9cb0-b95535e59a1a",
+      "index": 1827,
+      "period": 2,
+      "minute": 51,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Danny Rose",
+      "location": [
+        29.4,
+        4.4
+      ]
+    },
+    {
+      "id": "1772a0bd-285b-4765-bbe3-e928c9c12370",
+      "index": 1881,
+      "period": 2,
+      "minute": 52,
+      "second": 22,
+      "type": "Pass",
+      "team": "Liverpool",
+      "player": "Andrew Robertson",
+      "location": [
+        87,
+        17.6
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "a0270fc6-79b0-4054-b570-dfa274e171a0",
+      "index": 1885,
+      "period": 2,
+      "minute": 52,
+      "second": 26,
+      "type": "Shot",
+      "team": "Liverpool",
+      "player": "Fábio Henrique Tavares",
+      "location": [
+        88.6,
+        39
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "4829ab9b-fc9b-4f78-a133-a0ff1aacd21c",
+      "index": 1888,
+      "period": 2,
+      "minute": 52,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Hugo Lloris",
+      "location": [
+        2.5,
+        33
+      ]
+    },
+    {
+      "id": "9c80cdc1-4f46-4281-8217-8da677a6d9cf",
+      "index": 1913,
+      "period": 2,
+      "minute": 53,
+      "second": 1,
+      "type": "Pass",
+      "team": "Liverpool",
+      "player": "Georginio Wijnaldum",
+      "location": [
+        54.4,
+        34.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "88e73cb6-8cde-4fab-95f6-9a7d7d9b1234",
+      "index": 1916,
+      "period": 2,
+      "minute": 53,
+      "second": 6,
+      "type": "Shot",
+      "team": "Liverpool",
+      "player": "Mohamed Salah",
+      "location": [
+        110.2,
+        52.7
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "09afc029-96e6-4dae-9ecd-4f2501b9f2e1",
+      "index": 1921,
+      "period": 2,
+      "minute": 53,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Mohamed Salah",
+      "location": [
+        94.8,
+        49.9
+      ]
+    },
+    {
+      "id": "0ca59d2b-0701-4ab1-a1af-291b9da03280",
+      "index": 1926,
+      "period": 2,
+      "minute": 53,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Georginio Wijnaldum",
+      "location": [
+        90.9,
+        45.9
+      ]
+    },
+    {
+      "id": "888ac577-e8a9-40a3-80a9-74a31b4a9147",
+      "index": 1956,
+      "period": 2,
+      "minute": 53,
+      "second": 45,
+      "type": "Pass",
+      "team": "Tottenham Hotspur",
+      "player": "Christian Dannemann Eriksen",
+      "location": [
+        72.4,
+        75.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "a8b0c66e-51f0-4b76-a991-2fe3f4a8c48e",
+      "index": 1960,
+      "period": 2,
+      "minute": 53,
+      "second": 49,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Bamidele Alli",
+      "location": [
+        110.8,
+        49.4
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c38df8b2-084d-42e2-9cb0-65957cbb9629",
+      "index": 1968,
+      "period": 2,
+      "minute": 53,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Joël Andre Job Matip",
+      "location": [
+        4.2,
+        65.9
+      ]
+    },
+    {
+      "id": "0fe8c4c5-e3bf-40a5-ab28-73fe0d606119",
+      "index": 1971,
+      "period": 2,
+      "minute": 54,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Jan Vertonghen",
+      "location": [
+        42.7,
+        6.1
+      ]
+    },
+    {
+      "id": "ee4cdeb7-2ca3-40c3-972d-af092afada46",
+      "index": 1998,
+      "period": 2,
+      "minute": 54,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Bamidele Alli",
+      "location": [
+        107.2,
+        15.4
+      ]
+    },
+    {
+      "id": "a1361147-6722-4617-b3b5-3c938aa3d6ea",
+      "index": 2032,
+      "period": 2,
+      "minute": 56,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Danny Rose",
+      "location": [
+        100.7,
+        23.9
+      ]
+    },
+    {
+      "id": "dfffee9b-6c44-40b2-aa8b-408ffb592951",
+      "index": 2033,
+      "period": 2,
+      "minute": 56,
+      "second": 56,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Danny Rose",
+      "location": [
+        101.6,
+        25.6
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "a1ee0449-5dd8-428b-9674-a1344337b8e9",
+      "index": 2036,
+      "period": 2,
+      "minute": 57,
+      "second": 16,
+      "type": "Pass",
+      "team": "Tottenham Hotspur",
+      "player": "Danny Rose",
+      "location": [
+        120,
+        0.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "e3ae0a6b-4b2d-4738-8c67-61fe693430a4",
+      "index": 2039,
+      "period": 2,
+      "minute": 57,
+      "second": 18,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Jan Vertonghen",
+      "location": [
+        110.7,
+        50.3
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d828c990-3ba6-44c6-a06b-f097ed3024d5",
+      "index": 2087,
+      "period": 2,
+      "minute": 59,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Hugo Lloris",
+      "location": [
+        10.6,
+        44.6
+      ]
+    },
+    {
+      "id": "a6954a06-8650-42f9-8ad6-8b8636bacc3e",
+      "index": 2120,
+      "period": 2,
+      "minute": 59,
+      "second": 40,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Sadio Mané",
+      "location": [
+        69.4,
+        28.4
+      ]
+    },
+    {
+      "id": "f6558f98-8804-44cf-a3b2-6dd1268f185e",
+      "index": 2175,
+      "period": 2,
+      "minute": 60,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Christian Dannemann Eriksen",
+      "location": [
+        88.1,
+        36.2
+      ]
+    },
+    {
+      "id": "78e0292d-efae-43fc-b02c-77d0d5bddb6e",
+      "index": 2178,
+      "period": 2,
+      "minute": 60,
+      "second": 18,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Christian Dannemann Eriksen",
+      "location": [
+        92.1,
+        46.7
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "5e5cf13f-755c-4f56-8461-56c3761fc9da",
+      "index": 2199,
+      "period": 2,
+      "minute": 61,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Jordan Brian Henderson",
+      "location": [
+        91.4,
+        73.8
+      ]
+    },
+    {
+      "id": "23e60e48-84b4-410f-9002-857bbd27e659",
+      "index": 2212,
+      "period": 2,
+      "minute": 62,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Joël Andre Job Matip",
+      "location": [
+        65.8,
+        70.5
+      ]
+    },
+    {
+      "id": "5a7a778c-88cf-4db7-9aa3-8104eb68dd81",
+      "index": 2292,
+      "period": 2,
+      "minute": 63,
+      "second": 40,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Jan Vertonghen",
+      "location": [
+        13.8,
+        11.6
+      ]
+    },
+    {
+      "id": "9586f45a-fea1-407d-8403-fd2179d6aa6f",
+      "index": 2360,
+      "period": 2,
+      "minute": 65,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Andrew Robertson",
+      "location": [
+        43.9,
+        15
+      ]
+    },
+    {
+      "id": "e518e8ae-5b36-4098-a57d-560634a5ef95",
+      "index": 2432,
+      "period": 2,
+      "minute": 68,
+      "second": 9,
+      "type": "Pass",
+      "team": "Liverpool",
+      "player": "Mohamed Salah",
+      "location": [
+        106.3,
+        45.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "40332dc4-d7f9-4716-8e44-1d3f75ff685b",
+      "index": 2435,
+      "period": 2,
+      "minute": 68,
+      "second": 10,
+      "type": "Shot",
+      "team": "Liverpool",
+      "player": "James Philip Milner",
+      "location": [
+        103.1,
+        45.9
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "67ee20f2-c3ee-44c8-9a2c-893c573ede30",
+      "index": 2461,
+      "period": 2,
+      "minute": 69,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Harry Kane",
+      "location": [
+        84.2,
+        30.6
+      ]
+    },
+    {
+      "id": "b748a062-c943-4e54-8425-76b194961c44",
+      "index": 2471,
+      "period": 2,
+      "minute": 69,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Joël Andre Job Matip",
+      "location": [
+        11.5,
+        49
+      ]
+    },
+    {
+      "id": "3978075f-9501-4e9b-a752-1cf7ea8a7bba",
+      "index": 2474,
+      "period": 2,
+      "minute": 69,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Jan Vertonghen",
+      "location": [
+        53.9,
+        3.4
+      ]
+    },
+    {
+      "id": "3d6466d8-f0bb-4d0e-9199-a8cf35e36f87",
+      "index": 2488,
+      "period": 2,
+      "minute": 69,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Christian Dannemann Eriksen",
+      "location": [
+        63.2,
+        44.2
+      ]
+    },
+    {
+      "id": "054ac54b-900c-459e-9b5b-ee86c82aed46",
+      "index": 2508,
+      "period": 2,
+      "minute": 70,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Kieran Trippier",
+      "location": [
+        105.5,
+        64.7
+      ]
+    },
+    {
+      "id": "58c6b51f-b09c-4d55-948d-cc56b6fe1de7",
+      "index": 2561,
+      "period": 2,
+      "minute": 72,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Hugo Lloris",
+      "location": [
+        17.1,
+        41.8
+      ]
+    },
+    {
+      "id": "8006a4f1-879d-4ed2-9ed6-88b1dcf2420d",
+      "index": 2580,
+      "period": 2,
+      "minute": 72,
+      "second": 35,
+      "type": "Pass",
+      "team": "Tottenham Hotspur",
+      "player": "Heung-Min Son",
+      "location": [
+        100.4,
+        33.3
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "89bcf4f1-7cdd-4cc0-95e7-60ed13ccec3a",
+      "index": 2582,
+      "period": 2,
+      "minute": 72,
+      "second": 36,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Bamidele Alli",
+      "location": [
+        106,
+        27.2
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "ce37223b-49cb-42d5-b03a-7266084e13ea",
+      "index": 2590,
+      "period": 2,
+      "minute": 73,
+      "second": 42,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Alisson Ramsés Becker",
+      "location": [
+        8.3,
+        34.8
+      ]
+    },
+    {
+      "id": "e2da8098-8ccd-4739-9d9b-beb8e16a98e2",
+      "index": 2623,
+      "period": 2,
+      "minute": 74,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Bamidele Alli",
+      "location": [
+        56.3,
+        16.6
+      ]
+    },
+    {
+      "id": "c3dbcf71-e656-4497-b5e0-3c555ef992a0",
+      "index": 2642,
+      "period": 2,
+      "minute": 74,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Lucas Rodrigues Moura da Silva",
+      "location": [
+        30.4,
+        47.3
+      ]
+    },
+    {
+      "id": "ae6bce34-3e20-4e74-b091-eb3e1610e44d",
+      "index": 2667,
+      "period": 2,
+      "minute": 75,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Harry Kane",
+      "location": [
+        112.9,
+        16.9
+      ]
+    },
+    {
+      "id": "41115489-90c1-46a8-9765-9a84a9e4e332",
+      "index": 2673,
+      "period": 2,
+      "minute": 75,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Kieran Trippier",
+      "location": [
+        91.4,
+        73.9
+      ]
+    },
+    {
+      "id": "513bbda1-384e-4488-8a20-bb265525acc6",
+      "index": 2714,
+      "period": 2,
+      "minute": 76,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Hugo Lloris",
+      "location": [
+        10.7,
+        48.2
+      ]
+    },
+    {
+      "id": "e6cb668f-d899-4eb0-91ed-6416411510df",
+      "index": 2791,
+      "period": 2,
+      "minute": 78,
+      "second": 19,
+      "type": "Pass",
+      "team": "Tottenham Hotspur",
+      "player": "Kieran Trippier",
+      "location": [
+        115.9,
+        70.2
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "834c48aa-ba51-481c-a5b4-3f91f87b1db4",
+      "index": 2794,
+      "period": 2,
+      "minute": 78,
+      "second": 21,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Bamidele Alli",
+      "location": [
+        113.4,
+        37.4
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "090d1217-9eaf-4570-a960-891d92a0a581",
+      "index": 2821,
+      "period": 2,
+      "minute": 79,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Toby Alderweireld",
+      "location": [
+        42,
+        46.4
+      ]
+    },
+    {
+      "id": "1031f36f-4091-46cc-b02c-7f0becf819c0",
+      "index": 2840,
+      "period": 2,
+      "minute": 79,
+      "second": 32,
+      "type": "Pass",
+      "team": "Tottenham Hotspur",
+      "player": "Bamidele Alli",
+      "location": [
+        82,
+        26.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "1118eeda-cde7-4662-af23-889052eb24e8",
+      "index": 2844,
+      "period": 2,
+      "minute": 79,
+      "second": 35,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Heung-Min Son",
+      "location": [
+        90.8,
+        44.9
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "02ff107b-ef7b-4989-8c11-875442b261cb",
+      "index": 2847,
+      "period": 2,
+      "minute": 79,
+      "second": 38,
+      "type": "Pass",
+      "team": "Tottenham Hotspur",
+      "player": "Danny Rose",
+      "location": [
+        104,
+        20.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "2d031ac5-91ad-4e51-92c5-3a36b4ed1143",
+      "index": 2851,
+      "period": 2,
+      "minute": 79,
+      "second": 40,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Lucas Rodrigues Moura da Silva",
+      "location": [
+        106.2,
+        38.6
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "42b13763-dc49-4b8a-be61-a1e40538b45a",
+      "index": 2866,
+      "period": 2,
+      "minute": 80,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Toby Alderweireld",
+      "location": [
+        38.6,
+        62.7
+      ]
+    },
+    {
+      "id": "0296c63b-d203-4dfe-b6dc-2214a346902b",
+      "index": 2879,
+      "period": 2,
+      "minute": 80,
+      "second": 16,
+      "type": "Pass",
+      "team": "Tottenham Hotspur",
+      "player": "Bamidele Alli",
+      "location": [
+        68.8,
+        34.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "a5b2497f-ad15-48e5-a187-673d5c9befe9",
+      "index": 2887,
+      "period": 2,
+      "minute": 80,
+      "second": 21,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Heung-Min Son",
+      "location": [
+        94.7,
+        36.9
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "cd83d3ff-1aa5-42b7-873c-8b0395183334",
+      "index": 2900,
+      "period": 2,
+      "minute": 81,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Mohamed Salah",
+      "location": [
+        96,
+        48.9
+      ]
+    },
+    {
+      "id": "213964ad-984e-4ba4-81a9-875c5ddcfae4",
+      "index": 2910,
+      "period": 2,
+      "minute": 81,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Jordan Brian Henderson",
+      "location": [
+        73,
+        52.4
+      ]
+    },
+    {
+      "id": "f3172c1f-4234-4588-bad0-3230d3b43f57",
+      "index": 2913,
+      "period": 2,
+      "minute": 82,
+      "second": 2,
+      "type": "Shot",
+      "team": "Liverpool",
+      "player": "Jordan Brian Henderson",
+      "location": [
+        93.6,
+        53.4
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "7af96bd6-9fe3-4de3-9b91-c000e7a36eca",
+      "index": 2943,
+      "period": 2,
+      "minute": 84,
+      "second": 7,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Christian Dannemann Eriksen",
+      "location": [
+        104,
+        16.9
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "63cb0d27-fed2-4da6-9809-c79d34fd8b10",
+      "index": 2945,
+      "period": 2,
+      "minute": 84,
+      "second": 38,
+      "type": "Pass",
+      "team": "Tottenham Hotspur",
+      "player": "Kieran Trippier",
+      "location": [
+        120,
+        80
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "697d9519-480f-4b5c-8e6f-26519eea34e7",
+      "index": 2948,
+      "period": 2,
+      "minute": 84,
+      "second": 39,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Lucas Rodrigues Moura da Silva",
+      "location": [
+        112.2,
+        42
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c133814a-776d-46d1-8a1c-e208a09f0041",
+      "index": 2957,
+      "period": 2,
+      "minute": 85,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Hugo Lloris",
+      "location": [
+        15,
+        40.5
+      ]
+    },
+    {
+      "id": "0968a17a-e2ce-40f1-8681-8012179bdd1d",
+      "index": 2960,
+      "period": 2,
+      "minute": 85,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Alisson Ramsés Becker",
+      "location": [
+        14.9,
+        36.2
+      ]
+    },
+    {
+      "id": "e61623b3-a246-4399-adfe-bf1666a12fec",
+      "index": 2970,
+      "period": 2,
+      "minute": 86,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Virgil van Dijk",
+      "location": [
+        105.1,
+        34.7
+      ]
+    },
+    {
+      "id": "b59370eb-a6e7-47e6-abc1-0f8f15d33b47",
+      "index": 2971,
+      "period": 2,
+      "minute": 86,
+      "second": 49,
+      "type": "Shot",
+      "team": "Liverpool",
+      "player": "Virgil van Dijk",
+      "location": [
+        106,
+        38.9
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "6e450004-fa48-4618-a8ba-61bb84060092",
+      "index": 2977,
+      "period": 2,
+      "minute": 86,
+      "second": 53,
+      "type": "Pass",
+      "team": "Liverpool",
+      "player": "Joël Andre Job Matip",
+      "location": [
+        104.2,
+        36.9
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "cca34ecd-9dbc-44a1-94db-f244aba90b2f",
+      "index": 2980,
+      "period": 2,
+      "minute": 86,
+      "second": 54,
+      "type": "Shot",
+      "team": "Liverpool",
+      "player": "Divock Okoth Origi",
+      "location": [
+        106.1,
+        31.6
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "034381f0-6063-41cc-96e6-2bb13ba25927",
+      "index": 2989,
+      "period": 2,
+      "minute": 88,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Danny Rose",
+      "location": [
+        75,
+        17.6
+      ]
+    },
+    {
+      "id": "720e88dd-590d-4942-a884-9c6baad26bed",
+      "index": 3014,
+      "period": 2,
+      "minute": 90,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Kieran Trippier",
+      "location": [
+        20.8,
+        74.8
+      ]
+    },
+    {
+      "id": "0d2b79fc-ff12-4a9b-90c5-136b796db4c6",
+      "index": 3043,
+      "period": 2,
+      "minute": 90,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Harry Kane",
+      "location": [
+        71.2,
+        7.2
+      ]
+    },
+    {
+      "id": "cc049550-3640-4a68-91c4-7625fbdf5333",
+      "index": 3048,
+      "period": 2,
+      "minute": 91,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Joe Gomez",
+      "location": [
+        3,
+        55.5
+      ]
+    },
+    {
+      "id": "d2a5ed51-de28-4444-b330-9b42825b05c7",
+      "index": 3055,
+      "period": 2,
+      "minute": 91,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Kieran Trippier",
+      "location": [
+        66.2,
+        43.2
+      ]
+    },
+    {
+      "id": "4ce88a95-b373-40ca-afde-9d024f0f8aac",
+      "index": 3074,
+      "period": 2,
+      "minute": 91,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Danny Rose",
+      "location": [
+        96.8,
+        12.5
+      ]
+    },
+    {
+      "id": "c32e88ca-f722-4dd1-a346-30a66e2b428d",
+      "index": 3076,
+      "period": 2,
+      "minute": 91,
+      "second": 53,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Danny Rose",
+      "location": [
+        96.9,
+        27.2
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "e4dbcae3-ca05-4bd2-b33c-645d3bf5f1fa",
+      "index": 3079,
+      "period": 2,
+      "minute": 92,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Kieran Trippier",
+      "location": [
+        32.9,
+        70.2
+      ]
+    },
+    {
+      "id": "afb81873-8ab5-4658-ad45-b78f765686ca",
+      "index": 3088,
+      "period": 2,
+      "minute": 92,
+      "second": 20,
+      "type": "Pass",
+      "team": "Tottenham Hotspur",
+      "player": "Harry Kane",
+      "location": [
+        74.8,
+        38.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "56488ac2-014c-46f8-a2f6-3e20f2e74d48",
+      "index": 3092,
+      "period": 2,
+      "minute": 92,
+      "second": 24,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Heung-Min Son",
+      "location": [
+        104.5,
+        24.8
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "abdb3d70-26b6-497d-bb3f-778633de0383",
+      "index": 3099,
+      "period": 2,
+      "minute": 92,
+      "second": 50,
+      "type": "Pass",
+      "team": "Tottenham Hotspur",
+      "player": "Danny Rose",
+      "location": [
+        79.9,
+        20.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "39be210f-9f22-4c0e-bdc1-aedba8e16911",
+      "index": 3104,
+      "period": 2,
+      "minute": 92,
+      "second": 53,
+      "type": "Shot",
+      "team": "Tottenham Hotspur",
+      "player": "Harry Kane",
+      "location": [
+        104.1,
+        24.7
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2731db8b-26d1-4a32-bdc3-1b4a4cb2a7f1",
+      "index": 3108,
+      "period": 2,
+      "minute": 93,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Hugo Lloris",
+      "location": [
+        8.3,
+        27.7
+      ]
+    },
+    {
+      "id": "332b435e-d586-4fed-9f13-0f47b5c848e4",
+      "index": 3125,
+      "period": 2,
+      "minute": 93,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Tottenham Hotspur",
+      "player": "Heung-Min Son",
+      "location": [
+        90.5,
+        23.9
+      ]
+    },
+    {
+      "id": "97f4fe1b-8724-4b3f-8442-0e82492043d2",
+      "index": 3140,
+      "period": 2,
+      "minute": 94,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Liverpool",
+      "player": "Fábio Henrique Tavares",
+      "location": [
+        30.6,
+        45.8
+      ]
+    }
+  ]
+}

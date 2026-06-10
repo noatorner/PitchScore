@@ -1,0 +1,1864 @@
+{
+  "meta": {
+    "matchId": 3869486,
+    "teams": [
+      "Morocco",
+      "Portugal"
+    ],
+    "totalEvents": 3381,
+    "keptEvents": 121,
+    "fetchedAt": "2026-06-10T06:54:45.952Z"
+  },
+  "events": [
+    {
+      "id": "70f918cf-af77-40c2-94d4-cdc003e3f4bd",
+      "index": 24,
+      "period": 1,
+      "minute": 0,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Yassine Bounou",
+      "location": [
+        8.7,
+        44.4
+      ]
+    },
+    {
+      "id": "f503df5f-cac4-4f30-9d0d-a3de6e73000e",
+      "index": 60,
+      "period": 1,
+      "minute": 1,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Sofyan Amrabat",
+      "location": [
+        50.8,
+        59.4
+      ]
+    },
+    {
+      "id": "2dd30b89-4bde-46bd-8322-fb75390c7077",
+      "index": 66,
+      "period": 1,
+      "minute": 1,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "João Félix Sequeira",
+      "location": [
+        79.8,
+        8.7
+      ]
+    },
+    {
+      "id": "cd4f46c2-d7f6-4f3a-af11-cbe3b940dc2f",
+      "index": 98,
+      "period": 1,
+      "minute": 1,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Selim Amallah",
+      "location": [
+        40.1,
+        46.3
+      ]
+    },
+    {
+      "id": "e0cf5d6b-dc3f-46db-9013-bcadd11e0869",
+      "index": 187,
+      "period": 1,
+      "minute": 3,
+      "second": 58,
+      "type": "Pass",
+      "team": "Portugal",
+      "player": "Bruno Miguel Borges Fernandes",
+      "location": [
+        78.2,
+        73
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "dd62c1c2-00a9-4b33-a516-6094ca80e218",
+      "index": 189,
+      "period": 1,
+      "minute": 3,
+      "second": 59,
+      "type": "Shot",
+      "team": "Portugal",
+      "player": "João Félix Sequeira",
+      "location": [
+        106.8,
+        44.2
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "550b1be5-c51f-4d38-9f43-9857afdf13d7",
+      "index": 194,
+      "period": 1,
+      "minute": 4,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Azzedine Ounahi",
+      "location": [
+        21.5,
+        21.5
+      ]
+    },
+    {
+      "id": "29e9275c-2ef4-4275-ae53-db810d2ea650",
+      "index": 204,
+      "period": 1,
+      "minute": 5,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Yahia Attiyat allah",
+      "location": [
+        46.8,
+        8.2
+      ]
+    },
+    {
+      "id": "8709a54e-44b2-4bca-912c-0eb0725a37fc",
+      "index": 220,
+      "period": 1,
+      "minute": 5,
+      "second": 54,
+      "type": "Pass",
+      "team": "Morocco",
+      "player": "Hakim Ziyech",
+      "location": [
+        120,
+        0.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "9f344f5d-4d72-4cf2-8eac-ed7c83a87f65",
+      "index": 222,
+      "period": 1,
+      "minute": 5,
+      "second": 56,
+      "type": "Shot",
+      "team": "Morocco",
+      "player": "Youssef En-Nesyri",
+      "location": [
+        112.7,
+        39.4
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "5aba3267-b438-4424-ae40-f41944958110",
+      "index": 345,
+      "period": 1,
+      "minute": 8,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Kléper Laveran Lima Ferreira",
+      "location": [
+        50.7,
+        64.8
+      ]
+    },
+    {
+      "id": "1209c798-8447-4a98-abeb-cc340c2090ce",
+      "index": 394,
+      "period": 1,
+      "minute": 9,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Azzedine Ounahi",
+      "location": [
+        37.5,
+        62.1
+      ]
+    },
+    {
+      "id": "70fda51a-cded-4185-9198-930db97eb23a",
+      "index": 519,
+      "period": 1,
+      "minute": 12,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Raphaël Adelino José Guerreiro",
+      "location": [
+        106.1,
+        25.7
+      ]
+    },
+    {
+      "id": "acc5950a-c4d0-4ca7-8f0d-61a7de6ac0e8",
+      "index": 520,
+      "period": 1,
+      "minute": 12,
+      "second": 26,
+      "type": "Shot",
+      "team": "Portugal",
+      "player": "Raphaël Adelino José Guerreiro",
+      "location": [
+        105.6,
+        23.6
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "54e3f32e-308f-4e94-b4df-3fda54213f9b",
+      "index": 545,
+      "period": 1,
+      "minute": 13,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Kléper Laveran Lima Ferreira",
+      "location": [
+        39.4,
+        69.9
+      ]
+    },
+    {
+      "id": "df632525-6080-4aae-9715-35b18e91c07d",
+      "index": 602,
+      "period": 1,
+      "minute": 14,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Achraf Hakimi Mouh",
+      "location": [
+        39.3,
+        67.6
+      ]
+    },
+    {
+      "id": "ac9d4826-f201-4454-9cb1-aa3dbad57a11",
+      "index": 606,
+      "period": 1,
+      "minute": 14,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Otávio Edmilson da Silva Monteiro",
+      "location": [
+        61.8,
+        9.2
+      ]
+    },
+    {
+      "id": "0bd151fd-03ce-4283-8e03-c039c4335e50",
+      "index": 635,
+      "period": 1,
+      "minute": 15,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Rúben Diogo Da Silva Neves",
+      "location": [
+        51.7,
+        76.1
+      ]
+    },
+    {
+      "id": "afacb159-e8d4-470c-86d7-5b99fdc6de52",
+      "index": 663,
+      "period": 1,
+      "minute": 16,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Yassine Bounou",
+      "location": [
+        8.9,
+        33.4
+      ]
+    },
+    {
+      "id": "fddd246a-ccbf-4c5f-8599-82cb4a013716",
+      "index": 681,
+      "period": 1,
+      "minute": 16,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Azzedine Ounahi",
+      "location": [
+        28.2,
+        27.3
+      ]
+    },
+    {
+      "id": "4b01d552-e0c3-4340-9d51-ed4495cf67c2",
+      "index": 737,
+      "period": 1,
+      "minute": 17,
+      "second": 44,
+      "type": "Pass",
+      "team": "Morocco",
+      "player": "Azzedine Ounahi",
+      "location": [
+        74.2,
+        55.4
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "9cf778f8-eb3d-4bc5-ab35-0f3a147db977",
+      "index": 740,
+      "period": 1,
+      "minute": 17,
+      "second": 49,
+      "type": "Shot",
+      "team": "Morocco",
+      "player": "Hakim Ziyech",
+      "location": [
+        96.1,
+        60.9
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "e65f771a-36d9-4022-b3e8-cd7e0c828c25",
+      "index": 796,
+      "period": 1,
+      "minute": 19,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Sofiane Boufal",
+      "location": [
+        17.6,
+        8.4
+      ]
+    },
+    {
+      "id": "1d262239-a612-413a-8fe0-4f25faaff52b",
+      "index": 823,
+      "period": 1,
+      "minute": 20,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Selim Amallah",
+      "location": [
+        49.2,
+        46.7
+      ]
+    },
+    {
+      "id": "d94435f0-6b13-48e7-969e-3b29e41f475c",
+      "index": 857,
+      "period": 1,
+      "minute": 20,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Sofyan Amrabat",
+      "location": [
+        82.9,
+        55
+      ]
+    },
+    {
+      "id": "bea35176-209d-452b-9b16-5fe21b65d8d0",
+      "index": 954,
+      "period": 1,
+      "minute": 24,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Selim Amallah",
+      "location": [
+        80.2,
+        55
+      ]
+    },
+    {
+      "id": "6e5c5b88-e712-4436-94f3-9f96489078de",
+      "index": 959,
+      "period": 1,
+      "minute": 25,
+      "second": 20,
+      "type": "Pass",
+      "team": "Morocco",
+      "player": "Hakim Ziyech",
+      "location": [
+        81.2,
+        52.5
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "9e674fd1-9541-42e1-921f-a8ccbed1d7c6",
+      "index": 961,
+      "period": 1,
+      "minute": 25,
+      "second": 21,
+      "type": "Shot",
+      "team": "Morocco",
+      "player": "Youssef En-Nesyri",
+      "location": [
+        106.7,
+        39.8
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "6ab87598-a848-422f-b3fa-e901dcc84012",
+      "index": 1079,
+      "period": 1,
+      "minute": 27,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Kléper Laveran Lima Ferreira",
+      "location": [
+        64.7,
+        47.1
+      ]
+    },
+    {
+      "id": "c081ae55-7089-493c-a385-9210b93f9429",
+      "index": 1140,
+      "period": 1,
+      "minute": 29,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "João Félix Sequeira",
+      "location": [
+        67.5,
+        37.6
+      ]
+    },
+    {
+      "id": "90bbaff0-b56a-4a6e-8649-0975b13825cd",
+      "index": 1154,
+      "period": 1,
+      "minute": 30,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "João Félix Sequeira",
+      "location": [
+        95.4,
+        27.6
+      ]
+    },
+    {
+      "id": "646d8725-6259-4863-92b3-0ea602d4bdd4",
+      "index": 1156,
+      "period": 1,
+      "minute": 30,
+      "second": 9,
+      "type": "Shot",
+      "team": "Portugal",
+      "player": "João Félix Sequeira",
+      "location": [
+        100.9,
+        27.7
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "1e974890-6dd7-4579-bfdd-fba2dede2761",
+      "index": 1242,
+      "period": 1,
+      "minute": 33,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Jawad El Yamiq",
+      "location": [
+        9.7,
+        72.6
+      ]
+    },
+    {
+      "id": "70a7b7ae-c12c-4362-9858-8dea820f4b6d",
+      "index": 1263,
+      "period": 1,
+      "minute": 34,
+      "second": 1,
+      "type": "Pass",
+      "team": "Morocco",
+      "player": "Yahia Attiyat allah",
+      "location": [
+        110.8,
+        15.3
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "971e3e9c-a536-4987-be86-fed114271c3e",
+      "index": 1265,
+      "period": 1,
+      "minute": 34,
+      "second": 2,
+      "type": "Shot",
+      "team": "Morocco",
+      "player": "Selim Amallah",
+      "location": [
+        108.7,
+        31.3
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "b8f54978-3f24-42cb-89ae-a359a7475372",
+      "index": 1275,
+      "period": 1,
+      "minute": 34,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Azzedine Ounahi",
+      "location": [
+        45,
+        61.8
+      ]
+    },
+    {
+      "id": "3195a3ba-cf7f-46d2-935d-f7f165c24410",
+      "index": 1281,
+      "period": 1,
+      "minute": 34,
+      "second": 46,
+      "type": "Pass",
+      "team": "Morocco",
+      "player": "Sofyan Amrabat",
+      "location": [
+        54,
+        50.5
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "9000f0f2-73ed-4a71-917d-2d525af7ba80",
+      "index": 1284,
+      "period": 1,
+      "minute": 34,
+      "second": 56,
+      "type": "Shot",
+      "team": "Morocco",
+      "player": "Sofiane Boufal",
+      "location": [
+        97,
+        27.8
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "84d6d936-4c8c-4e8a-a270-4160d8861ce1",
+      "index": 1377,
+      "period": 1,
+      "minute": 37,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Diogo Meireles Costa",
+      "location": [
+        10.2,
+        34
+      ]
+    },
+    {
+      "id": "8677b619-3a41-46f9-980c-5ab934076d4a",
+      "index": 1415,
+      "period": 1,
+      "minute": 38,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Sofiane Boufal",
+      "location": [
+        43.3,
+        23.5
+      ]
+    },
+    {
+      "id": "d63a6542-7092-44c4-a763-32c6271dc8fd",
+      "index": 1430,
+      "period": 1,
+      "minute": 38,
+      "second": 40,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Rúben Santos Gato Alves Dias",
+      "location": [
+        64.2,
+        22.9
+      ]
+    },
+    {
+      "id": "e6caf4a8-10e6-4fef-8ddd-25ea23f385aa",
+      "index": 1435,
+      "period": 1,
+      "minute": 38,
+      "second": 45,
+      "type": "Pass",
+      "team": "Portugal",
+      "player": "Raphaël Adelino José Guerreiro",
+      "location": [
+        95.8,
+        6.3
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "60fd64f6-2fc4-4e42-8df5-c9e199fa7690",
+      "index": 1437,
+      "period": 1,
+      "minute": 38,
+      "second": 46,
+      "type": "Shot",
+      "team": "Portugal",
+      "player": "João Félix Sequeira",
+      "location": [
+        102.2,
+        35.4
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "231fab13-2cec-4735-abfd-3f37062b1772",
+      "index": 1455,
+      "period": 1,
+      "minute": 39,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Gonçalo Matias Ramos",
+      "location": [
+        46.8,
+        24.5
+      ]
+    },
+    {
+      "id": "3f854ce6-f91a-400f-8347-aa7290bd9b5e",
+      "index": 1513,
+      "period": 1,
+      "minute": 41,
+      "second": 34,
+      "type": "Pass",
+      "team": "Morocco",
+      "player": "Yahia Attiyat allah",
+      "location": [
+        92.4,
+        6
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "b5cf82d9-5c1a-49ac-af0d-2fada2d6f0e5",
+      "index": 1517,
+      "period": 1,
+      "minute": 41,
+      "second": 36,
+      "type": "Shot",
+      "team": "Morocco",
+      "player": "Youssef En-Nesyri",
+      "location": [
+        112.6,
+        39.7
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "714548c1-bfc0-4ece-8f80-563886374bcd",
+      "index": 1571,
+      "period": 1,
+      "minute": 44,
+      "second": 21,
+      "type": "Pass",
+      "team": "Portugal",
+      "player": "José Diogo Dalot Teixeira",
+      "location": [
+        97.5,
+        73.5
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "7c951da3-8d74-432e-8fd4-2a6807a7ff24",
+      "index": 1573,
+      "period": 1,
+      "minute": 44,
+      "second": 23,
+      "type": "Shot",
+      "team": "Portugal",
+      "player": "Bruno Miguel Borges Fernandes",
+      "location": [
+        108,
+        62.3
+      ],
+      "shot": {
+        "outcome": "Post",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "24094925-5673-469c-9310-9248bfbd0afd",
+      "index": 1575,
+      "period": 1,
+      "minute": 44,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "João Félix Sequeira",
+      "location": [
+        111,
+        10.1
+      ]
+    },
+    {
+      "id": "b6873b80-1937-44c9-a9a7-3a25c33239a1",
+      "index": 1579,
+      "period": 1,
+      "minute": 44,
+      "second": 31,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Achraf Hakimi Mouh",
+      "location": [
+        5.1,
+        73.8
+      ]
+    },
+    {
+      "id": "eda22bb8-c653-4ceb-9589-d0077027c34b",
+      "index": 1594,
+      "period": 1,
+      "minute": 44,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Diogo Meireles Costa",
+      "location": [
+        25.4,
+        50.8
+      ]
+    },
+    {
+      "id": "c1d0040c-e0fe-4c1b-a8dd-6ff63ad39857",
+      "index": 1627,
+      "period": 1,
+      "minute": 45,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Hakim Ziyech",
+      "location": [
+        15.6,
+        65.7
+      ]
+    },
+    {
+      "id": "342cb819-2c3e-4832-8251-730218597da8",
+      "index": 1642,
+      "period": 1,
+      "minute": 45,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Azzedine Ounahi",
+      "location": [
+        42.9,
+        61.3
+      ]
+    },
+    {
+      "id": "78d33282-6131-43a0-a34c-cec7fbfcdd55",
+      "index": 1657,
+      "period": 1,
+      "minute": 46,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Sofyan Amrabat",
+      "location": [
+        11.1,
+        50.1
+      ]
+    },
+    {
+      "id": "46499923-0ee2-45cf-9cd5-dfe63a281bc1",
+      "index": 1660,
+      "period": 1,
+      "minute": 46,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "José Diogo Dalot Teixeira",
+      "location": [
+        76,
+        49.6
+      ]
+    },
+    {
+      "id": "28d14f6c-574f-4e0f-8047-ec21d20994dc",
+      "index": 1682,
+      "period": 1,
+      "minute": 46,
+      "second": 55,
+      "type": "Pass",
+      "team": "Morocco",
+      "player": "Azzedine Ounahi",
+      "location": [
+        84.4,
+        32.5
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "1b7f0b8c-83a1-4f81-a6d2-469a14a2beda",
+      "index": 1684,
+      "period": 1,
+      "minute": 46,
+      "second": 58,
+      "type": "Shot",
+      "team": "Morocco",
+      "player": "Yahia Attiyat allah",
+      "location": [
+        107.6,
+        26.3
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d308801f-395a-4109-873a-665944b2ad9f",
+      "index": 1768,
+      "period": 2,
+      "minute": 46,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Hakim Ziyech",
+      "location": [
+        29.9,
+        64.2
+      ]
+    },
+    {
+      "id": "2e80d486-f078-4c45-9d26-1915965dd54c",
+      "index": 1867,
+      "period": 2,
+      "minute": 49,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Bruno Miguel Borges Fernandes",
+      "location": [
+        78.8,
+        38.9
+      ]
+    },
+    {
+      "id": "d41b9372-ec74-4f84-bd87-3fc3cb577d61",
+      "index": 1880,
+      "period": 2,
+      "minute": 50,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Sofiane Boufal",
+      "location": [
+        29.5,
+        38.5
+      ]
+    },
+    {
+      "id": "7d1077c9-f8b5-484e-be0f-1e971419f69f",
+      "index": 1902,
+      "period": 2,
+      "minute": 50,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Youssef En-Nesyri",
+      "location": [
+        32.6,
+        4
+      ]
+    },
+    {
+      "id": "6e1a35a8-3481-424e-85f4-639d3a632684",
+      "index": 1923,
+      "period": 2,
+      "minute": 51,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Yahia Attiyat allah",
+      "location": [
+        44.6,
+        6
+      ]
+    },
+    {
+      "id": "83be04df-4a95-421b-b343-b8ff26f8be33",
+      "index": 2017,
+      "period": 2,
+      "minute": 54,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Yassine Bounou",
+      "location": [
+        3.1,
+        37.3
+      ]
+    },
+    {
+      "id": "31d4f304-4c9d-41d9-9435-a317cfbb2d3d",
+      "index": 2022,
+      "period": 2,
+      "minute": 54,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "João Pedro Cavaco Cancelo",
+      "location": [
+        51.1,
+        8.6
+      ]
+    },
+    {
+      "id": "989bc6dc-decb-4f31-996a-572eb9ad80bd",
+      "index": 2037,
+      "period": 2,
+      "minute": 54,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Sofiane Boufal",
+      "location": [
+        40.5,
+        27.3
+      ]
+    },
+    {
+      "id": "63a549a2-fad9-4fa9-9b10-01cbbfd79cc1",
+      "index": 2044,
+      "period": 2,
+      "minute": 54,
+      "second": 58,
+      "type": "Pass",
+      "team": "Morocco",
+      "player": "Youssef En-Nesyri",
+      "location": [
+        94.1,
+        49.5
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "3b8ce4f0-d61d-4dda-9c67-8c240bdbbc47",
+      "index": 2046,
+      "period": 2,
+      "minute": 55,
+      "second": 0,
+      "type": "Shot",
+      "team": "Morocco",
+      "player": "Azzedine Ounahi",
+      "location": [
+        93.4,
+        44.2
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "9d1fb33c-db31-43cb-852f-b7d43b8ab8d9",
+      "index": 2074,
+      "period": 2,
+      "minute": 57,
+      "second": 27,
+      "type": "Pass",
+      "team": "Portugal",
+      "player": "Otávio Edmilson da Silva Monteiro",
+      "location": [
+        98.2,
+        55.6
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "4d09313e-118e-459a-9ee8-01dc7a56f08f",
+      "index": 2076,
+      "period": 2,
+      "minute": 57,
+      "second": 28,
+      "type": "Shot",
+      "team": "Portugal",
+      "player": "Gonçalo Matias Ramos",
+      "location": [
+        108.7,
+        40
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "aa3241d3-dd6a-4b27-b30a-3ad1c34834a4",
+      "index": 2088,
+      "period": 2,
+      "minute": 58,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "João Pedro Cavaco Cancelo",
+      "location": [
+        10.3,
+        13.5
+      ]
+    },
+    {
+      "id": "e9c876f7-665e-4181-9ffe-2d18297ce541",
+      "index": 2120,
+      "period": 2,
+      "minute": 58,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Sofiane Boufal",
+      "location": [
+        16.5,
+        24.6
+      ]
+    },
+    {
+      "id": "7e44c3fe-3bf2-43b2-853d-bf76ae20f451",
+      "index": 2128,
+      "period": 2,
+      "minute": 58,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Youssef En-Nesyri",
+      "location": [
+        41.7,
+        18.4
+      ]
+    },
+    {
+      "id": "78f710e5-6348-4668-bcc8-1420ecb37cfb",
+      "index": 2145,
+      "period": 2,
+      "minute": 59,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Hakim Ziyech",
+      "location": [
+        40.1,
+        61.3
+      ]
+    },
+    {
+      "id": "5f95c672-ed61-490b-b392-8d327511b903",
+      "index": 2150,
+      "period": 2,
+      "minute": 59,
+      "second": 31,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Achraf Hakimi Mouh",
+      "location": [
+        28.5,
+        62.9
+      ]
+    },
+    {
+      "id": "590ae1f2-2a90-4d8d-88e6-b3e78894c06f",
+      "index": 2159,
+      "period": 2,
+      "minute": 59,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Bernardo Mota Veiga de Carvalho e Silva",
+      "location": [
+        51.8,
+        24.6
+      ]
+    },
+    {
+      "id": "8a0dd714-45c1-43bb-a5ad-347ebb2e09d4",
+      "index": 2183,
+      "period": 2,
+      "minute": 60,
+      "second": 12,
+      "type": "Pass",
+      "team": "Portugal",
+      "player": "Otávio Edmilson da Silva Monteiro",
+      "location": [
+        85.7,
+        30.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "13d33a38-98fb-4bd9-8a7f-c77928e25cba",
+      "index": 2186,
+      "period": 2,
+      "minute": 60,
+      "second": 14,
+      "type": "Shot",
+      "team": "Portugal",
+      "player": "João Félix Sequeira",
+      "location": [
+        109.7,
+        29.4
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "e5e45dfc-223c-4cdd-a26c-b16a2880b157",
+      "index": 2281,
+      "period": 2,
+      "minute": 62,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Achraf Hakimi Mouh",
+      "location": [
+        20.6,
+        64.2
+      ]
+    },
+    {
+      "id": "d8477a6e-6648-42b9-a729-936719e2a518",
+      "index": 2290,
+      "period": 2,
+      "minute": 63,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Bernardo Mota Veiga de Carvalho e Silva",
+      "location": [
+        91.8,
+        6.8
+      ]
+    },
+    {
+      "id": "d1dcfa23-95cb-4a70-b404-2034fac06ec9",
+      "index": 2292,
+      "period": 2,
+      "minute": 63,
+      "second": 2,
+      "type": "Pass",
+      "team": "Portugal",
+      "player": "Bernardo Mota Veiga de Carvalho e Silva",
+      "location": [
+        97.8,
+        15
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "8fd3af63-509c-463b-88d2-fa1c6eabb793",
+      "index": 2296,
+      "period": 2,
+      "minute": 63,
+      "second": 4,
+      "type": "Shot",
+      "team": "Portugal",
+      "player": "Bruno Miguel Borges Fernandes",
+      "location": [
+        101,
+        35.5
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "112c9591-9307-49dd-b051-e0762623dbfd",
+      "index": 2309,
+      "period": 2,
+      "minute": 64,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        67.8,
+        51.9
+      ]
+    },
+    {
+      "id": "8a2a15f6-9f7a-45b3-95a0-5c6b0bf37388",
+      "index": 2368,
+      "period": 2,
+      "minute": 66,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Jawad El Yamiq",
+      "location": [
+        12.8,
+        24.6
+      ]
+    },
+    {
+      "id": "58fc6925-ee0f-4183-b625-4b6c34ef8bf2",
+      "index": 2416,
+      "period": 2,
+      "minute": 67,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Bruno Miguel Borges Fernandes",
+      "location": [
+        80.2,
+        17.2
+      ]
+    },
+    {
+      "id": "fe82f98f-2f48-4f8c-8859-394e5dae9220",
+      "index": 2445,
+      "period": 2,
+      "minute": 67,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Yassine Bounou",
+      "location": [
+        3.5,
+        42.8
+      ]
+    },
+    {
+      "id": "9eb1e91f-2e7b-4d50-80c6-93634c9b27cb",
+      "index": 2491,
+      "period": 2,
+      "minute": 69,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Achraf Dari",
+      "location": [
+        22.6,
+        61
+      ]
+    },
+    {
+      "id": "311f3536-1ff7-4b03-afa4-eb17da36ab75",
+      "index": 2534,
+      "period": 2,
+      "minute": 70,
+      "second": 43,
+      "type": "Pass",
+      "team": "Portugal",
+      "player": "Bruno Miguel Borges Fernandes",
+      "location": [
+        114.3,
+        12.3
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "66863928-254c-403c-8dc7-ffbd0b98fce5",
+      "index": 2536,
+      "period": 2,
+      "minute": 70,
+      "second": 44,
+      "type": "Shot",
+      "team": "Portugal",
+      "player": "Bernardo Mota Veiga de Carvalho e Silva",
+      "location": [
+        109.8,
+        35.9
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "3efae621-f9b6-4c75-9e57-666a9f407abf",
+      "index": 2550,
+      "period": 2,
+      "minute": 71,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Walid Cheddira",
+      "location": [
+        51.1,
+        9.3
+      ]
+    },
+    {
+      "id": "842de6e3-4e2e-4d44-9a55-680aaed734dd",
+      "index": 2627,
+      "period": 2,
+      "minute": 73,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Bernardo Mota Veiga de Carvalho e Silva",
+      "location": [
+        93.9,
+        23.7
+      ]
+    },
+    {
+      "id": "1be3cbb3-d1f5-424f-9b7d-05cebdc78e60",
+      "index": 2646,
+      "period": 2,
+      "minute": 74,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "João Pedro Cavaco Cancelo",
+      "location": [
+        97.7,
+        21
+      ]
+    },
+    {
+      "id": "c5ab5c55-da9e-46a6-a83e-3fbee1e4c113",
+      "index": 2663,
+      "period": 2,
+      "minute": 74,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Sofyan Amrabat",
+      "location": [
+        6.8,
+        62.5
+      ]
+    },
+    {
+      "id": "05c6c4d0-6aca-47da-99d0-95cfbbc781ee",
+      "index": 2716,
+      "period": 2,
+      "minute": 75,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Achraf Hakimi Mouh",
+      "location": [
+        16.8,
+        64.2
+      ]
+    },
+    {
+      "id": "908b6e66-1fb4-471c-958d-9975746ad87d",
+      "index": 2749,
+      "period": 2,
+      "minute": 76,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Kléper Laveran Lima Ferreira",
+      "location": [
+        38.3,
+        60.2
+      ]
+    },
+    {
+      "id": "238a247b-3528-4378-9594-2f6672cc0078",
+      "index": 2774,
+      "period": 2,
+      "minute": 76,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Sofiane Boufal",
+      "location": [
+        18.2,
+        54.6
+      ]
+    },
+    {
+      "id": "f41aac29-5e06-4ff1-a8cb-b5ccad5ed671",
+      "index": 2787,
+      "period": 2,
+      "minute": 76,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Bernardo Mota Veiga de Carvalho e Silva",
+      "location": [
+        79.2,
+        4.8
+      ]
+    },
+    {
+      "id": "319504e1-0f4c-4231-b621-d78a6fe19b67",
+      "index": 2805,
+      "period": 2,
+      "minute": 76,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Yahia Attiyat allah",
+      "location": [
+        3.9,
+        8.3
+      ]
+    },
+    {
+      "id": "c528d670-3bfc-44b3-89d1-e4a251e0a462",
+      "index": 2815,
+      "period": 2,
+      "minute": 77,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Bernardo Mota Veiga de Carvalho e Silva",
+      "location": [
+        1.7,
+        59.7
+      ]
+    },
+    {
+      "id": "914a8aa7-6c4f-4bd5-9363-ff311b441dc0",
+      "index": 2823,
+      "period": 2,
+      "minute": 78,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Bernardo Mota Veiga de Carvalho e Silva",
+      "location": [
+        50,
+        26.4
+      ]
+    },
+    {
+      "id": "ab345f9b-e6aa-4bea-a501-5bc1f5e94b31",
+      "index": 2846,
+      "period": 2,
+      "minute": 79,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Azzedine Ounahi",
+      "location": [
+        21.4,
+        34.5
+      ]
+    },
+    {
+      "id": "f1edbd72-6671-4729-8967-a45d78ddd9b0",
+      "index": 2854,
+      "period": 2,
+      "minute": 79,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Rúben Santos Gato Alves Dias",
+      "location": [
+        35.5,
+        15.5
+      ]
+    },
+    {
+      "id": "ba8b3801-6e0f-4a2a-95e1-ae6346128540",
+      "index": 2920,
+      "period": 2,
+      "minute": 81,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Vitor Machado Ferreira",
+      "location": [
+        51.1,
+        16.2
+      ]
+    },
+    {
+      "id": "213a489d-bca7-4690-8ae5-f8924e2ad330",
+      "index": 2931,
+      "period": 2,
+      "minute": 81,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Yahya Jabrane",
+      "location": [
+        4.4,
+        24.6
+      ]
+    },
+    {
+      "id": "bbcfa5e2-3495-40b3-8988-e3df274aff61",
+      "index": 2940,
+      "period": 2,
+      "minute": 81,
+      "second": 58,
+      "type": "Pass",
+      "team": "Portugal",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        104.7,
+        50.4
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "d3101e93-d011-401a-af9c-5a1c560c72ec",
+      "index": 2942,
+      "period": 2,
+      "minute": 81,
+      "second": 59,
+      "type": "Shot",
+      "team": "Portugal",
+      "player": "João Félix Sequeira",
+      "location": [
+        102,
+        57.1
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "a88f4c73-8bdc-4a08-abc3-62979c87f208",
+      "index": 3002,
+      "period": 2,
+      "minute": 84,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Bernardo Mota Veiga de Carvalho e Silva",
+      "location": [
+        10.1,
+        2.8
+      ]
+    },
+    {
+      "id": "afef0585-cfe6-4264-80dc-b284cd0b2c78",
+      "index": 3123,
+      "period": 2,
+      "minute": 87,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Rúben Santos Gato Alves Dias",
+      "location": [
+        72.1,
+        40.2
+      ]
+    },
+    {
+      "id": "c7a37e48-6c32-45fb-93e5-6d93843fb392",
+      "index": 3159,
+      "period": 2,
+      "minute": 89,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Rúben Santos Gato Alves Dias",
+      "location": [
+        16.6,
+        66.6
+      ]
+    },
+    {
+      "id": "489bbe4c-170e-4ab1-86c4-fe158e57dc40",
+      "index": 3169,
+      "period": 2,
+      "minute": 89,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Bernardo Mota Veiga de Carvalho e Silva",
+      "location": [
+        4,
+        72.8
+      ]
+    },
+    {
+      "id": "a22b4897-8e1d-4e5e-97e8-62c8a919788e",
+      "index": 3196,
+      "period": 2,
+      "minute": 90,
+      "second": 22,
+      "type": "Pass",
+      "team": "Portugal",
+      "player": "Bruno Miguel Borges Fernandes",
+      "location": [
+        51.1,
+        65.9
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "d4278a80-ee3d-4ef1-9255-cf9dc4ce1580",
+      "index": 3199,
+      "period": 2,
+      "minute": 90,
+      "second": 24,
+      "type": "Shot",
+      "team": "Portugal",
+      "player": "Cristiano Ronaldo dos Santos Aveiro",
+      "location": [
+        101.8,
+        53.7
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d455c85c-5fff-4284-ab80-23a8f07b4aa7",
+      "index": 3297,
+      "period": 2,
+      "minute": 95,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Bernardo Mota Veiga de Carvalho e Silva",
+      "location": [
+        31,
+        60.5
+      ]
+    },
+    {
+      "id": "39bdf75a-2bda-4377-924e-8adc9cf0aeb7",
+      "index": 3307,
+      "period": 2,
+      "minute": 95,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Zakaria Aboukhlal",
+      "location": [
+        73.1,
+        49.3
+      ]
+    },
+    {
+      "id": "69bc4e3c-2854-42c1-89ba-e159f7515567",
+      "index": 3309,
+      "period": 2,
+      "minute": 95,
+      "second": 20,
+      "type": "Shot",
+      "team": "Morocco",
+      "player": "Zakaria Aboukhlal",
+      "location": [
+        101.1,
+        45.9
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "38c9fcdc-cb86-4a8e-8d65-2596e76b080a",
+      "index": 3318,
+      "period": 2,
+      "minute": 95,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Morocco",
+      "player": "Sofyan Amrabat",
+      "location": [
+        9.2,
+        73.3
+      ]
+    },
+    {
+      "id": "6e6e8c22-004a-430e-adcc-a1f351aba1b1",
+      "index": 3336,
+      "period": 2,
+      "minute": 96,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Bruno Miguel Borges Fernandes",
+      "location": [
+        67.3,
+        62.6
+      ]
+    },
+    {
+      "id": "aa62c987-a54c-481a-bd55-47f4ca7de74a",
+      "index": 3355,
+      "period": 2,
+      "minute": 96,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Rafael Alexandre Conceição Leão",
+      "location": [
+        116.6,
+        20.6
+      ]
+    },
+    {
+      "id": "1a4a571d-dc17-4c8f-8662-3bde1f4b2c32",
+      "index": 3357,
+      "period": 2,
+      "minute": 96,
+      "second": 38,
+      "type": "Pass",
+      "team": "Portugal",
+      "player": "Rafael Alexandre Conceição Leão",
+      "location": [
+        111.2,
+        12.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "d7d80857-d613-45c5-8c49-59d19af73f1d",
+      "index": 3360,
+      "period": 2,
+      "minute": 96,
+      "second": 40,
+      "type": "Shot",
+      "team": "Portugal",
+      "player": "Kléper Laveran Lima Ferreira",
+      "location": [
+        114.1,
+        44.5
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "9beb5f5e-7203-49ca-9898-a7a6baa6ad0c",
+      "index": 3365,
+      "period": 2,
+      "minute": 97,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Bernardo Mota Veiga de Carvalho e Silva",
+      "location": [
+        27.6,
+        69.4
+      ]
+    },
+    {
+      "id": "688fe100-ae30-4c0a-bb56-200b26126d62",
+      "index": 3376,
+      "period": 2,
+      "minute": 97,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Portugal",
+      "player": "Diogo Meireles Costa",
+      "location": [
+        29,
+        60.5
+      ]
+    }
+  ]
+}

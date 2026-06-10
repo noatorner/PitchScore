@@ -1,0 +1,2140 @@
+{
+  "meta": {
+    "matchId": 8650,
+    "teams": [
+      "Brazil",
+      "Belgium"
+    ],
+    "totalEvents": 3589,
+    "keptEvents": 135,
+    "fetchedAt": "2026-06-10T06:54:48.847Z"
+  },
+  "events": [
+    {
+      "id": "5f46e1a1-d59e-4c0c-b2ac-d97dcd8ee5fe",
+      "index": 83,
+      "period": 1,
+      "minute": 1,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        86,
+        50
+      ]
+    },
+    {
+      "id": "9d2b23a7-0fde-45f1-8b6e-58fc9da4aab5",
+      "index": 85,
+      "period": 1,
+      "minute": 1,
+      "second": 34,
+      "type": "Shot",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        91,
+        51
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2363154e-f995-4145-a755-772be1cf0c02",
+      "index": 138,
+      "period": 1,
+      "minute": 2,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        88,
+        2
+      ]
+    },
+    {
+      "id": "8ed246ff-2f38-44e2-8460-1fb453787d40",
+      "index": 165,
+      "period": 1,
+      "minute": 3,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Axel Witsel",
+      "location": [
+        53,
+        21
+      ]
+    },
+    {
+      "id": "22bc8b23-fe8a-4cab-a1f3-92e6fd364c7b",
+      "index": 259,
+      "period": 1,
+      "minute": 5,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        45,
+        3
+      ]
+    },
+    {
+      "id": "c419d459-7c4a-4c4f-babf-13059e9f0ba9",
+      "index": 307,
+      "period": 1,
+      "minute": 7,
+      "second": 10,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        119,
+        2
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "ff6fee87-0f6b-461e-a5fd-e5032aa19564",
+      "index": 309,
+      "period": 1,
+      "minute": 7,
+      "second": 12,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Thiago Emiliano da Silva",
+      "location": [
+        115,
+        39
+      ],
+      "shot": {
+        "outcome": "Post",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "fced8a57-3330-4bfa-ba68-e655cd4c124f",
+      "index": 311,
+      "period": 1,
+      "minute": 7,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Thibaut Courtois",
+      "location": [
+        5,
+        43
+      ]
+    },
+    {
+      "id": "368a5b3e-d7f7-41c5-88b9-9002008b7df7",
+      "index": 323,
+      "period": 1,
+      "minute": 7,
+      "second": 31,
+      "type": "Pass",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        112,
+        32
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "ebeaf37c-a1be-46a4-b3bb-ae4779458734",
+      "index": 325,
+      "period": 1,
+      "minute": 7,
+      "second": 32,
+      "type": "Shot",
+      "team": "Belgium",
+      "player": "Eden Hazard",
+      "location": [
+        106,
+        31
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "aed5e589-4cff-4f82-83c3-6891478061df",
+      "index": 328,
+      "period": 1,
+      "minute": 7,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Nacer Chadli",
+      "location": [
+        90,
+        24
+      ]
+    },
+    {
+      "id": "0f142c55-8a4a-4af1-b57b-e8eba2491c4b",
+      "index": 330,
+      "period": 1,
+      "minute": 7,
+      "second": 35,
+      "type": "Shot",
+      "team": "Belgium",
+      "player": "Nacer Chadli",
+      "location": [
+        92,
+        29
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "a3a438a8-8825-45e8-ab14-c283f36c4426",
+      "index": 382,
+      "period": 1,
+      "minute": 9,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Gabriel Fernando de Jesus",
+      "location": [
+        99,
+        52
+      ]
+    },
+    {
+      "id": "75f31563-756b-483a-9298-fc8ca3e22c20",
+      "index": 385,
+      "period": 1,
+      "minute": 9,
+      "second": 11,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Gabriel Fernando de Jesus",
+      "location": [
+        107,
+        53
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "06ffa199-3887-4696-b954-5ba6376cbce6",
+      "index": 387,
+      "period": 1,
+      "minute": 9,
+      "second": 12,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "José Paulo Bezzera Maciel Júnior",
+      "location": [
+        109,
+        46
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f9c6adfe-dab9-4769-bfae-1376d7680316",
+      "index": 389,
+      "period": 1,
+      "minute": 9,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "José Paulo Bezzera Maciel Júnior",
+      "location": [
+        110,
+        46
+      ]
+    },
+    {
+      "id": "1605e66a-850a-419a-8eb6-93c15f36e399",
+      "index": 395,
+      "period": 1,
+      "minute": 9,
+      "second": 49,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Willian Borges da Silva",
+      "location": [
+        119,
+        80
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "91337d94-d6b5-499c-9883-5395f2048838",
+      "index": 397,
+      "period": 1,
+      "minute": 9,
+      "second": 50,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "José Paulo Bezzera Maciel Júnior",
+      "location": [
+        111,
+        37
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "b316dc0c-dcf5-4fd0-a965-14ebdf0a8198",
+      "index": 400,
+      "period": 1,
+      "minute": 9,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Marcelo Vieira da Silva Júnior",
+      "location": [
+        62,
+        32
+      ]
+    },
+    {
+      "id": "04b9d5b5-6255-480f-b650-7a7286fa97bf",
+      "index": 409,
+      "period": 1,
+      "minute": 10,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Eden Hazard",
+      "location": [
+        9,
+        75
+      ]
+    },
+    {
+      "id": "149211ba-4a6c-45ab-b948-cbeb2eacb30c",
+      "index": 450,
+      "period": 1,
+      "minute": 10,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Eden Hazard",
+      "location": [
+        44,
+        57
+      ]
+    },
+    {
+      "id": "64fb7420-d9cf-4409-ae02-b958c90e28c3",
+      "index": 505,
+      "period": 1,
+      "minute": 12,
+      "second": 2,
+      "type": "Pass",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        73,
+        31
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "44ec04e4-1a9a-4aaf-a8a5-04cb997a203f",
+      "index": 508,
+      "period": 1,
+      "minute": 12,
+      "second": 5,
+      "type": "Shot",
+      "team": "Belgium",
+      "player": "Marouane Fellaini-Bakkioui",
+      "location": [
+        98,
+        38
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "8dd18e33-7027-4c55-a15b-0f658eb13e28",
+      "index": 515,
+      "period": 1,
+      "minute": 12,
+      "second": 49,
+      "type": "Own Goal Against",
+      "team": "Brazil",
+      "player": "Fernando Luiz Roza",
+      "location": [
+        4,
+        43
+      ]
+    },
+    {
+      "id": "6907c480-7ff7-4885-8cc1-d478d2610c94",
+      "index": 550,
+      "period": 1,
+      "minute": 14,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Marcelo Vieira da Silva Júnior",
+      "location": [
+        99,
+        12
+      ]
+    },
+    {
+      "id": "00f4ab43-ee47-43fa-80b9-66f791685e68",
+      "index": 566,
+      "period": 1,
+      "minute": 14,
+      "second": 37,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        119,
+        26
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "d0f5fc00-567c-4db8-b721-05c1270b4ab0",
+      "index": 568,
+      "period": 1,
+      "minute": 14,
+      "second": 38,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Gabriel Fernando de Jesus",
+      "location": [
+        115,
+        37
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "ef3c1c96-a1b0-4d08-82fc-236b872b4659",
+      "index": 696,
+      "period": 1,
+      "minute": 17,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        33,
+        52
+      ]
+    },
+    {
+      "id": "ac7e6544-a7f1-4499-a32d-58f3d6c8abc1",
+      "index": 710,
+      "period": 1,
+      "minute": 17,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Marcelo Vieira da Silva Júnior",
+      "location": [
+        21,
+        10
+      ]
+    },
+    {
+      "id": "b65d400b-a21c-4d31-a989-c76444a90134",
+      "index": 720,
+      "period": 1,
+      "minute": 17,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Thibaut Courtois",
+      "location": [
+        15,
+        31
+      ]
+    },
+    {
+      "id": "7ec38129-fbb5-4541-a51f-c946c98e4380",
+      "index": 747,
+      "period": 1,
+      "minute": 18,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Fernando Luiz Roza",
+      "location": [
+        33,
+        19
+      ]
+    },
+    {
+      "id": "307d137d-58e8-4b9e-9b94-178cd5e284b3",
+      "index": 765,
+      "period": 1,
+      "minute": 18,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Thomas Meunier",
+      "location": [
+        9,
+        68
+      ]
+    },
+    {
+      "id": "bb91959a-9e7a-486d-aed7-819eece97d29",
+      "index": 788,
+      "period": 1,
+      "minute": 18,
+      "second": 49,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Fernando Luiz Roza",
+      "location": [
+        86,
+        30
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "28749d5b-5e06-4944-8bc8-09d630e4c393",
+      "index": 793,
+      "period": 1,
+      "minute": 18,
+      "second": 53,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Philippe Coutinho Correia",
+      "location": [
+        96,
+        33
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "6a89070a-0b25-4dae-a16c-dd68e27ae647",
+      "index": 874,
+      "period": 1,
+      "minute": 20,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Nacer Chadli",
+      "location": [
+        102,
+        74
+      ]
+    },
+    {
+      "id": "d8975140-9a65-41bd-b9e5-c36b4fed5f9d",
+      "index": 881,
+      "period": 1,
+      "minute": 20,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        93,
+        75
+      ]
+    },
+    {
+      "id": "2d5ecea4-485f-4c41-83bf-b98be0bd1aa6",
+      "index": 933,
+      "period": 1,
+      "minute": 21,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        32,
+        18
+      ]
+    },
+    {
+      "id": "9297fca7-f749-4ada-a391-f28592c38624",
+      "index": 951,
+      "period": 1,
+      "minute": 23,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "João Miranda de Souza Filho",
+      "location": [
+        32,
+        19
+      ]
+    },
+    {
+      "id": "38628bb4-5a1c-471c-8153-46cbfeb9e0ae",
+      "index": 1052,
+      "period": 1,
+      "minute": 25,
+      "second": 11,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "João Miranda de Souza Filho",
+      "location": [
+        55,
+        51
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "c1e841bc-2074-4ba0-a31b-e3df9120edc1",
+      "index": 1056,
+      "period": 1,
+      "minute": 25,
+      "second": 19,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Marcelo Vieira da Silva Júnior",
+      "location": [
+        99,
+        18
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f2c1d96a-151c-4e98-b060-e7262da0cb20",
+      "index": 1058,
+      "period": 1,
+      "minute": 25,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Toby Alderweireld",
+      "location": [
+        7,
+        52
+      ]
+    },
+    {
+      "id": "3afb2ce5-7a2f-416b-b940-716aba118a59",
+      "index": 1157,
+      "period": 1,
+      "minute": 27,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Marouane Fellaini-Bakkioui",
+      "location": [
+        33,
+        65
+      ]
+    },
+    {
+      "id": "a573d1fd-5123-4552-be44-5702bf80a2b4",
+      "index": 1169,
+      "period": 1,
+      "minute": 27,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "José Paulo Bezzera Maciel Júnior",
+      "location": [
+        53,
+        60
+      ]
+    },
+    {
+      "id": "4f8fd55e-a5d5-4f33-8dfd-dba43d7dbcc6",
+      "index": 1192,
+      "period": 1,
+      "minute": 29,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Fernando Luiz Roza",
+      "location": [
+        102,
+        40
+      ]
+    },
+    {
+      "id": "8291a8c4-c4b5-4763-af68-fe0ff06b1224",
+      "index": 1194,
+      "period": 1,
+      "minute": 29,
+      "second": 27,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Fernando Luiz Roza",
+      "location": [
+        103,
+        42
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f41533a1-b31f-4d93-8151-ec7329d31744",
+      "index": 1198,
+      "period": 1,
+      "minute": 29,
+      "second": 31,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        99,
+        15
+      ]
+    },
+    {
+      "id": "9c96de82-f1d1-462e-89c5-2592ccd9474f",
+      "index": 1200,
+      "period": 1,
+      "minute": 29,
+      "second": 35,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        96,
+        20
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "4960e156-1999-4a82-a18f-6750811df9bb",
+      "index": 1207,
+      "period": 1,
+      "minute": 30,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Romelu Lukaku Menama",
+      "location": [
+        41,
+        59
+      ]
+    },
+    {
+      "id": "ac8c6b39-5c99-4888-a127-771b1f8ffb90",
+      "index": 1214,
+      "period": 1,
+      "minute": 30,
+      "second": 48,
+      "type": "Shot",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        102,
+        54
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f9ed95f2-8866-42af-a713-a9facbef1744",
+      "index": 1226,
+      "period": 1,
+      "minute": 32,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Thibaut Courtois",
+      "location": [
+        5,
+        25
+      ]
+    },
+    {
+      "id": "bc2f274b-4d61-4285-afd5-6fbac7678f8d",
+      "index": 1244,
+      "period": 1,
+      "minute": 32,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        28,
+        19
+      ]
+    },
+    {
+      "id": "52b24097-1d45-46ef-840b-14a35eebd598",
+      "index": 1325,
+      "period": 1,
+      "minute": 35,
+      "second": 3,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Marcelo Vieira da Silva Júnior",
+      "location": [
+        105,
+        11
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "988bcc30-6cdf-4cc2-aaeb-4fdb283f52b9",
+      "index": 1327,
+      "period": 1,
+      "minute": 35,
+      "second": 4,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Gabriel Fernando de Jesus",
+      "location": [
+        110,
+        45
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "991d8f79-ca51-4a5f-b4cf-3b162325e2f2",
+      "index": 1379,
+      "period": 1,
+      "minute": 36,
+      "second": 34,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Marcelo Vieira da Silva Júnior",
+      "location": [
+        113,
+        3
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "50c2130c-0b88-4adb-bcf3-151d0359785e",
+      "index": 1382,
+      "period": 1,
+      "minute": 36,
+      "second": 36,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Philippe Coutinho Correia",
+      "location": [
+        98,
+        21
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d160b738-ce0d-4284-b242-fdb395515028",
+      "index": 1399,
+      "period": 1,
+      "minute": 37,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Fernando Luiz Roza",
+      "location": [
+        76,
+        40
+      ]
+    },
+    {
+      "id": "f7070be9-3ec1-4646-899d-4e085a07502a",
+      "index": 1415,
+      "period": 1,
+      "minute": 37,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        35,
+        19
+      ]
+    },
+    {
+      "id": "313cd1f8-deef-4b32-9843-dee3c41bf0a2",
+      "index": 1508,
+      "period": 1,
+      "minute": 38,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Jan Vertonghen",
+      "location": [
+        83,
+        27
+      ]
+    },
+    {
+      "id": "49b10b55-3be4-40e1-9e90-5e8c1d525430",
+      "index": 1567,
+      "period": 1,
+      "minute": 40,
+      "second": 36,
+      "type": "Shot",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        99,
+        20
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "8bc4582c-376f-4e9e-9f68-853880515404",
+      "index": 1569,
+      "period": 1,
+      "minute": 41,
+      "second": 15,
+      "type": "Pass",
+      "team": "Belgium",
+      "player": "Nacer Chadli",
+      "location": [
+        120,
+        2
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "dad9e7d3-5d77-44f1-abaf-b888b548c0b1",
+      "index": 1571,
+      "period": 1,
+      "minute": 41,
+      "second": 16,
+      "type": "Shot",
+      "team": "Belgium",
+      "player": "Vincent Kompany",
+      "location": [
+        115,
+        32
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d1f97e7e-009f-4ce5-bb0c-4785da3c4a96",
+      "index": 1605,
+      "period": 1,
+      "minute": 42,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        89,
+        36
+      ]
+    },
+    {
+      "id": "f79c474d-6276-4460-8e3f-72fce6529bbe",
+      "index": 1636,
+      "period": 1,
+      "minute": 42,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Thibaut Courtois",
+      "location": [
+        7,
+        26
+      ]
+    },
+    {
+      "id": "cd47a9f0-d386-4e83-9030-26e8fb5a74f0",
+      "index": 1656,
+      "period": 1,
+      "minute": 42,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Thiago Emiliano da Silva",
+      "location": [
+        52,
+        48
+      ]
+    },
+    {
+      "id": "827fbc85-70f4-4c84-a142-5f176af818a4",
+      "index": 1735,
+      "period": 1,
+      "minute": 44,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Axel Witsel",
+      "location": [
+        14,
+        57
+      ]
+    },
+    {
+      "id": "9f4ebabb-3abc-4c71-91e0-b08c9f6acf34",
+      "index": 1759,
+      "period": 1,
+      "minute": 44,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        110,
+        16
+      ]
+    },
+    {
+      "id": "22ef0eae-3189-46b1-8aa2-2daa7f66b377",
+      "index": 1803,
+      "period": 1,
+      "minute": 45,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Fágner Conserva Lemos",
+      "location": [
+        41,
+        74
+      ]
+    },
+    {
+      "id": "86a417d7-75b9-43de-8827-5e0654db3313",
+      "index": 1923,
+      "period": 2,
+      "minute": 47,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Axel Witsel",
+      "location": [
+        12,
+        25
+      ]
+    },
+    {
+      "id": "1fe991ef-457c-4f53-a8a4-83623af6890a",
+      "index": 1928,
+      "period": 2,
+      "minute": 47,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "José Paulo Bezzera Maciel Júnior",
+      "location": [
+        87,
+        75
+      ]
+    },
+    {
+      "id": "9cbb4604-4d31-419a-9882-ececb4015eff",
+      "index": 1999,
+      "period": 2,
+      "minute": 48,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Alisson Ramsés Becker",
+      "location": [
+        6,
+        37
+      ]
+    },
+    {
+      "id": "0d18877c-ce99-4b70-aa39-c69dd193a03f",
+      "index": 2091,
+      "period": 2,
+      "minute": 51,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Fernando Luiz Roza",
+      "location": [
+        59,
+        66
+      ]
+    },
+    {
+      "id": "31872c3b-4831-4d29-bb36-9975b4e86274",
+      "index": 2118,
+      "period": 2,
+      "minute": 51,
+      "second": 38,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        97,
+        4
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "7ad1c70f-45be-4af7-867c-836874972c57",
+      "index": 2123,
+      "period": 2,
+      "minute": 51,
+      "second": 42,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Philippe Coutinho Correia",
+      "location": [
+        97,
+        27
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "93655aa2-66ab-4c5f-a817-b87c3a0e71f8",
+      "index": 2221,
+      "period": 2,
+      "minute": 53,
+      "second": 58,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Fágner Conserva Lemos",
+      "location": [
+        93,
+        59
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "e28f2341-8a5f-4a13-b930-248a56f810f8",
+      "index": 2225,
+      "period": 2,
+      "minute": 54,
+      "second": 2,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "José Paulo Bezzera Maciel Júnior",
+      "location": [
+        117,
+        51
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "17a44372-7de0-46e2-8c24-9b3398184745",
+      "index": 2230,
+      "period": 2,
+      "minute": 54,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Thomas Meunier",
+      "location": [
+        4,
+        62
+      ]
+    },
+    {
+      "id": "c5105834-f9a0-4031-a3a2-e021b92608a8",
+      "index": 2345,
+      "period": 2,
+      "minute": 57,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Marcelo Vieira da Silva Júnior",
+      "location": [
+        67,
+        3
+      ]
+    },
+    {
+      "id": "8d90a5c3-ddce-4331-9a8e-f2f2696f2f32",
+      "index": 2353,
+      "period": 2,
+      "minute": 58,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Axel Witsel",
+      "location": [
+        26,
+        47
+      ]
+    },
+    {
+      "id": "e9903479-979d-4944-a53d-b9907fe92d64",
+      "index": 2485,
+      "period": 2,
+      "minute": 61,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Nacer Chadli",
+      "location": [
+        26,
+        27
+      ]
+    },
+    {
+      "id": "3bdde6aa-1582-4fc5-a2c3-301951a28de0",
+      "index": 2489,
+      "period": 2,
+      "minute": 61,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Nacer Chadli",
+      "location": [
+        51,
+        12
+      ]
+    },
+    {
+      "id": "0c6553e5-049c-478a-b955-df902af64264",
+      "index": 2494,
+      "period": 2,
+      "minute": 61,
+      "second": 12,
+      "type": "Pass",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        74,
+        32
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "b550cc56-134d-4460-908d-ccda6b6b9899",
+      "index": 2497,
+      "period": 2,
+      "minute": 61,
+      "second": 15,
+      "type": "Shot",
+      "team": "Belgium",
+      "player": "Eden Hazard",
+      "location": [
+        108,
+        27
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "3db91e16-4300-4549-800d-9429c14acdb6",
+      "index": 2504,
+      "period": 2,
+      "minute": 61,
+      "second": 42,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        87,
+        42
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "abf2caba-6ade-4b58-be69-e812b86c1bcc",
+      "index": 2508,
+      "period": 2,
+      "minute": 61,
+      "second": 47,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Douglas Costa de Souza",
+      "location": [
+        112,
+        58
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "dc18a569-124e-4600-9d5b-ce6022755354",
+      "index": 2511,
+      "period": 2,
+      "minute": 61,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Vincent Kompany",
+      "location": [
+        7,
+        36
+      ]
+    },
+    {
+      "id": "257ba438-b14d-4d30-a710-f93eb31c3a1e",
+      "index": 2543,
+      "period": 2,
+      "minute": 62,
+      "second": 42,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Thiago Emiliano da Silva",
+      "location": [
+        27,
+        57
+      ]
+    },
+    {
+      "id": "9d6dfaec-6831-4714-b595-21d7594bbe6d",
+      "index": 2556,
+      "period": 2,
+      "minute": 62,
+      "second": 57,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        105,
+        15
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "41e1b1d7-a410-4b7d-8585-3675adede641",
+      "index": 2560,
+      "period": 2,
+      "minute": 63,
+      "second": 0,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Philippe Coutinho Correia",
+      "location": [
+        98,
+        36
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2a14716a-e524-4cea-a78a-aa130422a8d9",
+      "index": 2563,
+      "period": 2,
+      "minute": 63,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Marcelo Vieira da Silva Júnior",
+      "location": [
+        87,
+        26
+      ]
+    },
+    {
+      "id": "8ff0c9e9-949b-4426-ab3f-9ba06e5ff15a",
+      "index": 2631,
+      "period": 2,
+      "minute": 64,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        95,
+        75
+      ]
+    },
+    {
+      "id": "f1803022-aa73-451e-93b1-c769504f692b",
+      "index": 2671,
+      "period": 2,
+      "minute": 65,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Thiago Emiliano da Silva",
+      "location": [
+        20,
+        59
+      ]
+    },
+    {
+      "id": "26bc6649-49d0-4418-8bb4-9b84d2438a74",
+      "index": 2761,
+      "period": 2,
+      "minute": 69,
+      "second": 15,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Thiago Emiliano da Silva",
+      "location": [
+        50,
+        54
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "3279d551-1101-48c8-9a30-5bf8890ac46a",
+      "index": 2766,
+      "period": 2,
+      "minute": 69,
+      "second": 23,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Douglas Costa de Souza",
+      "location": [
+        91,
+        58
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "18325bfb-98cc-4ca0-b719-f1291cfd3b7a",
+      "index": 2769,
+      "period": 2,
+      "minute": 69,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Eden Hazard",
+      "location": [
+        44,
+        16
+      ]
+    },
+    {
+      "id": "d1dc0039-858c-4a95-bf13-baa225a8ae53",
+      "index": 2798,
+      "period": 2,
+      "minute": 69,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Fernando Luiz Roza",
+      "location": [
+        27,
+        40
+      ]
+    },
+    {
+      "id": "434f0552-7be6-45dc-adcf-a73c0225f81b",
+      "index": 2821,
+      "period": 2,
+      "minute": 70,
+      "second": 47,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Fernando Luiz Roza",
+      "location": [
+        81,
+        45
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "09ad21d2-3877-4689-b80f-692db678e99a",
+      "index": 2825,
+      "period": 2,
+      "minute": 70,
+      "second": 52,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Douglas Costa de Souza",
+      "location": [
+        96,
+        56
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "4dd6405e-fbaa-4534-8843-4f228ea57e58",
+      "index": 2847,
+      "period": 2,
+      "minute": 71,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Thiago Emiliano da Silva",
+      "location": [
+        34,
+        66
+      ]
+    },
+    {
+      "id": "c4fc4647-af41-41f1-a113-d6ab9e91d803",
+      "index": 2862,
+      "period": 2,
+      "minute": 72,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        59,
+        55
+      ]
+    },
+    {
+      "id": "98dd9dba-a003-4c78-92c4-22badc1214ad",
+      "index": 2937,
+      "period": 2,
+      "minute": 74,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        96,
+        51
+      ]
+    },
+    {
+      "id": "d2ee6989-e77b-472a-9775-4edd28123c9f",
+      "index": 2951,
+      "period": 2,
+      "minute": 74,
+      "second": 20,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Roberto Firmino Barbosa de Oliveira",
+      "location": [
+        48,
+        42
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "4aa201db-54ad-4feb-9b29-d352c4bafb75",
+      "index": 2955,
+      "period": 2,
+      "minute": 74,
+      "second": 27,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Douglas Costa de Souza",
+      "location": [
+        110,
+        58
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "747a8dc4-3948-4bc5-8bd2-5f874b0519b4",
+      "index": 2957,
+      "period": 2,
+      "minute": 74,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        109,
+        44
+      ]
+    },
+    {
+      "id": "b695d557-7cb4-4e92-8a42-daf2aa6ec9c2",
+      "index": 2958,
+      "period": 2,
+      "minute": 74,
+      "second": 28,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        109,
+        45
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2c4d54f0-71f9-4f3b-bcec-0c0661318162",
+      "index": 2969,
+      "period": 2,
+      "minute": 74,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Axel Witsel",
+      "location": [
+        15,
+        48
+      ]
+    },
+    {
+      "id": "687ccb9c-bbfa-4592-ac24-f6c4892f630e",
+      "index": 2974,
+      "period": 2,
+      "minute": 74,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Thomas Meunier",
+      "location": [
+        14,
+        53
+      ]
+    },
+    {
+      "id": "e7075049-e7e5-4798-a8ed-b21d8d1acb50",
+      "index": 2981,
+      "period": 2,
+      "minute": 74,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Thiago Emiliano da Silva",
+      "location": [
+        61,
+        66
+      ]
+    },
+    {
+      "id": "2dfc3cb2-5326-4a3e-a79d-d917aebae410",
+      "index": 2996,
+      "period": 2,
+      "minute": 75,
+      "second": 19,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Philippe Coutinho Correia",
+      "location": [
+        94,
+        33
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "449f1129-de28-45c2-8beb-7ba0701b1950",
+      "index": 2998,
+      "period": 2,
+      "minute": 75,
+      "second": 20,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Renato Soares de Oliveira Augusto",
+      "location": [
+        111,
+        42
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "e6f5688d-767a-4210-8771-ae1551f765e2",
+      "index": 3058,
+      "period": 2,
+      "minute": 77,
+      "second": 44,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        107,
+        17
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "c3b233d0-1b41-41ef-86ed-46882d9fe78d",
+      "index": 3062,
+      "period": 2,
+      "minute": 77,
+      "second": 46,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Roberto Firmino Barbosa de Oliveira",
+      "location": [
+        111,
+        30
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2e77a762-7f66-43bc-8592-41c07c1a081a",
+      "index": 3069,
+      "period": 2,
+      "minute": 78,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Renato Soares de Oliveira Augusto",
+      "location": [
+        47,
+        29
+      ]
+    },
+    {
+      "id": "2797350c-6ce7-41bd-b64b-4b2b0e5e4212",
+      "index": 3082,
+      "period": 2,
+      "minute": 78,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Douglas Costa de Souza",
+      "location": [
+        116,
+        66
+      ]
+    },
+    {
+      "id": "d0c11cc9-ec20-4031-9edf-9d1141599334",
+      "index": 3090,
+      "period": 2,
+      "minute": 79,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Eden Hazard",
+      "location": [
+        29,
+        51
+      ]
+    },
+    {
+      "id": "889ca9d5-e32a-45e4-bff5-0838c1a1480f",
+      "index": 3123,
+      "period": 2,
+      "minute": 79,
+      "second": 42,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Toby Alderweireld",
+      "location": [
+        36,
+        50
+      ]
+    },
+    {
+      "id": "e2198993-8569-458f-af32-67112815a0b6",
+      "index": 3147,
+      "period": 2,
+      "minute": 79,
+      "second": 59,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Philippe Coutinho Correia",
+      "location": [
+        88,
+        37
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "318c0fe3-bfbd-476f-9899-e26692c84c46",
+      "index": 3150,
+      "period": 2,
+      "minute": 80,
+      "second": 1,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Renato Soares de Oliveira Augusto",
+      "location": [
+        102,
+        42
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "9716d56c-c07a-4e7e-ae6f-62573953c092",
+      "index": 3168,
+      "period": 2,
+      "minute": 82,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Jan Vertonghen",
+      "location": [
+        76,
+        20
+      ]
+    },
+    {
+      "id": "e38afc58-2836-4921-956c-6b1c6fff405b",
+      "index": 3199,
+      "period": 2,
+      "minute": 83,
+      "second": 25,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        113,
+        24
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "78687033-cad6-4ae8-a24e-5c2214bf4840",
+      "index": 3201,
+      "period": 2,
+      "minute": 83,
+      "second": 26,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Philippe Coutinho Correia",
+      "location": [
+        107,
+        33
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2f570eaf-bbb0-45c3-8603-48354729beb9",
+      "index": 3229,
+      "period": 2,
+      "minute": 84,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Philippe Coutinho Correia",
+      "location": [
+        87,
+        35
+      ]
+    },
+    {
+      "id": "3eb8a77f-24c3-4809-b972-59f9fe46c4e7",
+      "index": 3298,
+      "period": 2,
+      "minute": 86,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Philippe Coutinho Correia",
+      "location": [
+        43,
+        26
+      ]
+    },
+    {
+      "id": "9dabab4e-bf7c-4388-95a0-d90c7ac26e64",
+      "index": 3302,
+      "period": 2,
+      "minute": 86,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Thiago Emiliano da Silva",
+      "location": [
+        17,
+        34
+      ]
+    },
+    {
+      "id": "d0ba0923-0f5a-4bc1-b8ed-8f45726a65a9",
+      "index": 3337,
+      "period": 2,
+      "minute": 87,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Kevin De Bruyne",
+      "location": [
+        82,
+        47
+      ]
+    },
+    {
+      "id": "aeeaa2b7-6ef9-4c2d-b1cc-ddfab7f50447",
+      "index": 3368,
+      "period": 2,
+      "minute": 88,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Marouane Fellaini-Bakkioui",
+      "location": [
+        28,
+        44
+      ]
+    },
+    {
+      "id": "9cbf1b47-80b4-4efc-94a6-cc1fac4d2e37",
+      "index": 3372,
+      "period": 2,
+      "minute": 88,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Douglas Costa de Souza",
+      "location": [
+        87,
+        45
+      ]
+    },
+    {
+      "id": "f8162fab-c15f-4a4f-a7a1-1fd1dabda543",
+      "index": 3385,
+      "period": 2,
+      "minute": 88,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Eden Hazard",
+      "location": [
+        40,
+        46
+      ]
+    },
+    {
+      "id": "7c94375b-6584-477a-a218-344e982f1f5e",
+      "index": 3500,
+      "period": 2,
+      "minute": 91,
+      "second": 44,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Marcelo Vieira da Silva Júnior",
+      "location": [
+        99,
+        22
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "c707713d-21cf-4bd2-b031-35ddfd5d4774",
+      "index": 3503,
+      "period": 2,
+      "minute": 91,
+      "second": 46,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Philippe Coutinho Correia",
+      "location": [
+        96,
+        37
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c45947bc-605f-4129-b3dc-5e165bfb367e",
+      "index": 3509,
+      "period": 2,
+      "minute": 91,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Belgium",
+      "player": "Eden Hazard",
+      "location": [
+        40,
+        75
+      ]
+    },
+    {
+      "id": "90d60b6b-9f4e-4add-82e1-9f9233c452fe",
+      "index": 3555,
+      "period": 2,
+      "minute": 93,
+      "second": 13,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Douglas Costa de Souza",
+      "location": [
+        100,
+        54
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "f78a1e10-1ee9-4a43-b114-e0f01961f7d3",
+      "index": 3558,
+      "period": 2,
+      "minute": 93,
+      "second": 14,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        98,
+        39
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d73045f2-d64e-40f6-bcf2-60fab72a6a0f",
+      "index": 3560,
+      "period": 2,
+      "minute": 93,
+      "second": 44,
+      "type": "Pass",
+      "team": "Brazil",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        120,
+        79
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "7faf5d88-7884-4de5-8ad5-e991c35d2a03",
+      "index": 3563,
+      "period": 2,
+      "minute": 93,
+      "second": 46,
+      "type": "Shot",
+      "team": "Brazil",
+      "player": "Roberto Firmino Barbosa de Oliveira",
+      "location": [
+        115,
+        42
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "33661485-2f71-42cd-85c0-c37ae14e87b3",
+      "index": 3582,
+      "period": 2,
+      "minute": 94,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "Brazil",
+      "player": "Roberto Firmino Barbosa de Oliveira",
+      "location": [
+        15,
+        4
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1614 @@
+{
+  "meta": {
+    "matchId": 3942785,
+    "teams": [
+      "Argentina",
+      "Canada"
+    ],
+    "totalEvents": 3460,
+    "keptEvents": 104,
+    "fetchedAt": "2026-06-10T06:54:53.934Z"
+  },
+  "events": [
+    {
+      "id": "b7e56110-6248-466e-9fc7-5008f3a2f924",
+      "index": 133,
+      "period": 1,
+      "minute": 2,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        88,
+        67.9
+      ]
+    },
+    {
+      "id": "6316386f-06e2-4929-bdcb-7233e8ee8a80",
+      "index": 151,
+      "period": 1,
+      "minute": 2,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Jonathan David",
+      "location": [
+        32.1,
+        6.9
+      ]
+    },
+    {
+      "id": "c9de7849-b318-4419-80e9-11c1ecd95475",
+      "index": 179,
+      "period": 1,
+      "minute": 3,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        21.5,
+        78.7
+      ]
+    },
+    {
+      "id": "d63d8913-6038-45fc-8c99-cfcfa75b6b0e",
+      "index": 212,
+      "period": 1,
+      "minute": 4,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Cyle Larin",
+      "location": [
+        78,
+        55.6
+      ]
+    },
+    {
+      "id": "feb7ccff-5cdf-4c56-9b39-917d6e8e091d",
+      "index": 218,
+      "period": 1,
+      "minute": 4,
+      "second": 23,
+      "type": "Pass",
+      "team": "Canada",
+      "player": "Cyle Larin",
+      "location": [
+        79.6,
+        39.2
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "a93616d3-fa56-4c1d-b9f7-619d0b9faf8e",
+      "index": 222,
+      "period": 1,
+      "minute": 4,
+      "second": 28,
+      "type": "Shot",
+      "team": "Canada",
+      "player": "Jacob Shaffelburg",
+      "location": [
+        108.6,
+        25.4
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "495debf8-94f5-4a12-a0f7-4f66640f7772",
+      "index": 250,
+      "period": 1,
+      "minute": 5,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Moise Bombito",
+      "location": [
+        10.4,
+        19.3
+      ]
+    },
+    {
+      "id": "f9e47e7b-fd69-4663-93ae-c7ec95a535d1",
+      "index": 258,
+      "period": 1,
+      "minute": 5,
+      "second": 31,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Alistair Johnston",
+      "location": [
+        52.1,
+        51
+      ]
+    },
+    {
+      "id": "3fa61cdc-1dbe-439f-af49-50b9c1c041b0",
+      "index": 316,
+      "period": 1,
+      "minute": 6,
+      "second": 50,
+      "type": "Pass",
+      "team": "Canada",
+      "player": "Stephen Antunes Eustáquio",
+      "location": [
+        37.9,
+        47.7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "dd418015-c7b5-4362-8871-d5102061ac9d",
+      "index": 323,
+      "period": 1,
+      "minute": 6,
+      "second": 57,
+      "type": "Shot",
+      "team": "Canada",
+      "player": "Jacob Shaffelburg",
+      "location": [
+        106.5,
+        26.7
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "73a76a11-e24f-4ada-8157-9129073226c6",
+      "index": 378,
+      "period": 1,
+      "minute": 9,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Damián Emiliano Martínez",
+      "location": [
+        14,
+        57.9
+      ]
+    },
+    {
+      "id": "690bca32-5890-447b-83ff-b6acf8cc68f8",
+      "index": 416,
+      "period": 1,
+      "minute": 9,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Richie Laryea",
+      "location": [
+        23.3,
+        41
+      ]
+    },
+    {
+      "id": "ecce4341-14d6-438e-8c27-6ab5dcf3d156",
+      "index": 498,
+      "period": 1,
+      "minute": 11,
+      "second": 2,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        107.2,
+        62.3
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "f21d60d8-5a40-4660-bb74-4c72c11c9717",
+      "index": 501,
+      "period": 1,
+      "minute": 11,
+      "second": 4,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        100.8,
+        48.6
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "e3123fad-258f-494f-ba35-44943be91711",
+      "index": 571,
+      "period": 1,
+      "minute": 13,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Moise Bombito",
+      "location": [
+        27.9,
+        29.7
+      ]
+    },
+    {
+      "id": "b931491e-4834-44c5-84bf-be89e752179b",
+      "index": 589,
+      "period": 1,
+      "minute": 13,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        57.6,
+        75.4
+      ]
+    },
+    {
+      "id": "714d4750-b5d5-4651-b7c6-07ffd4a67bd2",
+      "index": 617,
+      "period": 1,
+      "minute": 13,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        30.8,
+        25.8
+      ]
+    },
+    {
+      "id": "15e4d076-11d4-4e29-ae40-a174fa1835c4",
+      "index": 634,
+      "period": 1,
+      "minute": 14,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Ismael Koné",
+      "location": [
+        33.2,
+        35
+      ]
+    },
+    {
+      "id": "f70ede2e-6ca9-423b-ae80-88f222b60449",
+      "index": 657,
+      "period": 1,
+      "minute": 14,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Maxime Crépeau",
+      "location": [
+        3.3,
+        39
+      ]
+    },
+    {
+      "id": "712e8f5c-726c-4860-8f37-7fc616b502e4",
+      "index": 701,
+      "period": 1,
+      "minute": 15,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Lisandro Martínez",
+      "location": [
+        69.4,
+        12.9
+      ]
+    },
+    {
+      "id": "ed20f28d-ba6f-4b52-80ec-f6e69b9599fa",
+      "index": 730,
+      "period": 1,
+      "minute": 15,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Damián Emiliano Martínez",
+      "location": [
+        2,
+        53.3
+      ]
+    },
+    {
+      "id": "ae66fa37-ab34-42ac-9326-162bb88fd0d3",
+      "index": 753,
+      "period": 1,
+      "minute": 16,
+      "second": 26,
+      "type": "Pass",
+      "team": "Canada",
+      "player": "Jonathan David",
+      "location": [
+        109.7,
+        28.2
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "d8fd688d-8aa5-4c3a-a865-c89df76de37e",
+      "index": 758,
+      "period": 1,
+      "minute": 16,
+      "second": 34,
+      "type": "Shot",
+      "team": "Canada",
+      "player": "Alphonso Davies",
+      "location": [
+        98,
+        44.3
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2d627303-a913-4b48-9732-af92f5f272e0",
+      "index": 761,
+      "period": 1,
+      "minute": 16,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Julián Álvarez",
+      "location": [
+        28.6,
+        29.3
+      ]
+    },
+    {
+      "id": "8896b8e0-67b5-412a-916a-b4cddce183af",
+      "index": 766,
+      "period": 1,
+      "minute": 16,
+      "second": 39,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        33.7,
+        45.3
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "e25cfaf9-1ca0-4a42-927b-0c23d23f61a5",
+      "index": 769,
+      "period": 1,
+      "minute": 16,
+      "second": 42,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Julián Álvarez",
+      "location": [
+        52.1,
+        51.6
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c485e02d-94e6-4ecc-af54-5a2c0d0d6a56",
+      "index": 855,
+      "period": 1,
+      "minute": 18,
+      "second": 54,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Lisandro Martínez",
+      "location": [
+        51.2,
+        30.4
+      ]
+    },
+    {
+      "id": "ea19abbb-be70-4874-8b4e-9ac78ecf0c83",
+      "index": 932,
+      "period": 1,
+      "minute": 20,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        58.3,
+        9.8
+      ]
+    },
+    {
+      "id": "0ddc7ee4-823f-4fed-b4c9-c3cbcb4f63e6",
+      "index": 1014,
+      "period": 1,
+      "minute": 21,
+      "second": 57,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        65.6,
+        46
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "9914ae10-6261-49a3-a390-c6720d7ad415",
+      "index": 1021,
+      "period": 1,
+      "minute": 22,
+      "second": 0,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Julián Álvarez",
+      "location": [
+        107.1,
+        42.5
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "8d1606b4-33ec-4750-9283-8aa83c244eba",
+      "index": 1066,
+      "period": 1,
+      "minute": 24,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        27,
+        26.5
+      ]
+    },
+    {
+      "id": "496e6f63-dcec-4f9e-830e-cca97c1590e0",
+      "index": 1083,
+      "period": 1,
+      "minute": 25,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Alistair Johnston",
+      "location": [
+        108.8,
+        4
+      ]
+    },
+    {
+      "id": "7fecb63f-92a7-4569-8621-e6d750bdaac1",
+      "index": 1235,
+      "period": 1,
+      "minute": 29,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Stephen Antunes Eustáquio",
+      "location": [
+        69.8,
+        24.2
+      ]
+    },
+    {
+      "id": "80c39a0d-2e8e-4169-b9ab-e14562e1610d",
+      "index": 1348,
+      "period": 1,
+      "minute": 33,
+      "second": 29,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        33.5,
+        44.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "945a5a27-a06c-4bc1-a270-08244d29f3b9",
+      "index": 1351,
+      "period": 1,
+      "minute": 33,
+      "second": 33,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        100.7,
+        58.9
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "6e003b12-a464-4d8d-b3a6-e274c3c9717d",
+      "index": 1358,
+      "period": 1,
+      "minute": 33,
+      "second": 54,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Julián Álvarez",
+      "location": [
+        86.4,
+        24.5
+      ]
+    },
+    {
+      "id": "bce0f8ff-3eb1-4ecc-aa71-1d6f23d7a2ac",
+      "index": 1365,
+      "period": 1,
+      "minute": 33,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Jonathan David",
+      "location": [
+        39.5,
+        48.1
+      ]
+    },
+    {
+      "id": "df4ef870-16d4-4aa7-a193-77ca78035fe6",
+      "index": 1370,
+      "period": 1,
+      "minute": 34,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        66,
+        27.6
+      ]
+    },
+    {
+      "id": "470bb6fa-1363-4a9a-812f-d3028a1691a2",
+      "index": 1404,
+      "period": 1,
+      "minute": 34,
+      "second": 27,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        89.5,
+        40.2
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "9f4e91ae-a159-41a4-87b9-cf7ccddd40eb",
+      "index": 1407,
+      "period": 1,
+      "minute": 34,
+      "second": 30,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Nicolás Alejandro Tagliafico",
+      "location": [
+        106,
+        26.3
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "8bfec65a-25b9-4a81-918d-e282809291e2",
+      "index": 1410,
+      "period": 1,
+      "minute": 35,
+      "second": 14,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        120,
+        0.1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "d509b804-fd66-4685-beb7-18896d92d80b",
+      "index": 1412,
+      "period": 1,
+      "minute": 35,
+      "second": 16,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lisandro Martínez",
+      "location": [
+        110.3,
+        50.1
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "48638d45-fd2c-4b01-90c9-487823fcedcb",
+      "index": 1435,
+      "period": 1,
+      "minute": 35,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Cristian Gabriel Romero",
+      "location": [
+        51.8,
+        55.9
+      ]
+    },
+    {
+      "id": "0d24235f-4be5-4aa8-bb74-6012b3e5751b",
+      "index": 1453,
+      "period": 1,
+      "minute": 36,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Stephen Antunes Eustáquio",
+      "location": [
+        54.3,
+        18.2
+      ]
+    },
+    {
+      "id": "755af860-1971-4d07-83e9-4ec240009eda",
+      "index": 1500,
+      "period": 1,
+      "minute": 36,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Ismael Koné",
+      "location": [
+        85.1,
+        25.7
+      ]
+    },
+    {
+      "id": "21e41528-ac33-4c88-b523-ac0cecdd1414",
+      "index": 1576,
+      "period": 1,
+      "minute": 38,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Cristian Gabriel Romero",
+      "location": [
+        14.2,
+        52.2
+      ]
+    },
+    {
+      "id": "df047d81-2906-4009-99f3-8be2ea23987b",
+      "index": 1643,
+      "period": 1,
+      "minute": 40,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Stephen Antunes Eustáquio",
+      "location": [
+        44.8,
+        32.6
+      ]
+    },
+    {
+      "id": "83866ec2-0ca5-4e1c-9bf8-72d1d2d97509",
+      "index": 1693,
+      "period": 1,
+      "minute": 40,
+      "second": 54,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Gonzalo Ariel Montiel",
+      "location": [
+        45.9,
+        65.2
+      ]
+    },
+    {
+      "id": "01acd1ec-7938-4ee4-b204-9ae759b5945e",
+      "index": 1727,
+      "period": 1,
+      "minute": 41,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Jacob Shaffelburg",
+      "location": [
+        56.3,
+        8.4
+      ]
+    },
+    {
+      "id": "cdef9861-9bf0-4b9e-8bbb-35c935360920",
+      "index": 1792,
+      "period": 1,
+      "minute": 42,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Gonzalo Ariel Montiel",
+      "location": [
+        45.2,
+        40.9
+      ]
+    },
+    {
+      "id": "83a5f489-0718-4130-bf7e-a02993efe885",
+      "index": 1838,
+      "period": 1,
+      "minute": 43,
+      "second": 40,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Julián Álvarez",
+      "location": [
+        98.8,
+        40.2
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "e5f1b37d-3c5b-45fb-b1b2-ba064456820d",
+      "index": 1844,
+      "period": 1,
+      "minute": 43,
+      "second": 43,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        106.2,
+        34.9
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "a5fd611e-c648-4d5d-8f29-7b76b329fa30",
+      "index": 1891,
+      "period": 1,
+      "minute": 45,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Gonzalo Ariel Montiel",
+      "location": [
+        75.3,
+        58.8
+      ]
+    },
+    {
+      "id": "87913a98-7da9-4fa2-9c42-9f2a2340536f",
+      "index": 1905,
+      "period": 1,
+      "minute": 45,
+      "second": 41,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Alexis Mac Allister",
+      "location": [
+        105,
+        35.3
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "1f9599dc-7a04-41ee-a6e8-51a756d50062",
+      "index": 1910,
+      "period": 1,
+      "minute": 45,
+      "second": 42,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        100.2,
+        35.7
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c492ce42-c43e-4a48-8bc4-2c430ae43b2f",
+      "index": 1920,
+      "period": 1,
+      "minute": 46,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Jonathan David",
+      "location": [
+        116.7,
+        45.4
+      ]
+    },
+    {
+      "id": "b89423d4-35e2-4520-bd29-119afb4e5f0d",
+      "index": 1921,
+      "period": 1,
+      "minute": 46,
+      "second": 47,
+      "type": "Shot",
+      "team": "Canada",
+      "player": "Jonathan David",
+      "location": [
+        117.9,
+        46.7
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "a1ee961a-8c4d-4b91-8736-625e76926ab8",
+      "index": 1930,
+      "period": 1,
+      "minute": 47,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Alphonso Davies",
+      "location": [
+        64.5,
+        49.7
+      ]
+    },
+    {
+      "id": "0dad2045-0570-4b6a-bed2-23b8d6f71c4d",
+      "index": 1956,
+      "period": 2,
+      "minute": 45,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        97.5,
+        65.6
+      ]
+    },
+    {
+      "id": "91e11ff2-a390-45ad-a911-f2094bbc15f0",
+      "index": 1978,
+      "period": 2,
+      "minute": 46,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Alistair Johnston",
+      "location": [
+        46.4,
+        63.8
+      ]
+    },
+    {
+      "id": "5df87209-0f51-41c6-8fbb-94dd26ce7c82",
+      "index": 1991,
+      "period": 2,
+      "minute": 47,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Alphonso Davies",
+      "location": [
+        67.6,
+        8
+      ]
+    },
+    {
+      "id": "dedc95d7-63cc-4a06-a3d4-473ffa124cdf",
+      "index": 2007,
+      "period": 2,
+      "minute": 47,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Jacob Shaffelburg",
+      "location": [
+        76,
+        4.2
+      ]
+    },
+    {
+      "id": "b827d6a2-6278-4b77-ad6e-c43d6a4b7eed",
+      "index": 2073,
+      "period": 2,
+      "minute": 48,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Stephen Antunes Eustáquio",
+      "location": [
+        99.1,
+        30.5
+      ]
+    },
+    {
+      "id": "c085004d-d462-4a72-8b98-b621765ac9c1",
+      "index": 2126,
+      "period": 2,
+      "minute": 50,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        103.8,
+        39.8
+      ]
+    },
+    {
+      "id": "1899f63b-b0fc-4817-9002-63bb4aee8300",
+      "index": 2128,
+      "period": 2,
+      "minute": 50,
+      "second": 19,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        104.2,
+        38.3
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "b8aaa89d-37cd-4b8c-9dfb-b97d87d959e7",
+      "index": 2131,
+      "period": 2,
+      "minute": 50,
+      "second": 20,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        114.4,
+        41.3
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "49a3d9d3-2610-43dd-9158-1e7065d21d29",
+      "index": 2169,
+      "period": 2,
+      "minute": 52,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Lisandro Martínez",
+      "location": [
+        53.3,
+        16.3
+      ]
+    },
+    {
+      "id": "43c1b2f7-9321-4038-b90a-ff5d90ea3511",
+      "index": 2285,
+      "period": 2,
+      "minute": 57,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Moise Bombito",
+      "location": [
+        55.6,
+        66.6
+      ]
+    },
+    {
+      "id": "f242e67f-4f2c-4c4d-8b44-518486c24089",
+      "index": 2343,
+      "period": 2,
+      "minute": 58,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        21,
+        68.8
+      ]
+    },
+    {
+      "id": "5947d343-1a38-425a-a13d-866f5e37f3f6",
+      "index": 2388,
+      "period": 2,
+      "minute": 59,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Cyle Larin",
+      "location": [
+        61.6,
+        34.3
+      ]
+    },
+    {
+      "id": "f9a22722-fc46-4adb-b3df-e9181922b66b",
+      "index": 2416,
+      "period": 2,
+      "minute": 60,
+      "second": 11,
+      "type": "Pass",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        56.5,
+        64.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "5c8cced1-a6c8-46d9-bda3-913d861daabd",
+      "index": 2419,
+      "period": 2,
+      "minute": 60,
+      "second": 15,
+      "type": "Shot",
+      "team": "Argentina",
+      "player": "Julián Álvarez",
+      "location": [
+        102.8,
+        50
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "8d1092dd-57fb-4faa-a0fb-3e6032252d1b",
+      "index": 2427,
+      "period": 2,
+      "minute": 60,
+      "second": 29,
+      "type": "Pass",
+      "team": "Canada",
+      "player": "Ali Ahmed",
+      "location": [
+        104.3,
+        65.8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "f1e6a7fe-02c0-4e5a-810c-76d14d56a63b",
+      "index": 2430,
+      "period": 2,
+      "minute": 60,
+      "second": 34,
+      "type": "Shot",
+      "team": "Canada",
+      "player": "Ismael Koné",
+      "location": [
+        93.3,
+        44.6
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f7826a2a-55de-42ad-bcbc-8394b6c0ba37",
+      "index": 2471,
+      "period": 2,
+      "minute": 61,
+      "second": 40,
+      "type": "Pass",
+      "team": "Canada",
+      "player": "Cyle Larin",
+      "location": [
+        104.8,
+        51
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "6d89425c-655f-4aa1-bdaf-b5e38962d3ab",
+      "index": 2473,
+      "period": 2,
+      "minute": 61,
+      "second": 41,
+      "type": "Shot",
+      "team": "Canada",
+      "player": "Ismael Koné",
+      "location": [
+        99.5,
+        42.9
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "7c98390d-867f-4e0c-8af4-4742aed1531f",
+      "index": 2477,
+      "period": 2,
+      "minute": 61,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Ángel Fabián Di María Hernández",
+      "location": [
+        14.8,
+        45.6
+      ]
+    },
+    {
+      "id": "7e906d41-c889-4a75-9cc4-fb648fb45d7b",
+      "index": 2493,
+      "period": 2,
+      "minute": 61,
+      "second": 54,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        21.4,
+        27.1
+      ]
+    },
+    {
+      "id": "a87f9754-8484-43e7-a48e-ef6b9d184171",
+      "index": 2506,
+      "period": 2,
+      "minute": 64,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Moise Bombito",
+      "location": [
+        35.8,
+        36.7
+      ]
+    },
+    {
+      "id": "ce8c7512-b32b-42ab-a39a-30aaa98cd6bb",
+      "index": 2570,
+      "period": 2,
+      "minute": 65,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Alphonso Davies",
+      "location": [
+        96.7,
+        22.2
+      ]
+    },
+    {
+      "id": "43e33112-522e-4fdb-9e1e-526962cb21c3",
+      "index": 2613,
+      "period": 2,
+      "minute": 68,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Maxime Crépeau",
+      "location": [
+        19.3,
+        57
+      ]
+    },
+    {
+      "id": "a2402c92-ed36-4308-961e-2355f9792796",
+      "index": 2621,
+      "period": 2,
+      "minute": 71,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Maxime Crépeau",
+      "location": [
+        15.8,
+        33.7
+      ]
+    },
+    {
+      "id": "f5c8c9ce-604c-4721-9809-6d1f7e5febd9",
+      "index": 2738,
+      "period": 2,
+      "minute": 73,
+      "second": 54,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Maxime Crépeau",
+      "location": [
+        2.6,
+        29.3
+      ]
+    },
+    {
+      "id": "5057d1ae-989c-41d0-98e7-1b5157c9d309",
+      "index": 2788,
+      "period": 2,
+      "minute": 74,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        26,
+        20.6
+      ]
+    },
+    {
+      "id": "87564bb7-163e-4932-a944-b1bbf4aa00f3",
+      "index": 2812,
+      "period": 2,
+      "minute": 75,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        16.7,
+        33.8
+      ]
+    },
+    {
+      "id": "5c17ed92-db9e-4da4-89d5-5b8839ff7309",
+      "index": 2916,
+      "period": 2,
+      "minute": 79,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Cristian Gabriel Romero",
+      "location": [
+        26.2,
+        66.4
+      ]
+    },
+    {
+      "id": "2740f7e8-e2e0-463c-8d3f-a4474cec6a19",
+      "index": 2971,
+      "period": 2,
+      "minute": 81,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Mathieu Choiniere",
+      "location": [
+        53,
+        26.7
+      ]
+    },
+    {
+      "id": "9244f9ed-1381-4dba-b167-cd164f91143a",
+      "index": 3018,
+      "period": 2,
+      "minute": 81,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Moise Bombito",
+      "location": [
+        61.2,
+        28.8
+      ]
+    },
+    {
+      "id": "8ff661c3-ecca-4e96-aba7-48e18084c32b",
+      "index": 3043,
+      "period": 2,
+      "minute": 82,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Nicolás Hernán Otamendi",
+      "location": [
+        36.2,
+        22
+      ]
+    },
+    {
+      "id": "cc3c1042-f6de-4178-b860-7b92013c3cd7",
+      "index": 3051,
+      "period": 2,
+      "minute": 82,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Derek Cornelius",
+      "location": [
+        54.4,
+        7.2
+      ]
+    },
+    {
+      "id": "d6e68f7e-0c44-4ee4-91fb-6ac72c8f0fa2",
+      "index": 3116,
+      "period": 2,
+      "minute": 83,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Mathieu Choiniere",
+      "location": [
+        61.8,
+        46.3
+      ]
+    },
+    {
+      "id": "58e145d4-2bb4-4c3e-b7ff-6ac366a88953",
+      "index": 3226,
+      "period": 2,
+      "minute": 86,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Liam Millar",
+      "location": [
+        86.5,
+        59.2
+      ]
+    },
+    {
+      "id": "999ee1b1-bc44-49d2-bb92-f36e24e74477",
+      "index": 3228,
+      "period": 2,
+      "minute": 86,
+      "second": 10,
+      "type": "Shot",
+      "team": "Canada",
+      "player": "Liam Millar",
+      "location": [
+        94.7,
+        46.5
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "ac7aba37-1d80-4498-9b93-b096de4950e5",
+      "index": 3237,
+      "period": 2,
+      "minute": 86,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Lisandro Martínez",
+      "location": [
+        62.5,
+        8.8
+      ]
+    },
+    {
+      "id": "b52c35a0-ab9a-4e8f-adec-f56ae8269113",
+      "index": 3246,
+      "period": 2,
+      "minute": 87,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Jonathan Osorio",
+      "location": [
+        63.8,
+        44.8
+      ]
+    },
+    {
+      "id": "19394942-26ab-4a4c-ac51-d553929ec432",
+      "index": 3289,
+      "period": 2,
+      "minute": 87,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Enzo Fernandez",
+      "location": [
+        38.9,
+        48.3
+      ]
+    },
+    {
+      "id": "15bcf7d5-fb3e-498f-b225-ced5b303f316",
+      "index": 3327,
+      "period": 2,
+      "minute": 88,
+      "second": 37,
+      "type": "Pass",
+      "team": "Canada",
+      "player": "Cyle Larin",
+      "location": [
+        103.2,
+        42
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "984d4568-2e68-4cdf-b949-3798d13290ce",
+      "index": 3329,
+      "period": 2,
+      "minute": 88,
+      "second": 38,
+      "type": "Shot",
+      "team": "Canada",
+      "player": "Tanitoluwa Oluwaseyi",
+      "location": [
+        103.1,
+        35.5
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "92152bf1-08fe-4749-900a-2d09f9b64758",
+      "index": 3360,
+      "period": 2,
+      "minute": 89,
+      "second": 45,
+      "type": "Pass",
+      "team": "Canada",
+      "player": "Jonathan Osorio",
+      "location": [
+        111.9,
+        21.5
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "f103b4cf-6063-4ee8-bf78-ae19e4147165",
+      "index": 3362,
+      "period": 2,
+      "minute": 89,
+      "second": 45,
+      "type": "Shot",
+      "team": "Canada",
+      "player": "Tanitoluwa Oluwaseyi",
+      "location": [
+        108.7,
+        41.2
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "a5b5de24-5eb4-4d5b-8c21-4d1d06e59b54",
+      "index": 3368,
+      "period": 2,
+      "minute": 90,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Rodrigo Javier De Paul",
+      "location": [
+        77.8,
+        59.8
+      ]
+    },
+    {
+      "id": "ea2ba8fe-6cb4-4e70-b7d1-7b4651aa71dc",
+      "index": 3380,
+      "period": 2,
+      "minute": 91,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Ali Ahmed",
+      "location": [
+        4.8,
+        12.3
+      ]
+    },
+    {
+      "id": "f5f1f737-f6ca-477c-b132-39a5b7c0eab9",
+      "index": 3410,
+      "period": 2,
+      "minute": 92,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Canada",
+      "player": "Derek Cornelius",
+      "location": [
+        61.4,
+        14.9
+      ]
+    },
+    {
+      "id": "5645367a-9e4a-4e81-b0a2-068b8f4f60e8",
+      "index": 3458,
+      "period": 2,
+      "minute": 93,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "Argentina",
+      "player": "Damián Emiliano Martínez",
+      "location": [
+        9.5,
+        20.3
+      ]
+    }
+  ]
+}

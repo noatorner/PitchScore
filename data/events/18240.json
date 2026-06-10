@@ -1,0 +1,2667 @@
+{
+  "meta": {
+    "matchId": 18240,
+    "teams": [
+      "Borussia Dortmund",
+      "Bayern Munich"
+    ],
+    "totalEvents": 3338,
+    "keptEvents": 175,
+    "fetchedAt": "2026-06-10T06:54:39.541Z"
+  },
+  "events": [
+    {
+      "id": "bd81e48a-d677-4849-944a-783e4ed34528",
+      "index": 43,
+      "period": 1,
+      "minute": 0,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Roman Weidenfeller",
+      "location": [
+        4,
+        32
+      ]
+    },
+    {
+      "id": "3d03ef22-feae-40b8-ad34-16771a256fb8",
+      "index": 48,
+      "period": 1,
+      "minute": 1,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Jakub Błaszczykowski",
+      "location": [
+        77,
+        58
+      ]
+    },
+    {
+      "id": "0d9c6d9e-bacf-4215-9b0d-0b67e36410ed",
+      "index": 54,
+      "period": 1,
+      "minute": 1,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "David Olatukunbo Alaba",
+      "location": [
+        7,
+        24
+      ]
+    },
+    {
+      "id": "c175a852-77ea-4f45-a52b-8c3e759391cd",
+      "index": 134,
+      "period": 1,
+      "minute": 2,
+      "second": 28,
+      "type": "Pass",
+      "team": "Borussia Dortmund",
+      "player": "Marco Reus",
+      "location": [
+        104,
+        68
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "4b31ef19-0fd1-456e-bb13-cd7f32cc8736",
+      "index": 137,
+      "period": 1,
+      "minute": 2,
+      "second": 30,
+      "type": "Shot",
+      "team": "Borussia Dortmund",
+      "player": "Robert Lewandowski",
+      "location": [
+        106,
+        40
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "3784b064-489e-40eb-a817-9a094ded42f4",
+      "index": 142,
+      "period": 1,
+      "minute": 3,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Jakub Błaszczykowski",
+      "location": [
+        80,
+        77
+      ]
+    },
+    {
+      "id": "71ad9c00-6267-4c62-a413-9d8716ee4c6f",
+      "index": 155,
+      "period": 1,
+      "minute": 3,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "İlkay Gündoğan",
+      "location": [
+        71,
+        63
+      ]
+    },
+    {
+      "id": "c3f023a3-0f48-4290-8ba1-a94961ed2ed6",
+      "index": 162,
+      "period": 1,
+      "minute": 3,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Javier Martínez Aginaga",
+      "location": [
+        35,
+        19
+      ]
+    },
+    {
+      "id": "79a431be-588c-4e3f-a1f0-33cf00f8b22a",
+      "index": 196,
+      "period": 1,
+      "minute": 4,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Roman Weidenfeller",
+      "location": [
+        12,
+        49
+      ]
+    },
+    {
+      "id": "f865180d-de62-444e-93d0-9c3e8d8eccdf",
+      "index": 244,
+      "period": 1,
+      "minute": 4,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Marcel Schmelzer",
+      "location": [
+        116,
+        15
+      ]
+    },
+    {
+      "id": "f66e4c73-128c-4f28-828c-d93205970463",
+      "index": 268,
+      "period": 1,
+      "minute": 5,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        36,
+        9
+      ]
+    },
+    {
+      "id": "81d1f698-640c-4e31-8f45-a0a29840af9c",
+      "index": 307,
+      "period": 1,
+      "minute": 7,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Sven Bender",
+      "location": [
+        63,
+        45
+      ]
+    },
+    {
+      "id": "534493ac-b6ce-48bd-8efe-f724e103d962",
+      "index": 337,
+      "period": 1,
+      "minute": 7,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Roman Weidenfeller",
+      "location": [
+        4,
+        34
+      ]
+    },
+    {
+      "id": "7c1e3bd4-3c4c-48e8-b8df-10b2210462ab",
+      "index": 393,
+      "period": 1,
+      "minute": 8,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Neven Subotić",
+      "location": [
+        50,
+        58
+      ]
+    },
+    {
+      "id": "bfb5cdca-41d0-46a8-bec6-5c2ad34ee0ad",
+      "index": 409,
+      "period": 1,
+      "minute": 8,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Jakub Błaszczykowski",
+      "location": [
+        85,
+        65
+      ]
+    },
+    {
+      "id": "7e70b5d5-74a2-4bcd-9584-556be745c1fd",
+      "index": 419,
+      "period": 1,
+      "minute": 9,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Jérôme Boateng",
+      "location": [
+        23,
+        43
+      ]
+    },
+    {
+      "id": "36f22864-f2c7-4576-981b-8658f3e4ad7b",
+      "index": 434,
+      "period": 1,
+      "minute": 9,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Neven Subotić",
+      "location": [
+        49,
+        34
+      ]
+    },
+    {
+      "id": "b5794da3-c497-49d2-a290-d0bb8fb847f0",
+      "index": 467,
+      "period": 1,
+      "minute": 9,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Kevin Großkreutz",
+      "location": [
+        24,
+        34
+      ]
+    },
+    {
+      "id": "e8cfe35c-3f53-4310-9208-a9e1e440fc7a",
+      "index": 479,
+      "period": 1,
+      "minute": 9,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Jakub Błaszczykowski",
+      "location": [
+        102,
+        57
+      ]
+    },
+    {
+      "id": "a83a0d0b-1291-414c-88e3-0b67d2914ba6",
+      "index": 481,
+      "period": 1,
+      "minute": 9,
+      "second": 50,
+      "type": "Shot",
+      "team": "Borussia Dortmund",
+      "player": "Jakub Błaszczykowski",
+      "location": [
+        104,
+        52
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "0ddcae40-fcd7-42ae-9cc2-bc696cb2f954",
+      "index": 504,
+      "period": 1,
+      "minute": 10,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "İlkay Gündoğan",
+      "location": [
+        55,
+        50
+      ]
+    },
+    {
+      "id": "dd16e0dd-ae59-4354-9335-71df7786805f",
+      "index": 517,
+      "period": 1,
+      "minute": 10,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Dante Bonfim da Costa Santos",
+      "location": [
+        45,
+        13
+      ]
+    },
+    {
+      "id": "f7585f29-5a26-4c3c-8dc9-ab2cec4d87ea",
+      "index": 533,
+      "period": 1,
+      "minute": 10,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Roman Weidenfeller",
+      "location": [
+        12,
+        58
+      ]
+    },
+    {
+      "id": "ece11ce2-4e52-4b43-a6f5-75254cd50f87",
+      "index": 596,
+      "period": 1,
+      "minute": 12,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Mats Hummels",
+      "location": [
+        24,
+        21
+      ]
+    },
+    {
+      "id": "f270a5a5-c6b2-4ef8-aff2-9adea2fab005",
+      "index": 615,
+      "period": 1,
+      "minute": 12,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Sven Bender",
+      "location": [
+        66,
+        23
+      ]
+    },
+    {
+      "id": "76aef6c2-a546-4ab9-86eb-afa71d36c2e0",
+      "index": 625,
+      "period": 1,
+      "minute": 13,
+      "second": 2,
+      "type": "Shot",
+      "team": "Borussia Dortmund",
+      "player": "Robert Lewandowski",
+      "location": [
+        88,
+        33
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "8b79314a-29ac-45f3-b1d7-5b7672f9c9a5",
+      "index": 630,
+      "period": 1,
+      "minute": 13,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "İlkay Gündoğan",
+      "location": [
+        82,
+        47
+      ]
+    },
+    {
+      "id": "9c5bee02-c782-491b-8ea5-2d044270cafe",
+      "index": 636,
+      "period": 1,
+      "minute": 13,
+      "second": 58,
+      "type": "Pass",
+      "team": "Borussia Dortmund",
+      "player": "Marco Reus",
+      "location": [
+        110,
+        73
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "07cbde86-3135-4e29-8979-2567f935c7b1",
+      "index": 638,
+      "period": 1,
+      "minute": 14,
+      "second": 0,
+      "type": "Shot",
+      "team": "Borussia Dortmund",
+      "player": "Jakub Błaszczykowski",
+      "location": [
+        112,
+        49
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f11e1a9c-241b-4f7a-b28b-123c9b828674",
+      "index": 646,
+      "period": 1,
+      "minute": 14,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Łukasz Piszczek",
+      "location": [
+        96,
+        29
+      ]
+    },
+    {
+      "id": "dae87ce9-799c-4710-b635-d34345e09acf",
+      "index": 655,
+      "period": 1,
+      "minute": 14,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Jakub Błaszczykowski",
+      "location": [
+        49,
+        74
+      ]
+    },
+    {
+      "id": "9e2a2f98-584c-4f5a-b2ff-75acfce6e49d",
+      "index": 700,
+      "period": 1,
+      "minute": 15,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        47,
+        34
+      ]
+    },
+    {
+      "id": "4c21a8f3-f858-4968-a23c-839346bfc0af",
+      "index": 719,
+      "period": 1,
+      "minute": 15,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Roman Weidenfeller",
+      "location": [
+        3,
+        34
+      ]
+    },
+    {
+      "id": "df5be4af-b7b7-4b8a-9943-cb1efd66bef6",
+      "index": 722,
+      "period": 1,
+      "minute": 16,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "İlkay Gündoğan",
+      "location": [
+        62,
+        37
+      ]
+    },
+    {
+      "id": "63f82458-be61-4f21-afef-5f553641a160",
+      "index": 826,
+      "period": 1,
+      "minute": 18,
+      "second": 30,
+      "type": "Pass",
+      "team": "Borussia Dortmund",
+      "player": "Kevin Großkreutz",
+      "location": [
+        56,
+        42
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "191b28d3-4d52-4188-b7e0-1836bf5e2e0d",
+      "index": 832,
+      "period": 1,
+      "minute": 18,
+      "second": 34,
+      "type": "Shot",
+      "team": "Borussia Dortmund",
+      "player": "Marco Reus",
+      "location": [
+        100,
+        25
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "77da196d-b438-4753-bf22-302e2bc2e0a3",
+      "index": 893,
+      "period": 1,
+      "minute": 20,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Franck Bilal Ribéry",
+      "location": [
+        73,
+        6
+      ]
+    },
+    {
+      "id": "ff423285-c29e-4597-aa96-ecb269aaa545",
+      "index": 917,
+      "period": 1,
+      "minute": 21,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Jakub Błaszczykowski",
+      "location": [
+        56,
+        74
+      ]
+    },
+    {
+      "id": "0646d6c7-e930-4a90-a6e7-76cca20a5219",
+      "index": 923,
+      "period": 1,
+      "minute": 21,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Sven Bender",
+      "location": [
+        86,
+        48
+      ]
+    },
+    {
+      "id": "5bac1568-c4d8-4b27-84c8-c4231871d520",
+      "index": 929,
+      "period": 1,
+      "minute": 21,
+      "second": 20,
+      "type": "Pass",
+      "team": "Borussia Dortmund",
+      "player": "Kevin Großkreutz",
+      "location": [
+        116,
+        9
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "2b202229-20d8-43c6-8851-4e1d3abdb134",
+      "index": 933,
+      "period": 1,
+      "minute": 21,
+      "second": 23,
+      "type": "Shot",
+      "team": "Borussia Dortmund",
+      "player": "Sven Bender",
+      "location": [
+        106,
+        28
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "dde8b4ba-2d45-476a-a113-2a5da14b354a",
+      "index": 948,
+      "period": 1,
+      "minute": 22,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "David Olatukunbo Alaba",
+      "location": [
+        16,
+        7
+      ]
+    },
+    {
+      "id": "68862a5a-f15e-4d40-b1b9-35634edd0b46",
+      "index": 996,
+      "period": 1,
+      "minute": 23,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Franck Bilal Ribéry",
+      "location": [
+        13,
+        18
+      ]
+    },
+    {
+      "id": "1fe2c8c9-b1e2-4645-bf84-6a639ab0af6b",
+      "index": 999,
+      "period": 1,
+      "minute": 23,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "İlkay Gündoğan",
+      "location": [
+        72,
+        60
+      ]
+    },
+    {
+      "id": "896ada28-09b4-4d67-a773-84fe5c6af1da",
+      "index": 1023,
+      "period": 1,
+      "minute": 23,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Kevin Großkreutz",
+      "location": [
+        80,
+        24
+      ]
+    },
+    {
+      "id": "1e1e0c69-17c8-4a1e-b68f-0efff0e915fa",
+      "index": 1060,
+      "period": 1,
+      "minute": 24,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Marco Reus",
+      "location": [
+        60,
+        18
+      ]
+    },
+    {
+      "id": "5f6e2f87-31e2-448b-ab7a-8c0b7c01a170",
+      "index": 1083,
+      "period": 1,
+      "minute": 24,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Philipp Lahm",
+      "location": [
+        19,
+        58
+      ]
+    },
+    {
+      "id": "6e85b38c-6ac7-4eaa-a0d2-7bde973d2eed",
+      "index": 1090,
+      "period": 1,
+      "minute": 24,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        28,
+        56
+      ]
+    },
+    {
+      "id": "16c3c11a-6a69-4b51-af8b-e9aaa4a7de28",
+      "index": 1132,
+      "period": 1,
+      "minute": 25,
+      "second": 40,
+      "type": "Pass",
+      "team": "Bayern Munich",
+      "player": "Franck Bilal Ribéry",
+      "location": [
+        106,
+        7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "0f180445-ae47-4978-bc52-fe43f2e08dfd",
+      "index": 1135,
+      "period": 1,
+      "minute": 25,
+      "second": 42,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Mario Mandžukić",
+      "location": [
+        114,
+        43
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f8708ebb-178b-48e9-aaac-0112e2adc7e7",
+      "index": 1137,
+      "period": 1,
+      "minute": 26,
+      "second": 24,
+      "type": "Pass",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        120,
+        80
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "6793c0f9-13e4-495a-b405-429fe4b97768",
+      "index": 1140,
+      "period": 1,
+      "minute": 26,
+      "second": 25,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Javier Martínez Aginaga",
+      "location": [
+        113,
+        41
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2b500d3f-a1b1-4de2-8e2f-15fa4bb3867c",
+      "index": 1149,
+      "period": 1,
+      "minute": 27,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Roman Weidenfeller",
+      "location": [
+        14,
+        53
+      ]
+    },
+    {
+      "id": "76c80ba1-e5d1-4788-8407-3c04a3905569",
+      "index": 1186,
+      "period": 1,
+      "minute": 28,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Jakub Błaszczykowski",
+      "location": [
+        15,
+        75
+      ]
+    },
+    {
+      "id": "22ecd296-287a-4dca-b451-692649e72282",
+      "index": 1200,
+      "period": 1,
+      "minute": 29,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Manuel Neuer",
+      "location": [
+        7,
+        35
+      ]
+    },
+    {
+      "id": "e5eba274-7001-4d0f-ad6f-a05c6412259a",
+      "index": 1230,
+      "period": 1,
+      "minute": 29,
+      "second": 41,
+      "type": "Pass",
+      "team": "Bayern Munich",
+      "player": "Thomas Müller",
+      "location": [
+        77,
+        14
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "c534d17d-5610-4ea4-a828-de6ad4f3cb27",
+      "index": 1234,
+      "period": 1,
+      "minute": 29,
+      "second": 45,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Arjen Robben",
+      "location": [
+        109,
+        52
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "3c7e0f94-c16b-4101-b7ac-406451124fb0",
+      "index": 1241,
+      "period": 1,
+      "minute": 30,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        101,
+        46
+      ]
+    },
+    {
+      "id": "89f9c067-f28a-4d5e-9174-702cb9f6251f",
+      "index": 1242,
+      "period": 1,
+      "minute": 30,
+      "second": 9,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        101,
+        44
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "cc1b0333-86e6-4c66-a882-cbe9e080a75d",
+      "index": 1247,
+      "period": 1,
+      "minute": 30,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Franck Bilal Ribéry",
+      "location": [
+        98,
+        37
+      ]
+    },
+    {
+      "id": "186d659c-7f4c-4b6f-a9d1-65bb03067847",
+      "index": 1248,
+      "period": 1,
+      "minute": 30,
+      "second": 12,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Franck Bilal Ribéry",
+      "location": [
+        97,
+        37
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "ac1a74d2-78f8-498f-8294-1a70a410d566",
+      "index": 1256,
+      "period": 1,
+      "minute": 30,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Franck Bilal Ribéry",
+      "location": [
+        86,
+        10
+      ]
+    },
+    {
+      "id": "486d7477-7d8f-4095-b500-ce34ef4d2061",
+      "index": 1274,
+      "period": 1,
+      "minute": 31,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "David Olatukunbo Alaba",
+      "location": [
+        47,
+        6
+      ]
+    },
+    {
+      "id": "150f97d5-94bf-45c7-bc43-7679f0c014c8",
+      "index": 1292,
+      "period": 1,
+      "minute": 31,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        56,
+        37
+      ]
+    },
+    {
+      "id": "b16f3268-9692-4eb6-9182-efc1e6352013",
+      "index": 1354,
+      "period": 1,
+      "minute": 32,
+      "second": 40,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        66,
+        55
+      ]
+    },
+    {
+      "id": "5178dd86-754f-4131-8fa0-5c1acbcde559",
+      "index": 1416,
+      "period": 1,
+      "minute": 34,
+      "second": 41,
+      "type": "Pass",
+      "team": "Borussia Dortmund",
+      "player": "Marco Reus",
+      "location": [
+        78,
+        70
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "a3b50196-ad01-4b21-8f9b-a021cda593a7",
+      "index": 1420,
+      "period": 1,
+      "minute": 34,
+      "second": 44,
+      "type": "Shot",
+      "team": "Borussia Dortmund",
+      "player": "Robert Lewandowski",
+      "location": [
+        115,
+        52
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "691f3dfa-daff-4f2b-a3d1-e444229b8930",
+      "index": 1422,
+      "period": 1,
+      "minute": 34,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "David Olatukunbo Alaba",
+      "location": [
+        12,
+        22
+      ]
+    },
+    {
+      "id": "51c78f74-e57a-4e7b-84de-0893f5829d1c",
+      "index": 1471,
+      "period": 1,
+      "minute": 35,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Javier Martínez Aginaga",
+      "location": [
+        26,
+        31
+      ]
+    },
+    {
+      "id": "88820068-29f1-4cd7-a5a2-694451e9b16e",
+      "index": 1503,
+      "period": 1,
+      "minute": 36,
+      "second": 30,
+      "type": "Pass",
+      "team": "Bayern Munich",
+      "player": "Arjen Robben",
+      "location": [
+        120,
+        80
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "59f1d6ca-aec3-44de-8001-32e224b0bc0d",
+      "index": 1506,
+      "period": 1,
+      "minute": 36,
+      "second": 31,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Thomas Müller",
+      "location": [
+        115,
+        40
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "5e10de0b-780f-4e54-9621-d530c134d189",
+      "index": 1513,
+      "period": 1,
+      "minute": 37,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Neven Subotić",
+      "location": [
+        29,
+        67
+      ]
+    },
+    {
+      "id": "a2291865-fea0-482e-9867-bd96d73903bd",
+      "index": 1564,
+      "period": 1,
+      "minute": 38,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Philipp Lahm",
+      "location": [
+        86,
+        48
+      ]
+    },
+    {
+      "id": "bccf0947-1c15-4ea0-9c52-59046ed9b364",
+      "index": 1575,
+      "period": 1,
+      "minute": 38,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Mats Hummels",
+      "location": [
+        52,
+        26
+      ]
+    },
+    {
+      "id": "8b6f2b0f-4406-4651-aedd-497502d2e60e",
+      "index": 1615,
+      "period": 1,
+      "minute": 38,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Sven Bender",
+      "location": [
+        7,
+        43
+      ]
+    },
+    {
+      "id": "bc61ec56-1866-4f64-a2a0-86baf777ddc7",
+      "index": 1624,
+      "period": 1,
+      "minute": 39,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        81,
+        24
+      ]
+    },
+    {
+      "id": "808d59cf-360c-4a50-9267-a2eab44ed8fa",
+      "index": 1627,
+      "period": 1,
+      "minute": 39,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Roman Weidenfeller",
+      "location": [
+        6,
+        33
+      ]
+    },
+    {
+      "id": "50b6bc42-4d5e-48f0-9667-53c89694fa03",
+      "index": 1634,
+      "period": 1,
+      "minute": 39,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Roman Weidenfeller",
+      "location": [
+        10,
+        17
+      ]
+    },
+    {
+      "id": "7e91ac7c-8448-4eff-8aaf-34ca50b998f0",
+      "index": 1644,
+      "period": 1,
+      "minute": 40,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Arjen Robben",
+      "location": [
+        54,
+        72
+      ]
+    },
+    {
+      "id": "39275559-d373-45b1-ad4c-53e52e90081d",
+      "index": 1702,
+      "period": 1,
+      "minute": 41,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Marco Reus",
+      "location": [
+        50,
+        57
+      ]
+    },
+    {
+      "id": "6ce1748b-f1ad-4ca0-bb4f-f4fd62cb2866",
+      "index": 1743,
+      "period": 1,
+      "minute": 42,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Arjen Robben",
+      "location": [
+        109,
+        42
+      ]
+    },
+    {
+      "id": "fffdec88-1900-4f3b-9027-b4c97140309c",
+      "index": 1745,
+      "period": 1,
+      "minute": 42,
+      "second": 16,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Arjen Robben",
+      "location": [
+        108,
+        42
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "201219a5-2806-46ba-a97a-3603f6b425ad",
+      "index": 1749,
+      "period": 1,
+      "minute": 42,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Dante Bonfim da Costa Santos",
+      "location": [
+        36,
+        50
+      ]
+    },
+    {
+      "id": "4ab692f6-aa28-44cc-8138-eec8600ae561",
+      "index": 1775,
+      "period": 1,
+      "minute": 43,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Manuel Neuer",
+      "location": [
+        11,
+        21
+      ]
+    },
+    {
+      "id": "35ac2550-f132-41be-835a-519006dcadb3",
+      "index": 1829,
+      "period": 1,
+      "minute": 44,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Mats Hummels",
+      "location": [
+        23,
+        14
+      ]
+    },
+    {
+      "id": "a58ac4a7-3a1f-48e1-8eed-1076af2dcf20",
+      "index": 1872,
+      "period": 2,
+      "minute": 45,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Mario Mandžukić",
+      "location": [
+        57,
+        18
+      ]
+    },
+    {
+      "id": "986a464b-301d-4078-b29e-a4c486ca50b0",
+      "index": 1887,
+      "period": 2,
+      "minute": 45,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Sven Bender",
+      "location": [
+        65,
+        47
+      ]
+    },
+    {
+      "id": "dd36b68d-08f8-4cbc-9734-94dd00c9bdb1",
+      "index": 1892,
+      "period": 2,
+      "minute": 45,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Marcel Schmelzer",
+      "location": [
+        60,
+        29
+      ]
+    },
+    {
+      "id": "956baf7e-9937-4709-9549-c0e8a3728411",
+      "index": 1932,
+      "period": 2,
+      "minute": 47,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Manuel Neuer",
+      "location": [
+        5,
+        39
+      ]
+    },
+    {
+      "id": "73a5fd6e-6f76-400b-851f-e8ee4fe8bb33",
+      "index": 1946,
+      "period": 2,
+      "minute": 47,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Javier Martínez Aginaga",
+      "location": [
+        50,
+        19
+      ]
+    },
+    {
+      "id": "f3851716-d974-47ad-a120-e510fc7a301b",
+      "index": 1959,
+      "period": 2,
+      "minute": 47,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Łukasz Piszczek",
+      "location": [
+        66,
+        74
+      ]
+    },
+    {
+      "id": "4592b774-d959-4dbe-be52-5c1e2bb33119",
+      "index": 1997,
+      "period": 2,
+      "minute": 48,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Mats Hummels",
+      "location": [
+        39,
+        15
+      ]
+    },
+    {
+      "id": "a1d98583-db95-4a25-a4c4-53bb9ad3193a",
+      "index": 2016,
+      "period": 2,
+      "minute": 49,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Javier Martínez Aginaga",
+      "location": [
+        36,
+        10
+      ]
+    },
+    {
+      "id": "c1bba3da-8ecc-4c03-8a8b-4cd0737a46c7",
+      "index": 2067,
+      "period": 2,
+      "minute": 50,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "İlkay Gündoğan",
+      "location": [
+        53,
+        61
+      ]
+    },
+    {
+      "id": "cbfe2adf-4981-4e75-bb4d-92a809da6890",
+      "index": 2091,
+      "period": 2,
+      "minute": 51,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Jérôme Boateng",
+      "location": [
+        20,
+        64
+      ]
+    },
+    {
+      "id": "5553dd51-7abe-436b-8a2f-4b31e1a63577",
+      "index": 2117,
+      "period": 2,
+      "minute": 51,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Philipp Lahm",
+      "location": [
+        37,
+        64
+      ]
+    },
+    {
+      "id": "0c2a23a3-5978-4fb8-b979-aba037a3e346",
+      "index": 2125,
+      "period": 2,
+      "minute": 51,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        52,
+        46
+      ]
+    },
+    {
+      "id": "bfef2070-6782-4fe5-b997-f3ae2f0103ed",
+      "index": 2159,
+      "period": 2,
+      "minute": 52,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Franck Bilal Ribéry",
+      "location": [
+        92,
+        7
+      ]
+    },
+    {
+      "id": "ba1ca703-04ca-40c1-92f5-0f624d05d329",
+      "index": 2177,
+      "period": 2,
+      "minute": 52,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Arjen Robben",
+      "location": [
+        103,
+        77
+      ]
+    },
+    {
+      "id": "4c1a3201-f51f-4601-8919-dee30bffa750",
+      "index": 2204,
+      "period": 2,
+      "minute": 53,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "İlkay Gündoğan",
+      "location": [
+        32,
+        21
+      ]
+    },
+    {
+      "id": "b7aaa0ca-6a47-4d14-9ead-22b0dc09aee4",
+      "index": 2208,
+      "period": 2,
+      "minute": 53,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Sven Bender",
+      "location": [
+        37,
+        21
+      ]
+    },
+    {
+      "id": "bb19896f-1ba3-4090-a134-f152b3d2eb0c",
+      "index": 2236,
+      "period": 2,
+      "minute": 54,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Thomas Müller",
+      "location": [
+        90,
+        55
+      ]
+    },
+    {
+      "id": "1fea477f-4b5e-465a-a3ef-7a3ad27489e7",
+      "index": 2256,
+      "period": 2,
+      "minute": 54,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Sven Bender",
+      "location": [
+        8,
+        59
+      ]
+    },
+    {
+      "id": "37e213c2-2ae8-4f2a-aed7-cc9e02a8331b",
+      "index": 2281,
+      "period": 2,
+      "minute": 55,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Łukasz Piszczek",
+      "location": [
+        29,
+        74
+      ]
+    },
+    {
+      "id": "05d04c30-4151-4492-9e6e-594240741c6f",
+      "index": 2296,
+      "period": 2,
+      "minute": 55,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Mario Mandžukić",
+      "location": [
+        87,
+        14
+      ]
+    },
+    {
+      "id": "9bc532bf-7b32-491a-9ab8-8f422178eb4b",
+      "index": 2311,
+      "period": 2,
+      "minute": 56,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Neven Subotić",
+      "location": [
+        18,
+        68
+      ]
+    },
+    {
+      "id": "2c93e127-8091-4664-ab6c-6e3557a32a7d",
+      "index": 2323,
+      "period": 2,
+      "minute": 56,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "İlkay Gündoğan",
+      "location": [
+        51,
+        66
+      ]
+    },
+    {
+      "id": "85be6eda-7479-49b7-95f0-282c4bc937cd",
+      "index": 2326,
+      "period": 2,
+      "minute": 57,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Manuel Neuer",
+      "location": [
+        16,
+        22
+      ]
+    },
+    {
+      "id": "770d35d0-5a27-41e0-bcc7-a0a63df4b89a",
+      "index": 2373,
+      "period": 2,
+      "minute": 57,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        66,
+        44
+      ]
+    },
+    {
+      "id": "290f8ca0-193b-4c68-a6c9-f6fd1594f803",
+      "index": 2381,
+      "period": 2,
+      "minute": 58,
+      "second": 20,
+      "type": "Pass",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        120,
+        80
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "7f7dfb81-0fab-44d8-addc-77230576eed5",
+      "index": 2384,
+      "period": 2,
+      "minute": 58,
+      "second": 21,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Javier Martínez Aginaga",
+      "location": [
+        114,
+        44
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "53a7815a-55f9-4810-aaa5-6c47f7f09128",
+      "index": 2386,
+      "period": 2,
+      "minute": 58,
+      "second": 22,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Mario Mandžukić",
+      "location": [
+        115,
+        37
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d776d480-3c6c-487e-a0c5-5baaa9f69f28",
+      "index": 2390,
+      "period": 2,
+      "minute": 58,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "İlkay Gündoğan",
+      "location": [
+        61,
+        28
+      ]
+    },
+    {
+      "id": "bf433d1f-3cf9-48d6-8f10-cd57a98fb6bb",
+      "index": 2395,
+      "period": 2,
+      "minute": 58,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        44,
+        64
+      ]
+    },
+    {
+      "id": "a8c889ab-58ab-44d4-a330-5b569583dd7a",
+      "index": 2418,
+      "period": 2,
+      "minute": 59,
+      "second": 4,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Mario Mandžukić",
+      "location": [
+        117,
+        43
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "deacb1c8-a6cc-4f78-b18b-8e134e710165",
+      "index": 2425,
+      "period": 2,
+      "minute": 60,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        45,
+        15
+      ]
+    },
+    {
+      "id": "5cc907c3-8d08-4ddc-a184-b51d37f8212a",
+      "index": 2429,
+      "period": 2,
+      "minute": 60,
+      "second": 31,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Neven Subotić",
+      "location": [
+        51,
+        66
+      ]
+    },
+    {
+      "id": "1cc88091-43bb-4064-b06c-f05c864fb903",
+      "index": 2490,
+      "period": 2,
+      "minute": 61,
+      "second": 32,
+      "type": "Pass",
+      "team": "Bayern Munich",
+      "player": "David Olatukunbo Alaba",
+      "location": [
+        47,
+        7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "18045edf-bd7f-4e38-a8e8-ae25c839065d",
+      "index": 2494,
+      "period": 2,
+      "minute": 61,
+      "second": 38,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Mario Mandžukić",
+      "location": [
+        111,
+        54
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "b8f8fbb3-4525-45b0-b632-5e60064932e0",
+      "index": 2518,
+      "period": 2,
+      "minute": 62,
+      "second": 9,
+      "type": "Pass",
+      "team": "Borussia Dortmund",
+      "player": "Mats Hummels",
+      "location": [
+        45,
+        12
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "47425ece-908a-4e21-bd12-a6a96752fab6",
+      "index": 2521,
+      "period": 2,
+      "minute": 62,
+      "second": 14,
+      "type": "Shot",
+      "team": "Borussia Dortmund",
+      "player": "Kevin Großkreutz",
+      "location": [
+        88,
+        34
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "702f026b-7379-438c-9e96-4a237bce755b",
+      "index": 2542,
+      "period": 2,
+      "minute": 64,
+      "second": 40,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Roman Weidenfeller",
+      "location": [
+        5,
+        55
+      ]
+    },
+    {
+      "id": "4ac76c3a-792d-44cb-8312-e2186b933fff",
+      "index": 2556,
+      "period": 2,
+      "minute": 65,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Franck Bilal Ribéry",
+      "location": [
+        79,
+        13
+      ]
+    },
+    {
+      "id": "4362f47b-37b5-4acd-ad76-e7787d0bffda",
+      "index": 2578,
+      "period": 2,
+      "minute": 65,
+      "second": 27,
+      "type": "Pass",
+      "team": "Borussia Dortmund",
+      "player": "Robert Lewandowski",
+      "location": [
+        77,
+        13
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "b30a5897-a075-4d50-be6f-5ba702b171dc",
+      "index": 2580,
+      "period": 2,
+      "minute": 65,
+      "second": 28,
+      "type": "Shot",
+      "team": "Borussia Dortmund",
+      "player": "Łukasz Piszczek",
+      "location": [
+        101,
+        46
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c285adbc-762b-43af-b11e-34cb698133c7",
+      "index": 2582,
+      "period": 2,
+      "minute": 65,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Franck Bilal Ribéry",
+      "location": [
+        10,
+        6
+      ]
+    },
+    {
+      "id": "96422609-ce34-4a8c-a535-a063854bcc6c",
+      "index": 2614,
+      "period": 2,
+      "minute": 66,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Kevin Großkreutz",
+      "location": [
+        83,
+        10
+      ]
+    },
+    {
+      "id": "878fc693-8004-4dc3-8f8a-f47b681be75b",
+      "index": 2620,
+      "period": 2,
+      "minute": 66,
+      "second": 32,
+      "type": "Foul Won",
+      "team": "Borussia Dortmund",
+      "player": "Marco Reus",
+      "location": [
+        108,
+        24
+      ],
+      "foul_won": {
+        "penalty": true
+      }
+    },
+    {
+      "id": "1cea8bfe-7d7c-4e55-a72f-f1e991f1c188",
+      "index": 2621,
+      "period": 2,
+      "minute": 67,
+      "second": 34,
+      "type": "Shot",
+      "team": "Borussia Dortmund",
+      "player": "İlkay Gündoğan",
+      "location": [
+        108,
+        40
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Penalty"
+      }
+    },
+    {
+      "id": "750f8667-a7c0-41e4-a6f8-576920837fc1",
+      "index": 2633,
+      "period": 2,
+      "minute": 68,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Philipp Lahm",
+      "location": [
+        90,
+        65
+      ]
+    },
+    {
+      "id": "59331a12-c661-4af1-be41-e9ed028836cb",
+      "index": 2640,
+      "period": 2,
+      "minute": 69,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        95,
+        54
+      ]
+    },
+    {
+      "id": "6438b500-0ed1-41c8-8e2a-6eb82c8c319d",
+      "index": 2650,
+      "period": 2,
+      "minute": 69,
+      "second": 16,
+      "type": "Pass",
+      "team": "Borussia Dortmund",
+      "player": "Jakub Błaszczykowski",
+      "location": [
+        105,
+        57
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "4ec3aa69-13c9-43ca-957b-5372f2dd6f76",
+      "index": 2653,
+      "period": 2,
+      "minute": 69,
+      "second": 18,
+      "type": "Shot",
+      "team": "Borussia Dortmund",
+      "player": "Mats Hummels",
+      "location": [
+        98,
+        46
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "1cbde29e-8426-4711-99c6-313093db911e",
+      "index": 2689,
+      "period": 2,
+      "minute": 70,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Sven Bender",
+      "location": [
+        33,
+        25
+      ]
+    },
+    {
+      "id": "474befaf-c901-4baf-b868-0e7cdf66e8f4",
+      "index": 2708,
+      "period": 2,
+      "minute": 70,
+      "second": 31,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Manuel Neuer",
+      "location": [
+        12,
+        49
+      ]
+    },
+    {
+      "id": "15b52c46-c1d2-4748-b926-1ed63fe7b788",
+      "index": 2724,
+      "period": 2,
+      "minute": 70,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Roman Weidenfeller",
+      "location": [
+        8,
+        34
+      ]
+    },
+    {
+      "id": "7ec426dc-3b30-4e2b-8750-20e6ffc3e1c1",
+      "index": 2736,
+      "period": 2,
+      "minute": 71,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Franck Bilal Ribéry",
+      "location": [
+        12,
+        40
+      ]
+    },
+    {
+      "id": "d0fbffaa-5e71-41de-96fe-dfecf67dc751",
+      "index": 2749,
+      "period": 2,
+      "minute": 71,
+      "second": 22,
+      "type": "Pass",
+      "team": "Bayern Munich",
+      "player": "Mario Mandžukić",
+      "location": [
+        83,
+        66
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "aba8a755-80f4-42c9-bb0e-0e970f832f62",
+      "index": 2753,
+      "period": 2,
+      "minute": 71,
+      "second": 26,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Thomas Müller",
+      "location": [
+        113,
+        58
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "27df5d69-bad1-4d98-8af8-17805950633f",
+      "index": 2784,
+      "period": 2,
+      "minute": 72,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Thomas Müller",
+      "location": [
+        108,
+        77
+      ]
+    },
+    {
+      "id": "f294a6d2-d0da-4f66-a51f-bd7edd71167f",
+      "index": 2788,
+      "period": 2,
+      "minute": 72,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Mats Hummels",
+      "location": [
+        12,
+        25
+      ]
+    },
+    {
+      "id": "2f3a808c-5f9d-47bd-960e-46eb2a5179f4",
+      "index": 2800,
+      "period": 2,
+      "minute": 74,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Mario Mandžukić",
+      "location": [
+        89,
+        64
+      ]
+    },
+    {
+      "id": "670cfc75-1206-4b49-b97e-0329a028880d",
+      "index": 2813,
+      "period": 2,
+      "minute": 74,
+      "second": 38,
+      "type": "Pass",
+      "team": "Borussia Dortmund",
+      "player": "Robert Lewandowski",
+      "location": [
+        94,
+        28
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "bf01420c-5497-4db6-92bc-545c9f906bf2",
+      "index": 2816,
+      "period": 2,
+      "minute": 74,
+      "second": 40,
+      "type": "Shot",
+      "team": "Borussia Dortmund",
+      "player": "Jakub Błaszczykowski",
+      "location": [
+        101,
+        48
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c48d874d-0a1c-4175-b9ea-ef65c4f3bfa7",
+      "index": 2819,
+      "period": 2,
+      "minute": 74,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Franck Bilal Ribéry",
+      "location": [
+        37,
+        22
+      ]
+    },
+    {
+      "id": "1de4d0e9-ed7b-4f4c-bd6b-4818cb684956",
+      "index": 2839,
+      "period": 2,
+      "minute": 75,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Arjen Robben",
+      "location": [
+        116,
+        73
+      ]
+    },
+    {
+      "id": "56af7153-0a85-488f-b223-12a8c98fff50",
+      "index": 2851,
+      "period": 2,
+      "minute": 75,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Thomas Müller",
+      "location": [
+        109,
+        28
+      ]
+    },
+    {
+      "id": "4611250e-6339-4a47-9b14-581a40bc0462",
+      "index": 2854,
+      "period": 2,
+      "minute": 75,
+      "second": 22,
+      "type": "Pass",
+      "team": "Bayern Munich",
+      "player": "Thomas Müller",
+      "location": [
+        108,
+        26
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "3ad9833c-44ab-4885-8091-a97fb9f7074a",
+      "index": 2856,
+      "period": 2,
+      "minute": 75,
+      "second": 23,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "David Olatukunbo Alaba",
+      "location": [
+        97,
+        27
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "69e1ff8f-a3bf-4767-b61f-3c5a6b7f2f52",
+      "index": 2876,
+      "period": 2,
+      "minute": 76,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Roman Weidenfeller",
+      "location": [
+        2,
+        39
+      ]
+    },
+    {
+      "id": "2c724a66-2811-4f66-80b7-cd4f2341824f",
+      "index": 2901,
+      "period": 2,
+      "minute": 76,
+      "second": 50,
+      "type": "Pass",
+      "team": "Bayern Munich",
+      "player": "Thomas Müller",
+      "location": [
+        105,
+        36
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "75f27532-b995-4f6f-a3fa-48823b6861c2",
+      "index": 2903,
+      "period": 2,
+      "minute": 76,
+      "second": 53,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Mario Mandžukić",
+      "location": [
+        117,
+        55
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "85b287a8-91ad-4b35-adc7-a503d6968b0c",
+      "index": 2919,
+      "period": 2,
+      "minute": 77,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Mats Hummels",
+      "location": [
+        15,
+        59
+      ]
+    },
+    {
+      "id": "07f1322d-4d8f-45c2-acc7-58bceec15cee",
+      "index": 2924,
+      "period": 2,
+      "minute": 77,
+      "second": 40,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "İlkay Gündoğan",
+      "location": [
+        9,
+        61
+      ]
+    },
+    {
+      "id": "cb7e9e84-bd1e-431e-a189-ff0c9763af18",
+      "index": 2943,
+      "period": 2,
+      "minute": 78,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Marco Reus",
+      "location": [
+        37,
+        27
+      ]
+    },
+    {
+      "id": "56850a30-48b7-4c24-91c6-692c6d9b182b",
+      "index": 2951,
+      "period": 2,
+      "minute": 78,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Mario Mandžukić",
+      "location": [
+        39,
+        78
+      ]
+    },
+    {
+      "id": "d667425b-a6c2-4167-8402-b3166abed0e5",
+      "index": 2979,
+      "period": 2,
+      "minute": 80,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Roman Weidenfeller",
+      "location": [
+        3,
+        49
+      ]
+    },
+    {
+      "id": "754fff77-ce80-4b60-813c-0a637cc05bbe",
+      "index": 2993,
+      "period": 2,
+      "minute": 80,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Franck Bilal Ribéry",
+      "location": [
+        58,
+        11
+      ]
+    },
+    {
+      "id": "19dd64d3-8305-48e6-97fa-56a2d8b42bc4",
+      "index": 3075,
+      "period": 2,
+      "minute": 81,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Franck Bilal Ribéry",
+      "location": [
+        90,
+        59
+      ]
+    },
+    {
+      "id": "13b420b6-ae4e-4a13-a8c8-68a69c3954c9",
+      "index": 3086,
+      "period": 2,
+      "minute": 82,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        102,
+        52
+      ]
+    },
+    {
+      "id": "0ea6bc24-e73f-4797-9af1-6ae3ec7a1fe2",
+      "index": 3088,
+      "period": 2,
+      "minute": 82,
+      "second": 27,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        102,
+        47
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c037ca7d-454f-4350-9e69-fa4a81590845",
+      "index": 3120,
+      "period": 2,
+      "minute": 84,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Roman Weidenfeller",
+      "location": [
+        9,
+        58
+      ]
+    },
+    {
+      "id": "42375d82-c84d-46c2-94da-600a0ed0caf5",
+      "index": 3141,
+      "period": 2,
+      "minute": 85,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "İlkay Gündoğan",
+      "location": [
+        59,
+        10
+      ]
+    },
+    {
+      "id": "296ad967-ea2d-4041-8b0f-6feece4fe535",
+      "index": 3188,
+      "period": 2,
+      "minute": 86,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Marco Reus",
+      "location": [
+        46,
+        15
+      ]
+    },
+    {
+      "id": "413f61ab-74d7-4103-8fca-6605a2ac6d25",
+      "index": 3203,
+      "period": 2,
+      "minute": 86,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Mats Hummels",
+      "location": [
+        18,
+        23
+      ]
+    },
+    {
+      "id": "43cfe385-e5c5-4939-82e9-20a37c60dc44",
+      "index": 3219,
+      "period": 2,
+      "minute": 86,
+      "second": 55,
+      "type": "Pass",
+      "team": "Bayern Munich",
+      "player": "Thomas Müller",
+      "location": [
+        107,
+        52
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "520c7bb9-99d0-46ce-9f2c-8b63a17388d7",
+      "index": 3221,
+      "period": 2,
+      "minute": 86,
+      "second": 56,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Bastian Schweinsteiger",
+      "location": [
+        100,
+        41
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "0e4aa482-5c72-4020-805e-f9a96402df4f",
+      "index": 3240,
+      "period": 2,
+      "minute": 88,
+      "second": 23,
+      "type": "Shot",
+      "team": "Bayern Munich",
+      "player": "Arjen Robben",
+      "location": [
+        112,
+        41
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f652f096-e561-4910-857f-659c29745ce3",
+      "index": 3267,
+      "period": 2,
+      "minute": 90,
+      "second": 57,
+      "type": "Pass",
+      "team": "Borussia Dortmund",
+      "player": "Marcel Schmelzer",
+      "location": [
+        113,
+        8
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "4bdcc9f9-ef90-4857-a9bf-4845cb3b8f84",
+      "index": 3270,
+      "period": 2,
+      "minute": 90,
+      "second": 59,
+      "type": "Shot",
+      "team": "Borussia Dortmund",
+      "player": "Julian Schieber",
+      "location": [
+        108,
+        27
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "cc9c9b2e-65cf-418c-9229-5427386f395b",
+      "index": 3275,
+      "period": 2,
+      "minute": 91,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "İlkay Gündoğan",
+      "location": [
+        45,
+        19
+      ]
+    },
+    {
+      "id": "e34ddaa1-eca2-4ae2-9396-c50b34c9a60c",
+      "index": 3278,
+      "period": 2,
+      "minute": 91,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Manuel Neuer",
+      "location": [
+        7,
+        52
+      ]
+    },
+    {
+      "id": "ffa088c4-681b-4274-a49e-9642583e9bd4",
+      "index": 3312,
+      "period": 2,
+      "minute": 92,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "Manuel Neuer",
+      "location": [
+        6,
+        35
+      ]
+    },
+    {
+      "id": "723c76ae-0205-43f4-83db-3ed16d6e5869",
+      "index": 3316,
+      "period": 2,
+      "minute": 92,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Borussia Dortmund",
+      "player": "Marcel Schmelzer",
+      "location": [
+        34,
+        8
+      ]
+    },
+    {
+      "id": "507e3077-0791-45fa-ba39-4f83e830ad78",
+      "index": 3328,
+      "period": 2,
+      "minute": 93,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Bayern Munich",
+      "player": "David Olatukunbo Alaba",
+      "location": [
+        57,
+        41
+      ]
+    }
+  ]
+}
