@@ -920,12 +920,13 @@ function MsPitchArt() {
   );
 }
 
+// Logos reales donde existen (crests.football-data.org); el resto, solo texto
 const MS_CAT_META = {
-  "CHAMPIONS LEAGUE": { icon:"⭐", sub:"Finales europeas · 2005–2019" },
-  "MUNDIALES":        { icon:"🏆", sub:"Clásicos mundialistas · 1970–2022" },
-  "EUROS":            { icon:"🏅", sub:"Eliminatorias · 2020 y 2024" },
-  "COPA AMÉRICA":     { icon:"🌎", sub:"Argentina campeona · 2024" },
-  "LA LIGA":          { icon:"🔥", sub:"Clásicos en el Bernabéu" },
+  "CHAMPIONS LEAGUE": { logo:"https://crests.football-data.org/CL.png",   sub:"Finales europeas · 2005–2019" },
+  "MUNDIALES":        { sub:"Clásicos mundialistas · 1970–2022" },
+  "EUROS":            { logo:"https://crests.football-data.org/2018.png", sub:"Eliminatorias · 2020 y 2024" },
+  "COPA AMÉRICA":     { sub:"Argentina campeona · 2024" },
+  "LA LIGA":          { sub:"Clásicos en el Bernabéu" },
 };
 
 function ModeSelect({ onEnterMundial, onChooseHistoric }) {
@@ -971,12 +972,12 @@ function ModeSelect({ onEnterMundial, onChooseHistoric }) {
             <h2 className="msa-title is-hist">{HISTORIC_MATCHES.length} PARTIDOS<span className="msa-num">MÍTICOS</span></h2>
             <div className="msa-comp-list">
               {HISTORIC_CATS.map(cat=>{
-                const meta=MS_CAT_META[cat]||{icon:"⚽",sub:""};
+                const meta=MS_CAT_META[cat]||{sub:""};
                 const n=HISTORIC_MATCHES.filter(m=>m.cat===cat).length;
                 if(!n) return null;
                 return (
-                  <div className="msa-comp-row" key={cat}>
-                    <span className="ms-logoslot">{meta.icon}</span>
+                  <div className={"msa-comp-row"+(meta.logo?"":" no-logo")} key={cat}>
+                    {meta.logo&&<span className="ms-logoslot"><img src={meta.logo} alt={cat} loading="lazy"/></span>}
                     <div className="msa-comp-info">
                       <div className="msa-comp-name">{cat}</div>
                       <div className="msa-comp-sub">{meta.sub}</div>
@@ -996,7 +997,6 @@ function ModeSelect({ onEnterMundial, onChooseHistoric }) {
           </div>
         </div>
         <div className="msa-seam"></div>
-        <div className="msa-emblem"><KanchaWordmark/></div>
         <div className="msa-toplabel">ELIGE TU MODO DE JUEGO</div>
       </div>
     </div>
