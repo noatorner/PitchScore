@@ -758,6 +758,37 @@ input { font-family: inherit; }
   .msa-pad-r, .msa-pad-l { padding: 36px 24px; }
   .msa-seam { display: none; }
 }
+
+/* ============ FOOTER ============ */
+.ps-footer { flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 9px 18px; background: #181b18; color: #cabf9f; font-family: var(--kn-body); font-size: 11px; letter-spacing: 0.06em; flex-wrap: wrap; }
+.ps-footer-l { display: flex; align-items: center; gap: 12px; }
+.ps-footer-logo { height: 13px; width: auto; display: block; opacity: 0.9; }
+.ps-footer-claim { font-style: italic; }
+.ps-footer-claim .kn-dot { color: #c8442e; font-style: normal; }
+.ps-footer-copy { color: #7c7259; letter-spacing: 0.12em; font-weight: 600; font-size: 10px; }
+
+/* ============ MOBILE NAV (hamburguesa + drawer) ============ */
+.ps-menu-btn { display: none; position: fixed; top: 12px; left: 12px; z-index: 230; width: 42px; height: 42px; border-radius: 8px; background: #181b18; color: #f0e7d0; place-items: center; box-shadow: 0 4px 12px rgba(0,0,0,0.35); }
+.ps-nav-backdrop { display: none; }
+@media (max-width: 860px) {
+  .ps-app { grid-template-columns: 1fr; }
+  .ps-sidebar { position: fixed; top: 0; bottom: 0; left: 0; width: 260px; z-index: 225; transform: translateX(-100%); transition: transform 0.2s ease; box-shadow: 8px 0 30px rgba(0,0,0,0.35); }
+  .ps-sidebar.is-open { transform: translateX(0); }
+  .ps-menu-btn { display: grid; }
+  .ps-nav-backdrop { display: block; position: fixed; inset: 0; background: rgba(20,23,20,0.5); z-index: 220; }
+  .ps-topbar-row { padding-left: 64px; flex-wrap: wrap; }
+  .ps-inicio-screen { padding-top: 16px; }
+  .ps-page { padding: 16px 14px 20px; }
+  .ps-page-head { flex-direction: column; align-items: flex-start; }
+  .ps-rank-head, .ps-rank-row { grid-template-columns: 44px 1fr 80px 90px; }
+  .ps-rank-head span:nth-child(3), .ps-rank-row .ps-rr-level { display: none; }
+  .ps-podium { padding: 16px 8px 0; gap: 8px; }
+  .ps-res-banner, .ps-past-card { grid-template-columns: 1fr; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .ps-res-zones-grid { grid-template-columns: 1fr; }
+  .ps-stats-grid { grid-template-columns: 1fr 1fr; }
+  .ps-how-grid { grid-template-columns: 1fr 1fr; }
+  .msa-pad-r, .msa-pad-l { padding: 64px 20px 28px; }
+}
   </style>
 </head>
 <body style="background-color: rgb(61, 54, 39)">

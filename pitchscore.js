@@ -77,32 +77,6 @@ function fixtureStatus(m, now = new Date()) {
 }
 FIXTURE.forEach((m) => { m.status = fixtureStatus(m); });
 
-const RANKING = [
-  { rank:1, name:"Lucía R.", handle:"lucy_goal", points:12847, country:"ESP", level:"Maestro", trend:0, badge:"👑" },
-  { rank:2, name:"Diego M.", handle:"diegoarg", points:11932, country:"ARG", level:"Maestro", trend:1, badge:"⚽" },
-  { rank:3, name:"Yuki T.", handle:"yukifc", points:11420, country:"JPN", level:"Maestro", trend:-1, badge:"⚽" },
-  { rank:4, name:"Sofia B.", handle:"sofbra", points:10876, country:"BRA", level:"Veterano", trend:2 },
-  { rank:5, name:"Mateo F.", handle:"mateuy", points:10543, country:"URU", level:"Veterano", trend:0 },
-  { rank:6, name:"Aïsha K.", handle:"aishak", points:9987, country:"FRA", level:"Veterano", trend:3 },
-  { rank:7, name:"Tom W.", handle:"tomw", points:9654, country:"ENG", level:"Veterano", trend:-2 },
-  { rank:8, name:"Hans P.", handle:"hansp", points:9210, country:"GER", level:"Veterano", trend:1 },
-  { rank:47, name:"JuanP", handle:"juanp", points:4287, country:"MEX", level:"Rookie", trend:5, isMe:true },
-];
-
-const FRIENDS = [
-  { name:"Carla G.", handle:"carlag", country:"MEX", points:5402, level:"Veterano", status:"online", lastMatch:"+187 vs URU", streak:4 },
-  { name:"Pablo H.", handle:"pabloh", country:"ESP", points:4912, level:"Rookie", status:"online", lastMatch:"+246 vs BEL", streak:2 },
-  { name:"Andrea L.", handle:"andrl", country:"ARG", points:4187, level:"Rookie", status:"watching", lastMatch:"+64 vs ITA", streak:0 },
-  { name:"Marco T.", handle:"marct", country:"ITA", points:3876, level:"Rookie", status:"offline", lastMatch:"+98 vs COL", streak:1 },
-  { name:"Nina V.", handle:"ninav", country:"GER", points:3654, level:"Rookie", status:"online", lastMatch:"+312 vs JPN", streak:6 },
-  { name:"Luis O.", handle:"luiso", country:"POR", points:2987, level:"Novato", status:"offline", lastMatch:"+41 vs ARG", streak:0 },
-];
-
-const FRIEND_REQUESTS = [
-  { name:"Elena S.", handle:"elenas", country:"ESP", mutual:3 },
-  { name:"Kenji M.", handle:"kenjim", country:"JPN", mutual:1 },
-];
-
 function tierForPrice(p) { return p >= 150 ? "premium" : p >= 108 ? "high" : p >= 82 ? "mid" : "low"; }
 const ZONES = [];
 const Z = (z) => { ZONES.push({ slots:5, taken:0, ...z, tier: z.tier || tierForPrice(z.price) }); };
@@ -204,7 +178,7 @@ const ME = {
   notifications:3, streak:4,
 };
 
-Object.assign(window, { FLAGS, FLAG_ISO, Flag, COUNTRY_NAME, FIXTURE, fixtureStatus, RANKING, FRIENDS, FRIEND_REQUESTS, ZONES, ACTIONS, HISTORIC_MATCHES, HISTORIC_CATS, ME, KANCHA_LOGO });
+Object.assign(window, { FLAGS, FLAG_ISO, Flag, COUNTRY_NAME, FIXTURE, fixtureStatus, ZONES, ACTIONS, HISTORIC_MATCHES, HISTORIC_CATS, ME, KANCHA_LOGO });
 
 // Wordmark KANCHA reutilizable (sidebar, emblema de la pantalla de modos)
 function KanchaWordmark({ fill = "#EFE5CC", className = "" }) {
@@ -222,7 +196,7 @@ function KanchaWordmark({ fill = "#EFE5CC", className = "" }) {
 }
 
 // ===== SIDEBAR =====
-function Sidebar({ page, onNav }) {
+function Sidebar({ page, onNav, open }) {
   const items = [
     { id:"inicio",   label:"Inicio",       icon:"home" },
     { id:"partidos", label:"Partidos",      icon:"grid" },
@@ -232,7 +206,7 @@ function Sidebar({ page, onNav }) {
     { id:"historial",label:"Historial",     icon:"clock" },
   ];
   return (
-    <aside className="ps-sidebar">
+    <aside className={"ps-sidebar"+(open?" is-open":"")}>
       <div className="ps-brand kn-brand">
         <div className="kn-eyebrow">FÚTBOL EN JUEGO</div>
         <KanchaWordmark className="kn-logo-img"/>
@@ -1613,7 +1587,7 @@ function PageRanking() {
       {scores.length===0&&(
         <div className="ps-empty-state">
           <div className="ps-empty-icon">🏆</div>
-          <div className="ps-empty-t">El ranking está vacío</div>
+          <div className="ps-empty-t">Sé el primero en el ranking</div>
           <div className="ps-empty-d">Confirma reservas en un partido para aparecer aquí.</div>
         </div>
       )}
@@ -1660,18 +1634,6 @@ function PageRanking() {
   );
 }
 
-function RankRow({ r, isMe }) {
-  return (
-    <div className={"ps-rank-row"+(isMe||r.isMe?" is-me":"")}>
-      <span className="ps-rr-rank">{r.rank}</span>
-      <span className="ps-rr-player"><Flag code={r.country} h={18} className="ps-rr-flag"/><span><div className="ps-rr-name">{r.name}{r.badge?" "+r.badge:""}</div><div className="ps-rr-handle">@{r.handle}</div></span></span>
-      <span className="ps-rr-level">{r.level.toUpperCase()}</span>
-      <span className="ps-rr-trend">{r.trend>0&&<span className="ps-trend-up">▲ {r.trend}</span>}{r.trend<0&&<span className="ps-trend-dn">▼ {Math.abs(r.trend)}</span>}{r.trend===0&&<span className="ps-trend-eq">— 0</span>}</span>
-      <span className="ps-rr-pts">{r.points.toLocaleString()}<span>pts</span></span>
-    </div>
-  );
-}
-
 function PageAmigos() {
   const [tab,setTab]=React.useState("amigos");
   return (
@@ -1681,29 +1643,23 @@ function PageAmigos() {
         <div className="ps-page-search"><input placeholder="Buscar usuario @handle…"/><button className="ps-btn ps-btn-primary ps-btn-sm">INVITAR AMIGO</button></div>
       </div>
       <div className="ps-tabs">
-        <button className={"ps-tab"+(tab==="amigos"?" is-on":"")} onClick={()=>setTab("amigos")}>AMIGOS · {FRIENDS.length}</button>
-        <button className={"ps-tab"+(tab==="solicitudes"?" is-on":"")} onClick={()=>setTab("solicitudes")}>SOLICITUDES · {FRIEND_REQUESTS.length}</button>
-        <button className={"ps-tab"+(tab==="retos"?" is-on":"")} onClick={()=>setTab("retos")}>RETOS · 2</button>
+        <button className={"ps-tab"+(tab==="amigos"?" is-on":"")} onClick={()=>setTab("amigos")}>AMIGOS · 0</button>
+        <button className={"ps-tab"+(tab==="solicitudes"?" is-on":"")} onClick={()=>setTab("solicitudes")}>SOLICITUDES · 0</button>
       </div>
-      {tab==="amigos"&&(<><div className="ps-friends-strip"><div className="ps-strip-card"><div className="ps-strip-l">EN VIVO AHORA</div><div className="ps-strip-v">{FRIENDS.filter(f=>f.status==="online").length}</div></div><div className="ps-strip-card"><div className="ps-strip-l">VIENDO PARTIDO</div><div className="ps-strip-v">{FRIENDS.filter(f=>f.status==="watching").length}</div></div><div className="ps-strip-card"><div className="ps-strip-l">TU RANKING ENTRE AMIGOS</div><div className="ps-strip-v">2 / {FRIENDS.length+1}</div></div></div><div className="ps-friends-grid">{FRIENDS.map(f=><FriendCard key={f.handle} f={f}/>)}</div></>)}
-      {tab==="solicitudes"&&(<div className="ps-req-list">{FRIEND_REQUESTS.map(r=>(<div className="ps-req-row" key={r.handle}><div className="ps-req-l"><div className="ps-req-avatar"><Flag code={r.country} round fill/></div><div><div className="ps-req-name">{r.name}</div><div className="ps-req-handle">@{r.handle} · {r.mutual} amigos en común</div></div></div><div className="ps-req-actions"><button className="ps-btn ps-btn-primary ps-btn-sm">ACEPTAR</button><button className="ps-btn ps-btn-ghost ps-btn-sm">RECHAZAR</button></div></div>))}</div>)}
-      {tab==="retos"&&(<div className="ps-challenges"><div className="ps-chall-card"><div className="ps-chall-eb">RETO ACTIVO</div><div className="ps-chall-title">PRIMERO EN LLEGAR A 500 PUNTOS</div><div className="ps-chall-sub">vs Nina V. · México vs Sudáfrica</div><div className="ps-chall-bars"><div className="ps-bar-row"><span>TÚ</span><div className="ps-bar"><div className="ps-bar-fill" style={{width:"58%"}}></div></div><span>290 pts</span></div><div className="ps-bar-row"><span>NINA</span><div className="ps-bar"><div className="ps-bar-fill ps-bar-alt" style={{width:"42%"}}></div></div><span>210 pts</span></div></div></div><div className="ps-chall-card"><div className="ps-chall-eb">RETO PROPUESTO</div><div className="ps-chall-title">MEJOR PUNTUACIÓN EN BRA vs POR</div><div className="ps-chall-sub">Pablo H. te ha retado · 13 JUN 18:00</div><div className="ps-chall-actions"><button className="ps-btn ps-btn-primary ps-btn-sm">ACEPTAR RETO</button><button className="ps-btn ps-btn-ghost ps-btn-sm">RECHAZAR</button></div></div></div>)}
-    </div>
-  );
-}
-
-function FriendCard({ f }) {
-  const statusLabel=f.status==="online"?"EN LÍNEA":f.status==="watching"?"VIENDO PARTIDO":"DESCONECTADO";
-  return (
-    <div className="ps-friend-card">
-      <div className={`ps-friend-status ps-friend-status-${f.status}`}></div>
-      <div className="ps-friend-avatar"><Flag code={f.country} round fill/></div>
-      <div className="ps-friend-name">{f.name}</div>
-      <div className="ps-friend-handle">@{f.handle}</div>
-      <div className={"ps-friend-stat ps-friend-stat-"+f.status}>{statusLabel}</div>
-      <div className="ps-friend-stats"><div><div className="ps-fs-l">PUNTOS</div><div className="ps-fs-v">{f.points.toLocaleString()}</div></div><div><div className="ps-fs-l">NIVEL</div><div className="ps-fs-v">{f.level}</div></div><div><div className="ps-fs-l">RACHA</div><div className="ps-fs-v">{f.streak} 🔥</div></div></div>
-      <div className="ps-friend-last">Último: <strong>{f.lastMatch}</strong></div>
-      <div className="ps-friend-actions"><button className="ps-btn ps-btn-dark ps-btn-sm">RETAR</button><button className="ps-btn ps-btn-ghost ps-btn-sm">COMPARAR</button></div>
+      {tab==="amigos"&&(
+        <div className="ps-empty-state">
+          <div className="ps-empty-icon">👥</div>
+          <div className="ps-empty-t">Aún no tienes amigos en Kancha</div>
+          <div className="ps-empty-d">Invita a tus amigos para comparar puntuaciones, compartir reservas y retarlos en cada partido.</div>
+        </div>
+      )}
+      {tab==="solicitudes"&&(
+        <div className="ps-empty-state">
+          <div className="ps-empty-icon">📭</div>
+          <div className="ps-empty-t">Sin solicitudes pendientes</div>
+          <div className="ps-empty-d">Las solicitudes de amistad que recibas aparecerán aquí.</div>
+        </div>
+      )}
     </div>
   );
 }
@@ -1806,36 +1762,26 @@ function PageHistorial() {
   );
 }
 
-function PointsChart({ history }) {
-  const data=[...history].reverse(),max=Math.max(...data.map(d=>d.points));
-  const W=720,H=200,P=30,stepX=(W-P*2)/(data.length-1);
-  const points=data.map((d,i)=>[P+i*stepX,H-P-(d.points/max)*(H-P*2)]);
-  const pathD=points.map((p,i)=>(i===0?"M":"L")+p[0]+","+p[1]).join(" ");
-  const areaD=pathD+` L${P+(data.length-1)*stepX},${H-P} L${P},${H-P} Z`;
-  return (
-    <svg viewBox={`0 0 ${W} ${H}`} width="100%" style={{display:"block"}}>
-      <defs><linearGradient id="chartFill" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="#b94234" stopOpacity="0.45"/><stop offset="100%" stopColor="#b94234" stopOpacity="0"/></linearGradient></defs>
-      {[0.25,0.5,0.75].map(g=>(<line key={g} x1={P} x2={W-P} y1={H-P-(H-P*2)*g} y2={H-P-(H-P*2)*g} stroke="#c9b88a" strokeDasharray="2 4"/>))}
-      <path d={areaD} fill="url(#chartFill)"/>
-      <path d={pathD} stroke="#b94234" strokeWidth="2.5" fill="none" strokeLinejoin="round" strokeLinecap="round"/>
-      {points.map(([x,y],i)=>(<g key={i}><circle cx={x} cy={y} r="5" fill={data[i].status==="WIN"?"#3d7a3a":"#b94234"} stroke="#f0e7d0" strokeWidth="2"/><text x={x} y={H-8} textAnchor="middle" fontSize="11" fill="#5a5141" fontFamily="Saira">{data[i].date}</text><text x={x} y={y-12} textAnchor="middle" fontSize="11" fill="#2a2620" fontFamily="Anton">{data[i].points}</text></g>))}
-    </svg>
-  );
-}
-
 Object.assign(window, { PagePartidos, PageReservas, PageRanking, PageAmigos, PageHistorial });
 
 // ===== APP =====
 function App() {
   const [page,setPage]=React.useState("inicio");
   const [showHow,setShowHow]=React.useState(false);
+  const [navOpen,setNavOpen]=React.useState(false);
   React.useEffect(()=>{const hash=window.location.hash.replace("#","");if(hash&&["inicio","partidos","reservas","ranking","amigos","historial"].includes(hash))setPage(hash);},[]);
-  function nav(p){setPage(p);window.location.hash=p;window.scrollTo({top:0,behavior:"smooth"});}
+  function nav(p){setPage(p);setNavOpen(false);window.location.hash=p;window.scrollTo({top:0,behavior:"smooth"});}
   const pageTitles={inicio:{eb:"MUNDIAL 2026",title:"INICIO"},partidos:{eb:"FIXTURE",title:"PARTIDOS"},reservas:{eb:"TUS APUESTAS",title:"MIS RESERVAS"},ranking:{eb:"LEADERBOARD",title:"RANKING"},amigos:{eb:"TU EQUIPO",title:"AMIGOS"},historial:{eb:"TU CAMINO",title:"HISTORIAL"}};
   const pt=pageTitles[page]||pageTitles.inicio;
   return (
     <div className="ps-app">
-      <Sidebar page={page} onNav={nav}/>
+      <button className="ps-menu-btn" onClick={()=>setNavOpen(o=>!o)} aria-label="Menú">
+        <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" fill="none">
+          {navOpen?<path d="M6 6l12 12M18 6L6 18"/>:<path d="M4 7h16M4 12h16M4 17h16"/>}
+        </svg>
+      </button>
+      {navOpen&&<div className="ps-nav-backdrop" onClick={()=>setNavOpen(false)}></div>}
+      <Sidebar page={page} onNav={nav} open={navOpen}/>
       <div className="ps-content" data-screen-label={page}>
         <PageTopbar eyebrow={pt.eb} title={pt.title} onHelp={()=>setShowHow(true)}/>
         <div className="ps-content-body">
@@ -1846,9 +1792,23 @@ function App() {
           {page==="amigos"&&<PageAmigos/>}
           {page==="historial"&&<PageHistorial/>}
         </div>
+        <AppFooter/>
       </div>
       {showHow&&<HowModal onClose={()=>setShowHow(false)}/>}
     </div>
+  );
+}
+
+// Footer mínimo, consistente con el de la landing
+function AppFooter() {
+  return (
+    <footer className="ps-footer">
+      <div className="ps-footer-l">
+        <KanchaWordmark className="ps-footer-logo"/>
+        <span className="ps-footer-claim">Antes de que pase<span className="kn-dot">.</span></span>
+      </div>
+      <span className="ps-footer-copy">© 2026 KANCHA · FÚTBOL EN JUEGO</span>
+    </footer>
   );
 }
 
