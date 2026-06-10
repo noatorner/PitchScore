@@ -396,20 +396,45 @@ input { font-family: inherit; }
 .ps-lm-poss.is-mine .ps-lm-poss-pot { color: #b94234; }
 .ps-tag-pre { background: #181b18; color: #ffd27a; }
 
-/* ============ PARTIDOS HISTORICOS (SIMULADOR) ============ */
-.ps-hist-sim { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; flex-shrink: 0; margin: 0 14px 12px; padding: 12px 16px; background: #181b18; border: 1px solid #2c302c; border-radius: 8px; color: #f0e7d0; }
-.ps-hist-sim-l { display: flex; flex-direction: column; gap: 3px; min-width: 180px; }
-.ps-hist-sim-title { font-family: 'Anton', sans-serif; font-size: 16px; letter-spacing: 0.05em; color: #ffd27a; line-height: 1; }
-.ps-hist-sim-sub { font-family: var(--kn-body); font-weight: 600; font-size: 10px; letter-spacing: 0.1em; color: #9aa090; }
-.ps-hist-sim-sub.is-error { color: #ff7a5c; }
-.ps-hist-sim-select { flex: 1 1 260px; min-width: 220px; background: #efe5cc; border: 1px solid #cdb98a; border-radius: 5px; padding: 10px 12px; font-family: var(--kn-body); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; color: #2a2620; cursor: pointer; }
-.ps-hist-sim-select:disabled { opacity: 0.55; cursor: not-allowed; }
-.ps-hist-sim .ps-seg { background: #2c302c; }
-.ps-hist-sim .ps-seg button { color: #cdb98a; }
-.ps-hist-sim .ps-seg button.is-on { background: #b94234; color: #fff; }
-.ps-hist-sim-btn { width: auto; margin-top: 0; padding: 10px 24px; }
-.ps-hist-sim-stop { background: #2c302c; color: #f0e7d0; border: 1px solid #4a4f48; }
-.ps-hist-sim-stop:hover { background: #3a3f38; }
+/* ============ HOME (INICIO REESTRUCTURADO) ============ */
+.ps-home { padding: 18px 22px 30px; display: flex; flex-direction: column; gap: 26px; max-width: 1280px; margin: 0 auto; width: 100%; }
+.ps-home-sec { display: flex; flex-direction: column; gap: 14px; }
+.ps-home-sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 14px; border-bottom: 1px solid #cdb98a; padding-bottom: 10px; }
+.ps-home-sec-title { display: flex; align-items: center; gap: 12px; font-family: 'Anton', sans-serif; font-size: 24px; letter-spacing: 0.03em; color: #2a2620; line-height: 1; }
+.ps-home-sec-title.is-hist { color: #b94234; }
+.ps-home-sec-sub { font-family: var(--kn-body); font-weight: 600; font-size: 10px; letter-spacing: 0.16em; color: #6c604a; white-space: nowrap; }
+.ps-home-sec-link { font-family: var(--kn-body); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; color: #b94234; white-space: nowrap; }
+.ps-home-sec-link:hover { text-decoration: underline; }
+.ps-home-live-row { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 12px; align-items: stretch; }
+.ps-home-feat { background: #181b18; color: #f0e7d0; border-radius: 8px; padding: 16px 18px; display: flex; flex-direction: column; gap: 9px; text-align: left; align-items: flex-start; transition: background 0.15s ease; }
+.ps-home-feat:hover { background: #22261f; }
+.ps-home-feat-tag { font-family: var(--kn-body); font-weight: 600; font-size: 10px; letter-spacing: 0.18em; color: #ff7a5c; }
+.ps-home-feat-teams { display: flex; align-items: center; gap: 10px; font-family: var(--kn-display); font-weight: 700; font-size: 19px; letter-spacing: 0.02em; flex-wrap: wrap; }
+.ps-home-feat-meta { font-size: 11px; color: #cdb98a; letter-spacing: 0.06em; }
+.ps-home-feat .ps-mc-cta { background: #b94234; color: #fff; width: 100%; margin-top: auto; }
+.ps-home-cat { display: flex; flex-direction: column; gap: 10px; }
+.ps-home-cat-head { display: flex; align-items: baseline; gap: 12px; border-left: 4px solid #b94234; padding-left: 12px; }
+.ps-home-cat-name { font-family: 'Anton', sans-serif; font-size: 19px; letter-spacing: 0.03em; color: #2a2620; }
+
+/* ============ MODO HISTORICO ============ */
+.ps-back { align-self: flex-start; font-family: var(--kn-body); font-weight: 600; font-size: 11px; letter-spacing: 0.14em; color: #6c604a; padding: 9px 13px; border: 1px solid #cdb98a; border-radius: 5px; background: #e6dcc4; flex-shrink: 0; transition: all 0.14s ease; }
+.ps-back:hover { color: #2a2620; background: #dccfac; }
+.ps-hhero-score { font-family: 'Anton', sans-serif; font-size: 26px; color: #ffd27a; background: #181b18; padding: 3px 14px; border-radius: 5px; line-height: 1.15; position: relative; top: -2px; }
+.ps-simpanel-speed-l { font-family: var(--kn-body); font-weight: 600; font-size: 10px; letter-spacing: 0.16em; color: #6c604a; margin-bottom: 6px; }
+.ps-simpanel .ps-seg { width: 100%; }
+.ps-simpanel .ps-seg button { flex: 1; }
+.ps-simpanel-status { margin-top: 10px; font-family: var(--kn-body); font-weight: 600; font-size: 11px; letter-spacing: 0.06em; color: #6c604a; min-height: 16px; }
+.ps-simpanel-status.is-error { color: #b94234; }
+.ps-simpanel-btn { margin-top: 10px; font-size: 14px; padding: 14px 16px; letter-spacing: 0.1em; }
+
+/* Countdown de 3 segundos antes de la simulación */
+.ps-countdown-overlay { position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; background: rgba(24,27,24,0.62); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); }
+.ps-countdown-num { font-family: 'Anton', sans-serif; font-size: 190px; line-height: 1; color: #ffd27a; text-shadow: 0 10px 50px rgba(0,0,0,0.65); animation: ps-cd-pop 1s ease-out; }
+@keyframes ps-cd-pop {
+  0% { transform: scale(1.7); opacity: 0; }
+  18% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(0.96); opacity: 0.85; }
+}
 
 /* Tarjetas de partidos históricos en PagePartidos */
 .ps-flagimg-crest { box-shadow: none; border-radius: 0; object-fit: contain; }
@@ -680,6 +705,9 @@ input { font-family: inherit; }
   .ps-lm-grid { grid-template-columns: 1fr; }
   .ps-lm-board { grid-template-columns: 1fr; gap: 12px; text-align: center; justify-items: center; }
   .ps-lm-mypts { text-align: center; }
+  .ps-home-live-row { grid-template-columns: 1fr 1fr; }
+  .ps-home-feat { grid-column: 1 / -1; }
+  .ps-countdown-num { font-size: 120px; }
 }
   </style>
 </head>

@@ -572,48 +572,96 @@ function useHistoricSim(onActEvent) {
   return {sim,start,setSpeed,stop};
 }
 
-function HistoricMatchesBar({ sim, speedIdx, onSpeed, onStart, onStop }) {
-  const [selId,setSelId]=React.useState(HISTORIC_MATCHES[0].id);
-  // Refleja en el selector el partido en curso (p.ej. lanzado desde PagePartidos)
-  React.useEffect(()=>{ if(sim.match) setSelId(sim.match.id); },[sim.match]);
-  const busy=sim.status==="running"||sim.status==="loading";
-  const status=
-    sim.status==="loading"?"Cargando eventos…":
-    sim.status==="running"?`Evento ${sim.progress}/${sim.total} · min ${sim.minute}'`:
-    sim.status==="done"?"Partido finalizado":
-    sim.status==="error"?"No se pudieron cargar los eventos":
-    "Datos reales · StatsBomb open-data";
+// Hero del partido histórico seleccionado: equipos reales, resultado real, competición y año
+function HistoricHero({ m }) {
   return (
-    <section className="ps-hist-sim">
-      <div className="ps-hist-sim-l">
-        <span className="ps-hist-sim-title">PARTIDOS HISTÓRICOS</span>
-        <span className={"ps-hist-sim-sub"+(sim.status==="error"?" is-error":"")}>{status}</span>
+    <div className="ps-hero">
+      <div className="ps-hero-inner">
+        <div className="ps-hero-top">
+          <span className="ps-hero-trophy">🏟</span>
+          <span className="ps-hero-group">{m.comp}</span>
+          <span className="ps-hero-stars">★ ★ ★</span>
+          <span className="ps-hero-tag">PARTIDO HISTÓRICO</span>
+        </div>
+        <div className="ps-hero-teams">
+          <Flag code={m.home} h={30} className="ps-hero-flag"/>
+          <span className="ps-hero-name">{COUNTRY_NAME[m.home].toUpperCase()}</span>
+          <span className="ps-hhero-score">{m.score}</span>
+          <span className="ps-hero-name ps-hero-name-away">{COUNTRY_NAME[m.away].toUpperCase()}</span>
+          <Flag code={m.away} h={30} className="ps-hero-flag"/>
+        </div>
+        <div className="ps-hero-bottom">
+          <div className="ps-hero-meta-item"><span className="ps-hero-meta-l">RESULTADO REAL</span><span className="ps-hero-meta-v">{m.score}</span></div>
+          <div className="ps-hero-meta-sep"></div>
+          <div className="ps-hero-meta-item"><span className="ps-hero-meta-l">EVENTOS</span><span className="ps-hero-meta-v">DATOS REALES · STATSBOMB</span></div>
+          <div className="ps-hero-meta-sep"></div>
+          <div className="ps-hero-meta-item"><span className="ps-hero-meta-l">PUNTÚA</span><span className="ps-hero-meta-v">CON TUS ZONAS RESERVADAS</span></div>
+        </div>
       </div>
-      <select className="ps-hist-sim-select" value={selId} onChange={e=>setSelId(Number(e.target.value))} disabled={busy}>
-        {HISTORIC_CATS.map(cat=>(
-          <optgroup key={cat} label={cat}>
-            {HISTORIC_MATCHES.filter(m=>m.cat===cat).map(m=><option key={m.id} value={m.id}>{m.comp} — {m.title}</option>)}
-          </optgroup>
-        ))}
-      </select>
-      <div className="ps-seg">
-        {SIM_SPEEDS.map((s,i)=>(<button key={s.label} className={i===speedIdx?"is-on":""} onClick={()=>onSpeed(i)}>{s.label}</button>))}
-      </div>
-      {busy?(
-        <button className="ps-btn ps-btn-sm ps-hist-sim-btn ps-hist-sim-stop" onClick={onStop}>DETENER</button>
-      ):sim.status==="done"?(
-        <button className="ps-btn ps-btn-sm ps-hist-sim-btn ps-hist-sim-stop" onClick={onStop}>SALIR</button>
-      ):(
-        <button className="ps-btn ps-btn-primary ps-btn-sm ps-hist-sim-btn" onClick={()=>onStart(HISTORIC_MATCHES.find(m=>m.id===selId))}>SIMULAR</button>
-      )}
-    </section>
+    </div>
   );
 }
 
-Object.assign(window, { useHistoricSim, HistoricMatchesBar, sbLocateZone, sbToKanchaEvent });
+function HistoricInfoCard({ m }) {
+  return (
+    <div className="ps-card">
+      <div className="ps-card-head"><span>PARTIDO HISTÓRICO</span><span className="ps-chev">▾</span></div>
+      <div className="ps-card-body">
+        <div className="ps-match-mini">
+          <div className="ps-team-row"><Flag code={m.home} h={22}/><span className="ps-team">{COUNTRY_NAME[m.home]}</span></div>
+          <div className="ps-vs">vs</div>
+          <div className="ps-team-row"><Flag code={m.away} h={22}/><span className="ps-team">{COUNTRY_NAME[m.away]}</span></div>
+          <div className="ps-mini-meta">{m.comp}<br/>Resultado real: <strong>{m.score}</strong></div>
+          <div className="ps-tag ps-tag-pre">DATOS REALES</div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// Panel de control de la simulación: velocidad 1x/3x/10x, estado y botón principal
+function SimPanel({ sim, countdown, speedIdx, onSpeed, onSimulate, onStop }) {
+  const busy=sim.status==="running"||sim.status==="loading";
+  const status=
+    countdown!=null?`EMPIEZA EN ${countdown}…`:
+    sim.status==="loading"?"Cargando eventos reales…":
+    sim.status==="running"?`Evento ${sim.progress}/${sim.total} · min ${sim.minute}'`:
+    sim.status==="done"?"Partido finalizado":
+    sim.status==="error"?"No se pudieron cargar los eventos":
+    "Reserva tus zonas y pulsa simular";
+  return (
+    <div className="ps-card ps-simpanel">
+      <div className="ps-card-head"><span>SIMULACIÓN</span><span className="ps-lm-tag">STATSBOMB</span></div>
+      <div className="ps-card-body">
+        <div className="ps-simpanel-speed-l">VELOCIDAD</div>
+        <div className="ps-seg ps-simpanel-speed">
+          {SIM_SPEEDS.map((s,i)=>(<button key={s.label} className={i===speedIdx?"is-on":""} onClick={()=>onSpeed(i)}>{s.label}</button>))}
+        </div>
+        <div className={"ps-simpanel-status"+(sim.status==="error"?" is-error":"")}>{status}</div>
+        {busy?(
+          <button className="ps-btn ps-btn-dark ps-simpanel-btn" onClick={onStop}>⏸ DETENER</button>
+        ):(
+          <button className="ps-btn ps-btn-primary ps-simpanel-btn" disabled={countdown!=null} onClick={onSimulate}>{sim.status==="done"?"↻ REPETIR PARTIDO":"▶ SIMULAR PARTIDO"}</button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function CountdownOverlay({ n }) {
+  return (
+    <div className="ps-countdown-overlay">
+      <div className="ps-countdown-num" key={n}>{n}</div>
+    </div>
+  );
+}
+
+Object.assign(window, { useHistoricSim, HistoricHero, SimPanel, CountdownOverlay, sbLocateZone, sbToKanchaEvent });
 
 // ===== PAGE INICIO =====
 function PageInicio({ onNav }) {
+  const [mode,setMode]=React.useState("home"); // home | mundial | historic
+  const [historicMatch,setHistoricMatch]=React.useState(null);
   const [selectedZones,setSelectedZones]=React.useState([]);
   const [view,setView]=React.useState("mapa");
   const [focusZone,setFocusZone]=React.useState("penspot_izq");
@@ -635,16 +683,46 @@ function PageInicio({ onNav }) {
     },1600);
   },[]);
   const {sim,start:startSim,setSpeed:setSimSpeed,stop:stopSim}=useHistoricSim(handleSimEvent);
-  // Arranque solicitado desde PagePartidos (botón JUGAR de un partido histórico)
+
+  // --- Countdown de 3 segundos antes de arrancar la simulación ---
+  const [countdown,setCountdown]=React.useState(null);
+  const countdownRef=React.useRef(null);
+  const speedRef=React.useRef(0);
+  React.useEffect(()=>{ speedRef.current=speedIdx; },[speedIdx]);
+  React.useEffect(()=>()=>clearInterval(countdownRef.current),[]);
+  function beginSimulation(){
+    if(!historicMatch||countdown!=null||sim.status==="running"||sim.status==="loading") return;
+    let n=3; setCountdown(n);
+    countdownRef.current=setInterval(()=>{
+      n--;
+      if(n<=0){
+        clearInterval(countdownRef.current); countdownRef.current=null;
+        setCountdown(null);
+        startSim(historicMatch,SIM_SPEEDS[speedRef.current].ms);
+      } else setCountdown(n);
+    },1000);
+  }
+  function openHistoric(m){ stopSim(); setHistoricMatch(m); setMode("historic"); }
+  function backToHome(){
+    clearInterval(countdownRef.current); countdownRef.current=null;
+    setCountdown(null); stopSim(); setHistoricMatch(null); setMode("home");
+  }
+
+  // Partido histórico solicitado desde PagePartidos (botón JUGAR)
   React.useEffect(()=>{
-    const reqId=window.__KN_SIM_REQUEST;
+    const reqId=window.__KN_HISTORIC_REQUEST;
     if (!reqId) return;
-    window.__KN_SIM_REQUEST=null;
+    window.__KN_HISTORIC_REQUEST=null;
     const m=HISTORIC_MATCHES.find(x=>x.id===reqId);
-    if (m) startSim(m,SIM_SPEEDS[0].ms);
+    if (m) { setHistoricMatch(m); setMode("historic"); }
   },[]);
+
   const simOn=sim.match&&(sim.status==="running"||sim.status==="done"||sim.status==="loading");
   const simReservations=selectedZones.map(id=>{ const z=ZONES.find(zz=>zz.id===id); return {zoneId:id,name:z?z.name:id,price:z?z.price:0}; });
+
+  // Al arrancar la simulación, baja hasta el marcador en vivo
+  const lmRef=React.useRef(null);
+  React.useEffect(()=>{ if(sim.status==="running"&&lmRef.current) lmRef.current.scrollIntoView({behavior:"smooth",block:"start"}); },[sim.status]);
 
   // Load saved reservations for the active match from Supabase on mount
   React.useEffect(()=>{
@@ -697,30 +775,89 @@ function PageInicio({ onNav }) {
   }
   const totalCost=selectedZones.reduce((sum,id)=>{const z=ZONES.find(zz=>zz.id===id);return sum+(z?z.price:0);},0);
   const remainingBudget=ME.budget-totalCost;
+
+  const fieldBlock=(
+    <>
+      <div className="ps-field-toolbar">
+        <div className="ps-seg">
+          <button className={view==="mapa"?"is-on":""} onClick={()=>setView("mapa")}>MAPA DEL CAMPO</button>
+          <button className={view==="lista"?"is-on":""} onClick={()=>setView("lista")}>LISTA DE ZONAS</button>
+        </div>
+        <div className="ps-field-cap"><span className="ps-cap-num">{selectedZones.length}</span> / {ME.zonesMax} ZONAS</div>
+      </div>
+      {view==="mapa"?(
+        <>
+          <PitchField zones={ZONES.map(z=>({...z,taken:selectedZones.includes(z.id)?Math.min(z.slots,z.taken+1):z.taken,overBudget:!selectedZones.includes(z.id)&&(z.price>remainingBudget||selectedZones.length>=ME.zonesMax)}))} selectedIds={selectedZones} onZoneClick={toggleZone} flash={flash}/>
+          <PitchLegend/>
+        </>
+      ):(
+        <ZoneList zones={ZONES.map(z=>({...z,overBudget:!selectedZones.includes(z.id)&&(z.price>remainingBudget||selectedZones.length>=ME.zonesMax)}))} selectedIds={selectedZones} onPick={toggleZone}/>
+      )}
+    </>
+  );
+
+  // ── MODO HOME: dos bloques, Mundial compacto + grid de históricos ──
+  if (mode==="home") {
+    return (
+      <div className="ps-inicio">
+        <div className="ps-home">
+          <HomeLiveBlock onNav={onNav} onEnter={()=>setMode("mundial")}/>
+          <HomeHistoricBlock onPlay={openHistoric}/>
+        </div>
+      </div>
+    );
+  }
+
+  // ── MODO HISTÓRICO: hero del partido real + campo + panel de simulación ──
+  if (mode==="historic"&&historicMatch) {
+    return (
+      <div className="ps-inicio">
+        <div className="ps-inicio-screen">
+          <aside className="ps-col-left">
+            <button className="ps-back" onClick={backToHome}>← VOLVER A INICIO</button>
+            <HistoricInfoCard m={historicMatch}/>
+          </aside>
+          <main className="ps-col-center">
+            <HistoricHero m={historicMatch}/>
+            {fieldBlock}
+          </main>
+          <aside className="ps-col-right">
+            <BudgetCard selectedCount={selectedZones.length} remaining={remainingBudget}/>
+            <SimPanel sim={sim} countdown={countdown} speedIdx={speedIdx}
+              onSpeed={(i)=>{ setSpeedIdx(i); setSimSpeed(SIM_SPEEDS[i].ms); }}
+              onSimulate={beginSimulation} onStop={stopSim}/>
+            <CartCard selectedIds={selectedZones} onRemove={(id)=>setSelectedZones(prev=>prev.filter(x=>x!==id))} onClear={()=>setSelectedZones([])}/>
+          </aside>
+        </div>
+        {simOn&&(
+          <div ref={lmRef}>
+            <LiveMatch
+              match={{home:sim.match.home,away:sim.match.away}}
+              events={sim.events}
+              reservations={simReservations}
+              minute={sim.minute}
+              half={sim.status==="done"?"FINAL":(SIM_PERIOD_LABEL[sim.period]||"1ª PARTE")}
+              tag={sim.status==="loading"?"CARGANDO":"SIMULACIÓN"}
+            />
+          </div>
+        )}
+        {countdown!=null&&<CountdownOverlay n={countdown}/>}
+      </div>
+    );
+  }
+
+  // ── MODO MUNDIAL: la pantalla de reservas del Mundial 2026 de siempre ──
   return (
     <div className="ps-inicio">
       <div className="ps-inicio-screen">
         <aside className="ps-col-left">
+          <button className="ps-back" onClick={()=>setMode("home")}>← VOLVER A INICIO</button>
           <PartidoActualCard match={featured}/>
           <ProximosCard onNav={onNav}/>
         </aside>
         <main className="ps-col-center">
           <MatchHero match={featured}/>
-          <div className="ps-field-toolbar">
-            <div className="ps-seg">
-              <button className={view==="mapa"?"is-on":""} onClick={()=>setView("mapa")}>MAPA DEL CAMPO</button>
-              <button className={view==="lista"?"is-on":""} onClick={()=>setView("lista")}>LISTA DE ZONAS</button>
-            </div>
-            <div className="ps-field-cap"><span className="ps-cap-num">{selectedZones.length}</span> / {ME.zonesMax} ZONAS</div>
-          </div>
-          {view==="mapa"?(
-            <>
-              <PitchField zones={ZONES.map(z=>({...z,taken:selectedZones.includes(z.id)?Math.min(z.slots,z.taken+1):z.taken,overBudget:!selectedZones.includes(z.id)&&(z.price>remainingBudget||selectedZones.length>=ME.zonesMax)}))} selectedIds={selectedZones} onZoneClick={toggleZone} flash={flash}/>
-              <PitchLegend/>
-            </>
-          ):(
-            <ZoneList zones={ZONES.map(z=>({...z,overBudget:!selectedZones.includes(z.id)&&(z.price>remainingBudget||selectedZones.length>=ME.zonesMax)}))} selectedIds={selectedZones} onPick={toggleZone}/>
-          )}
+          {fieldBlock}
         </main>
         <aside className="ps-col-right">
           <BudgetCard selectedCount={selectedZones.length} remaining={remainingBudget}/>
@@ -728,23 +865,69 @@ function PageInicio({ onNav }) {
           <CartCard selectedIds={selectedZones} onRemove={(id)=>setSelectedZones(prev=>prev.filter(x=>x!==id))} onClear={()=>setSelectedZones([])} onConfirm={confirmReservations}/>
         </aside>
       </div>
-      <HistoricMatchesBar sim={sim} speedIdx={speedIdx}
-        onSpeed={(i)=>{ setSpeedIdx(i); setSimSpeed(SIM_SPEEDS[i].ms); }}
-        onStart={(m)=>startSim(m,SIM_SPEEDS[speedIdx].ms)}
-        onStop={stopSim}/>
-      {simOn?(
-        <LiveMatch
-          match={{home:sim.match.home,away:sim.match.away}}
-          events={sim.events}
-          reservations={simReservations}
-          minute={sim.minute}
-          half={sim.status==="done"?"FINAL":(SIM_PERIOD_LABEL[sim.period]||"1ª PARTE")}
-          tag={sim.status==="loading"?"CARGANDO":"SIMULACIÓN"}
-        />
-      ):(
-        <LiveMatch match={featured}/>
-      )}
+      <LiveMatch match={featured}/>
     </div>
+  );
+}
+
+// ── Bloques de la pantalla HOME ──
+function HomeLiveBlock({ onNav, onEnter }) {
+  const featured=FIXTURE[0];
+  return (
+    <section className="ps-home-sec">
+      <div className="ps-home-sec-head">
+        <div className="ps-home-sec-title"><span className="ps-live-pulse"></span>EN VIVO · MUNDIAL 2026</div>
+        <button className="ps-home-sec-link" onClick={()=>onNav("partidos")}>VER FIXTURE COMPLETO →</button>
+      </div>
+      <div className="ps-home-live-row">
+        <button className="ps-home-feat" onClick={onEnter}>
+          <div className="ps-home-feat-tag">GRUPO {featured.group} · RESERVAS ABIERTAS</div>
+          <div className="ps-home-feat-teams">
+            <Flag code={featured.home} h={24}/>
+            <span>{COUNTRY_NAME[featured.home].toUpperCase()}</span>
+            <span className="ps-hero-vs">VS</span>
+            <span>{COUNTRY_NAME[featured.away].toUpperCase()}</span>
+            <Flag code={featured.away} h={24}/>
+          </div>
+          <div className="ps-home-feat-meta">{featured.date} · {featured.time} · {featured.venue}</div>
+          <div className="ps-mc-cta">RESERVAR ZONAS →</div>
+        </button>
+        {FIXTURE.slice(1,4).map(m=>(
+          <div className="ps-mini-match" key={m.id}>
+            <div className="ps-mini-teams">
+              <div className="ps-team-row"><Flag code={m.home} h={18}/><span className="ps-team-sm">{COUNTRY_NAME[m.home]}</span></div>
+              <div className="ps-vs-sm">vs</div>
+              <div className="ps-team-row"><Flag code={m.away} h={18}/><span className="ps-team-sm">{COUNTRY_NAME[m.away]}</span></div>
+            </div>
+            <div className="ps-mini-bot">
+              <div className="ps-mini-meta-sm">{m.date} · {m.time}<br/>{m.venue}</div>
+              <div className="ps-tag ps-tag-next">PRÓXIMO</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function HomeHistoricBlock({ onPlay }) {
+  return (
+    <section className="ps-home-sec">
+      <div className="ps-home-sec-head">
+        <div className="ps-home-sec-title is-hist">⚡ JUGAR UN PARTIDO HISTÓRICO</div>
+        <span className="ps-home-sec-sub">{HISTORIC_MATCHES.length} PARTIDOS REALES · STATSBOMB OPEN-DATA</span>
+      </div>
+      {HISTORIC_CATS.map(cat=>{
+        const list=HISTORIC_MATCHES.filter(m=>m.cat===cat);
+        if(!list.length) return null;
+        return (
+          <div key={cat} className="ps-home-cat">
+            <div className="ps-home-cat-head"><span className="ps-home-cat-name">{cat}</span><span className="ps-day-count">{list.length} {list.length===1?"partido":"partidos"}</span></div>
+            <div className="ps-day-list">{list.map(m=><HistoricMatchCard key={m.id} m={m} onPlay={onPlay}/>)}</div>
+          </div>
+        );
+      })}
+    </section>
   );
 }
 
@@ -888,11 +1071,13 @@ function CartCard({ selectedIds, onRemove, onClear, onConfirm }) {
         {items.length===0&&<div className="ps-empty">Aún no has seleccionado zonas.</div>}
       </div>
       <div className="ps-cart-total"><span>TOTAL</span><span className="ps-cart-total-num">{total} PUNTOS</span></div>
-      <button
-        className={"ps-btn "+(saveState==="saved"?"ps-btn-primary":saveState==="error"?"ps-btn-ghost":"ps-btn-dark")}
-        onClick={handleConfirm}
-        disabled={saveState==="saving"||!items.length}
-      >{btnLabel}</button>
+      {onConfirm&&(
+        <button
+          className={"ps-btn "+(saveState==="saved"?"ps-btn-primary":saveState==="error"?"ps-btn-ghost":"ps-btn-dark")}
+          onClick={handleConfirm}
+          disabled={saveState==="saving"||!items.length}
+        >{btnLabel}</button>
+      )}
     </div>
   );
 }
@@ -1100,7 +1285,7 @@ function PagePartidos({ onNav }) {
             return (
               <div key={cat} className="ps-day-block">
                 <div className="ps-day-head"><span className="ps-day-num">{cat}</span><span className="ps-day-count">{list.length} {list.length===1?"partido":"partidos"}</span></div>
-                <div className="ps-day-list">{list.map(m=><HistoricMatchCard key={m.id} m={m} onNav={onNav}/>)}</div>
+                <div className="ps-day-list">{list.map(m=><HistoricMatchCard key={m.id} m={m} onPlay={(mm)=>{ window.__KN_HISTORIC_REQUEST=mm.id; onNav("inicio"); }}/>)}</div>
               </div>
             );
           })}
@@ -1110,7 +1295,7 @@ function PagePartidos({ onNav }) {
   );
 }
 
-function HistoricMatchCard({ m, onNav }) {
+function HistoricMatchCard({ m, onPlay }) {
   return (
     <div className="ps-match-card ps-hist-card">
       <div className="ps-mc-top"><div className="ps-mc-group">{m.comp}</div><div className="ps-tag ps-tag-pre">REAL</div></div>
@@ -1119,7 +1304,7 @@ function HistoricMatchCard({ m, onNav }) {
         <div className="ps-mc-score">{m.score}</div>
         <div className="ps-mc-team"><div className="ps-mc-flag"><Flag code={m.away} h={30}/></div><div className="ps-mc-name">{COUNTRY_NAME[m.away]}</div></div>
       </div>
-      <button className="ps-btn ps-btn-primary ps-btn-sm ps-hist-play" onClick={()=>{ window.__KN_SIM_REQUEST=m.id; onNav("inicio"); }}>▶ JUGAR</button>
+      <button className="ps-btn ps-btn-primary ps-btn-sm ps-hist-play" onClick={()=>onPlay(m)}>▶ JUGAR</button>
     </div>
   );
 }
