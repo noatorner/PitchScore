@@ -1,0 +1,1968 @@
+{
+  "meta": {
+    "matchId": 18236,
+    "teams": [
+      "Barcelona",
+      "Manchester United"
+    ],
+    "totalEvents": 4326,
+    "keptEvents": 125,
+    "fetchedAt": "2026-06-09T22:45:44.069Z"
+  },
+  "events": [
+    {
+      "id": "3759084a-dc67-493e-a3ce-e26ef6292bf5",
+      "index": 29,
+      "period": 1,
+      "minute": 0,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Xavier Hernández Creus",
+      "location": [
+        56,
+        55
+      ]
+    },
+    {
+      "id": "c569a275-5047-42f1-9981-ab8418413013",
+      "index": 33,
+      "period": 1,
+      "minute": 0,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Michael Carrick",
+      "location": [
+        64,
+        34
+      ]
+    },
+    {
+      "id": "fb8ceeab-98d3-4907-b86a-e96d7c403275",
+      "index": 47,
+      "period": 1,
+      "minute": 0,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Víctor Valdés Arribas",
+      "location": [
+        5,
+        35
+      ]
+    },
+    {
+      "id": "dbfd8176-236c-4a14-965e-b7a501a37e25",
+      "index": 91,
+      "period": 1,
+      "minute": 1,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Michael Carrick",
+      "location": [
+        57,
+        77
+      ]
+    },
+    {
+      "id": "a816b05e-9607-461a-b0b2-c7b212e46833",
+      "index": 123,
+      "period": 1,
+      "minute": 2,
+      "second": 35,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Patrice Evra",
+      "location": [
+        71,
+        15
+      ]
+    },
+    {
+      "id": "fed3ccda-72dc-4ff9-9c36-7d3f13418715",
+      "index": 128,
+      "period": 1,
+      "minute": 2,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        8,
+        64
+      ]
+    },
+    {
+      "id": "c4452f30-cb27-42fc-801d-a12c28cf56ae",
+      "index": 135,
+      "period": 1,
+      "minute": 2,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Michael Carrick",
+      "location": [
+        88,
+        39
+      ]
+    },
+    {
+      "id": "5ecd1637-4a9a-45c5-b92b-7d5179334b53",
+      "index": 137,
+      "period": 1,
+      "minute": 2,
+      "second": 45,
+      "type": "Pass",
+      "team": "Manchester United",
+      "player": "Michael Carrick",
+      "location": [
+        88,
+        39
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "e8bac22f-e886-4dc6-a15c-87132c905858",
+      "index": 140,
+      "period": 1,
+      "minute": 2,
+      "second": 47,
+      "type": "Shot",
+      "team": "Manchester United",
+      "player": "Javier Hernández Balcázar",
+      "location": [
+        99,
+        31
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "902f304d-7acf-4055-8f40-30b5130d3619",
+      "index": 166,
+      "period": 1,
+      "minute": 3,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Eric-Sylvain Bilal Abidal",
+      "location": [
+        18,
+        15
+      ]
+    },
+    {
+      "id": "4ba3f21c-8276-43a3-8fe5-c8c0429b1e2f",
+      "index": 354,
+      "period": 1,
+      "minute": 6,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Xavier Hernández Creus",
+      "location": [
+        33,
+        20
+      ]
+    },
+    {
+      "id": "43d51cf5-657c-4246-a2ae-202b3c2c53fd",
+      "index": 367,
+      "period": 1,
+      "minute": 6,
+      "second": 40,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Patrice Evra",
+      "location": [
+        76,
+        5
+      ]
+    },
+    {
+      "id": "f150c092-4b15-4e7a-83d0-73edcc2032ef",
+      "index": 525,
+      "period": 1,
+      "minute": 10,
+      "second": 2,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        86,
+        57
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "7761d73b-4886-4252-bc2f-7ef244aecdd2",
+      "index": 528,
+      "period": 1,
+      "minute": 10,
+      "second": 5,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "David Villa Sánchez",
+      "location": [
+        99,
+        39
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "13e85ad1-f9d4-4385-8b43-3b3c72c13fb2",
+      "index": 531,
+      "period": 1,
+      "minute": 10,
+      "second": 8,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Gerard Piqué Bernabéu",
+      "location": [
+        57,
+        23
+      ]
+    },
+    {
+      "id": "a8331136-8f1a-488c-a0a8-cf0558469f22",
+      "index": 539,
+      "period": 1,
+      "minute": 10,
+      "second": 17,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        90,
+        24
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "c2d6b795-10a3-4698-8fe4-9f08ece0b4c2",
+      "index": 542,
+      "period": 1,
+      "minute": 10,
+      "second": 19,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "David Villa Sánchez",
+      "location": [
+        110,
+        26
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "159d466f-1e9c-4f7e-8f74-3c1b933ce570",
+      "index": 560,
+      "period": 1,
+      "minute": 11,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Pedro Eliezer Rodríguez Ledesma",
+      "location": [
+        106,
+        23
+      ]
+    },
+    {
+      "id": "d8c96052-0029-4ce5-9df6-d4b8351751b9",
+      "index": 564,
+      "period": 1,
+      "minute": 11,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        105,
+        16
+      ]
+    },
+    {
+      "id": "2275e685-8d17-448f-bae7-17e393dfd8de",
+      "index": 642,
+      "period": 1,
+      "minute": 12,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Javier Alejandro Mascherano",
+      "location": [
+        49,
+        59
+      ]
+    },
+    {
+      "id": "e4b6371c-b8c7-4df5-947c-75ee26794507",
+      "index": 651,
+      "period": 1,
+      "minute": 12,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Ryan Giggs",
+      "location": [
+        46,
+        42
+      ]
+    },
+    {
+      "id": "29e4e049-dbd1-47a7-82f4-d8ca6921254a",
+      "index": 702,
+      "period": 1,
+      "minute": 13,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        79,
+        72
+      ]
+    },
+    {
+      "id": "6ddc1617-643d-4aa5-9464-06a35bb8f622",
+      "index": 736,
+      "period": 1,
+      "minute": 13,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Edwin van der Sar",
+      "location": [
+        10,
+        51
+      ]
+    },
+    {
+      "id": "9d583f76-ae23-448b-b22d-52742ae0ca7a",
+      "index": 817,
+      "period": 1,
+      "minute": 14,
+      "second": 54,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        94,
+        51
+      ]
+    },
+    {
+      "id": "8d560476-fcf9-4b9f-84b1-e90b6966d6c0",
+      "index": 826,
+      "period": 1,
+      "minute": 15,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        104,
+        46
+      ]
+    },
+    {
+      "id": "b1788a80-3a81-450d-b6b8-249fb4e6f0d4",
+      "index": 830,
+      "period": 1,
+      "minute": 15,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "David Villa Sánchez",
+      "location": [
+        107,
+        57
+      ]
+    },
+    {
+      "id": "e8607825-b17b-4180-9ff6-c916e27a579e",
+      "index": 835,
+      "period": 1,
+      "minute": 15,
+      "second": 5,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Xavier Hernández Creus",
+      "location": [
+        111,
+        66
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "3d9b107f-ef40-4b7a-9eae-1eba10f6143c",
+      "index": 837,
+      "period": 1,
+      "minute": 15,
+      "second": 6,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Pedro Eliezer Rodríguez Ledesma",
+      "location": [
+        112,
+        44
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "5fc77163-42ab-4da2-b8e9-39a8bdab0642",
+      "index": 919,
+      "period": 1,
+      "minute": 17,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Xavier Hernández Creus",
+      "location": [
+        43,
+        24
+      ]
+    },
+    {
+      "id": "823ab2a6-b3a2-4e8d-9ea3-16c04b8fc1ea",
+      "index": 980,
+      "period": 1,
+      "minute": 18,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Ji-Sung Park",
+      "location": [
+        22,
+        31
+      ]
+    },
+    {
+      "id": "0337e4cb-3b3c-4e01-8f58-8a59deef6988",
+      "index": 984,
+      "period": 1,
+      "minute": 18,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Víctor Valdés Arribas",
+      "location": [
+        17,
+        53
+      ]
+    },
+    {
+      "id": "2f68be8d-2bcb-4bbb-b581-b898d7a5792b",
+      "index": 1043,
+      "period": 1,
+      "minute": 19,
+      "second": 16,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Xavier Hernández Creus",
+      "location": [
+        91,
+        21
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "cc8e9903-4e10-4153-a816-3d1be9794005",
+      "index": 1046,
+      "period": 1,
+      "minute": 19,
+      "second": 19,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "David Villa Sánchez",
+      "location": [
+        97,
+        45
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "0c87a99b-3004-4b7b-8e46-cb35fad4a7d4",
+      "index": 1051,
+      "period": 1,
+      "minute": 19,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Gerard Piqué Bernabéu",
+      "location": [
+        35,
+        61
+      ]
+    },
+    {
+      "id": "a7f0992a-2688-4892-9a98-b0f73be29682",
+      "index": 1117,
+      "period": 1,
+      "minute": 20,
+      "second": 39,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Xavier Hernández Creus",
+      "location": [
+        85,
+        35
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "074af283-951f-4a5c-b628-99a0a5e7eabc",
+      "index": 1120,
+      "period": 1,
+      "minute": 20,
+      "second": 41,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "David Villa Sánchez",
+      "location": [
+        105,
+        55
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d6a7def3-70e9-4ef9-9382-d092594d5f9c",
+      "index": 1131,
+      "period": 1,
+      "minute": 21,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Gerard Piqué Bernabéu",
+      "location": [
+        33,
+        1
+      ]
+    },
+    {
+      "id": "e4414d58-341c-4ecc-b452-e850014ea4a7",
+      "index": 1193,
+      "period": 1,
+      "minute": 21,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Wayne Mark Rooney",
+      "location": [
+        53,
+        7
+      ]
+    },
+    {
+      "id": "0a01d89d-bb1d-417e-ab92-e07771fbe683",
+      "index": 1227,
+      "period": 1,
+      "minute": 22,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Víctor Valdés Arribas",
+      "location": [
+        13,
+        26
+      ]
+    },
+    {
+      "id": "8dcdd172-bb6c-4490-b556-24f43a510e8e",
+      "index": 1368,
+      "period": 1,
+      "minute": 24,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Edwin van der Sar",
+      "location": [
+        6,
+        39
+      ]
+    },
+    {
+      "id": "274a3ef5-5b00-4061-8a33-03982977f371",
+      "index": 1422,
+      "period": 1,
+      "minute": 25,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Ji-Sung Park",
+      "location": [
+        68,
+        19
+      ]
+    },
+    {
+      "id": "aacce1f2-8673-4ccc-86a3-79b0648b2bed",
+      "index": 1458,
+      "period": 1,
+      "minute": 26,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Sergio Busquets i Burgos",
+      "location": [
+        37,
+        60
+      ]
+    },
+    {
+      "id": "5cfaa7f8-7581-4e7d-8e4c-d17bb5bace20",
+      "index": 1509,
+      "period": 1,
+      "minute": 26,
+      "second": 50,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Xavier Hernández Creus",
+      "location": [
+        89,
+        34
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "cf91a97b-34fa-4b06-b6c0-4a35e0001f72",
+      "index": 1513,
+      "period": 1,
+      "minute": 26,
+      "second": 51,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Pedro Eliezer Rodríguez Ledesma",
+      "location": [
+        105,
+        47
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "47a31b37-c07d-449b-a727-6151518e987f",
+      "index": 1564,
+      "period": 1,
+      "minute": 28,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Fábio Pereira da Silva",
+      "location": [
+        31,
+        60
+      ]
+    },
+    {
+      "id": "cd3736b1-8127-40b2-841a-5d8b5abcfc72",
+      "index": 1595,
+      "period": 1,
+      "minute": 28,
+      "second": 56,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        91,
+        48
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "bbaaaa60-d451-4b60-9eb2-bc42b63089ec",
+      "index": 1598,
+      "period": 1,
+      "minute": 29,
+      "second": 0,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        91,
+        33
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f2b50c06-4be2-44f0-827a-2feb92766b65",
+      "index": 1667,
+      "period": 1,
+      "minute": 30,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Gerard Piqué Bernabéu",
+      "location": [
+        16,
+        50
+      ]
+    },
+    {
+      "id": "3373999a-1aab-48c4-b9ad-e0336444de3f",
+      "index": 1785,
+      "period": 1,
+      "minute": 33,
+      "second": 5,
+      "type": "Pass",
+      "team": "Manchester United",
+      "player": "Ryan Giggs",
+      "location": [
+        108,
+        51
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "72667f5e-630a-4456-81af-e1bee207bb29",
+      "index": 1787,
+      "period": 1,
+      "minute": 33,
+      "second": 5,
+      "type": "Shot",
+      "team": "Manchester United",
+      "player": "Wayne Mark Rooney",
+      "location": [
+        105,
+        43
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "ba1f4b35-4d07-46f7-821f-779c364e605b",
+      "index": 1880,
+      "period": 1,
+      "minute": 36,
+      "second": 9,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        98,
+        31
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "e9e826ba-be94-4d0d-a6de-f45030ee7c19",
+      "index": 1883,
+      "period": 1,
+      "minute": 36,
+      "second": 12,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Xavier Hernández Creus",
+      "location": [
+        98,
+        52
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "fa2a0eec-156c-4d79-bfc1-200396b7887f",
+      "index": 1893,
+      "period": 1,
+      "minute": 36,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Javier Alejandro Mascherano",
+      "location": [
+        27,
+        43
+      ]
+    },
+    {
+      "id": "07632336-f0bf-4805-b12c-f2d1ba1ad862",
+      "index": 1927,
+      "period": 1,
+      "minute": 37,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Fábio Pereira da Silva",
+      "location": [
+        15,
+        61
+      ]
+    },
+    {
+      "id": "a3b76965-00c8-4726-89d3-a1eb269a00f1",
+      "index": 1985,
+      "period": 1,
+      "minute": 38,
+      "second": 16,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Javier Alejandro Mascherano",
+      "location": [
+        75,
+        58
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "d307c003-2806-44ba-a551-815fcf945aa8",
+      "index": 1988,
+      "period": 1,
+      "minute": 38,
+      "second": 19,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        88,
+        43
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "7fb07736-e676-4be3-be8c-865a0632db3a",
+      "index": 2000,
+      "period": 1,
+      "minute": 38,
+      "second": 31,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        49,
+        65
+      ]
+    },
+    {
+      "id": "98009e7f-6371-4f9d-8e7a-d502ba98319d",
+      "index": 2078,
+      "period": 1,
+      "minute": 39,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Xavier Hernández Creus",
+      "location": [
+        79,
+        30
+      ]
+    },
+    {
+      "id": "81c40020-e526-408b-9c92-6b0ab934d07a",
+      "index": 2125,
+      "period": 1,
+      "minute": 41,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        55,
+        46
+      ]
+    },
+    {
+      "id": "5afdf587-5251-4007-a11c-3271c2819dae",
+      "index": 2129,
+      "period": 1,
+      "minute": 41,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Javier Hernández Balcázar",
+      "location": [
+        71,
+        43
+      ]
+    },
+    {
+      "id": "5836a897-05c6-43b8-9541-ebc28bf23418",
+      "index": 2168,
+      "period": 1,
+      "minute": 42,
+      "second": 53,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "David Villa Sánchez",
+      "location": [
+        111,
+        52
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "7baf4792-f0a2-427a-8be6-f1aab538d297",
+      "index": 2170,
+      "period": 1,
+      "minute": 42,
+      "second": 54,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        115,
+        41
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "1d99d85d-4e0d-4602-9295-2779fa0aca59",
+      "index": 2258,
+      "period": 2,
+      "minute": 45,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Javier Alejandro Mascherano",
+      "location": [
+        55,
+        64
+      ]
+    },
+    {
+      "id": "a6b967bb-d6e4-47db-a1e3-0986edd436c8",
+      "index": 2287,
+      "period": 2,
+      "minute": 46,
+      "second": 20,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Sergio Busquets i Burgos",
+      "location": [
+        100,
+        33
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "80ee431f-f905-4ce5-8c8f-01854abc3f15",
+      "index": 2289,
+      "period": 2,
+      "minute": 46,
+      "second": 22,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        93,
+        41
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "5c9c9505-b571-4dd0-82aa-3fc7f4415756",
+      "index": 2320,
+      "period": 2,
+      "minute": 46,
+      "second": 44,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Gerard Piqué Bernabéu",
+      "location": [
+        109,
+        23
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "12bb35a1-6ddd-4ee5-88e2-4dc127c2767a",
+      "index": 2324,
+      "period": 2,
+      "minute": 46,
+      "second": 46,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Xavier Hernández Creus",
+      "location": [
+        99,
+        44
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "6f71d3d4-9f24-46c6-b17c-1738237a4fde",
+      "index": 2421,
+      "period": 2,
+      "minute": 50,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "David Villa Sánchez",
+      "location": [
+        71,
+        60
+      ]
+    },
+    {
+      "id": "0bcf8a46-ea85-4918-8a44-bc0de732e1d7",
+      "index": 2425,
+      "period": 2,
+      "minute": 50,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Ji-Sung Park",
+      "location": [
+        54,
+        26
+      ]
+    },
+    {
+      "id": "2cfb415f-a0cd-4a5f-a980-175f5f4d512e",
+      "index": 2503,
+      "period": 2,
+      "minute": 51,
+      "second": 41,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        83,
+        46
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "185303a8-89fe-4706-b7f6-2f50cd475738",
+      "index": 2506,
+      "period": 2,
+      "minute": 51,
+      "second": 45,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        113,
+        54
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "66ba3089-f735-4b40-a9a3-700d7b73840e",
+      "index": 2508,
+      "period": 2,
+      "minute": 51,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        102,
+        46
+      ]
+    },
+    {
+      "id": "8fe2193d-0162-49ca-9cbe-e85c4c07dd4b",
+      "index": 2510,
+      "period": 2,
+      "minute": 51,
+      "second": 47,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        104,
+        46
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "5549737b-8146-466d-a2c3-3bf7df0f792f",
+      "index": 2544,
+      "period": 2,
+      "minute": 52,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        89,
+        70
+      ]
+    },
+    {
+      "id": "38edc0b9-60d0-4741-af24-6123c275574f",
+      "index": 2568,
+      "period": 2,
+      "minute": 52,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Xavier Hernández Creus",
+      "location": [
+        53,
+        59
+      ]
+    },
+    {
+      "id": "57ed9a0c-dfa6-4b9f-a713-2762f635c907",
+      "index": 2600,
+      "period": 2,
+      "minute": 53,
+      "second": 6,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        82,
+        27
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "2cb44ea0-08a7-462d-aa08-ba89c1f6ef17",
+      "index": 2604,
+      "period": 2,
+      "minute": 53,
+      "second": 9,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        94,
+        43
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "52f30a0a-3a96-46c6-8586-868feabcfdcf",
+      "index": 2647,
+      "period": 2,
+      "minute": 55,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Javier Alejandro Mascherano",
+      "location": [
+        56,
+        51
+      ]
+    },
+    {
+      "id": "74a2a2be-0253-4415-afe0-294438f5f153",
+      "index": 2710,
+      "period": 2,
+      "minute": 56,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Pedro Eliezer Rodríguez Ledesma",
+      "location": [
+        60,
+        29
+      ]
+    },
+    {
+      "id": "30ed3d67-de7b-4621-8719-87e16359cfa2",
+      "index": 2737,
+      "period": 2,
+      "minute": 58,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        44,
+        36
+      ]
+    },
+    {
+      "id": "d2c2b10b-c985-4ac6-bd2d-a68a173c3768",
+      "index": 2760,
+      "period": 2,
+      "minute": 59,
+      "second": 2,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        72,
+        60
+      ]
+    },
+    {
+      "id": "e32d1a96-7c70-43b7-bdd3-a02a8c5298c0",
+      "index": 2763,
+      "period": 2,
+      "minute": 59,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Patrice Evra",
+      "location": [
+        46,
+        28
+      ]
+    },
+    {
+      "id": "9b6ff499-8424-49c8-86a7-9cd097efbd79",
+      "index": 2806,
+      "period": 2,
+      "minute": 60,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        33,
+        67
+      ]
+    },
+    {
+      "id": "5f58197c-f9b9-4310-ad3e-afd4a2c9b2de",
+      "index": 2843,
+      "period": 2,
+      "minute": 61,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Wayne Mark Rooney",
+      "location": [
+        65,
+        39
+      ]
+    },
+    {
+      "id": "a34ded48-4fd6-49eb-b194-4853c4b46bbe",
+      "index": 2883,
+      "period": 2,
+      "minute": 62,
+      "second": 37,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        89,
+        34
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "b7a7c148-be74-4992-9718-3f6bc8dd2b90",
+      "index": 2887,
+      "period": 2,
+      "minute": 62,
+      "second": 39,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        108,
+        30
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "17684199-dc88-40d2-bccc-bebd67be7f8a",
+      "index": 2978,
+      "period": 2,
+      "minute": 64,
+      "second": 12,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        118,
+        53
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "57d56fdb-7b2e-4cdc-8d0c-cb39a09049c8",
+      "index": 2980,
+      "period": 2,
+      "minute": 64,
+      "second": 12,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        115,
+        44
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "e905d867-f4c5-44c2-b188-46c1d9cd0d4a",
+      "index": 3069,
+      "period": 2,
+      "minute": 65,
+      "second": 21,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        85,
+        39
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "42ff17b0-4eb3-4cfe-8223-210e6ab795b8",
+      "index": 3072,
+      "period": 2,
+      "minute": 65,
+      "second": 23,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Xavier Hernández Creus",
+      "location": [
+        94,
+        47
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "be75786b-c05f-4b37-90eb-d2bc20f61b6d",
+      "index": 3085,
+      "period": 2,
+      "minute": 66,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        109,
+        58
+      ]
+    },
+    {
+      "id": "e2ec507f-c749-4b02-b495-2cf80736d975",
+      "index": 3092,
+      "period": 2,
+      "minute": 66,
+      "second": 25,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Pedro Eliezer Rodríguez Ledesma",
+      "location": [
+        108,
+        43
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "e0ff73b8-ff8e-4c15-a1ff-823ae7a1d4a8",
+      "index": 3094,
+      "period": 2,
+      "minute": 66,
+      "second": 26,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        92,
+        39
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "c7cabaf8-3739-42df-ab5a-4b70678f73ad",
+      "index": 3112,
+      "period": 2,
+      "minute": 66,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "David Villa Sánchez",
+      "location": [
+        75,
+        53
+      ]
+    },
+    {
+      "id": "62127165-d8cf-47a0-980b-f7e3e3a1f863",
+      "index": 3165,
+      "period": 2,
+      "minute": 67,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Rio Ferdinand",
+      "location": [
+        16,
+        43
+      ]
+    },
+    {
+      "id": "b8971e44-42d5-4907-a608-324f882738d5",
+      "index": 3173,
+      "period": 2,
+      "minute": 67,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        101,
+        27
+      ]
+    },
+    {
+      "id": "4541c5f8-e589-4153-9ec8-1e56d1b192bf",
+      "index": 3244,
+      "period": 2,
+      "minute": 68,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Sergio Busquets i Burgos",
+      "location": [
+        106,
+        57
+      ]
+    },
+    {
+      "id": "591b68cd-6a4a-4b14-a05e-ad628f2f7b56",
+      "index": 3247,
+      "period": 2,
+      "minute": 68,
+      "second": 50,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Sergio Busquets i Burgos",
+      "location": [
+        105,
+        55
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "f0043ac8-b885-4853-89a3-4592f25e6244",
+      "index": 3250,
+      "period": 2,
+      "minute": 68,
+      "second": 51,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "David Villa Sánchez",
+      "location": [
+        100,
+        45
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f3684e7b-03e8-4ef4-9da4-b802c786a4ee",
+      "index": 3278,
+      "period": 2,
+      "minute": 70,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        25,
+        67
+      ]
+    },
+    {
+      "id": "63987e55-f27b-4745-84af-643e705275ca",
+      "index": 3282,
+      "period": 2,
+      "minute": 70,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Ryan Giggs",
+      "location": [
+        97,
+        20
+      ]
+    },
+    {
+      "id": "e86d7e5b-2d21-4357-be6d-51e6d5fe7456",
+      "index": 3284,
+      "period": 2,
+      "minute": 70,
+      "second": 27,
+      "type": "Pass",
+      "team": "Manchester United",
+      "player": "Ryan Giggs",
+      "location": [
+        98,
+        23
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "30962e8d-529d-422a-9d57-1b78e3bea4f7",
+      "index": 3287,
+      "period": 2,
+      "minute": 70,
+      "second": 29,
+      "type": "Shot",
+      "team": "Manchester United",
+      "player": "Wayne Mark Rooney",
+      "location": [
+        99,
+        32
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "dc7c5fa4-88a4-4365-9a5b-82ae164c69ab",
+      "index": 3336,
+      "period": 2,
+      "minute": 72,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        39,
+        30
+      ]
+    },
+    {
+      "id": "da3ab86d-0e52-4ebb-b5f8-0f2b3a00128d",
+      "index": 3358,
+      "period": 2,
+      "minute": 72,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Wayne Mark Rooney",
+      "location": [
+        72,
+        29
+      ]
+    },
+    {
+      "id": "e433e974-3a30-4ba4-82c5-5c52c86ee93f",
+      "index": 3364,
+      "period": 2,
+      "minute": 72,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Gerard Piqué Bernabéu",
+      "location": [
+        21,
+        49
+      ]
+    },
+    {
+      "id": "76cd4f0c-b594-47fd-905f-b3ffea280a12",
+      "index": 3397,
+      "period": 2,
+      "minute": 73,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Edwin van der Sar",
+      "location": [
+        8,
+        35
+      ]
+    },
+    {
+      "id": "2ff10d8a-7d5d-451a-a385-8d14f701b806",
+      "index": 3419,
+      "period": 2,
+      "minute": 73,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Gerard Piqué Bernabéu",
+      "location": [
+        34,
+        66
+      ]
+    },
+    {
+      "id": "d522dd7d-e6a7-412f-8d1a-1fc0df555b52",
+      "index": 3484,
+      "period": 2,
+      "minute": 74,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Rio Ferdinand",
+      "location": [
+        61,
+        75
+      ]
+    },
+    {
+      "id": "47b219fd-2a0f-4a97-bb0e-1d9d27ab0565",
+      "index": 3575,
+      "period": 2,
+      "minute": 75,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Eric-Sylvain Bilal Abidal",
+      "location": [
+        14,
+        24
+      ]
+    },
+    {
+      "id": "e9986ee6-a8e1-4fd1-9bea-e07fdff4d646",
+      "index": 3782,
+      "period": 2,
+      "minute": 80,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Rio Ferdinand",
+      "location": [
+        37,
+        67
+      ]
+    },
+    {
+      "id": "89de10e9-cc8e-4513-ae21-0a0fc6125cb7",
+      "index": 3917,
+      "period": 2,
+      "minute": 83,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        23,
+        66
+      ]
+    },
+    {
+      "id": "d4a5a41f-e763-4827-bf92-ba3e2eec51bb",
+      "index": 3969,
+      "period": 2,
+      "minute": 84,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Rio Ferdinand",
+      "location": [
+        44,
+        15
+      ]
+    },
+    {
+      "id": "067505ee-2326-4d9e-9bd9-bcd191a50475",
+      "index": 3981,
+      "period": 2,
+      "minute": 84,
+      "second": 24,
+      "type": "Pass",
+      "team": "Manchester United",
+      "player": "Wayne Mark Rooney",
+      "location": [
+        76,
+        38
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "82936640-98b7-4865-bdc6-60e76b900cec",
+      "index": 3988,
+      "period": 2,
+      "minute": 84,
+      "second": 30,
+      "type": "Shot",
+      "team": "Manchester United",
+      "player": "Luís Carlos Almeida da Cunha",
+      "location": [
+        99,
+        48
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "23296750-960c-4a41-a221-9ff6869e5276",
+      "index": 3996,
+      "period": 2,
+      "minute": 85,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Rio Ferdinand",
+      "location": [
+        27,
+        58
+      ]
+    },
+    {
+      "id": "7502ebf6-acc3-41e5-bee0-3d5ab52d38f4",
+      "index": 4049,
+      "period": 2,
+      "minute": 88,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Luís Carlos Almeida da Cunha",
+      "location": [
+        66,
+        67
+      ]
+    },
+    {
+      "id": "252a460e-0aac-45f3-81aa-3e8431218f23",
+      "index": 4141,
+      "period": 2,
+      "minute": 89,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Patrice Evra",
+      "location": [
+        66,
+        2
+      ]
+    },
+    {
+      "id": "afeb1aef-1077-498f-8278-ec3226592075",
+      "index": 4153,
+      "period": 2,
+      "minute": 89,
+      "second": 54,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        60,
+        58
+      ]
+    },
+    {
+      "id": "aa41979c-40b4-436d-906d-1f11d4a323fa",
+      "index": 4184,
+      "period": 2,
+      "minute": 90,
+      "second": 22,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Xavier Hernández Creus",
+      "location": [
+        66,
+        69
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "5cea71b8-b869-4a9c-b568-d0025e0bc1f0",
+      "index": 4186,
+      "period": 2,
+      "minute": 90,
+      "second": 24,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        86,
+        56
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "225c5c1f-3efd-40aa-a747-5ffc6cdb2b68",
+      "index": 4218,
+      "period": 2,
+      "minute": 91,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Ji-Sung Park",
+      "location": [
+        87,
+        13
+      ]
+    },
+    {
+      "id": "64224bde-b719-4ded-83c0-c0856491d178",
+      "index": 4259,
+      "period": 2,
+      "minute": 92,
+      "second": 10,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        88,
+        50
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "3171a54b-2927-4a42-a117-1fba03f1b549",
+      "index": 4262,
+      "period": 2,
+      "minute": 92,
+      "second": 14,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Ibrahim Afellay",
+      "location": [
+        107,
+        59
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "028c6b05-2708-4281-a504-01772024134c",
+      "index": 4318,
+      "period": 2,
+      "minute": 92,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Manchester United",
+      "player": "Nemanja Vidić",
+      "location": [
+        8,
+        6
+      ]
+    }
+  ]
+}

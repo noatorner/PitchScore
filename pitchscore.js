@@ -14,7 +14,10 @@ const COUNTRY_NAME = {
   POR:"Portugal",NED:"Países Bajos",ENG:"Inglaterra",BEL:"Bélgica",
   URU:"Uruguay",COL:"Colombia",JPN:"Japón",AUS:"Australia",
   CRC:"Costa Rica",PAN:"Panamá",NOR:"Noruega",SUI:"Suiza",CRO:"Croacia",
+  FCB:"Barcelona",RMA:"Real Madrid",MUN:"Man. United",JUV:"Juventus",
 };
+// Escudos de club (crests.football-data.org) para los partidos históricos de clubes
+const CLUB_CREST = { FCB:81, RMA:86, MUN:66, JUV:109 };
 const FLAG_ISO = {
   MEX:"mx",RSA:"za",KOR:"kr",CZE:"cz",CAN:"ca",BIH:"ba",
   USA:"us",PAR:"py",HAI:"ht",SCO:"gb-sct",BRA:"br",ARG:"ar",
@@ -26,10 +29,13 @@ const FLAG_ISO = {
 const KANCHA_LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ4AAAATCAYAAABhq7R9AAAACXBIWXMAAAsSAAALEgHS3X78AAAFDklEQVRogc2az3HjNhTGf87sMTNyKrB8Ym6rsAHJDXC1FSxdQZwKLFewTgVSKojNBkwXsFz5Zp4iVRB7JnfngAcvBAIiCZKyvxnNLLHgx2fiw/sHHr28vPDeUBbZGHiK4uSpB57UGLpuy+ngWEVxsvHMnQNzYAJ8dEx5BtbADXCzhycFxvo6ipNFG5uFw7wnj+Ikb8vh4Bz7bG6LD2WR5cBUD0RxctTEANTLM1/uAzDrQSwTIAc2ZZF15RsDl8b1PIDT5siBjTmhLLILYAGMarhGqHc9Bb6WRXYPpI7FTDHWRLjb4tK6zgM4XiGbYVkW2XkUJ6suXAA/BRgwQe3aIUU3Ev68LLLjLpwWeuUsi+y4LLI18JV60bkwBf6RRX230KKTy2Uf9rYSniUMjSFEpzGU+NbyvGCITTnVkLoF/gQ+A79JBPkFOAPOgVsHXS+LOQQs0Wl0tvdDCwMOLToNLb7OzzFwYnCuAzkWVEX3RxQn1/ZEsTuXy5WkKtfAJ2PasiyyTR+5WF/wiE5jWRYZoWG3kcd7A9H9JfwafXm+Z+PfI+Fs7flEOL9bw2cu0bkQxckmipM56u80sWhry1DwiM62N9jz1QrvLUQXxUkKzOhffKnFqcWXBvCYuArxVPJ3bo2hac9pRRA8ojsXe8+t8SDx7Q21e7zRxcCiI4qTp7LIZuzmUV3D7hNK0Ct+hLkR7cPGzLpuep8L16jiRKPigeU9HAR7RLcCiOJkVRYZ1pzWYbcivLLI9jX2XoXRBXWi0xhCfHLPvCyyFfDF+K/QnGXbpbcl4XknRMvCmrgL5W+DOtFp9CG+NlXt9pCi0xChzOg57MrzXDnLoiVVXwXPm6Kp6DRkPDjsthHeSVlknRa7reg0BhbflTV8Kd6wKVwnFI0hvcCZ8Tt4jtdWdBpdxFcJtebJhUMoUwLD3J6WyUT48hqKCWAvSudWSxQni7LINuy++C8SNlLPbRuMk4WyyNIO3fwFuxXymcPG2tMkGzUpkzkvxd0ymZRFdrzvvcomGTv+qzbsHj1+u83Zc2S2p6pNm/bAavp0JucN1aOdGaqKPKm5tyI+yQ/N/OjMJ3DPAtyiCoe/TQ7UBjDHtsAkcDN+N4aeozg5DjnGdHCbwrtynffW9OlAtZ/0mmyM8TFqXebsX1Ov16wNtSKuCe4wV9sD84ju1uLTnJcooZi/S6qiu/fY0yXsrlBhw+z1fcJRsUZxcsNuG0Q3pMdNn2cUTSYa9QH7QMM+3QhVgC3ZXZOljNuia9zna5TjSdU2w90Dm/nu25PTzaM4maDyq2fXvR5sUbto5rCnL/HNqDaaXZhb1x9R564r34aUfG4uHu2OahQ5iPBq+nSnqI3dBveo48GUhjlf4+LCSPBNVY+AOxdxk0JC3P+YH2eYphfR2MozP0dxMjb6SUMVHGuq4vPNs18yKE/wvSyyFynG9G8D/IsK0VPrnl4a8k3QoE+3kY19inIMPhHeo86kT6M4eT16bFpw1OZ4HuNX7PbAdowPrV5D4Dmsf0CJZ0LDHM/BO0HlN3aY3+GQeSvCq9srrO8Eh8rxQqvXENQ9q/VnUeBtQyyNMJNzANGJLV7PB/zcgdeV2zrnSdrg+/LEhQfU+zuN4mTxHjxd36jzfEeP325TAr92LdUXt3Y+8x+7C/7U9PC8C8TzXVjDj8CvxrX36+EWvLUcsvmO2T1a28hvXSe0coAvkKke862lSBoUHo1c/w+ZJkA4KukbKQAAAABJRU5ErkJggg==";
 
 function Flag({ code, h = 16, round = false, fill = false, className = "", style = {} }) {
-  const iso = FLAG_ISO[code] || "xx";
-  const bucket = h <= 18 ? 40 : h <= 30 ? 80 : 160;
   const cls = "ps-flagimg" + (round ? " ps-flagimg-round" : "") + (className ? " " + className : "");
   const st = fill ? { width:"100%", height:"100%", ...style } : { height: h + "px", width:"auto", ...style };
+  if (CLUB_CREST[code]) {
+    return <img className={cls + " ps-flagimg-crest"} src={`https://crests.football-data.org/${CLUB_CREST[code]}.png`} alt={COUNTRY_NAME[code]||code} style={st} loading="lazy" />;
+  }
+  const iso = FLAG_ISO[code] || "xx";
+  const bucket = h <= 18 ? 40 : h <= 30 ? 80 : 160;
   return <img className={cls} src={`https://flagcdn.com/w${bucket}/${iso}.png`} srcSet={`https://flagcdn.com/w${bucket*2}/${iso}.png 2x`} alt={COUNTRY_NAME[code]||code} style={st} loading="lazy" />;
 }
 
@@ -148,12 +154,18 @@ const MATCH_EVENTS = [
 // Partidos reales de StatsBomb open-data; los eventos se sirven desde /data/events/{id}.json
 // (descargados con data/fetch-match.js). sbHome/sbAway son los nombres de equipo de StatsBomb.
 const HISTORIC_MATCHES = [
-  { id:3869685, home:"ARG", away:"FRA", sbHome:"Argentina", sbAway:"France",  title:"Argentina 3-3 Francia",    comp:"FINAL · MUNDIAL 2022" },
-  { id:8658,    home:"FRA", away:"CRO", sbHome:"France",    sbAway:"Croatia", title:"Francia 4-2 Croacia",      comp:"FINAL · MUNDIAL 2018" },
-  { id:3943043, home:"ESP", away:"ENG", sbHome:"Spain",     sbAway:"England", title:"España 2-1 Inglaterra",    comp:"FINAL · EURO 2024" },
-  { id:3795506, home:"ITA", away:"ENG", sbHome:"Italy",     sbAway:"England", title:"Italia 1-1 Inglaterra",    comp:"FINAL · EURO 2020" },
-  { id:3750191, home:"ARG", away:"ENG", sbHome:"Argentina", sbAway:"England", title:"Argentina 2-1 Inglaterra", comp:"CUARTOS · MUNDIAL 1986" },
-  { id:3888702, home:"BRA", away:"ITA", sbHome:"Brazil",    sbAway:"Italy",   title:"Brasil 4-1 Italia",        comp:"FINAL · MUNDIAL 1970" },
+  { id:3869685, home:"ARG", away:"FRA", sbHome:"Argentina", sbAway:"France",  title:"Argentina 3-3 Francia",    score:"3-3", comp:"FINAL · MUNDIAL 2022" },
+  { id:8658,    home:"FRA", away:"CRO", sbHome:"France",    sbAway:"Croatia", title:"Francia 4-2 Croacia",      score:"4-2", comp:"FINAL · MUNDIAL 2018" },
+  { id:3943043, home:"ESP", away:"ENG", sbHome:"Spain",     sbAway:"England", title:"España 2-1 Inglaterra",    score:"2-1", comp:"FINAL · EURO 2024" },
+  { id:3795506, home:"ITA", away:"ENG", sbHome:"Italy",     sbAway:"England", title:"Italia 1-1 Inglaterra",    score:"1-1", comp:"FINAL · EURO 2020" },
+  { id:3750191, home:"ARG", away:"ENG", sbHome:"Argentina", sbAway:"England", title:"Argentina 2-1 Inglaterra", score:"2-1", comp:"CUARTOS · MUNDIAL 1986" },
+  { id:3888702, home:"BRA", away:"ITA", sbHome:"Brazil",    sbAway:"Italy",   title:"Brasil 4-1 Italia",        score:"4-1", comp:"FINAL · MUNDIAL 1970" },
+  { id:3750201, home:"FCB", away:"MUN", sbHome:"Barcelona",   sbAway:"Manchester United", title:"Barcelona 2-0 Manchester Utd.", score:"2-0", comp:"FINAL CHAMPIONS 2009 · ROMA" },
+  { id:18236,   home:"FCB", away:"MUN", sbHome:"Barcelona",   sbAway:"Manchester United", title:"Barcelona 3-1 Manchester Utd.", score:"3-1", comp:"FINAL CHAMPIONS 2011 · WEMBLEY" },
+  { id:18242,   home:"JUV", away:"FCB", sbHome:"Juventus",    sbAway:"Barcelona",         title:"Juventus 1-3 Barcelona",        score:"1-3", comp:"FINAL CHAMPIONS 2015 · BERLÍN" },
+  { id:267569,  home:"RMA", away:"FCB", sbHome:"Real Madrid", sbAway:"Barcelona",         title:"Real Madrid 2-3 Barcelona",     score:"2-3", comp:"LA LIGA 2016/17 · GOL 500 MESSI" },
+  { id:9736,    home:"RMA", away:"FCB", sbHome:"Real Madrid", sbAway:"Barcelona",         title:"Real Madrid 0-3 Barcelona",     score:"0-3", comp:"LA LIGA 2017/18" },
+  { id:16196,   home:"RMA", away:"FCB", sbHome:"Real Madrid", sbAway:"Barcelona",         title:"Real Madrid 0-1 Barcelona",     score:"0-1", comp:"LA LIGA 2018/19" },
 ];
 
 const ME = {
@@ -539,6 +551,8 @@ function useHistoricSim(onActEvent) {
 
 function HistoricMatchesBar({ sim, speedIdx, onSpeed, onStart, onStop }) {
   const [selId,setSelId]=React.useState(HISTORIC_MATCHES[0].id);
+  // Refleja en el selector el partido en curso (p.ej. lanzado desde PagePartidos)
+  React.useEffect(()=>{ if(sim.match) setSelId(sim.match.id); },[sim.match]);
   const busy=sim.status==="running"||sim.status==="loading";
   const status=
     sim.status==="loading"?"Cargando eventos…":
@@ -594,6 +608,14 @@ function PageInicio({ onNav }) {
     },1600);
   },[]);
   const {sim,start:startSim,setSpeed:setSimSpeed,stop:stopSim}=useHistoricSim(handleSimEvent);
+  // Arranque solicitado desde PagePartidos (botón JUGAR de un partido histórico)
+  React.useEffect(()=>{
+    const reqId=window.__KN_SIM_REQUEST;
+    if (!reqId) return;
+    window.__KN_SIM_REQUEST=null;
+    const m=HISTORIC_MATCHES.find(x=>x.id===reqId);
+    if (m) startSim(m,SIM_SPEEDS[0].ms);
+  },[]);
   const simOn=sim.match&&(sim.status==="running"||sim.status==="done"||sim.status==="loading");
   const simReservations=selectedZones.map(id=>{ const z=ZONES.find(zz=>zz.id===id); return {zoneId:id,name:z?z.name:id,price:z?z.price:0}; });
 
@@ -1006,6 +1028,7 @@ Object.assign(window, { LiveMatch });
 
 // ===== OTHER PAGES =====
 function PagePartidos({ onNav }) {
+  const [tab,setTab]=React.useState("fixture");
   const [filter,setFilter]=React.useState("todos");
   const [search,setSearch]=React.useState("");
   const groups=["A","B","C","D","E","F","G","H"];
@@ -1019,18 +1042,48 @@ function PagePartidos({ onNav }) {
   return (
     <div className="ps-page">
       <div className="ps-page-head">
-        <div><div className="ps-page-eyebrow">FIXTURE COMPLETO</div><div className="ps-page-title">PARTIDOS DEL MUNDIAL</div><div className="ps-page-sub">104 partidos · 48 selecciones · 16 sedes</div></div>
-        <div className="ps-page-search"><input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Buscar selección o estadio…"/></div>
+        {tab==="fixture"?(
+          <div><div className="ps-page-eyebrow">FIXTURE COMPLETO</div><div className="ps-page-title">PARTIDOS DEL MUNDIAL</div><div className="ps-page-sub">104 partidos · 48 selecciones · 16 sedes</div></div>
+        ):(
+          <div><div className="ps-page-eyebrow">SIMULACIONES</div><div className="ps-page-title">PARTIDOS HISTÓRICOS</div><div className="ps-page-sub">{HISTORIC_MATCHES.length} partidos reales · datos StatsBomb open-data</div></div>
+        )}
+        {tab==="fixture"&&<div className="ps-page-search"><input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Buscar selección o estadio…"/></div>}
       </div>
-      <div className="ps-filter-row">
-        <button className={"ps-chip"+(filter==="todos"?" is-on":"")} onClick={()=>setFilter("todos")}>TODOS</button>
-        <button className={"ps-chip"+(filter==="abiertos"?" is-on":"")} onClick={()=>setFilter("abiertos")}>RESERVAS ABIERTAS</button>
-        <div className="ps-chip-sep">GRUPOS</div>
-        {groups.map(g=>(<button key={g} className={"ps-chip ps-chip-mini"+(filter===g?" is-on":"")} onClick={()=>setFilter(g)}>{g}</button>))}
+      <div className="ps-tabs">
+        <button className={"ps-tab"+(tab==="fixture"?" is-on":"")} onClick={()=>setTab("fixture")}>MUNDIAL 2026</button>
+        <button className={"ps-tab"+(tab==="historicos"?" is-on":"")} onClick={()=>setTab("historicos")}>HISTÓRICOS</button>
       </div>
-      <div className="ps-partidos-grid">
-        {Object.entries(byDate).map(([date,list])=>(<div key={date} className="ps-day-block"><div className="ps-day-head"><span className="ps-day-num">{date.split(" ")[0]}</span><span className="ps-day-mon">{date.split(" ")[1]}</span><span className="ps-day-count">{list.length} partidos</span></div><div className="ps-day-list">{list.map(m=><MatchCard key={m.id} m={m} onNav={onNav}/>)}</div></div>))}
+      {tab==="fixture"?(
+        <>
+          <div className="ps-filter-row">
+            <button className={"ps-chip"+(filter==="todos"?" is-on":"")} onClick={()=>setFilter("todos")}>TODOS</button>
+            <button className={"ps-chip"+(filter==="abiertos"?" is-on":"")} onClick={()=>setFilter("abiertos")}>RESERVAS ABIERTAS</button>
+            <div className="ps-chip-sep">GRUPOS</div>
+            {groups.map(g=>(<button key={g} className={"ps-chip ps-chip-mini"+(filter===g?" is-on":"")} onClick={()=>setFilter(g)}>{g}</button>))}
+          </div>
+          <div className="ps-partidos-grid">
+            {Object.entries(byDate).map(([date,list])=>(<div key={date} className="ps-day-block"><div className="ps-day-head"><span className="ps-day-num">{date.split(" ")[0]}</span><span className="ps-day-mon">{date.split(" ")[1]}</span><span className="ps-day-count">{list.length} partidos</span></div><div className="ps-day-list">{list.map(m=><MatchCard key={m.id} m={m} onNav={onNav}/>)}</div></div>))}
+          </div>
+        </>
+      ):(
+        <div className="ps-day-list">
+          {HISTORIC_MATCHES.map(m=><HistoricMatchCard key={m.id} m={m} onNav={onNav}/>)}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function HistoricMatchCard({ m, onNav }) {
+  return (
+    <div className="ps-match-card ps-hist-card">
+      <div className="ps-mc-top"><div className="ps-mc-group">{m.comp}</div><div className="ps-tag ps-tag-pre">REAL</div></div>
+      <div className="ps-mc-teams">
+        <div className="ps-mc-team"><div className="ps-mc-flag"><Flag code={m.home} h={30}/></div><div className="ps-mc-name">{COUNTRY_NAME[m.home]}</div></div>
+        <div className="ps-mc-score">{m.score}</div>
+        <div className="ps-mc-team"><div className="ps-mc-flag"><Flag code={m.away} h={30}/></div><div className="ps-mc-name">{COUNTRY_NAME[m.away]}</div></div>
       </div>
+      <button className="ps-btn ps-btn-primary ps-btn-sm ps-hist-play" onClick={()=>{ window.__KN_SIM_REQUEST=m.id; onNav("inicio"); }}>▶ JUGAR</button>
     </div>
   );
 }

@@ -1,0 +1,2236 @@
+{
+  "meta": {
+    "matchId": 16196,
+    "teams": [
+      "Real Madrid",
+      "Barcelona"
+    ],
+    "totalEvents": 3978,
+    "keptEvents": 145,
+    "fetchedAt": "2026-06-09T22:45:49.130Z"
+  },
+  "events": [
+    {
+      "id": "d5297344-58e8-4327-8f9e-c4143f266bac",
+      "index": 28,
+      "period": 1,
+      "minute": 0,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Marc-André ter Stegen",
+      "location": [
+        24,
+        51
+      ]
+    },
+    {
+      "id": "e127770d-3b95-4ef7-ba69-3a89bb7e0feb",
+      "index": 56,
+      "period": 1,
+      "minute": 0,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Raphaël Varane",
+      "location": [
+        51,
+        74
+      ]
+    },
+    {
+      "id": "21faf7e5-e552-4ce4-9087-2e44650a29b1",
+      "index": 89,
+      "period": 1,
+      "minute": 1,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Ivan Rakitić",
+      "location": [
+        80,
+        30
+      ]
+    },
+    {
+      "id": "7a6b4195-413a-46bd-9f76-dc069ab45e1e",
+      "index": 97,
+      "period": 1,
+      "minute": 1,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Gareth Frank Bale",
+      "location": [
+        61,
+        53
+      ]
+    },
+    {
+      "id": "056e1870-7388-4f9e-987c-7648355dbc34",
+      "index": 116,
+      "period": 1,
+      "minute": 1,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Toni Kroos",
+      "location": [
+        71,
+        47
+      ]
+    },
+    {
+      "id": "b655258e-c757-480a-9cb1-298a540d7078",
+      "index": 121,
+      "period": 1,
+      "minute": 2,
+      "second": 36,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Gareth Frank Bale",
+      "location": [
+        96,
+        42
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "79da3272-9626-49e0-929c-98cb543316cb",
+      "index": 376,
+      "period": 1,
+      "minute": 7,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Reguilón Rodríguez",
+      "location": [
+        26,
+        26
+      ]
+    },
+    {
+      "id": "daafb777-f6d4-4826-a8e3-8baa2c06e159",
+      "index": 463,
+      "period": 1,
+      "minute": 9,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Thibaut Courtois",
+      "location": [
+        13,
+        47
+      ]
+    },
+    {
+      "id": "e0ee7677-156a-41d4-a689-6b8b9cc5a121",
+      "index": 471,
+      "period": 1,
+      "minute": 9,
+      "second": 7,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Sergio Reguilón Rodríguez",
+      "location": [
+        57,
+        7
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "5446acff-3e24-4ef6-b6b2-767b55c89052",
+      "index": 478,
+      "period": 1,
+      "minute": 9,
+      "second": 12,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Karim Benzema",
+      "location": [
+        107.8,
+        25.4
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "74c6a425-d5cf-4060-b562-dfae8133bce8",
+      "index": 482,
+      "period": 1,
+      "minute": 9,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        80,
+        38
+      ]
+    },
+    {
+      "id": "ff299bdc-1a6c-4921-91ec-4c3a3ced429d",
+      "index": 542,
+      "period": 1,
+      "minute": 10,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Thibaut Courtois",
+      "location": [
+        4,
+        45
+      ]
+    },
+    {
+      "id": "80e6b3d0-e776-423c-b876-4c46ed2f5e19",
+      "index": 572,
+      "period": 1,
+      "minute": 12,
+      "second": 16,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        110,
+        11
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "a5f37b8c-b51b-446d-8618-9dfec8aa0214",
+      "index": 575,
+      "period": 1,
+      "minute": 12,
+      "second": 18,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Raphaël Varane",
+      "location": [
+        107.1,
+        37.5
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "aa9d2492-98e9-4467-993f-06ff3e4eae59",
+      "index": 578,
+      "period": 1,
+      "minute": 12,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Toni Kroos",
+      "location": [
+        96,
+        44
+      ]
+    },
+    {
+      "id": "55a668d4-355d-4fa2-b5c8-6efc0f1065c3",
+      "index": 579,
+      "period": 1,
+      "minute": 12,
+      "second": 19,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Toni Kroos",
+      "location": [
+        96.5,
+        44.7
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "3f81d261-7812-4c87-adb8-2c43caffa139",
+      "index": 594,
+      "period": 1,
+      "minute": 13,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Carlos Henrique Casimiro",
+      "location": [
+        41,
+        57
+      ]
+    },
+    {
+      "id": "8eba2b88-8b76-402d-8c4f-1486c5c44b6a",
+      "index": 616,
+      "period": 1,
+      "minute": 13,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Sergio Busquets i Burgos",
+      "location": [
+        31,
+        54
+      ]
+    },
+    {
+      "id": "2dafbeb1-7bad-4c7f-aa16-d0b0de50db79",
+      "index": 638,
+      "period": 1,
+      "minute": 14,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        78,
+        14
+      ]
+    },
+    {
+      "id": "b090a82a-5877-4840-885b-ef859c047c9e",
+      "index": 668,
+      "period": 1,
+      "minute": 15,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        38,
+        72
+      ]
+    },
+    {
+      "id": "8792e01f-35e4-4719-8396-6cb79bbef371",
+      "index": 689,
+      "period": 1,
+      "minute": 15,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Marc-André ter Stegen",
+      "location": [
+        15,
+        45
+      ]
+    },
+    {
+      "id": "83281113-351b-4264-85fc-4dafeb03395d",
+      "index": 840,
+      "period": 1,
+      "minute": 18,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Raphaël Varane",
+      "location": [
+        36,
+        52
+      ]
+    },
+    {
+      "id": "38433248-d046-4a6c-9b23-ce7223453769",
+      "index": 852,
+      "period": 1,
+      "minute": 18,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Arthur Henrique Ramos de Oliveira Melo",
+      "location": [
+        57,
+        20
+      ]
+    },
+    {
+      "id": "c2512c26-bf4a-415e-8c46-99e04fa9ca64",
+      "index": 862,
+      "period": 1,
+      "minute": 18,
+      "second": 33,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        94,
+        50
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "30eed986-fb64-408a-81a0-d21c396a00a5",
+      "index": 866,
+      "period": 1,
+      "minute": 18,
+      "second": 36,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        112,
+        50.2
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "214c4bfa-69b7-4a28-bba9-fe5f8ab50815",
+      "index": 974,
+      "period": 1,
+      "minute": 20,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        29,
+        73
+      ]
+    },
+    {
+      "id": "071c7934-9931-45a5-80d8-3161a2c76cd9",
+      "index": 1001,
+      "period": 1,
+      "minute": 21,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Reguilón Rodríguez",
+      "location": [
+        35,
+        6
+      ]
+    },
+    {
+      "id": "e0c245b2-c69a-474c-ab54-8eb115067f80",
+      "index": 1013,
+      "period": 1,
+      "minute": 21,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Ivan Rakitić",
+      "location": [
+        55,
+        68
+      ]
+    },
+    {
+      "id": "2c66b31f-6a11-4e5f-af2b-cdf131804a19",
+      "index": 1028,
+      "period": 1,
+      "minute": 21,
+      "second": 57,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Karim Benzema",
+      "location": [
+        105,
+        29
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "bf1340ad-a609-4ccc-be93-8b34284804a7",
+      "index": 1032,
+      "period": 1,
+      "minute": 21,
+      "second": 59,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        105.3,
+        46.1
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d3dea5e0-33cb-48af-8321-1c8ae1c42b8c",
+      "index": 1189,
+      "period": 1,
+      "minute": 25,
+      "second": 34,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Sergi Roberto Carnicer",
+      "location": [
+        84,
+        74
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "032c53f7-7b5f-4a93-8067-5ef563de0f0f",
+      "index": 1193,
+      "period": 1,
+      "minute": 25,
+      "second": 37,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Ivan Rakitić",
+      "location": [
+        112.5,
+        54.8
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "353e729c-f130-49fd-902d-f4b7613e5f92",
+      "index": 1234,
+      "period": 1,
+      "minute": 27,
+      "second": 34,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Toni Kroos",
+      "location": [
+        120,
+        80
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "ed2981bf-fd23-438b-94d9-837123efbdc4",
+      "index": 1237,
+      "period": 1,
+      "minute": 27,
+      "second": 37,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Carlos Henrique Casimiro",
+      "location": [
+        110.2,
+        34.5
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f743d1b3-d767-4ddd-8b87-c2d2437c8b60",
+      "index": 1240,
+      "period": 1,
+      "minute": 27,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        104,
+        27
+      ]
+    },
+    {
+      "id": "2b6ba47a-a82e-42eb-904f-ff106e34ad51",
+      "index": 1241,
+      "period": 1,
+      "minute": 27,
+      "second": 39,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        103.8,
+        27.9
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "b472faf2-1c41-4ffb-8bd3-f61ed8a24068",
+      "index": 1244,
+      "period": 1,
+      "minute": 27,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        96,
+        10
+      ]
+    },
+    {
+      "id": "45787b63-2ab6-405e-ae42-edd902349e31",
+      "index": 1262,
+      "period": 1,
+      "minute": 28,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Gareth Frank Bale",
+      "location": [
+        93,
+        61
+      ]
+    },
+    {
+      "id": "69d4ec76-96e1-4fc9-b7cb-1b578339a62d",
+      "index": 1268,
+      "period": 1,
+      "minute": 28,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Carlos Henrique Casimiro",
+      "location": [
+        86,
+        40
+      ]
+    },
+    {
+      "id": "23c92036-c27e-430f-b012-3a77de37fc6e",
+      "index": 1287,
+      "period": 1,
+      "minute": 28,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Reguilón Rodríguez",
+      "location": [
+        79,
+        40
+      ]
+    },
+    {
+      "id": "f3260343-5bc8-4f91-8978-089e4728d48c",
+      "index": 1296,
+      "period": 1,
+      "minute": 29,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        28,
+        61
+      ]
+    },
+    {
+      "id": "247f5b8e-e84c-489b-b714-96eb223f9056",
+      "index": 1300,
+      "period": 1,
+      "minute": 29,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Reguilón Rodríguez",
+      "location": [
+        86,
+        25
+      ]
+    },
+    {
+      "id": "bce401b3-b342-4230-bc76-ad87283e50f6",
+      "index": 1308,
+      "period": 1,
+      "minute": 30,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Raphaël Varane",
+      "location": [
+        22,
+        21
+      ]
+    },
+    {
+      "id": "78330327-ce80-4b9a-9f19-d2eb1620dd71",
+      "index": 1378,
+      "period": 1,
+      "minute": 31,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Reguilón Rodríguez",
+      "location": [
+        91,
+        30
+      ]
+    },
+    {
+      "id": "bb720f4d-9873-4e92-8522-2546bfaa49d1",
+      "index": 1379,
+      "period": 1,
+      "minute": 31,
+      "second": 39,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Sergio Reguilón Rodríguez",
+      "location": [
+        91,
+        30
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "5ad3cbfe-403f-47d7-b5e0-61c08f468c36",
+      "index": 1442,
+      "period": 1,
+      "minute": 32,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Arthur Henrique Ramos de Oliveira Melo",
+      "location": [
+        80,
+        19
+      ]
+    },
+    {
+      "id": "7326a51e-d898-4b61-87a1-59c35831f2fc",
+      "index": 1477,
+      "period": 1,
+      "minute": 34,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        96,
+        43
+      ]
+    },
+    {
+      "id": "f03fb639-323d-4fc9-8e4e-4315c75e31dd",
+      "index": 1501,
+      "period": 1,
+      "minute": 34,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Ousmane Dembélé",
+      "location": [
+        107,
+        13
+      ]
+    },
+    {
+      "id": "0dae8bee-d2e0-4e21-a445-173e9e62b358",
+      "index": 1515,
+      "period": 1,
+      "minute": 34,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Ramos García",
+      "location": [
+        9,
+        50
+      ]
+    },
+    {
+      "id": "0f17bd6c-c175-4b26-b124-023dbb10bbfd",
+      "index": 1527,
+      "period": 1,
+      "minute": 36,
+      "second": 35,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        93.9,
+        38.4
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "a35765da-9da8-4ae6-b65a-c559b1d3754d",
+      "index": 1533,
+      "period": 1,
+      "minute": 37,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        61,
+        71
+      ]
+    },
+    {
+      "id": "d21c91fa-29ae-4dfd-81bd-c94ec7372e28",
+      "index": 1595,
+      "period": 1,
+      "minute": 38,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Ousmane Dembélé",
+      "location": [
+        107,
+        7
+      ]
+    },
+    {
+      "id": "5a1db970-5061-4387-9595-a311589a140d",
+      "index": 1614,
+      "period": 1,
+      "minute": 38,
+      "second": 24,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Ivan Rakitić",
+      "location": [
+        94,
+        59
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "521c0b76-611e-4d9e-918f-0798fe69776e",
+      "index": 1618,
+      "period": 1,
+      "minute": 38,
+      "second": 26,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        99.9,
+        38.9
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "5b8b8997-8bc8-42e4-90a0-abab705020e1",
+      "index": 1621,
+      "period": 1,
+      "minute": 38,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        114,
+        46
+      ]
+    },
+    {
+      "id": "989f4f1b-560c-4ee8-ad8c-5165e4f8174f",
+      "index": 1622,
+      "period": 1,
+      "minute": 38,
+      "second": 28,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        112.5,
+        44.2
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "5c81a069-4c99-472e-aae7-8c0928bfaf35",
+      "index": 1633,
+      "period": 1,
+      "minute": 39,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Clément Lenglet",
+      "location": [
+        59,
+        17
+      ]
+    },
+    {
+      "id": "5c0ab295-3a39-4f25-96dc-e9520631c654",
+      "index": 1649,
+      "period": 1,
+      "minute": 39,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        73,
+        17
+      ]
+    },
+    {
+      "id": "e0534cd6-93ed-4e75-a9c4-70161ebc4a8d",
+      "index": 1673,
+      "period": 1,
+      "minute": 39,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Sergi Roberto Carnicer",
+      "location": [
+        48,
+        76
+      ]
+    },
+    {
+      "id": "0f43f574-0b96-472f-90ec-013d806ea654",
+      "index": 1709,
+      "period": 1,
+      "minute": 41,
+      "second": 31,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        92.6,
+        57.4
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "b8f71e70-95a0-416e-a45e-d11611d50405",
+      "index": 1722,
+      "period": 1,
+      "minute": 41,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        46,
+        12
+      ]
+    },
+    {
+      "id": "b3f29e85-6d3a-495b-b4b8-3d7951c07ee3",
+      "index": 1748,
+      "period": 1,
+      "minute": 42,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Carlos Henrique Casimiro",
+      "location": [
+        44,
+        25
+      ]
+    },
+    {
+      "id": "b1466d04-d034-4c57-aea5-df3a5befacb6",
+      "index": 1756,
+      "period": 1,
+      "minute": 42,
+      "second": 20,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        73,
+        18
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "95cb8e2a-48ac-4079-9259-ef3d08688919",
+      "index": 1760,
+      "period": 1,
+      "minute": 42,
+      "second": 27,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        106.2,
+        25.6
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "838361ae-a0b5-4c2c-807b-daa21e3670bc",
+      "index": 1803,
+      "period": 1,
+      "minute": 43,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        103,
+        14
+      ]
+    },
+    {
+      "id": "518fa6e7-233f-4fbd-a4b3-1e798991fe58",
+      "index": 1809,
+      "period": 1,
+      "minute": 43,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Sergi Roberto Carnicer",
+      "location": [
+        10,
+        61
+      ]
+    },
+    {
+      "id": "a380f7bc-1d54-417a-9ee7-92d1cf201a16",
+      "index": 1829,
+      "period": 1,
+      "minute": 44,
+      "second": 7,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        116,
+        56
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "ee79ba09-2074-4c07-a9c2-a0ab1410752a",
+      "index": 1831,
+      "period": 1,
+      "minute": 44,
+      "second": 8,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        110.8,
+        41.6
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "45933f29-0ef1-4dcd-80ec-0ae9ca31eab8",
+      "index": 1842,
+      "period": 1,
+      "minute": 44,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Reguilón Rodríguez",
+      "location": [
+        38,
+        32
+      ]
+    },
+    {
+      "id": "43d21c1c-4efe-4bb4-8360-638f32938cf3",
+      "index": 1949,
+      "period": 2,
+      "minute": 45,
+      "second": 54,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        48,
+        74
+      ]
+    },
+    {
+      "id": "a15bceeb-0ee0-4de8-a085-0128ad181697",
+      "index": 2011,
+      "period": 2,
+      "minute": 47,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Gerard Piqué Bernabéu",
+      "location": [
+        28,
+        50
+      ]
+    },
+    {
+      "id": "248fbfd0-759c-4615-9011-d565fba1bd67",
+      "index": 2035,
+      "period": 2,
+      "minute": 47,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Sergi Roberto Carnicer",
+      "location": [
+        1,
+        56
+      ]
+    },
+    {
+      "id": "d39f1f24-3a91-402e-96ef-ab3523c0431a",
+      "index": 2046,
+      "period": 2,
+      "minute": 47,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Sergi Roberto Carnicer",
+      "location": [
+        4,
+        59
+      ]
+    },
+    {
+      "id": "1ef03377-efa3-420e-b6d2-5ab77c47eda5",
+      "index": 2067,
+      "period": 2,
+      "minute": 48,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        81,
+        49
+      ]
+    },
+    {
+      "id": "e7231dbe-a539-4749-aec0-271958661df0",
+      "index": 2161,
+      "period": 2,
+      "minute": 50,
+      "second": 21,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Toni Kroos",
+      "location": [
+        17,
+        42
+      ]
+    },
+    {
+      "id": "aacc5878-8f4a-43be-a71f-87f8398e34e1",
+      "index": 2198,
+      "period": 2,
+      "minute": 50,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Gerard Piqué Bernabéu",
+      "location": [
+        20,
+        51
+      ]
+    },
+    {
+      "id": "1b5a3d33-51e0-4123-9cce-b2db76294fa4",
+      "index": 2203,
+      "period": 2,
+      "minute": 51,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        83,
+        23
+      ]
+    },
+    {
+      "id": "080ce46e-02ab-4632-bfe7-60b64c6f209c",
+      "index": 2210,
+      "period": 2,
+      "minute": 51,
+      "second": 16,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Arthur Henrique Ramos de Oliveira Melo",
+      "location": [
+        66,
+        5
+      ]
+    },
+    {
+      "id": "c7da4717-9f54-4422-b621-2f37e11366df",
+      "index": 2318,
+      "period": 2,
+      "minute": 52,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Marc-André ter Stegen",
+      "location": [
+        5,
+        40
+      ]
+    },
+    {
+      "id": "6bf317d8-c08f-43a7-9bc0-1a5eb3b2081a",
+      "index": 2349,
+      "period": 2,
+      "minute": 53,
+      "second": 43,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Karim Benzema",
+      "location": [
+        108,
+        78
+      ]
+    },
+    {
+      "id": "b747e7a3-1ae1-4bc5-8e5c-dec9ea501252",
+      "index": 2374,
+      "period": 2,
+      "minute": 54,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Reguilón Rodríguez",
+      "location": [
+        109,
+        12
+      ]
+    },
+    {
+      "id": "1ea76e62-c170-4127-bdc9-711ddb7266c3",
+      "index": 2407,
+      "period": 2,
+      "minute": 55,
+      "second": 5,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Sergio Ramos García",
+      "location": [
+        67,
+        17
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "86209bf6-0a36-48de-a662-4797adfc22c4",
+      "index": 2410,
+      "period": 2,
+      "minute": 55,
+      "second": 12,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        106.4,
+        27.5
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "06a0d0ce-18fe-4003-bf5e-02faf1b07f8c",
+      "index": 2445,
+      "period": 2,
+      "minute": 56,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Gerard Piqué Bernabéu",
+      "location": [
+        20,
+        77
+      ]
+    },
+    {
+      "id": "59f01236-7a2b-48d9-87bd-a69b3fa5e8da",
+      "index": 2455,
+      "period": 2,
+      "minute": 56,
+      "second": 21,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        95,
+        46
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "94f0f8fe-93a7-4f19-88db-59de7cb2cad5",
+      "index": 2458,
+      "period": 2,
+      "minute": 56,
+      "second": 23,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Ousmane Dembélé",
+      "location": [
+        100.6,
+        27.5
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "51f6cb09-afce-49b2-bc2f-e38a8fc95e91",
+      "index": 2468,
+      "period": 2,
+      "minute": 56,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        33,
+        12
+      ]
+    },
+    {
+      "id": "ffd6a050-60ad-4797-98ad-ee614fcd7f1a",
+      "index": 2563,
+      "period": 2,
+      "minute": 58,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Ivan Rakitić",
+      "location": [
+        3,
+        61
+      ]
+    },
+    {
+      "id": "a8e17a80-e5d0-4e9d-aa95-01e47d3a2702",
+      "index": 2571,
+      "period": 2,
+      "minute": 58,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        115,
+        31
+      ]
+    },
+    {
+      "id": "8a64ae45-d442-48c0-9273-b3f35d22b666",
+      "index": 2574,
+      "period": 2,
+      "minute": 58,
+      "second": 58,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        109.7,
+        33
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "3def0be9-b6d2-4b57-9cc3-4f9d9ccae4fa",
+      "index": 2577,
+      "period": 2,
+      "minute": 59,
+      "second": 27,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Federico Santiago Valverde Dipetta",
+      "location": [
+        120,
+        80
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "e1743f3b-0a58-4dc2-9c4e-72c565b2894b",
+      "index": 2580,
+      "period": 2,
+      "minute": 59,
+      "second": 30,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Carlos Henrique Casimiro",
+      "location": [
+        114.3,
+        32.2
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "92099b74-e5ab-4072-969e-281d938ef977",
+      "index": 2611,
+      "period": 2,
+      "minute": 62,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Gerard Piqué Bernabéu",
+      "location": [
+        34,
+        54
+      ]
+    },
+    {
+      "id": "f94458e6-fa01-44ef-a295-d9242c795a67",
+      "index": 2702,
+      "period": 2,
+      "minute": 63,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Carlos Henrique Casimiro",
+      "location": [
+        85,
+        10
+      ]
+    },
+    {
+      "id": "d1e92b90-102b-40b7-a923-8c3c261b4499",
+      "index": 2739,
+      "period": 2,
+      "minute": 65,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Luka Modrić",
+      "location": [
+        31,
+        70
+      ]
+    },
+    {
+      "id": "71b80354-85d8-4234-bc23-573290a305f0",
+      "index": 2774,
+      "period": 2,
+      "minute": 65,
+      "second": 57,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        109,
+        64
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "a966cb6c-0143-4ca9-bff5-a67ea14f7f4f",
+      "index": 2776,
+      "period": 2,
+      "minute": 65,
+      "second": 58,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Marco Asensio Willemsen",
+      "location": [
+        110.6,
+        44.8
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "ab36282e-3667-4a7e-9e36-b7cf02076b90",
+      "index": 2877,
+      "period": 2,
+      "minute": 68,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        48,
+        48
+      ]
+    },
+    {
+      "id": "54161613-132b-4aab-8331-98dac08afa8a",
+      "index": 2901,
+      "period": 2,
+      "minute": 68,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        97,
+        27
+      ]
+    },
+    {
+      "id": "cef9ed7d-9a7d-4d79-b908-ae76d9802fd6",
+      "index": 2907,
+      "period": 2,
+      "minute": 68,
+      "second": 34,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        105,
+        32
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "1130f2b6-88d5-44bc-bbe8-93095b18eb11",
+      "index": 2911,
+      "period": 2,
+      "minute": 68,
+      "second": 37,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        116,
+        24
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "cb40b98f-6e77-44f1-8865-8f1ac3bf790d",
+      "index": 2913,
+      "period": 2,
+      "minute": 68,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Sergi Roberto Carnicer",
+      "location": [
+        117,
+        70
+      ]
+    },
+    {
+      "id": "af2749a2-a7d9-4851-b8e0-30db76b71814",
+      "index": 2985,
+      "period": 2,
+      "minute": 69,
+      "second": 37,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        83,
+        33
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "c06f1f2a-bb81-48cf-a2fc-9426a4d91bf6",
+      "index": 2988,
+      "period": 2,
+      "minute": 69,
+      "second": 39,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Ousmane Dembélé",
+      "location": [
+        109.1,
+        25.7
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "b9de16e5-ce3d-46a3-8271-194c40ab102a",
+      "index": 3027,
+      "period": 2,
+      "minute": 71,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Federico Santiago Valverde Dipetta",
+      "location": [
+        93,
+        24
+      ]
+    },
+    {
+      "id": "51e19fdc-3a21-46a4-ae7f-ed3301806ae1",
+      "index": 3039,
+      "period": 2,
+      "minute": 71,
+      "second": 20,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Sergio Reguilón Rodríguez",
+      "location": [
+        98,
+        11
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "0c93145a-47f1-48fa-baf6-ba10034c8fb1",
+      "index": 3042,
+      "period": 2,
+      "minute": 71,
+      "second": 23,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        96.2,
+        30.8
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "8a026f16-1d73-465a-adcc-c7367d7cd2b2",
+      "index": 3075,
+      "period": 2,
+      "minute": 72,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Thibaut Courtois",
+      "location": [
+        10,
+        44
+      ]
+    },
+    {
+      "id": "c53440bc-fb8d-43f7-968a-a5750a5138b3",
+      "index": 3085,
+      "period": 2,
+      "minute": 72,
+      "second": 37,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        97,
+        23
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "34521c11-b922-4693-8acc-33bad11ef8c4",
+      "index": 3089,
+      "period": 2,
+      "minute": 72,
+      "second": 39,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Carlos Henrique Casimiro",
+      "location": [
+        91.9,
+        34.6
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "8d0f9110-e876-4b78-9aed-f1516ca2b678",
+      "index": 3111,
+      "period": 2,
+      "minute": 73,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Sergi Roberto Carnicer",
+      "location": [
+        26,
+        61
+      ]
+    },
+    {
+      "id": "5099cbe8-91b1-45ac-ba9a-cf58e650df54",
+      "index": 3115,
+      "period": 2,
+      "minute": 73,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        109,
+        19
+      ]
+    },
+    {
+      "id": "a7fa1890-fc5a-45db-96f9-ceccfb2bc319",
+      "index": 3249,
+      "period": 2,
+      "minute": 75,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Ramos García",
+      "location": [
+        68,
+        7
+      ]
+    },
+    {
+      "id": "6cd09479-0f6a-418f-a396-929ba0417fa2",
+      "index": 3303,
+      "period": 2,
+      "minute": 76,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        99,
+        17
+      ]
+    },
+    {
+      "id": "a5379909-ef45-4390-b5e4-f0aa645a65bb",
+      "index": 3315,
+      "period": 2,
+      "minute": 76,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Ousmane Dembélé",
+      "location": [
+        27,
+        33
+      ]
+    },
+    {
+      "id": "13ddf4d4-8a97-4eec-87fb-7b198ea117e9",
+      "index": 3399,
+      "period": 2,
+      "minute": 79,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Raphaël Varane",
+      "location": [
+        43,
+        64
+      ]
+    },
+    {
+      "id": "733ed622-7446-47a6-a09b-f5c40ee4b466",
+      "index": 3432,
+      "period": 2,
+      "minute": 79,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Arturo Erasmo Vidal Pardo",
+      "location": [
+        25,
+        68
+      ]
+    },
+    {
+      "id": "ac0d231f-1f41-48d2-b52a-cb15d76aed65",
+      "index": 3441,
+      "period": 2,
+      "minute": 80,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Karim Benzema",
+      "location": [
+        107,
+        66
+      ]
+    },
+    {
+      "id": "54427bcc-f6b6-4dc7-b62b-53f29799d0c1",
+      "index": 3457,
+      "period": 2,
+      "minute": 80,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        36,
+        27
+      ]
+    },
+    {
+      "id": "669c9bbc-b190-4b13-bbb1-fc4fbea3c8d7",
+      "index": 3501,
+      "period": 2,
+      "minute": 81,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Gerard Piqué Bernabéu",
+      "location": [
+        29,
+        67
+      ]
+    },
+    {
+      "id": "79b3887c-9860-42dc-8405-83912b0d8b17",
+      "index": 3535,
+      "period": 2,
+      "minute": 82,
+      "second": 1,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Philippe Coutinho Correia",
+      "location": [
+        79,
+        32
+      ]
+    },
+    {
+      "id": "5e122875-021e-4a30-88a9-505bb91fba64",
+      "index": 3573,
+      "period": 2,
+      "minute": 82,
+      "second": 25,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Marco Asensio Willemsen",
+      "location": [
+        79,
+        64
+      ]
+    },
+    {
+      "id": "b612b7b4-4273-4736-acb5-48065547b3e5",
+      "index": 3581,
+      "period": 2,
+      "minute": 82,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Gerard Piqué Bernabéu",
+      "location": [
+        8,
+        21
+      ]
+    },
+    {
+      "id": "1d3a2107-6b6b-4094-8f51-da608446188d",
+      "index": 3590,
+      "period": 2,
+      "minute": 83,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        81,
+        44
+      ]
+    },
+    {
+      "id": "450b87a4-3aed-4636-9b09-ce9cf2899145",
+      "index": 3604,
+      "period": 2,
+      "minute": 83,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Marco Asensio Willemsen",
+      "location": [
+        114,
+        21
+      ]
+    },
+    {
+      "id": "7a147c3c-c94b-4d6d-9927-6d2a52e300bc",
+      "index": 3609,
+      "period": 2,
+      "minute": 83,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Arturo Erasmo Vidal Pardo",
+      "location": [
+        9,
+        61
+      ]
+    },
+    {
+      "id": "f7c6cb08-8f19-43bb-8652-1b7cfe1def1a",
+      "index": 3615,
+      "period": 2,
+      "minute": 83,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Gerard Piqué Bernabéu",
+      "location": [
+        7,
+        59
+      ]
+    },
+    {
+      "id": "8042f2df-aa44-469c-90f2-222d5304c289",
+      "index": 3627,
+      "period": 2,
+      "minute": 83,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Sergio Reguilón Rodríguez",
+      "location": [
+        91,
+        19
+      ]
+    },
+    {
+      "id": "405403b2-4d83-430a-b9ca-1afaa2c307a2",
+      "index": 3650,
+      "period": 2,
+      "minute": 84,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Sergi Roberto Carnicer",
+      "location": [
+        29,
+        75
+      ]
+    },
+    {
+      "id": "174e8260-aa90-4f97-9b25-ef9713e044f2",
+      "index": 3674,
+      "period": 2,
+      "minute": 84,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        99,
+        52
+      ]
+    },
+    {
+      "id": "a020cafe-f758-4b51-b071-eabdb377795c",
+      "index": 3756,
+      "period": 2,
+      "minute": 86,
+      "second": 41,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        113,
+        12
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "2c2be3af-bd9e-4708-862b-1dc0f5ab1b75",
+      "index": 3759,
+      "period": 2,
+      "minute": 86,
+      "second": 46,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Karim Benzema",
+      "location": [
+        95.5,
+        31.9
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "d9282f46-94dc-4f8f-a251-7b842cf73c07",
+      "index": 3762,
+      "period": 2,
+      "minute": 87,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Raphaël Varane",
+      "location": [
+        38,
+        38
+      ]
+    },
+    {
+      "id": "4e6f4788-20a3-49ca-83ac-73f0aa439ddc",
+      "index": 3817,
+      "period": 2,
+      "minute": 87,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        104,
+        60
+      ]
+    },
+    {
+      "id": "7262bcfe-247c-4c0d-b772-e21aa845720f",
+      "index": 3822,
+      "period": 2,
+      "minute": 87,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        14,
+        20
+      ]
+    },
+    {
+      "id": "f35787bd-3322-41e2-ba61-9e75242b2b4c",
+      "index": 3842,
+      "period": 2,
+      "minute": 89,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        41,
+        6
+      ]
+    },
+    {
+      "id": "71f4e0e0-e9f6-4c8b-bfb7-8284ccb53ef7",
+      "index": 3873,
+      "period": 2,
+      "minute": 90,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Daniel Carvajal Ramos",
+      "location": [
+        95,
+        60
+      ]
+    },
+    {
+      "id": "1044fce2-5a9b-4053-9873-a1ca70ae748c",
+      "index": 3879,
+      "period": 2,
+      "minute": 90,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Francisco Román Alarcón Suárez",
+      "location": [
+        119,
+        16
+      ]
+    },
+    {
+      "id": "49e3fab2-f5c1-48fa-aa7c-24e1f34cf31c",
+      "index": 3881,
+      "period": 2,
+      "minute": 90,
+      "second": 19,
+      "type": "Pass",
+      "team": "Real Madrid",
+      "player": "Francisco Román Alarcón Suárez",
+      "location": [
+        117,
+        18
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "8cf0fdad-67ad-4b0e-865a-181bb52071c6",
+      "index": 3885,
+      "period": 2,
+      "minute": 90,
+      "second": 22,
+      "type": "Shot",
+      "team": "Real Madrid",
+      "player": "Vinícius José Paixão de Oliveira Júnior",
+      "location": [
+        104.1,
+        24.9
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "5ffed51b-3a26-4469-888b-91ffdbd826e9",
+      "index": 3888,
+      "period": 2,
+      "minute": 90,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "Real Madrid",
+      "player": "Marco Asensio Willemsen",
+      "location": [
+        98,
+        55
+      ]
+    },
+    {
+      "id": "35e59dcc-eb50-481e-8ef2-5e99bf953d8a",
+      "index": 3904,
+      "period": 2,
+      "minute": 91,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        90,
+        51
+      ]
+    },
+    {
+      "id": "534ffd5b-be85-48c5-a535-51660f0376e3",
+      "index": 3918,
+      "period": 2,
+      "minute": 91,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Philippe Coutinho Correia",
+      "location": [
+        71,
+        14
+      ]
+    },
+    {
+      "id": "a1f0bf3d-39f0-41f0-8faa-01b8937851fd",
+      "index": 3953,
+      "period": 2,
+      "minute": 92,
+      "second": 25,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Arturo Erasmo Vidal Pardo",
+      "location": [
+        105,
+        31
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "2f09f0a7-6223-4392-8194-3e3db640e19e",
+      "index": 3956,
+      "period": 2,
+      "minute": 92,
+      "second": 26,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        99.7,
+        39.8
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    }
+  ]
+}

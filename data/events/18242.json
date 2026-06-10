@@ -1,0 +1,2162 @@
+{
+  "meta": {
+    "matchId": 18242,
+    "teams": [
+      "Juventus",
+      "Barcelona"
+    ],
+    "totalEvents": 3433,
+    "keptEvents": 138,
+    "fetchedAt": "2026-06-09T22:45:45.392Z"
+  },
+  "events": [
+    {
+      "id": "13788084-e832-4efb-b721-b577b4f01f17",
+      "index": 50,
+      "period": 1,
+      "minute": 0,
+      "second": 48,
+      "type": "Pass",
+      "team": "Juventus",
+      "player": "Claudio Marchisio",
+      "location": [
+        92,
+        61
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "e037c6c5-3cfe-48f1-9a43-ce8385d0b7aa",
+      "index": 52,
+      "period": 1,
+      "minute": 0,
+      "second": 50,
+      "type": "Shot",
+      "team": "Juventus",
+      "player": "Carlos Alberto Tevez",
+      "location": [
+        100,
+        40
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "17abfbaf-61a8-416a-b294-d9a503d87f00",
+      "index": 67,
+      "period": 1,
+      "minute": 1,
+      "second": 34,
+      "type": "Pass",
+      "team": "Juventus",
+      "player": "Andrea Pirlo",
+      "location": [
+        120,
+        80
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "b028efbb-c5d9-4f82-9b3f-6afb32ebda0b",
+      "index": 69,
+      "period": 1,
+      "minute": 1,
+      "second": 36,
+      "type": "Shot",
+      "team": "Juventus",
+      "player": "Patrice Evra",
+      "location": [
+        108,
+        43
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "702980c0-7d74-42d4-9392-b37112d36fc7",
+      "index": 72,
+      "period": 1,
+      "minute": 1,
+      "second": 39,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        15,
+        61
+      ]
+    },
+    {
+      "id": "997f7676-e7eb-41eb-b7ce-2286135499b3",
+      "index": 146,
+      "period": 1,
+      "minute": 3,
+      "second": 24,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        112,
+        31
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "6ff7a431-2cf4-4f5a-8348-256c6dc44dad",
+      "index": 148,
+      "period": 1,
+      "minute": 3,
+      "second": 24,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Ivan Rakitić",
+      "location": [
+        112,
+        38
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f5662abc-f94a-4862-a56c-5223b1a20119",
+      "index": 186,
+      "period": 1,
+      "minute": 5,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        41,
+        31
+      ]
+    },
+    {
+      "id": "265919d2-cf70-4e81-92a4-f28e9e68afb1",
+      "index": 194,
+      "period": 1,
+      "minute": 5,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        81,
+        46
+      ]
+    },
+    {
+      "id": "64ca118e-0107-4b15-ba32-7e40c9fab305",
+      "index": 281,
+      "period": 1,
+      "minute": 7,
+      "second": 26,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Stephan Lichtsteiner",
+      "location": [
+        8,
+        59
+      ]
+    },
+    {
+      "id": "ce0f3160-0f07-426f-a66c-cbfc1d06bf0b",
+      "index": 294,
+      "period": 1,
+      "minute": 7,
+      "second": 39,
+      "type": "Pass",
+      "team": "Juventus",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        110,
+        58
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "393f16bd-fe24-4832-80da-004d9b9d058e",
+      "index": 296,
+      "period": 1,
+      "minute": 7,
+      "second": 40,
+      "type": "Shot",
+      "team": "Juventus",
+      "player": "Arturo Erasmo Vidal Pardo",
+      "location": [
+        101,
+        52
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "22bcb5d9-97fd-4c84-808f-a2dde54d53fb",
+      "index": 321,
+      "period": 1,
+      "minute": 8,
+      "second": 25,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        80,
+        53
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "15d1aa41-9064-4c15-ab88-157fc9140369",
+      "index": 328,
+      "period": 1,
+      "minute": 8,
+      "second": 29,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        102,
+        47
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "0968f8a3-83bc-45ae-ba1f-49f3ffedd664",
+      "index": 497,
+      "period": 1,
+      "minute": 12,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        103,
+        27
+      ]
+    },
+    {
+      "id": "1810bf01-7875-4fb6-b854-303363365cfc",
+      "index": 504,
+      "period": 1,
+      "minute": 12,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        82,
+        10
+      ]
+    },
+    {
+      "id": "6ac561cc-9715-4535-bb58-c9a3bd4cafa2",
+      "index": 531,
+      "period": 1,
+      "minute": 12,
+      "second": 50,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        113,
+        59
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "b9e652ca-be91-40c1-80fb-9e02ae64f8dd",
+      "index": 533,
+      "period": 1,
+      "minute": 12,
+      "second": 51,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        106,
+        46
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "9ddaa26e-1172-4218-8d87-087440eecb44",
+      "index": 542,
+      "period": 1,
+      "minute": 13,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        45,
+        68
+      ]
+    },
+    {
+      "id": "0a3aff35-d241-49dc-b444-5a81a9471204",
+      "index": 570,
+      "period": 1,
+      "minute": 13,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        91,
+        10
+      ]
+    },
+    {
+      "id": "277681a0-4711-4d51-ab43-3d41247222d3",
+      "index": 586,
+      "period": 1,
+      "minute": 15,
+      "second": 22,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Ivan Rakitić",
+      "location": [
+        120,
+        1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "969f2ed8-b6cd-4214-bf3d-fddcf301f5b2",
+      "index": 588,
+      "period": 1,
+      "minute": 15,
+      "second": 23,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        109,
+        30
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "46833a04-3b92-4192-8f83-18b5d6f0aea4",
+      "index": 669,
+      "period": 1,
+      "minute": 16,
+      "second": 56,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Stephan Lichtsteiner",
+      "location": [
+        24,
+        73
+      ]
+    },
+    {
+      "id": "caf3c3b4-4dca-4c10-9894-36e242e07c8a",
+      "index": 755,
+      "period": 1,
+      "minute": 18,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Stephan Lichtsteiner",
+      "location": [
+        63,
+        69
+      ]
+    },
+    {
+      "id": "00f9a635-a29a-44a5-b08b-4d53cb2e7306",
+      "index": 789,
+      "period": 1,
+      "minute": 18,
+      "second": 44,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        90,
+        28
+      ]
+    },
+    {
+      "id": "a2dce441-2d47-469e-8a86-f235b1017fbc",
+      "index": 799,
+      "period": 1,
+      "minute": 18,
+      "second": 49,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Andrea Pirlo",
+      "location": [
+        26,
+        53
+      ]
+    },
+    {
+      "id": "d21bca86-d80e-48fd-8876-3f7d474750d3",
+      "index": 823,
+      "period": 1,
+      "minute": 20,
+      "second": 6,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Leonardo Bonucci",
+      "location": [
+        74,
+        9
+      ]
+    },
+    {
+      "id": "5ea5f2c8-af00-45a3-9584-ee23ad081f3a",
+      "index": 841,
+      "period": 1,
+      "minute": 20,
+      "second": 22,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Marc-André ter Stegen",
+      "location": [
+        8,
+        56
+      ]
+    },
+    {
+      "id": "1d9bc4bd-2809-497a-a216-512257627eee",
+      "index": 879,
+      "period": 1,
+      "minute": 20,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        70,
+        76
+      ]
+    },
+    {
+      "id": "87cb0309-012c-4b7c-87cb-605c60fc7fc3",
+      "index": 928,
+      "period": 1,
+      "minute": 21,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Leonardo Bonucci",
+      "location": [
+        20,
+        51
+      ]
+    },
+    {
+      "id": "01e2118d-8794-4c3d-a726-6af0edbda2f2",
+      "index": 961,
+      "period": 1,
+      "minute": 22,
+      "second": 29,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Gianluigi Buffon",
+      "location": [
+        6,
+        34
+      ]
+    },
+    {
+      "id": "9251a54f-6fe9-4ea3-8863-aa3e907076ca",
+      "index": 997,
+      "period": 1,
+      "minute": 23,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        105,
+        52
+      ]
+    },
+    {
+      "id": "5694fb32-bc7d-4cf3-a4da-7e02ba721764",
+      "index": 998,
+      "period": 1,
+      "minute": 23,
+      "second": 29,
+      "type": "Shot",
+      "team": "Juventus",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        104,
+        48
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "4dedc332-2230-474b-bef7-de61c3b8a798",
+      "index": 1034,
+      "period": 1,
+      "minute": 24,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        14,
+        34
+      ]
+    },
+    {
+      "id": "826aef92-37f3-4381-b339-659d41ba0e38",
+      "index": 1107,
+      "period": 1,
+      "minute": 26,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        107,
+        23
+      ]
+    },
+    {
+      "id": "5fc64041-7054-4c1a-8302-291444f68662",
+      "index": 1109,
+      "period": 1,
+      "minute": 26,
+      "second": 42,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        105,
+        25
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "f0a7f8c3-7c50-404d-919b-36c9fa0dd0c5",
+      "index": 1140,
+      "period": 1,
+      "minute": 27,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        72,
+        33
+      ]
+    },
+    {
+      "id": "45955415-9e35-4f9f-b418-a29e38bce2f0",
+      "index": 1210,
+      "period": 1,
+      "minute": 29,
+      "second": 3,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Stephan Lichtsteiner",
+      "location": [
+        23,
+        51
+      ]
+    },
+    {
+      "id": "06346f35-18e8-4c3e-abc6-aab2755a1a22",
+      "index": 1330,
+      "period": 1,
+      "minute": 32,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Andrea Barzagli",
+      "location": [
+        12,
+        52
+      ]
+    },
+    {
+      "id": "6bae7f22-5576-470a-960f-87a96b319897",
+      "index": 1335,
+      "period": 1,
+      "minute": 32,
+      "second": 14,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Javier Alejandro Mascherano",
+      "location": [
+        55,
+        36
+      ]
+    },
+    {
+      "id": "122ec076-3280-49f6-9221-f38e69f303ae",
+      "index": 1353,
+      "period": 1,
+      "minute": 32,
+      "second": 28,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        75,
+        30
+      ]
+    },
+    {
+      "id": "70fe926d-6cc6-4554-8f6b-2fadbee2a417",
+      "index": 1459,
+      "period": 1,
+      "minute": 34,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Marc-André ter Stegen",
+      "location": [
+        13,
+        36
+      ]
+    },
+    {
+      "id": "f9f92af2-4dee-4cde-a010-1a45a1a37581",
+      "index": 1478,
+      "period": 1,
+      "minute": 35,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Paul Pogba",
+      "location": [
+        104,
+        11
+      ]
+    },
+    {
+      "id": "72e8245f-70a6-4e30-838e-74da687b88c8",
+      "index": 1543,
+      "period": 1,
+      "minute": 37,
+      "second": 24,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Leonardo Bonucci",
+      "location": [
+        12,
+        50
+      ]
+    },
+    {
+      "id": "4a1ff9c9-4644-4457-910d-c90325f2281b",
+      "index": 1559,
+      "period": 1,
+      "minute": 37,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Andrea Pirlo",
+      "location": [
+        25,
+        53
+      ]
+    },
+    {
+      "id": "1db8b07d-974d-486d-a64a-6c51a262852b",
+      "index": 1581,
+      "period": 1,
+      "minute": 37,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Andrea Barzagli",
+      "location": [
+        27,
+        45
+      ]
+    },
+    {
+      "id": "a58ce306-18da-4452-aed7-bf960c60ba2e",
+      "index": 1600,
+      "period": 1,
+      "minute": 38,
+      "second": 10,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        38,
+        22
+      ]
+    },
+    {
+      "id": "aa0a5e8d-f6d8-4028-a96b-80e6f0061140",
+      "index": 1613,
+      "period": 1,
+      "minute": 38,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Arturo Erasmo Vidal Pardo",
+      "location": [
+        71,
+        72
+      ]
+    },
+    {
+      "id": "0364b421-8aa8-410f-96d4-8b58fd8c6e28",
+      "index": 1653,
+      "period": 1,
+      "minute": 38,
+      "second": 51,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        74,
+        61
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "230b02e5-9f93-4bd6-9110-6a633e3b013b",
+      "index": 1657,
+      "period": 1,
+      "minute": 38,
+      "second": 56,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        104,
+        55
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "edf14176-5894-4bbb-97e4-76e1bf93e305",
+      "index": 1668,
+      "period": 1,
+      "minute": 39,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        74,
+        10
+      ]
+    },
+    {
+      "id": "3b771663-e803-4d3f-b83f-9e77aada520f",
+      "index": 1681,
+      "period": 1,
+      "minute": 39,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        106,
+        25
+      ]
+    },
+    {
+      "id": "96c49ca0-fe8a-4960-84fe-5166436bda01",
+      "index": 1682,
+      "period": 1,
+      "minute": 39,
+      "second": 30,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        105,
+        25
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "1a6dd597-a95a-4f57-8fdd-e164db06b213",
+      "index": 1687,
+      "period": 1,
+      "minute": 40,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Paul Pogba",
+      "location": [
+        52,
+        14
+      ]
+    },
+    {
+      "id": "8fbb6182-9184-4031-9ec0-c23f5c1ab9d6",
+      "index": 1773,
+      "period": 1,
+      "minute": 42,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        71,
+        54
+      ]
+    },
+    {
+      "id": "7c81332d-7600-41e0-b27c-b24e79122bf7",
+      "index": 1816,
+      "period": 1,
+      "minute": 43,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Andrea Pirlo",
+      "location": [
+        57,
+        22
+      ]
+    },
+    {
+      "id": "68ce9eda-040b-4023-ae2d-3b62873f2b15",
+      "index": 1844,
+      "period": 1,
+      "minute": 43,
+      "second": 32,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Andrea Pirlo",
+      "location": [
+        17,
+        32
+      ]
+    },
+    {
+      "id": "9684f7e5-26d8-4d96-8d6b-cfafb3a3052c",
+      "index": 1859,
+      "period": 1,
+      "minute": 43,
+      "second": 50,
+      "type": "Pass",
+      "team": "Juventus",
+      "player": "Claudio Marchisio",
+      "location": [
+        68,
+        33
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "2fb0327d-3258-411b-9809-c3a0fc437a80",
+      "index": 1863,
+      "period": 1,
+      "minute": 43,
+      "second": 57,
+      "type": "Shot",
+      "team": "Juventus",
+      "player": "Arturo Erasmo Vidal Pardo",
+      "location": [
+        95,
+        24
+      ],
+      "shot": {
+        "outcome": "Blocked",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "9573c6c0-d390-4b55-a802-61039d0508b1",
+      "index": 1866,
+      "period": 1,
+      "minute": 43,
+      "second": 59,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Claudio Marchisio",
+      "location": [
+        94,
+        40
+      ]
+    },
+    {
+      "id": "d911dfe5-3c2f-46d2-a29d-30e1777c0946",
+      "index": 1868,
+      "period": 1,
+      "minute": 43,
+      "second": 59,
+      "type": "Shot",
+      "team": "Juventus",
+      "player": "Claudio Marchisio",
+      "location": [
+        92,
+        38
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2dd27731-32e8-445b-a204-e7c96b7179c3",
+      "index": 1887,
+      "period": 1,
+      "minute": 44,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        102,
+        67
+      ]
+    },
+    {
+      "id": "6f945216-f98a-4bea-ab6c-8af61d7a8c8a",
+      "index": 1948,
+      "period": 2,
+      "minute": 45,
+      "second": 55,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        87,
+        58
+      ]
+    },
+    {
+      "id": "e34f6f8d-ad36-48af-953d-ee9b69aefff9",
+      "index": 1977,
+      "period": 2,
+      "minute": 47,
+      "second": 59,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Ivan Rakitić",
+      "location": [
+        99,
+        28
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "968cbe39-7bff-43cd-89b8-852c89e7a084",
+      "index": 1979,
+      "period": 2,
+      "minute": 48,
+      "second": 0,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        108,
+        27
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "682c3500-bc24-4b3a-89c7-b402de675b21",
+      "index": 1995,
+      "period": 2,
+      "minute": 48,
+      "second": 54,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        112,
+        56
+      ]
+    },
+    {
+      "id": "466ddafe-c119-4f94-950e-c7fa0d155a13",
+      "index": 1996,
+      "period": 2,
+      "minute": 48,
+      "second": 54,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        112,
+        56
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "6f8b47a1-4b5e-45d7-a49c-c757adc0db62",
+      "index": 1999,
+      "period": 2,
+      "minute": 49,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Javier Alejandro Mascherano",
+      "location": [
+        73,
+        50
+      ]
+    },
+    {
+      "id": "add5725c-3142-4d19-a3d7-77bb0b0887a7",
+      "index": 2002,
+      "period": 2,
+      "minute": 49,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Gianluigi Buffon",
+      "location": [
+        10,
+        40
+      ]
+    },
+    {
+      "id": "7f65debe-0544-458a-8550-2f675223abf9",
+      "index": 2041,
+      "period": 2,
+      "minute": 50,
+      "second": 15,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        58,
+        13
+      ]
+    },
+    {
+      "id": "205515e6-12c4-4c23-a6f8-2efa63ccb095",
+      "index": 2063,
+      "period": 2,
+      "minute": 50,
+      "second": 32,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        103,
+        40
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "3be90160-9abe-4039-9a90-77b25496dfe8",
+      "index": 2067,
+      "period": 2,
+      "minute": 50,
+      "second": 34,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        104,
+        29
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "8fcb931c-9e4c-4acf-83e4-0ff0acffba26",
+      "index": 2079,
+      "period": 2,
+      "minute": 51,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        105,
+        4
+      ]
+    },
+    {
+      "id": "fc7e868f-36c8-4cf1-a270-a67ca913f937",
+      "index": 2154,
+      "period": 2,
+      "minute": 52,
+      "second": 11,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Claudio Marchisio",
+      "location": [
+        29,
+        69
+      ]
+    },
+    {
+      "id": "10a434bc-5deb-47ef-a585-2b31e8b53e1b",
+      "index": 2161,
+      "period": 2,
+      "minute": 52,
+      "second": 18,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        92,
+        17
+      ]
+    },
+    {
+      "id": "97eff683-5085-470d-8ec3-559897f270ab",
+      "index": 2165,
+      "period": 2,
+      "minute": 52,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Gianluigi Buffon",
+      "location": [
+        6,
+        49
+      ]
+    },
+    {
+      "id": "8ebdfbb4-bce2-42a1-9037-8e17167c1662",
+      "index": 2189,
+      "period": 2,
+      "minute": 52,
+      "second": 41,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        23,
+        16
+      ]
+    },
+    {
+      "id": "031d08f3-9428-41e9-b91c-c907c7068073",
+      "index": 2251,
+      "period": 2,
+      "minute": 54,
+      "second": 14,
+      "type": "Pass",
+      "team": "Juventus",
+      "player": "Andrea Barzagli",
+      "location": [
+        108,
+        59
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "a345546f-3a5b-474d-b1ad-84a450e9b034",
+      "index": 2254,
+      "period": 2,
+      "minute": 54,
+      "second": 15,
+      "type": "Shot",
+      "team": "Juventus",
+      "player": "Carlos Alberto Tevez",
+      "location": [
+        108,
+        44
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "7c3e892f-5b73-4f6f-8e8d-d26cc6c78d41",
+      "index": 2256,
+      "period": 2,
+      "minute": 54,
+      "second": 17,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        115,
+        36
+      ]
+    },
+    {
+      "id": "d8de9c17-e485-4624-938f-a340318ba58d",
+      "index": 2257,
+      "period": 2,
+      "minute": 54,
+      "second": 17,
+      "type": "Shot",
+      "team": "Juventus",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        115,
+        36
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "8f9635f8-03b8-4c62-944e-d58ef10459aa",
+      "index": 2330,
+      "period": 2,
+      "minute": 57,
+      "second": 42,
+      "type": "Pass",
+      "team": "Juventus",
+      "player": "Andrea Pirlo",
+      "location": [
+        87,
+        77
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "7a60ac0c-9f72-437f-aede-36f6db6ba9a2",
+      "index": 2332,
+      "period": 2,
+      "minute": 57,
+      "second": 44,
+      "type": "Shot",
+      "team": "Juventus",
+      "player": "Álvaro Borja Morata Martín",
+      "location": [
+        110,
+        43
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "2e68ad09-c73a-4707-b251-5583fb4d04c1",
+      "index": 2343,
+      "period": 2,
+      "minute": 58,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Ivan Rakitić",
+      "location": [
+        35,
+        64
+      ]
+    },
+    {
+      "id": "6f842d43-599a-4fe3-85ba-837c1dbd3a5c",
+      "index": 2352,
+      "period": 2,
+      "minute": 58,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Andrea Pirlo",
+      "location": [
+        71,
+        22
+      ]
+    },
+    {
+      "id": "6e9ebc40-a0b3-4ba3-91a3-b3d10611feb9",
+      "index": 2373,
+      "period": 2,
+      "minute": 58,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        41,
+        75
+      ]
+    },
+    {
+      "id": "a8c26809-369b-4ab1-a346-6a598b8bbad5",
+      "index": 2457,
+      "period": 2,
+      "minute": 59,
+      "second": 46,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Gianluigi Buffon",
+      "location": [
+        7,
+        38
+      ]
+    },
+    {
+      "id": "44aa5868-135c-44d4-8c00-2c64646a47cf",
+      "index": 2529,
+      "period": 2,
+      "minute": 61,
+      "second": 36,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Paul Pogba",
+      "location": [
+        44,
+        6
+      ]
+    },
+    {
+      "id": "87bc8894-4a46-4655-b8a9-9b8ed5cd4e09",
+      "index": 2553,
+      "period": 2,
+      "minute": 62,
+      "second": 3,
+      "type": "Pass",
+      "team": "Juventus",
+      "player": "Claudio Marchisio",
+      "location": [
+        98,
+        52
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "07630473-e001-407c-b626-013beac8331c",
+      "index": 2555,
+      "period": 2,
+      "minute": 62,
+      "second": 4,
+      "type": "Shot",
+      "team": "Juventus",
+      "player": "Carlos Alberto Tevez",
+      "location": [
+        102,
+        38
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "6e926393-0d26-4af0-9903-bd2fa884b31b",
+      "index": 2568,
+      "period": 2,
+      "minute": 62,
+      "second": 47,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        64,
+        10
+      ]
+    },
+    {
+      "id": "938ac1d5-69e3-4867-9c52-cd2415cf12d7",
+      "index": 2602,
+      "period": 2,
+      "minute": 64,
+      "second": 2,
+      "type": "Pass",
+      "team": "Juventus",
+      "player": "Patrice Evra",
+      "location": [
+        97,
+        22
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "eb8005c8-c9ac-4bca-9849-de431f3693c0",
+      "index": 2605,
+      "period": 2,
+      "minute": 64,
+      "second": 4,
+      "type": "Shot",
+      "team": "Juventus",
+      "player": "Paul Pogba",
+      "location": [
+        96,
+        34
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "cfe94f6a-d245-4305-895a-e8252c68f451",
+      "index": 2698,
+      "period": 2,
+      "minute": 66,
+      "second": 4,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Andrea Pirlo",
+      "location": [
+        81,
+        37
+      ]
+    },
+    {
+      "id": "bb8cd743-e50a-474b-bdb3-c6340f63dc46",
+      "index": 2704,
+      "period": 2,
+      "minute": 66,
+      "second": 7,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Paul Pogba",
+      "location": [
+        88,
+        27
+      ]
+    },
+    {
+      "id": "8ad69a6f-b3b3-403f-8e56-37b889ed59c3",
+      "index": 2713,
+      "period": 2,
+      "minute": 66,
+      "second": 19,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Andrés Iniesta Luján",
+      "location": [
+        20,
+        5
+      ]
+    },
+    {
+      "id": "bc68c4d1-22da-4e71-ad73-a009454da9ca",
+      "index": 2731,
+      "period": 2,
+      "minute": 66,
+      "second": 51,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Ivan Rakitić",
+      "location": [
+        11,
+        45
+      ]
+    },
+    {
+      "id": "0a7a27ec-4ca5-4795-8e90-10025ae60b06",
+      "index": 2734,
+      "period": 2,
+      "minute": 66,
+      "second": 57,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Leonardo Bonucci",
+      "location": [
+        54,
+        24
+      ]
+    },
+    {
+      "id": "2e42b7c7-c14d-4bbe-9b4e-36f14dfcfe94",
+      "index": 2754,
+      "period": 2,
+      "minute": 67,
+      "second": 44,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Ivan Rakitić",
+      "location": [
+        46,
+        43
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "7047fb08-8a84-4196-af84-196ccee7c64d",
+      "index": 2760,
+      "period": 2,
+      "minute": 67,
+      "second": 51,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        102,
+        30
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "7cc60826-c375-4eb2-84de-9dc07f7523cc",
+      "index": 2762,
+      "period": 2,
+      "minute": 67,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        114,
+        43
+      ]
+    },
+    {
+      "id": "344acb91-8f9e-499d-ae65-39d7305e39ad",
+      "index": 2763,
+      "period": 2,
+      "minute": 67,
+      "second": 53,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        114,
+        43
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "adf289bd-3a85-47d8-a71f-ba0ba4628ef6",
+      "index": 2781,
+      "period": 2,
+      "minute": 69,
+      "second": 53,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        35,
+        74
+      ]
+    },
+    {
+      "id": "bc3da0a4-dc9b-4fee-8e80-badcdf0bd332",
+      "index": 2799,
+      "period": 2,
+      "minute": 70,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Jordi Alba Ramos",
+      "location": [
+        69,
+        13
+      ]
+    },
+    {
+      "id": "2622158a-879e-4cb5-9036-74b2ef54221c",
+      "index": 2809,
+      "period": 2,
+      "minute": 72,
+      "second": 5,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        76,
+        74
+      ]
+    },
+    {
+      "id": "6b6531e6-8fb1-428d-81cd-198bc244971d",
+      "index": 2818,
+      "period": 2,
+      "minute": 72,
+      "second": 13,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        97,
+        33
+      ]
+    },
+    {
+      "id": "c4af915e-dc98-4213-8313-183b2f04efb3",
+      "index": 2865,
+      "period": 2,
+      "minute": 73,
+      "second": 38,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Leonardo Bonucci",
+      "location": [
+        31,
+        37
+      ]
+    },
+    {
+      "id": "47fc4139-1f0f-4e2b-90ee-0a7623de5b2a",
+      "index": 2896,
+      "period": 2,
+      "minute": 74,
+      "second": 45,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        40,
+        30
+      ]
+    },
+    {
+      "id": "b2568996-fc83-4289-95f3-ac8b0aa1f303",
+      "index": 2907,
+      "period": 2,
+      "minute": 74,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        90,
+        26
+      ]
+    },
+    {
+      "id": "d4260fc6-5a6e-4ee5-a847-33515148e3da",
+      "index": 2915,
+      "period": 2,
+      "minute": 76,
+      "second": 30,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        96,
+        21
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Free Kick"
+      }
+    },
+    {
+      "id": "5e677e1f-f660-4756-8c83-0212b5631f10",
+      "index": 2939,
+      "period": 2,
+      "minute": 78,
+      "second": 11,
+      "type": "Pass",
+      "team": "Juventus",
+      "player": "Andrea Pirlo",
+      "location": [
+        120,
+        1
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "6fe934d6-0306-4158-9518-54c63135f4d3",
+      "index": 2942,
+      "period": 2,
+      "minute": 78,
+      "second": 13,
+      "type": "Shot",
+      "team": "Juventus",
+      "player": "Paul Pogba",
+      "location": [
+        116,
+        47
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "ef4af640-b30a-42e7-860a-5379c62cf0ee",
+      "index": 3006,
+      "period": 2,
+      "minute": 81,
+      "second": 0,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        107,
+        30
+      ]
+    },
+    {
+      "id": "7652b938-e1ce-47ad-835c-c24d4abc2381",
+      "index": 3007,
+      "period": 2,
+      "minute": 81,
+      "second": 0,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        112,
+        36
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "94d3d940-2c47-41b1-a0ff-db3f3679a2dc",
+      "index": 3020,
+      "period": 2,
+      "minute": 81,
+      "second": 15,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Ivan Rakitić",
+      "location": [
+        93,
+        34
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "80e60ccc-bf8d-4c78-af73-07d1a7d2827c",
+      "index": 3023,
+      "period": 2,
+      "minute": 81,
+      "second": 17,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Gerard Piqué Bernabéu",
+      "location": [
+        112,
+        49
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "1baf1b11-fb3b-4ba0-8deb-07abcf264b52",
+      "index": 3030,
+      "period": 2,
+      "minute": 81,
+      "second": 50,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Leonardo Bonucci",
+      "location": [
+        14,
+        19
+      ]
+    },
+    {
+      "id": "56355a7a-1cd4-45bf-9a01-d7f4b2ea9f80",
+      "index": 3076,
+      "period": 2,
+      "minute": 82,
+      "second": 30,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        14,
+        66
+      ]
+    },
+    {
+      "id": "352d3aa2-6065-4271-859b-d38065ae3479",
+      "index": 3108,
+      "period": 2,
+      "minute": 83,
+      "second": 56,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Daniel Alves da Silva",
+      "location": [
+        110,
+        67
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "ba1c4125-87d8-4b31-aacb-d15fdce97e8d",
+      "index": 3112,
+      "period": 2,
+      "minute": 83,
+      "second": 58,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        107,
+        33
+      ],
+      "shot": {
+        "outcome": "Off T",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "27ab2412-be24-4e21-98b8-446fc156fe98",
+      "index": 3170,
+      "period": 2,
+      "minute": 86,
+      "second": 52,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Marc-André ter Stegen",
+      "location": [
+        6,
+        41
+      ]
+    },
+    {
+      "id": "1bf5a108-efa2-431d-9736-70c762154fc5",
+      "index": 3198,
+      "period": 2,
+      "minute": 87,
+      "second": 27,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Patrice Evra",
+      "location": [
+        112,
+        14
+      ]
+    },
+    {
+      "id": "2cea1d0b-2165-4f66-9461-84fd0c6228cc",
+      "index": 3206,
+      "period": 2,
+      "minute": 87,
+      "second": 34,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Marc-André ter Stegen",
+      "location": [
+        7,
+        46
+      ]
+    },
+    {
+      "id": "fa79b2da-43e2-4327-a3cb-470a18ae5429",
+      "index": 3223,
+      "period": 2,
+      "minute": 88,
+      "second": 47,
+      "type": "Pass",
+      "team": "Juventus",
+      "player": "Carlos Alberto Tevez",
+      "location": [
+        81,
+        39
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "11a6fad4-790a-4f4f-bf43-339b0db44ea6",
+      "index": 3227,
+      "period": 2,
+      "minute": 88,
+      "second": 51,
+      "type": "Shot",
+      "team": "Juventus",
+      "player": "Claudio Marchisio",
+      "location": [
+        88,
+        39
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "3fce66a6-db2e-4508-86a0-f2ddc1cb18a1",
+      "index": 3231,
+      "period": 2,
+      "minute": 89,
+      "second": 20,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Claudio Marchisio",
+      "location": [
+        94,
+        48
+      ]
+    },
+    {
+      "id": "904c9967-5977-4f5f-badb-828f016559f1",
+      "index": 3232,
+      "period": 2,
+      "minute": 89,
+      "second": 20,
+      "type": "Shot",
+      "team": "Juventus",
+      "player": "Claudio Marchisio",
+      "location": [
+        94,
+        48
+      ],
+      "shot": {
+        "outcome": "Wayward",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "311a19e8-7743-4e09-997c-a00fc796d5b3",
+      "index": 3236,
+      "period": 2,
+      "minute": 89,
+      "second": 23,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Ivan Rakitić",
+      "location": [
+        9,
+        29
+      ]
+    },
+    {
+      "id": "736d3275-69e0-4b96-b99d-543d78c03e36",
+      "index": 3244,
+      "period": 2,
+      "minute": 89,
+      "second": 33,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Fernando Llorente Torres",
+      "location": [
+        84,
+        64
+      ]
+    },
+    {
+      "id": "90daaeae-6118-43cf-936b-589c972ce837",
+      "index": 3249,
+      "period": 2,
+      "minute": 89,
+      "second": 37,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        35,
+        28
+      ]
+    },
+    {
+      "id": "fbfabe68-71c8-4c84-82bc-11c9a4001209",
+      "index": 3281,
+      "period": 2,
+      "minute": 90,
+      "second": 9,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Lionel Andrés Messi Cuccittini",
+      "location": [
+        64,
+        37
+      ]
+    },
+    {
+      "id": "65decbcd-409b-46f7-a6d9-ccb4ec21680d",
+      "index": 3285,
+      "period": 2,
+      "minute": 90,
+      "second": 12,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Luis Alberto Suárez Díaz",
+      "location": [
+        75,
+        46
+      ]
+    },
+    {
+      "id": "c30a386e-ad8d-4086-88f5-d7bf805909eb",
+      "index": 3324,
+      "period": 2,
+      "minute": 91,
+      "second": 49,
+      "type": "Pass",
+      "team": "Juventus",
+      "player": "Fernando Llorente Torres",
+      "location": [
+        84,
+        49
+      ],
+      "pass": {
+        "shot_assist": true,
+        "goal_assist": false
+      }
+    },
+    {
+      "id": "0c543d92-2c8d-4cbb-98c2-5536d22fffcb",
+      "index": 3328,
+      "period": 2,
+      "minute": 91,
+      "second": 54,
+      "type": "Shot",
+      "team": "Juventus",
+      "player": "Carlos Alberto Tevez",
+      "location": [
+        100,
+        31
+      ],
+      "shot": {
+        "outcome": "Saved",
+        "type": "Open Play"
+      }
+    },
+    {
+      "id": "44514aeb-2810-4364-a537-ed30f693d21e",
+      "index": 3353,
+      "period": 2,
+      "minute": 92,
+      "second": 58,
+      "type": "Ball Recovery",
+      "team": "Juventus",
+      "player": "Andrea Pirlo",
+      "location": [
+        83,
+        52
+      ]
+    },
+    {
+      "id": "4f2da067-fb1f-4728-b1b8-8c89437aba53",
+      "index": 3380,
+      "period": 2,
+      "minute": 93,
+      "second": 48,
+      "type": "Ball Recovery",
+      "team": "Barcelona",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        106,
+        5
+      ]
+    },
+    {
+      "id": "b88f06fd-3e31-44c6-80cf-1dc1e9537ed5",
+      "index": 3424,
+      "period": 2,
+      "minute": 96,
+      "second": 38,
+      "type": "Pass",
+      "team": "Barcelona",
+      "player": "Pedro Eliezer Rodríguez Ledesma",
+      "location": [
+        97,
+        46
+      ],
+      "pass": {
+        "shot_assist": false,
+        "goal_assist": true
+      }
+    },
+    {
+      "id": "b09ba265-78b8-4bc6-af24-eb3c4047c8e3",
+      "index": 3428,
+      "period": 2,
+      "minute": 96,
+      "second": 40,
+      "type": "Shot",
+      "team": "Barcelona",
+      "player": "Neymar da Silva Santos Junior",
+      "location": [
+        109,
+        31
+      ],
+      "shot": {
+        "outcome": "Goal",
+        "type": "Open Play"
+      }
+    }
+  ]
+}
