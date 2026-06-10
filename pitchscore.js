@@ -731,6 +731,30 @@ function PageInicio({ onNav }) {
   const lmRef=React.useRef(null);
   React.useEffect(()=>{ if(sim.status==="running"&&lmRef.current) lmRef.current.scrollIntoView({behavior:"smooth",block:"start"}); },[sim.status]);
 
+  // --- Eventos en vivo del Mundial 2026 (/api/live-events, cada 60s) ---
+  const [liveEvents,setLiveEvents]=React.useState([]);
+  const liveLastMin=React.useRef(0);
+  React.useEffect(()=>{
+    if (mode!=="mundial") return;
+    let active=true;
+    async function poll(){
+      try{
+        const res=await fetch(`/api/live-events?match_id=${encodeURIComponent(featured.id)}&since=${liveLastMin.current}`);
+        if (!res.ok) return;
+        const data=await res.json();
+        if (!active||!data.events||!data.events.length) return;
+        liveLastMin.current=Math.max(liveLastMin.current,...data.events.map(e=>e.min||0));
+        // side ("home"/"away") → código de equipo del partido destacado, para banderas y marcador
+        const mapped=data.events.map(e=>({...e,team:e.side==="home"?featured.home:featured.away}));
+        setLiveEvents(prev=>[...mapped.slice().reverse(),...prev]);
+        mapped.forEach(ev=>handleSimEvent(ev)); // ilumina las zonas reservadas que reciben el evento
+      }catch(e){ /* API caída o sin red: se reintenta en el siguiente tick */ }
+    }
+    poll();
+    const t=setInterval(poll,60000);
+    return ()=>{ active=false; clearInterval(t); };
+  },[mode]);
+
   // Load saved reservations for the active match from Supabase on mount
   React.useEffect(()=>{
     const db=window.supabaseClient;
@@ -881,7 +905,9 @@ function PageInicio({ onNav }) {
           <CartCard selectedIds={selectedZones} onRemove={(id)=>setSelectedZones(prev=>prev.filter(x=>x!==id))} onClear={()=>setSelectedZones([])} onConfirm={confirmReservations}/>
         </aside>
       </div>
-      <LiveMatch match={featured}/>
+      <LiveMatch match={featured}
+        events={liveEvents.length?[...liveEvents,...MATCH_EVENTS]:MATCH_EVENTS}
+        reservations={selectedZones.length?simReservations:ME.reservations}/>
     </div>
   );
 }

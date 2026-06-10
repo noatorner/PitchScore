@@ -3,5 +3,8 @@
     { "source": "/",      "destination": "/landing.html"    },
     { "source": "/jugar", "destination": "/PITCHSCORE.html" },
     { "source": "/login", "destination": "/login.html"      }
-  ]
+  ],
+  "functions": {
+    "api/*.js": { "maxDuration": 10 }
+  }
 }
