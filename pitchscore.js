@@ -731,28 +731,51 @@ function PageInicio({ onNav }) {
   const lmRef=React.useRef(null);
   React.useEffect(()=>{ if(sim.status==="running"&&lmRef.current) lmRef.current.scrollIntoView({behavior:"smooth",block:"start"}); },[sim.status]);
 
-  // --- Eventos en vivo del Mundial 2026 (/api/live-events, cada 60s) ---
+  // --- Eventos en vivo del Mundial 2026 ---
+  // Al entrar en modo Mundial, /api/sync-fixture resuelve el partido activo
+  // real y su apiMatchId; con ese id se hace polling de /api/live-events
+  // cada 60s. liveMatch guarda los códigos de equipo del partido real para
+  // banderas y marcador (si el sync falla, se usa el fixture mock).
   const [liveEvents,setLiveEvents]=React.useState([]);
+  const [liveFixture,setLiveFixture]=React.useState(null);
   const liveLastMin=React.useRef(0);
+  const liveMatchRef=React.useRef(null);
   React.useEffect(()=>{
     if (mode!=="mundial") return;
-    let active=true;
+    let active=true, timer=null;
     async function poll(){
+      const lm=liveMatchRef.current;
+      const matchId=(lm&&lm.apiMatchId)||featured.id;
       try{
-        const res=await fetch(`/api/live-events?match_id=${encodeURIComponent(featured.id)}&since=${liveLastMin.current}`);
+        const res=await fetch(`/api/live-events?match_id=${encodeURIComponent(matchId)}&since=${liveLastMin.current}`);
         if (!res.ok) return;
         const data=await res.json();
         if (!active||!data.events||!data.events.length) return;
         liveLastMin.current=Math.max(liveLastMin.current,...data.events.map(e=>e.min||0));
-        // side ("home"/"away") → código de equipo del partido destacado, para banderas y marcador
-        const mapped=data.events.map(e=>({...e,team:e.side==="home"?featured.home:featured.away}));
+        // side ("home"/"away") → código de equipo, para banderas y marcador
+        const home=(lm&&lm.home)||featured.home, away=(lm&&lm.away)||featured.away;
+        const mapped=data.events.map(e=>({...e,team:e.side==="home"?home:away}));
         setLiveEvents(prev=>[...mapped.slice().reverse(),...prev]);
         mapped.forEach(ev=>handleSimEvent(ev)); // ilumina las zonas reservadas que reciben el evento
       }catch(e){ /* API caída o sin red: se reintenta en el siguiente tick */ }
     }
-    poll();
-    const t=setInterval(poll,60000);
-    return ()=>{ active=false; clearInterval(t); };
+    (async()=>{
+      try{
+        const res=await fetch("/api/sync-fixture");
+        if (res.ok) {
+          const data=await res.json();
+          if (data.active&&data.active.apiMatchId) {
+            liveMatchRef.current=data.active;
+            // El marcador solo muestra el partido real si conocemos ambas banderas
+            if (COUNTRY_NAME[data.active.home]&&COUNTRY_NAME[data.active.away]) setLiveFixture(data.active);
+          }
+        }
+      }catch(e){ /* sin sync: polling con el fixture mock */ }
+      if (!active) return;
+      poll();
+      timer=setInterval(poll,60000);
+    })();
+    return ()=>{ active=false; clearInterval(timer); };
   },[mode]);
 
   // Load saved reservations for the active match from Supabase on mount
@@ -905,7 +928,7 @@ function PageInicio({ onNav }) {
           <CartCard selectedIds={selectedZones} onRemove={(id)=>setSelectedZones(prev=>prev.filter(x=>x!==id))} onClear={()=>setSelectedZones([])} onConfirm={confirmReservations}/>
         </aside>
       </div>
-      <LiveMatch match={featured}
+      <LiveMatch match={liveFixture?{home:liveFixture.home,away:liveFixture.away}:featured}
         events={liveEvents.length?[...liveEvents,...MATCH_EVENTS]:MATCH_EVENTS}
         reservations={selectedZones.length?simReservations:ME.reservations}/>
     </div>
