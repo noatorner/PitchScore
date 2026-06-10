@@ -205,6 +205,21 @@ const ME = {
 
 Object.assign(window, { FLAGS, FLAG_ISO, Flag, COUNTRY_NAME, FIXTURE, RANKING, FRIENDS, FRIEND_REQUESTS, ZONES, ACTIONS, MATCH_EVENTS, HISTORIC_MATCHES, HISTORIC_CATS, ME, KANCHA_LOGO });
 
+// Wordmark KANCHA reutilizable (sidebar, emblema de la pantalla de modos)
+function KanchaWordmark({ fill = "#EFE5CC", className = "" }) {
+  return (
+    <svg className={className} viewBox="0 0 156.63 18.31" fill={fill} role="img" aria-label="KANCHA" xmlns="http://www.w3.org/2000/svg">
+      <title>KANCHA</title>
+      <polygon points="18.72 1.03 14.31 1.03 7.08 8.03 3.35 8.03 3.35 1.03 0 1.03 0 18.31 3.35 18.31 3.35 10.97 7.08 10.97 15.29 18.31 19.8 18.31 10 9.49 18.72 1.03"/>
+      <path d="M20,18.31h4.24l5.17-5.17c2.29,1.82,5.16,2.82,8.11,2.82s5.81-1,8.11-2.82l5.17,5.17h4.24L37.52.79l-17.52,17.52ZM31.55,11l5.97-5.97,5.97,5.97c-1.73,1.29-3.78,1.96-5.97,1.96s-4.24-.68-5.97-1.96Z"/>
+      <polygon points="72.34 13.66 58.32 .67 55.44 .67 55.44 18.31 58.77 18.31 58.77 5.33 72.8 18.31 75.67 18.31 75.67 .67 72.34 .67 72.34 13.66"/>
+      <path d="M96.38,10.81c-.47,2.66-3.79,4.57-7.99,4.57-4.92,0-8.1-2.44-8.1-6.21s3.18-6.23,8.1-6.23c4.13,0,7.47,1.95,7.94,4.64l.04.25h3.37l-.06-.48c-.57-4.33-5.22-7.35-11.31-7.35-7,0-11.52,3.6-11.52,9.17s4.41,9.14,11.52,9.14c6.27,0,10.96-3.08,11.4-7.48v-.02s-3.39,0-3.39,0Z"/>
+      <polygon points="117.65 7.83 104.36 7.83 104.36 .67 100.97 .67 100.97 18.31 104.36 18.31 104.36 10.81 117.65 10.81 117.65 18.31 121.06 18.31 121.06 .67 117.65 .67 117.65 7.83"/>
+      <path d="M139.11.79l-17.52,17.52h4.24l5.17-5.17c2.29,1.82,5.16,2.82,8.11,2.82s5.81-1,8.11-2.82l5.17,5.17h4.24L139.11.79ZM139.11,12.96c-2.18,0-4.24-.68-5.97-1.96l5.97-5.97,5.97,5.97c-1.73,1.29-3.78,1.96-5.97,1.96Z"/>
+    </svg>
+  );
+}
+
 // ===== SIDEBAR =====
 function Sidebar({ page, onNav }) {
   const items = [
@@ -219,15 +234,7 @@ function Sidebar({ page, onNav }) {
     <aside className="ps-sidebar">
       <div className="ps-brand kn-brand">
         <div className="kn-eyebrow">FÚTBOL EN JUEGO</div>
-       <svg className="kn-logo-img" viewBox="0 0 156.63 18.31" fill="#EFE5CC" role="img" aria-label="KANCHA" xmlns="http://www.w3.org/2000/svg">
-          <title>KANCHA</title>
-          <polygon points="18.72 1.03 14.31 1.03 7.08 8.03 3.35 8.03 3.35 1.03 0 1.03 0 18.31 3.35 18.31 3.35 10.97 7.08 10.97 15.29 18.31 19.8 18.31 10 9.49 18.72 1.03"/>
-          <path d="M20,18.31h4.24l5.17-5.17c2.29,1.82,5.16,2.82,8.11,2.82s5.81-1,8.11-2.82l5.17,5.17h4.24L37.52.79l-17.52,17.52ZM31.55,11l5.97-5.97,5.97,5.97c-1.73,1.29-3.78,1.96-5.97,1.96s-4.24-.68-5.97-1.96Z"/>
-          <polygon points="72.34 13.66 58.32 .67 55.44 .67 55.44 18.31 58.77 18.31 58.77 5.33 72.8 18.31 75.67 18.31 75.67 .67 72.34 .67 72.34 13.66"/>
-          <path d="M96.38,10.81c-.47,2.66-3.79,4.57-7.99,4.57-4.92,0-8.1-2.44-8.1-6.21s3.18-6.23,8.1-6.23c4.13,0,7.47,1.95,7.94,4.64l.04.25h3.37l-.06-.48c-.57-4.33-5.22-7.35-11.31-7.35-7,0-11.52,3.6-11.52,9.17s4.41,9.14,11.52,9.14c6.27,0,10.96-3.08,11.4-7.48v-.02s-3.39,0-3.39,0Z"/>
-          <polygon points="117.65 7.83 104.36 7.83 104.36 .67 100.97 .67 100.97 18.31 104.36 18.31 104.36 10.81 117.65 10.81 117.65 18.31 121.06 18.31 121.06 .67 117.65 .67 117.65 7.83"/>
-          <path d="M139.11.79l-17.52,17.52h4.24l5.17-5.17c2.29,1.82,5.16,2.82,8.11,2.82s5.81-1,8.11-2.82l5.17,5.17h4.24L139.11.79ZM139.11,12.96c-2.18,0-4.24-.68-5.97-1.96l5.97-5.97,5.97,5.97c-1.73,1.29-3.78,1.96-5.97,1.96Z"/>
-        </svg>
+        <KanchaWordmark className="kn-logo-img"/>
         <div className="kn-claim">Antes de que pase<span className="kn-dot">.</span></div>
         <div className="kn-kicker"><span className="ps-star">★</span> MUNDIAL 2026 <span className="ps-star">★</span></div>
       </div>
@@ -277,7 +284,7 @@ function SidebarIcon({ name }) {
   }
 }
 
-Object.assign(window, { Sidebar, SidebarIcon });
+Object.assign(window, { Sidebar, SidebarIcon, KanchaWordmark });
 
 // ===== FIELD =====
 const TIER_COLOR = { premium:"#c8442e", high:"#d68546", mid:"#d4a72c", low:"#82a55c" };
@@ -703,9 +710,9 @@ function PageInicio({ onNav }) {
     },1000);
   }
   function openHistoric(m){ stopSim(); setHistoricMatch(m); setMode("historic"); }
-  function backToHome(){
+  function backToBrowse(){
     clearInterval(countdownRef.current); countdownRef.current=null;
-    setCountdown(null); stopSim(); setHistoricMatch(null); setMode("home");
+    setCountdown(null); stopSim(); setHistoricMatch(null); setMode("browse");
   }
 
   // Partido histórico solicitado desde PagePartidos (botón JUGAR)
@@ -796,12 +803,21 @@ function PageInicio({ onNav }) {
     </>
   );
 
-  // ── MODO HOME: dos bloques, Mundial compacto + grid de históricos ──
+  // ── MODO HOME: pantalla de selección de modo (split diagonal) ──
   if (mode==="home") {
     return (
       <div className="ps-inicio">
+        <ModeSelect onEnterMundial={()=>setMode("mundial")} onChooseHistoric={()=>setMode("browse")}/>
+      </div>
+    );
+  }
+
+  // ── MODO BROWSE: los 27 partidos históricos por categoría ──
+  if (mode==="browse") {
+    return (
+      <div className="ps-inicio">
         <div className="ps-home">
-          <HomeLiveBlock onNav={onNav} onEnter={()=>setMode("mundial")}/>
+          <button className="ps-back" onClick={()=>setMode("home")}>← VOLVER A INICIO</button>
           <HomeHistoricBlock onPlay={openHistoric}/>
         </div>
       </div>
@@ -814,7 +830,7 @@ function PageInicio({ onNav }) {
       <div className="ps-inicio">
         <div className="ps-inicio-screen">
           <aside className="ps-col-left">
-            <button className="ps-back" onClick={backToHome}>← VOLVER A INICIO</button>
+            <button className="ps-back" onClick={backToBrowse}>← ELEGIR OTRO PARTIDO</button>
             <HistoricInfoCard m={historicMatch}/>
           </aside>
           <main className="ps-col-center">
@@ -870,43 +886,120 @@ function PageInicio({ onNav }) {
   );
 }
 
-// ── Bloques de la pantalla HOME ──
-function HomeLiveBlock({ onNav, onEnter }) {
-  const featured=FIXTURE[0];
+// ── PANTALLA DE SELECCIÓN DE MODO (split diagonal) ──
+// Arte decorativo de césped para el panel EN VIVO
+function MsPitchArt() {
   return (
-    <section className="ps-home-sec">
-      <div className="ps-home-sec-head">
-        <div className="ps-home-sec-title"><span className="ps-live-pulse"></span>EN VIVO · MUNDIAL 2026</div>
-        <button className="ps-home-sec-link" onClick={()=>onNav("partidos")}>VER FIXTURE COMPLETO →</button>
-      </div>
-      <div className="ps-home-live-row">
-        <button className="ps-home-feat" onClick={onEnter}>
-          <div className="ps-home-feat-tag">GRUPO {featured.group} · RESERVAS ABIERTAS</div>
-          <div className="ps-home-feat-teams">
-            <Flag code={featured.home} h={24}/>
-            <span>{COUNTRY_NAME[featured.home].toUpperCase()}</span>
-            <span className="ps-hero-vs">VS</span>
-            <span>{COUNTRY_NAME[featured.away].toUpperCase()}</span>
-            <Flag code={featured.away} h={24}/>
-          </div>
-          <div className="ps-home-feat-meta">{featured.date} · {featured.time} · {featured.venue}</div>
-          <div className="ps-mc-cta">RESERVAR ZONAS →</div>
-        </button>
-        {FIXTURE.slice(1,4).map(m=>(
-          <div className="ps-mini-match" key={m.id}>
-            <div className="ps-mini-teams">
-              <div className="ps-team-row"><Flag code={m.home} h={18}/><span className="ps-team-sm">{COUNTRY_NAME[m.home]}</span></div>
-              <div className="ps-vs-sm">vs</div>
-              <div className="ps-team-row"><Flag code={m.away} h={18}/><span className="ps-team-sm">{COUNTRY_NAME[m.away]}</span></div>
+    <svg viewBox="0 0 1000 620" className="ms-pitch-art" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <linearGradient id="msTurf" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#43663a"/><stop offset="50%" stopColor="#3d6135"/><stop offset="100%" stopColor="#2f5029"/>
+        </linearGradient>
+        <radialGradient id="msGlow" cx="50%" cy="44%" r="62%">
+          <stop offset="0%" stopColor="#4f7644" stopOpacity="0.55"/><stop offset="100%" stopColor="#000" stopOpacity="0"/>
+        </radialGradient>
+      </defs>
+      <rect width="1000" height="620" fill="url(#msTurf)"/>
+      {Array.from({length:16}).map((_,i)=>(<rect key={i} x={i*62.5} y="0" width="62.5" height="620" fill={i%2?"rgba(255,255,255,0.04)":"rgba(0,0,0,0.055)"}/>))}
+      <rect width="1000" height="620" fill="url(#msGlow)"/>
+      <g stroke="#f3ecd5" strokeWidth="2.4" fill="none" opacity="0.9">
+        <rect x="40" y="40" width="920" height="540"/>
+        <line x1="500" y1="40" x2="500" y2="580"/>
+        <circle cx="500" cy="310" r="74"/>
+        <rect x="40" y="170" width="120" height="280"/>
+        <rect x="840" y="170" width="120" height="280"/>
+        <rect x="40" y="240" width="44" height="140"/>
+        <rect x="916" y="240" width="44" height="140"/>
+        <path d="M 160 256 A 74 74 0 0 1 160 364"/>
+        <path d="M 840 256 A 74 74 0 0 0 840 364"/>
+      </g>
+      <circle cx="500" cy="310" r="3.5" fill="#f3ecd5" opacity="0.9"/>
+      <circle cx="120" cy="310" r="3.5" fill="#f3ecd5" opacity="0.9"/>
+      <circle cx="880" cy="310" r="3.5" fill="#f3ecd5" opacity="0.9"/>
+    </svg>
+  );
+}
+
+const MS_CAT_META = {
+  "CHAMPIONS LEAGUE": { icon:"⭐", sub:"Finales europeas · 2005–2019" },
+  "MUNDIALES":        { icon:"🏆", sub:"Clásicos mundialistas · 1970–2022" },
+  "EUROS":            { icon:"🏅", sub:"Eliminatorias · 2020 y 2024" },
+  "COPA AMÉRICA":     { icon:"🌎", sub:"Argentina campeona · 2024" },
+  "LA LIGA":          { icon:"🔥", sub:"Clásicos en el Bernabéu" },
+};
+
+function ModeSelect({ onEnterMundial, onChooseHistoric }) {
+  const featured=FIXTURE[0];
+  const [seconds,setSeconds]=React.useState(23*3600+44*60+11);
+  React.useEffect(()=>{ const t=setInterval(()=>setSeconds(s=>Math.max(0,s-1)),1000); return ()=>clearInterval(t); },[]);
+  const cd=[Math.floor(seconds/3600),Math.floor((seconds%3600)/60),seconds%60].map(v=>String(v).padStart(2,"0")).join(":");
+  return (
+    <div className="ms-screen">
+      <div className="msa">
+        <div className="msa-pane msa-live">
+          <div className="msa-live-bg"><MsPitchArt/></div>
+          <div className="msa-pad msa-pad-r">
+            <div className="msa-eyebrow"><span className="ms-live-dot"></span>EN VIVO</div>
+            <div className="msa-kicker">JÚGALO MIENTRAS PASA</div>
+            <h2 className="msa-title">MUNDIAL<span className="msa-num">2026</span></h2>
+            <p className="msa-sub">Reserva tus zonas del campo antes del pitido inicial y suma puntos con cada jugada, en directo.</p>
+            <div className="msa-match">
+              <div className="msa-match-top"><span>GRUPO {featured.group} · JORNADA INAUGURAL</span><span className="msa-match-open">● RESERVAS ABIERTAS</span></div>
+              <div className="msa-match-teams">
+                <Flag code={featured.home} h={24} className="ms-flag"/>
+                <span className="msa-match-name">{COUNTRY_NAME[featured.home].toUpperCase()}</span>
+                <span className="msa-match-vs">VS</span>
+                <span className="msa-match-name">{COUNTRY_NAME[featured.away].toUpperCase()}</span>
+                <Flag code={featured.away} h={24} className="ms-flag"/>
+              </div>
+              <div className="msa-match-top"><span>{featured.date} · {featured.time} · {featured.venue.toUpperCase()}</span><span className="msa-match-cd">CIERRA EN {cd}</span></div>
             </div>
-            <div className="ps-mini-bot">
-              <div className="ps-mini-meta-sm">{m.date} · {m.time}<br/>{m.venue}</div>
-              <div className="ps-tag ps-tag-next">PRÓXIMO</div>
+            <div className="msa-foot">
+              <div className="msa-stats">
+                <div><div className="msa-stat-l">SELECCIONES</div><div className="msa-stat-v">48</div></div>
+                <div><div className="msa-stat-l">PARTIDOS</div><div className="msa-stat-v">104</div></div>
+                <div><div className="msa-stat-l">EN DIRECTO</div><div className="msa-stat-v">HOY</div></div>
+              </div>
+              <button className="ms-cta ms-cta-red" onClick={onEnterMundial}>ENTRAR AL CAMPO <span className="ms-arrow">→</span></button>
             </div>
           </div>
-        ))}
+        </div>
+        <div className="msa-pane msa-hist">
+          <div className="msa-pad msa-pad-l">
+            <div className="msa-eyebrow is-hist">HISTÓRICOS<span className="ms-stamp">REAL · STATSBOMB</span></div>
+            <div className="msa-kicker is-hist">REVIVE LO QUE YA FUE LEYENDA</div>
+            <h2 className="msa-title is-hist">{HISTORIC_MATCHES.length} PARTIDOS<span className="msa-num">MÍTICOS</span></h2>
+            <div className="msa-comp-list">
+              {HISTORIC_CATS.map(cat=>{
+                const meta=MS_CAT_META[cat]||{icon:"⚽",sub:""};
+                const n=HISTORIC_MATCHES.filter(m=>m.cat===cat).length;
+                if(!n) return null;
+                return (
+                  <div className="msa-comp-row" key={cat}>
+                    <span className="ms-logoslot">{meta.icon}</span>
+                    <div className="msa-comp-info">
+                      <div className="msa-comp-name">{cat}</div>
+                      <div className="msa-comp-sub">{meta.sub}</div>
+                    </div>
+                    <div className="msa-comp-count"><b>{n}</b><span>PARTIDOS</span></div>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="msa-foot">
+              <div className="msa-stats">
+                <div><div className="msa-stat-l is-hist">PARTIDOS</div><div className="msa-stat-v is-hist">{HISTORIC_MATCHES.length}</div></div>
+                <div><div className="msa-stat-l is-hist">DATOS REALES</div><div className="msa-stat-v is-hist">100%</div></div>
+              </div>
+              <button className="ms-cta ms-cta-ink" onClick={onChooseHistoric}>ELEGIR PARTIDO <span className="ms-arrow">→</span></button>
+            </div>
+          </div>
+        </div>
+        <div className="msa-seam"></div>
+        <div className="msa-emblem"><KanchaWordmark/></div>
+        <div className="msa-toplabel">ELIGE TU MODO DE JUEGO</div>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -1117,7 +1210,7 @@ function HowIcon({ name }) {
   }
 }
 
-Object.assign(window, { PageInicio, HowItWorks, HowIcon });
+Object.assign(window, { PageInicio, ModeSelect, HowItWorks, HowIcon });
 
 // ===== LIVE MATCH =====
 const ZONE_TIER=(()=>{const m={};ZONES.forEach(z=>{m[z.id]=z.tier;});return m;})();

@@ -405,16 +405,61 @@ input { font-family: inherit; }
 .ps-home-sec-sub { font-family: var(--kn-body); font-weight: 600; font-size: 10px; letter-spacing: 0.16em; color: #6c604a; white-space: nowrap; }
 .ps-home-sec-link { font-family: var(--kn-body); font-weight: 600; font-size: 11px; letter-spacing: 0.12em; color: #b94234; white-space: nowrap; }
 .ps-home-sec-link:hover { text-decoration: underline; }
-.ps-home-live-row { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 12px; align-items: stretch; }
-.ps-home-feat { background: #181b18; color: #f0e7d0; border-radius: 8px; padding: 16px 18px; display: flex; flex-direction: column; gap: 9px; text-align: left; align-items: flex-start; transition: background 0.15s ease; }
-.ps-home-feat:hover { background: #22261f; }
-.ps-home-feat-tag { font-family: var(--kn-body); font-weight: 600; font-size: 10px; letter-spacing: 0.18em; color: #ff7a5c; }
-.ps-home-feat-teams { display: flex; align-items: center; gap: 10px; font-family: var(--kn-display); font-weight: 700; font-size: 19px; letter-spacing: 0.02em; flex-wrap: wrap; }
-.ps-home-feat-meta { font-size: 11px; color: #cdb98a; letter-spacing: 0.06em; }
-.ps-home-feat .ps-mc-cta { background: #b94234; color: #fff; width: 100%; margin-top: auto; }
 .ps-home-cat { display: flex; flex-direction: column; gap: 10px; }
 .ps-home-cat-head { display: flex; align-items: baseline; gap: 12px; border-left: 4px solid #b94234; padding-left: 12px; }
 .ps-home-cat-name { font-family: 'Anton', sans-serif; font-size: 19px; letter-spacing: 0.03em; color: #2a2620; }
+
+/* ============ MODE SELECT (SPLIT DIAGONAL) ============ */
+.ms-screen { flex: 1 1 auto; min-height: 0; position: relative; background: #efe5cc; overflow: hidden; }
+.msa { display: flex; height: 100%; min-height: 560px; position: relative; }
+.msa-pane { position: relative; display: flex; min-width: 0; }
+.msa-live { width: calc(50% + 45px); background: #181b18; clip-path: polygon(0 0, 100% 0, calc(100% - 90px) 100%, 0 100%); z-index: 2; }
+.msa-hist { width: calc(50% + 45px); margin-left: -90px; background: #efe5cc; clip-path: polygon(90px 0, 100% 0, 100% 100%, 0 100%); z-index: 1; }
+.msa-live-bg { position: absolute; inset: 0; z-index: 0; }
+.ms-pitch-art { width: 100%; height: 100%; opacity: 0.5; display: block; }
+.msa-pad { position: relative; z-index: 3; width: 100%; padding: 42px 52px 36px; display: flex; flex-direction: column; gap: 13px; min-width: 0; }
+.msa-pad-r { padding-right: 130px; }
+.msa-pad-l { padding-left: 130px; }
+.msa-eyebrow { display: flex; align-items: center; gap: 10px; font-family: var(--kn-body); font-weight: 600; font-size: 13px; letter-spacing: 0.26em; color: #ff7a5c; text-transform: uppercase; }
+.msa-eyebrow.is-hist { color: #b94234; }
+.ms-live-dot { width: 10px; height: 10px; border-radius: 50%; background: #e0392b; box-shadow: 0 0 0 7px rgba(224,57,43,0.15); animation: ps-pulse 1.6s infinite; flex-shrink: 0; }
+.ms-stamp { margin-left: auto; color: #b94234; border: 1.5px solid #b94234; border-radius: 3px; padding: 3px 9px; font-size: 10px; font-weight: 700; letter-spacing: 0.16em; transform: rotate(-2deg); white-space: nowrap; }
+.msa-kicker { font-family: var(--kn-body); font-weight: 600; font-size: 12px; letter-spacing: 0.22em; color: #9aa48f; text-transform: uppercase; }
+.msa-kicker.is-hist { color: #8a7d62; }
+.msa-title { font-family: 'Anton', sans-serif; font-size: clamp(42px, 5.5vw, 74px); line-height: 0.94; letter-spacing: 0.01em; color: #f3ecd6; margin: 2px 0; text-transform: uppercase; }
+.msa-title .msa-num { display: block; color: #c8442e; }
+.msa-title.is-hist { color: #2a2620; }
+.msa-sub { font-size: 14px; color: #c9d0c2; max-width: 380px; line-height: 1.5; }
+.msa-match { background: rgba(255,255,255,0.05); border: 1px solid rgba(243,236,213,0.14); border-radius: 8px; padding: 14px 18px; display: flex; flex-direction: column; gap: 12px; max-width: 470px; }
+.msa-match-top { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; font-family: var(--kn-body); font-weight: 600; font-size: 11px; letter-spacing: 0.16em; color: #9aa48f; text-transform: uppercase; }
+.msa-match-open { color: #84c168; }
+.msa-match-teams { display: flex; align-items: center; gap: 12px; font-family: 'Anton', sans-serif; font-size: 22px; letter-spacing: 0.01em; color: #f3ecd6; flex-wrap: wrap; }
+.msa-match-vs { background: #ffd27a; color: #181b18; font-family: var(--kn-body); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; padding: 2px 9px; border-radius: 3px; }
+.msa-match-cd { font-family: 'Anton', sans-serif; font-size: 18px; color: #ffd27a; letter-spacing: 0.05em; }
+.msa-foot { margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end; gap: 18px; flex-wrap: wrap; }
+.msa-stats { display: flex; gap: 26px; }
+.msa-stat-l { font-family: var(--kn-body); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; color: #8a948a; }
+.msa-stat-l.is-hist { color: #8a7d62; }
+.msa-stat-v { font-family: 'Anton', sans-serif; font-size: 34px; color: #f3ecd6; line-height: 1.1; }
+.msa-stat-v.is-hist { color: #2a2620; }
+.ms-cta { display: flex; align-items: center; gap: 10px; font-family: var(--kn-body); font-weight: 700; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase; padding: 17px 26px; border-radius: 6px; transition: transform 0.15s ease, background 0.15s ease; white-space: nowrap; }
+.ms-cta:hover { transform: translateY(-2px); }
+.ms-cta-red { background: #c8442e; color: #fff; }
+.ms-cta-red:hover { background: #b03826; }
+.ms-cta-ink { background: #181b18; color: #f3ecd6; }
+.ms-cta-ink:hover { background: #2c302c; }
+.msa-comp-list { display: flex; flex-direction: column; gap: 8px; max-width: 480px; margin-top: 4px; }
+.msa-comp-row { display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 14px; background: #f3ecd6; border: 1px solid #d8c69e; border-radius: 6px; padding: 10px 14px; }
+.ms-logoslot { width: 44px; height: 44px; display: grid; place-items: center; background: #e6dcc4; border: 1px solid #cdb98a; border-radius: 50%; font-size: 20px; }
+.msa-comp-name { font-family: 'Anton', sans-serif; font-size: 19px; letter-spacing: 0.01em; color: #2a2620; line-height: 1.05; }
+.msa-comp-sub { font-size: 12px; color: #6c604a; }
+.msa-comp-count { text-align: right; }
+.msa-comp-count b { display: block; font-family: 'Anton', sans-serif; font-size: 22px; font-weight: 400; line-height: 1; color: #b94234; }
+.msa-comp-count span { font-family: var(--kn-body); font-size: 8.5px; font-weight: 600; letter-spacing: 0.14em; color: #8a7d62; }
+.msa-seam { position: absolute; top: 0; bottom: 0; left: 50%; width: 4px; margin-left: -2px; background: linear-gradient(180deg, #ffd27a, #c8442e); transform: skewX(-6.4deg); z-index: 5; opacity: 0.85; }
+.msa-emblem { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 116px; height: 116px; border-radius: 50%; background: #181b18; border: 3px solid #ffd27a; display: grid; place-items: center; z-index: 6; box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+.msa-emblem svg { width: 84px; height: auto; display: block; }
+.msa-toplabel { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); background: #181b18; color: #ffd27a; font-family: var(--kn-body); font-weight: 600; font-size: 10px; letter-spacing: 0.3em; padding: 8px 18px; border-radius: 999px; z-index: 7; box-shadow: 0 6px 18px rgba(0,0,0,0.3); white-space: nowrap; }
 
 /* ============ MODO HISTORICO ============ */
 .ps-back { align-self: flex-start; font-family: var(--kn-body); font-weight: 600; font-size: 11px; letter-spacing: 0.14em; color: #6c604a; padding: 9px 13px; border: 1px solid #cdb98a; border-radius: 5px; background: #e6dcc4; flex-shrink: 0; transition: all 0.14s ease; }
@@ -705,9 +750,11 @@ input { font-family: inherit; }
   .ps-lm-grid { grid-template-columns: 1fr; }
   .ps-lm-board { grid-template-columns: 1fr; gap: 12px; text-align: center; justify-items: center; }
   .ps-lm-mypts { text-align: center; }
-  .ps-home-live-row { grid-template-columns: 1fr 1fr; }
-  .ps-home-feat { grid-column: 1 / -1; }
   .ps-countdown-num { font-size: 120px; }
+  .msa { flex-direction: column; min-height: 0; }
+  .msa-live, .msa-hist { width: 100%; margin-left: 0; clip-path: none; }
+  .msa-pad-r, .msa-pad-l { padding: 36px 24px; }
+  .msa-seam, .msa-emblem { display: none; }
 }
   </style>
 </head>
