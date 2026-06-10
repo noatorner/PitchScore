@@ -42,20 +42,40 @@ function Flag({ code, h = 16, round = false, fill = false, className = "", style
 }
 
 const FIXTURE = [
-  { id:"m1", home:"MEX", away:"RSA", date:"11 JUN", time:"18:00", venue:"Mexico City Stadium", group:"A", status:"ABIERTO", featured:true },
-  { id:"m2", home:"KOR", away:"CZE", date:"11 JUN", time:"15:00", venue:"Estadio Guadalajara", group:"B", status:"PROXIMO" },
-  { id:"m3", home:"CAN", away:"BIH", date:"12 JUN", time:"17:00", venue:"Toronto Stadium", group:"C", status:"PROXIMO" },
-  { id:"m4", home:"USA", away:"PAR", date:"12 JUN", time:"20:00", venue:"Los Angeles Stadium", group:"D", status:"PROXIMO" },
-  { id:"m5", home:"HAI", away:"SCO", date:"13 JUN", time:"15:00", venue:"Seattle Stadium", group:"E", status:"PROXIMO" },
-  { id:"m6", home:"BRA", away:"POR", date:"13 JUN", time:"18:00", venue:"Estadio Monterrey", group:"F", status:"PROXIMO" },
-  { id:"m7", home:"ARG", away:"JPN", date:"13 JUN", time:"21:00", venue:"Vancouver Stadium", group:"G", status:"PROXIMO" },
-  { id:"m8", home:"ESP", away:"NOR", date:"14 JUN", time:"15:00", venue:"Atlanta Stadium", group:"H", status:"PROXIMO" },
-  { id:"m9", home:"FRA", away:"CRC", date:"14 JUN", time:"18:00", venue:"Boston Stadium", group:"A", status:"PROXIMO" },
-  { id:"m10", home:"GER", away:"AUS", date:"14 JUN", time:"21:00", venue:"Dallas Stadium", group:"B", status:"PROXIMO" },
-  { id:"m11", home:"ITA", away:"PAN", date:"15 JUN", time:"15:00", venue:"Kansas City Stadium", group:"C", status:"PROXIMO" },
-  { id:"m12", home:"ENG", away:"SUI", date:"15 JUN", time:"18:00", venue:"Houston Stadium", group:"D", status:"PROXIMO" },
+  { id:"m1", home:"MEX", away:"RSA", date:"11 JUN", time:"18:00", venue:"Mexico City Stadium", group:"A", featured:true },
+  { id:"m2", home:"KOR", away:"CZE", date:"11 JUN", time:"15:00", venue:"Estadio Guadalajara", group:"B" },
+  { id:"m3", home:"CAN", away:"BIH", date:"12 JUN", time:"17:00", venue:"Toronto Stadium", group:"C" },
+  { id:"m4", home:"USA", away:"PAR", date:"12 JUN", time:"20:00", venue:"Los Angeles Stadium", group:"D" },
+  { id:"m5", home:"HAI", away:"SCO", date:"13 JUN", time:"15:00", venue:"Seattle Stadium", group:"E" },
+  { id:"m6", home:"BRA", away:"POR", date:"13 JUN", time:"18:00", venue:"Estadio Monterrey", group:"F" },
+  { id:"m7", home:"ARG", away:"JPN", date:"13 JUN", time:"21:00", venue:"Vancouver Stadium", group:"G" },
+  { id:"m8", home:"ESP", away:"NOR", date:"14 JUN", time:"15:00", venue:"Atlanta Stadium", group:"H" },
+  { id:"m9", home:"FRA", away:"CRC", date:"14 JUN", time:"18:00", venue:"Boston Stadium", group:"A" },
+  { id:"m10", home:"GER", away:"AUS", date:"14 JUN", time:"21:00", venue:"Dallas Stadium", group:"B" },
+  { id:"m11", home:"ITA", away:"PAN", date:"15 JUN", time:"15:00", venue:"Kansas City Stadium", group:"C" },
+  { id:"m12", home:"ENG", away:"SUI", date:"15 JUN", time:"18:00", venue:"Houston Stadium", group:"D" },
 ];
 
+// Estado dinámico del fixture según la hora real:
+//   ABIERTO   ≤ 24h antes del partido (reservas abiertas)
+//   PROXIMO   > 24h antes
+//   EN VIVO   durante el partido (la detección fiable la hace /api/sync-fixture)
+//   FINALIZADO después
+const MES_NUM = { ENE:0, FEB:1, MAR:2, ABR:3, MAY:4, JUN:5, JUL:6, AGO:7, SEP:8, OCT:9, NOV:10, DIC:11 };
+const MATCH_MS = 135 * 60 * 1000; // duración aprox. de un partido con descanso
+function kickoffDate(m) {
+  const [d, mes] = m.date.split(" ");
+  const [hh, mm] = m.time.split(":");
+  return new Date(2026, MES_NUM[mes] ?? 0, Number(d), Number(hh), Number(mm));
+}
+function fixtureStatus(m, now = new Date()) {
+  const diff = kickoffDate(m) - now;
+  if (diff <= -MATCH_MS) return "FINALIZADO";
+  if (diff <= 0) return "EN VIVO";
+  if (diff <= 24 * 3600 * 1000) return "ABIERTO";
+  return "PROXIMO";
+}
+FIXTURE.forEach((m) => { m.status = fixtureStatus(m); });
 
 const RANKING = [
   { rank:1, name:"Lucía R.", handle:"lucy_goal", points:12847, country:"ESP", level:"Maestro", trend:0, badge:"👑" },
@@ -138,21 +158,6 @@ const ACTIONS = [
   { name:"Recuperación",  icon:"🛡", points:5 },
 ];
 
-const MATCH_EVENTS = [
-  { min:45, type:"info", icon:"⏸", label:"Final de la primera parte" },
-  { min:41, type:"act", icon:"⚽", action:"Gol",             team:"RSA", zoneId:"penspot_izq", zone:"Punto de penalti izquierdo",     pts:40 },
-  { min:40, type:"act", icon:"🎯", action:"Penalti señalado", team:"RSA", zoneId:"penspot_izq", zone:"Punto de penalti izquierdo",     pts:50 },
-  { min:36, type:"act", icon:"🥅", action:"Tiro a puerta",   team:"MEX", zoneId:"med_2",       zone:"Mediocampo · sector 3",          pts:25 },
-  { min:31, type:"act", icon:"⚽", action:"Gol",             team:"MEX", zoneId:"box6_der",    zone:"Área pequeña derecha",           pts:40 },
-  { min:30, type:"act", icon:"👟", action:"Asistencia",      team:"MEX", zoneId:"wing_izq_4",  zone:"Banda izquierda · sector 5",     pts:15 },
-  { min:24, type:"act", icon:"🪡", action:"Córner sacado",   team:"RSA", zoneId:"corner_s_der",zone:"Córner inferior derecho",        pts:10 },
-  { min:19, type:"act", icon:"🛡", action:"Recuperación",    team:"MEX", zoneId:"med_2",       zone:"Mediocampo · sector 3",          pts:5 },
-  { min:13, type:"act", icon:"🥅", action:"Tiro a puerta",   team:"RSA", zoneId:"boxF_izq",    zone:"Frontal del área izquierda",     pts:25 },
-  { min:8,  type:"act", icon:"🪡", action:"Pase clave",      team:"MEX", zoneId:"cid_1",       zone:"Carril central derecho · sector 2",pts:10 },
-  { min:3,  type:"act", icon:"🛡", action:"Recuperación",    team:"RSA", zoneId:"wing_der_2",  zone:"Banda derecha · sector 3",       pts:5 },
-  { min:1,  type:"info",icon:"🟢", label:"¡Comienza el partido!" },
-];
-
 // Partidos reales de StatsBomb open-data; los eventos se sirven desde /data/events/{id}.json
 // (descargados con data/fetch-match.js). sbHome/sbAway son los nombres de equipo de StatsBomb.
 const HISTORIC_CATS = ["CHAMPIONS LEAGUE","MUNDIALES","EUROS","COPA AMÉRICA","LA LIGA"];
@@ -194,16 +199,12 @@ const HISTORIC_MATCHES = [
 const ME = {
   name: (window.__KN_USER && window.__KN_USER.name) || "JuanP",
   handle:"juanp", country:"MEX", level:"Rookie", rank:47,
-  totalPoints:4287, budget:500, zonesReserved:3, zonesMax:5,
-  reservations:[
-    { zoneId:"penspot_izq",  name:"Punto de penalti izquierdo", price:175 },
-    { zoneId:"med_2",        name:"Mediocampo · sector 3",       price:87 },
-    { zoneId:"corner_s_der", name:"Córner inferior derecho",     price:114 },
-  ],
+  totalPoints:4287, budget:500, zonesReserved:0, zonesMax:5,
+  reservations:[],
   notifications:3, streak:4,
 };
 
-Object.assign(window, { FLAGS, FLAG_ISO, Flag, COUNTRY_NAME, FIXTURE, RANKING, FRIENDS, FRIEND_REQUESTS, ZONES, ACTIONS, MATCH_EVENTS, HISTORIC_MATCHES, HISTORIC_CATS, ME, KANCHA_LOGO });
+Object.assign(window, { FLAGS, FLAG_ISO, Flag, COUNTRY_NAME, FIXTURE, fixtureStatus, RANKING, FRIENDS, FRIEND_REQUESTS, ZONES, ACTIONS, HISTORIC_MATCHES, HISTORIC_CATS, ME, KANCHA_LOGO });
 
 // Wordmark KANCHA reutilizable (sidebar, emblema de la pantalla de modos)
 function KanchaWordmark({ fill = "#EFE5CC", className = "" }) {
@@ -738,6 +739,7 @@ function PageInicio({ onNav }) {
   // banderas y marcador (si el sync falla, se usa el fixture mock).
   const [liveEvents,setLiveEvents]=React.useState([]);
   const [liveFixture,setLiveFixture]=React.useState(null);
+  const [liveMinute,setLiveMinute]=React.useState(0);
   const liveLastMin=React.useRef(0);
   const liveMatchRef=React.useRef(null);
   React.useEffect(()=>{
@@ -752,6 +754,7 @@ function PageInicio({ onNav }) {
         const data=await res.json();
         if (!active||!data.events||!data.events.length) return;
         liveLastMin.current=Math.max(liveLastMin.current,...data.events.map(e=>e.min||0));
+        setLiveMinute(liveLastMin.current);
         // side ("home"/"away") → código de equipo, para banderas y marcador
         const home=(lm&&lm.home)||featured.home, away=(lm&&lm.away)||featured.away;
         const mapped=data.events.map(e=>({...e,team:e.side==="home"?home:away}));
@@ -929,8 +932,10 @@ function PageInicio({ onNav }) {
         </aside>
       </div>
       <LiveMatch match={liveFixture?{home:liveFixture.home,away:liveFixture.away}:featured}
-        events={liveEvents.length?[...liveEvents,...MATCH_EVENTS]:MATCH_EVENTS}
-        reservations={selectedZones.length?simReservations:ME.reservations}/>
+        events={liveEvents}
+        reservations={simReservations}
+        minute={liveMinute}
+        half={liveEvents.length?"EN JUEGO":"SIN COMENZAR"}/>
     </div>
   );
 }
@@ -980,9 +985,6 @@ const MS_CAT_META = {
 
 function ModeSelect({ onEnterMundial, onChooseHistoric }) {
   const featured=FIXTURE[0];
-  const [seconds,setSeconds]=React.useState(23*3600+44*60+11);
-  React.useEffect(()=>{ const t=setInterval(()=>setSeconds(s=>Math.max(0,s-1)),1000); return ()=>clearInterval(t); },[]);
-  const cd=[Math.floor(seconds/3600),Math.floor((seconds%3600)/60),seconds%60].map(v=>String(v).padStart(2,"0")).join(":");
   return (
     <div className="ms-screen">
       <div className="msa">
@@ -994,7 +996,7 @@ function ModeSelect({ onEnterMundial, onChooseHistoric }) {
             <h2 className="msa-title">MUNDIAL<span className="msa-num">2026</span></h2>
             <p className="msa-sub">Reserva tus zonas del campo antes del pitido inicial y suma puntos con cada jugada, en directo.</p>
             <div className="msa-match">
-              <div className="msa-match-top"><span>GRUPO {featured.group} · JORNADA INAUGURAL</span><span className="msa-match-open">● RESERVAS ABIERTAS</span></div>
+              <div className="msa-match-top"><span>GRUPO {featured.group} · JORNADA INAUGURAL</span><span className="msa-match-open">● {featured.status==="ABIERTO"?"RESERVAS ABIERTAS":featured.status}</span></div>
               <div className="msa-match-teams">
                 <Flag code={featured.home} h={24} className="ms-flag"/>
                 <span className="msa-match-name">{COUNTRY_NAME[featured.home].toUpperCase()}</span>
@@ -1002,7 +1004,7 @@ function ModeSelect({ onEnterMundial, onChooseHistoric }) {
                 <span className="msa-match-name">{COUNTRY_NAME[featured.away].toUpperCase()}</span>
                 <Flag code={featured.away} h={24} className="ms-flag"/>
               </div>
-              <div className="msa-match-top"><span>{featured.date} · {featured.time} · {featured.venue.toUpperCase()}</span><span className="msa-match-cd">CIERRA EN {cd}</span></div>
+              <div className="msa-match-top"><span>{featured.date} · {featured.venue.toUpperCase()}</span><span className="msa-match-cd">KICKOFF {featured.time}</span></div>
             </div>
             <div className="msa-foot">
               <div className="msa-stats">
@@ -1083,7 +1085,7 @@ function PartidoActualCard({ match }) {
           <div className="ps-vs">vs</div>
           <div className="ps-team-row"><Flag code={match.away} h={22}/><span className="ps-team">{COUNTRY_NAME[match.away]}</span></div>
           <div className="ps-mini-meta">{match.date} · {match.time}<br/>{match.venue}</div>
-          <div className="ps-tag ps-tag-open">{match.status}</div>
+          <div className={"ps-tag "+(match.status==="ABIERTO"||match.status==="EN VIVO"?"ps-tag-open":"ps-tag-next")}>{match.status}</div>
         </div>
       </div>
     </div>
@@ -1104,7 +1106,7 @@ function ProximosCard({ onNav }) {
             </div>
             <div className="ps-mini-bot">
               <div className="ps-mini-meta-sm">{m.date} · {m.time}<br/>{m.venue}</div>
-              <div className="ps-tag ps-tag-next">PRÓXIMO</div>
+              <div className={"ps-tag "+(m.status==="ABIERTO"||m.status==="EN VIVO"?"ps-tag-open":"ps-tag-next")}>{m.status}</div>
             </div>
           </div>
         ))}
@@ -1115,9 +1117,6 @@ function ProximosCard({ onNav }) {
 }
 
 function MatchHero({ match }) {
-  const [seconds,setSeconds]=React.useState(23*3600+47*60+12);
-  React.useEffect(()=>{const t=setInterval(()=>setSeconds(s=>Math.max(0,s-1)),1000);return()=>clearInterval(t);},[]);
-  const h=Math.floor(seconds/3600),m=Math.floor((seconds%3600)/60),s=seconds%60;
   return (
     <div className="ps-hero">
       <div className="ps-hero-inner">
@@ -1140,10 +1139,8 @@ function MatchHero({ match }) {
           <div className="ps-hero-meta-item"><span className="ps-hero-meta-l">SEDE</span><span className="ps-hero-meta-v">{match.venue.toUpperCase()}</span></div>
           <div className="ps-hero-meta-sep"></div>
           <div className="ps-hero-countdown">
-            <span className="ps-hero-cd-label">CIERRA EN</span>
-            <span className="ps-hero-cd-time">
-              <span>{String(h).padStart(2,"0")}</span>:<span>{String(m).padStart(2,"0")}</span>:<span>{String(s).padStart(2,"0")}</span>
-            </span>
+            <span className="ps-hero-cd-label">{match.status==="EN VIVO"?"EN JUEGO":"HORA DEL PARTIDO"}</span>
+            <span className="ps-hero-cd-time">{match.time}</span>
           </div>
         </div>
       </div>
@@ -1275,7 +1272,7 @@ function useCountUp(target,ms=900) {
   return v;
 }
 
-function LiveMatch({ match, events=MATCH_EVENTS, reservations=ME.reservations, minute=45, half="DESCANSO", tag="EN DIRECTO" }) {
+function LiveMatch({ match, events=[], reservations=[], minute=0, half="SIN COMENZAR", tag="EN DIRECTO" }) {
   const myZones=reservations.map(r=>r.zoneId);
   // Los goles de una tanda de penaltis (period 5) no cuentan en el marcador
   const goals=events.filter(e=>e.type==="act"&&e.action==="Gol"&&(e.period==null||e.period<5));
@@ -1302,7 +1299,7 @@ function LiveMatch({ match, events=MATCH_EVENTS, reservations=ME.reservations, m
   );
 }
 
-function LiveScoreboard({ match, home, away, total, liveCount, minute=45, half="DESCANSO", tag="EN DIRECTO" }) {
+function LiveScoreboard({ match, home, away, total, liveCount, minute=0, half="SIN COMENZAR", tag="EN DIRECTO" }) {
   return (
     <div className="ps-lm-board">
       <div className="ps-lm-board-tag"><span className="ps-live-pulse"></span>{tag}</div>
@@ -1326,6 +1323,7 @@ function LiveFeed({ events, myZones }) {
     <div className="ps-card ps-lm-feed">
       <div className="ps-lm-panel-head"><span className="ps-lm-panel-title">FEED DEL PARTIDO</span><span className="ps-lm-panel-sub">EN TIEMPO REAL</span></div>
       <div className="ps-lm-feed-list">
+        {events.length===0&&<div className="ps-empty">Sin eventos todavía. El feed se activará cuando el partido esté en vivo.</div>}
         {events.map((e,i)=>{
           if(e.type==="info") return (<div className="ps-lm-info" key={i}><span className="ps-lm-info-min">{e.min}'</span><span className="ps-lm-info-ic">{e.icon}</span><span className="ps-lm-info-lab">{e.label}</span></div>);
           const mine=myZones.includes(e.zoneId);
@@ -1452,7 +1450,7 @@ function HistoricMatchCard({ m, onPlay }) {
 }
 
 function MatchCard({ m, onNav }) {
-  const isOpen=m.status==="ABIERTO";
+  const isOpen=m.status==="ABIERTO"||m.status==="EN VIVO";
   return (
     <button className={"ps-match-card"+(isOpen?" is-open":"")} onClick={()=>isOpen&&onNav("inicio")}>
       <div className="ps-mc-top"><div className="ps-mc-group">GRUPO {m.group}</div><div className={"ps-tag "+(isOpen?"ps-tag-open":"ps-tag-next")}>{m.status}</div></div>
