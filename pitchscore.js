@@ -800,8 +800,12 @@ function PageInicio({ onNav }) {
         const z=ZONES.find(z=>z.id===zone_id);
         return{user_id:user.id,match_id,zone_id,price:z?z.price:0};
       });
-      const{error}=await db.from('reservations')
-        .upsert(rows,{onConflict:'user_id,match_id,zone_id'});
+      // Reemplaza la reserva completa del partido: borra las zonas anteriores
+      // del usuario para este match_id y guarda la selección actual.
+      const{error:delError}=await db.from('reservations').delete()
+        .eq('user_id',user.id).eq('match_id',match_id);
+      if(delError)return false;
+      const{error}=await db.from('reservations').insert(rows);
       if(error)return false;
       // Register / update user in scores so they appear in the ranking
       const userName=(window.__KN_USER&&window.__KN_USER.name)||user.email.split('@')[0];
@@ -1487,63 +1491,87 @@ function PageReservas({ onNav }) {
     return ()=>{ cancelled=true; if(authSub&&authSub.subscription)authSub.subscription.unsubscribe(); };
   },[]);
 
+  async function removeZone(mid,zoneId){
+    const db=window.supabaseClient;
+    if(!db)return;
+    try{
+      const{data:{user}}=await db.auth.getUser();
+      if(!user)return;
+      const{error}=await db.from('reservations').delete()
+        .eq('user_id',user.id).eq('match_id',mid).eq('zone_id',zoneId);
+      if(!error)setResData(prev=>prev.filter(r=>!(r.match_id===mid&&r.zone_id===zoneId)));
+    }catch(e){/* sin conexión: la zona sigue visible */}
+  }
+
   if(resData===null) return (
     <div className="ps-page"><div className="ps-empty-state"><div className="ps-empty-t">Cargando reservas…</div></div></div>
   );
 
-  const featured=FIXTURE[0];
-  const active=resData.filter(r=>r.match_id===featured.id);
-  const past=resData.filter(r=>r.match_id!==featured.id);
+  // Activas = reservas de cualquier partido con reservas abiertas o en juego
+  // (no solo FIXTURE[0]); el resto son pasadas.
+  const isActiveMatch=(mid)=>{ const m=FIXTURE.find(x=>x.id===mid); if(!m)return false; const st=fixtureStatus(m); return st==="ABIERTO"||st==="EN VIVO"; };
+  const activeRes=resData.filter(r=>isActiveMatch(r.match_id));
+  const past=resData.filter(r=>!isActiveMatch(r.match_id));
+  const activeByMatch=activeRes.reduce((acc,r)=>{(acc[r.match_id]=acc[r.match_id]||[]).push(r);return acc;},{});
+  const activeIds=Object.keys(activeByMatch).sort((a,b)=>kickoffDate(FIXTURE.find(m=>m.id===a))-kickoffDate(FIXTURE.find(m=>m.id===b)));
   const byMatch=past.reduce((acc,r)=>{(acc[r.match_id]=acc[r.match_id]||[]).push(r);return acc;},{});
   const pastIds=Object.keys(byMatch);
-  const totalCost=active.reduce((s,r)=>s+(r.price||0),0);
+  const openMatch=FIXTURE.find(m=>{const st=fixtureStatus(m);return st==="ABIERTO"||st==="EN VIVO";})||FIXTURE[0];
 
   return (
     <div className="ps-page">
       <div className="ps-page-head">
         <div><div className="ps-page-eyebrow">TUS APUESTAS DE ZONA</div><div className="ps-page-title">MIS RESERVAS</div><div className="ps-page-sub">Gestiona tus reservas activas y revisa las pasadas.</div></div>
         <div className="ps-page-stats">
-          <div className="ps-mini-stat"><div className="ps-mini-stat-l">ACTIVAS</div><div className="ps-mini-stat-v">{active.length}</div></div>
-          <div className="ps-mini-stat"><div className="ps-mini-stat-l">PARTIDOS</div><div className="ps-mini-stat-v">{pastIds.length+(active.length?1:0)}</div></div>
+          <div className="ps-mini-stat"><div className="ps-mini-stat-l">ACTIVAS</div><div className="ps-mini-stat-v">{activeRes.length}</div></div>
+          <div className="ps-mini-stat"><div className="ps-mini-stat-l">PARTIDOS</div><div className="ps-mini-stat-v">{pastIds.length+activeIds.length}</div></div>
           <div className="ps-mini-stat"><div className="ps-mini-stat-l">TOTAL ZONAS</div><div className="ps-mini-stat-v">{resData.length}</div></div>
         </div>
       </div>
       <div className="ps-tabs">
-        <button className={"ps-tab"+(tab==="activas"?" is-on":"")} onClick={()=>setTab("activas")}>ACTIVAS · {active.length}</button>
+        <button className={"ps-tab"+(tab==="activas"?" is-on":"")} onClick={()=>setTab("activas")}>ACTIVAS · {activeRes.length}</button>
         <button className={"ps-tab"+(tab==="pendientes"?" is-on":"")} onClick={()=>setTab("pendientes")}>PENDIENTES · 0</button>
         <button className={"ps-tab"+(tab==="pasadas"?" is-on":"")} onClick={()=>setTab("pasadas")}>PASADAS · {pastIds.length}</button>
       </div>
 
       {tab==="activas"&&(
-        active.length===0
-          ?(<div className="ps-empty-state"><div className="ps-empty-icon">🏟️</div><div className="ps-empty-t">Sin zonas reservadas</div><div className="ps-empty-d">Selecciona y confirma zonas en el partido activo.</div><button className="ps-btn ps-btn-primary" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=featured.id; onNav("inicio"); }}>IR AL CAMPO</button></div>)
-          :(<div className="ps-res-active">
-              <div className="ps-res-banner">
-                <div className="ps-res-banner-l">
-                  <div className="ps-res-banner-eb">RESERVA ACTIVA</div>
-                  <div className="ps-res-banner-teams"><span><Flag code={featured.home} h={24}/> {COUNTRY_NAME[featured.home].toUpperCase()}</span><span className="ps-res-banner-vs">VS</span><span>{COUNTRY_NAME[featured.away].toUpperCase()} <Flag code={featured.away} h={24}/></span></div>
-                  <div className="ps-res-banner-meta">{featured.date} · {featured.time} · {featured.venue}</div>
+        activeRes.length===0
+          ?(<div className="ps-empty-state"><div className="ps-empty-icon">🏟️</div><div className="ps-empty-t">Sin zonas reservadas</div><div className="ps-empty-d">Selecciona y confirma zonas en el partido activo.</div><button className="ps-btn ps-btn-primary" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=openMatch.id; onNav("inicio"); }}>IR AL CAMPO</button></div>)
+          :activeIds.map(mid=>{
+            const match=FIXTURE.find(m=>m.id===mid);
+            const zones=activeByMatch[mid];
+            const totalCost=zones.reduce((s,r)=>s+(r.price||0),0);
+            return(
+              <div className="ps-res-active" key={mid}>
+                <div className="ps-res-banner">
+                  <div className="ps-res-banner-l">
+                    <div className="ps-res-banner-eb">RESERVA ACTIVA · {fixtureStatus(match)}</div>
+                    <div className="ps-res-banner-teams"><span><Flag code={match.home} h={24}/> {COUNTRY_NAME[match.home].toUpperCase()}</span><span className="ps-res-banner-vs">VS</span><span>{COUNTRY_NAME[match.away].toUpperCase()} <Flag code={match.away} h={24}/></span></div>
+                    <div className="ps-res-banner-meta">{match.date} · {match.time} · {match.venue}</div>
+                  </div>
+                  <div className="ps-res-banner-r"><div className="ps-res-banner-total"><span>TOTAL APOSTADO</span><strong>{totalCost} pts</strong></div><button className="ps-btn ps-btn-dark ps-btn-sm" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=mid; onNav("inicio"); }}>EDITAR RESERVA</button></div>
                 </div>
-                <div className="ps-res-banner-r"><div className="ps-res-banner-total"><span>TOTAL APOSTADO</span><strong>{totalCost} pts</strong></div><button className="ps-btn ps-btn-dark ps-btn-sm" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=featured.id; onNav("inicio"); }}>EDITAR RESERVA</button></div>
-              </div>
-              <div className="ps-res-zones-grid">
-                {active.map(r=>{
-                  const z=ZONES.find(zz=>zz.id===r.zone_id);
-                  if(!z)return null;
-                  return(
-                    <div className="ps-res-zone-card" key={r.zone_id}>
-                      <div className={`ps-rz-band ps-rz-band-${z.tier}`}></div>
-                      <div className="ps-rz-body">
-                        <div className="ps-rz-name">{z.name}</div>
-                        <div className="ps-rz-tier">{z.tier.toUpperCase()} · {z.slots} PLAZAS</div>
-                        <div className="ps-rz-pts-row"><div><div className="ps-rz-l">COSTE</div><div className="ps-rz-v">{r.price||z.price} pts</div></div><div><div className="ps-rz-l">POTENCIAL</div><div className="ps-rz-v">{z.tier==="premium"?"Muy alto":z.tier==="high"?"Alto":z.tier==="mid"?"Medio":"Bajo"}</div></div></div>
-                        <div className="ps-rz-actions">{ACTIONS.map(a=><span className="ps-rz-action" key={a.name}>{a.icon} +{a.points}</span>)}</div>
+                <div className="ps-res-zones-grid">
+                  {zones.map(r=>{
+                    const z=ZONES.find(zz=>zz.id===r.zone_id);
+                    if(!z)return null;
+                    return(
+                      <div className="ps-res-zone-card" key={r.zone_id}>
+                        <div className={`ps-rz-band ps-rz-band-${z.tier}`}></div>
+                        <div className="ps-rz-body">
+                          <div className="ps-rz-name">{z.name}</div>
+                          <div className="ps-rz-tier">{z.tier.toUpperCase()} · {z.slots} PLAZAS</div>
+                          <div className="ps-rz-pts-row"><div><div className="ps-rz-l">COSTE</div><div className="ps-rz-v">{r.price||z.price} pts</div></div><div><div className="ps-rz-l">POTENCIAL</div><div className="ps-rz-v">{z.tier==="premium"?"Muy alto":z.tier==="high"?"Alto":z.tier==="mid"?"Medio":"Bajo"}</div></div></div>
+                          <div className="ps-rz-actions">{ACTIONS.map(a=><span className="ps-rz-action" key={a.name}>{a.icon} +{a.points}</span>)}</div>
+                          <button className="ps-rz-remove" onClick={()=>removeZone(mid,r.zone_id)}>✕ QUITAR ZONA</button>
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
-            </div>)
+            );
+          })
       )}
 
       {tab==="pasadas"&&(
