@@ -84,6 +84,16 @@ FIXTURE.forEach((m) => {
 });
 FIXTURE.sort((a, b) => kickoffDate(a) - kickoffDate(b));
 
+// Resumen conocido de partidos finalizados: fallback para el feed cuando
+// /api/live-events no devuelve los eventos reales del partido.
+const KNOWN_RESULTS = {
+  m1: [
+    { min:90,  type:"info", icon:"🏁", label:"Final: México 2-0 Sudáfrica" },
+    { min:"–", type:"act",  icon:"⚽", action:"Gol", team:"MEX", zoneId:null, zone:"Minuto y zona por confirmar", pts:40 },
+    { min:9,   type:"act",  icon:"⚽", action:"Gol", team:"MEX", zoneId:"box6_der", zone:"Área pequeña derecha · Quiñones", pts:40 },
+  ],
+};
+
 // Cuenta atrás hasta el cierre de reservas (kickoff UTC − 15 min).
 // Devuelve null cuando ya están cerradas.
 function useReserveCountdown(m) {
@@ -798,11 +808,13 @@ function PageInicio({ onNav }) {
       }catch(e){ /* API caída o sin red: se reintenta en el siguiente tick */ }
     }
     (async()=>{
+      let dayFixture=[];
       try{
         const res=await fetch("/api/sync-fixture");
         if (res.ok) {
           const data=await res.json();
-          if (data.active&&data.active.apiMatchId) {
+          dayFixture=data.fixture||[];
+          if (data.active&&data.active.apiMatchId&&fixtureStatus(mundialMatch)!=="FINALIZADO") {
             liveMatchRef.current=data.active;
             // El marcador solo muestra el partido real si conocemos ambas banderas
             if (COUNTRY_NAME[data.active.home]&&COUNTRY_NAME[data.active.away]) setLiveFixture(data.active);
@@ -810,6 +822,26 @@ function PageInicio({ onNav }) {
         }
       }catch(e){ /* sin sync: polling con el fixture mock */ }
       if (!active) return;
+
+      // Partido ya FINALIZADO: carga única de los eventos reales para el
+      // resumen del feed; si la API no devuelve nada, goles conocidos.
+      if (fixtureStatus(mundialMatch)==="FINALIZADO") {
+        let events=[];
+        const mine=dayFixture.find(f=>f.home===mundialMatch.home&&f.away===mundialMatch.away);
+        if (mine&&mine.apiMatchId) {
+          try{
+            const res=await fetch(`/api/live-events?match_id=${encodeURIComponent(mine.apiMatchId)}&since=0`);
+            if (res.ok) {
+              const d=await res.json();
+              events=(d.events||[]).map(e=>({...e,team:e.side==="home"?mundialMatch.home:mundialMatch.away})).reverse();
+            }
+          }catch(e){/* API caída: cae al resumen conocido */}
+        }
+        if (!events.length) events=KNOWN_RESULTS[mundialMatch.id]||[];
+        if (active) setLiveEvents(events);
+        return; // sin polling: el partido ya terminó
+      }
+
       poll();
       timer=setInterval(poll,60000);
     })();
@@ -990,8 +1022,9 @@ function PageInicio({ onNav }) {
       <LiveMatch match={liveFixture?{home:liveFixture.home,away:liveFixture.away}:mundialMatch}
         events={liveEvents}
         reservations={simReservations}
-        minute={liveMinute}
-        half={liveEvents.length?"EN JUEGO":"SIN COMENZAR"}/>
+        minute={mundialMatch.status==="FINALIZADO"?90:liveMinute}
+        half={mundialMatch.status==="FINALIZADO"?"FINAL":(liveEvents.length?"EN JUEGO":"SIN COMENZAR")}
+        tag={mundialMatch.status==="FINALIZADO"?"FINALIZADO":"EN DIRECTO"}/>
     </div>
   );
 }
@@ -1155,7 +1188,7 @@ function ProximosCard({ onNav, excludeId }) {
     <div className="ps-card">
       <div className="ps-card-head"><span>PRÓXIMOS PARTIDOS</span><span className="ps-chev">▾</span></div>
       <div className="ps-card-body ps-mini-list">
-        {FIXTURE.filter(m=>m.id!==excludeId).slice(0,4).map(m=>(
+        {FIXTURE.filter(m=>m.id!==excludeId&&(m.status==="ABIERTO"||m.status==="PROXIMO")).slice(0,4).map(m=>(
           <div className="ps-mini-match" key={m.id}>
             <div className="ps-mini-teams">
               <div className="ps-team-row"><Flag code={m.home} h={18}/><span className="ps-team-sm">{COUNTRY_NAME[m.home]}</span></div>
