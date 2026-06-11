@@ -43,19 +43,21 @@ function Flag({ code, h = 16, round = false, fill = false, className = "", style
 
 // El kickoff de cada partido es un instante UTC canónico (campo utc), p.ej.
 // México-Sudáfrica a las 18:00 de CDMX (UTC-6) = 2026-06-12T00:00:00Z.
+// La fecha (date) es la del calendario de la sede y va fija como string;
+// la hora (time) se calcula en el huso del usuario al cargar.
 const FIXTURE = [
-  { id:"m1", home:"MEX", away:"RSA", utc:"2026-06-12T00:00:00Z", venue:"Mexico City Stadium", group:"A", featured:true },
-  { id:"m2", home:"KOR", away:"CZE", utc:"2026-06-11T21:00:00Z", venue:"Estadio Guadalajara", group:"B" },
-  { id:"m3", home:"CAN", away:"BIH", utc:"2026-06-12T21:00:00Z", venue:"Toronto Stadium", group:"C" },
-  { id:"m4", home:"USA", away:"PAR", utc:"2026-06-13T03:00:00Z", venue:"Los Angeles Stadium", group:"D" },
-  { id:"m5", home:"HAI", away:"SCO", utc:"2026-06-13T22:00:00Z", venue:"Seattle Stadium", group:"E" },
-  { id:"m6", home:"BRA", away:"POR", utc:"2026-06-14T00:00:00Z", venue:"Estadio Monterrey", group:"F" },
-  { id:"m7", home:"ARG", away:"JPN", utc:"2026-06-14T04:00:00Z", venue:"Vancouver Stadium", group:"G" },
-  { id:"m8", home:"ESP", away:"NOR", utc:"2026-06-14T19:00:00Z", venue:"Atlanta Stadium", group:"H" },
-  { id:"m9", home:"FRA", away:"CRC", utc:"2026-06-14T22:00:00Z", venue:"Boston Stadium", group:"A" },
-  { id:"m10", home:"GER", away:"AUS", utc:"2026-06-15T02:00:00Z", venue:"Dallas Stadium", group:"B" },
-  { id:"m11", home:"ITA", away:"PAN", utc:"2026-06-15T20:00:00Z", venue:"Kansas City Stadium", group:"C" },
-  { id:"m12", home:"ENG", away:"SUI", utc:"2026-06-15T23:00:00Z", venue:"Houston Stadium", group:"D" },
+  { id:"m1", home:"MEX", away:"RSA", utc:"2026-06-12T00:00:00Z", date:"11 JUN", venue:"Mexico City Stadium", group:"A", featured:true },
+  { id:"m2", home:"KOR", away:"CZE", utc:"2026-06-11T21:00:00Z", date:"11 JUN", venue:"Estadio Guadalajara", group:"B" },
+  { id:"m3", home:"CAN", away:"BIH", utc:"2026-06-12T21:00:00Z", date:"12 JUN", venue:"Toronto Stadium", group:"C" },
+  { id:"m4", home:"USA", away:"PAR", utc:"2026-06-13T03:00:00Z", date:"12 JUN", venue:"Los Angeles Stadium", group:"D" },
+  { id:"m5", home:"HAI", away:"SCO", utc:"2026-06-13T22:00:00Z", date:"13 JUN", venue:"Seattle Stadium", group:"E" },
+  { id:"m6", home:"BRA", away:"POR", utc:"2026-06-14T00:00:00Z", date:"13 JUN", venue:"Estadio Monterrey", group:"F" },
+  { id:"m7", home:"ARG", away:"JPN", utc:"2026-06-14T04:00:00Z", date:"13 JUN", venue:"Vancouver Stadium", group:"G" },
+  { id:"m8", home:"ESP", away:"NOR", utc:"2026-06-14T19:00:00Z", date:"14 JUN", venue:"Atlanta Stadium", group:"H" },
+  { id:"m9", home:"FRA", away:"CRC", utc:"2026-06-14T22:00:00Z", date:"14 JUN", venue:"Boston Stadium", group:"A" },
+  { id:"m10", home:"GER", away:"AUS", utc:"2026-06-15T02:00:00Z", date:"14 JUN", venue:"Dallas Stadium", group:"B" },
+  { id:"m11", home:"ITA", away:"PAN", utc:"2026-06-15T20:00:00Z", date:"15 JUN", venue:"Kansas City Stadium", group:"C" },
+  { id:"m12", home:"ENG", away:"SUI", utc:"2026-06-15T23:00:00Z", date:"15 JUN", venue:"Houston Stadium", group:"D" },
 ];
 
 // Estado según el reloj UTC (idéntico para todos los usuarios):
@@ -63,8 +65,8 @@ const FIXTURE = [
 //   PROXIMO   > 24h antes
 //   EN VIVO   durante el partido (la detección fiable la hace /api/sync-fixture)
 //   FINALIZADO después
-const MESES = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
 const MATCH_MS = 135 * 60 * 1000; // duración aprox. de un partido con descanso
+const RESERVE_CLOSE_MS = 15 * 60 * 1000; // las reservas cierran 15 min antes del kickoff
 function kickoffDate(m) { return new Date(m.utc); }
 function fixtureStatus(m, now = Date.now()) {
   const diff = kickoffDate(m) - now;
@@ -73,15 +75,27 @@ function fixtureStatus(m, now = Date.now()) {
   if (diff <= 24 * 3600 * 1000) return "ABIERTO";
   return "PROXIMO";
 }
-// date/time se derivan del instante UTC en la zona horaria del usuario:
-// el kickoff de México (00:00 UTC del 12 JUN) se ve como "11 JUN 18:00" en
-// CDMX y como "12 JUN 02:00" en España.
+// La hora se muestra en la zona horaria del usuario; la fecha queda fija
+// (calendario de la sede). Fixture ordenado por kickoff UTC ascendente.
 FIXTURE.forEach((m) => {
-  const d = kickoffDate(m);
-  m.date = `${d.getDate()} ${MESES[d.getMonth()]}`;
-  m.time = d.toLocaleTimeString("es", { hour: "2-digit", minute: "2-digit", hour12: false });
+  m.time = new Date(m.utc).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false });
   m.status = fixtureStatus(m);
 });
+FIXTURE.sort((a, b) => kickoffDate(a) - kickoffDate(b));
+
+// Cuenta atrás hasta el cierre de reservas (kickoff UTC − 15 min).
+// Devuelve null cuando ya están cerradas.
+function useReserveCountdown(m) {
+  const [now, setNow] = React.useState(Date.now());
+  React.useEffect(() => { const t = setInterval(() => setNow(Date.now()), 1000); return () => clearInterval(t); }, []);
+  if (!m || !m.utc) return null;
+  const remaining = kickoffDate(m).getTime() - RESERVE_CLOSE_MS - now;
+  if (remaining <= 0) return null;
+  const s = Math.floor(remaining / 1000);
+  const d = Math.floor(s / 86400), h = Math.floor((s % 86400) / 3600), mi = Math.floor((s % 3600) / 60), se = s % 60;
+  const pad = (v) => String(v).padStart(2, "0");
+  return (d > 0 ? d + "D " : "") + pad(h) + ":" + pad(mi) + ":" + pad(se);
+}
 
 function tierForPrice(p) { return p >= 150 ? "premium" : p >= 108 ? "high" : p >= 82 ? "mid" : "low"; }
 const ZONES = [];
@@ -960,7 +974,7 @@ function PageInicio({ onNav }) {
         <aside className="ps-col-left">
           <button className="ps-back" onClick={()=>setMode("home")}>← VOLVER A INICIO</button>
           <PartidoActualCard match={mundialMatch}/>
-          <ProximosCard onNav={onNav}/>
+          <ProximosCard onNav={onNav} excludeId={mundialMatch.id}/>
         </aside>
         <main className="ps-col-center">
           <MatchHero match={mundialMatch}/>
@@ -1025,7 +1039,8 @@ const MS_CAT_META = {
 };
 
 function ModeSelect({ onEnterMundial, onChooseHistoric }) {
-  const featured=FIXTURE[0];
+  const featured=FIXTURE.find(m=>m.featured)||FIXTURE[0];
+  const cd=useReserveCountdown(featured);
   return (
     <div className="ms-screen">
       <div className="msa">
@@ -1045,7 +1060,7 @@ function ModeSelect({ onEnterMundial, onChooseHistoric }) {
                 <span className="msa-match-name">{COUNTRY_NAME[featured.away].toUpperCase()}</span>
                 <Flag code={featured.away} h={24} className="ms-flag"/>
               </div>
-              <div className="msa-match-top"><span>{featured.date} · {featured.venue.toUpperCase()}</span><span className="msa-match-cd">KICKOFF {featured.time}</span></div>
+              <div className="msa-match-top"><span>{featured.date} · {featured.venue.toUpperCase()}</span><span className="msa-match-cd">{cd?"CIERRA EN "+cd:"KICKOFF "+featured.time}</span></div>
             </div>
             <div className="msa-foot">
               <div className="msa-stats">
@@ -1133,12 +1148,13 @@ function PartidoActualCard({ match }) {
   );
 }
 
-function ProximosCard({ onNav }) {
+function ProximosCard({ onNav, excludeId }) {
+  // FIXTURE ya está ordenado por kickoff UTC: los siguientes más próximos
   return (
     <div className="ps-card">
       <div className="ps-card-head"><span>PRÓXIMOS PARTIDOS</span><span className="ps-chev">▾</span></div>
       <div className="ps-card-body ps-mini-list">
-        {FIXTURE.slice(1,5).map(m=>(
+        {FIXTURE.filter(m=>m.id!==excludeId).slice(0,4).map(m=>(
           <div className="ps-mini-match" key={m.id}>
             <div className="ps-mini-teams">
               <div className="ps-team-row"><Flag code={m.home} h={18}/><span className="ps-team-sm">{COUNTRY_NAME[m.home]}</span></div>
@@ -1158,6 +1174,7 @@ function ProximosCard({ onNav }) {
 }
 
 function MatchHero({ match }) {
+  const cd=useReserveCountdown(match);
   return (
     <div className="ps-hero">
       <div className="ps-hero-inner">
@@ -1180,8 +1197,8 @@ function MatchHero({ match }) {
           <div className="ps-hero-meta-item"><span className="ps-hero-meta-l">SEDE</span><span className="ps-hero-meta-v">{match.venue.toUpperCase()}</span></div>
           <div className="ps-hero-meta-sep"></div>
           <div className="ps-hero-countdown">
-            <span className="ps-hero-cd-label">{match.status==="EN VIVO"?"EN JUEGO":"HORA DEL PARTIDO"}</span>
-            <span className="ps-hero-cd-time">{match.time}</span>
+            <span className="ps-hero-cd-label">{cd?"RESERVAS CIERRAN EN":match.status==="EN VIVO"?"EN JUEGO":match.status==="FINALIZADO"?"FINALIZADO":"RESERVAS CERRADAS"}</span>
+            <span className="ps-hero-cd-time">{cd||match.time}</span>
           </div>
         </div>
       </div>
