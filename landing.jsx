@@ -158,8 +158,14 @@ function ComoFunciona() {
 }
 
 /* ---- PRUEBA SOCIAL / RANKING ---- */
+// Podio ilustrativo de la landing (contenido de marketing, no datos de la app)
+const PODIUM_SAMPLE = [
+  { rank: 2, name: "Diego M.", handle: "diegoarg",  points: 11932, country: "ARG" },
+  { rank: 1, name: "Lucía R.", handle: "lucy_goal", points: 12847, country: "ESP" },
+  { rank: 3, name: "Yuki T.",  handle: "yukifc",    points: 11420, country: "JPN" },
+];
 function PruebaSocial() {
-  const top = [RANKING[1], RANKING[0], RANKING[2]]; // 2 · 1 · 3
+  const top = PODIUM_SAMPLE; // 2 · 1 · 3
   const medals = { 0: "👑", 1: "★", 2: "★" };
   return (
     <section className="kn-proof" id="ranking" data-screen-label="prueba-social">
