@@ -41,41 +41,47 @@ function Flag({ code, h = 16, round = false, fill = false, className = "", style
   return <img className={cls} src={`https://flagcdn.com/w${bucket}/${iso}.png`} srcSet={`https://flagcdn.com/w${bucket*2}/${iso}.png 2x`} alt={COUNTRY_NAME[code]||code} style={st} loading="lazy" />;
 }
 
+// El kickoff de cada partido es un instante UTC canónico (campo utc), p.ej.
+// México-Sudáfrica a las 18:00 de CDMX (UTC-6) = 2026-06-12T00:00:00Z.
 const FIXTURE = [
-  { id:"m1", home:"MEX", away:"RSA", date:"11 JUN", time:"18:00", venue:"Mexico City Stadium", group:"A", featured:true },
-  { id:"m2", home:"KOR", away:"CZE", date:"11 JUN", time:"15:00", venue:"Estadio Guadalajara", group:"B" },
-  { id:"m3", home:"CAN", away:"BIH", date:"12 JUN", time:"17:00", venue:"Toronto Stadium", group:"C" },
-  { id:"m4", home:"USA", away:"PAR", date:"12 JUN", time:"20:00", venue:"Los Angeles Stadium", group:"D" },
-  { id:"m5", home:"HAI", away:"SCO", date:"13 JUN", time:"15:00", venue:"Seattle Stadium", group:"E" },
-  { id:"m6", home:"BRA", away:"POR", date:"13 JUN", time:"18:00", venue:"Estadio Monterrey", group:"F" },
-  { id:"m7", home:"ARG", away:"JPN", date:"13 JUN", time:"21:00", venue:"Vancouver Stadium", group:"G" },
-  { id:"m8", home:"ESP", away:"NOR", date:"14 JUN", time:"15:00", venue:"Atlanta Stadium", group:"H" },
-  { id:"m9", home:"FRA", away:"CRC", date:"14 JUN", time:"18:00", venue:"Boston Stadium", group:"A" },
-  { id:"m10", home:"GER", away:"AUS", date:"14 JUN", time:"21:00", venue:"Dallas Stadium", group:"B" },
-  { id:"m11", home:"ITA", away:"PAN", date:"15 JUN", time:"15:00", venue:"Kansas City Stadium", group:"C" },
-  { id:"m12", home:"ENG", away:"SUI", date:"15 JUN", time:"18:00", venue:"Houston Stadium", group:"D" },
+  { id:"m1", home:"MEX", away:"RSA", utc:"2026-06-12T00:00:00Z", venue:"Mexico City Stadium", group:"A", featured:true },
+  { id:"m2", home:"KOR", away:"CZE", utc:"2026-06-11T21:00:00Z", venue:"Estadio Guadalajara", group:"B" },
+  { id:"m3", home:"CAN", away:"BIH", utc:"2026-06-12T21:00:00Z", venue:"Toronto Stadium", group:"C" },
+  { id:"m4", home:"USA", away:"PAR", utc:"2026-06-13T03:00:00Z", venue:"Los Angeles Stadium", group:"D" },
+  { id:"m5", home:"HAI", away:"SCO", utc:"2026-06-13T22:00:00Z", venue:"Seattle Stadium", group:"E" },
+  { id:"m6", home:"BRA", away:"POR", utc:"2026-06-14T00:00:00Z", venue:"Estadio Monterrey", group:"F" },
+  { id:"m7", home:"ARG", away:"JPN", utc:"2026-06-14T04:00:00Z", venue:"Vancouver Stadium", group:"G" },
+  { id:"m8", home:"ESP", away:"NOR", utc:"2026-06-14T19:00:00Z", venue:"Atlanta Stadium", group:"H" },
+  { id:"m9", home:"FRA", away:"CRC", utc:"2026-06-14T22:00:00Z", venue:"Boston Stadium", group:"A" },
+  { id:"m10", home:"GER", away:"AUS", utc:"2026-06-15T02:00:00Z", venue:"Dallas Stadium", group:"B" },
+  { id:"m11", home:"ITA", away:"PAN", utc:"2026-06-15T20:00:00Z", venue:"Kansas City Stadium", group:"C" },
+  { id:"m12", home:"ENG", away:"SUI", utc:"2026-06-15T23:00:00Z", venue:"Houston Stadium", group:"D" },
 ];
 
-// Estado dinámico del fixture según la hora real:
-//   ABIERTO   ≤ 24h antes del partido (reservas abiertas)
+// Estado según el reloj UTC (idéntico para todos los usuarios):
+//   ABIERTO   ≤ 24h antes del kickoff (reservas abiertas)
 //   PROXIMO   > 24h antes
 //   EN VIVO   durante el partido (la detección fiable la hace /api/sync-fixture)
 //   FINALIZADO después
-const MES_NUM = { ENE:0, FEB:1, MAR:2, ABR:3, MAY:4, JUN:5, JUL:6, AGO:7, SEP:8, OCT:9, NOV:10, DIC:11 };
+const MESES = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
 const MATCH_MS = 135 * 60 * 1000; // duración aprox. de un partido con descanso
-function kickoffDate(m) {
-  const [d, mes] = m.date.split(" ");
-  const [hh, mm] = m.time.split(":");
-  return new Date(2026, MES_NUM[mes] ?? 0, Number(d), Number(hh), Number(mm));
-}
-function fixtureStatus(m, now = new Date()) {
+function kickoffDate(m) { return new Date(m.utc); }
+function fixtureStatus(m, now = Date.now()) {
   const diff = kickoffDate(m) - now;
   if (diff <= -MATCH_MS) return "FINALIZADO";
   if (diff <= 0) return "EN VIVO";
   if (diff <= 24 * 3600 * 1000) return "ABIERTO";
   return "PROXIMO";
 }
-FIXTURE.forEach((m) => { m.status = fixtureStatus(m); });
+// date/time se derivan del instante UTC en la zona horaria del usuario:
+// el kickoff de México (00:00 UTC del 12 JUN) se ve como "11 JUN 18:00" en
+// CDMX y como "12 JUN 02:00" en España.
+FIXTURE.forEach((m) => {
+  const d = kickoffDate(m);
+  m.date = `${d.getDate()} ${MESES[d.getMonth()]}`;
+  m.time = d.toLocaleTimeString("es", { hour: "2-digit", minute: "2-digit", hour12: false });
+  m.status = fixtureStatus(m);
+});
 
 function tierForPrice(p) { return p >= 150 ? "premium" : p >= 108 ? "high" : p >= 82 ? "mid" : "low"; }
 const ZONES = [];
@@ -647,6 +653,8 @@ function PageInicio({ onNav }) {
   // Partido del Mundial activo en la pantalla de juego (clicable desde el fixture)
   const [mundialMatch,setMundialMatch]=React.useState(FIXTURE.find(m=>m.featured)||FIXTURE[0]);
   const [selectedZones,setSelectedZones]=React.useState([]);
+  // Presupuesto permanente del usuario (scores.budget); 500 por defecto
+  const [budget,setBudget]=React.useState(ME.budget);
   const [view,setView]=React.useState("mapa");
   const [focusZone,setFocusZone]=React.useState("penspot_izq");
   const focused=ZONES.find(z=>z.id===focusZone);
@@ -718,6 +726,32 @@ function PageInicio({ onNav }) {
   const lmRef=React.useRef(null);
   React.useEffect(()=>{ if(sim.status==="running"&&lmRef.current) lmRef.current.scrollIntoView({behavior:"smooth",block:"start"}); },[sim.status]);
 
+  // Liquidación al terminar un partido: los puntos ganados en las zonas del
+  // usuario se suman a su presupuesto permanente (scores.budget) y a su
+  // total_points del ranking. Una sola liquidación por simulación.
+  const settledRef=React.useRef(false);
+  React.useEffect(()=>{
+    if (sim.status==="running") { settledRef.current=false; return; }
+    if (sim.status!=="done"||settledRef.current) return;
+    settledRef.current=true;
+    const earned=sim.events.filter(e=>e.type==="act"&&selectedRef.current.includes(e.zoneId)).reduce((s,e)=>s+(e.pts||0),0);
+    if (!earned) return;
+    const db=window.supabaseClient;
+    if (!db) return;
+    (async()=>{
+      try{
+        const{data:{user}}=await db.auth.getUser();
+        if(!user)return;
+        const{data:row,error:readErr}=await db.from('scores').select('budget,total_points').eq('user_id',user.id).maybeSingle();
+        if(readErr)return; // columna budget aún no creada: no se liquida
+        const newBudget=((row&&row.budget!=null)?row.budget:ME.budget)+earned;
+        const newTotal=((row&&row.total_points)||0)+earned;
+        const{error}=await db.from('scores').update({budget:newBudget,total_points:newTotal}).eq('user_id',user.id);
+        if(!error){ ME.budget=newBudget; setBudget(newBudget); }
+      }catch(e){/* sin conexión: el presupuesto local no cambia */}
+    })();
+  },[sim.status]);
+
   // --- Eventos en vivo del Mundial 2026 ---
   // Al entrar en modo Mundial, /api/sync-fixture resuelve el partido activo
   // real y su apiMatchId; con ese id se hace polling de /api/live-events
@@ -782,6 +816,10 @@ function PageInicio({ onNav }) {
         const{data}=await db.from('reservations').select('zone_id')
           .eq('user_id',user.id).eq('match_id',mundialMatch.id);
         if(!cancelled)setSelectedZones(data&&data.length?data.map(r=>r.zone_id).slice(0,ME.zonesMax):[]);
+        // presupuesto permanente del usuario (si la columna aún no existe, queda el 500 por defecto)
+        const{data:scoreRow,error:scoreErr}=await db.from('scores').select('budget')
+          .eq('user_id',user.id).maybeSingle();
+        if(!cancelled&&!scoreErr&&scoreRow&&scoreRow.budget!=null){ ME.budget=scoreRow.budget; setBudget(scoreRow.budget); }
       }catch(e){if(!cancelled)setSelectedZones([]);}
     }
     load();
@@ -807,12 +845,18 @@ function PageInicio({ onNav }) {
       if(delError)return false;
       const{error}=await db.from('reservations').insert(rows);
       if(error)return false;
-      // Register / update user in scores so they appear in the ranking
+      // Alta del usuario en scores (ranking + presupuesto permanente).
+      // ignoreDuplicates: el insert solo ocurre la primera vez, con budget=500;
+      // nunca machaca el presupuesto de un usuario existente.
       const userName=(window.__KN_USER&&window.__KN_USER.name)||user.email.split('@')[0];
-      await db.from('scores').upsert(
-        {user_id:user.id,name:userName},
-        {onConflict:'user_id'}
+      const{error:regErr}=await db.from('scores').upsert(
+        {user_id:user.id,name:userName,budget:500},
+        {onConflict:'user_id',ignoreDuplicates:true}
       );
+      if(regErr){
+        // fallback mientras la columna budget no exista en la tabla
+        await db.from('scores').upsert({user_id:user.id,name:userName},{onConflict:'user_id',ignoreDuplicates:true});
+      }
       return true;
     }catch(e){return false;}
   }
@@ -823,12 +867,12 @@ function PageInicio({ onNav }) {
       if(prev.includes(z.id)) return prev.filter(id=>id!==z.id);
       if(prev.length>=ME.zonesMax) return prev;
       const spent=prev.reduce((s,id)=>{const zz=ZONES.find(z=>z.id===id);return s+(zz?zz.price:0);},0);
-      if(z.price>ME.budget-spent) return prev; // not enough budget
+      if(z.price>budget-spent) return prev; // not enough budget
       return [...prev,z.id];
     });
   }
   const totalCost=selectedZones.reduce((sum,id)=>{const z=ZONES.find(zz=>zz.id===id);return sum+(z?z.price:0);},0);
-  const remainingBudget=ME.budget-totalCost;
+  const remainingBudget=budget-totalCost;
 
   const fieldBlock=(
     <>
@@ -885,7 +929,7 @@ function PageInicio({ onNav }) {
             {fieldBlock}
           </main>
           <aside className="ps-col-right">
-            <BudgetCard selectedCount={selectedZones.length} remaining={remainingBudget}/>
+            <BudgetCard selectedCount={selectedZones.length} remaining={remainingBudget} total={budget}/>
             <SimPanel sim={sim} countdown={countdown} speedIdx={speedIdx}
               onSpeed={(i)=>{ setSpeedIdx(i); setSimSpeed(SIM_SPEEDS[i].ms); }}
               onSimulate={beginSimulation} onStop={stopSim}/>
@@ -923,7 +967,7 @@ function PageInicio({ onNav }) {
           {fieldBlock}
         </main>
         <aside className="ps-col-right">
-          <BudgetCard selectedCount={selectedZones.length} remaining={remainingBudget}/>
+          <BudgetCard selectedCount={selectedZones.length} remaining={remainingBudget} total={budget}/>
           <ZoneDetail zone={focused} selected={selectedZones.includes(focusZone)} atMax={selectedZones.length>=ME.zonesMax} onAdd={()=>toggleZone(focused)} totalCost={totalCost} remainingBudget={remainingBudget}/>
           <CartCard selectedIds={selectedZones} onRemove={(id)=>setSelectedZones(prev=>prev.filter(x=>x!==id))} onClear={()=>setSelectedZones([])} onConfirm={confirmReservations}/>
         </aside>
@@ -1145,15 +1189,15 @@ function MatchHero({ match }) {
   );
 }
 
-function BudgetCard({ selectedCount, remaining }) {
-  const pct=Math.max(0,Math.round((remaining/ME.budget)*100));
+function BudgetCard({ selectedCount, remaining, total=ME.budget }) {
+  const pct=Math.max(0,Math.round((remaining/Math.max(1,total))*100));
   const color=pct>50?"#3d7a3a":pct>20?"#c8a73f":"#b94234";
   return (
     <div className="ps-budget-row">
       <div className="ps-stat-box">
         <div className="ps-stat-label">PRESUPUESTO RESTANTE</div>
         <div className="ps-stat-num" style={{color}}>{remaining}</div>
-        <div className="ps-stat-unit">DE {ME.budget} PUNTOS</div>
+        <div className="ps-stat-unit">DE {total} PUNTOS</div>
       </div>
       <div className="ps-stat-box"><div className="ps-stat-label">ZONAS RESERVADAS</div><div className="ps-stat-num">{selectedCount} / {ME.zonesMax}</div></div>
     </div>
