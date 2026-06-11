@@ -41,23 +41,24 @@ function Flag({ code, h = 16, round = false, fill = false, className = "", style
   return <img className={cls} src={`https://flagcdn.com/w${bucket}/${iso}.png`} srcSet={`https://flagcdn.com/w${bucket*2}/${iso}.png 2x`} alt={COUNTRY_NAME[code]||code} style={st} loading="lazy" />;
 }
 
-// El kickoff de cada partido es un instante UTC canónico (campo utc), p.ej.
-// México-Sudáfrica a las 18:00 de CDMX (UTC-6) = 2026-06-12T00:00:00Z.
-// La fecha (date) es la del calendario de la sede y va fija como string;
-// la hora (time) se calcula en el huso del usuario al cargar.
+// El kickoff de cada partido es un instante UTC canónico (campo utc) según
+// el calendario oficial FIFA: México-Sudáfrica abre el 11 JUN a las
+// 19:00 GMT (15:00 ET, 13:00 CDMX; 21:00 en España). La fecha (date) es la
+// del calendario de la sede y va fija como string; la hora (time) se
+// calcula en el huso del usuario al cargar.
 const FIXTURE = [
-  { id:"m1", home:"MEX", away:"RSA", utc:"2026-06-12T00:00:00Z", date:"11 JUN", venue:"Mexico City Stadium", group:"A", featured:true },
-  { id:"m2", home:"KOR", away:"CZE", utc:"2026-06-11T21:00:00Z", date:"11 JUN", venue:"Estadio Guadalajara", group:"B" },
-  { id:"m3", home:"CAN", away:"BIH", utc:"2026-06-12T21:00:00Z", date:"12 JUN", venue:"Toronto Stadium", group:"C" },
-  { id:"m4", home:"USA", away:"PAR", utc:"2026-06-13T03:00:00Z", date:"12 JUN", venue:"Los Angeles Stadium", group:"D" },
-  { id:"m5", home:"HAI", away:"SCO", utc:"2026-06-13T22:00:00Z", date:"13 JUN", venue:"Seattle Stadium", group:"E" },
-  { id:"m6", home:"BRA", away:"POR", utc:"2026-06-14T00:00:00Z", date:"13 JUN", venue:"Estadio Monterrey", group:"F" },
-  { id:"m7", home:"ARG", away:"JPN", utc:"2026-06-14T04:00:00Z", date:"13 JUN", venue:"Vancouver Stadium", group:"G" },
+  { id:"m1", home:"MEX", away:"RSA", utc:"2026-06-11T19:00:00Z", date:"11 JUN", venue:"Mexico City Stadium", group:"A", featured:true },
+  { id:"m2", home:"KOR", away:"CZE", utc:"2026-06-12T02:00:00Z", date:"11 JUN", venue:"Estadio Guadalajara", group:"B" },
+  { id:"m3", home:"CAN", away:"BIH", utc:"2026-06-12T19:00:00Z", date:"12 JUN", venue:"Toronto Stadium", group:"C" },
+  { id:"m4", home:"USA", away:"PAR", utc:"2026-06-13T01:00:00Z", date:"12 JUN", venue:"Los Angeles Stadium", group:"D" },
+  { id:"m5", home:"HAI", away:"SCO", utc:"2026-06-14T01:00:00Z", date:"13 JUN", venue:"Seattle Stadium", group:"E" },
+  { id:"m6", home:"BRA", away:"POR", utc:"2026-06-13T22:00:00Z", date:"13 JUN", venue:"Estadio Monterrey", group:"F" },
+  { id:"m7", home:"ARG", away:"JPN", utc:"2026-06-13T19:00:00Z", date:"13 JUN", venue:"Vancouver Stadium", group:"G" },
   { id:"m8", home:"ESP", away:"NOR", utc:"2026-06-14T19:00:00Z", date:"14 JUN", venue:"Atlanta Stadium", group:"H" },
   { id:"m9", home:"FRA", away:"CRC", utc:"2026-06-14T22:00:00Z", date:"14 JUN", venue:"Boston Stadium", group:"A" },
-  { id:"m10", home:"GER", away:"AUS", utc:"2026-06-15T02:00:00Z", date:"14 JUN", venue:"Dallas Stadium", group:"B" },
-  { id:"m11", home:"ITA", away:"PAN", utc:"2026-06-15T20:00:00Z", date:"15 JUN", venue:"Kansas City Stadium", group:"C" },
-  { id:"m12", home:"ENG", away:"SUI", utc:"2026-06-15T23:00:00Z", date:"15 JUN", venue:"Houston Stadium", group:"D" },
+  { id:"m10", home:"GER", away:"AUS", utc:"2026-06-15T01:00:00Z", date:"14 JUN", venue:"Dallas Stadium", group:"B" },
+  { id:"m11", home:"ITA", away:"PAN", utc:"2026-06-15T19:00:00Z", date:"15 JUN", venue:"Kansas City Stadium", group:"C" },
+  { id:"m12", home:"ENG", away:"SUI", utc:"2026-06-15T22:00:00Z", date:"15 JUN", venue:"Houston Stadium", group:"D" },
 ];
 
 // Estado según el reloj UTC (idéntico para todos los usuarios):
