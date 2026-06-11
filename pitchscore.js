@@ -644,10 +644,12 @@ Object.assign(window, { useHistoricSim, HistoricHero, SimPanel, CountdownOverlay
 function PageInicio({ onNav }) {
   const [mode,setMode]=React.useState("home"); // home | mundial | historic
   const [historicMatch,setHistoricMatch]=React.useState(null);
+  // Partido del Mundial activo en la pantalla de juego (clicable desde el fixture)
+  const [mundialMatch,setMundialMatch]=React.useState(FIXTURE.find(m=>m.featured)||FIXTURE[0]);
   const [selectedZones,setSelectedZones]=React.useState([]);
   const [view,setView]=React.useState("mapa");
   const [focusZone,setFocusZone]=React.useState("penspot_izq");
-  const featured=FIXTURE[0],focused=ZONES.find(z=>z.id===focusZone);
+  const focused=ZONES.find(z=>z.id===focusZone);
 
   // --- Simulación de partidos históricos ---
   const [speedIdx,setSpeedIdx]=React.useState(0);
@@ -699,6 +701,16 @@ function PageInicio({ onNav }) {
     if (m) { setHistoricMatch(m); setMode("historic"); }
   },[]);
 
+  // Partido del Mundial solicitado desde el fixture o Mis Reservas:
+  // entra directo a la pantalla de juego de ese partido
+  React.useEffect(()=>{
+    const reqId=window.__KN_MUNDIAL_REQUEST;
+    if (!reqId) return;
+    window.__KN_MUNDIAL_REQUEST=null;
+    const m=FIXTURE.find(x=>x.id===reqId);
+    if (m) { setMundialMatch(m); setMode("mundial"); }
+  },[]);
+
   const simOn=sim.match&&(sim.status==="running"||sim.status==="done"||sim.status==="loading");
   const simReservations=selectedZones.map(id=>{ const z=ZONES.find(zz=>zz.id===id); return {zoneId:id,name:z?z.name:id,price:z?z.price:0}; });
 
@@ -721,7 +733,7 @@ function PageInicio({ onNav }) {
     let active=true, timer=null;
     async function poll(){
       const lm=liveMatchRef.current;
-      const matchId=(lm&&lm.apiMatchId)||featured.id;
+      const matchId=(lm&&lm.apiMatchId)||mundialMatch.id;
       try{
         const res=await fetch(`/api/live-events?match_id=${encodeURIComponent(matchId)}&since=${liveLastMin.current}`);
         if (!res.ok) return;
@@ -730,7 +742,7 @@ function PageInicio({ onNav }) {
         liveLastMin.current=Math.max(liveLastMin.current,...data.events.map(e=>e.min||0));
         setLiveMinute(liveLastMin.current);
         // side ("home"/"away") → código de equipo, para banderas y marcador
-        const home=(lm&&lm.home)||featured.home, away=(lm&&lm.away)||featured.away;
+        const home=(lm&&lm.home)||mundialMatch.home, away=(lm&&lm.away)||mundialMatch.away;
         const mapped=data.events.map(e=>({...e,team:e.side==="home"?home:away}));
         setLiveEvents(prev=>[...mapped.slice().reverse(),...prev]);
         mapped.forEach(ev=>handleSimEvent(ev)); // ilumina las zonas reservadas que reciben el evento
@@ -753,22 +765,29 @@ function PageInicio({ onNav }) {
       timer=setInterval(poll,60000);
     })();
     return ()=>{ active=false; clearInterval(timer); };
-  },[mode]);
+  },[mode,mundialMatch.id]);
 
-  // Load saved reservations for the active match from Supabase on mount
+  // Carga las reservas guardadas del usuario autenticado actual para el
+  // partido en pantalla. Se recarga al cambiar de partido y al cambiar la
+  // sesión (otro usuario o sign-out), descartando el estado anterior.
   React.useEffect(()=>{
     const db=window.supabaseClient;
     if(!db){setSelectedZones([]);return;}
-    (async()=>{
+    let cancelled=false;
+    async function load(){
       try{
         const{data:{user}}=await db.auth.getUser();
+        if(cancelled)return;
         if(!user){setSelectedZones([]);return;}
         const{data}=await db.from('reservations').select('zone_id')
-          .eq('user_id',user.id).eq('match_id',FIXTURE[0].id);
-        setSelectedZones(data&&data.length?data.map(r=>r.zone_id).slice(0,ME.zonesMax):[]);
-      }catch(e){setSelectedZones([]);}
-    })();
-  },[]);
+          .eq('user_id',user.id).eq('match_id',mundialMatch.id);
+        if(!cancelled)setSelectedZones(data&&data.length?data.map(r=>r.zone_id).slice(0,ME.zonesMax):[]);
+      }catch(e){if(!cancelled)setSelectedZones([]);}
+    }
+    load();
+    const{data:authSub}=db.auth.onAuthStateChange(()=>{ setSelectedZones([]); load(); });
+    return ()=>{ cancelled=true; if(authSub&&authSub.subscription)authSub.subscription.unsubscribe(); };
+  },[mundialMatch.id]);
 
   async function confirmReservations(){
     const db=window.supabaseClient;
@@ -776,7 +795,7 @@ function PageInicio({ onNav }) {
     try{
       const{data:{user}}=await db.auth.getUser();
       if(!user)return false;
-      const match_id=FIXTURE[0].id;
+      const match_id=mundialMatch.id;
       const rows=selectedZones.map(zone_id=>{
         const z=ZONES.find(z=>z.id===zone_id);
         return{user_id:user.id,match_id,zone_id,price:z?z.price:0};
@@ -892,11 +911,11 @@ function PageInicio({ onNav }) {
       <div className="ps-inicio-screen">
         <aside className="ps-col-left">
           <button className="ps-back" onClick={()=>setMode("home")}>← VOLVER A INICIO</button>
-          <PartidoActualCard match={featured}/>
+          <PartidoActualCard match={mundialMatch}/>
           <ProximosCard onNav={onNav}/>
         </aside>
         <main className="ps-col-center">
-          <MatchHero match={featured}/>
+          <MatchHero match={mundialMatch}/>
           {fieldBlock}
         </main>
         <aside className="ps-col-right">
@@ -905,7 +924,7 @@ function PageInicio({ onNav }) {
           <CartCard selectedIds={selectedZones} onRemove={(id)=>setSelectedZones(prev=>prev.filter(x=>x!==id))} onClear={()=>setSelectedZones([])} onConfirm={confirmReservations}/>
         </aside>
       </div>
-      <LiveMatch match={liveFixture?{home:liveFixture.home,away:liveFixture.away}:featured}
+      <LiveMatch match={liveFixture?{home:liveFixture.home,away:liveFixture.away}:mundialMatch}
         events={liveEvents}
         reservations={simReservations}
         minute={liveMinute}
@@ -1425,8 +1444,9 @@ function HistoricMatchCard({ m, onPlay }) {
 
 function MatchCard({ m, onNav }) {
   const isOpen=m.status==="ABIERTO"||m.status==="EN VIVO";
+  // Va directo a la pantalla de juego de ese partido (sin pasar por la selección de modo)
   return (
-    <button className={"ps-match-card"+(isOpen?" is-open":"")} onClick={()=>isOpen&&onNav("inicio")}>
+    <button className={"ps-match-card"+(isOpen?" is-open":"")} onClick={()=>{ if(!isOpen)return; window.__KN_MUNDIAL_REQUEST=m.id; onNav("inicio"); }}>
       <div className="ps-mc-top"><div className="ps-mc-group">GRUPO {m.group}</div><div className={"ps-tag "+(isOpen?"ps-tag-open":"ps-tag-next")}>{m.status}</div></div>
       <div className="ps-mc-teams">
         <div className="ps-mc-team"><div className="ps-mc-flag"><Flag code={m.home} h={30}/></div><div className="ps-mc-name">{COUNTRY_NAME[m.home]}</div></div>
@@ -1443,20 +1463,28 @@ function PageReservas({ onNav }) {
   const [tab,setTab]=React.useState("activas");
   const [resData,setResData]=React.useState(null); // null=loading
 
+  // Consulta siempre las reservas del usuario autenticado actual; si la
+  // sesión cambia (otro usuario o sign-out), descarta el estado y recarga.
   React.useEffect(()=>{
     const db=window.supabaseClient;
     if(!db){setResData([]);return;}
-    (async()=>{
+    let cancelled=false;
+    async function load(){
+      setResData(null);
       try{
         const{data:{user}}=await db.auth.getUser();
+        if(cancelled)return;
         if(!user){setResData([]);return;}
         const{data}=await db.from('reservations')
           .select('match_id,zone_id,price')
           .eq('user_id',user.id)
           .order('match_id');
-        setResData(data||[]);
-      }catch(e){setResData([]);}
-    })();
+        if(!cancelled)setResData(data||[]);
+      }catch(e){if(!cancelled)setResData([]);}
+    }
+    load();
+    const{data:authSub}=db.auth.onAuthStateChange(()=>{ load(); });
+    return ()=>{ cancelled=true; if(authSub&&authSub.subscription)authSub.subscription.unsubscribe(); };
   },[]);
 
   if(resData===null) return (
@@ -1488,7 +1516,7 @@ function PageReservas({ onNav }) {
 
       {tab==="activas"&&(
         active.length===0
-          ?(<div className="ps-empty-state"><div className="ps-empty-icon">🏟️</div><div className="ps-empty-t">Sin zonas reservadas</div><div className="ps-empty-d">Selecciona y confirma zonas en el partido activo.</div><button className="ps-btn ps-btn-primary" onClick={()=>onNav("inicio")}>IR AL CAMPO</button></div>)
+          ?(<div className="ps-empty-state"><div className="ps-empty-icon">🏟️</div><div className="ps-empty-t">Sin zonas reservadas</div><div className="ps-empty-d">Selecciona y confirma zonas en el partido activo.</div><button className="ps-btn ps-btn-primary" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=featured.id; onNav("inicio"); }}>IR AL CAMPO</button></div>)
           :(<div className="ps-res-active">
               <div className="ps-res-banner">
                 <div className="ps-res-banner-l">
@@ -1496,7 +1524,7 @@ function PageReservas({ onNav }) {
                   <div className="ps-res-banner-teams"><span><Flag code={featured.home} h={24}/> {COUNTRY_NAME[featured.home].toUpperCase()}</span><span className="ps-res-banner-vs">VS</span><span>{COUNTRY_NAME[featured.away].toUpperCase()} <Flag code={featured.away} h={24}/></span></div>
                   <div className="ps-res-banner-meta">{featured.date} · {featured.time} · {featured.venue}</div>
                 </div>
-                <div className="ps-res-banner-r"><div className="ps-res-banner-total"><span>TOTAL APOSTADO</span><strong>{totalCost} pts</strong></div><button className="ps-btn ps-btn-dark ps-btn-sm" onClick={()=>onNav("inicio")}>EDITAR RESERVA</button></div>
+                <div className="ps-res-banner-r"><div className="ps-res-banner-total"><span>TOTAL APOSTADO</span><strong>{totalCost} pts</strong></div><button className="ps-btn ps-btn-dark ps-btn-sm" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=featured.id; onNav("inicio"); }}>EDITAR RESERVA</button></div>
               </div>
               <div className="ps-res-zones-grid">
                 {active.map(r=>{
@@ -1667,20 +1695,28 @@ function PageAmigos() {
 function PageHistorial() {
   const [resData,setResData]=React.useState(null); // null=loading
 
+  // Igual que en Mis Reservas: usuario autenticado actual, con recarga al
+  // cambiar la sesión.
   React.useEffect(()=>{
     const db=window.supabaseClient;
     if(!db){setResData([]);return;}
-    (async()=>{
+    let cancelled=false;
+    async function load(){
+      setResData(null);
       try{
         const{data:{user}}=await db.auth.getUser();
+        if(cancelled)return;
         if(!user){setResData([]);return;}
         const{data}=await db.from('reservations')
           .select('match_id,zone_id,price')
           .eq('user_id',user.id)
           .order('match_id');
-        setResData(data||[]);
-      }catch(e){setResData([]);}
-    })();
+        if(!cancelled)setResData(data||[]);
+      }catch(e){if(!cancelled)setResData([]);}
+    }
+    load();
+    const{data:authSub}=db.auth.onAuthStateChange(()=>{ load(); });
+    return ()=>{ cancelled=true; if(authSub&&authSub.subscription)authSub.subscription.unsubscribe(); };
   },[]);
 
   if(resData===null) return (
