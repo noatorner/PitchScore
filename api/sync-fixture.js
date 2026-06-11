@@ -8,6 +8,7 @@
 const { rapid, extractList, isWorldCup, teamName, teamCode } = require("./_rapid.js");
 
 const MESES = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
+const FINISHED_MS = 115 * 60 * 1000; // un partido se da por terminado 115 min tras el kickoff
 
 function todayUTC() {
   const d = new Date();
@@ -25,10 +26,13 @@ function mapMatch(m, i) {
   const stage = String(m.tournamentStage || m.stage || m.group || "");
   const groupMatch = stage.match(/group\s+([a-l])/i);
 
+  // FINALIZADO también por reloj: aunque la API no marque finished todavía,
+  // si la hora UTC actual supera kickoff + 115 min el partido ha terminado.
+  const finishedByClock = valid && Date.now() - d.getTime() > FINISHED_MS;
   const status =
     st.cancelled ? "CANCELADO" :
-    st.started && !st.finished ? "EN VIVO" :
-    st.finished ? "FINALIZADO" :
+    st.finished || finishedByClock ? "FINALIZADO" :
+    st.started ? "EN VIVO" :
     i === 0 ? "ABIERTO" : "PROXIMO";
 
   return {

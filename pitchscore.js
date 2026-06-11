@@ -47,7 +47,7 @@ function Flag({ code, h = 16, round = false, fill = false, className = "", style
 // del calendario de la sede y va fija como string; la hora (time) se
 // calcula en el huso del usuario al cargar.
 const FIXTURE = [
-  { id:"m1", home:"MEX", away:"RSA", utc:"2026-06-11T19:00:00Z", date:"11 JUN", venue:"Mexico City Stadium", group:"A", featured:true },
+  { id:"m1", home:"MEX", away:"RSA", utc:"2026-06-11T19:00:00Z", date:"11 JUN", venue:"Mexico City Stadium", group:"A", featured:true, score:"2-0" },
   { id:"m2", home:"KOR", away:"CZE", utc:"2026-06-12T02:00:00Z", date:"11 JUN", venue:"Estadio Guadalajara", group:"B" },
   { id:"m3", home:"CAN", away:"BIH", utc:"2026-06-12T19:00:00Z", date:"12 JUN", venue:"Toronto Stadium", group:"C" },
   { id:"m4", home:"USA", away:"PAR", utc:"2026-06-13T01:00:00Z", date:"12 JUN", venue:"Los Angeles Stadium", group:"D" },
@@ -66,7 +66,7 @@ const FIXTURE = [
 //   PROXIMO   > 24h antes
 //   EN VIVO   durante el partido (la detección fiable la hace /api/sync-fixture)
 //   FINALIZADO después
-const MATCH_MS = 135 * 60 * 1000; // duración aprox. de un partido con descanso
+const MATCH_MS = 115 * 60 * 1000; // un partido se da por terminado 115 min tras el kickoff
 const RESERVE_CLOSE_MS = 15 * 60 * 1000; // las reservas cierran 15 min antes del kickoff
 function kickoffDate(m) { return new Date(m.utc); }
 function fixtureStatus(m, now = Date.now()) {
@@ -1057,7 +1057,7 @@ function ModeSelect({ onEnterMundial, onChooseHistoric }) {
               <div className="msa-match-teams">
                 <Flag code={featured.home} h={24} className="ms-flag"/>
                 <span className="msa-match-name">{COUNTRY_NAME[featured.home].toUpperCase()}</span>
-                <span className="msa-match-vs">VS</span>
+                <span className="msa-match-vs">{featured.status==="FINALIZADO"&&featured.score?featured.score:"VS"}</span>
                 <span className="msa-match-name">{COUNTRY_NAME[featured.away].toUpperCase()}</span>
                 <Flag code={featured.away} h={24} className="ms-flag"/>
               </div>
@@ -1139,9 +1139,9 @@ function PartidoActualCard({ match }) {
       <div className="ps-card-body">
         <div className="ps-match-mini">
           <div className="ps-team-row"><Flag code={match.home} h={22}/><span className="ps-team">{COUNTRY_NAME[match.home]}</span></div>
-          <div className="ps-vs">vs</div>
+          <div className="ps-vs">{match.status==="FINALIZADO"&&match.score?match.score:"vs"}</div>
           <div className="ps-team-row"><Flag code={match.away} h={22}/><span className="ps-team">{COUNTRY_NAME[match.away]}</span></div>
-          <div className="ps-mini-meta">{match.date} · {match.time}<br/>{match.venue}</div>
+          <div className="ps-mini-meta">{match.date} · {match.status==="FINALIZADO"&&match.score?"FINAL "+match.score:match.time}<br/>{match.venue}</div>
           <div className={"ps-tag "+(match.status==="ABIERTO"||match.status==="EN VIVO"?"ps-tag-open":"ps-tag-next")}>{match.status}</div>
         </div>
       </div>
@@ -1159,11 +1159,11 @@ function ProximosCard({ onNav, excludeId }) {
           <div className="ps-mini-match" key={m.id}>
             <div className="ps-mini-teams">
               <div className="ps-team-row"><Flag code={m.home} h={18}/><span className="ps-team-sm">{COUNTRY_NAME[m.home]}</span></div>
-              <div className="ps-vs-sm">vs</div>
+              <div className="ps-vs-sm">{m.status==="FINALIZADO"&&m.score?m.score:"vs"}</div>
               <div className="ps-team-row"><Flag code={m.away} h={18}/><span className="ps-team-sm">{COUNTRY_NAME[m.away]}</span></div>
             </div>
             <div className="ps-mini-bot">
-              <div className="ps-mini-meta-sm">{m.date} · {m.time}<br/>{m.venue}</div>
+              <div className="ps-mini-meta-sm">{m.date} · {m.status==="FINALIZADO"&&m.score?"FINAL "+m.score:m.time}<br/>{m.venue}</div>
               <div className={"ps-tag "+(m.status==="ABIERTO"||m.status==="EN VIVO"?"ps-tag-open":"ps-tag-next")}>{m.status}</div>
             </div>
           </div>
@@ -1188,7 +1188,7 @@ function MatchHero({ match }) {
         <div className="ps-hero-teams">
           <Flag code={match.home} h={30} className="ps-hero-flag"/>
           <span className="ps-hero-name">{COUNTRY_NAME[match.home].toUpperCase()}</span>
-          <span className="ps-hero-vs">VS</span>
+          <span className="ps-hero-vs">{match.status==="FINALIZADO"&&match.score?match.score:"VS"}</span>
           <span className="ps-hero-name ps-hero-name-away">{COUNTRY_NAME[match.away].toUpperCase()}</span>
           <Flag code={match.away} h={30} className="ps-hero-flag"/>
         </div>
@@ -1516,10 +1516,10 @@ function MatchCard({ m, onNav }) {
       <div className="ps-mc-top"><div className="ps-mc-group">GRUPO {m.group}</div><div className={"ps-tag "+(isOpen?"ps-tag-open":"ps-tag-next")}>{m.status}</div></div>
       <div className="ps-mc-teams">
         <div className="ps-mc-team"><div className="ps-mc-flag"><Flag code={m.home} h={30}/></div><div className="ps-mc-name">{COUNTRY_NAME[m.home]}</div></div>
-        <div className="ps-mc-vs">VS</div>
+        <div className="ps-mc-vs">{m.status==="FINALIZADO"&&m.score?m.score:"VS"}</div>
         <div className="ps-mc-team"><div className="ps-mc-flag"><Flag code={m.away} h={30}/></div><div className="ps-mc-name">{COUNTRY_NAME[m.away]}</div></div>
       </div>
-      <div className="ps-mc-bot"><div className="ps-mc-time">{m.time}</div><div className="ps-mc-venue">{m.venue}</div></div>
+      <div className="ps-mc-bot"><div className="ps-mc-time">{m.status==="FINALIZADO"&&m.score?"FINAL "+m.score:m.time}</div><div className="ps-mc-venue">{m.venue}</div></div>
       {isOpen&&<div className="ps-mc-cta">RESERVAR ZONAS →</div>}
     </button>
   );
