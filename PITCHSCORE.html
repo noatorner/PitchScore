@@ -833,6 +833,22 @@ input { font-family: inherit; }
   .msa-foot { margin-top: auto; }
   .ms-cta { width: 100%; justify-content: center; padding: 13px 18px; font-size: 13px; }
   .msa-toplabel { top: 10px; font-size: 9px; padding: 6px 14px; letter-spacing: 0.22em; }
+
+  /* Bug #6: tarjeta del partido (hero) responsive */
+  .ps-hero-inner { padding: 10px 10px 8px; }
+  .ps-hero-top { flex-wrap: wrap; gap: 6px; white-space: normal; }
+  .ps-hero-teams { font-size: clamp(14px, 4.5vw, 22px); gap: 8px; flex-wrap: wrap; }
+  .ps-hero-flag { font-size: clamp(16px, 5vw, 22px); }
+  .ps-hero-bottom { flex-wrap: wrap; gap: 10px; }
+  .ps-hero-meta-sep { display: none; }
+  /* Countdown timer en mobile */
+  .ps-countdown-num { font-size: clamp(48px, 18vw, 100px); }
+  .ps-countdown-label { font-size: 10px; }
+
+  /* Bug #14: lista de zonas responsive — colapsa a 3 columnas */
+  .ps-zone-row { grid-template-columns: 14px 1fr 80px; gap: 8px; padding: 10px 10px; }
+  .ps-zl-tier, .ps-zl-slots { display: none; }
+  .ps-zl-price { font-size: 15px; text-align: right; }
 }
   </style>
 </head>
