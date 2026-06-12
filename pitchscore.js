@@ -41,33 +41,32 @@ function Flag({ code, h = 16, round = false, fill = false, className = "", style
   return <img className={cls} src={`https://flagcdn.com/w${bucket}/${iso}.png`} srcSet={`https://flagcdn.com/w${bucket*2}/${iso}.png 2x`} alt={COUNTRY_NAME[code]||code} style={st} loading="lazy" />;
 }
 
-// El kickoff de cada partido es un instante UTC canónico (campo utc) según
-// el calendario oficial FIFA: México-Sudáfrica abre el 11 JUN a las
-// 19:00 GMT (15:00 ET, 13:00 CDMX; 21:00 en España). La fecha (date) es la
-// del calendario de la sede y va fija como string; la hora (time) se
-// calcula en el huso del usuario al cargar.
-const FIXTURE = [
-  { id:"m1", home:"MEX", away:"RSA", utc:"2026-06-11T19:00:00Z", date:"11 JUN", venue:"Mexico City Stadium", group:"A", featured:true, score:"2-0" },
-  { id:"m2", home:"KOR", away:"CZE", utc:"2026-06-12T02:00:00Z", date:"11 JUN", venue:"Estadio Guadalajara", group:"B" },
-  { id:"m3", home:"CAN", away:"BIH", utc:"2026-06-12T19:00:00Z", date:"12 JUN", venue:"Toronto Stadium", group:"C" },
-  { id:"m4", home:"USA", away:"PAR", utc:"2026-06-13T01:00:00Z", date:"12 JUN", venue:"Los Angeles Stadium", group:"D" },
-  { id:"m5", home:"HAI", away:"SCO", utc:"2026-06-14T01:00:00Z", date:"13 JUN", venue:"Seattle Stadium", group:"E" },
-  { id:"m6", home:"BRA", away:"POR", utc:"2026-06-13T22:00:00Z", date:"13 JUN", venue:"Estadio Monterrey", group:"F" },
-  { id:"m7", home:"ARG", away:"JPN", utc:"2026-06-13T19:00:00Z", date:"13 JUN", venue:"Vancouver Stadium", group:"G" },
-  { id:"m8", home:"ESP", away:"NOR", utc:"2026-06-14T19:00:00Z", date:"14 JUN", venue:"Atlanta Stadium", group:"H" },
-  { id:"m9", home:"FRA", away:"CRC", utc:"2026-06-14T22:00:00Z", date:"14 JUN", venue:"Boston Stadium", group:"A" },
-  { id:"m10", home:"GER", away:"AUS", utc:"2026-06-15T01:00:00Z", date:"14 JUN", venue:"Dallas Stadium", group:"B" },
-  { id:"m11", home:"ITA", away:"PAN", utc:"2026-06-15T19:00:00Z", date:"15 JUN", venue:"Kansas City Stadium", group:"C" },
-  { id:"m12", home:"ENG", away:"SUI", utc:"2026-06-15T22:00:00Z", date:"15 JUN", venue:"Houston Stadium", group:"D" },
+// ===== FIXTURE DINÁMICO =====
+// El fixture vive en Supabase (tabla matches, ver supabase/matches.sql) y lo
+// mantiene actualizado /api/cron-sync. Este fallback embebido solo se usa si
+// la tabla aún no responde: sin estados ni marcadores hardcodeados — el
+// status se calcula por reloj UTC y el score llega siempre de Supabase.
+const FALLBACK_FIXTURE = [
+  { id:"m1", home:"MEX", away:"RSA", utc:"2026-06-11T19:00:00Z", venue:"Mexico City Stadium", group:"A" },
+  { id:"m2", home:"KOR", away:"CZE", utc:"2026-06-12T02:00:00Z", venue:"Estadio Guadalajara", group:"B" },
+  { id:"m3", home:"CAN", away:"BIH", utc:"2026-06-12T19:00:00Z", venue:"Toronto Stadium", group:"C" },
+  { id:"m4", home:"USA", away:"PAR", utc:"2026-06-13T01:00:00Z", venue:"Los Angeles Stadium", group:"D" },
+  { id:"m5", home:"HAI", away:"SCO", utc:"2026-06-14T01:00:00Z", venue:"Seattle Stadium", group:"E" },
+  { id:"m6", home:"BRA", away:"POR", utc:"2026-06-13T22:00:00Z", venue:"Estadio Monterrey", group:"F" },
+  { id:"m7", home:"ARG", away:"JPN", utc:"2026-06-13T19:00:00Z", venue:"Vancouver Stadium", group:"G" },
+  { id:"m8", home:"ESP", away:"NOR", utc:"2026-06-14T19:00:00Z", venue:"Atlanta Stadium", group:"H" },
+  { id:"m9", home:"FRA", away:"CRC", utc:"2026-06-14T22:00:00Z", venue:"Boston Stadium", group:"A" },
+  { id:"m10", home:"GER", away:"AUS", utc:"2026-06-15T01:00:00Z", venue:"Dallas Stadium", group:"B" },
+  { id:"m11", home:"ITA", away:"PAN", utc:"2026-06-15T19:00:00Z", venue:"Kansas City Stadium", group:"C" },
+  { id:"m12", home:"ENG", away:"SUI", utc:"2026-06-15T22:00:00Z", venue:"Houston Stadium", group:"D" },
 ];
+const FIXTURE = []; // misma referencia siempre; se rellena con setFixture()
 
 // Estado según el reloj UTC (idéntico para todos los usuarios):
-//   ABIERTO   ≤ 24h antes del kickoff (reservas abiertas)
-//   PROXIMO   > 24h antes
-//   EN VIVO   durante el partido (la detección fiable la hace /api/sync-fixture)
-//   FINALIZADO después
+//   ABIERTO ≤24h antes · PROXIMO antes · EN VIVO durante · FINALIZADO después
 const MATCH_MS = 115 * 60 * 1000; // un partido se da por terminado 115 min tras el kickoff
 const RESERVE_CLOSE_MS = 15 * 60 * 1000; // las reservas cierran 15 min antes del kickoff
+const MESES = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
 function kickoffDate(m) { return new Date(m.utc); }
 function fixtureStatus(m, now = Date.now()) {
   const diff = kickoffDate(m) - now;
@@ -76,13 +75,46 @@ function fixtureStatus(m, now = Date.now()) {
   if (diff <= 24 * 3600 * 1000) return "ABIERTO";
   return "PROXIMO";
 }
-// La hora se muestra en la zona horaria del usuario; la fecha queda fija
-// (calendario de la sede). Fixture ordenado por kickoff UTC ascendente.
-FIXTURE.forEach((m) => {
-  m.time = new Date(m.utc).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false });
-  m.status = fixtureStatus(m);
-});
-FIXTURE.sort((a, b) => kickoffDate(a) - kickoffDate(b));
+
+// date = calendario de la sede (aprox. huso central americano, UTC-5: válido
+// para sedes UTC-4..-7 con kickoffs diurnos); time = hora local del usuario.
+// FINALIZADO/CANCELADO de Supabase son autoritativos; el resto, por reloj.
+function decorateFixture() {
+  FIXTURE.forEach((m) => {
+    m.time = new Date(m.utc).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", hour12: false });
+    const vd = new Date(Date.parse(m.utc) - 5 * 3600 * 1000);
+    m.date = `${vd.getUTCDate()} ${MESES[vd.getUTCMonth()]}`;
+    m.status = (m.dbStatus === "FINALIZADO" || m.dbStatus === "CANCELADO") ? m.dbStatus : fixtureStatus(m);
+  });
+  FIXTURE.sort((a, b) => kickoffDate(a) - kickoffDate(b));
+  FIXTURE.forEach((m) => { delete m.featured; });
+  const feat = FIXTURE.find((m) => m.status === "EN VIVO") || FIXTURE.find((m) => m.status === "ABIERTO") || FIXTURE.find((m) => m.status === "PROXIMO") || FIXTURE[0];
+  if (feat) feat.featured = true;
+}
+function setFixture(list) {
+  FIXTURE.length = 0;
+  list.forEach((m) => FIXTURE.push(m));
+  decorateFixture();
+}
+setFixture(FALLBACK_FIXTURE.map((m) => ({ ...m })));
+
+// Carga el fixture real desde Supabase; devuelve false si no hay datos
+// (la app sigue con el fallback embebido).
+async function loadFixture() {
+  const db = window.supabaseClient;
+  if (!db) return false;
+  try {
+    const { data, error } = await db.from('matches').select('*').order('kickoff_utc', { ascending: true });
+    if (error || !data || !data.length) return false;
+    setFixture(data.map((r) => ({
+      id: r.id, home: r.home, away: r.away, utc: r.kickoff_utc,
+      venue: r.venue || "", group: r.group_name || "",
+      score: r.score || null, apiMatchId: r.api_match_id || null,
+      dbStatus: r.status || null,
+    })));
+    return true;
+  } catch (e) { return false; }
+}
 
 // Resumen conocido de partidos finalizados: fallback para el feed cuando
 // /api/live-events no devuelve los eventos reales del partido.
@@ -1928,10 +1960,14 @@ function App() {
   const [page,setPage]=React.useState("inicio");
   const [showHow,setShowHow]=React.useState(false);
   const [navOpen,setNavOpen]=React.useState(false);
+  // El fixture se carga de Supabase antes de montar la app (skeleton mientras)
+  const [fixtureReady,setFixtureReady]=React.useState(false);
+  React.useEffect(()=>{ let on=true; loadFixture().finally(()=>{ if(on) setFixtureReady(true); }); return ()=>{ on=false; }; },[]);
   React.useEffect(()=>{const hash=window.location.hash.replace("#","");if(hash&&["inicio","partidos","reservas","ranking","amigos","historial"].includes(hash))setPage(hash);},[]);
   function nav(p){setPage(p);setNavOpen(false);window.location.hash=p;window.scrollTo({top:0,behavior:"smooth"});}
   const pageTitles={inicio:{eb:"MUNDIAL 2026",title:"INICIO"},partidos:{eb:"FIXTURE",title:"PARTIDOS"},reservas:{eb:"TUS APUESTAS",title:"MIS RESERVAS"},ranking:{eb:"LEADERBOARD",title:"RANKING"},amigos:{eb:"TU EQUIPO",title:"AMIGOS"},historial:{eb:"TU CAMINO",title:"HISTORIAL"}};
   const pt=pageTitles[page]||pageTitles.inicio;
+  if(!fixtureReady) return <FixtureSkeleton/>;
   return (
     <div className="ps-app">
       <button className="ps-menu-btn" onClick={()=>setNavOpen(o=>!o)} aria-label="Menú">
@@ -1954,6 +1990,17 @@ function App() {
         <AppFooter/>
       </div>
       {showHow&&<HowModal onClose={()=>setShowHow(false)}/>}
+    </div>
+  );
+}
+
+// Skeleton a pantalla completa mientras el fixture llega de Supabase
+function FixtureSkeleton() {
+  return (
+    <div className="ps-skel">
+      <KanchaWordmark className="ps-skel-logo"/>
+      <div className="ps-skel-bars"><span></span><span></span><span></span></div>
+      <div className="ps-skel-label">CARGANDO FIXTURE…</div>
     </div>
   );
 }

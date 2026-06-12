@@ -759,6 +759,16 @@ input { font-family: inherit; }
   .msa-seam { display: none; }
 }
 
+/* ============ SKELETON (carga del fixture) ============ */
+.ps-skel { position: fixed; top: 0; right: 0; bottom: 0; left: 0; z-index: 150; background: #181b18; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 22px; }
+.ps-skel-logo { width: 180px; height: auto; opacity: 0.95; }
+.ps-skel-bars { display: flex; flex-direction: column; gap: 10px; width: 240px; }
+.ps-skel-bars span { height: 12px; border-radius: 6px; background: #2c302c; animation: ps-skel-pulse 1.2s ease-in-out infinite; }
+.ps-skel-bars span:nth-child(2) { width: 80%; animation-delay: 0.15s; }
+.ps-skel-bars span:nth-child(3) { width: 60%; animation-delay: 0.3s; }
+@keyframes ps-skel-pulse { 0%, 100% { opacity: 0.45; } 50% { opacity: 1; } }
+.ps-skel-label { font-family: var(--kn-body); font-weight: 600; font-size: 10px; letter-spacing: 0.3em; color: #8a8067; }
+
 /* ============ FOOTER ============ */
 .ps-footer { flex-shrink: 0; display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 9px 18px; background: #181b18; color: #cabf9f; font-family: var(--kn-body); font-size: 11px; letter-spacing: 0.06em; flex-wrap: wrap; }
 .ps-footer-l { display: flex; align-items: center; gap: 12px; }
