@@ -44,9 +44,26 @@ function HeroNav() {
 
 /* ---- interactive field teaser ---- */
 function FieldTeaser() {
-  const match = FIXTURE[0];
+  const [fixture, setFixture] = React.useState(FIXTURE.find(m => m.featured) || FIXTURE[0]);
   const [selected, setSelected] = React.useState(["penspot_izq", "med_2"]);
   const legend = [["#82a55c", "Bajo"], ["#d4a72c", "Medio"], ["#d6843a", "Alto"], ["#c8442e", "Premium"]];
+
+  React.useEffect(() => {
+    if (typeof loadFixture === "function") {
+      loadFixture().then(() => {
+        const m = FIXTURE.find(f => f.featured) || FIXTURE[0];
+        if (m) setFixture(m);
+      });
+    }
+  }, []);
+
+  const match = fixture || FIXTURE[0];
+  const status = match ? fixtureStatus(match) : "PROXIMO";
+  const statusLabel = status === "EN VIVO" ? `EN VIVO · ${match.time || ""}` :
+                      status === "FINALIZADO" ? `FINAL ${match.score || ""}` :
+                      status === "ABIERTO" ? `HOY · ${match.time || ""}` :
+                      `PRÓXIMO · ${match.date || ""}`;
+  const showPulse = status === "EN VIVO";
 
   function toggle(z) {
     if (z.taken >= z.slots) return;
@@ -61,10 +78,10 @@ function FieldTeaser() {
   return (
     <div className="kn-field-panel">
       <div className="kn-field-head">
-        <span className="kn-fh-live"><span className="kn-live-pulse"></span> EN VIVO · 41'</span>
+        <span className="kn-fh-live">{showPulse && <span className="kn-live-pulse"></span>} {statusLabel}</span>
         <div className="kn-fh-match">
           <span className="kn-fh-team"><Flag code={match.home} h={16} /> {match.home}</span>
-          <span className="kn-fh-vs">VS</span>
+          <span className="kn-fh-vs">{match.score || "VS"}</span>
           <span className="kn-fh-team">{match.away} <Flag code={match.away} h={16} /></span>
         </div>
         <span className="kn-fh-cap"><b>{selected.length}</b> / {ME.zonesMax} zonas</span>
