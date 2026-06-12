@@ -703,7 +703,7 @@ Object.assign(window, { useHistoricSim, HistoricHero, SimPanel, CountdownOverlay
 
 // ===== PAGE INICIO =====
 function PageInicio({ onNav }) {
-  const [mode,setMode]=React.useState("home"); // home | mundial | historic
+  const [mode,setMode]=React.useState("mundial"); // home | mundial | historic | browse
   const [historicMatch,setHistoricMatch]=React.useState(null);
   // Partido del Mundial activo en la pantalla de juego (clicable desde el fixture)
   const [mundialMatch,setMundialMatch]=React.useState(FIXTURE.find(m=>m.featured)||FIXTURE[0]);
@@ -773,6 +773,18 @@ function PageInicio({ onNav }) {
     const m=FIXTURE.find(x=>x.id===reqId);
     if (m) { setMundialMatch(m); setMode("mundial"); }
   },[]);
+
+  // Scroll al hero al entrar en modo mundial (transición desde browse/historic/home)
+  const heroRef=React.useRef(null);
+  const skipFirstScroll=React.useRef(true);
+  React.useEffect(()=>{
+    if (mode!=="mundial") return;
+    if (skipFirstScroll.current) { skipFirstScroll.current=false; return; }
+    setTimeout(()=>{
+      if (heroRef.current) heroRef.current.scrollIntoView({behavior:"smooth",block:"start"});
+      else window.scrollTo({top:0,behavior:"smooth"});
+    },80);
+  },[mode]);
 
   const simOn=sim.match&&(sim.status==="running"||sim.status==="done"||sim.status==="loading");
   const simReservations=selectedZones.map(id=>{ const z=ZONES.find(zz=>zz.id===id); return {zoneId:id,name:z?z.name:id,price:z?z.price:0}; });
@@ -985,7 +997,7 @@ function PageInicio({ onNav }) {
     return (
       <div className="ps-inicio">
         <div className="ps-home">
-          <button className="ps-back" onClick={()=>setMode("home")}>← VOLVER A INICIO</button>
+          <button className="ps-back" onClick={()=>setMode("mundial")}>← VOLVER AL CAMPO</button>
           <HomeHistoricBlock onPlay={openHistoric}/>
         </div>
       </div>
@@ -1035,11 +1047,11 @@ function PageInicio({ onNav }) {
     <div className="ps-inicio">
       <div className="ps-inicio-screen">
         <aside className="ps-col-left">
-          <button className="ps-back" onClick={()=>setMode("home")}>← VOLVER A INICIO</button>
+          <button className="ps-back" onClick={()=>setMode("browse")}>★ HISTÓRICO</button>
           <PartidoActualCard match={mundialMatch}/>
-          <ProximosCard onNav={onNav} excludeId={mundialMatch.id} onSelect={(m)=>{ setMundialMatch(m); setMode("mundial"); window.scrollTo(0,0); }}/>
+          <ProximosCard onNav={onNav} excludeId={mundialMatch.id} onSelect={(m)=>{ setMundialMatch(m); setMode("mundial"); window.scrollTo({top:0,behavior:"smooth"}); }}/>
         </aside>
-        <main className="ps-col-center">
+        <main ref={heroRef} className="ps-col-center">
           <MatchHero match={mundialMatch}/>
           {fieldBlock}
         </main>

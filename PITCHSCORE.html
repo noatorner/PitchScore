@@ -752,6 +752,9 @@ input { font-family: inherit; }
   .ps-inicio { height: auto; overflow: visible; }
   .ps-inicio-screen { grid-template-columns: 1fr; height: auto; overflow: visible; padding: 60px 14px 20px; }
   .ps-col-left, .ps-col-right, .ps-col-center { height: auto; overflow: visible; }
+  /* Campo (center) aparece visualmente primero en mobile */
+  .ps-col-center { order: -1; }
+  .ps-col-right { order: 1; }
   .ps-pitch-wrap { aspect-ratio: 16 / 10; }
   .ps-sidebar { position: relative; height: auto; }
   .ps-lm-grid { grid-template-columns: 1fr; }
