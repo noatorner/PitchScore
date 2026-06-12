@@ -824,7 +824,8 @@ input { font-family: inherit; }
   .msa-pane { flex: 1 1 50%; min-height: 0; }
   .msa-pad, .msa-pad-r, .msa-pad-l { padding: 52px 18px 16px; gap: 8px; }
   .msa-hist .msa-pad { padding-top: 18px; }
-  .msa-kicker, .msa-sub, .msa-stats, .msa-comp-list { display: none; }
+  .msa-kicker, .msa-sub, .msa-stats { display: none; }
+  .msa-comp-list { max-height: 180px; overflow-y: auto; }
   .msa-title { font-size: clamp(26px, 9vw, 38px); line-height: 1; }
   .msa-title .msa-num { display: inline; margin-left: 8px; }
   .msa-match { padding: 10px 12px; gap: 8px; max-width: none; }
@@ -837,9 +838,11 @@ input { font-family: inherit; }
   /* Bug #6: tarjeta del partido (hero) responsive */
   .ps-hero-inner { padding: 10px 10px 8px; }
   .ps-hero-top { flex-wrap: wrap; gap: 6px; white-space: normal; }
-  .ps-hero-teams { font-size: clamp(13px, 4vw, 20px); gap: 6px; flex-wrap: nowrap; overflow: hidden; align-items: center; }
-  .ps-hero-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 26vw; }
+  .ps-hero-teams { flex-direction: column; align-items: center; gap: 6px; font-size: 14px; }
+  .ps-hero-team-h, .ps-hero-team-a { display: flex; align-items: center; gap: 8px; }
+  .ps-hero-name { font-size: clamp(12px, 3.8vw, 16px); white-space: nowrap; }
   .ps-hero-flag { font-size: clamp(16px, 5vw, 22px); flex-shrink: 0; }
+  .ps-hero-vs { font-size: 12px; }
   .ps-hero-bottom { flex-wrap: wrap; gap: 10px; }
   .ps-hero-meta-sep { display: none; }
   /* Countdown timer en mobile */
@@ -858,9 +861,11 @@ input { font-family: inherit; }
   .ps-stat-num { font-size: 22px; margin-top: 2px; }
   .ps-stat-unit { font-size: 8px; }
 
-  /* Issue #5: marcador EN DIRECTO — nombres de equipo no se desbordan */
-  .ps-lm-team-name { font-size: clamp(10px, 3vw, 14px); max-width: 28vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .ps-lm-nums { font-size: 24px; gap: 8px; }
+  /* Issue #5: marcador EN DIRECTO — layout columna para que quepan los nombres */
+  .ps-lm-score { flex-direction: column; align-items: center; gap: 8px; }
+  .ps-lm-team { gap: 8px; }
+  .ps-lm-team-name { font-size: 13px; max-width: none; white-space: normal; }
+  .ps-lm-nums { font-size: 28px; gap: 10px; }
 
   /* Tab bar: MAPA DEL CAMPO / LISTA DE ZONAS caben en una línea */
   .ps-field-toolbar { flex-wrap: nowrap; align-items: center; gap: 6px; }

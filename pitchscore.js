@@ -629,11 +629,9 @@ function HistoricHero({ m }) {
           <span className="ps-hero-tag">PARTIDO HISTÓRICO</span>
         </div>
         <div className="ps-hero-teams">
-          <Flag code={m.home} h={30} className="ps-hero-flag"/>
-          <span className="ps-hero-name">{COUNTRY_NAME[m.home].toUpperCase()}</span>
+          <div className="ps-hero-team-h"><Flag code={m.home} h={26} className="ps-hero-flag"/><span className="ps-hero-name">{COUNTRY_NAME[m.home].toUpperCase()}</span></div>
           <span className="ps-hhero-score">{m.score}</span>
-          <span className="ps-hero-name ps-hero-name-away">{COUNTRY_NAME[m.away].toUpperCase()}</span>
-          <Flag code={m.away} h={30} className="ps-hero-flag"/>
+          <div className="ps-hero-team-a"><span className="ps-hero-name">{COUNTRY_NAME[m.away].toUpperCase()}</span><Flag code={m.away} h={26} className="ps-hero-flag"/></div>
         </div>
         <div className="ps-hero-bottom">
           <div className="ps-hero-meta-item"><span className="ps-hero-meta-l">RESULTADO REAL</span><span className="ps-hero-meta-v">{m.score}</span></div>
@@ -1039,7 +1037,7 @@ function PageInicio({ onNav }) {
         <aside className="ps-col-left">
           <button className="ps-back" onClick={()=>setMode("home")}>← VOLVER A INICIO</button>
           <PartidoActualCard match={mundialMatch}/>
-          <ProximosCard onNav={onNav} excludeId={mundialMatch.id}/>
+          <ProximosCard onNav={onNav} excludeId={mundialMatch.id} onSelect={(m)=>{ setMundialMatch(m); setMode("mundial"); window.scrollTo(0,0); }}/>
         </aside>
         <main className="ps-col-center">
           <MatchHero match={mundialMatch}/>
@@ -1117,7 +1115,7 @@ function ModeSelect({ onEnterMundial, onChooseHistoric }) {
             <div className="msa-kicker">JÚGALO MIENTRAS PASA</div>
             <h2 className="msa-title">MUNDIAL<span className="msa-num">2026</span></h2>
             <p className="msa-sub">Reserva tus zonas del campo antes del pitido inicial y suma puntos con cada jugada, en directo.</p>
-            <div className="msa-match">
+            <div className="msa-match" style={{cursor:"pointer"}} onClick={onEnterMundial}>
               <div className="msa-match-top"><span>GRUPO {featured.group} · JORNADA INAUGURAL</span><span className="msa-match-open">● {featured.status==="ABIERTO"?"RESERVAS ABIERTAS":featured.status}</span></div>
               <div className="msa-match-teams">
                 <Flag code={featured.home} h={24} className="ms-flag"/>
@@ -1214,7 +1212,7 @@ function PartidoActualCard({ match }) {
   );
 }
 
-function ProximosCard({ onNav, excludeId }) {
+function ProximosCard({ onNav, excludeId, onSelect }) {
   // Colapsado por defecto en mobile (≤860px), abierto en desktop
   const [open, setOpen] = React.useState(typeof window!=="undefined" ? window.innerWidth > 860 : true);
   const upcoming = FIXTURE.filter(m=>m.id!==excludeId&&(m.status==="ABIERTO"||m.status==="PROXIMO")).slice(0,4);
@@ -1230,7 +1228,7 @@ function ProximosCard({ onNav, excludeId }) {
             return (
               <div className={"ps-mini-match"+(isOpen?" is-open":"")} key={m.id}
                 style={isOpen?{cursor:"pointer"}:{}}
-                onClick={()=>{ if(!isOpen) return; window.__KN_MUNDIAL_REQUEST=m.id; onNav("inicio"); }}>
+                onClick={()=>{ if(!isOpen) return; if(onSelect){ onSelect(m); } else { window.__KN_MUNDIAL_REQUEST=m.id; onNav("inicio"); } }}>
                 <div className="ps-mini-teams">
                   <div className="ps-team-row"><Flag code={m.home} h={18}/><span className="ps-team-sm">{COUNTRY_NAME[m.home]}</span></div>
                   <div className="ps-vs-sm">{m.status==="FINALIZADO"&&m.score?m.score:"vs"}</div>
@@ -1262,11 +1260,9 @@ function MatchHero({ match }) {
           <span className="ps-hero-tag">JORNADA INAUGURAL</span>
         </div>
         <div className="ps-hero-teams">
-          <Flag code={match.home} h={30} className="ps-hero-flag"/>
-          <span className="ps-hero-name">{COUNTRY_NAME[match.home].toUpperCase()}</span>
+          <div className="ps-hero-team-h"><Flag code={match.home} h={26} className="ps-hero-flag"/><span className="ps-hero-name">{COUNTRY_NAME[match.home].toUpperCase()}</span></div>
           <span className="ps-hero-vs">{match.status==="FINALIZADO"&&match.score?match.score:"VS"}</span>
-          <span className="ps-hero-name ps-hero-name-away">{COUNTRY_NAME[match.away].toUpperCase()}</span>
-          <Flag code={match.away} h={30} className="ps-hero-flag"/>
+          <div className="ps-hero-team-a"><span className="ps-hero-name">{COUNTRY_NAME[match.away].toUpperCase()}</span><Flag code={match.away} h={26} className="ps-hero-flag"/></div>
         </div>
         <div className="ps-hero-bottom">
           <div className="ps-hero-meta-item"><span className="ps-hero-meta-l">FECHA</span><span className="ps-hero-meta-v">{match.date.replace("JUN","JUN 2026")} · {match.time}</span></div>
