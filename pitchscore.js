@@ -515,7 +515,7 @@ function ZoneTip({zone,box,W}) {
   let x=Math.min(Math.max(box.cx-tw/2,8),W-tw-8),y=box.y-th-8;
   if(y<8) y=box.y+box.h+8;
   return (
-    <g style={{pointerEvents:"none",filter:"drop-shadow(0 5px 10px rgba(0,0,0,0.55))"}}>
+    <g className="ps-zone-tip" style={{pointerEvents:"none",filter:"drop-shadow(0 5px 10px rgba(0,0,0,0.55))"}}>
       <rect x={x} y={y} width={tw} height={th} rx={6} fill="#181b18" stroke="#4a6b3a" strokeWidth="1.3"/>
       <rect x={x} y={y} width={4} height={th} rx={2} fill="#ffd27a"/>
       <text x={x+tw/2} y={y+16} textAnchor="middle" fontFamily="Saira,sans-serif" fontWeight="700" fontSize="12.5" letterSpacing="0.3" fill="#f3ecd5">{name}</text>
@@ -1288,6 +1288,8 @@ function BudgetCard({ selectedCount, remaining, total=ME.budget }) {
 }
 
 function ZoneDetail({ zone, selected, atMax, onAdd, totalCost, remainingBudget }) {
+  // Empieza colapsado para no ocupar media columna: el cabecero hace de toggle
+  const [open,setOpen]=React.useState(false);
   if(!zone) return null;
   const isFull=zone.taken>=zone.slots;
   const noFunds=!selected&&zone.price>remainingBudget;
@@ -1296,7 +1298,11 @@ function ZoneDetail({ zone, selected, atMax, onAdd, totalCost, remainingBudget }
   const potential=zone.tier==="premium"?"MUY ALTO":zone.tier==="high"?"ALTO":zone.tier==="mid"?"MEDIO":"BAJO";
   return (
     <div className="ps-card ps-detail">
-      <div className="ps-detail-head"><span className={`ps-dot ps-dot-${zone.tier}`}></span><span className="ps-detail-name">{zone.name.toUpperCase()}</span></div>
+      <button className="ps-detail-head ps-panel-toggle" onClick={()=>setOpen(o=>!o)} aria-expanded={open}>
+        <span className={`ps-dot ps-dot-${zone.tier}`}></span><span className="ps-detail-name">{zone.name.toUpperCase()}</span>
+        <span className="ps-toggle-chev">{open?"▴":"▾"}</span>
+      </button>
+      {open&&(<>
       <div className="ps-detail-desc">{zone.tier==="premium"?"Zona premium. Muy alta probabilidad de acciones decisivas.":zone.tier==="high"?"Zona caliente. Frecuentes jugadas de gol.":zone.tier==="mid"?"Zona equilibrada. Buen balance riesgo/recompensa.":"Zona amplia. Mucha capacidad y acción frecuente."}</div>
       <div className="ps-detail-stats">
         <div><div className="ps-detail-stat-l">PRECIO</div><div className="ps-detail-stat-v">{zone.price} <span>pts</span></div></div>
@@ -1307,6 +1313,7 @@ function ZoneDetail({ zone, selected, atMax, onAdd, totalCost, remainingBudget }
       <div className="ps-actions-row">{ACTIONS.map(a=>(<div className="ps-action" key={a.name}><div className="ps-action-icon">{a.icon}</div><div className="ps-action-name">{a.name.toUpperCase()}</div><div className="ps-action-pts">+{a.points}</div></div>))}</div>
       <button className="ps-btn ps-btn-primary" disabled={disabled} onClick={onAdd}>{selected?"QUITAR DE LA SELECCIÓN":isFull?"ZONA AGOTADA":noFunds?"PRESUPUESTO INSUFICIENTE":atLimit?"LÍMITE DE ZONAS":"RESERVAR ESTA ZONA"}</button>
       <div className="ps-detail-cost">Te costará <strong>{zone.price} puntos</strong></div>
+      </>)}
     </div>
   );
 }
@@ -1487,15 +1494,22 @@ function ScoringPanel({ zoneStats, myZones }) {
     {ic:"👟",label:"Contraataque por el centro",zoneId:"med_2",pot:15},
     {ic:"🥅",label:"Remate desde el área",zoneId:"box6_der",pot:25},
   ];
+  // Empieza colapsado: el cabecero hace de toggle para expandir las reglas
+  const [open,setOpen]=React.useState(false);
   return (
     <div className="ps-card ps-lm-rules">
-      <div className="ps-lm-panel-head"><span className="ps-lm-panel-title">CÓMO SUMAN PUNTOS</span><span className="ps-lm-panel-sub">VALOR POR ACCIÓN</span></div>
+      <button className={"ps-lm-panel-head ps-panel-toggle"+(open?"":" is-closed")} onClick={()=>setOpen(o=>!o)} aria-expanded={open}>
+        <span className="ps-lm-panel-title">CÓMO SUMAN PUNTOS</span>
+        <span className="ps-lm-panel-sub">VALOR POR ACCIÓN <span className="ps-toggle-chev">{open?"▴":"▾"}</span></span>
+      </button>
+      {open&&(<>
       <div className="ps-lm-rules-grid">{ACTIONS.map(a=>(<div className="ps-lm-rule" key={a.name}><span className="ps-lm-rule-ic">{a.icon}</span><span className="ps-lm-rule-name">{a.name}</span><span className="ps-lm-rule-pts">+{a.points}</span></div>))}</div>
       <div className="ps-lm-rule-note">Solo las acciones que ocurren <strong>dentro de una zona que tienes reservada</strong> suman a tu marcador.</div>
       <div className="ps-lm-poss-head">POSIBILIDADES ACTIVAS</div>
       <div className="ps-lm-poss-list">
         {chances.map((c,i)=>{const mine=myZones.includes(c.zoneId);return(<div className={"ps-lm-poss"+(mine?" is-mine":"")} key={i}><span className="ps-lm-poss-ic">{c.ic}</span><span className="ps-lm-poss-lab">{c.label}</span>{mine&&<span className="ps-lm-tag">TU ZONA</span>}<span className="ps-lm-poss-pot">+{c.pot}</span></div>);})}
       </div>
+      </>)}
     </div>
   );
 }
@@ -1574,17 +1588,20 @@ function HistoricMatchCard({ m, onPlay }) {
 }
 
 function MatchCard({ m, onNav }) {
-  const isOpen=m.status==="ABIERTO"||m.status==="EN VIVO";
+  // m.status se congela al cargar el fixture: se recalcula aquí con el reloj
+  // para que la etiqueta y el click no se desincronicen en sesiones largas
+  const status=(m.dbStatus==="FINALIZADO"||m.dbStatus==="CANCELADO")?m.dbStatus:fixtureStatus(m);
+  const isOpen=status==="ABIERTO"||status==="EN VIVO";
   // Va directo a la pantalla de juego de ese partido (sin pasar por la selección de modo)
   return (
     <button className={"ps-match-card"+(isOpen?" is-open":"")} onClick={()=>{ if(!isOpen)return; window.__KN_MUNDIAL_REQUEST=m.id; onNav("inicio"); }}>
-      <div className="ps-mc-top"><div className="ps-mc-group">GRUPO {m.group}</div><div className={"ps-tag "+(isOpen?"ps-tag-open":"ps-tag-next")}>{m.status}</div></div>
+      <div className="ps-mc-top"><div className="ps-mc-group">GRUPO {m.group}</div><div className={"ps-tag "+(isOpen?"ps-tag-open":"ps-tag-next")}>{status}</div></div>
       <div className="ps-mc-teams">
         <div className="ps-mc-team"><div className="ps-mc-flag"><Flag code={m.home} h={30}/></div><div className="ps-mc-name">{COUNTRY_NAME[m.home]}</div></div>
-        <div className="ps-mc-vs">{m.status==="FINALIZADO"&&m.score?m.score:"VS"}</div>
+        <div className="ps-mc-vs">{status==="FINALIZADO"&&m.score?m.score:"VS"}</div>
         <div className="ps-mc-team"><div className="ps-mc-flag"><Flag code={m.away} h={30}/></div><div className="ps-mc-name">{COUNTRY_NAME[m.away]}</div></div>
       </div>
-      <div className="ps-mc-bot"><div className="ps-mc-time">{m.status==="FINALIZADO"&&m.score?"FINAL "+m.score:m.time}</div><div className="ps-mc-venue">{m.venue}</div></div>
+      <div className="ps-mc-bot"><div className="ps-mc-time">{status==="FINALIZADO"&&m.score?"FINAL "+m.score:m.time}</div><div className="ps-mc-venue">{m.venue}</div></div>
       {isOpen&&<div className="ps-mc-cta">RESERVAR ZONAS →</div>}
     </button>
   );

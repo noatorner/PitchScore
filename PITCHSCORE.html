@@ -290,6 +290,11 @@ input { font-family: inherit; }
 
 /* ============ DETAIL ============ */
 .ps-detail-head { display: flex; align-items: center; gap: 8px; font-family: var(--kn-display); font-weight: 600; letter-spacing: 0.02em; font-size: 18px; }
+/* Cabeceros que colapsan/expanden su panel (detalle de zona, cómo suman puntos) */
+.ps-panel-toggle { width: 100%; text-align: left; }
+.ps-toggle-chev { margin-left: auto; color: #8a7d62; font-size: 12px; flex-shrink: 0; }
+.ps-lm-panel-head.ps-panel-toggle { display: flex; }
+.ps-lm-panel-head.is-closed { padding-bottom: 0; margin-bottom: 0; border-bottom: none; }
 .ps-detail-name { letter-spacing: 0.02em; }
 .ps-detail-desc { font-size: 12px; color: #6c604a; line-height: 1.4; margin-top: 8px; }
 .ps-detail-stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; margin-top: 12px; background: #efe5cc; border: 1px solid #d2c19a; border-radius: 5px; padding: 10px; }
@@ -798,6 +803,36 @@ input { font-family: inherit; }
   .ps-stats-grid { grid-template-columns: 1fr 1fr; }
   .ps-how-grid { grid-template-columns: 1fr 1fr; }
   .msa-pad-r, .msa-pad-l { padding: 64px 20px 28px; }
+}
+
+@media (max-width: 767px) {
+  /* Campo vertical: el SVG (1000x700) se rota 90° y el contenedor pasa a
+     proporción 700:1000, ocupando el ancho completo sin scroll horizontal */
+  .ps-pitch-wrap { aspect-ratio: 700 / 1000; position: relative; }
+  .ps-pitch-svg {
+    position: absolute; top: 50%; left: 50%;
+    width: 142.86%; /* = alto del contenedor */
+    height: 70%;    /* = ancho del contenedor */
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+  /* El tooltip de zona se contra-rota sobre su centro para quedar legible */
+  .ps-zone-tip { transform-box: fill-box; transform-origin: center; transform: rotate(-90deg); }
+
+  /* Selección de modo: ambos modos visibles a la vez en el viewport */
+  .ms-screen { display: flex; flex-direction: column; }
+  .msa { flex: 1 1 auto; min-height: 100%; }
+  .msa-pane { flex: 1 1 50%; min-height: 0; }
+  .msa-pad, .msa-pad-r, .msa-pad-l { padding: 52px 18px 16px; gap: 8px; }
+  .msa-hist .msa-pad { padding-top: 18px; }
+  .msa-kicker, .msa-sub, .msa-stats, .msa-comp-list { display: none; }
+  .msa-title { font-size: clamp(26px, 9vw, 38px); line-height: 1; }
+  .msa-title .msa-num { display: inline; margin-left: 8px; }
+  .msa-match { padding: 10px 12px; gap: 8px; max-width: none; }
+  .msa-match-teams { font-size: 16px; gap: 8px; }
+  .msa-match-cd { font-size: 14px; }
+  .msa-foot { margin-top: auto; }
+  .ms-cta { width: 100%; justify-content: center; padding: 13px 18px; font-size: 13px; }
+  .msa-toplabel { top: 10px; font-size: 9px; padding: 6px 14px; letter-spacing: 0.22em; }
 }
   </style>
 </head>
