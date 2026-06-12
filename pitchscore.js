@@ -793,6 +793,35 @@ function PageInicio({ onNav }) {
   const lmRef=React.useRef(null);
   React.useEffect(()=>{ if(sim.status==="running"&&lmRef.current) lmRef.current.scrollIntoView({behavior:"smooth",block:"start"}); },[sim.status]);
 
+  // Liquidación de partido real: cuando el partido está FINALIZADO y hay eventos
+  // cargados, acredita los puntos al usuario una sola vez (localStorage flag).
+  const liveSettledRef=React.useRef(false);
+  React.useEffect(()=>{
+    if(!liveEvents.length||!selectedZones.length) return;
+    if(fixtureStatus(mundialMatch)!=="FINALIZADO") return;
+    if(liveSettledRef.current) return;
+    const key=`kn_settled_${mundialMatch.id}`;
+    if(typeof localStorage!=="undefined"&&localStorage.getItem(key)) return;
+    liveSettledRef.current=true;
+    const actionPts=Object.fromEntries(ACTIONS.map(a=>[a.name,a.points]));
+    const earned=liveEvents.filter(e=>e.type==="act"&&e.zoneId&&selectedZones.includes(e.zoneId)).reduce((s,e)=>s+(e.pts||actionPts[e.action]||0),0);
+    if(typeof localStorage!=="undefined") localStorage.setItem(key,earned.toString());
+    if(!earned) return;
+    const db=window.supabaseClient;
+    if(!db) return;
+    (async()=>{
+      try{
+        const{data:{user}}=await db.auth.getUser();
+        if(!user) return;
+        const{data:row}=await db.from('scores').select('total_points,matches_played').eq('user_id',user.id).maybeSingle();
+        const newTotal=((row?.total_points)||0)+earned;
+        const newPlayed=((row?.matches_played)||0)+1;
+        await db.from('scores').upsert({user_id:user.id,total_points:newTotal,matches_played:newPlayed},{onConflict:'user_id'});
+        setBudget(b=>b+earned);
+      }catch(e){/* sin conexión */}
+    })();
+  },[liveEvents.length,mundialMatch.id]);
+
   // Liquidación al terminar un partido: los puntos ganados en las zonas del
   // usuario se suman a su presupuesto permanente (scores.budget) y a su
   // total_points del ranking. Una sola liquidación por simulación.
@@ -939,11 +968,10 @@ function PageInicio({ onNav }) {
       // nunca machaca el presupuesto de un usuario existente.
       const userName=(window.__KN_USER&&window.__KN_USER.name)||user.email.split('@')[0];
       const{error:regErr}=await db.from('scores').upsert(
-        {user_id:user.id,name:userName,budget:500},
+        {user_id:user.id,name:userName,budget:500,total_points:0,matches_played:0},
         {onConflict:'user_id',ignoreDuplicates:true}
       );
       if(regErr){
-        // fallback mientras la columna budget no exista en la tabla
         await db.from('scores').upsert({user_id:user.id,name:userName},{onConflict:'user_id',ignoreDuplicates:true});
       }
       return true;
@@ -1607,28 +1635,30 @@ function HistoricMatchCard({ m, onPlay }) {
 }
 
 function MatchCard({ m, onNav }) {
-  // m.status se congela al cargar el fixture: se recalcula aquí con el reloj
-  // para que la etiqueta y el click no se desincronicen en sesiones largas
   const status=(m.dbStatus==="FINALIZADO"||m.dbStatus==="CANCELADO")?m.dbStatus:fixtureStatus(m);
   const isOpen=status==="ABIERTO"||status==="EN VIVO";
-  // Va directo a la pantalla de juego de ese partido (sin pasar por la selección de modo)
+  const isFinal=status==="FINALIZADO";
+  const isViewable=isOpen||isFinal;
   return (
-    <button className={"ps-match-card"+(isOpen?" is-open":"")} onClick={()=>{ if(!isOpen)return; window.__KN_MUNDIAL_REQUEST=m.id; onNav("inicio"); }}>
-      <div className="ps-mc-top"><div className="ps-mc-group">GRUPO {m.group}</div><div className={"ps-tag "+(isOpen?"ps-tag-open":"ps-tag-next")}>{status}</div></div>
+    <button className={"ps-match-card"+(isOpen?" is-open":isFinal?" is-past":"")} onClick={()=>{ if(!isViewable)return; window.__KN_MUNDIAL_REQUEST=m.id; onNav("inicio"); }}>
+      <div className="ps-mc-top"><div className="ps-mc-group">GRUPO {m.group}</div><div className={"ps-tag "+(isOpen?"ps-tag-open":isFinal?"ps-tag-pre":"ps-tag-next")}>{status}</div></div>
       <div className="ps-mc-teams">
         <div className="ps-mc-team"><div className="ps-mc-flag"><Flag code={m.home} h={30}/></div><div className="ps-mc-name">{COUNTRY_NAME[m.home]}</div></div>
-        <div className="ps-mc-vs">{status==="FINALIZADO"&&m.score?m.score:"VS"}</div>
+        <div className="ps-mc-vs">{isFinal&&m.score?m.score:"VS"}</div>
         <div className="ps-mc-team"><div className="ps-mc-flag"><Flag code={m.away} h={30}/></div><div className="ps-mc-name">{COUNTRY_NAME[m.away]}</div></div>
       </div>
-      <div className="ps-mc-bot"><div className="ps-mc-time">{status==="FINALIZADO"&&m.score?"FINAL "+m.score:m.time}</div><div className="ps-mc-venue">{m.venue}</div></div>
+      <div className="ps-mc-bot"><div className="ps-mc-time">{isFinal&&m.score?"FINAL "+m.score:m.time}</div><div className="ps-mc-venue">{m.venue}</div></div>
       {isOpen&&<div className="ps-mc-cta">RESERVAR ZONAS →</div>}
+      {isFinal&&<div className="ps-mc-cta ps-mc-cta-past">VER RESULTADO →</div>}
     </button>
   );
 }
 
 function PageReservas({ onNav }) {
   const [tab,setTab]=React.useState("activas");
-  const [resData,setResData]=React.useState(null); // null=loading
+  const [resData,setResData]=React.useState(null);
+  const [openMatches,setOpenMatches]=React.useState(new Set());
+  function toggleMatch(mid){ setOpenMatches(s=>{ const n=new Set(s); n.has(mid)?n.delete(mid):n.add(mid); return n; }); }
 
   // Consulta siempre las reservas del usuario autenticado actual; si la
   // sesión cambia (otro usuario o sign-out), descarta el estado y recarga.
@@ -1686,13 +1716,13 @@ function PageReservas({ onNav }) {
       <div className="ps-page-head">
         <div><div className="ps-page-eyebrow">TUS APUESTAS DE ZONA</div><div className="ps-page-title">MIS RESERVAS</div><div className="ps-page-sub">Gestiona tus reservas activas y revisa las pasadas.</div></div>
         <div className="ps-page-stats">
-          <div className="ps-mini-stat"><div className="ps-mini-stat-l">ACTIVAS</div><div className="ps-mini-stat-v">{activeRes.length}</div></div>
-          <div className="ps-mini-stat"><div className="ps-mini-stat-l">PARTIDOS</div><div className="ps-mini-stat-v">{pastIds.length+activeIds.length}</div></div>
-          <div className="ps-mini-stat"><div className="ps-mini-stat-l">TOTAL ZONAS</div><div className="ps-mini-stat-v">{resData.length}</div></div>
+          <div className="ps-mini-stat"><div className="ps-mini-stat-l">PARTIDOS ACTIVOS</div><div className="ps-mini-stat-v">{activeIds.length}</div></div>
+          <div className="ps-mini-stat"><div className="ps-mini-stat-l">PARTIDOS PASADOS</div><div className="ps-mini-stat-v">{pastIds.length}</div></div>
+          <div className="ps-mini-stat"><div className="ps-mini-stat-l">ZONAS TOTALES</div><div className="ps-mini-stat-v">{resData.length}</div></div>
         </div>
       </div>
       <div className="ps-tabs">
-        <button className={"ps-tab"+(tab==="activas"?" is-on":"")} onClick={()=>setTab("activas")}>ACTIVAS · {activeRes.length}</button>
+        <button className={"ps-tab"+(tab==="activas"?" is-on":"")} onClick={()=>setTab("activas")}>ACTIVAS · {activeIds.length}</button>
         <button className={"ps-tab"+(tab==="pendientes"?" is-on":"")} onClick={()=>setTab("pendientes")}>PENDIENTES · 0</button>
         <button className={"ps-tab"+(tab==="pasadas"?" is-on":"")} onClick={()=>setTab("pasadas")}>PASADAS · {pastIds.length}</button>
       </div>
@@ -1704,17 +1734,18 @@ function PageReservas({ onNav }) {
             const match=FIXTURE.find(m=>m.id===mid);
             const zones=activeByMatch[mid];
             const totalCost=zones.reduce((s,r)=>s+(r.price||0),0);
+            const isOpen=openMatches.has(mid);
             return(
               <div className="ps-res-active" key={mid}>
-                <div className="ps-res-banner">
+                <button className="ps-res-banner" style={{width:"100%",textAlign:"left",cursor:"pointer"}} onClick={()=>toggleMatch(mid)}>
                   <div className="ps-res-banner-l">
-                    <div className="ps-res-banner-eb">RESERVA ACTIVA · {fixtureStatus(match)}</div>
+                    <div className="ps-res-banner-eb">RESERVA ACTIVA · {fixtureStatus(match)} {isOpen?"▴":"▾"}</div>
                     <div className="ps-res-banner-teams"><span><Flag code={match.home} h={24}/> {COUNTRY_NAME[match.home].toUpperCase()}</span><span className="ps-res-banner-vs">VS</span><span>{COUNTRY_NAME[match.away].toUpperCase()} <Flag code={match.away} h={24}/></span></div>
-                    <div className="ps-res-banner-meta">{match.date} · {match.time} · {match.venue}</div>
+                    <div className="ps-res-banner-meta">{match.date} · {match.time} · {zones.length} zonas · {totalCost} pts</div>
                   </div>
-                  <div className="ps-res-banner-r"><div className="ps-res-banner-total"><span>TOTAL APOSTADO</span><strong>{totalCost} pts</strong></div><button className="ps-btn ps-btn-dark ps-btn-sm" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=mid; onNav("inicio"); }}>EDITAR RESERVA</button></div>
-                </div>
-                <div className="ps-res-zones-grid">
+                  <div className="ps-res-banner-r"><button className="ps-btn ps-btn-dark ps-btn-sm" onClick={(e)=>{ e.stopPropagation(); window.__KN_MUNDIAL_REQUEST=mid; onNav("inicio"); }}>EDITAR</button></div>
+                </button>
+                {isOpen&&<div className="ps-res-zones-grid">
                   {zones.map(r=>{
                     const z=ZONES.find(zz=>zz.id===r.zone_id);
                     if(!z)return null;
@@ -1731,7 +1762,7 @@ function PageReservas({ onNav }) {
                       </div>
                     );
                   })}
-                </div>
+                </div>}
               </div>
             );
           })
@@ -1854,31 +1885,44 @@ function PageRanking() {
 }
 
 function PageAmigos() {
-  const [tab,setTab]=React.useState("amigos");
+  const [email,setEmail]=React.useState("");
+  const [copied,setCopied]=React.useState(false);
+  const inviteUrl=(typeof window!=="undefined"?window.location.origin:"https://pitch-score.vercel.app")+"/login";
+
+  function sendInvite(e){
+    e.preventDefault();
+    const subj=encodeURIComponent("Te invito a jugar Kancha — Mundial 2026");
+    const body=encodeURIComponent(`¡Hola!\n\nTe invito a jugar Kancha: el juego del Mundial 2026 donde reservas zonas del campo y ganas puntos con cada jugada.\n\nEntra gratis aquí: ${inviteUrl}\n\n¡Hasta el pitido final!`);
+    window.open(`mailto:${email}?subject=${subj}&body=${body}`);
+    setEmail("");
+  }
+  function copyLink(){
+    navigator.clipboard.writeText(inviteUrl).then(()=>{ setCopied(true); setTimeout(()=>setCopied(false),2500); }).catch(()=>{});
+  }
   return (
     <div className="ps-page">
       <div className="ps-page-head">
-        <div><div className="ps-page-eyebrow">TU EQUIPO</div><div className="ps-page-title">AMIGOS</div><div className="ps-page-sub">Compara puntuaciones, comparte reservas y reta a tus amigos.</div></div>
-        <div className="ps-page-search"><input placeholder="Buscar usuario @handle…"/><button className="ps-btn ps-btn-primary ps-btn-sm">INVITAR AMIGO</button></div>
+        <div><div className="ps-page-eyebrow">TU EQUIPO</div><div className="ps-page-title">AMIGOS</div><div className="ps-page-sub">Invita a tus amigos a jugar el Mundial 2026.</div></div>
       </div>
-      <div className="ps-tabs">
-        <button className={"ps-tab"+(tab==="amigos"?" is-on":"")} onClick={()=>setTab("amigos")}>AMIGOS · 0</button>
-        <button className={"ps-tab"+(tab==="solicitudes"?" is-on":"")} onClick={()=>setTab("solicitudes")}>SOLICITUDES · 0</button>
+      <div className="ps-invite-card">
+        <div className="ps-invite-icon">👥</div>
+        <div className="ps-invite-title">INVITA A TUS AMIGOS</div>
+        <div className="ps-invite-desc">Introduce el email de tu amigo y le mandamos una invitación. También puedes copiar el enlace y compartirlo como quieras.</div>
+        <form className="ps-invite-form" onSubmit={sendInvite}>
+          <input className="ps-invite-input" type="email" placeholder="email@ejemplo.com" value={email} onChange={e=>setEmail(e.target.value)} required/>
+          <button className="ps-btn ps-btn-primary" type="submit">ENVIAR INVITACIÓN</button>
+        </form>
+        <div className="ps-invite-sep">— o comparte el enlace directo —</div>
+        <div className="ps-invite-link-row">
+          <span className="ps-invite-link-url">{inviteUrl}</span>
+          <button className="ps-btn ps-btn-dark ps-btn-sm" onClick={copyLink}>{copied?"✓ COPIADO":"COPIAR ENLACE"}</button>
+        </div>
       </div>
-      {tab==="amigos"&&(
-        <div className="ps-empty-state">
-          <div className="ps-empty-icon">👥</div>
-          <div className="ps-empty-t">Aún no tienes amigos en Kancha</div>
-          <div className="ps-empty-d">Invita a tus amigos para comparar puntuaciones, compartir reservas y retarlos en cada partido.</div>
-        </div>
-      )}
-      {tab==="solicitudes"&&(
-        <div className="ps-empty-state">
-          <div className="ps-empty-icon">📭</div>
-          <div className="ps-empty-t">Sin solicitudes pendientes</div>
-          <div className="ps-empty-d">Las solicitudes de amistad que recibas aparecerán aquí.</div>
-        </div>
-      )}
+      <div className="ps-empty-state" style={{marginTop:24}}>
+        <div className="ps-empty-icon">📭</div>
+        <div className="ps-empty-t">Aún no tienes amigos en Kancha</div>
+        <div className="ps-empty-d">Cuando tus amigos se registren con tu enlace, aparecerán aquí para comparar puntuaciones.</div>
+      </div>
     </div>
   );
 }

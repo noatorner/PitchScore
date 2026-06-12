@@ -573,7 +573,9 @@ input { font-family: inherit; }
 .ps-day-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
 .ps-match-card { background: #efe5cc; border: 1px solid #d2c19a; border-radius: 6px; padding: 14px; display: flex; flex-direction: column; gap: 12px; text-align: left; transition: all 0.15s ease; }
 .ps-match-card.is-open { border-color: #b94234; box-shadow: 0 0 0 1px #b9423430; }
+.ps-match-card.is-past { opacity: 0.85; cursor: pointer; }
 .ps-match-card:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0,0,0,0.08); }
+.ps-mc-cta-past { color: #6c604a; background: #d2c19a30; }
 .ps-mc-top { display: flex; justify-content: space-between; align-items: center; }
 .ps-mc-group { font-family: var(--kn-body); font-weight: 600; font-size: 10px; letter-spacing: 0.16em; color: #6c604a; }
 .ps-mc-teams { display: flex; align-items: center; gap: 12px; }
@@ -863,6 +865,23 @@ input { font-family: inherit; }
   .ps-stat-label { font-size: 9px; letter-spacing: 0.10em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .ps-stat-num { font-size: 22px; margin-top: 2px; }
   .ps-stat-unit { font-size: 8px; }
+
+  /* Invite card */
+  .ps-invite-card { background: #efe5cc; border: 1px solid #d2c19a; border-radius: 8px; padding: 28px 26px; display: flex; flex-direction: column; gap: 16px; }
+  .ps-invite-icon { font-size: 36px; }
+  .ps-invite-title { font-family: 'Anton'; font-size: 20px; letter-spacing: 0.04em; }
+  .ps-invite-desc { font-family: var(--kn-body); font-size: 14px; color: #6c604a; line-height: 1.5; }
+  .ps-invite-form { display: flex; gap: 10px; flex-wrap: wrap; }
+  .ps-invite-input { flex: 1 1 200px; padding: 10px 14px; border: 1px solid #cdb98a; border-radius: 5px; background: #fff; font-family: var(--kn-body); font-size: 14px; }
+  .ps-invite-sep { font-family: var(--kn-body); font-size: 12px; letter-spacing: 0.12em; color: #8a7960; text-align: center; }
+  .ps-invite-link-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; background: #e6dcc4; border-radius: 5px; padding: 10px 14px; }
+  .ps-invite-link-url { flex: 1; font-family: var(--kn-body); font-size: 12px; color: #6c604a; word-break: break-all; }
+
+  /* Historial timeline responsive */
+  .ps-tl-head { grid-template-columns: 1fr auto; gap: 6px; }
+  .ps-tl-date { grid-column: 1 / -1; }
+  .ps-tl-match { font-size: 13px; flex-wrap: wrap; gap: 4px; }
+  .ps-hist-timeline-title { font-size: 16px; }
 
   /* Issue #5: marcador EN DIRECTO — layout columna para que quepan los nombres */
   .ps-lm-score { flex-direction: column; align-items: center; gap: 8px; }
