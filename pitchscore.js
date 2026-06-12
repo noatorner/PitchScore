@@ -1215,26 +1215,37 @@ function PartidoActualCard({ match }) {
 }
 
 function ProximosCard({ onNav, excludeId }) {
-  // FIXTURE ya está ordenado por kickoff UTC: los siguientes más próximos
+  // Colapsado por defecto en mobile (≤860px), abierto en desktop
+  const [open, setOpen] = React.useState(typeof window!=="undefined" ? window.innerWidth > 860 : true);
+  const upcoming = FIXTURE.filter(m=>m.id!==excludeId&&(m.status==="ABIERTO"||m.status==="PROXIMO")).slice(0,4);
   return (
     <div className="ps-card">
-      <div className="ps-card-head"><span>PRÓXIMOS PARTIDOS</span><span className="ps-chev">▾</span></div>
-      <div className="ps-card-body ps-mini-list">
-        {FIXTURE.filter(m=>m.id!==excludeId&&(m.status==="ABIERTO"||m.status==="PROXIMO")).slice(0,4).map(m=>(
-          <div className="ps-mini-match" key={m.id}>
-            <div className="ps-mini-teams">
-              <div className="ps-team-row"><Flag code={m.home} h={18}/><span className="ps-team-sm">{COUNTRY_NAME[m.home]}</span></div>
-              <div className="ps-vs-sm">{m.status==="FINALIZADO"&&m.score?m.score:"vs"}</div>
-              <div className="ps-team-row"><Flag code={m.away} h={18}/><span className="ps-team-sm">{COUNTRY_NAME[m.away]}</span></div>
-            </div>
-            <div className="ps-mini-bot">
-              <div className="ps-mini-meta-sm">{m.date} · {m.status==="FINALIZADO"&&m.score?"FINAL "+m.score:m.time}<br/>{m.venue}</div>
-              <div className={"ps-tag "+(m.status==="ABIERTO"||m.status==="EN VIVO"?"ps-tag-open":"ps-tag-next")}>{m.status}</div>
-            </div>
-          </div>
-        ))}
-        <button className="ps-fixture-all" onClick={()=>onNav("partidos")}>VER TODO EL FIXTURE <span style={{marginLeft:6}}>▾</span></button>
-      </div>
+      <button className="ps-card-head" style={{width:"100%",textAlign:"left",cursor:"pointer"}} onClick={()=>setOpen(o=>!o)}>
+        <span>PRÓXIMOS PARTIDOS</span><span className="ps-chev">{open?"▴":"▾"}</span>
+      </button>
+      {open && (
+        <div className="ps-card-body ps-mini-list">
+          {upcoming.map(m=>{
+            const isOpen=m.status==="ABIERTO"||m.status==="EN VIVO";
+            return (
+              <div className={"ps-mini-match"+(isOpen?" is-open":"")} key={m.id}
+                style={isOpen?{cursor:"pointer"}:{}}
+                onClick={()=>{ if(!isOpen) return; window.__KN_MUNDIAL_REQUEST=m.id; onNav("inicio"); }}>
+                <div className="ps-mini-teams">
+                  <div className="ps-team-row"><Flag code={m.home} h={18}/><span className="ps-team-sm">{COUNTRY_NAME[m.home]}</span></div>
+                  <div className="ps-vs-sm">{m.status==="FINALIZADO"&&m.score?m.score:"vs"}</div>
+                  <div className="ps-team-row"><Flag code={m.away} h={18}/><span className="ps-team-sm">{COUNTRY_NAME[m.away]}</span></div>
+                </div>
+                <div className="ps-mini-bot">
+                  <div className="ps-mini-meta-sm">{m.date} · {m.status==="FINALIZADO"&&m.score?"FINAL "+m.score:m.time}<br/>{m.venue}</div>
+                  <div className={"ps-tag "+(isOpen?"ps-tag-open":"ps-tag-next")}>{m.status}</div>
+                </div>
+              </div>
+            );
+          })}
+          <button className="ps-fixture-all" onClick={()=>onNav("partidos")}>VER TODO EL FIXTURE <span style={{marginLeft:6}}>▾</span></button>
+        </div>
+      )}
     </div>
   );
 }

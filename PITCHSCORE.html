@@ -837,8 +837,9 @@ input { font-family: inherit; }
   /* Bug #6: tarjeta del partido (hero) responsive */
   .ps-hero-inner { padding: 10px 10px 8px; }
   .ps-hero-top { flex-wrap: wrap; gap: 6px; white-space: normal; }
-  .ps-hero-teams { font-size: clamp(14px, 4.5vw, 22px); gap: 8px; flex-wrap: wrap; }
-  .ps-hero-flag { font-size: clamp(16px, 5vw, 22px); }
+  .ps-hero-teams { font-size: clamp(13px, 4vw, 20px); gap: 6px; flex-wrap: nowrap; overflow: hidden; align-items: center; }
+  .ps-hero-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; max-width: 26vw; }
+  .ps-hero-flag { font-size: clamp(16px, 5vw, 22px); flex-shrink: 0; }
   .ps-hero-bottom { flex-wrap: wrap; gap: 10px; }
   .ps-hero-meta-sep { display: none; }
   /* Countdown timer en mobile */
@@ -849,6 +850,23 @@ input { font-family: inherit; }
   .ps-zone-row { grid-template-columns: 14px 1fr 80px; gap: 8px; padding: 10px 10px; }
   .ps-zl-tier, .ps-zl-slots { display: none; }
   .ps-zl-price { font-size: 15px; text-align: right; }
+
+  /* Bug #8: budget/zonas stats — caben bien en pantallas estrechas */
+  .ps-budget-row { gap: 6px; }
+  .ps-stat-box { padding: 8px 10px; }
+  .ps-stat-label { font-size: 9px; letter-spacing: 0.10em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .ps-stat-num { font-size: 22px; margin-top: 2px; }
+  .ps-stat-unit { font-size: 8px; }
+
+  /* Issue #5: marcador EN DIRECTO — nombres de equipo no se desbordan */
+  .ps-lm-team-name { font-size: clamp(10px, 3vw, 14px); max-width: 28vw; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .ps-lm-nums { font-size: 24px; gap: 8px; }
+
+  /* Tab bar: MAPA DEL CAMPO / LISTA DE ZONAS caben en una línea */
+  .ps-field-toolbar { flex-wrap: nowrap; align-items: center; gap: 6px; }
+  .ps-seg button { font-size: 10px; padding: 6px 8px; letter-spacing: 0.06em; }
+  .ps-field-cap { font-size: 10px; white-space: nowrap; }
+  .ps-cap-num { font-size: 14px; }
 }
   </style>
 </head>
