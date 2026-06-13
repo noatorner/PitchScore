@@ -1737,14 +1737,14 @@ function PageReservas({ onNav }) {
             const isOpen=openMatches.has(mid);
             return(
               <div className="ps-res-active" key={mid}>
-                <button className="ps-res-banner" style={{width:"100%",textAlign:"left",cursor:"pointer"}} onClick={()=>toggleMatch(mid)}>
+                <div className="ps-res-banner" style={{cursor:"pointer"}} onClick={()=>toggleMatch(mid)}>
                   <div className="ps-res-banner-l">
                     <div className="ps-res-banner-eb">RESERVA ACTIVA · {fixtureStatus(match)} {isOpen?"▴":"▾"}</div>
                     <div className="ps-res-banner-teams"><span><Flag code={match.home} h={24}/> {COUNTRY_NAME[match.home].toUpperCase()}</span><span className="ps-res-banner-vs">VS</span><span>{COUNTRY_NAME[match.away].toUpperCase()} <Flag code={match.away} h={24}/></span></div>
                     <div className="ps-res-banner-meta">{match.date} · {match.time} · {zones.length} zonas · {totalCost} pts</div>
                   </div>
                   <div className="ps-res-banner-r"><button className="ps-btn ps-btn-dark ps-btn-sm" onClick={(e)=>{ e.stopPropagation(); window.__KN_MUNDIAL_REQUEST=mid; onNav("inicio"); }}>EDITAR</button></div>
-                </button>
+                </div>
                 {isOpen&&<div className="ps-res-zones-grid">
                   {zones.map(r=>{
                     const z=ZONES.find(zz=>zz.id===r.zone_id);
