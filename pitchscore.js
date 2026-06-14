@@ -63,7 +63,7 @@ const FALLBACK_FIXTURE = [
   { id:"m7",  home:"AUS", away:"TUR",  utc:"2026-06-14T04:00:00Z", venue:"BC Place · Vancouver",              group:"D", dbStatus:"FINALIZADO", score:"2-0" },
   { id:"m8",  home:"QAT", away:"SUI",  utc:"2026-06-13T19:00:00Z", venue:"Levi's Stadium · San Francisco",    group:"B", dbStatus:"FINALIZADO", score:"1-1" },
   // Jornada 3 (14–15 jun) — HOY
-  { id:"m9",  home:"GER", away:"CUR",  utc:"2026-06-14T17:00:00Z", venue:"NRG Stadium · Houston",             group:"E" },
+  { id:"m9",  home:"GER", away:"CUR",  utc:"2026-06-14T17:00:00Z", venue:"NRG Stadium · Houston",             group:"E", dbStatus:"FINALIZADO", score:"7-1" },
   { id:"m10", home:"NED", away:"JPN",  utc:"2026-06-14T20:00:00Z", venue:"AT&T Stadium · Dallas",             group:"F" },
   { id:"m11", home:"CIV", away:"ECU",  utc:"2026-06-14T23:00:00Z", venue:"Lincoln Financial Field · Filadelfia", group:"E" },
   { id:"m12", home:"BEL", away:"EGY",  utc:"2026-06-15T19:00:00Z", venue:"Lumen Field · Seattle",            group:"G" },
@@ -2498,7 +2498,7 @@ function MatchReplay({ match, onBack }) {
 
 // ─── Historial de partidos pasados ─────────────────────────────────────────
 function JornadaHistorial({ onReplay }) {
-  const past = React.useMemo(() => FIXTURE.filter(m => m.dbStatus === 'FINALIZADO'), []);
+  const past = FIXTURE.filter(m => m.dbStatus === 'FINALIZADO');
 
   if (past.length === 0) return (
     <div className="ps-empty-state" style={{marginTop:"16px"}}>
@@ -2545,13 +2545,11 @@ function PageJornada({ onNav, score }) {
   const [loading, setLoading]     = React.useState(true);
 
   // Partidos de hoy con reservas aún abiertas (ABIERTO y >15 min antes del pitido)
-  const todayMatches = React.useMemo(() =>
-    FIXTURE.filter(m => {
-      const st = fixtureStatus(m);
-      const diff = kickoffDate(m) - Date.now();
-      return st === "ABIERTO" && diff > RESERVE_CLOSE_MS;
-    })
-  , []);
+  const todayMatches = FIXTURE.filter(m => {
+    const st = fixtureStatus(m);
+    const diff = kickoffDate(m) - Date.now();
+    return st === "ABIERTO" && diff > RESERVE_CLOSE_MS;
+  });
 
   React.useEffect(() => {
     const db = window.supabaseClient;

@@ -386,20 +386,146 @@ async function syncMatchStatuses(sbSvc) {
     });
     if (!espnEvent) continue;
 
-    const state = espnEvent.competitions?.[0]?.status?.type?.state;
+    const comp  = espnEvent.competitions?.[0];
+    const state = comp?.status?.type?.state;
+    const hComp = comp?.competitors?.find(c => c.homeAway === 'home');
+    const aComp = comp?.competitors?.find(c => c.homeAway === 'away');
+    const score = (hComp?.score != null && aComp?.score != null)
+      ? `${hComp.score}-${aComp.score}` : null;
+
     // state: 'pre' | 'in' | 'post'
     let newStatus = null;
     if (state === 'in'   && match.status !== 'EN VIVO')    newStatus = 'EN VIVO';
     if (state === 'post' && match.status !== 'FINALIZADO')  newStatus = 'FINALIZADO';
     if (!newStatus) continue;
 
+    const patch = { status: newStatus };
+    if (newStatus === 'FINALIZADO' && score) patch.score = score;
+
     await sbSvc(`matches?id=eq.${encodeURIComponent(match.id)}`, {
       method: 'PATCH',
-      body: JSON.stringify({ status: newStatus }),
+      body: JSON.stringify(patch),
     }).catch(() => {});
-    updates.push({ id: match.id, match: `${match.home} vs ${match.away}`, newStatus });
+    updates.push({ id: match.id, match: `${match.home} vs ${match.away}`, newStatus, score });
   }
   return updates;
+}
+
+// ─── Actualizar scores para FINALIZADO con score=null ─────────────────────
+
+async function syncFinalizedScores(sbSvc) {
+  const finalized = await sbSvc(
+    'matches?status=eq.FINALIZADO&score=is.null&select=id,home,away'
+  ).catch(() => []);
+  if (!finalized?.length) return [];
+
+  const scoreboardData = await espnGet('/scoreboard').catch(() => ({ events: [] }));
+  const espnEvents = scoreboardData.events || [];
+  const updated = [];
+
+  for (const match of finalized) {
+    const espnEvent = espnEvents.find(e => {
+      const comp = e.competitions?.[0];
+      const h = comp?.competitors?.find(c => c.homeAway === 'home');
+      const a = comp?.competitors?.find(c => c.homeAway === 'away');
+      return teamMatches(h?.team?.displayName, match.home) &&
+             teamMatches(a?.team?.displayName, match.away);
+    });
+    if (!espnEvent) continue;
+
+    const comp  = espnEvent.competitions?.[0];
+    const hComp = comp?.competitors?.find(c => c.homeAway === 'home');
+    const aComp = comp?.competitors?.find(c => c.homeAway === 'away');
+    if (hComp?.score == null || aComp?.score == null) continue;
+
+    const score = `${hComp.score}-${aComp.score}`;
+    await sbSvc(`matches?id=eq.${encodeURIComponent(match.id)}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ score }),
+    }).catch(() => {});
+    updated.push({ id: match.id, score });
+  }
+  return updated;
+}
+
+// ─── Rescore retroactivo para partidos FINALIZADO con scored:false ─────────
+
+async function rescoreFinalized(sbSvc) {
+  // Buscar partidos FINALIZADO con eventos sin puntuar
+  const unscoredEvents = await sbSvc(
+    'agent_events?scored=eq.false&pts_value=gt.0&select=match_id'
+  ).catch(() => []);
+
+  const matchIds = [...new Set((unscoredEvents || []).map(e => e.match_id))];
+  if (!matchIds.length) return [];
+
+  const results = [];
+  for (const matchId of matchIds) {
+    // Solo procesar FINALIZADO (EN VIVO los gestiona processMatch)
+    const matchRows = await sbSvc(
+      `matches?id=eq.${encodeURIComponent(matchId)}&status=eq.FINALIZADO&select=id`
+    ).catch(() => []);
+    if (!(matchRows || []).length) continue;
+
+    // Leer reservas frescas con service key (bypasea RLS)
+    const reservationRows = await sbSvc(
+      `reservations?match_id=eq.${encodeURIComponent(matchId)}&select=user_id,zone_id`
+    ).catch(() => []);
+    if (!(reservationRows || []).length) continue;
+
+    const zoneUsers = {};
+    for (const r of reservationRows) {
+      if (!zoneUsers[r.zone_id]) zoneUsers[r.zone_id] = [];
+      zoneUsers[r.zone_id].push(r.user_id);
+    }
+
+    // Eventos sin puntuar para este partido
+    const events = await sbSvc(
+      `agent_events?match_id=eq.${encodeURIComponent(matchId)}&scored=eq.false&pts_value=gt.0&select=sofascore_id,zone_id,pts_value`
+    ).catch(() => []);
+
+    const userPts   = {};
+    const scoredIds = [];
+
+    for (const ev of (events || [])) {
+      const users = zoneUsers[ev.zone_id] || [];
+      if (!users.length) continue;
+      for (const uid of users) {
+        userPts[uid] = (userPts[uid] || 0) + ev.pts_value;
+      }
+      scoredIds.push(ev.sofascore_id);
+    }
+
+    // Otorgar puntos
+    for (const [userId, totalPts] of Object.entries(userPts)) {
+      const rows = await sbSvc(
+        `scores?user_id=eq.${userId}&select=budget,total_points`
+      ).catch(() => []);
+      const curr = (rows || [])[0] || { budget: 0, total_points: 0 };
+      await sbSvc(`scores?user_id=eq.${userId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          budget:       (curr.budget       || 0) + totalPts,
+          total_points: (curr.total_points || 0) + totalPts,
+        }),
+      }).catch(() => {});
+    }
+
+    // Marcar como scored
+    if (scoredIds.length > 0) {
+      await sbSvc(
+        `agent_events?match_id=eq.${encodeURIComponent(matchId)}&sofascore_id=in.(${scoredIds.join(',')})`,
+        { method: 'PATCH', body: JSON.stringify({ scored: true }) }
+      ).catch(() => {});
+    }
+
+    results.push({
+      matchId,
+      usersAwarded: Object.keys(userPts).length,
+      scoredCount: scoredIds.length,
+    });
+  }
+  return results;
 }
 
 // ─── Handler Vercel ───────────────────────────────────────────────────────
@@ -424,6 +550,12 @@ module.exports = async (req, res) => {
     // 1. Auto-actualizar status de partidos desde ESPN
     const statusUpdates = await syncMatchStatuses(sbSvc);
 
+    // 1b. Guardar scores para FINALIZADO con score=null
+    const scoreUpdates = await syncFinalizedScores(sbSvc);
+
+    // 1c. Rescore retroactivo para FINALIZADO con eventos sin puntuar
+    const rescored = await rescoreFinalized(sbSvc);
+
     // 2. Procesar partidos EN VIVO
     const matches = await sbSvc(`matches?status=eq.${encodeURIComponent('EN VIVO')}&select=*`);
     if (!matches?.length) {
@@ -431,6 +563,8 @@ module.exports = async (req, res) => {
         ok: true,
         ts: new Date().toISOString(),
         statusUpdates,
+        scoreUpdates,
+        rescored,
         skipped: true,
         reason: 'No hay partidos EN VIVO',
       });
@@ -445,6 +579,8 @@ module.exports = async (req, res) => {
       ok: true,
       ts: new Date().toISOString(),
       statusUpdates,
+      scoreUpdates,
+      rescored,
       liveMatches: matches.length,
       results,
     });
