@@ -186,7 +186,7 @@ async function findEspnEvent(homeCode, awayCode) {
   }) || null;
 }
 
-// ─── Lógica principal por partido ─────────────────────────────────────────
+// ─── Lógica principal por partido (batch-optimized para no hacer timeout) ──
 
 async function processMatch(match, sbSvc) {
   const { id: matchId, home, away } = match;
@@ -222,122 +222,143 @@ async function processMatch(match, sbSvc) {
     plays.push(p);
   }
 
-  // 3. IDs ya procesados en Supabase
-  let processed = new Set();
-  try {
-    const rows = await sbSvc(
-      `agent_events?match_id=eq.${encodeURIComponent(matchId)}&select=sofascore_id`
-    );
-    processed = new Set((rows || []).map(r => String(r.sofascore_id)));
-  } catch (e) { /* tabla puede no existir aún */ }
+  // 3. IDs ya procesados — 1 sola query
+  const existingRows = await sbSvc(
+    `agent_events?match_id=eq.${encodeURIComponent(matchId)}&select=sofascore_id`
+  ).catch(() => []);
+  const processed = new Set((existingRows || []).map(r => String(r.sofascore_id)));
 
-  // 4. Procesar nuevos plays
-  const newEvents = [];
+  // 4. Reservations del partido — 1 sola query
+  const reservationRows = await sbSvc(
+    `reservations?match_id=eq.${encodeURIComponent(matchId)}&select=user_id,zone_id`
+  ).catch(() => []);
+
+  // Mapa zona → [user_id]
+  const zoneUsers = {};
+  for (const r of (reservationRows || [])) {
+    if (!zoneUsers[r.zone_id]) zoneUsers[r.zone_id] = [];
+    zoneUsers[r.zone_id].push(r.user_id);
+  }
+
+  // 5. Mapear nuevos plays
+  const toInsert = [];    // filas para batch INSERT
+  const toScore  = [];    // { playId, zone, pts } para otorgar puntos
+
   for (const play of plays) {
     const playId = String(play.id || '');
     if (!playId || processed.has(playId)) continue;
 
-    // Determinar si el equipo que ejecutó el evento es el local
     const teamName = play.team?.displayName || '';
     const isHome = teamName ? teamMatches(teamName, home) : null;
-    if (isHome === null) continue; // sin equipo conocido, ignorar
+    if (isHome === null) continue;
 
     const mapped = mapCommentaryPlay(play, isHome);
     if (!mapped) continue;
 
-    // Insertar en agent_events
-    try {
-      await sbSvc('agent_events', {
-        method: 'POST',
-        body: JSON.stringify({
-          match_id:       matchId,
-          sofascore_id:   playId,
-          minute:         parseInt(play.clock?.displayValue) || 0,
-          event_type:     play.type?.type || 'unknown',
-          incident_class: play.type?.text || null,
-          zone_id:        mapped.zone,
-          pts_value:      mapped.pts,
-          icon:           mapped.icon,
-          label:          mapped.label,
-          is_home:        isHome,
-          player_name:    play.participants?.[0]?.athlete?.displayName || null,
-          raw:            { x: play.fieldPositionX, y: play.fieldPositionY, type: play.type },
-          scored:         false,
-        }),
-        headers: { Prefer: 'return=minimal,resolution=ignore-duplicates' },
-      });
-    } catch (e) {
-      continue;
-    }
-
-    // Otorgar puntos
-    const awarded = await awardPointsForZone(matchId, mapped.zone, mapped.pts, sbSvc);
-    if (awarded > 0) {
-      await sbSvc(
-        `agent_events?match_id=eq.${encodeURIComponent(matchId)}&sofascore_id=eq.${playId}`,
-        { method: 'PATCH', body: JSON.stringify({ scored: true, scored_count: awarded }) }
-      ).catch(() => {});
-    }
-
-    newEvents.push({ ...mapped, playId, awarded });
-    processed.add(playId);
+    toInsert.push({
+      match_id:   matchId,
+      sofascore_id: playId,
+      minute:     parseInt(play.clock?.displayValue) || 0,
+      event_type: play.type?.type || 'unknown',
+      zone_id:    mapped.zone,
+      pts_value:  mapped.pts,
+      icon:       mapped.icon,
+      label:      mapped.label,
+      scored:     false,
+    });
+    toScore.push({ playId, zone: mapped.zone, pts: mapped.pts });
   }
 
-  // 5. Reintentar scored:false (por si reservas llegaron tarde)
+  // 6. Batch INSERT de todos los eventos nuevos — 1 sola query
+  if (toInsert.length > 0) {
+    await sbSvc('agent_events', {
+      method: 'POST',
+      body: JSON.stringify(toInsert),
+      headers: { Prefer: 'return=minimal,resolution=ignore-duplicates' },
+    }).catch(() => {});
+  }
+
+  // 7. Acumular puntos por usuario (evita múltiples writes por usuario)
+  const userPointsMap = {}; // userId → pts totales
+  const scoredIds = [];
+
+  for (const ev of toScore) {
+    const users = zoneUsers[ev.zone] || [];
+    if (!users.length || ev.pts <= 0) continue;
+    for (const uid of users) {
+      userPointsMap[uid] = (userPointsMap[uid] || 0) + ev.pts;
+    }
+    scoredIds.push(ev.playId);
+  }
+
+  // 8. Escribir puntos — 2 queries por usuario (read + write)
+  for (const [userId, totalPts] of Object.entries(userPointsMap)) {
+    try {
+      const rows = await sbSvc(`scores?user_id=eq.${userId}&select=budget,total_points`);
+      const curr = (rows || [])[0] || { budget: 0, total_points: 0 };
+      await sbSvc(`scores?user_id=eq.${userId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          budget:       (curr.budget       || 0) + totalPts,
+          total_points: (curr.total_points || 0) + totalPts,
+        }),
+      });
+    } catch (e) { /* skip */ }
+  }
+
+  // 9. Marcar como scored — 1 sola query con filtro IN
+  if (scoredIds.length > 0) {
+    const idList = scoredIds.join(',');
+    await sbSvc(
+      `agent_events?match_id=eq.${encodeURIComponent(matchId)}&sofascore_id=in.(${idList})`,
+      { method: 'PATCH', body: JSON.stringify({ scored: true, scored_count: 1 }) }
+    ).catch(() => {});
+  }
+
+  // 10. Reintentar scored:false — 1 query + 2 queries por usuario
   let retried = 0;
   try {
     const unscored = await sbSvc(
       `agent_events?match_id=eq.${encodeURIComponent(matchId)}&scored=eq.false&pts_value=gt.0&select=sofascore_id,zone_id,pts_value`
     );
+    const retryUserPts = {};
+    const retryIds = [];
     for (const ev of (unscored || [])) {
-      const awarded = await awardPointsForZone(matchId, ev.zone_id, ev.pts_value, sbSvc);
-      if (awarded > 0) {
-        await sbSvc(
-          `agent_events?match_id=eq.${encodeURIComponent(matchId)}&sofascore_id=eq.${ev.sofascore_id}`,
-          { method: 'PATCH', body: JSON.stringify({ scored: true, scored_count: awarded }) }
-        ).catch(() => {});
-        retried++;
+      const users = zoneUsers[ev.zone_id] || [];
+      if (!users.length) continue;
+      for (const uid of users) {
+        retryUserPts[uid] = (retryUserPts[uid] || 0) + ev.pts_value;
       }
+      retryIds.push(ev.sofascore_id);
+    }
+    for (const [userId, totalPts] of Object.entries(retryUserPts)) {
+      const rows = await sbSvc(`scores?user_id=eq.${userId}&select=budget,total_points`).catch(() => []);
+      const curr = (rows || [])[0] || { budget: 0, total_points: 0 };
+      await sbSvc(`scores?user_id=eq.${userId}`, {
+        method: 'PATCH',
+        body: JSON.stringify({
+          budget:       (curr.budget       || 0) + totalPts,
+          total_points: (curr.total_points || 0) + totalPts,
+        }),
+      }).catch(() => {});
+      retried++;
+    }
+    if (retryIds.length > 0) {
+      await sbSvc(
+        `agent_events?match_id=eq.${encodeURIComponent(matchId)}&sofascore_id=in.(${retryIds.join(',')})`,
+        { method: 'PATCH', body: JSON.stringify({ scored: true, scored_count: 1 }) }
+      ).catch(() => {});
     }
   } catch (e) { /* ignorar */ }
 
   return {
     matchId, home, away, espnId,
     totalPlays: plays.length,
-    newEvents: newEvents.length,
+    newEvents:  toInsert.length,
+    scored:     scoredIds.length,
+    usersAwarded: Object.keys(userPointsMap).length,
     retried,
-    events: newEvents,
   };
-}
-
-// ─── Otorgar puntos a reservations de una zona ────────────────────────────
-
-async function awardPointsForZone(matchId, zoneId, pts, sbSvc) {
-  if (!pts || pts <= 0) return 0;
-  let reservations;
-  try {
-    reservations = await sbSvc(
-      `reservations?match_id=eq.${encodeURIComponent(matchId)}&zone_id=eq.${encodeURIComponent(zoneId)}&select=user_id`
-    );
-  } catch (e) { return 0; }
-  if (!reservations?.length) return 0;
-
-  let count = 0;
-  for (const r of reservations) {
-    try {
-      const scoreRows = await sbSvc(`scores?user_id=eq.${r.user_id}&select=budget,total_points`);
-      const curr = (scoreRows || [])[0] || { budget: 0, total_points: 0 };
-      await sbSvc(`scores?user_id=eq.${r.user_id}`, {
-        method: 'PATCH',
-        body: JSON.stringify({
-          budget:       (curr.budget       || 0) + pts,
-          total_points: (curr.total_points || 0) + pts,
-        }),
-      });
-      count++;
-    } catch (e) { /* skip */ }
-  }
-  return count;
 }
 
 // ─── Handler Vercel ───────────────────────────────────────────────────────
