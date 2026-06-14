@@ -1,41 +1,42 @@
-// Helpers compartidos por las funciones serverless que consultan
-// free-api-live-football-data (RapidAPI). El prefijo "_" evita que Vercel
-// exponga este fichero como endpoint.
+// API-Football (v3.football.api-sports.io) — reemplaza RapidAPI/FotMob.
+// Mundial 2026: league=1, season=2026.
+// Header de autenticación: x-apisports-key (distinto de RapidAPI).
 
-const API_HOST = "free-api-live-football-data.p.rapidapi.com";
+const API_HOST = "v3.football.api-sports.io";
 
 async function rapid(path, key) {
   const res = await fetch(`https://${API_HOST}${path}`, {
-    headers: { "x-rapidapi-key": key, "x-rapidapi-host": API_HOST },
+    headers: { "x-apisports-key": key },
   });
-  if (!res.ok) throw new Error(`RapidAPI ${res.status} en ${path}`);
-  return res.json();
+  if (!res.ok) throw new Error(`API-Football ${res.status} en ${path}`);
+  const json = await res.json();
+  // La API devuelve { errors: {} } cuando algo falla aunque el HTTP sea 200
+  const errs = json && json.errors;
+  if (errs && (Array.isArray(errs) ? errs.length : Object.keys(errs).length)) {
+    throw new Error(`API-Football errors: ${JSON.stringify(errs)}`);
+  }
+  return json;
 }
 
-// La API devuelve listas bajo claves distintas según endpoint.
-function extractList(data, keys) {
-  const r = (data && data.response) || data || {};
-  for (const k of keys) {
-    if (Array.isArray(r[k])) return r[k];
-    if (r[k] && Array.isArray(r[k].matches)) return r[k].matches;
-  }
-  if (Array.isArray(r)) return r;
+// Todos los endpoints de api-football devuelven { response: [...] }
+function extractList(data) {
+  if (data && Array.isArray(data.response)) return data.response;
   return [];
 }
 
-// Mundial masculino: id de liga 77 en FotMob (fuente de esta API) o nombre
-// con "World Cup", excluyendo femenino y categorías inferiores.
+// Mundial masculino: league.id === 1 en api-football
 function isWorldCup(m) {
-  const league = String(m.leagueName || m.league || m.tournament || m.ccode || "");
-  const id = Number(m.leagueId || m.league_id || (m.league && m.league.id) || 0);
-  if (/women|u-?\d+|youth|femen/i.test(league)) return false;
-  return id === 77 || /world cup|mundial/i.test(league);
+  const id = m && m.league && m.league.id;
+  const name = String((m && m.league && m.league.name) || "");
+  if (/women|u-?\d+|youth|femen/i.test(name)) return false;
+  return id === 1 || /world cup|mundial/i.test(name);
 }
 
+// Extrae el nombre de equipo de un objeto de api-football o de una cadena
 function teamName(t) {
   if (!t) return "";
   if (typeof t === "string") return t;
-  return String(t.longName || t.name || t.teamName || "");
+  return String(t.name || t.longName || "");
 }
 
 // Nombre de equipo (inglés, como lo da la API) → código de bandera de Kancha
@@ -56,4 +57,28 @@ function teamCode(name) {
   return TEAM_CODE[n] || n.slice(0, 3).toUpperCase();
 }
 
-module.exports = { API_HOST, rapid, extractList, isWorldCup, teamName, teamCode };
+// Convierte un fixture de api-football al formato interno que usa _sync.js
+// (equivalente al formato FotMob anterior pero con datos reales).
+function normalizeFixture(m) {
+  const fs = (m.fixture && m.fixture.status && m.fixture.status.short) || "";
+  const finished  = ["FT","AET","PEN"].includes(fs);
+  const started   = ["1H","HT","2H","ET","P","BT"].includes(fs);
+  const cancelled = ["CANC","PST","ABD","AWD","WO"].includes(fs);
+  const goals = m.goals || {};
+  const scoreStr = (goals.home != null && goals.away != null) ? `${goals.home}-${goals.away}` : null;
+  return {
+    id:      m.fixture && m.fixture.id,
+    matchId: m.fixture && m.fixture.id,
+    home:    m.teams && m.teams.home,   // { id, name, logo }
+    away:    m.teams && m.teams.away,
+    homeScore: goals.home,
+    awayScore: goals.away,
+    league:  m.league,
+    time:    m.fixture && m.fixture.date,
+    venue:   m.fixture && m.fixture.venue && m.fixture.venue.name,
+    tournamentStage: m.league && m.league.round,
+    status:  { finished, started, cancelled, scoreStr },
+  };
+}
+
+module.exports = { API_HOST, rapid, extractList, isWorldCup, teamName, teamCode, normalizeFixture };
