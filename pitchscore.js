@@ -2104,8 +2104,8 @@ function PageReservas({ onNav }) {
             const zones=activeByMatch[mid];
             const totalCost=zones.reduce((s,r)=>s+(r.price||0),0);
             const isOpen=openMatches.has(mid);
-            const mStatus=match.status||fixtureStatus(match);
-            const canEdit=mStatus==="ABIERTO";
+            const diffMs=kickoffDate(match)-Date.now();
+            const canEdit=diffMs>RESERVE_CLOSE_MS&&match.dbStatus!=="CANCELADO"&&match.dbStatus!=="FINALIZADO";
             return(
               <div className="ps-res-active" key={mid}>
                 <div className="ps-res-banner" style={{cursor:"pointer"}} onClick={()=>toggleMatch(mid)}>
@@ -2608,22 +2608,20 @@ function JornadaHistorial({ onReplay }) {
 
 // ─── Jornada principal ─────────────────────────────────────────────────────
 function PageJornada({ onNav, score }) {
-  const [tab,         setTab]     = React.useState("hoy");
-  const [replay,      setReplay]  = React.useState(null);
-  const [allocs, setAllocs]       = React.useState({});
-  const [savedAllocs, setSaved]   = React.useState({});
-  const [budget, setBudget]       = React.useState(ME.budget);
-  const [totalPts, setTotalPts]   = React.useState(ME.totalPoints);
-  const [saving, setSaving]       = React.useState(false);
-  const [saveOk, setSaveOk]       = React.useState(false);
-  const [err, setErr]             = React.useState(null);
-  const [loading, setLoading]     = React.useState(true);
+  const [tab,        setTab]    = React.useState("hoy");
+  const [replay,     setReplay] = React.useState(null);
+  const [allocs,     setAllocs] = React.useState({});
+  const [savedAllocs,setSaved]  = React.useState({});
+  const [budget,     setBudget] = React.useState(ME.budget);
+  const [totalPts,   setTotalPts]= React.useState(ME.totalPoints);
+  const [saving,     setSaving] = React.useState(false);
+  const [saveOk,     setSaveOk] = React.useState(false);
+  const [err,        setErr]    = React.useState(null);
+  const [loading,    setLoading]= React.useState(true);
 
-  // Partidos de hoy con reservas aún abiertas (ABIERTO y >15 min antes del pitido)
   const todayMatches = FIXTURE.filter(m => {
-    const st = fixtureStatus(m);
     const diff = kickoffDate(m) - Date.now();
-    return st === "ABIERTO" && diff > RESERVE_CLOSE_MS;
+    return fixtureStatus(m) === "ABIERTO" && diff > RESERVE_CLOSE_MS;
   });
 
   React.useEffect(() => {
@@ -2634,13 +2632,11 @@ function PageJornada({ onNav, score }) {
       try {
         const { data:{ user } } = await db.auth.getUser();
         if (cancelled || !user) { setLoading(false); return; }
-        // Presupuesto actualizado
         const { data:scoreRow } = await db.from('scores').select('budget,total_points').eq('user_id', user.id).maybeSingle();
         if (!cancelled && scoreRow) {
-          if (scoreRow.budget != null) { ME.budget = scoreRow.budget; setBudget(scoreRow.budget); }
+          if (scoreRow.budget != null)       { ME.budget = scoreRow.budget; setBudget(scoreRow.budget); }
           if (scoreRow.total_points != null) { ME.totalPoints = scoreRow.total_points; setTotalPts(scoreRow.total_points); }
         }
-        // Asignaciones existentes
         if (todayMatches.length > 0) {
           const ids = todayMatches.map(m => m.id);
           const { data } = await db.from('match_allocations').select('match_id,allocated_pts').eq('user_id', user.id).in('match_id', ids);
@@ -2666,21 +2662,24 @@ function PageJornada({ onNav, score }) {
 
   function handleChange(mid, val) {
     setAllocs(prev => ({ ...prev, [mid]: val.replace(/[^0-9]/g, "") }));
-    setSaveOk(false);
-    setErr(null);
+    setSaveOk(false); setErr(null);
   }
-
+  function step(mid, delta) {
+    setAllocs(prev => {
+      const cur = parseInt(prev[mid] || 0) || 0;
+      return { ...prev, [mid]: String(Math.max(0, Math.min(budget, cur + delta))) };
+    });
+    setSaveOk(false);
+  }
   function autoSplit() {
-    if (todayMatches.length === 0) return;
+    if (!todayMatches.length) return;
     const per = Math.floor(budget / todayMatches.length);
     const map = {};
     todayMatches.forEach((m, i) => {
       map[m.id] = i === todayMatches.length - 1 ? String(budget - per * (todayMatches.length - 1)) : String(per);
     });
-    setAllocs(map);
-    setSaveOk(false);
+    setAllocs(map); setSaveOk(false);
   }
-
   async function save() {
     if (!isValid || saving) return;
     const db = window.supabaseClient;
@@ -2690,146 +2689,155 @@ function PageJornada({ onNav, score }) {
       const { data:{ user } } = await db.auth.getUser();
       if (!user) { setErr("No autenticado"); setSaving(false); return; }
       const rows = todayMatches.map(m => ({
-        user_id: user.id,
-        match_id: m.id,
+        user_id: user.id, match_id: m.id,
         allocated_pts: parseInt(allocs[m.id] || 0) || 0,
       }));
       const { error } = await db.from('match_allocations').upsert(rows, { onConflict: 'user_id,match_id' });
       if (error) { setErr(error.message); setSaving(false); return; }
       const newMap = {};
       rows.forEach(r => { newMap[r.match_id] = r.allocated_pts; });
-      setSaved(newMap);
-      setSaveOk(true);
+      setSaved(newMap); setSaveOk(true);
     } catch(e) { setErr(String(e.message || e)); }
     setSaving(false);
   }
 
-  if (loading) return (
-    <div className="ps-page"><div className="ps-empty-state"><div className="ps-empty-t">Cargando…</div></div></div>
-  );
+  if (loading) return <div className="ps-page"><div className="ps-empty-state"><div className="ps-empty-t">Cargando…</div></div></div>;
+  if (replay)  return <MatchReplay match={replay} onBack={() => setReplay(null)} />;
 
-  // Si hay un replay activo, renderizarlo directamente
-  if (replay) return <MatchReplay match={replay} onBack={() => setReplay(null)} />;
-
-  const displayTotal = (score&&score.total_points!=null) ? score.total_points : totalPts;
-
-  // Estilo de las tabs
-  const tabStyle = (active) => ({
-    flex:1, padding:"8px 0", fontSize:"11px", letterSpacing:"2px", fontWeight:700,
-    background: active ? "var(--sidebar-bg)" : "transparent",
-    color: active ? "var(--gold)" : "var(--ink-muted)",
-    border: "none", borderBottom: active ? "2px solid var(--gold)" : "2px solid transparent",
-    cursor:"pointer", transition:"all .15s",
-  });
+  const displayTotal = (score && score.total_points != null) ? score.total_points : totalPts;
+  const allocPct = budget > 0 ? Math.min(100, Math.round(totalAlloc / budget * 100)) : 0;
 
   return (
     <div className="ps-page">
 
-      {/* ── ARCADE SCORE ── */}
-      <ArcadeScore score={displayTotal} budget={budget} />
-
-      {/* ── TABS ── */}
-      <div style={{display:"flex",borderBottom:"1px solid var(--cream-dark)",marginBottom:"14px"}}>
-        <button style={tabStyle(tab==="hoy")}   onClick={()=>setTab("hoy")}>   HOY</button>
-        <button style={tabStyle(tab==="historial")} onClick={()=>setTab("historial")}>HISTORIAL</button>
+      {/* ── WALLET HERO ── */}
+      <div className="ps-jk-hero">
+        <div className="ps-jk-hero-grid">
+          <div className="ps-jk-hero-block">
+            <div className="ps-jk-hero-label">MARCADOR</div>
+            <div className="ps-jk-hero-big">{displayTotal.toLocaleString('es-ES')}<span className="ps-jk-hero-unit">pts</span></div>
+          </div>
+          <div className="ps-jk-hero-sep"/>
+          <div className="ps-jk-hero-block">
+            <div className="ps-jk-hero-label">CARTERA</div>
+            <div className="ps-jk-hero-big">{budget.toLocaleString('es-ES')}<span className="ps-jk-hero-unit">pts</span></div>
+          </div>
+          <div className="ps-jk-hero-sep"/>
+          <div className="ps-jk-hero-block">
+            <div className="ps-jk-hero-label">ASIGNADO</div>
+            <div className={"ps-jk-hero-big"+(totalAlloc>0?" ps-jk-hero-alloc":"ps-jk-hero-zero")} style={!isValid?{color:"#d9534f"}:{}}>
+              {totalAlloc > 0 ? totalAlloc.toLocaleString('es-ES') : "—"}<span className="ps-jk-hero-unit">{totalAlloc>0?"pts":""}</span>
+            </div>
+          </div>
+        </div>
+        {totalAlloc > 0 && (
+          <div className="ps-jk-hero-bar-wrap">
+            <div className="ps-jk-hero-bar">
+              <div className="ps-jk-hero-bar-fill" style={{width:`${allocPct}%`, background: !isValid?"#d9534f":"#4e8c3a"}}/>
+            </div>
+            <span className="ps-jk-hero-bar-pct" style={!isValid?{color:"#d9534f"}:{}}>{allocPct}% comprometido</span>
+          </div>
+        )}
       </div>
 
-      {/* ── TAB HISTORIAL ── */}
+      {/* ── TABS ── */}
+      <div className="ps-jk-tabs">
+        <button className={"ps-jk-tab"+(tab==="hoy"?" is-on":"")} onClick={()=>setTab("hoy")}>HOY</button>
+        <button className={"ps-jk-tab"+(tab==="historial"?" is-on":"")} onClick={()=>setTab("historial")}>HISTORIAL</button>
+      </div>
+
       {tab==="historial" && <JornadaHistorial onReplay={setReplay}/>}
 
-      {/* ── TAB HOY ── */}
       {tab==="hoy" && (todayMatches.length === 0 ? (
         <div className="ps-empty-state" style={{marginTop:"8px"}}>
           <div className="ps-empty-icon">🗓️</div>
           <div className="ps-empty-t">Sin partidos abiertos hoy</div>
           <div className="ps-empty-d">Las reservas abren 24h antes del partido.</div>
-          <button className="ps-btn ps-btn-primary" style={{marginTop:"10px"}} onClick={() => onNav("partidos")}>VER FIXTURE</button>
+          <button className="ps-btn ps-btn-primary" style={{marginTop:"10px"}} onClick={()=>onNav("partidos")}>VER FIXTURE</button>
         </div>
       ) : (
         <>
-          {/* barra de asignación */}
-          <div className="ps-jornada-bar">
-            <div className="ps-jornada-bar-info">
-              <span className="ps-jornada-bar-label">ASIGNADO</span>
-              <span className="ps-jornada-bar-val" style={{color:!isValid?"#d9534f":"var(--ink)"}}>{totalAlloc} / {budget} pts</span>
-            </div>
-            <div className="ps-jornada-bar-track">
-              <div className="ps-jornada-bar-fill" style={{width:`${Math.min(100,budget>0?Math.round(totalAlloc/budget*100):0)}%`,background:!isValid?"#d9534f":"var(--grass)"}}/>
-            </div>
-            <div style={{display:"flex",gap:"8px",marginTop:"10px"}}>
-              <button className="ps-btn ps-btn-dark ps-btn-sm" onClick={autoSplit}>⚡ REPARTIR IGUAL</button>
-              <button className="ps-btn ps-btn-dark ps-btn-sm" onClick={()=>{ setAllocs(Object.fromEntries(todayMatches.map(m=>[m.id,""]))); setSaveOk(false); }}>✕ LIMPIAR</button>
-            </div>
+          {/* Acciones rápidas */}
+          <div className="ps-jk-quick">
+            <button className="ps-btn ps-btn-dark ps-btn-sm" onClick={autoSplit}>⚡ REPARTIR IGUAL</button>
+            <button className="ps-btn ps-btn-ghost ps-btn-sm" onClick={()=>{ setAllocs(Object.fromEntries(todayMatches.map(m=>[m.id,""]))); setSaveOk(false); }}>✕ LIMPIAR</button>
           </div>
 
-          {/* partidos */}
-          <div style={{display:"flex",flexDirection:"column",gap:"10px",margin:"14px 0"}}>
+          {/* Tarjetas de partidos */}
+          <div className="ps-jk-cards">
             {todayMatches.map(m => {
-              const val = allocs[m.id] || "";
-              const pts = parseInt(val || 0) || 0;
-              const isSaved = savedAllocs[m.id] != null;
-              const diffMs = kickoffDate(m) - Date.now();
+              const val      = allocs[m.id] || "";
+              const pts      = parseInt(val || 0) || 0;
+              const isSaved  = savedAllocs[m.id] != null;
+              const diffMs   = kickoffDate(m) - Date.now();
               const minsLeft = Math.max(0, Math.round((diffMs - RESERVE_CLOSE_MS) / 60000));
-              const timeLabel = minsLeft > 90 ? `${Math.floor(minsLeft/60)}h ${minsLeft%60}m` : minsLeft > 0 ? `${minsLeft} min` : "CIERRA PRONTO";
-              const pct = budget > 0 ? Math.round(pts / budget * 100) : 0;
-              const potencial = pts > 0 ? Math.round(pts * 0.8) : null;
+              const timeLabel= minsLeft > 90 ? `${Math.floor(minsLeft/60)}h ${minsLeft%60}m` : minsLeft > 0 ? `${minsLeft} min` : "CIERRA PRONTO";
+              const pct      = budget > 0 ? Math.round(pts / budget * 100) : 0;
+              const potencial= pts > 0 ? Math.round(pts * 0.8) : null;
               return (
-                <div key={m.id} className="ps-card ps-jornada-match-card">
-                  <div className="ps-jornada-match-head">
-                    <div className="ps-jornada-match-teams">
-                      <Flag code={m.home} h={22}/>
-                      <span className="ps-jornada-match-name">{(COUNTRY_NAME[m.home]||m.home).toUpperCase()}</span>
-                      <span className="ps-jornada-match-vs">VS</span>
-                      <span className="ps-jornada-match-name">{(COUNTRY_NAME[m.away]||m.away).toUpperCase()}</span>
-                      <Flag code={m.away} h={22}/>
+                <div key={m.id} className="ps-jk-card">
+                  {/* Cabecera oscura */}
+                  <div className="ps-jk-card-top">
+                    <div className="ps-jk-card-eyebrow">
+                      <span>GRUPO {m.group} · {m.date}</span>
+                      <span className={"ps-jk-countdown"+(minsLeft<=15?" is-urgent":"")}>{timeLabel}</span>
                     </div>
-                    <div className="ps-jornada-match-meta">
-                      <span style={{color:"var(--red)",fontWeight:700}}>{timeLabel}</span>
-                      {" · "}{m.venue}
-                      {isSaved && <span style={{marginLeft:"8px",color:"var(--grass)"}}> ✓ {savedAllocs[m.id]} pts guardados</span>}
-                    </div>
-                  </div>
-                  <div className="ps-jornada-match-body">
-                    <div className="ps-jornada-match-input-wrap">
-                      <div className="ps-jornada-match-input-label">¿CUÁNTO ARRIESGAS?</div>
-                      <div style={{display:"flex",alignItems:"center",gap:"6px"}}>
-                        <input type="number" min="0" max={budget} value={val}
-                          onChange={e => handleChange(m.id, e.target.value)}
-                          placeholder="0" className="ps-jornada-input"/>
-                        <span style={{fontSize:"12px",fontWeight:700,color:"var(--ink-muted)"}}>pts</span>
+                    <div className="ps-jk-card-teams">
+                      <div className="ps-jk-card-team">
+                        <Flag code={m.home} h={32}/>
+                        <span>{(COUNTRY_NAME[m.home]||m.home).toUpperCase()}</span>
                       </div>
-                      {pts > 0 && <div style={{fontSize:"10px",color:"var(--ink-muted)",marginTop:"3px"}}>{pct}% de tu cartera</div>}
+                      <div className="ps-jk-card-vs">VS</div>
+                      <div className="ps-jk-card-team ps-jk-card-team-r">
+                        <Flag code={m.away} h={32}/>
+                        <span>{(COUNTRY_NAME[m.away]||m.away).toUpperCase()}</span>
+                      </div>
                     </div>
-                    {pts > 0 && (
-                      <div className="ps-jornada-match-potential">
-                        <div className="ps-jornada-potential-label">POTENCIAL</div>
-                        <div className="ps-jornada-potential-val">+{potencial} pts</div>
-                        <div className="ps-jornada-potential-hint">si aciertas zonas</div>
+                    <div className="ps-jk-card-venue">{m.venue}</div>
+                    {isSaved && <div className="ps-jk-saved">✓ {savedAllocs[m.id]} pts guardados</div>}
+                  </div>
+                  {/* Cuerpo claro — apuesta */}
+                  <div className="ps-jk-card-bot">
+                    <div className="ps-jk-stake-label">¿CUÁNTO ARRIESGAS EN ESTE PARTIDO?</div>
+                    <div className="ps-jk-stepper">
+                      <button className="ps-jk-step" onClick={()=>step(m.id,-50)} disabled={pts<=0}>−</button>
+                      <div className="ps-jk-step-mid">
+                        <input type="number" min="0" max={budget} value={val}
+                          onChange={e=>handleChange(m.id,e.target.value)}
+                          placeholder="0" className="ps-jk-input"/>
+                        <span className="ps-jk-step-unit">pts</span>
+                      </div>
+                      <button className="ps-jk-step" onClick={()=>step(m.id,50)}>+</button>
+                    </div>
+                    {pts>0&&budget>0&&(
+                      <div className="ps-jk-bar-row">
+                        <div className="ps-jk-bar"><div className="ps-jk-bar-fill" style={{width:`${Math.min(100,pct)}%`}}/></div>
+                        <span className="ps-jk-bar-pct">{pct}% de cartera</span>
+                      </div>
+                    )}
+                    {pts>0&&(
+                      <div className="ps-jk-potential">
+                        POTENCIAL SI ACIERTAS ZONAS <span>+{potencial} pts</span>
                       </div>
                     )}
                   </div>
-                  {pts > 0 && budget > 0 && (
-                    <div style={{height:"3px",background:"var(--cream-dark)",borderRadius:"2px"}}>
-                      <div style={{height:"3px",background:"var(--grass)",borderRadius:"2px",width:`${Math.min(100,pct)}%`,transition:"width .2s"}}/>
-                    </div>
-                  )}
-                  <button className="ps-jornada-go-btn" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=m.id; window.__KN_ALLOC_PTS=(pts>0?pts:null); onNav("inicio"); }}>
-                    RESERVAR ZONAS →
+                  <button className="ps-jk-go" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=m.id; window.__KN_ALLOC_PTS=(pts>0?pts:null); onNav("inicio"); }}>
+                    ESCOGER ZONAS →
                   </button>
                 </div>
               );
             })}
           </div>
 
-          {!isValid && <div style={{padding:"10px 14px",background:"#d9534f18",border:"1px solid #d9534f",borderRadius:"4px",color:"#d9534f",marginBottom:"12px",fontSize:"12px",fontWeight:700}}>⚠ Total ({totalAlloc} pts) supera tu cartera ({budget} pts)</div>}
-          {err && <div style={{padding:"10px 14px",background:"#d9534f18",border:"1px solid #d9534f",borderRadius:"4px",color:"#d9534f",marginBottom:"12px",fontSize:"12px"}}>{err}</div>}
+          {!isValid&&<div className="ps-jk-error">⚠ Total ({totalAlloc} pts) supera tu cartera ({budget} pts)</div>}
+          {err&&<div className="ps-jk-error">{err}</div>}
 
-          <div style={{display:"flex",gap:"12px",alignItems:"center",flexWrap:"wrap",marginBottom:"24px"}}>
+          <div className="ps-jk-footer">
             <button className="ps-btn ps-btn-primary" disabled={!isValid||saving} onClick={save} style={{opacity:(!isValid||saving)?.5:1}}>
-              {saving?"GUARDANDO…":saveOk?"✓ LISTO":"CONFIRMAR APUESTA"}
+              {saving?"GUARDANDO…":saveOk?"✓ APUESTA GUARDADA":"CONFIRMAR APUESTA"}
             </button>
-            {saveOk && <span style={{fontSize:"12px",color:"var(--grass)",fontWeight:700}}>✓ Cartera distribuida — ahora reserva tus zonas en cada partido</span>}
-            {isValid&&remaining>0&&totalAlloc>0&&!saveOk&&<span style={{fontSize:"12px",color:"var(--ink-muted)"}}>Quedan {remaining} pts sin asignar</span>}
+            {saveOk&&<div className="ps-jk-footer-hint">✓ Cartera guardada — entra a cada partido y elige tus zonas</div>}
+            {isValid&&remaining>0&&totalAlloc>0&&!saveOk&&<div className="ps-jk-footer-hint">Quedan <strong>{remaining} pts</strong> sin asignar</div>}
           </div>
         </>
       ))}

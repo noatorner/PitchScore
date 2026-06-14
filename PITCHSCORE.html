@@ -1012,114 +1012,138 @@ input { font-family: inherit; }
   color: #8a9a84; font-weight: 600;
 }
 
-/* ============ JORNADA PAGE HERO ============ */
-.ps-jornada-hero {
-  background: #181b18; border-radius: 10px; padding: 24px 20px 20px;
-  margin-bottom: 16px; text-align: center; border: 1px solid #2a2d29;
-}
-.ps-jornada-hero-eyebrow {
-  font-family: var(--kn-body); font-size: 10px; letter-spacing: 0.22em;
-  color: #8a9a84; font-weight: 600; margin-bottom: 10px;
-}
-.ps-jornada-hero-main {
-  display: flex; align-items: baseline; justify-content: center; gap: 8px;
-  margin-bottom: 4px;
-}
-.ps-jornada-hero-num {
-  font-family: var(--kn-display); font-size: 52px; font-weight: 700;
-  color: #f0e7d0; line-height: 1;
-}
-.ps-jornada-hero-unit {
-  font-family: var(--kn-display); font-size: 22px; font-weight: 400;
-  color: #8a9a84;
-}
-.ps-jornada-hero-sub {
-  font-family: var(--kn-body); font-size: 12px; color: #8a9a84;
-  letter-spacing: 0.08em; margin-bottom: 12px;
-}
-.ps-jornada-hero-total {
-  font-family: var(--kn-body); font-size: 13px; color: #9aba90;
-  background: #2a2d29; border-radius: 6px; padding: 6px 14px;
-  display: inline-block; letter-spacing: 0.04em;
-}
+/* ============ JORNADA — nuevo sistema ps-jk-* ============ */
 
-/* ============ JORNADA ALLOCATION BAR ============ */
-.ps-jornada-bar {
-  background: #e6dcc4; border: 1px solid #cdb98a; border-radius: 8px;
-  padding: 14px 16px; margin-bottom: 16px; display: flex;
-  flex-direction: column; gap: 10px;
+/* Wallet hero */
+.ps-jk-hero {
+  background: #181b18; border-radius: 10px; padding: 20px;
+  margin-bottom: 16px; border: 1px solid #2a2d29;
 }
-.ps-jornada-bar-info { display: flex; justify-content: space-between; align-items: baseline; }
-.ps-jornada-bar-label {
-  font-family: var(--kn-body); font-size: 11px; letter-spacing: 0.14em;
-  color: #6c604a; font-weight: 600;
+.ps-jk-hero-grid {
+  display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 0; align-items: center;
 }
-.ps-jornada-bar-val {
-  font-family: var(--kn-display); font-size: 15px; font-weight: 700; color: #2a2620;
+.ps-jk-hero-block { display: flex; flex-direction: column; gap: 4px; }
+.ps-jk-hero-label {
+  font-family: var(--kn-body); font-size: 9px; letter-spacing: 0.22em;
+  color: #6a7a66; font-weight: 700;
 }
-.ps-jornada-bar-track {
-  height: 6px; background: #d2c19a; border-radius: 3px; overflow: hidden;
+.ps-jk-hero-big {
+  font-family: var(--kn-display); font-size: 32px; font-weight: 700;
+  color: #f0e7d0; line-height: 1; display: flex; align-items: baseline; gap: 5px;
 }
-.ps-jornada-bar-fill {
-  height: 100%; background: #b94234; border-radius: 3px;
-  transition: width 0.3s ease;
+.ps-jk-hero-unit { font-size: 14px; color: #8a9a84; }
+.ps-jk-hero-alloc { color: #d4a847 !important; }
+.ps-jk-hero-zero  { color: #4a4a42 !important; }
+.ps-jk-hero-sep { width: 1px; background: #2c302c; height: 36px; margin: 0 16px; }
+.ps-jk-hero-bar-wrap { margin-top: 14px; display: flex; align-items: center; gap: 10px; }
+.ps-jk-hero-bar {
+  flex: 1; height: 4px; background: #2c302c; border-radius: 2px; overflow: hidden;
 }
+.ps-jk-hero-bar-fill { height: 100%; border-radius: 2px; transition: width 0.3s ease; }
+.ps-jk-hero-bar-pct { font-family: var(--kn-body); font-size: 10px; color: #8a9a84; font-weight: 600; white-space: nowrap; }
 
-/* ============ JORNADA MATCH CARDS ============ */
-.ps-jornada-match-card { margin-bottom: 12px; }
-.ps-jornada-match-head {
+/* Tabs */
+.ps-jk-tabs { display: flex; border-bottom: 1px solid #d2c19a; margin-bottom: 16px; }
+.ps-jk-tab {
+  flex: 1; padding: 9px 0; font-family: var(--kn-body); font-size: 11px;
+  letter-spacing: 0.18em; font-weight: 700; color: #8a7d62;
+  border: none; background: none; border-bottom: 2px solid transparent;
+  cursor: pointer; transition: all .15s;
+}
+.ps-jk-tab.is-on { color: #b94234; border-bottom-color: #b94234; }
+
+/* Quick actions */
+.ps-jk-quick { display: flex; gap: 8px; margin-bottom: 16px; }
+
+/* Match cards */
+.ps-jk-cards { display: flex; flex-direction: column; gap: 14px; margin-bottom: 20px; }
+.ps-jk-card { border-radius: 10px; overflow: hidden; border: 1px solid #cdb98a; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+
+/* Card top — dark */
+.ps-jk-card-top {
+  background: #181b18; padding: 16px 18px 14px;
+  background-image: repeating-linear-gradient(45deg,#181b18 0,#181b18 20px,#1d201d 20px,#1d201d 40px);
+}
+.ps-jk-card-eyebrow {
   display: flex; justify-content: space-between; align-items: center;
-  padding-bottom: 12px; border-bottom: 1px solid #d2c19a; margin-bottom: 14px;
+  font-family: var(--kn-body); font-size: 9px; letter-spacing: 0.2em;
+  color: #6a7a66; font-weight: 700; margin-bottom: 12px;
 }
-.ps-jornada-match-teams { display: flex; align-items: center; gap: 10px; }
-.ps-jornada-match-name {
-  font-family: var(--kn-display); font-size: 17px; font-weight: 700;
-  color: #2a2620; letter-spacing: 0.02em;
+.ps-jk-countdown { color: #cdb98a; }
+.ps-jk-countdown.is-urgent { color: #d9534f; animation: ps-pulse 1s infinite; }
+@keyframes ps-pulse { 0%,100%{opacity:1} 50%{opacity:.5} }
+.ps-jk-card-teams {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 10px;
 }
-.ps-jornada-match-vs {
-  font-family: var(--kn-body); font-size: 11px; font-weight: 600;
-  color: #8a7d62; letter-spacing: 0.1em;
+.ps-jk-card-team {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--kn-display); font-size: 18px; color: #f0e7d0; flex: 1;
 }
-.ps-jornada-match-meta {
-  display: flex; flex-direction: column; align-items: flex-end; gap: 2px;
+.ps-jk-card-team-r { flex-direction: row-reverse; text-align: right; }
+.ps-jk-card-vs {
+  font-family: var(--kn-body); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; color: #b94234; flex-shrink: 0;
 }
-.ps-jornada-match-body {
-  display: flex; gap: 14px; align-items: flex-start; margin-bottom: 14px;
+.ps-jk-card-venue {
+  font-family: var(--kn-body); font-size: 10px; color: #4a5a46;
+  letter-spacing: 0.06em; font-weight: 600;
 }
-.ps-jornada-match-input-wrap { flex: 1; }
-.ps-jornada-match-input-label {
-  font-family: var(--kn-body); font-size: 10px; letter-spacing: 0.18em;
-  color: #6c604a; font-weight: 600; display: block; margin-bottom: 6px;
+.ps-jk-saved {
+  margin-top: 8px; font-family: var(--kn-body); font-size: 10px;
+  color: #6aba60; letter-spacing: 0.1em; font-weight: 700;
 }
-.ps-jornada-input {
-  width: 100%; padding: 10px 14px; background: #fff; border: 1px solid #cdb98a;
-  border-radius: 6px; font-family: var(--kn-display); font-size: 22px;
-  font-weight: 700; color: #2a2620; outline: none; box-sizing: border-box;
-}
-.ps-jornada-input:focus { border-color: #b94234; box-shadow: 0 0 0 2px #b9423430; }
-.ps-jornada-match-potential {
-  flex: 0 0 auto; background: #1d2519; border-radius: 8px; padding: 10px 14px;
-  text-align: center; min-width: 90px;
-}
-.ps-jornada-potential-label {
+
+/* Card bottom — light */
+.ps-jk-card-bot { background: #e6dcc4; padding: 16px 18px 14px; }
+.ps-jk-stake-label {
   font-family: var(--kn-body); font-size: 9px; letter-spacing: 0.18em;
-  color: #8a9a84; font-weight: 600; margin-bottom: 4px;
+  color: #6c604a; font-weight: 700; margin-bottom: 10px;
 }
-.ps-jornada-potential-val {
-  font-family: var(--kn-display); font-size: 18px; font-weight: 700;
-  color: #9aba90; line-height: 1;
+.ps-jk-stepper { display: flex; align-items: center; gap: 8px; }
+.ps-jk-step {
+  width: 40px; height: 40px; border-radius: 6px; background: #181b18;
+  color: #f0e7d0; font-size: 20px; font-family: var(--kn-display);
+  flex-shrink: 0; transition: background .15s;
 }
-.ps-jornada-potential-hint {
-  font-family: var(--kn-body); font-size: 9px; color: #5a6a56;
-  margin-top: 3px; letter-spacing: 0.06em;
+.ps-jk-step:hover { background: #b94234; }
+.ps-jk-step:disabled { background: #cdb98a; color: #a09080; cursor: not-allowed; }
+.ps-jk-step-mid { flex: 1; display: flex; align-items: center; gap: 6px; }
+.ps-jk-input {
+  flex: 1; min-width: 0; padding: 8px 10px; background: #fff;
+  border: 1px solid #cdb98a; border-radius: 6px;
+  font-family: var(--kn-display); font-size: 22px; font-weight: 700;
+  color: #2a2620; outline: none; text-align: center; box-sizing: border-box;
 }
-.ps-jornada-go-btn {
-  width: 100%; padding: 10px 16px; background: #181b18; color: #f0e7d0;
-  border-radius: 6px; font-family: var(--kn-body); font-size: 11px;
-  letter-spacing: 0.18em; font-weight: 700; text-align: center;
-  transition: background 0.15s;
+.ps-jk-input:focus { border-color: #b94234; box-shadow: 0 0 0 2px #b9423430; }
+.ps-jk-step-unit { font-family: var(--kn-body); font-size: 11px; font-weight: 700; color: #6c604a; flex-shrink: 0; }
+.ps-jk-bar-row { display: flex; align-items: center; gap: 8px; margin-top: 10px; }
+.ps-jk-bar { flex: 1; height: 4px; background: #d2c19a; border-radius: 2px; overflow: hidden; }
+.ps-jk-bar-fill { height: 100%; background: #4e8c3a; border-radius: 2px; transition: width .2s; }
+.ps-jk-bar-pct { font-family: var(--kn-body); font-size: 10px; color: #6c604a; font-weight: 600; white-space: nowrap; }
+.ps-jk-potential {
+  margin-top: 10px; padding: 8px 12px; background: #1d2519; border-radius: 6px;
+  font-family: var(--kn-body); font-size: 9px; letter-spacing: 0.14em;
+  color: #6a7a66; font-weight: 700; display: flex; justify-content: space-between; align-items: center;
 }
-.ps-jornada-go-btn:hover { background: #b94234; }
+.ps-jk-potential span { font-family: var(--kn-display); font-size: 18px; color: #9aba90; }
+
+/* CTA go button */
+.ps-jk-go {
+  width: 100%; padding: 13px 16px; background: #b94234; color: #fff;
+  font-family: var(--kn-body); font-size: 12px; letter-spacing: 0.2em;
+  font-weight: 700; border: none; cursor: pointer; transition: background .15s;
+}
+.ps-jk-go:hover { background: #9a3228; }
+
+/* Error + footer */
+.ps-jk-error {
+  padding: 10px 14px; background: #d9534f18; border: 1px solid #d9534f;
+  border-radius: 4px; color: #d9534f; margin-bottom: 12px;
+  font-size: 12px; font-weight: 700;
+}
+.ps-jk-footer { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+.ps-jk-footer-hint { font-family: var(--kn-body); font-size: 12px; color: #6c604a; }
+.ps-jk-footer-hint strong { color: #2a2620; }
 
   </style>
 </head>
