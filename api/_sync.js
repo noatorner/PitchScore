@@ -31,7 +31,7 @@ async function runSync() {
     const dates = [...new Set(rows.map((r) => String(r.kickoff_utc).slice(0, 10)))];
     for (const d of dates) {
       try {
-        const data = await rapid(`/fixtures?league=1&season=2026&date=${d}`, key);
+        const data = await rapid(`/fixtures?league=1&date=${d}`, key);
         const list = extractList(data).filter(isWorldCup).map(normalizeFixture);
         apiMatches.push(...list);
       } catch (e) { /* API caída */ }
