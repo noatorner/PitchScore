@@ -361,6 +361,47 @@ async function processMatch(match, sbSvc) {
   };
 }
 
+// ─── Auto-gestión de status de partidos desde ESPN ────────────────────────
+
+async function syncMatchStatuses(sbSvc) {
+  // Leer todos los partidos que no estén FINALIZADO
+  const matches = await sbSvc(
+    `matches?status=neq.FINALIZADO&select=id,home,away,status`
+  ).catch(() => []);
+  if (!matches?.length) return [];
+
+  // Leer scoreboard de ESPN (partidos de hoy y próximos)
+  const scoreboardData = await espnGet('/scoreboard').catch(() => ({ events: [] }));
+  const espnEvents = scoreboardData.events || [];
+
+  const updates = [];
+  for (const match of matches) {
+    // Buscar en ESPN
+    const espnEvent = espnEvents.find(e => {
+      const comp = e.competitions?.[0];
+      const h = comp?.competitors?.find(c => c.homeAway === 'home');
+      const a = comp?.competitors?.find(c => c.homeAway === 'away');
+      return teamMatches(h?.team?.displayName, match.home) &&
+             teamMatches(a?.team?.displayName, match.away);
+    });
+    if (!espnEvent) continue;
+
+    const state = espnEvent.competitions?.[0]?.status?.type?.state;
+    // state: 'pre' | 'in' | 'post'
+    let newStatus = null;
+    if (state === 'in'   && match.status !== 'EN VIVO')    newStatus = 'EN VIVO';
+    if (state === 'post' && match.status !== 'FINALIZADO')  newStatus = 'FINALIZADO';
+    if (!newStatus) continue;
+
+    await sbSvc(`matches?id=eq.${encodeURIComponent(match.id)}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ status: newStatus }),
+    }).catch(() => {});
+    updates.push({ id: match.id, match: `${match.home} vs ${match.away}`, newStatus });
+  }
+  return updates;
+}
+
 // ─── Handler Vercel ───────────────────────────────────────────────────────
 
 module.exports = async (req, res) => {
@@ -373,16 +414,26 @@ module.exports = async (req, res) => {
   const sbSvc = makeSbService(serviceKey);
 
   try {
-    // Ventana de partidos: 15:00–05:00 UTC
+    // Ventana de partidos: 14:00–05:00 UTC (margen amplio para cubrir kickoffs)
     const hour = new Date().getUTCHours();
-    const inWindow = hour >= 15 || hour < 5;
+    const inWindow = hour >= 14 || hour < 5;
     if (!inWindow && !req.query.force) {
       return res.status(200).json({ ok: true, skipped: true, reason: 'Fuera de ventana', hour });
     }
 
-    const matches = await sbSvc('matches?status=eq.EN VIVO&select=*');
+    // 1. Auto-actualizar status de partidos desde ESPN
+    const statusUpdates = await syncMatchStatuses(sbSvc);
+
+    // 2. Procesar partidos EN VIVO
+    const matches = await sbSvc(`matches?status=eq.${encodeURIComponent('EN VIVO')}&select=*`);
     if (!matches?.length) {
-      return res.status(200).json({ ok: true, skipped: true, reason: 'No hay partidos EN VIVO' });
+      return res.status(200).json({
+        ok: true,
+        ts: new Date().toISOString(),
+        statusUpdates,
+        skipped: true,
+        reason: 'No hay partidos EN VIVO',
+      });
     }
 
     const results = [];
@@ -393,6 +444,7 @@ module.exports = async (req, res) => {
     return res.status(200).json({
       ok: true,
       ts: new Date().toISOString(),
+      statusUpdates,
       liveMatches: matches.length,
       results,
     });
