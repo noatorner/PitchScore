@@ -1979,7 +1979,7 @@ function PagePartidos({ onNav }) {
             return (
               <div key={cat} className="ps-day-block">
                 <div className="ps-day-head"><span className="ps-day-num">{cat}</span><span className="ps-day-count">{list.length} {list.length===1?"partido":"partidos"}</span></div>
-                <div className="ps-day-list">{list.map(m=><HistoricMatchCard key={m.id} m={m} onPlay={(mm)=>{ window.__KN_HISTORIC_REQUEST=mm.id; onNav("inicio"); }}/>)}</div>
+                <div className="ps-day-list">{list.map(m=><HistoricMatchCard key={m.id} m={m} onPlay={(mm)=>{ window.__KN_MUNDIAL_REQUEST=mm.id; onNav("inicio"); }}/>)}</div>
               </div>
             );
           })}
@@ -2155,7 +2155,9 @@ function PageReservas({ onNav }) {
                     </div>
                     <div className="ps-past-zones">{zones.map(r=>{const z=ZONES.find(z=>z.id===r.zone_id);return z?z.name:r.zone_id;}).join(" · ")}</div>
                     <div className="ps-past-r">
-                      {(()=>{const earned=typeof localStorage!=="undefined"?parseInt(localStorage.getItem(`kn_settled_${mid}`)||"0")||0:0;return(<><div><div className="ps-past-l-lab">INVERTIDO</div><div className="ps-past-v">{spent} pts</div></div><div><div className="ps-past-l-lab">GANADOS</div><div className={"ps-past-v"+(earned>0?" ps-past-v-earned":"")}>{earned>0?"+"+earned+" pts":"—"}</div></div><div><div className="ps-past-l-lab">ZONAS</div><div className="ps-past-v">{zones.length}</div></div></>);})()}</div>
+                      {(()=>{const earned=typeof localStorage!=="undefined"?parseInt(localStorage.getItem(`kn_settled_${mid}`)||"0")||0:0;return(<><div><div className="ps-past-l-lab">INVERTIDO</div><div className="ps-past-v">{spent} pts</div></div><div><div className="ps-past-l-lab">GANADOS</div><div className={"ps-past-v"+(earned>0?" ps-past-v-earned":"")}>{earned>0?"+"+earned+" pts":"—"}</div></div><div><div className="ps-past-l-lab">ZONAS</div><div className="ps-past-v">{zones.length}</div></div></>);})()}
+                      <button className="ps-btn ps-btn-dark ps-btn-sm" style={{marginTop:"8px"}} onClick={()=>{ window.__KN_MUNDIAL_REQUEST=mid; onNav("inicio"); }}>VER PARTIDO →</button>
+                    </div>
                   </div>
                 );
               })}
