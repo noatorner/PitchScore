@@ -795,32 +795,9 @@ function PageInicio({ onNav }) {
 
   // Liquidación de partido real: cuando el partido está FINALIZADO y hay eventos
   // cargados, acredita los puntos al usuario una sola vez (localStorage flag).
-  const liveSettledRef=React.useRef(false);
-  React.useEffect(()=>{
-    if(!liveEvents.length||!selectedZones.length) return;
-    if(fixtureStatus(mundialMatch)!=="FINALIZADO") return;
-    if(liveSettledRef.current) return;
-    const key=`kn_settled_${mundialMatch.id}`;
-    if(typeof localStorage!=="undefined"&&localStorage.getItem(key)) return;
-    liveSettledRef.current=true;
-    const actionPts=Object.fromEntries(ACTIONS.map(a=>[a.name,a.points]));
-    const earned=liveEvents.filter(e=>e.type==="act"&&e.zoneId&&selectedZones.includes(e.zoneId)).reduce((s,e)=>s+(e.pts||actionPts[e.action]||0),0);
-    if(typeof localStorage!=="undefined") localStorage.setItem(key,earned.toString());
-    if(!earned) return;
-    const db=window.supabaseClient;
-    if(!db) return;
-    (async()=>{
-      try{
-        const{data:{user}}=await db.auth.getUser();
-        if(!user) return;
-        const{data:row}=await db.from('scores').select('total_points,matches_played').eq('user_id',user.id).maybeSingle();
-        const newTotal=((row?.total_points)||0)+earned;
-        const newPlayed=((row?.matches_played)||0)+1;
-        await db.from('scores').upsert({user_id:user.id,total_points:newTotal,matches_played:newPlayed},{onConflict:'user_id'});
-        setBudget(b=>b+earned);
-      }catch(e){/* sin conexión */}
-    })();
-  },[liveEvents.length,mundialMatch.id]);
+  // NOTA: liveSettledRef y su useEffect se mueven DESPUÉS de la declaración
+  // de liveEvents (líneas ~856) para evitar temporal dead zone en el array
+  // de dependencias. Ver bloque "Liquidación de partido real" más abajo.
 
   // Liquidación al terminar un partido: los puntos ganados en las zonas del
   // usuario se suman a su presupuesto permanente (scores.budget) y a su
@@ -854,6 +831,36 @@ function PageInicio({ onNav }) {
   // cada 60s. liveMatch guarda los códigos de equipo del partido real para
   // banderas y marcador (si el sync falla, se usa el fixture mock).
   const [liveEvents,setLiveEvents]=React.useState([]);
+
+  // Liquidación de partido real: acredita puntos al usuario cuando el partido
+  // está FINALIZADO y hay eventos cargados. Declarado AQUÍ (después de liveEvents)
+  // para evitar temporal dead zone en el array de dependencias.
+  const liveSettledRef=React.useRef(false);
+  React.useEffect(()=>{
+    if(!liveEvents.length||!selectedZones.length) return;
+    if(fixtureStatus(mundialMatch)!=="FINALIZADO") return;
+    if(liveSettledRef.current) return;
+    const key=`kn_settled_${mundialMatch.id}`;
+    if(typeof localStorage!=="undefined"&&localStorage.getItem(key)) return;
+    liveSettledRef.current=true;
+    const actionPts=Object.fromEntries(ACTIONS.map(a=>[a.name,a.points]));
+    const earned=liveEvents.filter(e=>e.type==="act"&&e.zoneId&&selectedZones.includes(e.zoneId)).reduce((s,e)=>s+(e.pts||actionPts[e.action]||0),0);
+    if(typeof localStorage!=="undefined") localStorage.setItem(key,earned.toString());
+    if(!earned) return;
+    const db=window.supabaseClient;
+    if(!db) return;
+    (async()=>{
+      try{
+        const{data:{user}}=await db.auth.getUser();
+        if(!user) return;
+        const{data:row}=await db.from('scores').select('total_points,matches_played').eq('user_id',user.id).maybeSingle();
+        const newTotal=((row?.total_points)||0)+earned;
+        const newPlayed=((row?.matches_played)||0)+1;
+        await db.from('scores').upsert({user_id:user.id,total_points:newTotal,matches_played:newPlayed},{onConflict:'user_id'});
+        setBudget(b=>b+earned);
+      }catch(e){/* sin conexión */}
+    })();
+  },[liveEvents.length,mundialMatch.id]);
   const [liveFixture,setLiveFixture]=React.useState(null);
   const [liveMinute,setLiveMinute]=React.useState(0);
   const liveLastMin=React.useRef(0);
