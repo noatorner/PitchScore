@@ -220,7 +220,25 @@ async function processMatch(match, sbSvc) {
     processed.add(evtId);
   }
 
-  return { matchId, home, away, espnId, totalEvents: keyEvents.length, newEvents: newEvents.length, events: newEvents };
+  // 5. Reintentar scored:false — por si las reservas llegaron después del primer sync
+  let retried = 0;
+  try {
+    const unscored = await sbSvc(
+      `agent_events?match_id=eq.${encodeURIComponent(matchId)}&scored=eq.false&pts_value=gt.0&select=sofascore_id,zone_id,pts_value`
+    );
+    for (const ev of (unscored || [])) {
+      const awarded = await awardPointsForZone(matchId, ev.zone_id, ev.pts_value, sbSvc);
+      if (awarded > 0) {
+        await sbSvc(
+          `agent_events?match_id=eq.${encodeURIComponent(matchId)}&sofascore_id=eq.${ev.sofascore_id}`,
+          { method: 'PATCH', body: JSON.stringify({ scored: true, scored_count: awarded }) }
+        ).catch(() => {});
+        retried++;
+      }
+    }
+  } catch (e) { /* ignorar */ }
+
+  return { matchId, home, away, espnId, totalEvents: keyEvents.length, newEvents: newEvents.length, retried, events: newEvents };
 }
 
 // ─── Otorgar puntos a reservations de una zona ────────────────────────────
