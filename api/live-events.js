@@ -49,9 +49,9 @@ function mapEvent(ev, homeTeamId) {
   } else if (type === "goal") {
     zoneId = `box6_${side}`; pts = 40; icon = "⚽"; action = "Gol";
   } else if (type === "card" && /red/.test(detail)) {
-    zoneId = `med_${(min % 4) + 1}`; pts = 10; icon = "🟥"; action = "Tarjeta roja";
+    zoneId = `med_${min % 4}`; pts = 10; icon = "🟥"; action = "Tarjeta roja";
   } else if (type === "card") {
-    zoneId = `med_${(min % 4) + 1}`; pts = 5; icon = "🟨"; action = "Tarjeta amarilla";
+    zoneId = `med_${min % 4}`; pts = 5; icon = "🟨"; action = "Tarjeta amarilla";
   } else if (type === "var" && /goal cancelled/.test(detail)) {
     zoneId = `box6_${side}`; pts = 0; icon = "📺"; action = "Gol anulado (VAR)";
   } else {
