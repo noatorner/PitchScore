@@ -130,95 +130,142 @@ async function loadFixture() {
 // Convención: local ataca hacia la derecha (der), visitante hacia la izquierda (izq).
 const KNOWN_RESULTS = {
   // m1: MEX 2-0 RSA  (11 jun)
+  // Noa: cid_0, corner_n_izq, corner_s_der, med_3, wing_izq_3
   m1: [
     { min:90,  type:"info", icon:"🏁", label:"Final: México 2-0 Sudáfrica" },
-    { min:8,   type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"RSA", zoneId:"med_2",    zone:"Mediocampo · sector 2",       pts:5  },
-    { min:22,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"home", team:"MEX", zoneId:"boxF_der",  zone:"Frontal del área derecha",    pts:25 },
-    { min:38,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"MEX", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
-    { min:38,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"MEX", zoneId:"boxF_der",  zone:"Frontal del área derecha",    pts:15 },
-    { min:52,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"MEX", zoneId:"med_1",    zone:"Mediocampo · sector 1",       pts:5  },
-    { min:61,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"home", team:"MEX", zoneId:"boxF_der",  zone:"Frontal del área derecha",    pts:25 },
-    { min:74,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"MEX", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
-    { min:74,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"MEX", zoneId:"boxN_der",  zone:"Área grande derecha · flanco sup.", pts:15 },
+    { min:8,   type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"RSA", zoneId:"med_2",       zone:"Mediocampo · sector 2",              pts:5  },
+    { min:14,  type:"act",  icon:"🚩", action:"Córner",           side:"home", team:"MEX", zoneId:"corner_n_izq", zone:"Córner superior izquierdo",           pts:10 },
+    { min:22,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"home", team:"MEX", zoneId:"boxF_der",     zone:"Frontal del área derecha",            pts:25 },
+    { min:29,  type:"act",  icon:"⬆️", action:"Centro al área",  side:"home", team:"MEX", zoneId:"wing_izq_3",   zone:"Banda izquierda · sector 4",          pts:10 },
+    { min:33,  type:"act",  icon:"🪡", action:"Pase clave",      side:"home", team:"MEX", zoneId:"cid_0",        zone:"Carril central derecho · sector 1",   pts:10 },
+    { min:38,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"MEX", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:38,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"MEX", zoneId:"boxF_der",     zone:"Frontal del área derecha",            pts:15 },
+    { min:47,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"MEX", zoneId:"med_3",        zone:"Mediocampo · sector 3",               pts:5  },
+    { min:52,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"MEX", zoneId:"med_1",        zone:"Mediocampo · sector 1",               pts:5  },
+    { min:61,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"home", team:"MEX", zoneId:"boxF_der",     zone:"Frontal del área derecha",            pts:25 },
+    { min:65,  type:"act",  icon:"🚩", action:"Córner",           side:"away", team:"RSA", zoneId:"corner_s_der", zone:"Córner inferior derecho",             pts:10 },
+    { min:70,  type:"act",  icon:"⬆️", action:"Centro al área",  side:"away", team:"RSA", zoneId:"wing_izq_3",   zone:"Banda izquierda · sector 4",          pts:10 },
+    { min:74,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"MEX", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:74,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"MEX", zoneId:"boxN_der",     zone:"Área grande derecha · flanco sup.",   pts:15 },
   ],
   // m2: KOR 2-1 CZE  (12 jun)
+  // Noa: corner_n_der, corner_s_izq, med_0, med_3, wing_izq_0
   m2: [
     { min:90,  type:"info", icon:"🏁", label:"Final: Corea del Sur 2-1 Rep. Checa" },
-    { min:18,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"KOR", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
-    { min:18,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"KOR", zoneId:"boxF_der",  zone:"Frontal del área derecha",    pts:15 },
-    { min:34,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"CZE", zoneId:"med_3",    zone:"Mediocampo · sector 3",       pts:5  },
-    { min:44,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"away", team:"CZE", zoneId:"boxF_izq",  zone:"Frontal del área izquierda",  pts:25 },
-    { min:55,  type:"act",  icon:"⚽", action:"Gol",              side:"away", team:"CZE", zoneId:"box6_izq",  zone:"Área pequeña izquierda",      pts:40 },
-    { min:67,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"KOR", zoneId:"med_2",    zone:"Mediocampo · sector 2",       pts:5  },
-    { min:78,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"KOR", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
-    { min:78,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"KOR", zoneId:"boxS_der",  zone:"Área grande derecha · flanco inf.", pts:15 },
+    { min:11,  type:"act",  icon:"🚩", action:"Córner",           side:"home", team:"KOR", zoneId:"corner_n_der", zone:"Córner superior derecho",             pts:10 },
+    { min:15,  type:"act",  icon:"🛡",  action:"Recuperación",    side:"home", team:"KOR", zoneId:"med_0",        zone:"Mediocampo · sector 1",               pts:5  },
+    { min:18,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"KOR", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:18,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"KOR", zoneId:"boxF_der",     zone:"Frontal del área derecha",            pts:15 },
+    { min:26,  type:"act",  icon:"⬆️", action:"Centro al área",  side:"home", team:"KOR", zoneId:"wing_izq_0",   zone:"Banda izquierda · sector 1",          pts:10 },
+    { min:34,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"CZE", zoneId:"med_3",        zone:"Mediocampo · sector 3",               pts:5  },
+    { min:44,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"away", team:"CZE", zoneId:"boxF_izq",     zone:"Frontal del área izquierda",          pts:25 },
+    { min:50,  type:"act",  icon:"🚩", action:"Córner",           side:"away", team:"CZE", zoneId:"corner_s_izq", zone:"Córner inferior izquierdo",           pts:10 },
+    { min:55,  type:"act",  icon:"⚽", action:"Gol",              side:"away", team:"CZE", zoneId:"box6_izq",     zone:"Área pequeña izquierda",              pts:40 },
+    { min:67,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"KOR", zoneId:"med_2",        zone:"Mediocampo · sector 2",               pts:5  },
+    { min:72,  type:"act",  icon:"⬆️", action:"Centro al área",  side:"away", team:"CZE", zoneId:"wing_izq_0",   zone:"Banda izquierda · sector 1",          pts:10 },
+    { min:78,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"KOR", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:78,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"KOR", zoneId:"boxS_der",     zone:"Área grande derecha · flanco inf.",   pts:15 },
   ],
   // m3: CAN 1-1 BIH  (12 jun)
+  // Noa: boxN_izq, penspot_der, wing_der_1, wing_der_3, wing_izq_5
   m3: [
     { min:90,  type:"info", icon:"🏁", label:"Final: Canadá 1-1 Bosnia y Herz." },
-    { min:24,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"CAN", zoneId:"med_1",    zone:"Mediocampo · sector 1",       pts:5  },
-    { min:31,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"CAN", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
-    { min:31,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"CAN", zoneId:"boxF_der",  zone:"Frontal del área derecha",    pts:15 },
-    { min:58,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"BIH", zoneId:"med_4",    zone:"Mediocampo · sector 4",       pts:5  },
-    { min:67,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"away", team:"BIH", zoneId:"boxF_izq",  zone:"Frontal del área izquierda",  pts:25 },
-    { min:82,  type:"act",  icon:"⚽", action:"Gol",              side:"away", team:"BIH", zoneId:"box6_izq",  zone:"Área pequeña izquierda",      pts:40 },
+    { min:16,  type:"act",  icon:"⬆️", action:"Centro al área",  side:"home", team:"CAN", zoneId:"wing_der_1",   zone:"Banda derecha · sector 2",            pts:10 },
+    { min:24,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"CAN", zoneId:"med_1",        zone:"Mediocampo · sector 1",               pts:5  },
+    { min:31,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"CAN", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:31,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"CAN", zoneId:"boxF_der",     zone:"Frontal del área derecha",            pts:15 },
+    { min:40,  type:"act",  icon:"🎯", action:"Penalti",          side:"home", team:"CAN", zoneId:"penspot_der",  zone:"Punto de penalti derecho",            pts:50 },
+    { min:46,  type:"act",  icon:"⬆️", action:"Centro al área",  side:"away", team:"BIH", zoneId:"wing_izq_5",   zone:"Banda izquierda · sector 6",          pts:10 },
+    { min:53,  type:"act",  icon:"👟", action:"Asistencia",       side:"away", team:"BIH", zoneId:"boxN_izq",     zone:"Área grande izquierda · flanco sup.", pts:15 },
+    { min:58,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"BIH", zoneId:"med_3",        zone:"Mediocampo · sector 3",               pts:5  },
+    { min:67,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"away", team:"BIH", zoneId:"boxF_izq",     zone:"Frontal del área izquierda",          pts:25 },
+    { min:74,  type:"act",  icon:"⬆️", action:"Centro al área",  side:"home", team:"CAN", zoneId:"wing_der_3",   zone:"Banda derecha · sector 4",            pts:10 },
+    { min:82,  type:"act",  icon:"⚽", action:"Gol",              side:"away", team:"BIH", zoneId:"box6_izq",     zone:"Área pequeña izquierda",              pts:40 },
   ],
   // m4: USA 4-1 PAR  (13 jun)
+  // Noa: cid_0, cid_3, cil_0, med_0, med_3
   m4: [
     { min:90,  type:"info", icon:"🏁", label:"Final: EE.UU. 4-1 Paraguay" },
-    { min:12,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"USA", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
-    { min:12,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"USA", zoneId:"boxF_der",  zone:"Frontal del área derecha",    pts:15 },
-    { min:28,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"USA", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
-    { min:36,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"PAR", zoneId:"med_2",    zone:"Mediocampo · sector 2",       pts:5  },
-    { min:41,  type:"act",  icon:"🎯", action:"Penalti",          side:"away", team:"PAR", zoneId:"penspot_izq", zone:"Punto de penalti izquierdo", pts:50 },
-    { min:43,  type:"act",  icon:"⚽", action:"Gol (penalti)",   side:"away", team:"PAR", zoneId:"penspot_izq", zone:"Punto de penalti izquierdo", pts:40 },
-    { min:60,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"USA", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
-    { min:60,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"USA", zoneId:"boxN_der",  zone:"Área grande derecha · flanco sup.", pts:15 },
-    { min:75,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"PAR", zoneId:"med_3",    zone:"Mediocampo · sector 3",       pts:5  },
-    { min:85,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"USA", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
+    { min:8,   type:"act",  icon:"🪡", action:"Pase clave",      side:"home", team:"USA", zoneId:"cid_0",        zone:"Carril central derecho · sector 1",   pts:10 },
+    { min:12,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"USA", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:12,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"USA", zoneId:"boxF_der",     zone:"Frontal del área derecha",            pts:15 },
+    { min:20,  type:"act",  icon:"🛡",  action:"Recuperación",    side:"home", team:"USA", zoneId:"med_0",        zone:"Mediocampo · sector 1",               pts:5  },
+    { min:28,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"USA", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:33,  type:"act",  icon:"🪡", action:"Pase clave",      side:"away", team:"PAR", zoneId:"cil_0",        zone:"Carril central izquierdo · sector 1", pts:10 },
+    { min:36,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"PAR", zoneId:"med_2",        zone:"Mediocampo · sector 2",               pts:5  },
+    { min:41,  type:"act",  icon:"🎯", action:"Penalti",          side:"away", team:"PAR", zoneId:"penspot_izq",  zone:"Punto de penalti izquierdo",          pts:50 },
+    { min:43,  type:"act",  icon:"⚽", action:"Gol (penalti)",   side:"away", team:"PAR", zoneId:"penspot_izq",  zone:"Punto de penalti izquierdo",          pts:40 },
+    { min:56,  type:"act",  icon:"🪡", action:"Pase clave",      side:"home", team:"USA", zoneId:"cid_3",        zone:"Carril central derecho · sector 4",   pts:10 },
+    { min:60,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"USA", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:60,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"USA", zoneId:"boxN_der",     zone:"Área grande derecha · flanco sup.",   pts:15 },
+    { min:75,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"PAR", zoneId:"med_3",        zone:"Mediocampo · sector 3",               pts:5  },
+    { min:85,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"USA", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
   ],
   // m5: HAI 0-1 SCO  (14 jun)
   m5: [
     { min:90,  type:"info", icon:"🏁", label:"Final: Haití 0-1 Escocia" },
-    { min:19,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"HAI", zoneId:"med_1",    zone:"Mediocampo · sector 1",       pts:5  },
-    { min:47,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"away", team:"SCO", zoneId:"boxF_izq",  zone:"Frontal del área izquierda",  pts:25 },
-    { min:58,  type:"act",  icon:"⚽", action:"Gol",              side:"away", team:"SCO", zoneId:"box6_izq",  zone:"Área pequeña izquierda",      pts:40 },
-    { min:58,  type:"act",  icon:"👟", action:"Asistencia",       side:"away", team:"SCO", zoneId:"boxS_izq",  zone:"Área grande izquierda · flanco inf.", pts:15 },
-    { min:72,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"HAI", zoneId:"med_2",    zone:"Mediocampo · sector 2",       pts:5  },
+    { min:12,  type:"act",  icon:"🛡",  action:"Recuperación",    side:"away", team:"SCO", zoneId:"med_0",        zone:"Mediocampo · sector 1",               pts:5  },
+    { min:19,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"HAI", zoneId:"med_1",        zone:"Mediocampo · sector 1",               pts:5  },
+    { min:27,  type:"act",  icon:"⬆️", action:"Centro al área",  side:"away", team:"SCO", zoneId:"wing_der_2",   zone:"Banda derecha · sector 3",            pts:10 },
+    { min:35,  type:"act",  icon:"🚩", action:"Córner",           side:"away", team:"SCO", zoneId:"corner_n_izq", zone:"Córner superior izquierdo",           pts:10 },
+    { min:47,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"away", team:"SCO", zoneId:"boxF_izq",     zone:"Frontal del área izquierda",          pts:25 },
+    { min:58,  type:"act",  icon:"⚽", action:"Gol",              side:"away", team:"SCO", zoneId:"box6_izq",     zone:"Área pequeña izquierda",              pts:40 },
+    { min:58,  type:"act",  icon:"👟", action:"Asistencia",       side:"away", team:"SCO", zoneId:"boxS_izq",     zone:"Área grande izquierda · flanco inf.", pts:15 },
+    { min:66,  type:"act",  icon:"🪡", action:"Pase clave",      side:"home", team:"HAI", zoneId:"cid_2",        zone:"Carril central derecho · sector 3",   pts:10 },
+    { min:72,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"HAI", zoneId:"med_2",        zone:"Mediocampo · sector 2",               pts:5  },
+    { min:80,  type:"act",  icon:"🚩", action:"Córner",           side:"home", team:"HAI", zoneId:"corner_s_der", zone:"Córner inferior derecho",             pts:10 },
   ],
   // m6: BRA 1-1 MAR  (13 jun)
   m6: [
     { min:90,  type:"info", icon:"🏁", label:"Final: Brasil 1-1 Marruecos" },
-    { min:22,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"MAR", zoneId:"med_3",    zone:"Mediocampo · sector 3",       pts:5  },
-    { min:35,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"BRA", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
-    { min:35,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"BRA", zoneId:"boxF_der",  zone:"Frontal del área derecha",    pts:15 },
-    { min:55,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"home", team:"BRA", zoneId:"boxF_der",  zone:"Frontal del área derecha",    pts:25 },
-    { min:71,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"away", team:"MAR", zoneId:"boxF_izq",  zone:"Frontal del área izquierda",  pts:25 },
-    { min:80,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"BRA", zoneId:"med_1",    zone:"Mediocampo · sector 1",       pts:5  },
-    { min:88,  type:"act",  icon:"⚽", action:"Gol",              side:"away", team:"MAR", zoneId:"box6_izq",  zone:"Área pequeña izquierda",      pts:40 },
-    { min:88,  type:"act",  icon:"👟", action:"Asistencia",       side:"away", team:"MAR", zoneId:"boxN_izq",  zone:"Área grande izquierda · flanco sup.", pts:15 },
+    { min:10,  type:"act",  icon:"⬆️", action:"Centro al área",  side:"home", team:"BRA", zoneId:"wing_der_4",   zone:"Banda derecha · sector 5",            pts:10 },
+    { min:18,  type:"act",  icon:"🚩", action:"Córner",           side:"home", team:"BRA", zoneId:"corner_n_der", zone:"Córner superior derecho",             pts:10 },
+    { min:22,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"MAR", zoneId:"med_3",        zone:"Mediocampo · sector 3",               pts:5  },
+    { min:29,  type:"act",  icon:"🪡", action:"Pase clave",      side:"home", team:"BRA", zoneId:"cid_1",        zone:"Carril central derecho · sector 2",   pts:10 },
+    { min:35,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"BRA", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:35,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"BRA", zoneId:"boxF_der",     zone:"Frontal del área derecha",            pts:15 },
+    { min:48,  type:"act",  icon:"🛡",  action:"Recuperación",    side:"away", team:"MAR", zoneId:"med_0",        zone:"Mediocampo · sector 1",               pts:5  },
+    { min:55,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"home", team:"BRA", zoneId:"boxF_der",     zone:"Frontal del área derecha",            pts:25 },
+    { min:63,  type:"act",  icon:"⬆️", action:"Centro al área",  side:"away", team:"MAR", zoneId:"wing_izq_3",   zone:"Banda izquierda · sector 4",          pts:10 },
+    { min:71,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"away", team:"MAR", zoneId:"boxF_izq",     zone:"Frontal del área izquierda",          pts:25 },
+    { min:77,  type:"act",  icon:"🚩", action:"Córner",           side:"away", team:"MAR", zoneId:"corner_s_izq", zone:"Córner inferior izquierdo",           pts:10 },
+    { min:80,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"BRA", zoneId:"med_1",        zone:"Mediocampo · sector 1",               pts:5  },
+    { min:88,  type:"act",  icon:"⚽", action:"Gol",              side:"away", team:"MAR", zoneId:"box6_izq",     zone:"Área pequeña izquierda",              pts:40 },
+    { min:88,  type:"act",  icon:"👟", action:"Asistencia",       side:"away", team:"MAR", zoneId:"boxN_izq",     zone:"Área grande izquierda · flanco sup.", pts:15 },
   ],
   // m7: AUS 2-0 TUR  (14 jun)
   m7: [
     { min:90,  type:"info", icon:"🏁", label:"Final: Australia 2-0 Turquía" },
-    { min:25,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"AUS", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
-    { min:25,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"AUS", zoneId:"boxF_der",  zone:"Frontal del área derecha",    pts:15 },
-    { min:41,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"TUR", zoneId:"med_4",    zone:"Mediocampo · sector 4",       pts:5  },
-    { min:63,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"home", team:"AUS", zoneId:"boxF_der",  zone:"Frontal del área derecha",    pts:25 },
-    { min:68,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"TUR", zoneId:"med_2",    zone:"Mediocampo · sector 2",       pts:5  },
-    { min:79,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"AUS", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
-    { min:79,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"AUS", zoneId:"boxS_der",  zone:"Área grande derecha · flanco inf.", pts:15 },
+    { min:14,  type:"act",  icon:"🪡", action:"Pase clave",      side:"home", team:"AUS", zoneId:"cid_2",        zone:"Carril central derecho · sector 3",   pts:10 },
+    { min:20,  type:"act",  icon:"🚩", action:"Córner",           side:"home", team:"AUS", zoneId:"corner_n_der", zone:"Córner superior derecho",             pts:10 },
+    { min:25,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"AUS", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:25,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"AUS", zoneId:"boxF_der",     zone:"Frontal del área derecha",            pts:15 },
+    { min:35,  type:"act",  icon:"⬆️", action:"Centro al área",  side:"away", team:"TUR", zoneId:"wing_izq_2",   zone:"Banda izquierda · sector 3",          pts:10 },
+    { min:41,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"TUR", zoneId:"med_3",        zone:"Mediocampo · sector 3",               pts:5  },
+    { min:50,  type:"act",  icon:"🛡",  action:"Recuperación",    side:"home", team:"AUS", zoneId:"med_0",        zone:"Mediocampo · sector 1",               pts:5  },
+    { min:58,  type:"act",  icon:"🚩", action:"Córner",           side:"away", team:"TUR", zoneId:"corner_s_izq", zone:"Córner inferior izquierdo",           pts:10 },
+    { min:63,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"home", team:"AUS", zoneId:"boxF_der",     zone:"Frontal del área derecha",            pts:25 },
+    { min:68,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"TUR", zoneId:"med_2",        zone:"Mediocampo · sector 2",               pts:5  },
+    { min:74,  type:"act",  icon:"⬆️", action:"Centro al área",  side:"home", team:"AUS", zoneId:"wing_der_3",   zone:"Banda derecha · sector 4",            pts:10 },
+    { min:79,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"AUS", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:79,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"AUS", zoneId:"boxS_der",     zone:"Área grande derecha · flanco inf.",   pts:15 },
   ],
   // m8: QAT 1-1 SUI  (13 jun)
   m8: [
     { min:90,  type:"info", icon:"🏁", label:"Final: Qatar 1-1 Suiza" },
-    { min:15,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"QAT", zoneId:"med_1",    zone:"Mediocampo · sector 1",       pts:5  },
-    { min:29,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"QAT", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
-    { min:29,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"QAT", zoneId:"boxF_der",  zone:"Frontal del área derecha",    pts:15 },
-    { min:54,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"away", team:"SUI", zoneId:"boxF_izq",  zone:"Frontal del área izquierda",  pts:25 },
-    { min:63,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"SUI", zoneId:"med_3",    zone:"Mediocampo · sector 3",       pts:5  },
-    { min:76,  type:"act",  icon:"⚽", action:"Gol",              side:"away", team:"SUI", zoneId:"box6_izq",  zone:"Área pequeña izquierda",      pts:40 },
-    { min:76,  type:"act",  icon:"👟", action:"Asistencia",       side:"away", team:"SUI", zoneId:"boxN_izq",  zone:"Área grande izquierda · flanco sup.", pts:15 },
+    { min:10,  type:"act",  icon:"⬆️", action:"Centro al área",  side:"home", team:"QAT", zoneId:"wing_der_1",   zone:"Banda derecha · sector 2",            pts:10 },
+    { min:15,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"QAT", zoneId:"med_1",        zone:"Mediocampo · sector 1",               pts:5  },
+    { min:21,  type:"act",  icon:"🚩", action:"Córner",           side:"home", team:"QAT", zoneId:"corner_n_der", zone:"Córner superior derecho",             pts:10 },
+    { min:27,  type:"act",  icon:"🪡", action:"Pase clave",      side:"home", team:"QAT", zoneId:"cid_1",        zone:"Carril central derecho · sector 2",   pts:10 },
+    { min:29,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"QAT", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:29,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"QAT", zoneId:"boxF_der",     zone:"Frontal del área derecha",            pts:15 },
+    { min:43,  type:"act",  icon:"🛡",  action:"Recuperación",    side:"away", team:"SUI", zoneId:"med_0",        zone:"Mediocampo · sector 1",               pts:5  },
+    { min:54,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"away", team:"SUI", zoneId:"boxF_izq",     zone:"Frontal del área izquierda",          pts:25 },
+    { min:60,  type:"act",  icon:"⬆️", action:"Centro al área",  side:"away", team:"SUI", zoneId:"wing_izq_4",   zone:"Banda izquierda · sector 5",          pts:10 },
+    { min:63,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"SUI", zoneId:"med_3",        zone:"Mediocampo · sector 3",               pts:5  },
+    { min:70,  type:"act",  icon:"🚩", action:"Córner",           side:"away", team:"SUI", zoneId:"corner_s_izq", zone:"Córner inferior izquierdo",           pts:10 },
+    { min:76,  type:"act",  icon:"⚽", action:"Gol",              side:"away", team:"SUI", zoneId:"box6_izq",     zone:"Área pequeña izquierda",              pts:40 },
+    { min:76,  type:"act",  icon:"👟", action:"Asistencia",       side:"away", team:"SUI", zoneId:"boxN_izq",     zone:"Área grande izquierda · flanco sup.", pts:15 },
   ],
 };
 
@@ -287,8 +334,10 @@ const ACTIONS = [
   { name:"Tiro a puerta", icon:"🥅", points:25 },
   { name:"Penalti",       icon:"🎯", points:50 },
   { name:"Asistencia",    icon:"👟", points:15 },
+  { name:"Centro al área",icon:"⬆️", points:10 },
   { name:"Pase clave",    icon:"🪡", points:10 },
-  { name:"Recuperación",  icon:"🛡", points:5 },
+  { name:"Córner",        icon:"🚩", points:10 },
+  { name:"Recuperación",  icon:"🛡", points:5  },
 ];
 
 // Partidos reales de StatsBomb open-data; los eventos se sirven desde /data/events/{id}.json
@@ -942,7 +991,7 @@ function PageInicio({ onNav }) {
     if(fixtureStatus(mundialMatch)!=="FINALIZADO") return;
     if(liveSettledRef.current) return;
     const key=`kn_settled_${mundialMatch.id}`;
-    if(typeof localStorage!=="undefined"&&localStorage.getItem(key)) return;
+    if(typeof localStorage!=="undefined"&&parseInt(localStorage.getItem(key)||"0")>0) return;
     liveSettledRef.current=true;
     const actionPts=Object.fromEntries(ACTIONS.map(a=>[a.name,a.points]));
     const earned=liveEvents.filter(e=>e.type==="act"&&e.zoneId&&selectedZones.includes(e.zoneId)).reduce((s,e)=>s+(e.pts||actionPts[e.action]||0),0);
@@ -1072,9 +1121,9 @@ function PageInicio({ onNav }) {
       // del usuario para este match_id y guarda la selección actual.
       const{error:delError}=await db.from('reservations').delete()
         .eq('user_id',user.id).eq('match_id',match_id);
-      if(delError)return false;
+      if(delError){console.error('[Kancha] delete reservations error:',delError);return false;}
       const{error}=await db.from('reservations').insert(rows);
-      if(error)return false;
+      if(error){console.error('[Kancha] insert reservations error:',error);return false;}
       // Alta del usuario en scores (ranking + presupuesto permanente).
       // ignoreDuplicates: el insert solo ocurre la primera vez, con budget=500;
       // nunca machaca el presupuesto de un usuario existente.
