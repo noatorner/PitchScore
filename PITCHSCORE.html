@@ -524,11 +524,64 @@ input { font-family: inherit; }
 .ps-how-step--red .ps-how-d { color: #ffe8d0; }
 
 /* ============ HOW-TO MODAL ============ */
-.ps-modal-overlay { position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(20,23,20,0.62); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; padding: 28px; z-index: 200; }
-.ps-modal { position: relative; width: 100%; max-width: 860px; max-height: 88vh; overflow-y: auto; border-radius: 9px; box-shadow: 0 24px 70px rgba(0,0,0,0.5); }
-.ps-modal .ps-how { border-radius: 9px; padding: 22px 26px; }
-.ps-modal-close { position: absolute; top: 12px; right: 12px; z-index: 2; width: 30px; height: 30px; border-radius: 50%; border: 1px solid #cdb98a; background: #efe5cc; color: #2a2620; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: var(--kn-body); transition: background 0.14s, color 0.14s, border-color 0.14s; }
+.ps-modal-overlay { position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(20,23,20,0.62); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 200; }
+.ps-modal { position: relative; width: 100%; max-width: 520px; max-height: 92vh; overflow-y: auto; border-radius: 14px; box-shadow: 0 24px 70px rgba(0,0,0,0.5); background: #fff; }
+.ps-modal-close { position: absolute; top: 12px; right: 12px; z-index: 2; width: 32px; height: 32px; border-radius: 50%; border: 1px solid #e0d8cc; background: #f5f0e8; color: #2a2620; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: var(--kn-body); transition: background 0.14s, color 0.14s; }
 .ps-modal-close:hover { background: #b94234; color: #fff; border-color: #b94234; }
+
+/* ============ HOW TO PLAY v2 ============ */
+.ps-how2 { background: #fff; border-radius: 14px; overflow: hidden; }
+.ps-how2-top { background: #1d2519; padding: 28px 24px 24px; text-align: center; }
+.ps-how2-badge {
+  display: inline-block; background: #b94234; color: #fff;
+  font-family: var(--kn-body); font-size: 10px; font-weight: 700;
+  letter-spacing: 0.2em; padding: 4px 12px; border-radius: 999px; margin-bottom: 14px;
+}
+.ps-how2-headline {
+  font-family: var(--kn-display); font-size: 28px; font-weight: 700;
+  color: #f0e7d0; line-height: 1.2; letter-spacing: 0.01em;
+}
+.ps-how2-steps { padding: 8px 0; }
+.ps-how2-row {
+  display: flex; align-items: center; gap: 14px;
+  padding: 16px 22px; border-bottom: 1px solid #f0ece4;
+  background: var(--step-bg, #fff); position: relative;
+}
+.ps-how2-row:last-child { border-bottom: none; }
+.ps-how2-circle {
+  width: 52px; height: 52px; border-radius: 50%;
+  background: #fff; border: 2px solid var(--step-color, #ccc);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 26px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.ps-how2-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
+.ps-how2-step-tag {
+  font-family: var(--kn-body); font-size: 9px; font-weight: 700;
+  letter-spacing: 0.18em; color: var(--step-color, #888);
+}
+.ps-how2-step-name {
+  font-family: var(--kn-body); font-size: 15px; font-weight: 700;
+  color: #1a1714; line-height: 1.2;
+}
+.ps-how2-step-desc {
+  font-family: var(--kn-body); font-size: 12px; color: #5a5040;
+  line-height: 1.5;
+}
+.ps-how2-step-n {
+  font-family: var(--kn-display); font-size: 36px; font-weight: 700;
+  color: var(--step-color, #ccc); opacity: 0.2; flex-shrink: 0; line-height: 1;
+}
+.ps-how2-cta {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 22px; background: #f5f0e8; border-top: 1px solid #e8e0d0;
+}
+.ps-how2-cta-pts {
+  font-family: var(--kn-body); font-size: 13px; font-weight: 600; color: #3a3020;
+}
+.ps-how2-cta-arrow {
+  font-family: var(--kn-body); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.12em; color: #b94234;
+}
 
 /* ============ PAGE COMMON ============ */
 .ps-page { padding: 20px 28px 24px; max-width: 1280px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 22px; }
@@ -894,64 +947,6 @@ input { font-family: inherit; }
   .ps-seg button { font-size: 10px; padding: 6px 8px; letter-spacing: 0.06em; }
   .ps-field-cap { font-size: 10px; white-space: nowrap; }
   .ps-cap-num { font-size: 14px; }
-}
-
-/* ============ HOW TO PLAY (rediseño) ============ */
-.ps-how2 { display: flex; flex-direction: column; gap: 16px; }
-.ps-how2-header { text-align: center; padding: 4px 0 8px; }
-.ps-how2-title { font-family: var(--kn-display); font-size: 28px; font-weight: 700; color: #1d2519; letter-spacing: 0.02em; line-height: 1; margin-bottom: 4px; }
-.ps-how2-sub { font-family: var(--kn-body); font-size: 11px; letter-spacing: 0.18em; color: #8a7d62; font-weight: 600; text-transform: uppercase; }
-
-.ps-how2-step {
-  display: flex; align-items: flex-start; gap: 14px;
-  padding: 16px; border-radius: 10px; border: 1px solid; position: relative; overflow: hidden;
-}
-.ps-how2-step--gold { background: linear-gradient(135deg, #fdf4dc 0%, #f4e2a7 100%); border-color: #d4af5a; }
-.ps-how2-step--green { background: linear-gradient(135deg, #dff0d4 0%, #c5dca8 100%); border-color: #7aac50; }
-.ps-how2-step--red { background: linear-gradient(135deg, #fce8e6 0%, #f0b8b2 100%); border-color: #c04438; }
-
-.ps-how2-num {
-  position: absolute; top: 6px; right: 10px;
-  font-family: var(--kn-display); font-size: 42px; font-weight: 700;
-  color: rgba(42,38,32,0.12); line-height: 1; pointer-events: none;
-}
-.ps-how2-step--red .ps-how2-num { color: rgba(176,52,44,0.18); }
-
-.ps-how2-icon { font-size: 32px; line-height: 1; flex-shrink: 0; margin-top: 2px; }
-
-.ps-how2-content { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 0; }
-.ps-how2-step-title {
-  font-family: var(--kn-body); font-weight: 700; font-size: 12px;
-  letter-spacing: 0.12em; color: #2a2620; line-height: 1.2;
-}
-.ps-how2-step--red .ps-how2-step-title { color: #7a1a14; }
-.ps-how2-step-desc {
-  font-family: var(--kn-body); font-size: 13px; color: #4a3f25;
-  line-height: 1.5;
-}
-.ps-how2-step--red .ps-how2-step-desc { color: #5c2420; }
-.ps-how2-step-desc strong { font-weight: 700; color: #2a2620; }
-.ps-how2-step--red .ps-how2-step-desc strong { color: #7a1a14; }
-
-.ps-how2-pill {
-  display: inline-block; background: rgba(42,38,32,0.1); color: #4a3f25;
-  font-family: var(--kn-body); font-size: 9px; font-weight: 700;
-  letter-spacing: 0.16em; padding: 3px 8px; border-radius: 999px; margin-top: 2px;
-}
-.ps-how2-step--red .ps-how2-pill { background: rgba(176,52,44,0.15); color: #7a1a14; }
-
-.ps-how2-footer {
-  background: #1d2519; border-radius: 10px; padding: 16px 18px;
-  display: flex; flex-direction: column; gap: 5px; text-align: center;
-}
-.ps-how2-footer-bal {
-  font-family: var(--kn-body); font-size: 14px; color: #c8dcc0;
-  letter-spacing: 0.02em;
-}
-.ps-how2-footer-bal strong { color: #9aba90; font-weight: 700; }
-.ps-how2-footer-hint {
-  font-family: var(--kn-body); font-size: 11px; color: #5a7050;
-  letter-spacing: 0.06em;
 }
 
 /* ============ SIDEBAR WALLET ============ */

@@ -1611,46 +1611,51 @@ function ZoneList({ zones, selectedIds, onPick }) {
 
 function HowItWorks() {
   const pts = ME.budget;
+  const steps = [
+    {
+      n: "1", color: "#f4a535", bg: "#fff8ec",
+      icon: "💰",
+      title: "Recibes puntos",
+      desc: "Cada jornada se cargan 500 puntos en tu cartera. Los no gastados se acumulan para la siguiente.",
+      tag: "500 PTS · POR JORNADA",
+    },
+    {
+      n: "2", color: "#3a8c2f", bg: "#f0f8ec",
+      icon: "📍",
+      title: "Elige zonas del campo",
+      desc: "Antes del pitido inicial, apuesta tus puntos en las zonas donde crees que ocurrirá la acción: área, córner, banda…",
+      tag: "HASTA 5 ZONAS",
+    },
+    {
+      n: "3", color: "#b94234", bg: "#fdf2f1",
+      icon: "🔥",
+      title: "Gana cuando aciertas",
+      desc: "Gol, córner o penalti en tu zona = puntos para ti. El que mejor lee el partido sube en el ranking.",
+      tag: "SUMA · COMPITE · GANA",
+    },
+  ];
   return (
     <div className="ps-how2">
-      <div className="ps-how2-header">
-        <div className="ps-how2-title">Así se juega</div>
-        <div className="ps-how2-sub">3 pasos · empieza en 30 segundos</div>
+      <div className="ps-how2-top">
+        <div className="ps-how2-badge">¿CÓMO SE JUEGA?</div>
+        <div className="ps-how2-headline">Lee el partido.<br/>Apuesta tus zonas.<br/>Gana puntos.</div>
       </div>
-
-      <div className="ps-how2-step ps-how2-step--gold">
-        <div className="ps-how2-num">01</div>
-        <div className="ps-how2-icon">💰</div>
-        <div className="ps-how2-content">
-          <div className="ps-how2-step-title">RECIBES PUNTOS CADA JORNADA</div>
-          <div className="ps-how2-step-desc">Cada jornada tienes <strong>500 puntos nuevos</strong> para jugar. Los que no gastas se acumulan. Cuantos más tienes, más puedes apostar y más puedes ganar.</div>
-          <div className="ps-how2-pill">500 PTS · NUEVA JORNADA</div>
-        </div>
+      <div className="ps-how2-steps">
+        {steps.map(s=>(
+          <div key={s.n} className="ps-how2-row" style={{"--step-color": s.color, "--step-bg": s.bg}}>
+            <div className="ps-how2-circle">{s.icon}</div>
+            <div className="ps-how2-body">
+              <div className="ps-how2-step-tag">{s.tag}</div>
+              <div className="ps-how2-step-name">{s.title}</div>
+              <div className="ps-how2-step-desc">{s.desc}</div>
+            </div>
+            <div className="ps-how2-step-n">{s.n}</div>
+          </div>
+        ))}
       </div>
-
-      <div className="ps-how2-step ps-how2-step--green">
-        <div className="ps-how2-num">02</div>
-        <div className="ps-how2-icon">📍</div>
-        <div className="ps-how2-content">
-          <div className="ps-how2-step-title">APUESTA EN ZONAS DEL CAMPO</div>
-          <div className="ps-how2-step-desc">Antes del partido, elige qué zonas crees que serán clave: área, banda, córner… Distribuye tus puntos entre hasta <strong>5 zonas</strong>. Donde más arriesgas, más puedes ganar.</div>
-          <div className="ps-how2-pill">CÓRNER · ÁREA · BANDA · CENTRO</div>
-        </div>
-      </div>
-
-      <div className="ps-how2-step ps-how2-step--red">
-        <div className="ps-how2-num">03</div>
-        <div className="ps-how2-icon">🔥</div>
-        <div className="ps-how2-content">
-          <div className="ps-how2-step-title">GANA CUANDO LA ACCIÓN LLEGA</div>
-          <div className="ps-how2-step-desc">¿Gol en tu zona? ¿Córner? ¿Penalti? Cada acción en una zona tuya <strong>suma puntos</strong>. Sube en el ranking y demuestra que lees el partido mejor que nadie.</div>
-          <div className="ps-how2-pill">EL MEJOR LECTOR DEL JUEGO GANA</div>
-        </div>
-      </div>
-
-      <div className="ps-how2-footer">
-        <div className="ps-how2-footer-bal">💼 Tienes <strong>{pts.toLocaleString('es-ES')} pts</strong> disponibles ahora mismo</div>
-        <div className="ps-how2-footer-hint">Entra en JORNADA y elige tu primer partido →</div>
+      <div className="ps-how2-cta">
+        <span className="ps-how2-cta-pts">💼 {pts.toLocaleString('es-ES')} pts disponibles</span>
+        <span className="ps-how2-cta-arrow">Ve a JORNADA →</span>
       </div>
     </div>
   );
