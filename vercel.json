@@ -9,6 +9,6 @@
     "api/*.js": { "maxDuration": 15 }
   },
   "crons": [
-    { "path": "/api/cron-sync", "schedule": "0 19 * * *" }
+    { "path": "/api/cron-sync", "schedule": "*/5 * * * *" }
   ]
 }
