@@ -1143,9 +1143,15 @@ input { font-family: inherit; }
   border-radius: 4px; color: #d9534f; margin-bottom: 12px;
   font-size: 12px; font-weight: 700;
 }
-.ps-jk-footer { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
-.ps-jk-footer-hint { font-family: var(--kn-body); font-size: 12px; color: #6c604a; }
-.ps-jk-footer-hint strong { color: #2a2620; }
+.ps-jk-card-actions { margin-top: 14px; }
+.ps-jk-save-btn {
+  width: 100%; padding: 11px 0; border: none; border-radius: 8px;
+  background: #2a6b4a; color: #fff; font-family: var(--kn-head);
+  font-size: 13px; letter-spacing: 0.08em; font-weight: 700;
+  cursor: pointer; transition: background .15s, opacity .15s;
+}
+.ps-jk-save-btn:hover:not(:disabled) { background: #35855d; }
+.ps-jk-save-btn:disabled { opacity: .45; cursor: default; }
 
   </style>
 </head>

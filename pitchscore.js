@@ -2067,7 +2067,7 @@ function PageReservas({ onNav }) {
   return (
     <div className="ps-page">
       <div className="ps-page-head">
-        <div><div className="ps-page-eyebrow">TUS APUESTAS DE ZONA</div><div className="ps-page-title">MIS RESERVAS</div><div className="ps-page-sub">Gestiona tus reservas activas y revisa las pasadas.</div></div>
+        <div><div className="ps-page-eyebrow">TUS JUGADAS DE ZONA</div><div className="ps-page-title">MIS RESERVAS</div><div className="ps-page-sub">Gestiona tus reservas activas y revisa las pasadas.</div></div>
         <div className="ps-page-stats">
           <div className="ps-mini-stat"><div className="ps-mini-stat-l">PARTIDOS ACTIVOS</div><div className="ps-mini-stat-v">{activeIds.length}</div></div>
           <div className="ps-mini-stat"><div className="ps-mini-stat-l">PARTIDOS PASADOS</div><div className="ps-mini-stat-v">{pastIds.length}</div></div>
@@ -2598,9 +2598,10 @@ function PageJornada({ onNav, score }) {
   const [savedAllocs,setSaved]  = React.useState({});
   const [budget,     setBudget] = React.useState(ME.budget);
   const [totalPts,   setTotalPts]= React.useState(ME.totalPoints);
-  const [saving,     setSaving] = React.useState(false);
-  const [saveOk,     setSaveOk] = React.useState(false);
-  const [err,        setErr]    = React.useState(null);
+  const [saving,     setSaving]     = React.useState(false);
+  const [saveOk,     setSaveOk]     = React.useState(false);
+  const [cardSave,   setCardSave]   = React.useState({}); // {mid: "idle"|"saving"|"ok"|"err"}
+  const [err,        setErr]        = React.useState(null);
   const [loading,    setLoading]= React.useState(true);
 
   const todayMatches = FIXTURE.filter(m => {
@@ -2664,24 +2665,31 @@ function PageJornada({ onNav, score }) {
     });
     setAllocs(map); setSaveOk(false);
   }
-  async function save() {
-    if (!isValid || saving) return;
+  async function saveMatch(mid, pts) {
     const db = window.supabaseClient;
-    if (!db) { setErr("Sin conexión con Supabase"); return; }
-    setSaving(true); setErr(null);
+    if (!db) return false;
+    setCardSave(p => ({ ...p, [mid]: "saving" }));
     try {
       const { data:{ user } } = await db.auth.getUser();
-      if (!user) { setErr("No autenticado"); setSaving(false); return; }
-      const rows = todayMatches.map(m => ({
-        user_id: user.id, match_id: m.id,
-        allocated_pts: parseInt(allocs[m.id] || 0) || 0,
-      }));
-      const { error } = await db.from('match_allocations').upsert(rows, { onConflict: 'user_id,match_id' });
-      if (error) { setErr(error.message); setSaving(false); return; }
-      const newMap = {};
-      rows.forEach(r => { newMap[r.match_id] = r.allocated_pts; });
-      setSaved(newMap); setSaveOk(true);
-    } catch(e) { setErr(String(e.message || e)); }
+      if (!user) { setCardSave(p => ({ ...p, [mid]: "err" })); return false; }
+      const { error } = await db.from('match_allocations').upsert(
+        [{ user_id: user.id, match_id: mid, allocated_pts: pts }],
+        { onConflict: 'user_id,match_id' }
+      );
+      if (error) { setCardSave(p => ({ ...p, [mid]: "err" })); return false; }
+      setSaved(p => ({ ...p, [mid]: pts }));
+      setCardSave(p => ({ ...p, [mid]: "ok" }));
+      setTimeout(() => setCardSave(p => ({ ...p, [mid]: "idle" })), 2000);
+      return true;
+    } catch(e) { setCardSave(p => ({ ...p, [mid]: "err" })); return false; }
+  }
+  async function save() {
+    if (!isValid || saving) return;
+    setSaving(true); setErr(null);
+    try {
+      await Promise.all(todayMatches.map(m => saveMatch(m.id, parseInt(allocs[m.id]||0)||0)));
+      setSaveOk(true);
+    } catch(e) { setErr(String(e)); }
     setSaving(false);
   }
 
@@ -2780,9 +2788,9 @@ function PageJornada({ onNav, score }) {
                     <div className="ps-jk-card-venue">{m.venue}</div>
                     {isSaved && <div className="ps-jk-saved">✓ {savedAllocs[m.id]} pts guardados</div>}
                   </div>
-                  {/* Cuerpo claro — apuesta */}
+                  {/* Cuerpo claro — inversión */}
                   <div className="ps-jk-card-bot">
-                    <div className="ps-jk-stake-label">¿CUÁNTO ARRIESGAS EN ESTE PARTIDO?</div>
+                    <div className="ps-jk-stake-label">PUNTOS A INVERTIR EN ESTE PARTIDO</div>
                     <div className="ps-jk-stepper">
                       <button className="ps-jk-step" onClick={()=>step(m.id,-50)} disabled={pts<=0}>−</button>
                       <div className="ps-jk-step-mid">
@@ -2804,8 +2812,19 @@ function PageJornada({ onNav, score }) {
                         POTENCIAL SI ACIERTAS ZONAS <span>+{potencial} pts</span>
                       </div>
                     )}
+                    <div className="ps-jk-card-actions">
+                      {(()=>{
+                        const cs=cardSave[m.id]||"idle";
+                        return(
+                          <button className="ps-jk-save-btn" disabled={cs==="saving"||pts===0}
+                            onClick={()=>saveMatch(m.id,pts)}>
+                            {cs==="saving"?"…":cs==="ok"?"✓ GUARDADO":cs==="err"?"ERROR — REINTENTAR":"GUARDAR JUGADA"}
+                          </button>
+                        );
+                      })()}
+                    </div>
                   </div>
-                  <button className="ps-jk-go" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=m.id; window.__KN_ALLOC_PTS=pts>0?{matchId:m.id,pts}:null; onNav("inicio"); }}>
+                  <button className="ps-jk-go" onClick={async()=>{ await saveMatch(m.id,pts); window.__KN_MUNDIAL_REQUEST=m.id; window.__KN_ALLOC_PTS=pts>0?{matchId:m.id,pts}:null; onNav("inicio"); }}>
                     ESCOGER ZONAS →
                   </button>
                 </div>
@@ -2815,14 +2834,6 @@ function PageJornada({ onNav, score }) {
 
           {!isValid&&<div className="ps-jk-error">⚠ Total ({totalAlloc} pts) supera tu cartera ({budget} pts)</div>}
           {err&&<div className="ps-jk-error">{err}</div>}
-
-          <div className="ps-jk-footer">
-            <button className="ps-btn ps-btn-primary" disabled={!isValid||saving} onClick={save} style={{opacity:(!isValid||saving)?.5:1}}>
-              {saving?"GUARDANDO…":saveOk?"✓ APUESTA GUARDADA":"CONFIRMAR APUESTA"}
-            </button>
-            {saveOk&&<div className="ps-jk-footer-hint">✓ Cartera guardada — entra a cada partido y elige tus zonas</div>}
-            {isValid&&remaining>0&&totalAlloc>0&&!saveOk&&<div className="ps-jk-footer-hint">Quedan <strong>{remaining} pts</strong> sin asignar</div>}
-          </div>
         </>
       ))}
     </div>
@@ -2850,7 +2861,7 @@ function App() {
   },[]);
   React.useEffect(()=>{const hash=window.location.hash.replace("#","");if(hash&&["inicio","jornada","partidos","reservas","ranking","amigos","historial"].includes(hash))setPage(hash);},[]);
   function nav(p){setPage(p);setNavOpen(false);window.location.hash=p;window.scrollTo({top:0,behavior:"smooth"});}
-  const pageTitles={inicio:{eb:"MUNDIAL 2026",title:"INICIO"},jornada:{eb:"HOY",title:"JORNADA"},partidos:{eb:"FIXTURE",title:"PARTIDOS"},reservas:{eb:"TUS APUESTAS",title:"MIS RESERVAS"},ranking:{eb:"LEADERBOARD",title:"RANKING"},amigos:{eb:"TU EQUIPO",title:"AMIGOS"},historial:{eb:"TU CAMINO",title:"HISTORIAL"}};
+  const pageTitles={inicio:{eb:"MUNDIAL 2026",title:"INICIO"},jornada:{eb:"HOY",title:"JORNADA"},partidos:{eb:"FIXTURE",title:"PARTIDOS"},reservas:{eb:"TUS JUGADAS",title:"MIS RESERVAS"},ranking:{eb:"LEADERBOARD",title:"RANKING"},amigos:{eb:"TU EQUIPO",title:"AMIGOS"},historial:{eb:"TU CAMINO",title:"HISTORIAL"}};
   const pt=pageTitles[page]||pageTitles.inicio;
   if(!fixtureReady) return <FixtureSkeleton/>;
   return (
