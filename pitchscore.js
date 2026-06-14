@@ -2104,7 +2104,7 @@ function PageReservas({ onNav }) {
             const zones=activeByMatch[mid];
             const totalCost=zones.reduce((s,r)=>s+(r.price||0),0);
             const isOpen=openMatches.has(mid);
-            const mStatus=(match.dbStatus==="FINALIZADO"||match.dbStatus==="CANCELADO")?match.dbStatus:fixtureStatus(match);
+            const mStatus=match.status||fixtureStatus(match);
             const canEdit=mStatus==="ABIERTO";
             return(
               <div className="ps-res-active" key={mid}>
