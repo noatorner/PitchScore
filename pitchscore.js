@@ -484,7 +484,6 @@ function Sidebar({ page, onNav, open, score }) {
         <div className="kn-eyebrow">FÚTBOL EN JUEGO</div>
         <KanchaWordmark className="kn-logo-img"/>
         <div className="kn-claim">Antes de que pase<span className="kn-dot">.</span></div>
-        <div className="kn-kicker"><span className="ps-star">★</span> MUNDIAL 2026 <span className="ps-star">★</span></div>
       </div>
       <nav className="ps-nav">
         {items.map(it => (
@@ -494,31 +493,15 @@ function Sidebar({ page, onNav, open, score }) {
           </button>
         ))}
       </nav>
-      <div className="ps-wallet-card" style={{position:"relative",overflow:"hidden"}}>
+      <div className="ps-wallet-card" style={{position:"relative",overflow:"hidden",marginTop:"auto"}}>
         <div style={{position:"absolute",inset:0,backgroundImage:"repeating-linear-gradient(0deg,transparent,transparent 11px,rgba(255,255,255,0.018) 11px,rgba(255,255,255,0.018) 12px)",pointerEvents:"none"}}/>
-        <div className="ps-wallet-label" style={{letterSpacing:"3px",fontSize:"9px"}}>▶ MARCADOR</div>
-        <div className="ps-wallet-pts" style={{textShadow:"0 0 12px rgba(212,168,71,0.4)"}}>{(score&&score.total_points!=null?score.total_points:ME.totalPoints).toLocaleString('es-ES')}<span className="ps-wallet-unit"> pts</span></div>
-        <div className="ps-wallet-budget">
-          <span className="ps-wallet-budget-dot">●</span>
-          {(score&&score.budget!=null?score.budget:ME.budget).toLocaleString('es-ES')} disp.
-        </div>
-      </div>
-      <div className="ps-poster">
-        <div className="ps-poster-frame">
-          <div className="ps-poster-headline">EL MUNDIAL</div>
-          <div className="ps-poster-mid"><span className="ps-star">★</span> LO VIVIMOS <span className="ps-star">★</span></div>
-          <div className="ps-poster-headline ps-poster-big">JUNTOS</div>
-          <div className="ps-poster-art">
-            <svg viewBox="0 0 160 90" width="100%" height="100%" preserveAspectRatio="xMidYMid slice">
-              <rect width="160" height="90" fill="#e7d9b3"/>
-              <rect x="0" y="60" width="160" height="30" fill="#3d5a32"/>
-              <rect x="0" y="55" width="160" height="6" fill="#cfb781"/>
-              <path d="M0,55 L0,28 Q40,18 80,18 Q120,18 160,28 L160,55 Z" fill="#1d2519" opacity="0.55"/>
-              <path d="M0,32 L160,32" stroke="#1d2519" strokeWidth="0.5" opacity="0.6"/>
-              <circle cx="55" cy="45" r="5" fill="#1d2519"/>
-              <path d="M48,58 Q50,48 55,50 Q60,48 64,58 L66,72 L60,72 L58,62 L55,72 L48,72 Z" fill="#1d2519"/>
-              <circle cx="75" cy="73" r="3" fill="#1d2519"/>
-            </svg>
+        <div className="ps-wallet-label">▶ MARCADOR KANCHA</div>
+        <div className="ps-wallet-pts" style={{textShadow:"0 0 18px rgba(212,168,71,0.5)"}}>{(score&&score.total_points!=null?score.total_points:ME.totalPoints).toLocaleString('es-ES')}<span className="ps-wallet-unit"> pts</span></div>
+        <div className="ps-wallet-divider"/>
+        <div className="ps-wallet-budget-row">
+          <div className="ps-wallet-budget-block">
+            <div className="ps-wallet-budget-label">CARTERA</div>
+            <div className="ps-wallet-budget-val">{(score&&score.budget!=null?score.budget:ME.budget).toLocaleString('es-ES')} <span>pts</span></div>
           </div>
         </div>
       </div>
@@ -1178,7 +1161,8 @@ function PageInicio({ onNav, onScoreUpdate }) {
           .eq('user_id',user.id).maybeSingle();
         if(!cancelled&&!scoreErr&&scoreRow&&scoreRow.budget!=null){ ME.budget=scoreRow.budget; setBudget(scoreRow.budget); }
         // sub-presupuesto: override de Jornada (window global) o desde Supabase
-        const _allocOverride = (typeof window.__KN_ALLOC_PTS === "number") ? window.__KN_ALLOC_PTS : null;
+        const _allocData = window.__KN_ALLOC_PTS;
+        const _allocOverride = (_allocData && _allocData.matchId === mundialMatch.id && typeof _allocData.pts === "number") ? _allocData.pts : null;
         if (_allocOverride != null) window.__KN_ALLOC_PTS = null;
         try{
           const{data:allocRow}=await db.from('match_allocations').select('allocated_pts')
@@ -2821,7 +2805,7 @@ function PageJornada({ onNav, score }) {
                       </div>
                     )}
                   </div>
-                  <button className="ps-jk-go" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=m.id; window.__KN_ALLOC_PTS=(pts>0?pts:null); onNav("inicio"); }}>
+                  <button className="ps-jk-go" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=m.id; window.__KN_ALLOC_PTS=pts>0?{matchId:m.id,pts}:null; onNav("inicio"); }}>
                     ESCOGER ZONAS →
                   </button>
                 </div>
