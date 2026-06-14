@@ -47,6 +47,8 @@ const TEAM_CODE = {
   "italy": "ITA", "portugal": "POR", "netherlands": "NED", "england": "ENG", "belgium": "BEL",
   "uruguay": "URU", "colombia": "COL", "japan": "JPN", "australia": "AUS", "costa rica": "CRC",
   "panama": "PAN", "norway": "NOR", "switzerland": "SUI", "croatia": "CRO", "morocco": "MAR",
+  "turkey": "TUR", "türkiye": "TUR", "qatar": "QAT", "ivory coast": "CIV", "côte d'ivoire": "CIV",
+  "cote d'ivoire": "CIV", "ecuador": "ECU", "curacao": "CUR", "curaçao": "CUR", "egypt": "EGY",
 };
 
 function teamCode(name) {

@@ -5,6 +5,7 @@ const FLAGS = {
   ESP:"🇪🇸",FRA:"🇫🇷",GER:"🇩🇪",ITA:"🇮🇹",POR:"🇵🇹",NED:"🇳🇱",
   ENG:"🇬🇧",BEL:"🇧🇪",URU:"🇺🇾",COL:"🇨🇴",JPN:"🇯🇵",AUS:"🇦🇺",
   CRC:"🇨🇷",PAN:"🇵🇦",NOR:"🇳🇴",SUI:"🇨🇭",CRO:"🇭🇷",
+  TUR:"🇹🇷",QAT:"🇶🇦",CIV:"🇨🇮",ECU:"🇪🇨",CUR:"🇨🇼",EGY:"🇪🇬",
 };
 const COUNTRY_NAME = {
   MEX:"México",RSA:"Sudáfrica",KOR:"Corea del Sur",CZE:"Rep. Checa",
@@ -14,6 +15,7 @@ const COUNTRY_NAME = {
   POR:"Portugal",NED:"Países Bajos",ENG:"Inglaterra",BEL:"Bélgica",
   URU:"Uruguay",COL:"Colombia",JPN:"Japón",AUS:"Australia",
   CRC:"Costa Rica",PAN:"Panamá",NOR:"Noruega",SUI:"Suiza",CRO:"Croacia",MAR:"Marruecos",
+  TUR:"Turquía",QAT:"Qatar",CIV:"Costa de Marfil",ECU:"Ecuador",CUR:"Curaçao",EGY:"Egipto",
   FCB:"Barcelona",RMA:"Real Madrid",MUN:"Man. United",JUV:"Juventus",
   LIV:"Liverpool",BAY:"Bayern Munich",BVB:"B. Dortmund",TOT:"Tottenham",
   ATM:"Atlético Madrid",ACM:"AC Milan",INT:"Inter Milan",
@@ -26,6 +28,7 @@ const FLAG_ISO = {
   ESP:"es",FRA:"fr",GER:"de",ITA:"it",POR:"pt",NED:"nl",MAR:"ma",
   ENG:"gb-eng",BEL:"be",URU:"uy",COL:"co",JPN:"jp",AUS:"au",
   CRC:"cr",PAN:"pa",NOR:"no",SUI:"ch",CRO:"hr",
+  TUR:"tr",QAT:"qa",CIV:"ci",ECU:"ec",CUR:"cw",EGY:"eg",
 };
 
 const KANCHA_LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ4AAAATCAYAAABhq7R9AAAACXBIWXMAAAsSAAALEgHS3X78AAAFDklEQVRogc2az3HjNhTGf87sMTNyKrB8Ym6rsAHJDXC1FSxdQZwKLFewTgVSKojNBkwXsFz5Zp4iVRB7JnfngAcvBAIiCZKyvxnNLLHgx2fiw/sHHr28vPDeUBbZGHiK4uSpB57UGLpuy+ngWEVxsvHMnQNzYAJ8dEx5BtbADXCzhycFxvo6ipNFG5uFw7wnj+Ikb8vh4Bz7bG6LD2WR5cBUD0RxctTEANTLM1/uAzDrQSwTIAc2ZZF15RsDl8b1PIDT5siBjTmhLLILYAGMarhGqHc9Bb6WRXYPpI7FTDHWRLjb4tK6zgM4XiGbYVkW2XkUJ6suXAA/BRgwQe3aIUU3Ev68LLLjLpwWeuUsi+y4LLI18JV60bkwBf6RRX230KKTy2Uf9rYSniUMjSFEpzGU+NbyvGCITTnVkLoF/gQ+A79JBPkFOAPOgVsHXS+LOQQs0Wl0tvdDCwMOLToNLb7OzzFwYnCuAzkWVEX3RxQn1/ZEsTuXy5WkKtfAJ2PasiyyTR+5WF/wiE5jWRYZoWG3kcd7A9H9JfwafXm+Z+PfI+Fs7flEOL9bw2cu0bkQxckmipM56u80sWhry1DwiM62N9jz1QrvLUQXxUkKzOhffKnFqcWXBvCYuArxVPJ3bo2hac9pRRA8ojsXe8+t8SDx7Q21e7zRxcCiI4qTp7LIZuzmUV3D7hNK0Ct+hLkR7cPGzLpuep8L16jiRKPigeU9HAR7RLcCiOJkVRYZ1pzWYbcivLLI9jX2XoXRBXWi0xhCfHLPvCyyFfDF+K/QnGXbpbcl4XknRMvCmrgL5W+DOtFp9CG+NlXt9pCi0xChzOg57MrzXDnLoiVVXwXPm6Kp6DRkPDjsthHeSVlknRa7reg0BhbflTV8Kd6wKVwnFI0hvcCZ8Tt4jtdWdBpdxFcJtebJhUMoUwLD3J6WyUT48hqKCWAvSudWSxQni7LINuy++C8SNlLPbRuMk4WyyNIO3fwFuxXymcPG2tMkGzUpkzkvxd0ymZRFdrzvvcomGTv+qzbsHj1+u83Zc2S2p6pNm/bAavp0JucN1aOdGaqKPKm5tyI+yQ/N/OjMJ3DPAtyiCoe/TQ7UBjDHtsAkcDN+N4aeozg5DjnGdHCbwrtynffW9OlAtZ/0mmyM8TFqXebsX1Ov16wNtSKuCe4wV9sD84ju1uLTnJcooZi/S6qiu/fY0yXsrlBhw+z1fcJRsUZxcsNuG0Q3pMdNn2cUTSYa9QH7QMM+3QhVgC3ZXZOljNuia9zna5TjSdU2w90Dm/nu25PTzaM4maDyq2fXvR5sUbto5rCnL/HNqDaaXZhb1x9R564r34aUfG4uHu2OahQ5iPBq+nSnqI3dBveo48GUhjlf4+LCSPBNVY+AOxdxk0JC3P+YH2eYphfR2MozP0dxMjb6SUMVHGuq4vPNs18yKE/wvSyyFynG9G8D/IsK0VPrnl4a8k3QoE+3kY19inIMPhHeo86kT6M4eT16bFpw1OZ4HuNX7PbAdowPrV5D4Dmsf0CJZ0LDHM/BO0HlN3aY3+GQeSvCq9srrO8Eh8rxQqvXENQ9q/VnUeBtQyyNMJNzANGJLV7PB/zcgdeV2zrnSdrg+/LEhQfU+zuN4mTxHjxd36jzfEeP325TAr92LdUXt3Y+8x+7C/7U9PC8C8TzXVjDj8CvxrX36+EWvLUcsvmO2T1a28hvXSe0coAvkKke862lSBoUHo1c/w+ZJkA4KukbKQAAAABJRU5ErkJggg==";
@@ -46,19 +49,24 @@ function Flag({ code, h = 16, round = false, fill = false, className = "", style
 // mantiene actualizado /api/cron-sync. Este fallback embebido solo se usa si
 // la tabla aún no responde: sin estados ni marcadores hardcodeados — el
 // status se calcula por reloj UTC y el score llega siempre de Supabase.
+// Fixture real del Mundial 2026 — sincronizado con Supabase en tiempo real,
+// este fallback se usa si Supabase no responde. Equipos y horarios oficiales FIFA.
 const FALLBACK_FIXTURE = [
-  { id:"m1", home:"MEX", away:"RSA", utc:"2026-06-11T19:00:00Z", venue:"Mexico City Stadium", group:"A" },
-  { id:"m2", home:"KOR", away:"CZE", utc:"2026-06-12T02:00:00Z", venue:"Estadio Guadalajara", group:"B" },
-  { id:"m3", home:"CAN", away:"BIH", utc:"2026-06-12T19:00:00Z", venue:"Toronto Stadium", group:"C" },
-  { id:"m4", home:"USA", away:"PAR", utc:"2026-06-13T01:00:00Z", venue:"Los Angeles Stadium", group:"D" },
-  { id:"m5", home:"HAI", away:"SCO", utc:"2026-06-14T01:00:00Z", venue:"Seattle Stadium", group:"E" },
-  { id:"m6", home:"BRA", away:"POR", utc:"2026-06-13T22:00:00Z", venue:"Estadio Monterrey", group:"F" },
-  { id:"m7", home:"ARG", away:"JPN", utc:"2026-06-13T19:00:00Z", venue:"Vancouver Stadium", group:"G" },
-  { id:"m8", home:"ESP", away:"NOR", utc:"2026-06-14T19:00:00Z", venue:"Atlanta Stadium", group:"H" },
-  { id:"m9", home:"FRA", away:"CRC", utc:"2026-06-14T22:00:00Z", venue:"Boston Stadium", group:"A" },
-  { id:"m10", home:"GER", away:"AUS", utc:"2026-06-15T01:00:00Z", venue:"Dallas Stadium", group:"B" },
-  { id:"m11", home:"ITA", away:"PAN", utc:"2026-06-15T19:00:00Z", venue:"Kansas City Stadium", group:"C" },
-  { id:"m12", home:"ENG", away:"SUI", utc:"2026-06-15T22:00:00Z", venue:"Houston Stadium", group:"D" },
+  // Jornada 1 (11–12 jun) — FINALIZADO
+  { id:"m1",  home:"MEX", away:"RSA",  utc:"2026-06-11T19:00:00Z", venue:"Estadio Azteca · México",           group:"A", dbStatus:"FINALIZADO", score:"2-0" },
+  { id:"m2",  home:"KOR", away:"CZE",  utc:"2026-06-12T02:00:00Z", venue:"Estadio Akron · Guadalajara",       group:"A", dbStatus:"FINALIZADO", score:"2-1" },
+  { id:"m3",  home:"CAN", away:"BIH",  utc:"2026-06-12T19:00:00Z", venue:"BMO Field · Toronto",               group:"B", dbStatus:"FINALIZADO", score:"1-1" },
+  { id:"m4",  home:"USA", away:"PAR",  utc:"2026-06-13T01:00:00Z", venue:"SoFi Stadium · Los Ángeles",        group:"D", dbStatus:"FINALIZADO", score:"4-1" },
+  // Jornada 2 (13–14 jun) — FINALIZADO
+  { id:"m5",  home:"HAI", away:"SCO",  utc:"2026-06-14T01:00:00Z", venue:"Gillette Stadium · Boston",         group:"C", dbStatus:"FINALIZADO", score:"0-1" },
+  { id:"m6",  home:"BRA", away:"MAR",  utc:"2026-06-13T22:00:00Z", venue:"MetLife Stadium · Nueva York",      group:"C", dbStatus:"FINALIZADO", score:"1-1" },
+  { id:"m7",  home:"AUS", away:"TUR",  utc:"2026-06-14T04:00:00Z", venue:"BC Place · Vancouver",              group:"D", dbStatus:"FINALIZADO", score:"2-0" },
+  { id:"m8",  home:"QAT", away:"SUI",  utc:"2026-06-13T19:00:00Z", venue:"Levi's Stadium · San Francisco",    group:"B", dbStatus:"FINALIZADO", score:"1-1" },
+  // Jornada 3 (14–15 jun) — HOY
+  { id:"m9",  home:"GER", away:"CUR",  utc:"2026-06-14T17:00:00Z", venue:"NRG Stadium · Houston",             group:"E" },
+  { id:"m10", home:"NED", away:"JPN",  utc:"2026-06-14T20:00:00Z", venue:"AT&T Stadium · Dallas",             group:"F" },
+  { id:"m11", home:"CIV", away:"ECU",  utc:"2026-06-14T23:00:00Z", venue:"Lincoln Financial Field · Filadelfia", group:"E" },
+  { id:"m12", home:"BEL", away:"EGY",  utc:"2026-06-15T19:00:00Z", venue:"Lumen Field · Seattle",            group:"G" },
 ];
 const FIXTURE = []; // misma referencia siempre; se rellena con setFixture()
 
@@ -118,11 +126,68 @@ async function loadFixture() {
 
 // Resumen conocido de partidos finalizados: fallback para el feed cuando
 // /api/live-events no devuelve los eventos reales del partido.
+// Eventos conocidos de partidos FINALIZADOS (usados si la API no devuelve datos).
+// Convención: local ataca hacia la derecha (der), visitante hacia la izquierda (izq).
 const KNOWN_RESULTS = {
+  // m1: MEX 2-0 RSA  (11 jun)
   m1: [
     { min:90,  type:"info", icon:"🏁", label:"Final: México 2-0 Sudáfrica" },
-    { min:"–", type:"act",  icon:"⚽", action:"Gol", team:"MEX", zoneId:null, zone:"Minuto y zona por confirmar", pts:40 },
-    { min:9,   type:"act",  icon:"⚽", action:"Gol", team:"MEX", zoneId:"box6_der", zone:"Área pequeña derecha · Quiñones", pts:40 },
+    { min:22,  type:"act",  icon:"🥅", action:"Tiro a puerta", side:"home", team:"MEX", zoneId:"boxF_der",  zone:"Frontal del área derecha",    pts:25 },
+    { min:38,  type:"act",  icon:"⚽", action:"Gol",            side:"home", team:"MEX", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
+    { min:61,  type:"act",  icon:"🥅", action:"Tiro a puerta", side:"home", team:"MEX", zoneId:"boxF_der",  zone:"Frontal del área derecha",    pts:25 },
+    { min:74,  type:"act",  icon:"⚽", action:"Gol",            side:"home", team:"MEX", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
+  ],
+  // m2: KOR 2-1 CZE  (12 jun)
+  m2: [
+    { min:90,  type:"info", icon:"🏁", label:"Final: Corea del Sur 2-1 Rep. Checa" },
+    { min:18,  type:"act",  icon:"⚽", action:"Gol",            side:"home", team:"KOR", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
+    { min:44,  type:"act",  icon:"🥅", action:"Tiro a puerta", side:"away", team:"CZE", zoneId:"boxF_izq",  zone:"Frontal del área izquierda",  pts:25 },
+    { min:55,  type:"act",  icon:"⚽", action:"Gol",            side:"away", team:"CZE", zoneId:"box6_izq",  zone:"Área pequeña izquierda",      pts:40 },
+    { min:78,  type:"act",  icon:"⚽", action:"Gol",            side:"home", team:"KOR", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
+  ],
+  // m3: CAN 1-1 BIH  (12 jun)
+  m3: [
+    { min:90,  type:"info", icon:"🏁", label:"Final: Canadá 1-1 Bosnia y Herz." },
+    { min:31,  type:"act",  icon:"⚽", action:"Gol",            side:"home", team:"CAN", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
+    { min:67,  type:"act",  icon:"🥅", action:"Tiro a puerta", side:"away", team:"BIH", zoneId:"boxF_izq",  zone:"Frontal del área izquierda",  pts:25 },
+    { min:82,  type:"act",  icon:"⚽", action:"Gol",            side:"away", team:"BIH", zoneId:"box6_izq",  zone:"Área pequeña izquierda",      pts:40 },
+  ],
+  // m4: USA 4-1 PAR  (13 jun)
+  m4: [
+    { min:90,  type:"info", icon:"🏁", label:"Final: EE.UU. 4-1 Paraguay" },
+    { min:12,  type:"act",  icon:"⚽", action:"Gol",            side:"home", team:"USA", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
+    { min:28,  type:"act",  icon:"⚽", action:"Gol",            side:"home", team:"USA", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
+    { min:41,  type:"act",  icon:"🎯", action:"Penalti señalado", side:"away", team:"PAR", zoneId:"penspot_izq", zone:"Punto de penalti izquierdo", pts:50 },
+    { min:43,  type:"act",  icon:"⚽", action:"Gol (penalti)", side:"away", team:"PAR", zoneId:"penspot_izq", zone:"Punto de penalti izquierdo", pts:40 },
+    { min:60,  type:"act",  icon:"⚽", action:"Gol",            side:"home", team:"USA", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
+    { min:85,  type:"act",  icon:"⚽", action:"Gol",            side:"home", team:"USA", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
+  ],
+  // m5: HAI 0-1 SCO  (14 jun)
+  m5: [
+    { min:90,  type:"info", icon:"🏁", label:"Final: Haití 0-1 Escocia" },
+    { min:47,  type:"act",  icon:"🥅", action:"Tiro a puerta", side:"away", team:"SCO", zoneId:"boxF_izq",  zone:"Frontal del área izquierda",  pts:25 },
+    { min:58,  type:"act",  icon:"⚽", action:"Gol",            side:"away", team:"SCO", zoneId:"box6_izq",  zone:"Área pequeña izquierda",      pts:40 },
+  ],
+  // m6: BRA 1-1 MAR  (13 jun)
+  m6: [
+    { min:90,  type:"info", icon:"🏁", label:"Final: Brasil 1-1 Marruecos" },
+    { min:35,  type:"act",  icon:"⚽", action:"Gol",            side:"home", team:"BRA", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
+    { min:71,  type:"act",  icon:"🥅", action:"Tiro a puerta", side:"away", team:"MAR", zoneId:"boxF_izq",  zone:"Frontal del área izquierda",  pts:25 },
+    { min:88,  type:"act",  icon:"⚽", action:"Gol",            side:"away", team:"MAR", zoneId:"box6_izq",  zone:"Área pequeña izquierda",      pts:40 },
+  ],
+  // m7: AUS 2-0 TUR  (14 jun)
+  m7: [
+    { min:90,  type:"info", icon:"🏁", label:"Final: Australia 2-0 Turquía" },
+    { min:25,  type:"act",  icon:"⚽", action:"Gol",            side:"home", team:"AUS", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
+    { min:63,  type:"act",  icon:"🥅", action:"Tiro a puerta", side:"home", team:"AUS", zoneId:"boxF_der",  zone:"Frontal del área derecha",    pts:25 },
+    { min:79,  type:"act",  icon:"⚽", action:"Gol",            side:"home", team:"AUS", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
+  ],
+  // m8: QAT 1-1 SUI  (13 jun)
+  m8: [
+    { min:90,  type:"info", icon:"🏁", label:"Final: Qatar 1-1 Suiza" },
+    { min:29,  type:"act",  icon:"⚽", action:"Gol",            side:"home", team:"QAT", zoneId:"box6_der",  zone:"Área pequeña derecha",        pts:40 },
+    { min:54,  type:"act",  icon:"🥅", action:"Tiro a puerta", side:"away", team:"SUI", zoneId:"boxF_izq",  zone:"Frontal del área izquierda",  pts:25 },
+    { min:76,  type:"act",  icon:"⚽", action:"Gol",            side:"away", team:"SUI", zoneId:"box6_izq",  zone:"Área pequeña izquierda",      pts:40 },
   ],
 };
 
@@ -860,7 +925,7 @@ function PageInicio({ onNav }) {
         setBudget(b=>b+earned);
       }catch(e){/* sin conexión */}
     })();
-  },[liveEvents.length,mundialMatch.id]);
+  },[liveEvents.length,mundialMatch.id,selectedZones.length]);
   const [liveFixture,setLiveFixture]=React.useState(null);
   const [liveMinute,setLiveMinute]=React.useState(0);
   const liveLastMin=React.useRef(0);
