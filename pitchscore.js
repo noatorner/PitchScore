@@ -901,6 +901,9 @@ function PageInicio({ onNav }) {
   // está FINALIZADO y hay eventos cargados. Declarado AQUÍ (después de liveEvents)
   // para evitar temporal dead zone en el array de dependencias.
   const liveSettledRef=React.useRef(false);
+  // Reset del ref al cambiar de partido — crítico: sin esto, el primer partido
+  // que se liquida bloquea todos los demás (el ref queda true para siempre).
+  React.useEffect(()=>{ liveSettledRef.current=false; },[mundialMatch.id]);
   React.useEffect(()=>{
     if(!liveEvents.length||!selectedZones.length) return;
     if(fixtureStatus(mundialMatch)!=="FINALIZADO") return;
@@ -918,11 +921,13 @@ function PageInicio({ onNav }) {
       try{
         const{data:{user}}=await db.auth.getUser();
         if(!user) return;
-        const{data:row}=await db.from('scores').select('total_points,matches_played').eq('user_id',user.id).maybeSingle();
+        const{data:row}=await db.from('scores').select('total_points,matches_played,budget').eq('user_id',user.id).maybeSingle();
         const newTotal=((row?.total_points)||0)+earned;
         const newPlayed=((row?.matches_played)||0)+1;
-        await db.from('scores').upsert({user_id:user.id,total_points:newTotal,matches_played:newPlayed},{onConflict:'user_id'});
-        setBudget(b=>b+earned);
+        const newBudget=((row?.budget)||ME.budget)+earned;
+        await db.from('scores').upsert({user_id:user.id,total_points:newTotal,matches_played:newPlayed,budget:newBudget},{onConflict:'user_id'});
+        ME.budget=newBudget;
+        setBudget(newBudget);
       }catch(e){/* sin conexión */}
     })();
   },[liveEvents.length,mundialMatch.id,selectedZones.length]);
