@@ -1979,7 +1979,7 @@ function PagePartidos({ onNav }) {
             return (
               <div key={cat} className="ps-day-block">
                 <div className="ps-day-head"><span className="ps-day-num">{cat}</span><span className="ps-day-count">{list.length} {list.length===1?"partido":"partidos"}</span></div>
-                <div className="ps-day-list">{list.map(m=><HistoricMatchCard key={m.id} m={m} onPlay={(mm)=>{ window.__KN_MUNDIAL_REQUEST=mm.id; onNav("inicio"); }}/>)}</div>
+                <div className="ps-day-list">{list.map(m=><HistoricMatchCard key={m.id} m={m} onPlay={(mm)=>{ window.__KN_HISTORIC_REQUEST=mm.id; onNav("inicio"); }}/>)}</div>
               </div>
             );
           })}
@@ -2104,15 +2104,17 @@ function PageReservas({ onNav }) {
             const zones=activeByMatch[mid];
             const totalCost=zones.reduce((s,r)=>s+(r.price||0),0);
             const isOpen=openMatches.has(mid);
+            const mStatus=(match.dbStatus==="FINALIZADO"||match.dbStatus==="CANCELADO")?match.dbStatus:fixtureStatus(match);
+            const canEdit=mStatus==="ABIERTO";
             return(
               <div className="ps-res-active" key={mid}>
                 <div className="ps-res-banner" style={{cursor:"pointer"}} onClick={()=>toggleMatch(mid)}>
                   <div className="ps-res-banner-l">
-                    <div className="ps-res-banner-eb">RESERVA ACTIVA · {fixtureStatus(match)} {isOpen?"▴":"▾"}</div>
+                    <div className="ps-res-banner-eb">RESERVA ACTIVA · {mStatus} {isOpen?"▴":"▾"}</div>
                     <div className="ps-res-banner-teams"><span><Flag code={match.home} h={24}/> {COUNTRY_NAME[match.home].toUpperCase()}</span><span className="ps-res-banner-vs">VS</span><span>{COUNTRY_NAME[match.away].toUpperCase()} <Flag code={match.away} h={24}/></span></div>
                     <div className="ps-res-banner-meta">{match.date} · {match.time} · {zones.length} zonas · {totalCost} pts</div>
                   </div>
-                  <div className="ps-res-banner-r"><button className="ps-btn ps-btn-dark ps-btn-sm" onClick={(e)=>{ e.stopPropagation(); window.__KN_MUNDIAL_REQUEST=mid; onNav("inicio"); }}>EDITAR</button></div>
+                  <div className="ps-res-banner-r"><button className="ps-btn ps-btn-dark ps-btn-sm" onClick={(e)=>{ e.stopPropagation(); window.__KN_MUNDIAL_REQUEST=mid; onNav("inicio"); }}>{canEdit?"EDITAR":"VER →"}</button></div>
                 </div>
                 {isOpen&&<div className="ps-res-zones-grid">
                   {zones.map(r=>{
@@ -2140,24 +2142,34 @@ function PageReservas({ onNav }) {
       {tab==="pasadas"&&(
         pastIds.length===0
           ?(<div className="ps-empty-state"><div className="ps-empty-icon">📭</div><div className="ps-empty-t">Sin reservas pasadas</div><div className="ps-empty-d">Aquí aparecerán tus reservas de partidos anteriores.</div></div>)
-          :(<div className="ps-res-past">
+          :(<div className="ps-past-grid">
               {pastIds.map(mid=>{
                 const match=FIXTURE.find(m=>m.id===mid);
                 const zones=byMatch[mid];
                 const spent=zones.reduce((s,r)=>s+(r.price||0),0);
+                const earned=typeof localStorage!=="undefined"?parseInt(localStorage.getItem(`kn_settled_${mid}`)||"0")||0:0;
                 return(
-                  <div className="ps-past-card" key={mid}>
-                    <div className="ps-past-l">
-                      <div className="ps-past-date">{match?match.date:"—"}</div>
-                      <div className="ps-past-teams">
-                        {match?<><span><Flag code={match.home} h={16}/> {COUNTRY_NAME[match.home]}</span><span className="ps-past-score">{match.score||"VS"}</span><span>{COUNTRY_NAME[match.away]} <Flag code={match.away} h={16}/></span></>:<span>{mid}</span>}
-                      </div>
+                  <div className="ps-pvc" key={mid}>
+                    <div className="ps-pvc-head">
+                      <span className="ps-pvc-group">{match?`GRUPO ${match.group}`:"—"}</span>
+                      <span className="ps-pvc-date">{match?match.date:"—"}</span>
                     </div>
-                    <div className="ps-past-zones">{zones.map(r=>{const z=ZONES.find(z=>z.id===r.zone_id);return z?z.name:r.zone_id;}).join(" · ")}</div>
-                    <div className="ps-past-r">
-                      {(()=>{const earned=typeof localStorage!=="undefined"?parseInt(localStorage.getItem(`kn_settled_${mid}`)||"0")||0:0;return(<><div><div className="ps-past-l-lab">INVERTIDO</div><div className="ps-past-v">{spent} pts</div></div><div><div className="ps-past-l-lab">GANADOS</div><div className={"ps-past-v"+(earned>0?" ps-past-v-earned":"")}>{earned>0?"+"+earned+" pts":"—"}</div></div><div><div className="ps-past-l-lab">ZONAS</div><div className="ps-past-v">{zones.length}</div></div></>);})()}
-                      <button className="ps-btn ps-btn-dark ps-btn-sm" style={{marginTop:"8px"}} onClick={()=>{ window.__KN_MUNDIAL_REQUEST=mid; onNav("inicio"); }}>VER PARTIDO →</button>
+                    <div className="ps-pvc-match">
+                      <div className="ps-pvc-team"><Flag code={match?.home} h={22}/><span>{COUNTRY_NAME[match?.home]||"—"}</span></div>
+                      <div className="ps-pvc-score">{match?.score||"VS"}</div>
+                      <div className="ps-pvc-team ps-pvc-team-r"><span>{COUNTRY_NAME[match?.away]||"—"}</span><Flag code={match?.away} h={22}/></div>
                     </div>
+                    <div className="ps-pvc-sep"/>
+                    <div className="ps-pvc-zones">
+                      {zones.map(r=>{const z=ZONES.find(z=>z.id===r.zone_id);return(<span key={r.zone_id} className="ps-pvc-zone-pill">{z?z.name:r.zone_id}</span>);})}
+                    </div>
+                    <div className="ps-pvc-sep"/>
+                    <div className="ps-pvc-stats">
+                      <div className="ps-pvc-stat"><div className="ps-pvc-stat-l">INVERTIDO</div><div className="ps-pvc-stat-v">{spent} <span className="ps-pvc-stat-unit">pts</span></div></div>
+                      <div className="ps-pvc-stat"><div className="ps-pvc-stat-l">GANADOS</div><div className={"ps-pvc-stat-v"+(earned>0?" is-win":"")}>{earned>0?"+"+earned:<span style={{color:"#8a7d62"}}>—</span>} {earned>0&&<span className="ps-pvc-stat-unit">pts</span>}</div></div>
+                      <div className="ps-pvc-stat"><div className="ps-pvc-stat-l">ZONAS</div><div className="ps-pvc-stat-v">{zones.length}</div></div>
+                    </div>
+                    <button className="ps-btn ps-btn-dark ps-btn-sm ps-pvc-btn" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=mid; onNav("inicio"); }}>VER PARTIDO →</button>
                   </div>
                 );
               })}

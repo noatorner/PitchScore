@@ -691,18 +691,26 @@ input { font-family: inherit; }
 .ps-rcc-eb { font-family: var(--kn-body); font-weight: 600; font-size: 10px; letter-spacing: 0.18em; color: #6c604a; }
 .ps-rcc-time { font-family: 'Anton'; font-size: 30px; color: #b94234; }
 .ps-rcc-r { font-size: 13px; color: #6c604a; line-height: 1.5; }
-.ps-res-past { display: flex; flex-direction: column; gap: 10px; }
-.ps-past-card { background: #e6dcc4; border: 1px solid #cdb98a; border-radius: 6px; padding: 14px 18px; display: grid; grid-template-columns: 200px 1fr auto; gap: 18px; align-items: center; }
-.ps-past-l { display: flex; flex-direction: column; gap: 4px; }
-.ps-past-date { font-family: var(--kn-body); font-weight: 600; font-size: 11px; letter-spacing: 0.14em; color: #6c604a; }
-.ps-past-teams { display: flex; align-items: center; gap: 10px; font-family: var(--kn-body); font-weight: 600; font-size: 13px; flex-wrap: wrap; }
-.ps-past-score { font-family: 'Anton'; font-size: 18px; color: #b94234; padding: 0 4px; }
-.ps-past-zones { font-size: 12px; color: #6c604a; }
-.ps-past-r { display: flex; gap: 16px; padding-left: 20px; border-left: 3px solid #cdb98a; }
-.ps-past-r.is-win { border-left-color: #56823c; }
-.ps-past-r.is-loss { border-left-color: #b94234; }
-.ps-past-l-lab { font-size: 9px; letter-spacing: 0.14em; color: #6c604a; font-weight: 600; }
-.ps-past-v { font-family: 'Anton'; font-size: 22px; }
+/* Pasadas — grid de fichas verticales */
+.ps-past-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 14px; }
+.ps-pvc { background: #e6dcc4; border: 1px solid #cdb98a; border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.ps-pvc-head { display: flex; justify-content: space-between; align-items: center; }
+.ps-pvc-group { font-family: var(--kn-body); font-weight: 700; font-size: 10px; letter-spacing: 0.18em; color: #6c604a; }
+.ps-pvc-date { font-family: var(--kn-body); font-weight: 600; font-size: 10px; letter-spacing: 0.1em; color: #8a7d62; }
+.ps-pvc-match { display: flex; align-items: center; gap: 6px; justify-content: space-between; }
+.ps-pvc-team { display: flex; align-items: center; gap: 6px; font-family: var(--kn-body); font-weight: 700; font-size: 13px; flex: 1; }
+.ps-pvc-team-r { flex-direction: row-reverse; text-align: right; }
+.ps-pvc-score { font-family: 'Anton'; font-size: 22px; color: #b94234; white-space: nowrap; padding: 0 4px; }
+.ps-pvc-sep { height: 1px; background: #d2c19a; }
+.ps-pvc-zones { display: flex; flex-wrap: wrap; gap: 5px; }
+.ps-pvc-zone-pill { background: #efe5cc; border: 1px solid #d2c19a; border-radius: 20px; padding: 3px 10px; font-size: 11px; font-family: var(--kn-body); font-weight: 600; color: #2a2620; }
+.ps-pvc-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.ps-pvc-stat { display: flex; flex-direction: column; gap: 3px; }
+.ps-pvc-stat-l { font-size: 9px; letter-spacing: 0.14em; color: #6c604a; font-weight: 600; }
+.ps-pvc-stat-v { font-family: 'Anton'; font-size: 20px; color: #2a2620; line-height: 1.1; }
+.ps-pvc-stat-v.is-win { color: #3a6e28; }
+.ps-pvc-stat-unit { font-family: var(--kn-body); font-size: 11px; font-weight: 600; color: #6c604a; }
+.ps-pvc-btn { margin-top: 2px; }
 .ps-empty-state { text-align: center; padding: 60px 20px; display: flex; flex-direction: column; align-items: center; gap: 8px; }
 .ps-empty-icon { font-size: 48px; }
 .ps-empty-t { font-family: 'Anton'; font-size: 22px; }
@@ -874,7 +882,8 @@ input { font-family: inherit; }
   .ps-rank-head, .ps-rank-row { grid-template-columns: 44px 1fr 80px 90px; }
   .ps-rank-head span:nth-child(3), .ps-rank-row .ps-rr-level { display: none; }
   .ps-podium { padding: 16px 8px 0; gap: 8px; }
-  .ps-res-banner, .ps-past-card { grid-template-columns: 1fr; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .ps-res-banner { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .ps-past-grid { grid-template-columns: 1fr; }
   .ps-res-zones-grid { grid-template-columns: 1fr; }
   .ps-stats-grid { grid-template-columns: 1fr 1fr; }
   .ps-how-grid { grid-template-columns: 1fr 1fr; }
