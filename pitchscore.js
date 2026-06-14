@@ -975,7 +975,8 @@ function PageInicio({ onNav }) {
       const lm=liveMatchRef.current;
       const matchId=(lm&&lm.apiMatchId)||mundialMatch.id;
       try{
-        const res=await fetch(`/api/live-events?match_id=${encodeURIComponent(matchId)}&since=${liveLastMin.current}`);
+        const homeCode=(lm&&lm.home)||mundialMatch.home;
+        const res=await fetch(`/api/live-events?match_id=${encodeURIComponent(matchId)}&since=${liveLastMin.current}&home=${encodeURIComponent(homeCode)}`);
         if (!res.ok) return;
         const data=await res.json();
         if (!active||!data.events||!data.events.length) return;
@@ -1011,7 +1012,7 @@ function PageInicio({ onNav }) {
         const mine=dayFixture.find(f=>f.home===mundialMatch.home&&f.away===mundialMatch.away);
         if (mine&&mine.apiMatchId) {
           try{
-            const res=await fetch(`/api/live-events?match_id=${encodeURIComponent(mine.apiMatchId)}&since=0`);
+            const res=await fetch(`/api/live-events?match_id=${encodeURIComponent(mine.apiMatchId)}&since=0&home=${encodeURIComponent(mundialMatch.home)}`);
             if (res.ok) {
               const d=await res.json();
               events=(d.events||[]).map(e=>({...e,team:e.side==="home"?mundialMatch.home:mundialMatch.away})).reverse();
