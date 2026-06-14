@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Kancha · Panel de Control</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg:   #0d1008;
+    --card: #13160f;
+    --card2:#1a1e14;
+    --border:#2a3020;
+    --green:#5a9e4a;
+    --red:  #b94234;
+    --gold: #f4a535;
+    --blue: #4a7ab5;
+    --fg:   #e8e0cc;
+    --muted:#8a8a7a;
+    --font: 'Inter', system-ui, sans-serif;
+  }
+  body { background: var(--bg); color: var(--fg); font-family: var(--font); min-height: 100vh; }
+
+  /* ── Header ── */
+  .hdr { background: #0a0d06; border-bottom: 1px solid var(--border); padding: 14px 20px;
+         display: flex; align-items: center; gap: 12px; position: sticky; top: 0; z-index: 10; }
+  .hdr-logo { font-size: 22px; font-weight: 900; letter-spacing: -0.5px; color: var(--gold); }
+  .hdr-sub  { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; }
+  .hdr-right { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+
+  /* ── Buttons ── */
+  .btn { border: none; border-radius: 8px; padding: 8px 16px; font-size: 13px; font-weight: 600;
+         cursor: pointer; transition: opacity .15s; }
+  .btn:hover { opacity: .8; }
+  .btn-green  { background: var(--green);  color: #fff; }
+  .btn-red    { background: var(--red);    color: #fff; }
+  .btn-ghost  { background: var(--card2); color: var(--fg); border: 1px solid var(--border); }
+  .btn-sm { padding: 5px 10px; font-size: 12px; border-radius: 6px; }
+
+  /* ── Layout ── */
+  .wrap  { max-width: 1100px; margin: 0 auto; padding: 20px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  @media (max-width: 700px) { .grid2, .grid3 { grid-template-columns: 1fr; } }
+
+  /* ── Cards ── */
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
+  .card-title { font-size: 10px; font-weight: 700; text-transform: uppercase;
+                letter-spacing: 1.2px; color: var(--muted); margin-bottom: 12px; }
+
+  /* ── Stat chips ── */
+  .stat-chip { text-align: center; }
+  .stat-chip .val { font-size: 28px; font-weight: 900; color: var(--gold); }
+  .stat-chip .lbl { font-size: 11px; color: var(--muted); margin-top: 2px; }
+
+  /* ── Status pill ── */
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+  .pill-live    { background: #b9423420; color: var(--red);   border: 1px solid var(--red); }
+  .pill-done    { background: #2a3020;   color: var(--muted); }
+  .pill-next    { background: #4a7ab520; color: var(--blue);  border: 1px solid var(--blue); }
+  .pill-open    { background: #5a9e4a20; color: var(--green); border: 1px solid var(--green); }
+
+  /* ── Match rows ── */
+  .match-row { display: flex; align-items: center; gap: 10px; padding: 10px 0;
+               border-bottom: 1px solid var(--border); }
+  .match-row:last-child { border-bottom: none; }
+  .match-teams { font-weight: 700; font-size: 14px; flex: 1; }
+  .match-score { font-size: 13px; color: var(--muted); }
+  .match-id    { font-size: 10px; color: var(--muted); }
+
+  /* ── Events table ── */
+  .ev-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .ev-table th { text-align: left; color: var(--muted); font-size: 10px; font-weight: 700;
+                 text-transform: uppercase; letter-spacing: .8px; padding: 6px 8px;
+                 border-bottom: 1px solid var(--border); }
+  .ev-table td { padding: 8px; border-bottom: 1px solid #1e2218; vertical-align: middle; }
+  .ev-table tr:last-child td { border-bottom: none; }
+  .ev-icon  { font-size: 18px; }
+  .ev-zone  { font-size: 11px; color: var(--muted); font-family: monospace; }
+  .ev-pts   { font-weight: 700; color: var(--gold); }
+  .ev-scored { color: var(--green); font-size: 11px; }
+  .ev-time  { color: var(--muted); font-size: 12px; }
+  .badge-manual { background: #4a7ab520; color: var(--blue); border: 1px solid var(--blue);
+                  border-radius: 4px; padding: 1px 6px; font-size: 10px; font-weight: 700; }
+
+  /* ── Form ── */
+  .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .form-field { display: flex; flex-direction: column; gap: 4px; }
+  .form-field label { font-size: 11px; color: var(--muted); font-weight: 600; }
+  .form-field select, .form-field input {
+    background: var(--card2); color: var(--fg); border: 1px solid var(--border);
+    border-radius: 6px; padding: 8px 10px; font-size: 13px;
+  }
+  .form-field select:focus, .form-field input:focus {
+    outline: none; border-color: var(--green);
+  }
+  .form-full { grid-column: 1 / -1; }
+
+  /* ── Alert / Toast ── */
+  .toast { position: fixed; bottom: 20px; right: 20px; background: var(--card);
+           border: 1px solid var(--green); border-radius: 10px; padding: 12px 18px;
+           font-size: 14px; font-weight: 600; color: var(--green); z-index: 999;
+           transform: translateY(80px); opacity: 0; transition: all .3s; }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.error { border-color: var(--red); color: var(--red); }
+
+  /* ── Spinner ── */
+  .spin { display: inline-block; width: 14px; height: 14px; border: 2px solid transparent;
+          border-top-color: currentColor; border-radius: 50%; animation: spin .6s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  /* ── Log ── */
+  .log { background: #090b06; border: 1px solid var(--border); border-radius: 8px;
+         padding: 10px 14px; font-family: monospace; font-size: 12px; color: #8a8; max-height: 200px;
+         overflow-y: auto; white-space: pre-wrap; word-break: break-all; }
+
+  /* ── Secret input ── */
+  #secret-overlay { position: fixed; inset: 0; background: #0d1008; z-index: 100;
+                    display: flex; align-items: center; justify-content: center; }
+  .secret-box { background: var(--card); border: 1px solid var(--border); border-radius: 16px;
+                padding: 32px; width: 320px; text-align: center; }
+  .secret-box h2 { font-size: 18px; font-weight: 800; margin-bottom: 6px; color: var(--gold); }
+  .secret-box p  { color: var(--muted); font-size: 13px; margin-bottom: 20px; }
+
+  /* ─ Section spacer ── */
+  .sec { margin-top: 24px; }
+  .sec-title { font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase;
+               letter-spacing: 1px; margin-bottom: 10px; }
+
+  /* ─ Agent status ── */
+  .agent-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); display: inline-block; }
+  .agent-dot.active { background: var(--green); box-shadow: 0 0 6px var(--green); animation: pulse 1.5s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+  .empty { text-align: center; color: var(--muted); padding: 32px; font-size: 13px; }
+</style>
+</head>
+<body>
+
+<!-- Overlay de contraseña -->
+<div id="secret-overlay">
+  <div class="secret-box">
+    <div style="font-size:32px;margin-bottom:8px">⚽</div>
+    <h2>KANCHA ADMIN</h2>
+    <p>Introduce el AGENT_SECRET para continuar</p>
+    <div class="form-field" style="margin-bottom:12px">
+      <input type="password" id="secret-input" placeholder="Contraseña..." onkeydown="if(event.key==='Enter')login()"/>
+    </div>
+    <button class="btn btn-green" style="width:100%" onclick="login()">Entrar</button>
+    <div id="secret-err" style="color:var(--red);font-size:12px;margin-top:8px"></div>
+  </div>
+</div>
+
+<header class="hdr">
+  <div>
+    <div class="hdr-logo">⚽ KANCHA</div>
+    <div class="hdr-sub">Panel de Control · Agente</div>
+  </div>
+  <div class="hdr-right">
+    <span class="agent-dot" id="agent-dot"></span>
+    <span id="agent-status" style="font-size:12px;color:var(--muted)">—</span>
+    <button class="btn btn-green btn-sm" onclick="triggerSync()">
+      <span id="sync-icon">↺</span> Sincronizar ahora
+    </button>
+    <button class="btn btn-ghost btn-sm" onclick="loadData()">↺ Refrescar</button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- Stats -->
+  <div class="grid3 sec">
+    <div class="card stat-chip"><div class="val" id="stat-live">—</div><div class="lbl">Partidos EN VIVO</div></div>
+    <div class="card stat-chip"><div class="val" id="stat-events">—</div><div class="lbl">Eventos hoy</div></div>
+    <div class="card stat-chip"><div class="val" id="stat-scored">—</div><div class="lbl">Puntos otorgados</div></div>
+  </div>
+
+  <!-- Matches + Manual event -->
+  <div class="grid2 sec">
+
+    <!-- Partidos -->
+    <div class="card">
+      <div class="card-title">Partidos</div>
+      <div id="matches-list"><div class="empty">Cargando...</div></div>
+    </div>
+
+    <!-- Inyectar evento manual -->
+    <div class="card">
+      <div class="card-title">Inyectar Evento Manual</div>
+      <div style="font-size:12px;color:var(--muted);margin-bottom:12px">
+        Usa esto si el agente no detectó un evento. Se otorgarán puntos automáticamente.
+      </div>
+      <form id="manual-form" onsubmit="submitManual(event)">
+        <div class="form-grid">
+          <div class="form-field form-full">
+            <label>Partido</label>
+            <select id="manual-match" required>
+              <option value="">Selecciona partido...</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Zona</label>
+            <select id="manual-zone" required>
+              <optgroup label="Goles / Áreas">
+                <option value="box6_der">⚽ Área pequeña der (gol local)</option>
+                <option value="box6_izq">⚽ Área pequeña izq (gol visitante)</option>
+                <option value="boxF_der">Frontal área der</option>
+                <option value="boxF_izq">Frontal área izq</option>
+                <option value="boxN_der">Área grande N der</option>
+                <option value="boxN_izq">Área grande N izq</option>
+                <option value="boxS_der">Área grande S der</option>
+                <option value="boxS_izq">Área grande S izq</option>
+              </optgroup>
+              <optgroup label="Penaltis">
+                <option value="penspot_der">🥅 Penalti der (local)</option>
+                <option value="penspot_izq">🥅 Penalti izq (visitante)</option>
+              </optgroup>
+              <optgroup label="Córners">
+                <option value="corner_n_der">🚩 Córner Norte der</option>
+                <option value="corner_n_izq">🚩 Córner Norte izq</option>
+                <option value="corner_s_der">🚩 Córner Sur der</option>
+                <option value="corner_s_izq">🚩 Córner Sur izq</option>
+              </optgroup>
+              <optgroup label="Mediocampo">
+                <option value="med_1">Mediocampo sector 1</option>
+                <option value="med_2">Mediocampo sector 2</option>
+                <option value="med_3">Mediocampo sector 3</option>
+                <option value="med_0">Mediocampo sector 0</option>
+              </optgroup>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Tipo de evento</label>
+            <select id="manual-icon" onchange="autoFillEvent(this.value)">
+              <option value="⚽|Gol|180">⚽ Gol</option>
+              <option value="⚽|Gol (penalti)|220">⚽ Gol de penalti</option>
+              <option value="⚽|Autogol|80">⚽ Autogol</option>
+              <option value="🚩|Córner|60">🚩 Córner</option>
+              <option value="🥅|Penalti|100">🥅 Penalti (sin gol)</option>
+              <option value="🟥|Tarjeta roja|10">🟥 Tarjeta roja</option>
+              <option value="📺|Gol anulado VAR|0">📺 Gol anulado (VAR)</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label>Puntos</label>
+            <input type="number" id="manual-pts" value="180" min="0" max="500" required/>
+          </div>
+          <div class="form-field">
+            <label>Etiqueta</label>
+            <input type="text" id="manual-label" value="Gol" required/>
+          </div>
+          <div class="form-field">
+            <label>Minuto</label>
+            <input type="number" id="manual-min" value="45" min="0" max="120"/>
+          </div>
+          <div class="form-field form-full">
+            <label>Jugador (opcional)</label>
+            <input type="text" id="manual-player" placeholder="Nombre del jugador..."/>
+          </div>
+          <div class="form-full">
+            <button type="submit" class="btn btn-green" style="width:100%">
+              ✓ Inyectar evento y otorgar puntos
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Log de eventos del agente -->
+  <div class="sec">
+    <div class="sec-title">Eventos detectados por el agente</div>
+    <div class="card" style="padding:0;overflow:hidden">
+      <div id="events-container">
+        <table class="ev-table">
+          <thead>
+            <tr>
+              <th></th><th>Partido</th><th>Min</th><th>Evento</th><th>Zona</th>
+              <th>Pts</th><th>Puntuado</th><th>Origen</th>
+            </tr>
+          </thead>
+          <tbody id="events-body">
+            <tr><td colspan="8" class="empty">Cargando eventos...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- Log de ejecución -->
+  <div class="sec">
+    <div class="sec-title">Log de la última sync</div>
+    <div class="log" id="sync-log">—</div>
+  </div>
+
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── Estado ───────────────────────────────────────────────────────────────
+
+let SECRET = '';
+let DATA   = { matches: [], events: [] };
+
+// ─── Auth ──────────────────────────────────────────────────────────────────
+
+async function login() {
+  const s = document.getElementById('secret-input').value.trim();
+  if (!s) return;
+
+  // Test the secret
+  const r = await fetch('/api/admin-events', {
+    headers: { 'X-Agent-Secret': s }
+  });
+
+  if (r.ok) {
+    SECRET = s;
+    document.getElementById('secret-overlay').style.display = 'none';
+    const d = await r.json();
+    applyData(d);
+    setInterval(loadData, 30000); // auto-refresh cada 30s
+  } else {
+    document.getElementById('secret-err').textContent = 'Contraseña incorrecta';
+  }
+}
+
+// ─── Carga de datos ───────────────────────────────────────────────────────
+
+async function loadData() {
+  try {
+    const r = await fetch('/api/admin-events', {
+      headers: { 'X-Agent-Secret': SECRET }
+    });
+    if (!r.ok) { showToast('Error al cargar datos', true); return; }
+    const d = await r.json();
+    applyData(d);
+  } catch (e) {
+    showToast(e.message, true);
+  }
+}
+
+function applyData(d) {
+  DATA = d;
+  renderMatches(d.matches || []);
+  renderEvents(d.events   || []);
+  updateStats(d.matches, d.events);
+
+  // Popular select de matches
+  const sel = document.getElementById('manual-match');
+  sel.innerHTML = '<option value="">Selecciona partido...</option>';
+  (d.matches || []).forEach(m => {
+    const o = document.createElement('option');
+    o.value = m.id;
+    o.textContent = `${m.home} vs ${m.away} · ${m.status}`;
+    sel.appendChild(o);
+  });
+}
+
+// ─── Renderizado ──────────────────────────────────────────────────────────
+
+function renderMatches(matches) {
+  const el = document.getElementById('matches-list');
+  if (!matches.length) { el.innerHTML = '<div class="empty">Sin partidos</div>'; return; }
+
+  el.innerHTML = matches.map(m => {
+    const pill = {
+      'EN VIVO':   '<span class="pill pill-live">EN VIVO</span>',
+      'FINALIZADO':'<span class="pill pill-done">FINALIZADO</span>',
+      'ABIERTO':   '<span class="pill pill-open">ABIERTO</span>',
+      'PROXIMO':   '<span class="pill pill-next">PRÓXIMO</span>',
+    }[m.status] || `<span class="pill">${m.status}</span>`;
+
+    return `
+      <div class="match-row">
+        <div>
+          <div class="match-teams">${m.home} vs ${m.away}</div>
+          <div class="match-id">${m.id} · ${m.kickoff_utc?.slice(0,16).replace('T',' ')} UTC</div>
+        </div>
+        ${pill}
+        <div class="match-score">${m.score || '—'}</div>
+      </div>`;
+  }).join('');
+}
+
+function renderEvents(events) {
+  const tbody = document.getElementById('events-body');
+  if (!events.length) {
+    tbody.innerHTML = '<tr><td colspan="8" class="empty">Aún no hay eventos registrados</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = events.map(e => {
+    const isManual = e.event_type === 'manual';
+    return `
+      <tr>
+        <td class="ev-icon">${e.icon || '⚽'}</td>
+        <td>${e.match_id}</td>
+        <td class="ev-time">${e.minute}'</td>
+        <td>${e.label || e.event_type}</td>
+        <td class="ev-zone">${e.zone_id}</td>
+        <td class="ev-pts">${e.pts_value > 0 ? '+' + e.pts_value : '—'}</td>
+        <td>${e.scored ? `<span class="ev-scored">✓ ${e.scored_count || ''}</span>` : '<span style="color:var(--muted)">—</span>'}</td>
+        <td>${isManual ? '<span class="badge-manual">MANUAL</span>' : '<span style="color:var(--muted);font-size:11px">agente</span>'}</td>
+      </tr>`;
+  }).join('');
+}
+
+function updateStats(matches, events) {
+  const live    = (matches || []).filter(m => m.status === 'EN VIVO').length;
+  const today   = (events  || []).length;
+  const scored  = (events  || []).filter(e => e.scored).reduce((s, e) => s + (e.scored_count || 0) * (e.pts_value || 0), 0);
+
+  document.getElementById('stat-live').textContent   = live;
+  document.getElementById('stat-events').textContent = today;
+  document.getElementById('stat-scored').textContent = scored.toLocaleString('es-ES') + ' pts';
+
+  const dot    = document.getElementById('agent-dot');
+  const status = document.getElementById('agent-status');
+  if (live > 0) {
+    dot.className    = 'agent-dot active';
+    status.textContent = `Agente activo · ${live} partido${live > 1 ? 's' : ''} en vivo`;
+    status.style.color = 'var(--green)';
+  } else {
+    dot.className    = 'agent-dot';
+    status.textContent = 'Sin partidos en vivo';
+    status.style.color = 'var(--muted)';
+  }
+}
+
+// ─── Sync manual ──────────────────────────────────────────────────────────
+
+async function triggerSync() {
+  const icon = document.getElementById('sync-icon');
+  icon.innerHTML = '<span class="spin">↺</span>';
+  document.getElementById('sync-log').textContent = 'Sincronizando...';
+
+  try {
+    const r = await fetch('/api/admin-events?action=sync', {
+      method: 'POST',
+      headers: { 'X-Agent-Secret': SECRET }
+    });
+    const d = await r.json();
+    document.getElementById('sync-log').textContent = JSON.stringify(d, null, 2);
+    showToast(d.ok ? `✓ Sync completada · ${d.liveMatches || 0} partido(s)` : '⚠ ' + (d.error || 'Error'));
+    await loadData();
+  } catch (e) {
+    document.getElementById('sync-log').textContent = e.message;
+    showToast(e.message, true);
+  } finally {
+    icon.textContent = '↺';
+  }
+}
+
+// ─── Evento manual ────────────────────────────────────────────────────────
+
+function autoFillEvent(val) {
+  const parts = val.split('|');
+  if (parts.length < 3) return;
+  document.getElementById('manual-label').value = parts[1];
+  document.getElementById('manual-pts').value   = parts[2];
+}
+
+async function submitManual(e) {
+  e.preventDefault();
+  const match_id    = document.getElementById('manual-match').value;
+  const zone_id     = document.getElementById('manual-zone').value;
+  const iconVal     = document.getElementById('manual-icon').value.split('|')[0];
+  const pts_value   = document.getElementById('manual-pts').value;
+  const label       = document.getElementById('manual-label').value;
+  const minute      = document.getElementById('manual-min').value;
+  const player_name = document.getElementById('manual-player').value;
+
+  if (!match_id || !zone_id) { showToast('Selecciona partido y zona', true); return; }
+
+  try {
+    const r = await fetch('/api/admin-events', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Agent-Secret': SECRET },
+      body: JSON.stringify({ match_id, zone_id, pts_value: Number(pts_value), icon: iconVal, label, minute: Number(minute), player_name }),
+    });
+    const d = await r.json();
+    if (d.ok) {
+      showToast(`✓ Evento inyectado · ${d.awarded} usuario(s) premiado(s)`);
+      await loadData();
+    } else {
+      showToast('Error: ' + (d.error || 'desconocido'), true);
+    }
+  } catch (err) {
+    showToast(err.message, true);
+  }
+}
+
+// ─── Toast ────────────────────────────────────────────────────────────────
+
+function showToast(msg, isError = false) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (isError ? ' error' : '');
+  setTimeout(() => { t.className = 'toast'; }, 3500);
+}
+
+// ─── Check if no secret needed (dev) ─────────────────────────────────────
+// Si no hay AGENT_SECRET configurado, la API devuelve 200 sin auth
+window.addEventListener('load', async () => {
+  try {
+    const r = await fetch('/api/admin-events');
+    if (r.ok) {
+      SECRET = '';
+      document.getElementById('secret-overlay').style.display = 'none';
+      const d = await r.json();
+      applyData(d);
+      setInterval(loadData, 30000);
+    }
+  } catch (e) {}
+});
+</script>
+</body>
+</html>
