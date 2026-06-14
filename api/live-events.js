@@ -45,7 +45,8 @@ function mapEvent(ev, homeName) {
   else if (/goal/.test(t))             { zoneId = `box6_${side}`; pts = 40; icon = "⚽"; action = "Gol"; }
   else if (/pen/.test(t))              { zoneId = `penspot_${side}`; pts = 50; icon = "🎯"; action = "Penalti señalado"; }
   else if (/shot|attempt/.test(t))     { zoneId = `boxF_${side}`; pts = 25; icon = "🥅"; action = "Tiro a puerta"; }
-  else if (/card|yellow|red/.test(t))  { zoneId = "med_1"; pts = 0; icon = "🟨"; action = "Tarjeta"; }
+  else if (/red.?card/.test(t))         { zoneId = `med_${(min%4)+1}`; pts = 10; icon = "🟥"; action = "Tarjeta roja"; }
+  else if (/card|yellow/.test(t))       { zoneId = `med_${(min%4)+1}`; pts = 5;  icon = "🟨"; action = "Tarjeta amarilla"; }
   else return null;
 
   return {
