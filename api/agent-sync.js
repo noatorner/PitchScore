@@ -259,11 +259,8 @@ async function awardPointsForZone(matchId, zoneId, pts, sbSvc) {
 module.exports = async (req, res) => {
   res.setHeader('Cache-Control', 'no-store');
 
-  // Protección opcional por cabecera secreta
-  const agentSecret = process.env.AGENT_SECRET;
-  if (agentSecret && req.headers['x-agent-secret'] !== agentSecret) {
-    return res.status(401).json({ error: 'Unauthorized' });
-  }
+  // agent-sync es llamado por cron externo (cron-job.org) — no requiere secreto.
+  // La protección por AGENT_SECRET la usa admin-events.js.
 
   // Service key obligatoria
   const serviceKey = process.env.SUPABASE_SERVICE_KEY;
