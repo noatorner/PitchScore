@@ -1610,33 +1610,53 @@ function ZoneList({ zones, selectedIds, onPick }) {
 }
 
 function HowItWorks() {
-  const steps=[
-    {n:"01",title:"ELIGE TUS ZONAS",desc:"Reserva hasta 5 zonas del campo con tu presupuesto inicial.",icon:"cursor",accent:"gold"},
-    {n:"02",title:"MIRA EL PARTIDO",desc:"En vivo desde el estadio o donde quieras seguir el encuentro.",icon:"tv",accent:"green"},
-    {n:"03",title:"SUMA PUNTOS",desc:"Cada acción en tus zonas reservadas suma puntos al marcador.",icon:"ball",accent:"orange"},
-    {n:"04",title:"GANA EL MARCADOR",desc:"Quien más puntos acumule al final del partido se lleva la gloria.",icon:"trophy",accent:"red"},
-  ];
+  const pts = ME.budget;
   return (
-    <div className="ps-how">
-      <div className="ps-how-head"><div className="ps-how-title">¿CÓMO FUNCIONA?</div><div className="ps-how-sub">4 PASOS · MENOS DE 1 MINUTO PARA EMPEZAR</div></div>
-      <div className="ps-how-grid">
-        {steps.map(s=>(<div className={"ps-how-step ps-how-step--"+s.accent} key={s.n}><div className="ps-how-n">{s.n}</div><div className="ps-how-icon-circle"><HowIcon name={s.icon}/></div><div className="ps-how-text"><div className="ps-how-st">{s.title}</div><div className="ps-how-d">{s.desc}</div></div></div>))}
+    <div className="ps-how2">
+      <div className="ps-how2-header">
+        <div className="ps-how2-title">Así se juega</div>
+        <div className="ps-how2-sub">3 pasos · empieza en 30 segundos</div>
+      </div>
+
+      <div className="ps-how2-step ps-how2-step--gold">
+        <div className="ps-how2-num">01</div>
+        <div className="ps-how2-icon">💰</div>
+        <div className="ps-how2-content">
+          <div className="ps-how2-step-title">RECIBES PUNTOS CADA JORNADA</div>
+          <div className="ps-how2-step-desc">Cada jornada tienes <strong>500 puntos nuevos</strong> para jugar. Los que no gastas se acumulan. Cuantos más tienes, más puedes apostar y más puedes ganar.</div>
+          <div className="ps-how2-pill">500 PTS · NUEVA JORNADA</div>
+        </div>
+      </div>
+
+      <div className="ps-how2-step ps-how2-step--green">
+        <div className="ps-how2-num">02</div>
+        <div className="ps-how2-icon">📍</div>
+        <div className="ps-how2-content">
+          <div className="ps-how2-step-title">APUESTA EN ZONAS DEL CAMPO</div>
+          <div className="ps-how2-step-desc">Antes del partido, elige qué zonas crees que serán clave: área, banda, córner… Distribuye tus puntos entre hasta <strong>5 zonas</strong>. Donde más arriesgas, más puedes ganar.</div>
+          <div className="ps-how2-pill">CÓRNER · ÁREA · BANDA · CENTRO</div>
+        </div>
+      </div>
+
+      <div className="ps-how2-step ps-how2-step--red">
+        <div className="ps-how2-num">03</div>
+        <div className="ps-how2-icon">🔥</div>
+        <div className="ps-how2-content">
+          <div className="ps-how2-step-title">GANA CUANDO LA ACCIÓN LLEGA</div>
+          <div className="ps-how2-step-desc">¿Gol en tu zona? ¿Córner? ¿Penalti? Cada acción en una zona tuya <strong>suma puntos</strong>. Sube en el ranking y demuestra que lees el partido mejor que nadie.</div>
+          <div className="ps-how2-pill">EL MEJOR LECTOR DEL JUEGO GANA</div>
+        </div>
+      </div>
+
+      <div className="ps-how2-footer">
+        <div className="ps-how2-footer-bal">💼 Tienes <strong>{pts.toLocaleString('es-ES')} pts</strong> disponibles ahora mismo</div>
+        <div className="ps-how2-footer-hint">Entra en JORNADA y elige tu primer partido →</div>
       </div>
     </div>
   );
 }
 
-function HowIcon({ name }) {
-  switch(name) {
-    case "cursor": return <svg viewBox="0 0 48 48" width="36" height="36"><g><circle cx="24" cy="24" r="20" fill="#ffd27a" opacity="0.15"/><path d="M10 18 Q12 14 16 14" stroke="#ffd27a" strokeWidth="1.8" fill="none" strokeLinecap="round" opacity="0.7"/><path d="M8 22 Q10 16 16 12" stroke="#ffd27a" strokeWidth="1.4" fill="none" strokeLinecap="round" opacity="0.45"/><path d="M22 10 L22 28 L26 24 L29 32 L33 30 L30 22 L36 22 Z" fill="#ffd27a" stroke="#2a2620" strokeWidth="1.5" strokeLinejoin="round"/></g></svg>;
-    case "tv": return <svg viewBox="0 0 48 48" width="36" height="36"><g><line x1="18" y1="6" x2="22" y2="14" stroke="#3d6b32" strokeWidth="2" strokeLinecap="round"/><line x1="30" y1="6" x2="26" y2="14" stroke="#3d6b32" strokeWidth="2" strokeLinecap="round"/><circle cx="18" cy="6" r="2" fill="#3d6b32"/><circle cx="30" cy="6" r="2" fill="#3d6b32"/><rect x="6" y="14" width="36" height="24" rx="3" fill="#3d6b32" stroke="#2a4520" strokeWidth="1.5"/><rect x="9" y="17" width="30" height="18" rx="1" fill="#82a55c"/><line x1="24" y1="17" x2="24" y2="35" stroke="#fff" strokeWidth="1" opacity="0.5"/><circle cx="24" cy="26" r="3.5" fill="none" stroke="#fff" strokeWidth="1" opacity="0.6"/><circle cx="24" cy="26" r="1" fill="#fff"/><circle cx="14" cy="41" r="2" fill="#3d6b32"/><circle cx="34" cy="41" r="2" fill="#3d6b32"/><line x1="14" y1="43" x2="10" y2="46" stroke="#3d6b32" strokeWidth="2" strokeLinecap="round"/><line x1="34" y1="43" x2="38" y2="46" stroke="#3d6b32" strokeWidth="2" strokeLinecap="round"/></g></svg>;
-    case "ball": return <svg viewBox="0 0 48 48" width="36" height="36"><g><path d="M6 14 L13 16" stroke="#d68546" strokeWidth="2" strokeLinecap="round"/><path d="M4 22 L13 22" stroke="#d68546" strokeWidth="2" strokeLinecap="round"/><path d="M6 30 L13 28" stroke="#d68546" strokeWidth="2" strokeLinecap="round"/><circle cx="28" cy="22" r="13" fill="#fff" stroke="#2a2620" strokeWidth="1.8"/><polygon points="28,12 33,16 31,22 25,22 23,16" fill="#2a2620"/><polygon points="28,32 33,28 31,22 25,22 23,28" fill="#2a2620" opacity="0.35"/><text x="38" y="14" fill="#d68546" fontFamily="Anton" fontSize="9" fontWeight="700">+</text></g></svg>;
-    case "trophy": return <svg viewBox="0 0 48 48" width="36" height="36"><g><line x1="6" y1="10" x2="10" y2="13" stroke="#ffd27a" strokeWidth="2" strokeLinecap="round"/><line x1="42" y1="10" x2="38" y2="13" stroke="#ffd27a" strokeWidth="2" strokeLinecap="round"/><line x1="24" y1="3" x2="24" y2="8" stroke="#ffd27a" strokeWidth="2" strokeLinecap="round"/><path d="M12 14 Q6 14 6 19 Q6 24 12 24" stroke="#b94234" strokeWidth="2.5" fill="none"/><path d="M36 14 Q42 14 42 19 Q42 24 36 24" stroke="#b94234" strokeWidth="2.5" fill="none"/><path d="M12 10 L36 10 L34 26 Q34 32 24 32 Q14 32 14 26 Z" fill="#b94234" stroke="#2a2620" strokeWidth="1.8"/><path d="M16 12 L18 24" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" opacity="0.4"/><path d="M24 16 L25.5 19.5 L29 20 L26.5 22.5 L27 26 L24 24.5 L21 26 L21.5 22.5 L19 20 L22.5 19.5 Z" fill="#ffd27a"/><rect x="22" y="32" width="4" height="6" fill="#b94234"/><rect x="16" y="38" width="16" height="4" rx="1" fill="#2a2620"/></g></svg>;
-    default: return null;
-  }
-}
-
-Object.assign(window, { PageInicio, ModeSelect, HowItWorks, HowIcon });
+Object.assign(window, { PageInicio, ModeSelect, HowItWorks });
 
 // ===== LIVE MATCH =====
 const ZONE_TIER=(()=>{const m={};ZONES.forEach(z=>{m[z.id]=z.tier;});return m;})();
