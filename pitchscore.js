@@ -1609,53 +1609,133 @@ function ZoneList({ zones, selectedIds, onPick }) {
   );
 }
 
-function HowItWorks() {
-  const pts = ME.budget;
-  const steps = [
-    {
-      n: "1", color: "#f4a535", bg: "#fff8ec",
-      icon: "💰",
-      title: "Recibes puntos",
-      desc: "Cada jornada se cargan 500 puntos en tu cartera. Los no gastados se acumulan para la siguiente.",
-      tag: "500 PTS · POR JORNADA",
-    },
-    {
-      n: "2", color: "#3a8c2f", bg: "#f0f8ec",
-      icon: "📍",
-      title: "Elige zonas del campo",
-      desc: "Antes del pitido inicial, apuesta tus puntos en las zonas donde crees que ocurrirá la acción: área, córner, banda…",
-      tag: "HASTA 5 ZONAS",
-    },
-    {
-      n: "3", color: "#b94234", bg: "#fdf2f1",
-      icon: "🔥",
-      title: "Gana cuando aciertas",
-      desc: "Gol, córner o penalti en tu zona = puntos para ti. El que mejor lee el partido sube en el ranking.",
-      tag: "SUMA · COMPITE · GANA",
-    },
+/* ── Mini animaciones para el modal ── */
+function MiniFieldAnim() {
+  const zones = [
+    {x:72,y:28,r:9,delay:"0s",label:"⬡"},
+    {x:28,y:28,r:9,delay:"0.6s",label:"⬡"},
+    {x:50,y:50,r:11,delay:"1.2s",label:"⬡"},
+    {x:72,y:72,r:9,delay:"1.8s",label:"⬡"},
+    {x:28,y:72,r:9,delay:"2.4s",label:"⬡"},
   ];
   return (
-    <div className="ps-how2">
-      <div className="ps-how2-top">
-        <div className="ps-how2-badge">¿CÓMO SE JUEGA?</div>
-        <div className="ps-how2-headline">Lee el partido.<br/>Apuesta tus zonas.<br/>Gana puntos.</div>
+    <svg viewBox="0 0 100 100" className="ps-hw-field-svg">
+      {/* Campo */}
+      <rect x="0" y="0" width="100" height="100" fill="#2a6428" rx="4"/>
+      <rect x="2" y="2" width="96" height="96" fill="none" stroke="#3a7a38" strokeWidth="0.8" rx="3"/>
+      <line x1="50" y1="2" x2="50" y2="98" stroke="#3a7a38" strokeWidth="0.6"/>
+      <circle cx="50" cy="50" r="15" fill="none" stroke="#3a7a38" strokeWidth="0.6"/>
+      <circle cx="50" cy="50" r="1.2" fill="#3a7a38"/>
+      {/* Área grande izq */}
+      <rect x="2" y="28" width="22" height="44" fill="none" stroke="#3a7a38" strokeWidth="0.6"/>
+      {/* Área grande der */}
+      <rect x="76" y="28" width="22" height="44" fill="none" stroke="#3a7a38" strokeWidth="0.6"/>
+      {/* Zonas animadas */}
+      {zones.map((z,i)=>(
+        <circle key={i} cx={z.x} cy={z.y} r={z.r} fill="#ffd27a" opacity="0"
+          style={{animation:`ps-zone-pulse 3s ${z.delay} infinite`}}/>
+      ))}
+      {/* Pelota animada */}
+      <circle cx="50" cy="50" r="3" fill="#fff" style={{animation:"ps-ball-move 3s 0s infinite ease-in-out"}}/>
+    </svg>
+  );
+}
+
+function MiniFeedAnim() {
+  const events = [
+    {icon:"⚽",text:"GOL en Área Norte",pts:"+180 pts",color:"#f4a535",delay:"0s"},
+    {icon:"🚩",text:"CÓRNER Banda Der.",pts:"+60 pts",color:"#5a9e4a",delay:"1.2s"},
+    {icon:"🥅",text:"PENALTI Área Sur",pts:"+220 pts",color:"#b94234",delay:"2.4s"},
+  ];
+  return (
+    <div className="ps-hw-feed">
+      {events.map((e,i)=>(
+        <div key={i} className="ps-hw-feed-row" style={{animationDelay:e.delay, "--feed-color": e.color}}>
+          <span className="ps-hw-feed-icon">{e.icon}</span>
+          <span className="ps-hw-feed-text">{e.text}</span>
+          <span className="ps-hw-feed-pts">{e.pts}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+function MiniRankAnim() {
+  const rows = [
+    {pos:1, name:"Marcos R.", pts:"2.840", you:false},
+    {pos:2, name:"Tú",        pts:"2.510", you:true},
+    {pos:3, name:"Julia M.",  pts:"1.990", you:false},
+  ];
+  return (
+    <div className="ps-hw-rank">
+      <div className="ps-hw-rank-label">RANKING</div>
+      {rows.map(r=>(
+        <div key={r.pos} className={"ps-hw-rank-row"+(r.you?" ps-hw-rank-you":"")}
+          style={r.you?{animation:"ps-rank-up 2s 0.8s ease-out both"}:{}}>
+          <span className="ps-hw-rank-pos">{r.pos}</span>
+          <span className="ps-hw-rank-name">{r.name}</span>
+          <span className="ps-hw-rank-pts">{r.pts}</span>
+        </div>
+      ))}
+      <div className="ps-hw-rank-arrow" style={{animation:"ps-rank-arrow 2s 0.6s ease-out both"}}>▲ Subiendo</div>
+    </div>
+  );
+}
+
+function HowItWorks() {
+  const pts = ME.budget;
+  return (
+    <div className="ps-how3">
+      {/* HERO */}
+      <div className="ps-how3-hero">
+        <div className="ps-how3-hero-kicker">KANCHA · CÓMO SE JUEGA</div>
+        <div className="ps-how3-hero-title">¿Cuántas veces lo viste venir<br/>y nadie te creyó?</div>
+        <div className="ps-how3-hero-sub">Ahora cada partido es tu oportunidad de demostrarlo. Tu conocimiento del fútbol tiene valor — ponle puntos.</div>
       </div>
-      <div className="ps-how2-steps">
-        {steps.map(s=>(
-          <div key={s.n} className="ps-how2-row" style={{"--step-color": s.color, "--step-bg": s.bg}}>
-            <div className="ps-how2-circle">{s.icon}</div>
-            <div className="ps-how2-body">
-              <div className="ps-how2-step-tag">{s.tag}</div>
-              <div className="ps-how2-step-name">{s.title}</div>
-              <div className="ps-how2-step-desc">{s.desc}</div>
-            </div>
-            <div className="ps-how2-step-n">{s.n}</div>
-          </div>
-        ))}
+
+      {/* PASO 1 */}
+      <div className="ps-how3-block ps-how3-block--dark">
+        <div className="ps-how3-block-demo">
+          <MiniFieldAnim/>
+        </div>
+        <div className="ps-how3-block-body">
+          <div className="ps-how3-n">01</div>
+          <div className="ps-how3-block-title">Marca tus zonas antes del pitido</div>
+          <div className="ps-how3-block-desc">Cada jornada recibes <strong>500 puntos</strong>. Distribúyelos en las zonas del campo donde <em>tú sabes</em> que va a ocurrir la acción: el área donde ataca el rival, la banda del mejor extremo, el córner que siempre acaba en peligro…</div>
+          <div className="ps-how3-pill">500 PTS · POR JORNADA · SE ACUMULAN</div>
+        </div>
       </div>
-      <div className="ps-how2-cta">
-        <span className="ps-how2-cta-pts">💼 {pts.toLocaleString('es-ES')} pts disponibles</span>
-        <span className="ps-how2-cta-arrow">Ve a JORNADA →</span>
+
+      {/* PASO 2 */}
+      <div className="ps-how3-block ps-how3-block--mid">
+        <div className="ps-how3-block-body">
+          <div className="ps-how3-n">02</div>
+          <div className="ps-how3-block-title">Sientes cada jugada en tiempo real</div>
+          <div className="ps-how3-block-desc">Gol en tu zona. Córner en tu banda. Penalti en tu área. Cada acción que ocurre donde tú apostaste <strong>suma puntos automáticamente</strong>. El fútbol que siempre viste con rabia ahora te da la razón.</div>
+          <div className="ps-how3-pill">GOL · CÓRNER · PENALTI · OCASIÓN</div>
+        </div>
+        <div className="ps-how3-block-demo">
+          <MiniFeedAnim/>
+        </div>
+      </div>
+
+      {/* PASO 3 */}
+      <div className="ps-how3-block ps-how3-block--dark">
+        <div className="ps-how3-block-demo">
+          <MiniRankAnim/>
+        </div>
+        <div className="ps-how3-block-body">
+          <div className="ps-how3-n">03</div>
+          <div className="ps-how3-block-title">Demuestra que sabes más que nadie</div>
+          <div className="ps-how3-block-desc">El ranking no miente. Los que realmente entienden el juego suben arriba temporada tras temporada. No es suerte — es <strong>ojo de experto</strong>, instinto y pasión por el fútbol. ¿Llegas al podio?</div>
+          <div className="ps-how3-pill">RANKING GLOBAL · TEMPORADA · PODIO</div>
+        </div>
+      </div>
+
+      {/* CTA */}
+      <div className="ps-how3-cta">
+        <div className="ps-how3-cta-main">Tienes <strong>{pts.toLocaleString('es-ES')} pts</strong> listos para jugar ahora mismo</div>
+        <div className="ps-how3-cta-sub">Entra en JORNADA · Elige tu partido · Marca tus zonas</div>
       </div>
     </div>
   );

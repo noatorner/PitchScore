@@ -524,64 +524,82 @@ input { font-family: inherit; }
 .ps-how-step--red .ps-how-d { color: #ffe8d0; }
 
 /* ============ HOW-TO MODAL ============ */
-.ps-modal-overlay { position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(20,23,20,0.62); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 200; }
-.ps-modal { position: relative; width: 100%; max-width: 520px; max-height: 92vh; overflow-y: auto; border-radius: 14px; box-shadow: 0 24px 70px rgba(0,0,0,0.5); background: #fff; }
-.ps-modal-close { position: absolute; top: 12px; right: 12px; z-index: 2; width: 32px; height: 32px; border-radius: 50%; border: 1px solid #e0d8cc; background: #f5f0e8; color: #2a2620; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: var(--kn-body); transition: background 0.14s, color 0.14s; }
+.ps-modal-overlay { position: fixed; top: 0; right: 0; bottom: 0; left: 0; background: rgba(10,14,10,0.75); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; padding: 12px; z-index: 200; }
+.ps-modal { position: relative; width: 100%; max-width: 560px; max-height: 95vh; overflow-y: auto; border-radius: 16px; box-shadow: 0 32px 80px rgba(0,0,0,0.7); background: #13160f; }
+.ps-modal-close { position: absolute; top: 14px; right: 14px; z-index: 10; width: 32px; height: 32px; border-radius: 50%; border: 1px solid #3a3f38; background: #1d2119; color: #c8c0a8; font-size: 13px; cursor: pointer; display: flex; align-items: center; justify-content: center; font-family: var(--kn-body); transition: background 0.14s, color 0.14s; }
 .ps-modal-close:hover { background: #b94234; color: #fff; border-color: #b94234; }
 
-/* ============ HOW TO PLAY v2 ============ */
-.ps-how2 { background: #fff; border-radius: 14px; overflow: hidden; }
-.ps-how2-top { background: #1d2519; padding: 28px 24px 24px; text-align: center; }
-.ps-how2-badge {
-  display: inline-block; background: #b94234; color: #fff;
-  font-family: var(--kn-body); font-size: 10px; font-weight: 700;
-  letter-spacing: 0.2em; padding: 4px 12px; border-radius: 999px; margin-bottom: 14px;
+/* ============ HOW TO PLAY v3 ============ */
+@keyframes ps-zone-pulse {
+  0%,100%{opacity:0;r:8;} 15%{opacity:0.85;r:11;} 30%{opacity:0.3;r:9;} 45%{opacity:0;}
 }
-.ps-how2-headline {
-  font-family: var(--kn-display); font-size: 28px; font-weight: 700;
-  color: #f0e7d0; line-height: 1.2; letter-spacing: 0.01em;
+@keyframes ps-ball-move {
+  0%{transform:translate(0,0);}20%{transform:translate(22px,-22px);}40%{transform:translate(-20px,-18px);}60%{transform:translate(18px,20px);}80%{transform:translate(-18px,22px);}100%{transform:translate(0,0);}
 }
-.ps-how2-steps { padding: 8px 0; }
-.ps-how2-row {
-  display: flex; align-items: center; gap: 14px;
-  padding: 16px 22px; border-bottom: 1px solid #f0ece4;
-  background: var(--step-bg, #fff); position: relative;
+@keyframes ps-feed-in {
+  0%{opacity:0;transform:translateX(18px);}100%{opacity:1;transform:translateX(0);}
 }
-.ps-how2-row:last-child { border-bottom: none; }
-.ps-how2-circle {
-  width: 52px; height: 52px; border-radius: 50%;
-  background: #fff; border: 2px solid var(--step-color, #ccc);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 26px; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+@keyframes ps-rank-up {
+  0%{transform:translateY(44px);opacity:0;}60%{opacity:1;}100%{transform:translateY(0);opacity:1;}
 }
-.ps-how2-body { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 3px; }
-.ps-how2-step-tag {
-  font-family: var(--kn-body); font-size: 9px; font-weight: 700;
-  letter-spacing: 0.18em; color: var(--step-color, #888);
+@keyframes ps-rank-arrow {
+  0%,40%{opacity:0;}100%{opacity:1;}
 }
-.ps-how2-step-name {
-  font-family: var(--kn-body); font-size: 15px; font-weight: 700;
-  color: #1a1714; line-height: 1.2;
+.ps-how3 { background: #13160f; border-radius: 16px; overflow: hidden; }
+
+/* Hero */
+.ps-how3-hero { padding: 32px 26px 28px; text-align: center; background: linear-gradient(160deg,#1d2a1a 0%,#0e1209 100%); border-bottom: 1px solid #252a22; }
+.ps-how3-hero-kicker { font-family: var(--kn-body); font-size: 10px; font-weight: 700; letter-spacing: 0.28em; color: #b94234; margin-bottom: 14px; }
+.ps-how3-hero-title { font-family: var(--kn-display); font-size: clamp(22px,5vw,30px); font-weight: 700; color: #f0e7d0; line-height: 1.15; margin-bottom: 14px; }
+.ps-how3-hero-sub { font-family: var(--kn-body); font-size: 14px; color: #8a9a84; line-height: 1.6; max-width: 400px; margin: 0 auto; }
+
+/* Blocks */
+.ps-how3-block { display: flex; gap: 0; flex-direction: column; border-bottom: 1px solid #1e2319; }
+.ps-how3-block--dark { background: #181c14; }
+.ps-how3-block--mid  { background: #141810; }
+.ps-how3-block-demo { padding: 20px 24px 0; }
+.ps-how3-block-body { padding: 16px 24px 24px; display: flex; flex-direction: column; gap: 8px; }
+.ps-how3-n { font-family: var(--kn-display); font-size: 11px; font-weight: 700; letter-spacing: 0.22em; color: #b94234; }
+.ps-how3-block-title { font-family: var(--kn-display); font-size: 20px; font-weight: 700; color: #f0e7d0; line-height: 1.2; }
+.ps-how3-block-desc { font-family: var(--kn-body); font-size: 13px; color: #7a8a74; line-height: 1.65; }
+.ps-how3-block-desc strong { color: #c8dcc0; font-weight: 700; }
+.ps-how3-block-desc em { color: #ffd27a; font-style: normal; font-weight: 600; }
+.ps-how3-pill { display: inline-block; background: #252a20; color: #5a7050; font-family: var(--kn-body); font-size: 9px; font-weight: 700; letter-spacing: 0.18em; padding: 4px 10px; border-radius: 999px; margin-top: 4px; }
+
+/* Mini field SVG */
+.ps-hw-field-svg { width: 100%; max-width: 320px; height: 130px; display: block; border-radius: 8px; }
+
+/* Mini feed */
+.ps-hw-feed { display: flex; flex-direction: column; gap: 8px; padding: 4px 0; }
+.ps-hw-feed-row {
+  display: flex; align-items: center; gap: 10px;
+  background: #1e2319; border: 1px solid #2a3025; border-radius: 8px;
+  padding: 10px 14px; opacity: 0;
+  animation: ps-feed-in 0.5s ease-out both;
+  border-left: 3px solid var(--feed-color, #5a9);
 }
-.ps-how2-step-desc {
-  font-family: var(--kn-body); font-size: 12px; color: #5a5040;
-  line-height: 1.5;
-}
-.ps-how2-step-n {
-  font-family: var(--kn-display); font-size: 36px; font-weight: 700;
-  color: var(--step-color, #ccc); opacity: 0.2; flex-shrink: 0; line-height: 1;
-}
-.ps-how2-cta {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 14px 22px; background: #f5f0e8; border-top: 1px solid #e8e0d0;
-}
-.ps-how2-cta-pts {
-  font-family: var(--kn-body); font-size: 13px; font-weight: 600; color: #3a3020;
-}
-.ps-how2-cta-arrow {
-  font-family: var(--kn-body); font-size: 11px; font-weight: 700;
-  letter-spacing: 0.12em; color: #b94234;
-}
+.ps-hw-feed-icon { font-size: 18px; flex-shrink: 0; }
+.ps-hw-feed-text { font-family: var(--kn-body); font-size: 12px; color: #c0cabs; font-weight: 600; flex: 1; }
+.ps-hw-feed-pts { font-family: var(--kn-display); font-size: 15px; font-weight: 700; color: var(--feed-color, #5a9); flex-shrink: 0; }
+
+/* Mini rank */
+.ps-hw-rank { background: #1a1e15; border-radius: 10px; padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; }
+.ps-hw-rank-label { font-family: var(--kn-body); font-size: 9px; font-weight: 700; letter-spacing: 0.22em; color: #5a6a50; margin-bottom: 4px; }
+.ps-hw-rank-row { display: flex; align-items: center; gap: 12px; padding: 8px 10px; border-radius: 6px; background: #22271c; }
+.ps-hw-rank-you { background: #2a3824; border: 1px solid #4a7040; }
+.ps-hw-rank-pos { font-family: var(--kn-display); font-size: 16px; font-weight: 700; color: #5a6a50; width: 20px; text-align: center; }
+.ps-hw-rank-you .ps-hw-rank-pos { color: #ffd27a; }
+.ps-hw-rank-name { flex: 1; font-family: var(--kn-body); font-size: 12px; font-weight: 600; color: #8a9a84; }
+.ps-hw-rank-you .ps-hw-rank-name { color: #c8dcc0; }
+.ps-hw-rank-pts { font-family: var(--kn-display); font-size: 13px; font-weight: 700; color: #5a6a50; }
+.ps-hw-rank-you .ps-hw-rank-pts { color: #9aba90; }
+.ps-hw-rank-arrow { font-family: var(--kn-body); font-size: 11px; font-weight: 700; color: #5a9452; letter-spacing: 0.1em; text-align: center; opacity: 0; }
+
+/* CTA */
+.ps-how3-cta { padding: 22px 24px; background: #b94234; text-align: center; }
+.ps-how3-cta-main { font-family: var(--kn-display); font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.ps-how3-cta-main strong { color: #ffd27a; }
+.ps-how3-cta-sub { font-family: var(--kn-body); font-size: 11px; font-weight: 600; letter-spacing: 0.14em; color: rgba(255,255,255,0.7); }
 
 /* ============ PAGE COMMON ============ */
 .ps-page { padding: 20px 28px 24px; max-width: 1280px; margin: 0 auto; width: 100%; display: flex; flex-direction: column; gap: 22px; }
