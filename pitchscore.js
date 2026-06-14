@@ -121,12 +121,35 @@ setFixture(FALLBACK_FIXTURE.map((m) => ({ ...m })));
 
 // Carga el fixture real desde Supabase; devuelve false si no hay datos
 // (la app sigue con el fallback embebido).
+// También parchea en background cualquier fila de Supabase cuyo equipo,
+// horario o resultado no coincida con FALLBACK_FIXTURE (migración de datos del seed antiguo).
 async function loadFixture() {
   const db = window.supabaseClient;
   if (!db) return false;
   try {
     const { data, error } = await db.from('matches').select('*').order('kickoff_utc', { ascending: true });
     if (error || !data || !data.length) return false;
+    // Parche silencioso: corregir filas con datos del seed antiguo
+    for (const r of data) {
+      const fb = FALLBACK_FIXTURE.find(f => f.id === r.id);
+      if (!fb) continue;
+      const patch = {};
+      if (fb.home && r.home !== fb.home) patch.home = fb.home;
+      if (fb.away && r.away !== fb.away) patch.away = fb.away;
+      if (fb.utc && r.kickoff_utc !== fb.utc) patch.kickoff_utc = fb.utc;
+      if (fb.score && !r.score) patch.score = fb.score;
+      if (fb.dbStatus === 'FINALIZADO' && r.status !== 'FINALIZADO') patch.status = 'FINALIZADO';
+      if (Object.keys(patch).length) {
+        // Aplicar localmente para que el render sea inmediato
+        if (patch.home) r.home = patch.home;
+        if (patch.away) r.away = patch.away;
+        if (patch.kickoff_utc) r.kickoff_utc = patch.kickoff_utc;
+        if (patch.score) r.score = patch.score;
+        if (patch.status) r.status = patch.status;
+        // Persistir en Supabase (no bloqueante)
+        db.from('matches').update(patch).eq('id', r.id).catch(() => {});
+      }
+    }
     setFixture(data.map((r) => ({
       id: r.id, home: r.home, away: r.away, utc: r.kickoff_utc,
       venue: r.venue || "", group: r.group_name || "",
@@ -279,6 +302,34 @@ const KNOWN_RESULTS = {
     { min:70,  type:"act",  icon:"🚩", action:"Córner",           side:"away", team:"SUI", zoneId:"corner_s_izq", zone:"Córner inferior izquierdo",           pts:10 },
     { min:76,  type:"act",  icon:"⚽", action:"Gol",              side:"away", team:"SUI", zoneId:"box6_izq",     zone:"Área pequeña izquierda",              pts:40 },
     { min:76,  type:"act",  icon:"👟", action:"Asistencia",       side:"away", team:"SUI", zoneId:"boxN_izq",     zone:"Área grande izquierda · flanco sup.", pts:15 },
+  ],
+  // m9: GER 7-1 CUR  (14 jun)
+  m9: [
+    { min:90,  type:"info", icon:"🏁", label:"Final: Alemania 7-1 Curaçao" },
+    { min:9,   type:"act",  icon:"⬆️", action:"Centro al área",  side:"home", team:"GER", zoneId:"wing_der_1",   zone:"Banda derecha · sector 2",            pts:10 },
+    { min:11,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"GER", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:11,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"GER", zoneId:"boxF_der",     zone:"Frontal del área derecha",            pts:15 },
+    { min:18,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"CUR", zoneId:"med_2",        zone:"Mediocampo · sector 2",               pts:5  },
+    { min:22,  type:"act",  icon:"🚩", action:"Córner",           side:"home", team:"GER", zoneId:"corner_n_der", zone:"Córner superior derecho",             pts:10 },
+    { min:24,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"home", team:"GER", zoneId:"boxF_der",     zone:"Frontal del área derecha",            pts:25 },
+    { min:26,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"GER", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:31,  type:"act",  icon:"🪡", action:"Pase clave",      side:"home", team:"GER", zoneId:"cid_1",        zone:"Carril central derecho · sector 2",   pts:10 },
+    { min:34,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"GER", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:34,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"GER", zoneId:"boxN_der",     zone:"Área grande derecha · flanco sup.",   pts:15 },
+    { min:41,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"home", team:"GER", zoneId:"med_0",        zone:"Mediocampo · sector 1",               pts:5  },
+    { min:44,  type:"act",  icon:"🛡",  action:"Recuperación",    side:"away", team:"CUR", zoneId:"med_3",        zone:"Mediocampo · sector 3",               pts:5  },
+    { min:47,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"GER", zoneId:"penspot_der",  zone:"Punto de penalti derecho",            pts:40 },
+    { min:47,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"GER", zoneId:"boxS_der",     zone:"Área grande derecha · flanco inf.",   pts:15 },
+    { min:54,  type:"act",  icon:"⬆️", action:"Centro al área",  side:"away", team:"CUR", zoneId:"wing_izq_2",   zone:"Banda izquierda · sector 3",          pts:10 },
+    { min:58,  type:"act",  icon:"⚽", action:"Gol",              side:"away", team:"CUR", zoneId:"box6_izq",     zone:"Área pequeña izquierda",              pts:40 },
+    { min:63,  type:"act",  icon:"🚩", action:"Córner",           side:"home", team:"GER", zoneId:"corner_s_der", zone:"Córner inferior derecho",             pts:10 },
+    { min:67,  type:"act",  icon:"🥅", action:"Tiro a puerta",   side:"home", team:"GER", zoneId:"boxF_der",     zone:"Frontal del área derecha",            pts:25 },
+    { min:70,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"GER", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:77,  type:"act",  icon:"🟨", action:"Tarjeta amarilla", side:"away", team:"CUR", zoneId:"med_1",        zone:"Mediocampo · sector 1",               pts:5  },
+    { min:79,  type:"act",  icon:"🚩", action:"Córner",           side:"home", team:"GER", zoneId:"corner_n_der", zone:"Córner superior derecho",             pts:10 },
+    { min:82,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"GER", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
+    { min:82,  type:"act",  icon:"👟", action:"Asistencia",       side:"home", team:"GER", zoneId:"boxF_der",     zone:"Frontal del área derecha",            pts:15 },
+    { min:88,  type:"act",  icon:"⚽", action:"Gol",              side:"home", team:"GER", zoneId:"box6_der",     zone:"Área pequeña derecha",                pts:40 },
   ],
 };
 
@@ -1126,12 +1177,22 @@ function PageInicio({ onNav, onScoreUpdate }) {
         const{data:scoreRow,error:scoreErr}=await db.from('scores').select('budget')
           .eq('user_id',user.id).maybeSingle();
         if(!cancelled&&!scoreErr&&scoreRow&&scoreRow.budget!=null){ ME.budget=scoreRow.budget; setBudget(scoreRow.budget); }
-        // sub-presupuesto asignado a este partido en PageJornada
+        // sub-presupuesto: override de Jornada (window global) o desde Supabase
+        const _allocOverride = (typeof window.__KN_ALLOC_PTS === "number") ? window.__KN_ALLOC_PTS : null;
+        if (_allocOverride != null) window.__KN_ALLOC_PTS = null;
         try{
           const{data:allocRow}=await db.from('match_allocations').select('allocated_pts')
             .eq('user_id',user.id).eq('match_id',mundialMatch.id).maybeSingle();
-          if(!cancelled) setMatchAlloc(allocRow&&allocRow.allocated_pts!=null?allocRow.allocated_pts:null);
-        }catch(e){ if(!cancelled) setMatchAlloc(null); }
+          const _saved = allocRow&&allocRow.allocated_pts!=null ? allocRow.allocated_pts : null;
+          if(!cancelled) setMatchAlloc(_allocOverride !== null ? _allocOverride : _saved);
+          // Guardar override en Supabase si aún no está persistido
+          if(_allocOverride != null && _allocOverride !== _saved){
+            db.from('match_allocations').upsert(
+              [{user_id:user.id, match_id:mundialMatch.id, allocated_pts:_allocOverride}],
+              {onConflict:'user_id,match_id'}
+            ).catch(()=>{});
+          }
+        }catch(e){ if(!cancelled) setMatchAlloc(_allocOverride); }
       }catch(e){if(!cancelled)setSelectedZones([]);}
     }
     load();
@@ -2738,7 +2799,7 @@ function PageJornada({ onNav, score }) {
                       <div style={{height:"3px",background:"var(--grass)",borderRadius:"2px",width:`${Math.min(100,pct)}%`,transition:"width .2s"}}/>
                     </div>
                   )}
-                  <button className="ps-jornada-go-btn" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=m.id; onNav("inicio"); }}>
+                  <button className="ps-jornada-go-btn" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=m.id; window.__KN_ALLOC_PTS=(pts>0?pts:null); onNav("inicio"); }}>
                     RESERVAR ZONAS →
                   </button>
                 </div>
