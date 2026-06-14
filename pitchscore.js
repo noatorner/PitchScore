@@ -407,6 +407,7 @@ function KanchaWordmark({ fill = "#EFE5CC", className = "" }) {
 function Sidebar({ page, onNav, open }) {
   const items = [
     { id:"inicio",   label:"Inicio",       icon:"home" },
+    { id:"jornada",  label:"Jornada",       icon:"calendar" },
     { id:"partidos", label:"Partidos",      icon:"grid" },
     { id:"reservas", label:"Mis Reservas",  icon:"ticket" },
     { id:"ranking",  label:"Ranking",       icon:"trophy" },
@@ -462,7 +463,8 @@ function SidebarIcon({ name }) {
     case "trophy": return <svg viewBox="0 0 24 24" {...s}><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>;
     case "users":  return <svg viewBox="0 0 24 24" {...s}><circle cx="9" cy="8" r="3.5"/><path d="M3 21v-1a6 6 0 0 1 12 0v1"/><circle cx="17" cy="9" r="2.5"/><path d="M15 14a5 5 0 0 1 6 5v1"/></svg>;
     case "clock":  return <svg viewBox="0 0 24 24" {...s}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>;
-    case "logout": return <svg viewBox="0 0 24 24" {...s}><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4M16 8l4 4-4 4M9 12h11"/></svg>;
+    case "logout":   return <svg viewBox="0 0 24 24" {...s}><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4M16 8l4 4-4 4M9 12h11"/></svg>;
+    case "calendar": return <svg viewBox="0 0 24 24" {...s}><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="8" cy="15" r="1" fill="currentColor"/><circle cx="12" cy="15" r="1" fill="currentColor"/><circle cx="16" cy="15" r="1" fill="currentColor"/></svg>;
     default: return null;
   }
 }
@@ -857,6 +859,8 @@ function PageInicio({ onNav }) {
   const [savedZones,setSavedZones]=React.useState(null); // null = todavía cargando
   // Presupuesto permanente del usuario (scores.budget); 500 por defecto
   const [budget,setBudget]=React.useState(ME.budget);
+  // Sub-presupuesto asignado a este partido en PageJornada (null = sin asignación → usa budget global)
+  const [matchAlloc,setMatchAlloc]=React.useState(null);
   const [view,setView]=React.useState("mapa");
   const [focusZone,setFocusZone]=React.useState("penspot_izq");
   const focused=ZONES.find(z=>z.id===focusZone);
@@ -1099,6 +1103,12 @@ function PageInicio({ onNav }) {
         const{data:scoreRow,error:scoreErr}=await db.from('scores').select('budget')
           .eq('user_id',user.id).maybeSingle();
         if(!cancelled&&!scoreErr&&scoreRow&&scoreRow.budget!=null){ ME.budget=scoreRow.budget; setBudget(scoreRow.budget); }
+        // sub-presupuesto asignado a este partido en PageJornada
+        try{
+          const{data:allocRow}=await db.from('match_allocations').select('allocated_pts')
+            .eq('user_id',user.id).eq('match_id',mundialMatch.id).maybeSingle();
+          if(!cancelled) setMatchAlloc(allocRow&&allocRow.allocated_pts!=null?allocRow.allocated_pts:null);
+        }catch(e){ if(!cancelled) setMatchAlloc(null); }
       }catch(e){if(!cancelled)setSelectedZones([]);}
     }
     load();
@@ -1139,6 +1149,8 @@ function PageInicio({ onNav }) {
       return true;
     }catch(e){return false;}
   }
+  // Límite efectivo: sub-presupuesto asignado si existe, presupuesto global si no
+  const effectiveBudget = matchAlloc !== null ? matchAlloc : budget;
   function toggleZone(z) {
     if(z.taken>=z.slots) return;
     setFocusZone(z.id);
@@ -1146,12 +1158,12 @@ function PageInicio({ onNav }) {
       if(prev.includes(z.id)) return prev.filter(id=>id!==z.id);
       if(prev.length>=ME.zonesMax) return prev;
       const spent=prev.reduce((s,id)=>{const zz=ZONES.find(z=>z.id===id);return s+(zz?zz.price:0);},0);
-      if(z.price>budget-spent) return prev; // not enough budget
+      if(z.price>effectiveBudget-spent) return prev; // not enough budget
       return [...prev,z.id];
     });
   }
   const totalCost=selectedZones.reduce((sum,id)=>{const z=ZONES.find(zz=>zz.id===id);return sum+(z?z.price:0);},0);
-  const remainingBudget=budget-totalCost;
+  const remainingBudget=effectiveBudget-totalCost;
 
   const fieldBlock=(
     <>
@@ -1208,7 +1220,7 @@ function PageInicio({ onNav }) {
             {fieldBlock}
           </main>
           <aside className="ps-col-right">
-            <BudgetCard selectedCount={selectedZones.length} remaining={remainingBudget} total={budget}/>
+            <BudgetCard selectedCount={selectedZones.length} remaining={remainingBudget} total={effectiveBudget} globalBudget={matchAlloc!==null?budget:null}/>
             <SimPanel sim={sim} countdown={countdown} speedIdx={speedIdx}
               onSpeed={(i)=>{ setSpeedIdx(i); setSimSpeed(SIM_SPEEDS[i].ms); }}
               onSimulate={beginSimulation} onStop={stopSim}/>
@@ -1246,7 +1258,7 @@ function PageInicio({ onNav }) {
           {fieldBlock}
         </main>
         <aside className="ps-col-right">
-          <BudgetCard selectedCount={selectedZones.length} remaining={remainingBudget} total={budget}/>
+          <BudgetCard selectedCount={selectedZones.length} remaining={remainingBudget} total={effectiveBudget} globalBudget={matchAlloc!==null?budget:null}/>
           <ZoneDetail zone={focused} selected={selectedZones.includes(focusZone)} atMax={selectedZones.length>=ME.zonesMax} onAdd={()=>toggleZone(focused)} totalCost={totalCost} remainingBudget={remainingBudget}/>
           <CartCard selectedIds={selectedZones} savedIds={savedZones} onRemove={(id)=>setSelectedZones(prev=>prev.filter(x=>x!==id))} onClear={()=>setSelectedZones([])} onConfirm={mundialMatch.status!=="FINALIZADO"?confirmReservations:null} matchStatus={mundialMatch.status}/>
         </aside>
@@ -1483,15 +1495,15 @@ function MatchHero({ match }) {
   );
 }
 
-function BudgetCard({ selectedCount, remaining, total=ME.budget }) {
+function BudgetCard({ selectedCount, remaining, total=ME.budget, globalBudget=null }) {
   const pct=Math.max(0,Math.round((remaining/Math.max(1,total))*100));
   const color=pct>50?"#3d7a3a":pct>20?"#c8a73f":"#b94234";
   return (
     <div className="ps-budget-row">
       <div className="ps-stat-box">
-        <div className="ps-stat-label">PRESUPUESTO RESTANTE</div>
+        <div className="ps-stat-label">{globalBudget!=null?"ASIGNADO A ESTE PARTIDO":"PRESUPUESTO RESTANTE"}</div>
         <div className="ps-stat-num" style={{color}}>{remaining}</div>
-        <div className="ps-stat-unit">DE {total} PUNTOS</div>
+        <div className="ps-stat-unit">DE {total} PTS{globalBudget!=null?<span style={{opacity:.6}}> · TOTAL {globalBudget}</span>:""}</div>
       </div>
       <div className="ps-stat-box"><div className="ps-stat-label">ZONAS RESERVADAS</div><div className="ps-stat-num">{selectedCount} / {ME.zonesMax}</div></div>
     </div>
@@ -2199,7 +2211,227 @@ function PageHistorial() {
   );
 }
 
-Object.assign(window, { PagePartidos, PageReservas, PageRanking, PageAmigos, PageHistorial });
+// ===== PAGE JORNADA =====
+// Distribuye el presupuesto diario entre los partidos ABIERTOS de hoy.
+// Guarda en match_allocations (user_id, match_id, allocated_pts).
+function PageJornada({ onNav }) {
+  const [allocs, setAllocs]       = React.useState({});  // match_id → string input
+  const [savedAllocs, setSaved]   = React.useState({});  // match_id → pts guardados en DB
+  const [budget, setBudget]       = React.useState(ME.budget);
+  const [saving, setSaving]       = React.useState(false);
+  const [saveOk, setSaveOk]       = React.useState(false);
+  const [err, setErr]             = React.useState(null);
+  const [loading, setLoading]     = React.useState(true);
+
+  // Partidos de hoy con reservas aún abiertas (ABIERTO y >15 min antes del pitido)
+  const todayMatches = React.useMemo(() =>
+    FIXTURE.filter(m => {
+      const st = fixtureStatus(m);
+      const diff = kickoffDate(m) - Date.now();
+      return st === "ABIERTO" && diff > RESERVE_CLOSE_MS;
+    })
+  , []);
+
+  React.useEffect(() => {
+    const db = window.supabaseClient;
+    if (!db) { setLoading(false); return; }
+    let cancelled = false;
+    async function load() {
+      try {
+        const { data:{ user } } = await db.auth.getUser();
+        if (cancelled || !user) { setLoading(false); return; }
+        // Presupuesto actualizado
+        const { data:scoreRow } = await db.from('scores').select('budget').eq('user_id', user.id).maybeSingle();
+        if (!cancelled && scoreRow && scoreRow.budget != null) { ME.budget = scoreRow.budget; setBudget(scoreRow.budget); }
+        // Asignaciones existentes
+        if (todayMatches.length > 0) {
+          const ids = todayMatches.map(m => m.id);
+          const { data } = await db.from('match_allocations').select('match_id,allocated_pts').eq('user_id', user.id).in('match_id', ids);
+          if (!cancelled && data) {
+            const map = {};
+            data.forEach(r => { map[r.match_id] = r.allocated_pts; });
+            setSaved(map);
+            setAllocs(Object.fromEntries(ids.map(id => [id, map[id] != null ? String(map[id]) : ""])));
+          } else if (!cancelled) {
+            setAllocs(Object.fromEntries(todayMatches.map(m => [m.id, ""])));
+          }
+        }
+      } catch(e) { /* sin conexión */ }
+      if (!cancelled) setLoading(false);
+    }
+    load();
+    return () => { cancelled = true; };
+  }, []);
+
+  const totalAlloc = todayMatches.reduce((s, m) => s + (parseInt(allocs[m.id] || 0) || 0), 0);
+  const remaining  = budget - totalAlloc;
+  const isValid    = remaining >= 0;
+
+  function handleChange(mid, val) {
+    setAllocs(prev => ({ ...prev, [mid]: val.replace(/[^0-9]/g, "") }));
+    setSaveOk(false);
+    setErr(null);
+  }
+
+  function autoSplit() {
+    if (todayMatches.length === 0) return;
+    const per = Math.floor(budget / todayMatches.length);
+    const map = {};
+    todayMatches.forEach((m, i) => {
+      map[m.id] = i === todayMatches.length - 1 ? String(budget - per * (todayMatches.length - 1)) : String(per);
+    });
+    setAllocs(map);
+    setSaveOk(false);
+  }
+
+  async function save() {
+    if (!isValid || saving) return;
+    const db = window.supabaseClient;
+    if (!db) { setErr("Sin conexión con Supabase"); return; }
+    setSaving(true); setErr(null);
+    try {
+      const { data:{ user } } = await db.auth.getUser();
+      if (!user) { setErr("No autenticado"); setSaving(false); return; }
+      const rows = todayMatches.map(m => ({
+        user_id: user.id,
+        match_id: m.id,
+        allocated_pts: parseInt(allocs[m.id] || 0) || 0,
+      }));
+      const { error } = await db.from('match_allocations').upsert(rows, { onConflict: 'user_id,match_id' });
+      if (error) { setErr(error.message); setSaving(false); return; }
+      const newMap = {};
+      rows.forEach(r => { newMap[r.match_id] = r.allocated_pts; });
+      setSaved(newMap);
+      setSaveOk(true);
+    } catch(e) { setErr(String(e.message || e)); }
+    setSaving(false);
+  }
+
+  if (loading) return (
+    <div className="ps-page"><div className="ps-empty-state"><div className="ps-empty-t">Cargando jornada…</div></div></div>
+  );
+
+  return (
+    <div className="ps-page">
+      <div className="ps-page-head">
+        <div>
+          <div className="ps-page-eyebrow">MUNDIAL 2026</div>
+          <div className="ps-page-title">JORNADA</div>
+          <div className="ps-page-sub">Distribuye tu presupuesto entre los partidos de hoy antes de que cierren las reservas.</div>
+        </div>
+        <div className="ps-page-stats">
+          <div className="ps-mini-stat"><div className="ps-mini-stat-l">PRESUPUESTO</div><div className="ps-mini-stat-v">{budget} pts</div></div>
+          <div className="ps-mini-stat"><div className="ps-mini-stat-l">ASIGNADO</div><div className="ps-mini-stat-v" style={{color:!isValid?"#d9534f":"inherit"}}>{totalAlloc} pts</div></div>
+          <div className="ps-mini-stat"><div className="ps-mini-stat-l">LIBRE</div><div className="ps-mini-stat-v" style={{color:!isValid?"#d9534f":remaining===0&&totalAlloc>0?"var(--ps-fg)":"#3a8a3a"}}>{remaining} pts</div></div>
+        </div>
+      </div>
+
+      {todayMatches.length === 0 ? (
+        <div className="ps-empty-state">
+          <div className="ps-empty-icon">🗓️</div>
+          <div className="ps-empty-t">Sin partidos abiertos hoy</div>
+          <div className="ps-empty-d">Las reservas abren 24h antes del partido. Vuelve cuando haya partidos próximos.</div>
+          <button className="ps-btn ps-btn-primary" onClick={() => onNav("partidos")}>VER FIXTURE</button>
+        </div>
+      ) : (
+        <>
+          <div style={{display:"flex",gap:"8px",marginBottom:"16px",flexWrap:"wrap"}}>
+            <button className="ps-btn ps-btn-dark" onClick={autoSplit}>⚡ REPARTIR IGUAL</button>
+            <button className="ps-btn ps-btn-dark" onClick={() => { setAllocs(Object.fromEntries(todayMatches.map(m=>[m.id,""]))); setSaveOk(false); }}>✕ LIMPIAR</button>
+          </div>
+
+          <div style={{display:"flex",flexDirection:"column",gap:"12px",marginBottom:"20px"}}>
+            {todayMatches.map(m => {
+              const val = allocs[m.id] || "";
+              const pts = parseInt(val || 0) || 0;
+              const isSavedMatch = savedAllocs[m.id] != null;
+              const diffMs = kickoffDate(m) - Date.now();
+              const minsLeft = Math.max(0, Math.round((diffMs - RESERVE_CLOSE_MS) / 60000));
+              const pct = budget > 0 ? Math.round(pts / budget * 100) : 0;
+              return (
+                <div key={m.id} className="ps-card" style={{padding:"16px 20px"}}>
+                  <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:"14px"}}>
+                    <div style={{flex:1,minWidth:"200px"}}>
+                      <div style={{fontSize:"10px",fontWeight:700,letterSpacing:"0.1em",color:"var(--ps-accent)",marginBottom:"5px"}}>
+                        GRUPO {m.group} · {minsLeft > 60 ? `${Math.round(minsLeft/60)}h ${minsLeft%60}min` : minsLeft > 0 ? `${minsLeft} min` : "CIERRA PRONTO"}
+                        {isSavedMatch && <span style={{marginLeft:"10px",color:"#3a8a3a"}}>✓ GUARDADO ({savedAllocs[m.id]} pts)</span>}
+                      </div>
+                      <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"5px",flexWrap:"wrap"}}>
+                        <Flag code={m.home} h={20}/>
+                        <span style={{fontWeight:700,fontSize:"14px",letterSpacing:"0.04em"}}>{COUNTRY_NAME[m.home].toUpperCase()}</span>
+                        <span style={{color:"var(--ps-muted)",fontWeight:700,fontSize:"12px",margin:"0 2px"}}>VS</span>
+                        <span style={{fontWeight:700,fontSize:"14px",letterSpacing:"0.04em"}}>{COUNTRY_NAME[m.away].toUpperCase()}</span>
+                        <Flag code={m.away} h={20}/>
+                      </div>
+                      <div style={{fontSize:"11px",color:"var(--ps-muted)"}}>{m.date} · {m.time} · {m.venue}</div>
+                      {pts > 0 && budget > 0 && (
+                        <div style={{marginTop:"8px",height:"4px",background:"var(--ps-border)",borderRadius:"2px"}}>
+                          <div style={{height:"4px",background:"var(--ps-accent)",borderRadius:"2px",width:`${Math.min(100,pct)}%`,transition:"width .2s"}}/>
+                        </div>
+                      )}
+                    </div>
+                    <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:"6px",minWidth:"130px"}}>
+                      <label style={{fontSize:"10px",fontWeight:700,letterSpacing:"0.1em",color:"var(--ps-muted)"}}>PUNTOS A APOSTAR</label>
+                      <div style={{display:"flex",alignItems:"center",gap:"8px"}}>
+                        <input
+                          type="number"
+                          min="0"
+                          max={budget}
+                          value={val}
+                          onChange={e => handleChange(m.id, e.target.value)}
+                          placeholder="0"
+                          style={{width:"90px",padding:"8px 10px",fontSize:"20px",fontWeight:700,textAlign:"right",background:"var(--ps-bg-alt)",border:"1.5px solid var(--ps-border)",borderRadius:"6px",color:"var(--ps-fg)",fontFamily:"inherit",lineHeight:1}}
+                        />
+                        <span style={{fontSize:"11px",color:"var(--ps-muted)",fontWeight:700}}>pts</span>
+                      </div>
+                      {pts > 0 && <div style={{fontSize:"10px",color:"var(--ps-muted)"}}>{pct}% del presupuesto</div>}
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {!isValid && <div style={{padding:"10px 14px",background:"#d9534f18",border:"1px solid #d9534f",borderRadius:"6px",color:"#d9534f",marginBottom:"12px",fontSize:"12px",fontWeight:700}}>⚠ Total ({totalAlloc} pts) supera tu presupuesto ({budget} pts). Reduce alguna asignación.</div>}
+          {err && <div style={{padding:"10px 14px",background:"#d9534f18",border:"1px solid #d9534f",borderRadius:"6px",color:"#d9534f",marginBottom:"12px",fontSize:"12px"}}>{err}</div>}
+
+          <div style={{display:"flex",gap:"12px",alignItems:"center",flexWrap:"wrap"}}>
+            <button
+              className="ps-btn ps-btn-primary"
+              disabled={!isValid || saving}
+              onClick={save}
+              style={{opacity:(!isValid||saving)?0.5:1}}
+            >
+              {saving ? "GUARDANDO…" : saveOk ? "✓ GUARDADO" : "GUARDAR ASIGNACIÓN"}
+            </button>
+            {isValid && remaining > 0 && totalAlloc > 0 && (
+              <span style={{fontSize:"12px",color:"var(--ps-muted)"}}>Quedan {remaining} pts libres — irán al siguiente partido automáticamente.</span>
+            )}
+          </div>
+
+          {saveOk && (
+            <div style={{marginTop:"20px",padding:"16px",background:"#3a8a3a18",border:"1px solid #3a8a3a44",borderRadius:"8px"}}>
+              <div style={{fontWeight:700,fontSize:"11px",letterSpacing:"0.1em",color:"#3a8a3a",marginBottom:"10px"}}>✓ ASIGNACIÓN GUARDADA — AHORA RESERVA TUS ZONAS</div>
+              <div style={{display:"flex",gap:"8px",flexWrap:"wrap"}}>
+                {todayMatches.map(m => {
+                  const pts = parseInt(allocs[m.id] || 0) || 0;
+                  return (
+                    <button key={m.id} className="ps-btn ps-btn-dark ps-btn-sm"
+                      onClick={() => { window.__KN_MUNDIAL_REQUEST = m.id; onNav("inicio"); }}>
+                      {COUNTRY_NAME[m.home].toUpperCase()} VS {COUNTRY_NAME[m.away].toUpperCase()} · {pts} pts →
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
+Object.assign(window, { PagePartidos, PageReservas, PageRanking, PageAmigos, PageHistorial, PageJornada });
 
 // ===== APP =====
 function App() {
@@ -2209,9 +2441,9 @@ function App() {
   // El fixture se carga de Supabase antes de montar la app (skeleton mientras)
   const [fixtureReady,setFixtureReady]=React.useState(false);
   React.useEffect(()=>{ let on=true; loadFixture().finally(()=>{ if(on) setFixtureReady(true); }); return ()=>{ on=false; }; },[]);
-  React.useEffect(()=>{const hash=window.location.hash.replace("#","");if(hash&&["inicio","partidos","reservas","ranking","amigos","historial"].includes(hash))setPage(hash);},[]);
+  React.useEffect(()=>{const hash=window.location.hash.replace("#","");if(hash&&["inicio","jornada","partidos","reservas","ranking","amigos","historial"].includes(hash))setPage(hash);},[]);
   function nav(p){setPage(p);setNavOpen(false);window.location.hash=p;window.scrollTo({top:0,behavior:"smooth"});}
-  const pageTitles={inicio:{eb:"MUNDIAL 2026",title:"INICIO"},partidos:{eb:"FIXTURE",title:"PARTIDOS"},reservas:{eb:"TUS APUESTAS",title:"MIS RESERVAS"},ranking:{eb:"LEADERBOARD",title:"RANKING"},amigos:{eb:"TU EQUIPO",title:"AMIGOS"},historial:{eb:"TU CAMINO",title:"HISTORIAL"}};
+  const pageTitles={inicio:{eb:"MUNDIAL 2026",title:"INICIO"},jornada:{eb:"HOY",title:"JORNADA"},partidos:{eb:"FIXTURE",title:"PARTIDOS"},reservas:{eb:"TUS APUESTAS",title:"MIS RESERVAS"},ranking:{eb:"LEADERBOARD",title:"RANKING"},amigos:{eb:"TU EQUIPO",title:"AMIGOS"},historial:{eb:"TU CAMINO",title:"HISTORIAL"}};
   const pt=pageTitles[page]||pageTitles.inicio;
   if(!fixtureReady) return <FixtureSkeleton/>;
   return (
@@ -2227,6 +2459,7 @@ function App() {
         <PageTopbar eyebrow={pt.eb} title={pt.title} onHelp={()=>setShowHow(true)}/>
         <div className="ps-content-body">
           {page==="inicio"&&<PageInicio onNav={nav}/>}
+          {page==="jornada"&&<PageJornada onNav={nav}/>}
           {page==="partidos"&&<PagePartidos onNav={nav}/>}
           {page==="reservas"&&<PageReservas onNav={nav}/>}
           {page==="ranking"&&<PageRanking/>}
