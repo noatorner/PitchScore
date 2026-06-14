@@ -83,6 +83,19 @@ function fixtureStatus(m, now = Date.now()) {
   if (diff <= 24 * 3600 * 1000) return "ABIERTO";
   return "PROXIMO";
 }
+// Número de jornada dinámico (agrupa por día UTC, ordinal 1-N)
+function matchRound(m) {
+  const day = m.utc ? m.utc.slice(0,10) : "";
+  const days = [...new Set(FIXTURE.map(x=>x.utc?x.utc.slice(0,10):""))].sort().filter(Boolean);
+  const n = days.indexOf(day);
+  return n >= 0 ? n + 1 : 1;
+}
+// Label corto de fecha: "14 JUN"
+function matchDateLabel(m) {
+  if(!m.utc) return "";
+  const d = new Date(m.utc);
+  return `${d.getUTCDate()} ${MESES[d.getUTCMonth()]}`;
+}
 
 // date = calendario de la sede (aprox. huso central americano, UTC-5: válido
 // para sedes UTC-4..-7 con kickoffs diurnos); time = hora local del usuario.
@@ -404,7 +417,7 @@ function KanchaWordmark({ fill = "#EFE5CC", className = "" }) {
 }
 
 // ===== SIDEBAR =====
-function Sidebar({ page, onNav, open }) {
+function Sidebar({ page, onNav, open, score }) {
   const items = [
     { id:"inicio",   label:"Inicio",       icon:"home" },
     { id:"jornada",  label:"Jornada",       icon:"calendar" },
@@ -430,6 +443,14 @@ function Sidebar({ page, onNav, open }) {
           </button>
         ))}
       </nav>
+      <div className="ps-wallet-card">
+        <div className="ps-wallet-label">TU MARCADOR</div>
+        <div className="ps-wallet-pts">{(score&&score.total_points!=null?score.total_points:ME.totalPoints).toLocaleString('es-ES')}<span className="ps-wallet-unit"> pts</span></div>
+        <div className="ps-wallet-budget">
+          <span className="ps-wallet-budget-dot">●</span>
+          {(score&&score.budget!=null?score.budget:ME.budget).toLocaleString('es-ES')} disponibles
+        </div>
+      </div>
       <div className="ps-poster">
         <div className="ps-poster-frame">
           <div className="ps-poster-headline">EL MUNDIAL</div>
@@ -849,7 +870,7 @@ function CountdownOverlay({ n }) {
 Object.assign(window, { useHistoricSim, HistoricHero, SimPanel, CountdownOverlay, sbLocateZone, sbToKanchaEvent });
 
 // ===== PAGE INICIO =====
-function PageInicio({ onNav }) {
+function PageInicio({ onNav, onScoreUpdate }) {
   const [mode,setMode]=React.useState("mundial"); // home | mundial | historic | browse
   const [historicMatch,setHistoricMatch]=React.useState(null);
   // Partido del Mundial activo en la pantalla de juego (clicable desde el fixture)
@@ -971,7 +992,7 @@ function PageInicio({ onNav }) {
         const newBudget=((row&&row.budget!=null)?row.budget:ME.budget)+earned;
         const newTotal=((row&&row.total_points)||0)+earned;
         const{error}=await db.from('scores').update({budget:newBudget,total_points:newTotal}).eq('user_id',user.id);
-        if(!error){ ME.budget=newBudget; setBudget(newBudget); }
+        if(!error){ ME.budget=newBudget; ME.totalPoints=newTotal; setBudget(newBudget); if(onScoreUpdate) onScoreUpdate({budget:newBudget,total_points:newTotal}); }
       }catch(e){/* sin conexión: el presupuesto local no cambia */}
     })();
   },[sim.status]);
@@ -1012,8 +1033,9 @@ function PageInicio({ onNav }) {
         const newPlayed=((row?.matches_played)||0)+1;
         const newBudget=((row?.budget)||ME.budget)+earned;
         await db.from('scores').upsert({user_id:user.id,total_points:newTotal,matches_played:newPlayed,budget:newBudget},{onConflict:'user_id'});
-        ME.budget=newBudget;
+        ME.budget=newBudget; ME.totalPoints=newTotal;
         setBudget(newBudget);
+        if(onScoreUpdate) onScoreUpdate({budget:newBudget,total_points:newTotal});
       }catch(e){/* sin conexión */}
     })();
   },[liveEvents.length,mundialMatch.id,selectedZones.length]);
@@ -1330,7 +1352,7 @@ function ModeSelect({ onEnterMundial, onChooseHistoric }) {
             <h2 className="msa-title">MUNDIAL<span className="msa-num">2026</span></h2>
             <p className="msa-sub">Reserva tus zonas del campo antes del pitido inicial y suma puntos con cada jugada, en directo.</p>
             <div className="msa-match" style={{cursor:"pointer"}} onClick={onEnterMundial}>
-              <div className="msa-match-top"><span>GRUPO {featured.group} · JORNADA INAUGURAL</span><span className="msa-match-open">● {featured.status==="ABIERTO"?"RESERVAS ABIERTAS":featured.status}</span></div>
+              <div className="msa-match-top"><span>GRUPO {featured.group} · {matchDateLabel(featured)}</span><span className="msa-match-open">● {featured.status==="ABIERTO"?"RESERVAS ABIERTAS":featured.status}</span></div>
               <div className="msa-match-teams">
                 <Flag code={featured.home} h={24} className="ms-flag"/>
                 <span className="msa-match-name">{COUNTRY_NAME[featured.home].toUpperCase()}</span>
@@ -1469,9 +1491,9 @@ function MatchHero({ match }) {
       <div className="ps-hero-inner">
         <div className="ps-hero-top">
           <span className="ps-hero-trophy">🏆</span>
-          <span className="ps-hero-group">GRUPO {match.group} · JORNADA 1</span>
+          <span className="ps-hero-group">GRUPO {match.group} · {matchDateLabel(match)}</span>
           <span className="ps-hero-stars">★ ★ ★</span>
-          <span className="ps-hero-tag">JORNADA INAUGURAL</span>
+          <span className="ps-hero-tag">JORNADA {matchRound(match)}</span>
         </div>
         <div className="ps-hero-teams">
           <div className="ps-hero-team-h"><Flag code={match.home} h={26} className="ps-hero-flag"/><span className="ps-hero-name">{COUNTRY_NAME[match.home].toUpperCase()}</span></div>
@@ -2214,10 +2236,11 @@ function PageHistorial() {
 // ===== PAGE JORNADA =====
 // Distribuye el presupuesto diario entre los partidos ABIERTOS de hoy.
 // Guarda en match_allocations (user_id, match_id, allocated_pts).
-function PageJornada({ onNav }) {
+function PageJornada({ onNav, score }) {
   const [allocs, setAllocs]       = React.useState({});  // match_id → string input
   const [savedAllocs, setSaved]   = React.useState({});  // match_id → pts guardados en DB
   const [budget, setBudget]       = React.useState(ME.budget);
+  const [totalPts, setTotalPts]   = React.useState(ME.totalPoints);
   const [saving, setSaving]       = React.useState(false);
   const [saveOk, setSaveOk]       = React.useState(false);
   const [err, setErr]             = React.useState(null);
@@ -2241,8 +2264,11 @@ function PageJornada({ onNav }) {
         const { data:{ user } } = await db.auth.getUser();
         if (cancelled || !user) { setLoading(false); return; }
         // Presupuesto actualizado
-        const { data:scoreRow } = await db.from('scores').select('budget').eq('user_id', user.id).maybeSingle();
-        if (!cancelled && scoreRow && scoreRow.budget != null) { ME.budget = scoreRow.budget; setBudget(scoreRow.budget); }
+        const { data:scoreRow } = await db.from('scores').select('budget,total_points').eq('user_id', user.id).maybeSingle();
+        if (!cancelled && scoreRow) {
+          if (scoreRow.budget != null) { ME.budget = scoreRow.budget; setBudget(scoreRow.budget); }
+          if (scoreRow.total_points != null) { ME.totalPoints = scoreRow.total_points; setTotalPts(scoreRow.total_points); }
+        }
         // Asignaciones existentes
         if (todayMatches.length > 0) {
           const ids = todayMatches.map(m => m.id);
@@ -2308,123 +2334,134 @@ function PageJornada({ onNav }) {
   }
 
   if (loading) return (
-    <div className="ps-page"><div className="ps-empty-state"><div className="ps-empty-t">Cargando jornada…</div></div></div>
+    <div className="ps-page"><div className="ps-empty-state"><div className="ps-empty-t">Cargando…</div></div></div>
   );
+
+  // Puntos totales: prefiere prop de App (más actualizado), fallback local
+  const displayTotal = (score&&score.total_points!=null) ? score.total_points : totalPts;
 
   return (
     <div className="ps-page">
-      <div className="ps-page-head">
-        <div>
-          <div className="ps-page-eyebrow">MUNDIAL 2026</div>
-          <div className="ps-page-title">JORNADA</div>
-          <div className="ps-page-sub">Distribuye tu presupuesto entre los partidos de hoy antes de que cierren las reservas.</div>
+
+      {/* ── HERO CARTERA ── */}
+      <div className="ps-jornada-hero">
+        <div className="ps-jornada-hero-eyebrow">TU CARTERA HOY</div>
+        <div className="ps-jornada-hero-main">
+          <span className="ps-jornada-hero-num">{budget.toLocaleString('es-ES')}</span>
+          <span className="ps-jornada-hero-unit">PTS</span>
         </div>
-        <div className="ps-page-stats">
-          <div className="ps-mini-stat"><div className="ps-mini-stat-l">PRESUPUESTO</div><div className="ps-mini-stat-v">{budget} pts</div></div>
-          <div className="ps-mini-stat"><div className="ps-mini-stat-l">ASIGNADO</div><div className="ps-mini-stat-v" style={{color:!isValid?"#d9534f":"inherit"}}>{totalAlloc} pts</div></div>
-          <div className="ps-mini-stat"><div className="ps-mini-stat-l">LIBRE</div><div className="ps-mini-stat-v" style={{color:!isValid?"#d9534f":remaining===0&&totalAlloc>0?"var(--ps-fg)":"#3a8a3a"}}>{remaining} pts</div></div>
+        <div className="ps-jornada-hero-sub">
+          disponibles para jugar
+        </div>
+        <div className="ps-jornada-hero-total">
+          🏆 {displayTotal.toLocaleString('es-ES')} pts acumulados en total
         </div>
       </div>
 
       {todayMatches.length === 0 ? (
-        <div className="ps-empty-state">
+        <div className="ps-empty-state" style={{marginTop:"24px"}}>
           <div className="ps-empty-icon">🗓️</div>
           <div className="ps-empty-t">Sin partidos abiertos hoy</div>
-          <div className="ps-empty-d">Las reservas abren 24h antes del partido. Vuelve cuando haya partidos próximos.</div>
+          <div className="ps-empty-d">Las reservas abren 24h antes del partido.</div>
           <button className="ps-btn ps-btn-primary" onClick={() => onNav("partidos")}>VER FIXTURE</button>
         </div>
       ) : (
         <>
-          <div style={{display:"flex",gap:"8px",marginBottom:"16px",flexWrap:"wrap"}}>
-            <button className="ps-btn ps-btn-dark" onClick={autoSplit}>⚡ REPARTIR IGUAL</button>
-            <button className="ps-btn ps-btn-dark" onClick={() => { setAllocs(Object.fromEntries(todayMatches.map(m=>[m.id,""]))); setSaveOk(false); }}>✕ LIMPIAR</button>
+          {/* ── BARRA DE ASIGNACIÓN ── */}
+          <div className="ps-jornada-bar">
+            <div className="ps-jornada-bar-info">
+              <span className="ps-jornada-bar-label">ASIGNADO</span>
+              <span className="ps-jornada-bar-val" style={{color:!isValid?"#d9534f":"var(--ps-fg)"}}>{totalAlloc} / {budget} pts</span>
+            </div>
+            <div className="ps-jornada-bar-track">
+              <div className="ps-jornada-bar-fill" style={{width:`${Math.min(100,budget>0?Math.round(totalAlloc/budget*100):0)}%`,background:!isValid?"#d9534f":"var(--ps-accent)"}}/>
+            </div>
+            <div style={{display:"flex",gap:"8px",marginTop:"10px"}}>
+              <button className="ps-btn ps-btn-dark ps-btn-sm" onClick={autoSplit}>⚡ REPARTIR IGUAL</button>
+              <button className="ps-btn ps-btn-dark ps-btn-sm" onClick={()=>{ setAllocs(Object.fromEntries(todayMatches.map(m=>[m.id,""]))); setSaveOk(false); }}>✕ LIMPIAR</button>
+            </div>
           </div>
 
-          <div style={{display:"flex",flexDirection:"column",gap:"12px",marginBottom:"20px"}}>
+          {/* ── PARTIDOS COMO OPORTUNIDADES ── */}
+          <div style={{display:"flex",flexDirection:"column",gap:"10px",margin:"16px 0"}}>
             {todayMatches.map(m => {
               const val = allocs[m.id] || "";
               const pts = parseInt(val || 0) || 0;
-              const isSavedMatch = savedAllocs[m.id] != null;
+              const isSaved = savedAllocs[m.id] != null;
               const diffMs = kickoffDate(m) - Date.now();
               const minsLeft = Math.max(0, Math.round((diffMs - RESERVE_CLOSE_MS) / 60000));
+              const timeLabel = minsLeft > 90 ? `${Math.floor(minsLeft/60)}h ${minsLeft%60}min` : minsLeft > 0 ? `${minsLeft} min` : "CIERRA PRONTO";
               const pct = budget > 0 ? Math.round(pts / budget * 100) : 0;
+              // Potencial máximo si todas las zonas aciertan (aprox: 5 zonas × precio medio 15 pts)
+              const potencial = pts > 0 ? Math.round(pts * 0.8) : null;
               return (
-                <div key={m.id} className="ps-card" style={{padding:"16px 20px"}}>
-                  <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:"14px"}}>
-                    <div style={{flex:1,minWidth:"200px"}}>
-                      <div style={{fontSize:"10px",fontWeight:700,letterSpacing:"0.1em",color:"var(--ps-accent)",marginBottom:"5px"}}>
-                        GRUPO {m.group} · {minsLeft > 60 ? `${Math.round(minsLeft/60)}h ${minsLeft%60}min` : minsLeft > 0 ? `${minsLeft} min` : "CIERRA PRONTO"}
-                        {isSavedMatch && <span style={{marginLeft:"10px",color:"#3a8a3a"}}>✓ GUARDADO ({savedAllocs[m.id]} pts)</span>}
-                      </div>
-                      <div style={{display:"flex",alignItems:"center",gap:"8px",marginBottom:"5px",flexWrap:"wrap"}}>
-                        <Flag code={m.home} h={20}/>
-                        <span style={{fontWeight:700,fontSize:"14px",letterSpacing:"0.04em"}}>{COUNTRY_NAME[m.home].toUpperCase()}</span>
-                        <span style={{color:"var(--ps-muted)",fontWeight:700,fontSize:"12px",margin:"0 2px"}}>VS</span>
-                        <span style={{fontWeight:700,fontSize:"14px",letterSpacing:"0.04em"}}>{COUNTRY_NAME[m.away].toUpperCase()}</span>
-                        <Flag code={m.away} h={20}/>
-                      </div>
-                      <div style={{fontSize:"11px",color:"var(--ps-muted)"}}>{m.date} · {m.time} · {m.venue}</div>
-                      {pts > 0 && budget > 0 && (
-                        <div style={{marginTop:"8px",height:"4px",background:"var(--ps-border)",borderRadius:"2px"}}>
-                          <div style={{height:"4px",background:"var(--ps-accent)",borderRadius:"2px",width:`${Math.min(100,pct)}%`,transition:"width .2s"}}/>
-                        </div>
-                      )}
+                <div key={m.id} className="ps-card ps-jornada-match-card">
+                  {/* Cabecera: equipos */}
+                  <div className="ps-jornada-match-head">
+                    <div className="ps-jornada-match-teams">
+                      <Flag code={m.home} h={22}/>
+                      <span className="ps-jornada-match-name">{COUNTRY_NAME[m.home].toUpperCase()}</span>
+                      <span className="ps-jornada-match-vs">VS</span>
+                      <span className="ps-jornada-match-name">{COUNTRY_NAME[m.away].toUpperCase()}</span>
+                      <Flag code={m.away} h={22}/>
                     </div>
-                    <div style={{display:"flex",flexDirection:"column",alignItems:"flex-end",gap:"6px",minWidth:"130px"}}>
-                      <label style={{fontSize:"10px",fontWeight:700,letterSpacing:"0.1em",color:"var(--ps-muted)"}}>PUNTOS A APOSTAR</label>
-                      <div style={{display:"flex",alignItems:"center",gap:"8px"}}>
-                        <input
-                          type="number"
-                          min="0"
-                          max={budget}
-                          value={val}
-                          onChange={e => handleChange(m.id, e.target.value)}
-                          placeholder="0"
-                          style={{width:"90px",padding:"8px 10px",fontSize:"20px",fontWeight:700,textAlign:"right",background:"var(--ps-bg-alt)",border:"1.5px solid var(--ps-border)",borderRadius:"6px",color:"var(--ps-fg)",fontFamily:"inherit",lineHeight:1}}
-                        />
-                        <span style={{fontSize:"11px",color:"var(--ps-muted)",fontWeight:700}}>pts</span>
-                      </div>
-                      {pts > 0 && <div style={{fontSize:"10px",color:"var(--ps-muted)"}}>{pct}% del presupuesto</div>}
+                    <div className="ps-jornada-match-meta">
+                      <span style={{color:"var(--ps-accent)",fontWeight:700}}>{timeLabel}</span>
+                      {" · "}{m.venue}
+                      {isSaved && <span style={{marginLeft:"8px",color:"#3a8a3a"}}>✓ {savedAllocs[m.id]} pts guardados</span>}
                     </div>
                   </div>
+
+                  {/* Cuerpo: input + potencial */}
+                  <div className="ps-jornada-match-body">
+                    <div className="ps-jornada-match-input-wrap">
+                      <div className="ps-jornada-match-input-label">¿CUÁNTO ARRIESGAS?</div>
+                      <div style={{display:"flex",alignItems:"center",gap:"6px"}}>
+                        <input
+                          type="number" min="0" max={budget} value={val}
+                          onChange={e => handleChange(m.id, e.target.value)}
+                          placeholder="0"
+                          className="ps-jornada-input"
+                        />
+                        <span style={{fontSize:"12px",fontWeight:700,color:"var(--ps-muted)"}}>pts</span>
+                      </div>
+                      {pts > 0 && <div style={{fontSize:"10px",color:"var(--ps-muted)",marginTop:"3px"}}>{pct}% de tu cartera</div>}
+                    </div>
+                    {pts > 0 && (
+                      <div className="ps-jornada-match-potential">
+                        <div className="ps-jornada-potential-label">POTENCIAL</div>
+                        <div className="ps-jornada-potential-val">+{potencial} pts</div>
+                        <div className="ps-jornada-potential-hint">si aciertas zonas</div>
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Barra de asignación del partido */}
+                  {pts > 0 && budget > 0 && (
+                    <div style={{height:"3px",background:"var(--ps-border)",borderRadius:"2px",margin:"0 0 0 0"}}>
+                      <div style={{height:"3px",background:"var(--ps-accent)",borderRadius:"2px",width:`${Math.min(100,pct)}%`,transition:"width .2s"}}/>
+                    </div>
+                  )}
+
+                  {/* CTA: ir al campo */}
+                  <button className="ps-jornada-go-btn" onClick={()=>{ window.__KN_MUNDIAL_REQUEST=m.id; onNav("inicio"); }}>
+                    RESERVAR ZONAS →
+                  </button>
                 </div>
               );
             })}
           </div>
 
-          {!isValid && <div style={{padding:"10px 14px",background:"#d9534f18",border:"1px solid #d9534f",borderRadius:"6px",color:"#d9534f",marginBottom:"12px",fontSize:"12px",fontWeight:700}}>⚠ Total ({totalAlloc} pts) supera tu presupuesto ({budget} pts). Reduce alguna asignación.</div>}
+          {!isValid && <div style={{padding:"10px 14px",background:"#d9534f18",border:"1px solid #d9534f",borderRadius:"6px",color:"#d9534f",marginBottom:"12px",fontSize:"12px",fontWeight:700}}>⚠ Total ({totalAlloc} pts) supera tu cartera ({budget} pts)</div>}
           {err && <div style={{padding:"10px 14px",background:"#d9534f18",border:"1px solid #d9534f",borderRadius:"6px",color:"#d9534f",marginBottom:"12px",fontSize:"12px"}}>{err}</div>}
 
-          <div style={{display:"flex",gap:"12px",alignItems:"center",flexWrap:"wrap"}}>
-            <button
-              className="ps-btn ps-btn-primary"
-              disabled={!isValid || saving}
-              onClick={save}
-              style={{opacity:(!isValid||saving)?0.5:1}}
-            >
-              {saving ? "GUARDANDO…" : saveOk ? "✓ GUARDADO" : "GUARDAR ASIGNACIÓN"}
+          <div style={{display:"flex",gap:"12px",alignItems:"center",flexWrap:"wrap",marginBottom:"24px"}}>
+            <button className="ps-btn ps-btn-primary" disabled={!isValid||saving} onClick={save} style={{opacity:(!isValid||saving)?0.5:1}}>
+              {saving?"GUARDANDO…":saveOk?"✓ LISTO":"CONFIRMAR APUESTA"}
             </button>
-            {isValid && remaining > 0 && totalAlloc > 0 && (
-              <span style={{fontSize:"12px",color:"var(--ps-muted)"}}>Quedan {remaining} pts libres — irán al siguiente partido automáticamente.</span>
-            )}
+            {saveOk && <span style={{fontSize:"12px",color:"#3a8a3a",fontWeight:700}}>✓ Cartera distribuida — ahora reserva tus zonas en cada partido</span>}
+            {isValid&&remaining>0&&totalAlloc>0&&!saveOk&&<span style={{fontSize:"12px",color:"var(--ps-muted)"}}>Quedan {remaining} pts sin asignar</span>}
           </div>
-
-          {saveOk && (
-            <div style={{marginTop:"20px",padding:"16px",background:"#3a8a3a18",border:"1px solid #3a8a3a44",borderRadius:"8px"}}>
-              <div style={{fontWeight:700,fontSize:"11px",letterSpacing:"0.1em",color:"#3a8a3a",marginBottom:"10px"}}>✓ ASIGNACIÓN GUARDADA — AHORA RESERVA TUS ZONAS</div>
-              <div style={{display:"flex",gap:"8px",flexWrap:"wrap"}}>
-                {todayMatches.map(m => {
-                  const pts = parseInt(allocs[m.id] || 0) || 0;
-                  return (
-                    <button key={m.id} className="ps-btn ps-btn-dark ps-btn-sm"
-                      onClick={() => { window.__KN_MUNDIAL_REQUEST = m.id; onNav("inicio"); }}>
-                      {COUNTRY_NAME[m.home].toUpperCase()} VS {COUNTRY_NAME[m.away].toUpperCase()} · {pts} pts →
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-          )}
         </>
       )}
     </div>
@@ -2438,9 +2475,18 @@ function App() {
   const [page,setPage]=React.useState("inicio");
   const [showHow,setShowHow]=React.useState(false);
   const [navOpen,setNavOpen]=React.useState(false);
-  // El fixture se carga de Supabase antes de montar la app (skeleton mientras)
   const [fixtureReady,setFixtureReady]=React.useState(false);
+  // Marcador global: se carga una vez y se actualiza cuando PageInicio gana puntos
+  const [globalScore,setGlobalScore]=React.useState({budget:ME.budget,total_points:ME.totalPoints});
   React.useEffect(()=>{ let on=true; loadFixture().finally(()=>{ if(on) setFixtureReady(true); }); return ()=>{ on=false; }; },[]);
+  React.useEffect(()=>{
+    const db=window.supabaseClient; if(!db) return;
+    db.auth.getUser().then(({data:{user}})=>{
+      if(!user) return;
+      db.from('scores').select('budget,total_points').eq('user_id',user.id).maybeSingle()
+        .then(({data})=>{ if(data){ ME.budget=data.budget??ME.budget; ME.totalPoints=data.total_points??ME.totalPoints; setGlobalScore({budget:data.budget??ME.budget,total_points:data.total_points??ME.totalPoints}); } });
+    });
+  },[]);
   React.useEffect(()=>{const hash=window.location.hash.replace("#","");if(hash&&["inicio","jornada","partidos","reservas","ranking","amigos","historial"].includes(hash))setPage(hash);},[]);
   function nav(p){setPage(p);setNavOpen(false);window.location.hash=p;window.scrollTo({top:0,behavior:"smooth"});}
   const pageTitles={inicio:{eb:"MUNDIAL 2026",title:"INICIO"},jornada:{eb:"HOY",title:"JORNADA"},partidos:{eb:"FIXTURE",title:"PARTIDOS"},reservas:{eb:"TUS APUESTAS",title:"MIS RESERVAS"},ranking:{eb:"LEADERBOARD",title:"RANKING"},amigos:{eb:"TU EQUIPO",title:"AMIGOS"},historial:{eb:"TU CAMINO",title:"HISTORIAL"}};
@@ -2454,12 +2500,12 @@ function App() {
         </svg>
       </button>
       {navOpen&&<div className="ps-nav-backdrop" onClick={()=>setNavOpen(false)}></div>}
-      <Sidebar page={page} onNav={nav} open={navOpen}/>
+      <Sidebar page={page} onNav={nav} open={navOpen} score={globalScore}/>
       <div className="ps-content" data-screen-label={page}>
-        <PageTopbar eyebrow={pt.eb} title={pt.title} onHelp={()=>setShowHow(true)}/>
+        <PageTopbar eyebrow={pt.eb} title={pt.title} onHelp={()=>setShowHow(true)} score={globalScore}/>
         <div className="ps-content-body">
-          {page==="inicio"&&<PageInicio onNav={nav}/>}
-          {page==="jornada"&&<PageJornada onNav={nav}/>}
+          {page==="inicio"&&<PageInicio onNav={nav} onScoreUpdate={setGlobalScore}/>}
+          {page==="jornada"&&<PageJornada onNav={nav} score={globalScore}/>}
           {page==="partidos"&&<PagePartidos onNav={nav}/>}
           {page==="reservas"&&<PageReservas onNav={nav}/>}
           {page==="ranking"&&<PageRanking/>}
@@ -2509,13 +2555,18 @@ function HowModal({ onClose }) {
   );
 }
 
-function PageTopbar({ eyebrow, title, onHelp }) {
+function PageTopbar({ eyebrow, title, onHelp, score }) {
+  const pts = score&&score.budget!=null ? score.budget : ME.budget;
   return (
     <div className="ps-topbar-row">
       <div className="ps-topbar-l"><span className="ps-topbar-eb">{eyebrow}</span><span className="ps-topbar-divider">/</span><span className="ps-topbar-title">{title}</span></div>
       <div className="ps-topbar-r">
         <button className="ps-help" onClick={onHelp}>¿CÓMO JUGAR?</button>
-        <button className="ps-bell"><SidebarIcon name="clock"/>{ME.notifications>0&&<span className="ps-bell-dot">{ME.notifications}</span>}</button>
+        <div className="ps-score-chip" title="Puntos disponibles">
+          <span className="ps-score-chip-icon">💰</span>
+          <span className="ps-score-chip-pts">{pts.toLocaleString('es-ES')}</span>
+          <span className="ps-score-chip-label">pts</span>
+        </div>
         <div className="ps-avatar">
           <div className="ps-avatar-img"><svg viewBox="0 0 40 40" width="40" height="40"><circle cx="20" cy="20" r="20" fill="#3a5732"/><circle cx="20" cy="16" r="6" fill="#e8dcc0"/><path d="M6,40 Q6,28 20,28 Q34,28 34,40 Z" fill="#e8dcc0"/></svg></div>
           <div className="ps-avatar-meta"><div className="ps-avatar-name">{ME.name}</div><div className="ps-avatar-level">{ME.level}</div></div>
