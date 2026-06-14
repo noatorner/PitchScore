@@ -2591,12 +2591,14 @@ function JornadaHistorial({ onReplay }) {
 }
 
 // ─── Jornada principal ─────────────────────────────────────────────────────
-function PageJornada({ onNav, score }) {
+function PageJornada({ onNav, score, onScoreUpdate }) {
   const [tab,        setTab]    = React.useState("hoy");
   const [replay,     setReplay] = React.useState(null);
   const [allocs,     setAllocs] = React.useState({});
   const [savedAllocs,setSaved]  = React.useState({});
   const [budget,     setBudget] = React.useState(ME.budget);
+  const budgetRef = React.useRef(ME.budget);
+  React.useEffect(() => { budgetRef.current = budget; }, [budget]);
   const [totalPts,   setTotalPts]= React.useState(ME.totalPoints);
   const [saving,     setSaving]     = React.useState(false);
   const [saveOk,     setSaveOk]     = React.useState(false);
@@ -2677,7 +2679,14 @@ function PageJornada({ onNav, score }) {
         { onConflict: 'user_id,match_id' }
       );
       if (error) { setCardSave(p => ({ ...p, [mid]: "err" })); return false; }
-      setSaved(p => ({ ...p, [mid]: pts }));
+      setSaved(p => {
+        const next = { ...p, [mid]: pts };
+        // Recalcular budget restante y notificar al sidebar
+        const totalSaved = Object.values(next).reduce((s, v) => s + (v || 0), 0);
+        const newBudget = budgetRef.current - totalSaved;
+        if (onScoreUpdate) onScoreUpdate(prev => ({ ...prev, budget: newBudget }));
+        return next;
+      });
       setCardSave(p => ({ ...p, [mid]: "ok" }));
       setTimeout(() => setCardSave(p => ({ ...p, [mid]: "idle" })), 2000);
       return true;
@@ -2877,7 +2886,7 @@ function App() {
         <PageTopbar eyebrow={pt.eb} title={pt.title} onHelp={()=>setShowHow(true)} score={globalScore}/>
         <div className="ps-content-body">
           {page==="inicio"&&<PageInicio onNav={nav} onScoreUpdate={setGlobalScore}/>}
-          {page==="jornada"&&<PageJornada onNav={nav} score={globalScore}/>}
+          {page==="jornada"&&<PageJornada onNav={nav} score={globalScore} onScoreUpdate={setGlobalScore}/>}
           {page==="partidos"&&<PagePartidos onNav={nav}/>}
           {page==="reservas"&&<PageReservas onNav={nav}/>}
           {page==="ranking"&&<PageRanking/>}
