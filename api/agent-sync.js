@@ -1,29 +1,20 @@
 // api/agent-sync.js
 // Agente autónomo de sincronización de eventos en vivo del Mundial 2026.
-// Fuente: SofaScore API pública (sin API key requerida).
-// Llamado cada 60s por cron externo (cron-job.org o similar).
+// Fuente: ESPN public API (no API key, no bloqueo desde servidores).
+// Llamado cada 60s por cron externo (cron-job.org).
 //
 // Variables Vercel necesarias:
 //   SUPABASE_SERVICE_KEY  — service role key de Supabase (bypasea RLS)
-//   AGENT_SECRET          — (opcional) cabecera X-Agent-Secret para proteger el endpoint
 
 const { SB_URL } = require('./_db.js');
 
-// ─── SofaScore ─────────────────────────────────────────────────────────────
+// ─── ESPN API ──────────────────────────────────────────────────────────────
 
-const SS_BASE = 'https://api.sofascore.com/api/v1';
-const SS_HEADS = {
-  'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:124.0) Gecko/20100101 Firefox/124.0',
-  'Accept': 'application/json, */*',
-  'Accept-Language': 'en-US,en;q=0.9',
-  'Referer': 'https://www.sofascore.com/',
-  'Origin': 'https://www.sofascore.com',
-  'Cache-Control': 'no-cache',
-};
+const ESPN_BASE = 'https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world';
 
-async function ssGet(path) {
-  const r = await fetch(`${SS_BASE}${path}`, { headers: SS_HEADS });
-  if (!r.ok) throw new Error(`SofaScore ${r.status} en ${path}`);
+async function espnGet(path) {
+  const r = await fetch(`${ESPN_BASE}${path}`);
+  if (!r.ok) throw new Error(`ESPN ${r.status} en ${path}`);
   return r.json();
 }
 
@@ -52,11 +43,11 @@ function makeSbService(serviceKey) {
   };
 }
 
-// ─── Correspondencia código Kancha ↔ nombre SofaScore ─────────────────────
+// ─── Correspondencia nombre ESPN ↔ código Kancha ──────────────────────────
 
 const TEAM_PATTERNS = {
   MEX: ['mexico','méxico'],    RSA: ['south africa'],
-  KOR: ['south korea','korea republic'],  CAN: ['canada'],
+  KOR: ['south korea','korea republic','korea rep'],  CAN: ['canada'],
   USA: ['united states','usa'], PAR: ['paraguay'],  HAI: ['haiti'],
   SCO: ['scotland'],  BRA: ['brazil','brasil'],  MAR: ['morocco','maroc'],
   AUS: ['australia'], TUR: ['turkey','türkiye'], QAT: ['qatar'],
@@ -72,91 +63,100 @@ const TEAM_PATTERNS = {
   CRO: ['croatia'],  GHA: ['ghana'],  PAN: ['panama'],
 };
 
-function teamMatches(ssName, kCode) {
-  const n = (ssName || '').toLowerCase();
+function teamMatches(espnName, kCode) {
+  const n = (espnName || '').toLowerCase();
   return (TEAM_PATTERNS[kCode] || [kCode.toLowerCase()]).some(p => n.includes(p));
 }
 
-// ─── Mapeo incidente SofaScore → zona Kancha ──────────────────────────────
+// ─── Mapeo evento ESPN → zona Kancha ─────────────────────────────────────
+// ESPN event type.type values:
+//   goal, goal---header, goal---own-goal   → gol
+//   penalty---scored                        → penalti gol
+//   yellow-card                             → ignorar
+//   red-card, red-card---second-yellow      → tarjeta roja
+//   corner                                  → córner
+//   var-goal-confirmed, var-penalty-awarded → VAR
 
-function mapIncident(inc) {
-  const { incidentType, incidentClass, time, isHome, id } = inc;
-  const min    = time || 0;
-  const side   = isHome ? 'der' : 'izq';   // local ataca a la derecha
+function mapEspnEvent(evt, isHome) {
+  const typeType = evt.type?.type || '';
+  const min = parseInt(evt.clock?.displayValue) || 0;
+  const side    = isHome ? 'der' : 'izq';
   const oppSide = isHome ? 'izq' : 'der';
 
-  switch (incidentType) {
+  switch (typeType) {
     case 'goal':
-      if (incidentClass === 'ownGoal')
-        return { zone: `box6_${oppSide}`, pts: 80,  icon: '⚽', label: 'Autogol',        min };
-      if (incidentClass === 'penaltyGoal')
-        return { zone: `penspot_${side}`, pts: 220, icon: '⚽', label: 'Gol (penalti)',   min };
-      return   { zone: `box6_${side}`,   pts: 180, icon: '⚽', label: 'Gol',             min };
+    case 'goal---header':
+      return { zone: `box6_${side}`, pts: 180, icon: '⚽', label: evt.shortText || 'Gol', min };
 
-    case 'card':
-      if (incidentClass === 'red' || incidentClass === 'yellowRed')
-        return { zone: `med_${(min % 4) || 1}`, pts: 10, icon: '🟥', label: 'Tarjeta roja', min };
-      return null; // amarillas no puntúan
+    case 'goal---own-goal':
+      return { zone: `box6_${oppSide}`, pts: 80, icon: '⚽', label: 'Autogol', min };
 
-    case 'varDecision':
-      if (incidentClass === 'penaltyConfirmed')
-        return { zone: `penspot_${side}`,  pts: 100, icon: '🥅', label: 'Penalti (VAR)',    min };
-      if (['goalCancelled','goalDisallowed'].includes(incidentClass))
-        return { zone: `box6_${side}`,     pts: 0,   icon: '📺', label: 'Gol anulado (VAR)', min };
-      return null;
+    case 'penalty---scored':
+      return { zone: `penspot_${side}`, pts: 220, icon: '⚽', label: 'Gol (penalti)', min };
 
-    case 'cornerKick': {
-      const flag = (Number(id) || min) % 2 === 0 ? 'izq' : 'der';
+    case 'red-card':
+    case 'red-card---second-yellow':
+      return { zone: `med_${(min % 4) || 1}`, pts: 10, icon: '🟥', label: 'Tarjeta roja', min };
+
+    case 'var-goal-confirmed':
+      return { zone: `box6_${side}`, pts: 0, icon: '📺', label: 'Gol confirmado VAR', min };
+
+    case 'var-penalty-awarded':
+      return { zone: `penspot_${side}`, pts: 100, icon: '🥅', label: 'Penalti (VAR)', min };
+
+    case 'corner':
+    case 'corner-kick': {
+      const flag = (Number(evt.id) || min) % 2 === 0 ? 'izq' : 'der';
       return { zone: `corner_${isHome ? 'n' : 's'}_${flag}`, pts: 60, icon: '🚩', label: 'Córner', min };
     }
 
+    case 'yellow-card':
     default:
       return null;
   }
 }
 
-// ─── Búsqueda del partido en SofaScore ────────────────────────────────────
+// ─── Buscar partido en ESPN scoreboard ────────────────────────────────────
 
-async function findSsEvent(homeCode, awayCode, kickoffUtc) {
-  const date = kickoffUtc.slice(0, 10);
-  const data  = await ssGet(`/sport/football/scheduled-events/${date}`);
+async function findEspnEvent(homeCode, awayCode) {
+  const data = await espnGet('/scoreboard');
   const events = data.events || [];
 
-  // Intentamos primero filtrar por nombre de torneo
-  const wcEvents = events.filter(e => {
-    const t = ((e.tournament?.name || '') + ' ' + (e.tournament?.uniqueTournament?.name || '')).toLowerCase();
-    return t.includes('world cup') || t.includes('mundial') || t.includes('fifa world');
-  });
-
-  const pool = wcEvents.length ? wcEvents : events;
-  return pool.find(e =>
-    teamMatches(e.homeTeam?.name, homeCode) && teamMatches(e.awayTeam?.name, awayCode)
-  ) || null;
+  return events.find(e => {
+    const comp = e.competitions?.[0];
+    if (!comp) return false;
+    const home = comp.competitors.find(c => c.homeAway === 'home');
+    const away = comp.competitors.find(c => c.homeAway === 'away');
+    return teamMatches(home?.team?.displayName, homeCode) &&
+           teamMatches(away?.team?.displayName, awayCode);
+  }) || null;
 }
 
 // ─── Lógica principal por partido ─────────────────────────────────────────
 
 async function processMatch(match, sbSvc) {
-  const { id: matchId, home, away, kickoff_utc } = match;
+  const { id: matchId, home, away } = match;
 
-  // 1. Buscar en SofaScore
-  let ssEvent;
+  // 1. Buscar en ESPN
+  let espnEvent;
   try {
-    ssEvent = await findSsEvent(home, away, kickoff_utc);
+    espnEvent = await findEspnEvent(home, away);
   } catch (e) {
-    return { matchId, error: `SofaScore búsqueda: ${e.message}` };
+    return { matchId, error: `ESPN búsqueda: ${e.message}` };
   }
-  if (!ssEvent) return { matchId, home, away, error: 'No encontrado en SofaScore' };
+  if (!espnEvent) return { matchId, home, away, error: 'No encontrado en ESPN scoreboard' };
 
-  const ssId = ssEvent.id;
+  const espnId = espnEvent.id;
+  const comp = espnEvent.competitions?.[0];
+  const homeTeam = comp?.competitors?.find(c => c.homeAway === 'home')?.team?.displayName;
 
-  // 2. Obtener incidents
-  let incidents;
+  // 2. Obtener keyEvents del summary
+  let keyEvents;
   try {
-    const d = await ssGet(`/event/${ssId}/incidents`);
-    incidents = d.incidents || [];
+    const d = await espnGet(`/summary?event=${espnId}`);
+    keyEvents = d.keyEvents || [];
   } catch (e) {
-    return { matchId, ssId, error: `Incidents: ${e.message}` };
+    return { matchId, espnId, error: `Summary: ${e.message}` };
   }
 
   // 3. IDs ya procesados
@@ -168,13 +168,17 @@ async function processMatch(match, sbSvc) {
     processed = new Set((rows || []).map(r => String(r.sofascore_id)));
   } catch (e) { /* tabla puede no existir aún */ }
 
-  // 4. Procesar nuevos incidents
+  // 4. Procesar nuevos eventos
   const newEvents = [];
-  for (const inc of incidents) {
-    const incId = String(inc.id || '');
-    if (!incId || processed.has(incId)) continue;
+  for (const evt of keyEvents) {
+    const evtId = String(evt.id || '');
+    if (!evtId || processed.has(evtId)) continue;
 
-    const mapped = mapIncident(inc);
+    // Determinar si es del equipo local
+    const evtTeam = evt.team?.displayName || '';
+    const isHome = evtTeam ? teamMatches(evtTeam, home) : null;
+
+    const mapped = isHome !== null ? mapEspnEvent(evt, isHome) : null;
     if (!mapped) continue;
 
     // Insertar en agent_events
@@ -183,41 +187,40 @@ async function processMatch(match, sbSvc) {
         method: 'POST',
         body: JSON.stringify({
           match_id:       matchId,
-          sofascore_id:   incId,
+          sofascore_id:   evtId,           // reutilizamos el campo para el ID de ESPN
           minute:         mapped.min,
-          event_type:     inc.incidentType,
-          incident_class: inc.incidentClass || null,
+          event_type:     evt.type?.type || 'unknown',
+          incident_class: evt.type?.text || null,
           zone_id:        mapped.zone,
           pts_value:      mapped.pts,
           icon:           mapped.icon,
           label:          mapped.label,
-          is_home:        inc.isHome ?? null,
-          player_name:    inc.player?.name || null,
-          raw:            inc,
+          is_home:        isHome,
+          player_name:    evt.participants?.[0]?.athlete?.displayName || null,
+          raw:            evt,
           scored:         false,
         }),
         headers: { Prefer: 'return=minimal,resolution=ignore-duplicates' },
       });
     } catch (e) {
-      continue; // duplicado o error de DB, saltamos
+      continue;
     }
 
     // Otorgar puntos
     const awarded = await awardPointsForZone(matchId, mapped.zone, mapped.pts, sbSvc);
 
-    // Marcar como puntuado
     if (awarded > 0) {
       await sbSvc(
-        `agent_events?match_id=eq.${encodeURIComponent(matchId)}&sofascore_id=eq.${incId}`,
+        `agent_events?match_id=eq.${encodeURIComponent(matchId)}&sofascore_id=eq.${evtId}`,
         { method: 'PATCH', body: JSON.stringify({ scored: true, scored_count: awarded }) }
       ).catch(() => {});
     }
 
-    newEvents.push({ ...mapped, incId, awarded });
-    processed.add(incId);
+    newEvents.push({ ...mapped, evtId, awarded });
+    processed.add(evtId);
   }
 
-  return { matchId, home, away, ssId, totalIncidents: incidents.length, newEvents: newEvents.length, events: newEvents };
+  return { matchId, home, away, espnId, totalEvents: keyEvents.length, newEvents: newEvents.length, events: newEvents };
 }
 
 // ─── Otorgar puntos a reservations de una zona ────────────────────────────
@@ -237,10 +240,8 @@ async function awardPointsForZone(matchId, zoneId, pts, sbSvc) {
   let count = 0;
   for (const r of reservations) {
     try {
-      // Leer presupuesto actual
       const scoreRows = await sbSvc(`scores?user_id=eq.${r.user_id}&select=budget,total_points`);
       const curr = (scoreRows || [])[0] || { budget: 0, total_points: 0 };
-
       await sbSvc(`scores?user_id=eq.${r.user_id}`, {
         method: 'PATCH',
         body: JSON.stringify({
