@@ -773,6 +773,8 @@ function PageInicio({ onNav }) {
   // Partido del Mundial activo en la pantalla de juego (clicable desde el fixture)
   const [mundialMatch,setMundialMatch]=React.useState(FIXTURE.find(m=>m.featured)||FIXTURE[0]);
   const [selectedZones,setSelectedZones]=React.useState([]);
+  // Zonas confirmadas en DB — para saber si el botón debe decir "EDITAR" o "CONFIRMAR"
+  const [savedZones,setSavedZones]=React.useState(null); // null = todavía cargando
   // Presupuesto permanente del usuario (scores.budget); 500 por defecto
   const [budget,setBudget]=React.useState(ME.budget);
   const [view,setView]=React.useState("mapa");
@@ -1010,7 +1012,8 @@ function PageInicio({ onNav }) {
         if(!user){setSelectedZones([]);return;}
         const{data}=await db.from('reservations').select('zone_id')
           .eq('user_id',user.id).eq('match_id',mundialMatch.id);
-        if(!cancelled)setSelectedZones(data&&data.length?data.map(r=>r.zone_id).slice(0,ME.zonesMax):[]);
+        const zones=data&&data.length?data.map(r=>r.zone_id).slice(0,ME.zonesMax):[];
+        if(!cancelled){ setSelectedZones(zones); setSavedZones(zones); }
         // presupuesto permanente del usuario (si la columna aún no existe, queda el 500 por defecto)
         const{data:scoreRow,error:scoreErr}=await db.from('scores').select('budget')
           .eq('user_id',user.id).maybeSingle();
@@ -1051,6 +1054,7 @@ function PageInicio({ onNav }) {
       if(regErr){
         await db.from('scores').upsert({user_id:user.id,name:userName},{onConflict:'user_id',ignoreDuplicates:true});
       }
+      setSavedZones([...selectedZones]);
       return true;
     }catch(e){return false;}
   }
@@ -1163,7 +1167,7 @@ function PageInicio({ onNav }) {
         <aside className="ps-col-right">
           <BudgetCard selectedCount={selectedZones.length} remaining={remainingBudget} total={budget}/>
           <ZoneDetail zone={focused} selected={selectedZones.includes(focusZone)} atMax={selectedZones.length>=ME.zonesMax} onAdd={()=>toggleZone(focused)} totalCost={totalCost} remainingBudget={remainingBudget}/>
-          <CartCard selectedIds={selectedZones} onRemove={(id)=>setSelectedZones(prev=>prev.filter(x=>x!==id))} onClear={()=>setSelectedZones([])} onConfirm={confirmReservations}/>
+          <CartCard selectedIds={selectedZones} savedIds={savedZones} onRemove={(id)=>setSelectedZones(prev=>prev.filter(x=>x!==id))} onClear={()=>setSelectedZones([])} onConfirm={confirmReservations}/>
         </aside>
       </div>
       <LiveMatch match={liveFixture?{home:liveFixture.home,away:liveFixture.away}:mundialMatch}
@@ -1442,20 +1446,24 @@ function ZoneDetail({ zone, selected, atMax, onAdd, totalCost, remainingBudget }
   );
 }
 
-function CartCard({ selectedIds, onRemove, onClear, onConfirm }) {
-  const [saveState,setSaveState]=React.useState("idle"); // idle | saving | saved | error
+function CartCard({ selectedIds, savedIds, onRemove, onClear, onConfirm }) {
+  const [saveState,setSaveState]=React.useState("idle"); // idle | saving | error
   const items=selectedIds.map(id=>ZONES.find(z=>z.id===id)).filter(Boolean);
   const total=items.reduce((s,z)=>s+z.price,0);
+
+  // ¿Las zonas seleccionadas coinciden exactamente con las guardadas en DB?
+  const isConfirmed=savedIds!==null&&
+    selectedIds.length===savedIds.length&&
+    [...selectedIds].sort().join()===([...savedIds]).sort().join();
 
   async function handleConfirm(){
     if(!items.length)return;
     setSaveState("saving");
     const ok=await onConfirm();
-    setSaveState(ok?"saved":"error");
-    if(ok)setTimeout(()=>setSaveState("idle"),3000);
+    setSaveState(ok?"idle":"error");
   }
 
-  const btnLabel=saveState==="saving"?"GUARDANDO…":saveState==="saved"?"✓ RESERVAS GUARDADAS":saveState==="error"?"ERROR — REINTENTAR":"CONFIRMAR RESERVAS";
+  const btnLabel=saveState==="saving"?"GUARDANDO…":saveState==="error"?"ERROR — REINTENTAR":isConfirmed?"✓ EDITAR ZONAS":"CONFIRMAR RESERVAS";
 
   return (
     <div className="ps-card ps-cart">
