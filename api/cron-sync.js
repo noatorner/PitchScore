@@ -1,14 +1,15 @@
-// Vercel Cron: GET /api/cron-sync (programado cada 5 min en vercel.json).
-// Sincroniza el fixture solo durante la ventana de partidos del Mundial
-// (18:00–03:00 UTC); fuera de ella responde sin tocar nada.
+// Vercel Cron: GET /api/cron-sync (1x/día en Vercel Hobby).
+// También lo llama cron-job.org cada 5 min para cobertura real.
+// Sincroniza el fixture durante la ventana de partidos del Mundial
+// (14:00–04:00 UTC, cubre kickoffs desde las 16h UTC).
 
 const { runSync } = require("./_sync.js");
 
 module.exports = async (req, res) => {
   const hour = new Date().getUTCHours();
-  const inWindow = hour >= 18 || hour < 3;
+  const inWindow = hour >= 14 || hour < 4;
   if (!inWindow) {
-    return res.status(200).json({ skipped: true, reason: "fuera de la ventana de partidos (18:00–03:00 UTC)", hour });
+    return res.status(200).json({ skipped: true, reason: "fuera de la ventana de partidos (14:00–04:00 UTC)", hour });
   }
   try {
     const r = await runSync();

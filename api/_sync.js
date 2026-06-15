@@ -20,7 +20,7 @@ function rowToKancha(r, status, score, apiId) {
 async function runSync() {
   const key = process.env.APISPORTS_KEY || process.env.RAPIDAPI_KEY;
   const now = Date.now();
-  const from = new Date(now - 6 * 3600 * 1000).toISOString();
+  const from = new Date(now - 48 * 3600 * 1000).toISOString();
   const to   = new Date(now + 30 * 3600 * 1000).toISOString();
 
   const rows = (await sb(`matches?select=*&kickoff_utc=gte.${from}&kickoff_utc=lte.${to}&order=kickoff_utc.asc`)) || [];
