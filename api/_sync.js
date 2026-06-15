@@ -25,7 +25,7 @@ async function runSync() {
 
   // Sin filtro de fecha: leemos TODOS los partidos para evitar límites de rows en Supabase.
   // Filtramos la ventana en memoria para las llamadas a la API externa.
-  const allRows = (await sb(`matches?select=*&order=kickoff_utc.asc`)) || [];
+  const allRows = (await sb(`matches?select=*&order=kickoff_utc.asc&limit=1000`)) || [];
   const rows = allRows; // procesamos todos; el bloque de API solo pide los recientes
 
   // Datos frescos de api-football solo para la ventana activa (última 48h + próximas 30h)
