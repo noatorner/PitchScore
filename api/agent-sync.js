@@ -397,10 +397,12 @@ async function syncMatchStatuses(sbSvc) {
     let newStatus = null;
     if (state === 'in'   && match.status !== 'EN VIVO')    newStatus = 'EN VIVO';
     if (state === 'post' && match.status !== 'FINALIZADO')  newStatus = 'FINALIZADO';
-    if (!newStatus) continue;
 
-    const patch = { status: newStatus };
-    if (newStatus === 'FINALIZADO' && score) patch.score = score;
+    // Siempre actualizar el score durante EN VIVO (aunque el status no cambie)
+    const patch = {};
+    if (newStatus) patch.status = newStatus;
+    if (score && (state === 'in' || state === 'post')) patch.score = score;
+    if (!Object.keys(patch).length) continue;
 
     await sbSvc(`matches?id=eq.${encodeURIComponent(match.id)}`, {
       method: 'PATCH',
