@@ -211,12 +211,12 @@ async function processMatch(match, sbSvc) {
     return { matchId, espnId, error: `Summary: ${e.message}` };
   }
 
-  // Extraer plays únicos con posición
+  // Extraer plays únicos (sin requerir coordenadas XY — usamos defaults 50,50 si faltan)
   const playsSeen = new Set();
   const plays = [];
   for (const item of commentary) {
     const p = item.play;
-    if (!p || p.fieldPositionX === undefined) continue;
+    if (!p || !p.type?.type) continue; // solo necesitamos el tipo de evento
     if (playsSeen.has(p.id)) continue;
     playsSeen.add(p.id);
     plays.push(p);
