@@ -1153,6 +1153,45 @@ input { font-family: inherit; }
 .ps-jk-save-btn:hover:not(:disabled) { background: #35855d; }
 .ps-jk-save-btn:disabled { opacity: .45; cursor: default; }
 
+/* ============ TEAM PICKER ============ */
+.ps-tp-overlay {
+  position: fixed; inset: 0; z-index: 400;
+  background: rgba(20,16,10,0.72);
+  display: flex; align-items: center; justify-content: center;
+  padding: 20px;
+  animation: ps-fade-in 0.15s ease;
+}
+@keyframes ps-fade-in { from { opacity:0 } to { opacity:1 } }
+.ps-tp-panel {
+  background: #f5f0e8; border-radius: 16px; padding: 24px;
+  max-width: 420px; width: 100%;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+  animation: ps-slide-up 0.18s ease;
+}
+@keyframes ps-slide-up { from { transform:translateY(16px); opacity:0 } to { transform:translateY(0); opacity:1 } }
+.ps-tp-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.ps-tp-zone-name { font-family: var(--kn-head); font-size: 14px; letter-spacing: 0.06em; flex: 1; }
+.ps-tp-cost { font-size: 11px; font-weight: 700; color: #8a7d62; background: #e6dcc4; padding: 3px 8px; border-radius: 20px; }
+.ps-tp-question { font-size: 13px; color: #6c604a; margin-bottom: 18px; }
+.ps-tp-teams { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
+.ps-tp-team {
+  flex: 1; padding: 16px 10px; border-radius: 12px;
+  border: 2px solid #d4c9b0; background: #fff;
+  cursor: pointer; transition: all 0.15s;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  text-align: center;
+}
+.ps-tp-team:hover { border-color: #8a7d62; }
+.ps-tp-team.is-pick-home { border-color: #2a6b4a; background: #eaf5ee; }
+.ps-tp-team.is-pick-away { border-color: #b94234; background: #faeaea; }
+.ps-tp-tname { font-family: var(--kn-head); font-size: 12px; letter-spacing: 0.08em; color: #2a2620; }
+.ps-tp-badge { font-size: 9px; font-weight: 700; letter-spacing: 0.12em; color: #8a7d62; }
+.ps-tp-vs { font-family: var(--kn-head); font-size: 16px; color: #8a7d62; flex-shrink: 0; }
+.ps-tp-hint { font-size: 11px; color: #6c604a; background: #e6dcc4; border-radius: 8px; padding: 8px 12px; margin-bottom: 14px; line-height: 1.5; }
+.ps-tp-actions { display: flex; gap: 8px; }
+.ps-tp-actions .ps-btn { flex: 1; }
+.ps-cart-pred { display: inline-flex; align-items: center; gap: 3px; border-radius: 4px; padding: 1px 5px; font-size: 9px; font-weight: 700; margin-left: 4px; }
+
   </style>
 </head>
 <body style="background-color: rgb(61, 54, 39)">
