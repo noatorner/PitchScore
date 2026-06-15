@@ -424,15 +424,8 @@ const ACTIONS = [
   { name:"Recuperación",  icon:"🛡", points:5  },
 ];
 
-// ===== SISTEMA DE FICHAS =====
-// Cada jornada el usuario tiene FICHAS_TOTAL fichas para repartir entre partidos.
-// El coste en fichas depende del tier de la zona (no del precio en pts).
-// Los pts se siguen usando para puntuar eventos, no para "comprar" zonas.
-const FICHAS_TOTAL = 12;
-function fichasCost(z) {
-  if (!z) return 1;
-  return z.tier === "premium" ? 3 : z.tier === "high" ? 2 : 1;
-}
+// Zonas: límite simple, sin fichas ni presupuesto. El juego es predecir el equipo.
+const FICHAS_TOTAL = 12; // kept for legacy refs, not shown in UI
 
 // Partidos reales de StatsBomb open-data; los eventos se sirven desde /data/events/{id}.json
 // (descargados con data/fetch-match.js). sbHome/sbAway son los nombres de equipo de StatsBomb.
@@ -526,8 +519,8 @@ function Sidebar({ page, onNav, open, score }) {
         <div className="ps-wallet-divider"/>
         <div className="ps-wallet-budget-row">
           <div className="ps-wallet-budget-block">
-            <div className="ps-wallet-budget-label">FICHAS HOY</div>
-            <div className="ps-wallet-budget-val">{score&&score.fichas_today!=null?score.fichas_today:FICHAS_TOTAL} <span>/ {FICHAS_TOTAL}</span></div>
+            <div className="ps-wallet-budget-label">PARTIDAS JUGADAS</div>
+            <div className="ps-wallet-budget-val">{score&&score.matches_played!=null?score.matches_played:0}</div>
           </div>
         </div>
       </div>
@@ -1263,17 +1256,14 @@ function PageInicio({ onNav, onScoreUpdate }) {
       setSelectedZones(prev=>prev.filter(id=>id!==z.id));
       setZonePredictions(prev=>{ const n={...prev}; delete n[z.id]; return n; });
     } else {
-      // Seleccionar: abrir team picker primero
-      const fichasUsed=selectedZones.reduce((s,id)=>{const zz=ZONES.find(z=>z.id===id);return s+(zz?fichasCost(zz):0);},0);
-      if(fichasUsed+fichasCost(z)>FICHAS_TOTAL||selectedZones.length>=ME.zonesMax) return;
+      // Seleccionar: abrir team picker (límite simple: zonesMax)
+      if(selectedZones.length>=ME.zonesMax) return;
       setPendingZone(z);
     }
   }
   const totalCost=selectedZones.reduce((sum,id)=>{const z=ZONES.find(zz=>zz.id===id);return sum+(z?z.price:0);},0);
   const remainingBudget=effectiveBudget-totalCost;
-  // Sistema de fichas: coste por tier, independiente del budget en pts
-  const fichasUsed=selectedZones.reduce((s,id)=>{const z=ZONES.find(zz=>zz.id===id);return s+(z?fichasCost(z):0);},0);
-  const fichasLeft=FICHAS_TOTAL-fichasUsed;
+  const fichasLeft=ME.zonesMax-selectedZones.length; // zonas restantes, no fichas
 
   const fieldBlock=(
     <>
@@ -1286,11 +1276,11 @@ function PageInicio({ onNav, onScoreUpdate }) {
       </div>
       {view==="mapa"?(
         <>
-          <PitchField zones={ZONES.map(z=>({...z,taken:selectedZones.includes(z.id)?Math.min(z.slots,z.taken+1):z.taken,overBudget:!selectedZones.includes(z.id)&&(fichasUsed+fichasCost(z)>FICHAS_TOTAL||selectedZones.length>=ME.zonesMax)}))} selectedIds={selectedZones} onZoneClick={toggleZone} flash={flash}/>
+          <PitchField zones={ZONES.map(z=>({...z,taken:selectedZones.includes(z.id)?Math.min(z.slots,z.taken+1):z.taken,overBudget:!selectedZones.includes(z.id)&&selectedZones.length>=ME.zonesMax}))} selectedIds={selectedZones} onZoneClick={toggleZone} flash={flash}/>
           <PitchLegend/>
         </>
       ):(
-        <ZoneList zones={ZONES.map(z=>({...z,overBudget:!selectedZones.includes(z.id)&&(fichasUsed+fichasCost(z)>FICHAS_TOTAL||selectedZones.length>=ME.zonesMax)}))} selectedIds={selectedZones} onPick={toggleZone}/>
+        <ZoneList zones={ZONES.map(z=>({...z,overBudget:!selectedZones.includes(z.id)&&selectedZones.length>=ME.zonesMax}))} selectedIds={selectedZones} onPick={toggleZone}/>
       )}
     </>
   );
@@ -1633,17 +1623,16 @@ function BudgetCard({ selectedCount, remaining, total=ME.budget, globalBudget=nu
 }
 
 function FichasCard({ fichasUsed, selectedCount }) {
-  const fichasLeft = FICHAS_TOTAL - fichasUsed;
-  const color = fichasLeft > 6 ? "#3d7a3a" : fichasLeft > 2 ? "#c8a73f" : "#b94234";
-  const pct = Math.round((fichasLeft / FICHAS_TOTAL) * 100);
+  const left = ME.zonesMax - selectedCount;
+  const color = left > 2 ? "#3d7a3a" : left > 0 ? "#c8a73f" : "#b94234";
   return (
     <div className="ps-budget-row">
       <div className="ps-stat-box">
-        <div className="ps-stat-label">FICHAS DISPONIBLES</div>
-        <div className="ps-stat-num" style={{color}}>{fichasLeft}</div>
-        <div className="ps-stat-unit">DE {FICHAS_TOTAL} · <span style={{opacity:.5,fontSize:"10px"}}>PREMIUM=3 · HIGH=2 · RESTO=1</span></div>
+        <div className="ps-stat-label">ZONAS DISPONIBLES</div>
+        <div className="ps-stat-num" style={{color}}>{left}</div>
+        <div className="ps-stat-unit">PUEDES ELEGIR HASTA {ME.zonesMax}</div>
       </div>
-      <div className="ps-stat-box"><div className="ps-stat-label">ZONAS RESERVADAS</div><div className="ps-stat-num">{selectedCount} / {ME.zonesMax}</div></div>
+      <div className="ps-stat-box"><div className="ps-stat-label">ELEGIDAS</div><div className="ps-stat-num">{selectedCount} / {ME.zonesMax}</div></div>
     </div>
   );
 }
@@ -1657,7 +1646,7 @@ function TeamPickerPanel({ zone, match, onConfirm, onCancel }) {
         <div className="ps-tp-header">
           <span className={`ps-dot ps-dot-${zone.tier}`}></span>
           <span className="ps-tp-zone-name">{zone.name.toUpperCase()}</span>
-          <span className="ps-tp-cost">{fichas} {fichas===1?"ficha":"fichas"}</span>
+          <span className="ps-tp-cost">{zone.tier.toUpperCase()}</span>
         </div>
         <div className="ps-tp-question">¿Qué equipo dominará aquí?</div>
         <div className="ps-tp-teams">
@@ -1702,7 +1691,7 @@ function ZoneDetail({ zone, selected, atMax, onAdd, fichasLeft, fichasCostFn }) 
       {open&&(<>
       <div className="ps-detail-desc">{zone.tier==="premium"?"Zona premium. Muy alta probabilidad de acciones decisivas.":zone.tier==="high"?"Zona caliente. Frecuentes jugadas de gol.":zone.tier==="mid"?"Zona equilibrada. Buen balance riesgo/recompensa.":"Zona amplia. Mucha capacidad y acción frecuente."}</div>
       <div className="ps-detail-stats">
-        <div><div className="ps-detail-stat-l">COSTE</div><div className="ps-detail-stat-v">{cost} <span>{cost===1?"ficha":"fichas"}</span></div></div>
+        <div><div className="ps-detail-stat-l">TIER</div><div className="ps-detail-stat-v">{zone.tier.toUpperCase()}</div></div>
         <div><div className="ps-detail-stat-l">POTENCIAL</div><div className="ps-detail-stat-v ps-detail-stat-warn">{potential}</div></div>
         <div><div className="ps-detail-stat-l">PLAZAS</div><div className="ps-detail-stat-v">{zone.taken}/{zone.slots}</div></div>
       </div>
@@ -1748,13 +1737,12 @@ function CartCard({ selectedIds, savedIds, zonePredictions={}, match, onRemove, 
             <span className={`ps-dot ps-dot-${z.tier}`}></span>
             <span className="ps-cart-name">{z.name}</span>
             {teamLabel(zonePredictions[z.id])}
-            <span className="ps-cart-price">{fichasCost(z)}f</span>
             <button className="ps-cart-x" onClick={()=>onRemove(z.id)}>✕</button>
           </div>
         ))}
-        {items.length===0&&<div className="ps-empty">Selecciona zonas en el campo para hacer tus jugadas.</div>}
+        {items.length===0&&<div className="ps-empty">Toca una zona en el campo para añadir tu jugada.</div>}
       </div>
-      <div className="ps-cart-total"><span>FICHAS USADAS</span><span className="ps-cart-total-num">{fichasTotal} / {FICHAS_TOTAL}</span></div>
+      <div className="ps-cart-total"><span>ZONAS ELEGIDAS</span><span className="ps-cart-total-num">{items.length} / {ME.zonesMax}</span></div>
       {onConfirm&&(
         <button
           className={"ps-btn "+(saveState==="error"?"ps-btn-ghost":isConfirmed?"ps-btn-primary":"ps-btn-dark")}
