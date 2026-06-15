@@ -2455,49 +2455,114 @@ function PageRanking() {
 }
 
 function PageAmigos() {
-  const [email,setEmail]=React.useState("");
   const [copied,setCopied]=React.useState(false);
-  const inviteUrl=(typeof window!=="undefined"?window.location.origin:"https://pitch-score.vercel.app")+"/login";
+  const [copiedWA,setCopiedWA]=React.useState(false);
+  const [friends,setFriends]=React.useState(null); // null=loading
+  const [handle,setHandle]=React.useState('');
 
-  function sendInvite(e){
-    e.preventDefault();
-    const subj=encodeURIComponent("Te invito a jugar Kancha — Mundial 2026");
-    const body=encodeURIComponent(`¡Hola!\n\nTe invito a jugar Kancha: el juego del Mundial 2026 donde reservas zonas del campo y ganas puntos con cada jugada.\n\nEntra gratis aquí: ${inviteUrl}\n\n¡Hasta el pitido final!`);
-    window.open(`mailto:${email}?subject=${subj}&body=${body}`);
-    setEmail("");
+  React.useEffect(()=>{
+    const db=window.supabaseClient; if(!db)return;
+    db.auth.getUser().then(({data:{user}})=>{
+      if(!user)return;
+      // Use email prefix as handle for referral link
+      const h=(window.__KN_USER&&window.__KN_USER.name)||user.email?.split('@')[0]||'';
+      setHandle(h);
+      // Load ranking to show as "friends" leaderboard (full ranking for now)
+      db.from('scores').select('name,total_points,matches_played').order('total_points',{ascending:false}).limit(20)
+        .then(({data})=>setFriends(data||[]));
+    });
+  },[]);
+
+  const origin=typeof window!=="undefined"?window.location.origin:'https://pitch-score.vercel.app';
+  const refUrl=`${origin}/?ref=${encodeURIComponent(handle)}`;
+  const inviteUrl=`${origin}/login`;
+
+  function copy(url,setCop){
+    navigator.clipboard.writeText(url).then(()=>{setCop(true);setTimeout(()=>setCop(false),2500);}).catch(()=>{});
   }
-  function copyLink(){
-    navigator.clipboard.writeText(inviteUrl).then(()=>{ setCopied(true); setTimeout(()=>setCopied(false),2500); }).catch(()=>{});
+  function shareWA(){
+    const txt=`🏆 Estoy jugando Kancha — el juego del Mundial 2026 donde reservas zonas del campo antes del partido y ganas puntos con cada jugada.\n\n¿Te apuntas? Entra gratis: ${refUrl}`;
+    window.open(`https://wa.me/?text=${encodeURIComponent(txt)}`, '_blank');
   }
-  return (
+  function shareEmail(){
+    const subj=encodeURIComponent('Juega el Mundial 2026 conmigo en Kancha');
+    const body=encodeURIComponent(`¡Hola!\n\nTe invito a jugar Kancha: antes de cada partido del Mundial, reservas zonas del campo donde crees que pasará la acción. Ganas puntos con cada gol, tiro o jugada en tus zonas.\n\nEs gratis y muy fácil. Entra aquí:\n${refUrl}\n\n¡Hasta el pitido final!`);
+    window.open(`mailto:?subject=${subj}&body=${body}`);
+  }
+
+  return(
     <div className="ps-page">
       <div className="ps-page-head">
-        <div><div className="ps-page-eyebrow">TU EQUIPO</div><div className="ps-page-title">AMIGOS</div><div className="ps-page-sub">Invita a tus amigos a jugar el Mundial 2026.</div></div>
-      </div>
-      <div className="ps-invite-card">
-        <div className="ps-invite-icon">👥</div>
-        <div className="ps-invite-title">INVITA A TUS AMIGOS</div>
-        <div className="ps-invite-desc">Introduce el email de tu amigo y le mandamos una invitación. También puedes copiar el enlace y compartirlo como quieras.</div>
-        <form className="ps-invite-form" onSubmit={sendInvite}>
-          <input className="ps-invite-input" type="email" placeholder="email@ejemplo.com" value={email} onChange={e=>setEmail(e.target.value)} required/>
-          <button className="ps-btn ps-btn-primary" type="submit">ENVIAR INVITACIÓN</button>
-        </form>
-        <div className="ps-invite-sep">— o comparte el enlace directo —</div>
-        <div className="ps-invite-link-row">
-          <span className="ps-invite-link-url">{inviteUrl}</span>
-          <button className="ps-btn ps-btn-dark ps-btn-sm" onClick={copyLink}>{copied?"✓ COPIADO":"COPIAR ENLACE"}</button>
+        <div>
+          <div className="ps-page-eyebrow">TU EQUIPO</div>
+          <div className="ps-page-title">AMIGOS</div>
+          <div className="ps-page-sub">Invita a tus amigos y crea tu propia liguilla.</div>
         </div>
       </div>
-      <div className="ps-empty-state" style={{marginTop:24}}>
-        <div className="ps-empty-icon">📭</div>
-        <div className="ps-empty-t">Aún no tienes amigos en Kancha</div>
-        <div className="ps-empty-d">Cuando tus amigos se registren con tu enlace, aparecerán aquí para comparar puntuaciones.</div>
+
+      {/* ─── BLOQUE DE INVITACIÓN ─── */}
+      <div style={{background:'var(--sidebar-bg)',border:'2px solid var(--gold)',borderRadius:'6px',padding:'20px',marginBottom:'16px',position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',inset:0,backgroundImage:'repeating-linear-gradient(0deg,transparent,transparent 11px,rgba(255,255,255,0.015) 11px,rgba(255,255,255,0.015) 12px)',pointerEvents:'none'}}/>
+        <div style={{fontSize:'9px',letterSpacing:'3px',color:'var(--gold)',marginBottom:'10px',opacity:.8}}>▶ INVITA A JUGAR</div>
+        <div style={{fontSize:'15px',fontWeight:700,color:'#fff',marginBottom:'6px',letterSpacing:'.5px'}}>Cuantos más jueguen, más divertido</div>
+        <div style={{fontSize:'12px',color:'var(--ink-muted)',marginBottom:'16px',lineHeight:1.5}}>
+          Comparte tu enlace personal. Cada amigo que se registre con él aparecerá en tu clasificación privada.
+        </div>
+
+        {/* Enlace con ref */}
+        <div style={{background:'rgba(0,0,0,0.25)',borderRadius:'4px',padding:'10px 14px',display:'flex',alignItems:'center',gap:'10px',marginBottom:'12px',flexWrap:'wrap'}}>
+          <span style={{fontSize:'11px',color:'var(--ink-muted)',flex:1,minWidth:0,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',fontFamily:'monospace'}}>{handle?refUrl:inviteUrl}</span>
+          <button onClick={()=>copy(handle?refUrl:inviteUrl,setCopied)} style={{background:copied?'#3a5732':'var(--gold)',color:copied?'#fff':'#000',border:'none',borderRadius:'3px',padding:'6px 14px',fontSize:'10px',fontWeight:700,letterSpacing:'2px',cursor:'pointer',flexShrink:0,transition:'background .2s'}}>
+            {copied?'✓ COPIADO':'COPIAR'}
+          </button>
+        </div>
+
+        {/* Botones de compartir */}
+        <div style={{display:'flex',gap:'8px',flexWrap:'wrap'}}>
+          <button onClick={shareWA} style={{flex:1,minWidth:'120px',background:'#25D366',color:'#fff',border:'none',borderRadius:'4px',padding:'10px 14px',fontSize:'10px',fontWeight:700,letterSpacing:'2px',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',gap:'6px'}}>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            WHATSAPP
+          </button>
+          <button onClick={shareEmail} style={{flex:1,minWidth:'120px',background:'rgba(255,255,255,0.08)',color:'var(--cream)',border:'1px solid rgba(255,255,255,0.15)',borderRadius:'4px',padding:'10px 14px',fontSize:'10px',fontWeight:700,letterSpacing:'2px',cursor:'pointer'}}>
+            ✉ EMAIL
+          </button>
+        </div>
+      </div>
+
+      {/* ─── CLASIFICACIÓN PÚBLICA ─── */}
+      <div style={{background:'var(--sidebar-bg)',border:'1px solid rgba(255,255,255,0.07)',borderRadius:'6px',padding:'16px',marginBottom:'16px'}}>
+        <div style={{fontSize:'9px',letterSpacing:'3px',color:'var(--gold)',marginBottom:'12px',opacity:.8}}>▶ CLASIFICACIÓN ACTUAL</div>
+        {friends===null&&<div style={{fontSize:'11px',color:'var(--ink-muted)',padding:'8px 0'}}>Cargando…</div>}
+        {friends!==null&&friends.length===0&&<div style={{fontSize:'11px',color:'var(--ink-muted)'}}>Sin jugadores aún.</div>}
+        {(friends||[]).map((f,i)=>(
+          <div key={i} style={{display:'flex',alignItems:'center',gap:'10px',padding:'7px 0',borderBottom:'1px solid rgba(255,255,255,0.04)'}}>
+            <div style={{width:'22px',fontSize:'12px',fontWeight:700,color:i===0?'#ffd700':i===1?'#c0c0c0':i===2?'#cd7f32':'var(--ink-muted)',textAlign:'center',flexShrink:0}}>
+              {i===0?'🥇':i===1?'🥈':i===2?'🥉':i+1}
+            </div>
+            <div style={{flex:1,fontSize:'12px',fontWeight:i<3?700:400,color:i<3?'#fff':'var(--ink-muted)',textTransform:'uppercase',letterSpacing:'.5px',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{f.name||'—'}</div>
+            <div style={{fontSize:'11px',color:'var(--gold)',fontWeight:700,flexShrink:0}}>{(f.total_points||0).toLocaleString('es-ES')}</div>
+            <div style={{fontSize:'10px',color:'var(--ink-muted)',width:'30px',textAlign:'right',flexShrink:0}}>{f.matches_played||0}<span style={{fontSize:'8px',opacity:.6}}> pts</span></div>
+          </div>
+        ))}
+      </div>
+
+      {/* ─── LIGUILLA PRIVADA (próximamente) ─── */}
+      <div style={{border:'1px dashed rgba(212,168,71,0.3)',borderRadius:'6px',padding:'18px',textAlign:'center'}}>
+        <div style={{fontSize:'9px',letterSpacing:'3px',color:'var(--gold)',marginBottom:'8px',opacity:.7}}>PRÓXIMAMENTE</div>
+        <div style={{fontSize:'14px',fontWeight:700,color:'#fff',marginBottom:'6px'}}>Tu liguilla privada</div>
+        <div style={{fontSize:'11px',color:'var(--ink-muted)',lineHeight:1.5}}>
+          Crea un grupo cerrado con tus amigos y competid en vuestro propio ranking. El que mejor lea el partido gana la liguilla.
+        </div>
       </div>
     </div>
   );
 }
 
-function PageHistorial() {
+function PageHistorial({ score, userName: userNameProp }) {
+  // Use props from App as immediate values — no need to wait for refetch
+  const initTotalPts = score?.total_points ?? 0;
+  const initMatchesPlayed = score?.matches_played ?? 0;
+  const initName = userNameProp || '';
   const [state,setState]=React.useState(null); // null=loading
   const [replay,setReplay]=React.useState(null);
 
@@ -2521,9 +2586,9 @@ function PageHistorial() {
         ]);
         if(cancelled)return;
 
-        const totalPoints=scoreRow?.total_points??0;
-        const matchesPlayed=scoreRow?.matches_played??0;
-        const resolvedName=(window.__KN_USER&&window.__KN_USER.name)||scoreRow?.name||user.email?.split('@')[0]||'—';
+        const totalPoints=scoreRow?.total_points??initTotalPts;
+        const matchesPlayed=scoreRow?.matches_played??initMatchesPlayed;
+        const resolvedName=(window.__KN_USER&&window.__KN_USER.name)||scoreRow?.name||initName||user.email?.split('@')[0]||'—';
         const rankIdx=(allScores||[]).findIndex(s=>s.user_id===user.id);
         const rank=rankIdx>=0?rankIdx+1:'—';
 
@@ -2580,15 +2645,17 @@ function PageHistorial() {
   // Replay mode
   if(replay) return <MatchReplay match={replay} onBack={()=>setReplay(null)}/>;
 
-  // Loading
-  if(state===null) return(
-    <div className="ps-page"><div className="ps-empty-state"><div className="ps-empty-t">Cargando perfil…</div></div></div>
-  );
-  if(state.error||state.empty) return(
-    <div className="ps-page"><div className="ps-empty-state"><div className="ps-empty-icon">👤</div><div className="ps-empty-t">Sin datos aún</div><div className="ps-empty-d">Juega tu primer partido para ver tu perfil aquí.</div></div></div>
-  );
+  // While loading or on error: render shell with props data so user sees their pts immediately
+  const isLoading=state===null;
+  const hasError=state?.error||state?.empty;
 
-  const{resolvedName,totalPoints,matchesPlayed,rank,avgPts,topZones,matchStats,bestMatch}=state;
+  const{resolvedName,totalPoints,matchesPlayed,rank,avgPts,topZones,matchStats,bestMatch}=(!isLoading&&!hasError&&state)||{
+    resolvedName:initName,
+    totalPoints:initTotalPts,
+    matchesPlayed:initMatchesPlayed,
+    rank:'—', avgPts:initMatchesPlayed>0?Math.round(initTotalPts/initMatchesPlayed):0,
+    topZones:[], matchStats:[], bestMatch:null,
+  };
   const level=levelFromPts(totalPoints);
   const initials=(resolvedName||'?').slice(0,2).toUpperCase();
   const LEVEL_COL={Novato:'#82a55c',Rookie:'#d4a72c',Veterano:'#d68546',Maestro:'#c8442e'};
@@ -2665,7 +2732,9 @@ function PageHistorial() {
       <div style={{marginBottom:'8px'}}>
         <div style={{fontSize:'9px',letterSpacing:'3px',color:'var(--gold)',marginBottom:'12px',opacity:.8}}>▶ HISTORIAL DE PARTIDOS</div>
 
-        {matchStats.length===0&&(
+        {isLoading&&<div style={{fontSize:'11px',color:'var(--ink-muted)',letterSpacing:'1px',padding:'12px 0'}}>Cargando historial…</div>}
+
+        {!isLoading&&matchStats.length===0&&(
           <div className="ps-empty-state">
             <div className="ps-empty-icon">🏟️</div>
             <div className="ps-empty-t">Sin partidos aún</div>
@@ -3219,7 +3288,7 @@ function App() {
           {page==="reservas"&&<PageReservas onNav={nav}/>}
           {page==="ranking"&&<PageRanking/>}
           {page==="amigos"&&<PageAmigos/>}
-          {page==="historial"&&<PageHistorial/>}
+          {page==="historial"&&<PageHistorial score={globalScore} userName={userName}/>}
         </div>
         <AppFooter/>
       </div>
@@ -3284,7 +3353,6 @@ function PageTopbar({ eyebrow, title, onHelp, score, userName, onPerfil }) {
             {userName ? initials : <svg viewBox="0 0 40 40" width="36" height="36"><circle cx="20" cy="20" r="20" fill="#3a5732"/><circle cx="20" cy="16" r="6" fill="#e8dcc0"/><path d="M6,40 Q6,28 20,28 Q34,28 34,40 Z" fill="#e8dcc0"/></svg>}
           </div>
           {userName&&<div className="ps-avatar-meta"><div className="ps-avatar-name">{userName}</div><div className="ps-avatar-level">{level}</div></div>}
-          <span className="ps-avatar-chev">▾</span>
         </div>
       </div>
     </div>
