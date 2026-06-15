@@ -93,7 +93,7 @@ const FIXTURE = []; // misma referencia siempre; se rellena con setFixture()
 // Estado según el reloj UTC (idéntico para todos los usuarios):
 //   ABIERTO ≤24h antes · PROXIMO antes · EN VIVO durante · FINALIZADO después
 const MATCH_MS = 115 * 60 * 1000; // un partido se da por terminado 115 min tras el kickoff
-const RESERVE_CLOSE_MS = 15 * 60 * 1000; // las reservas cierran 15 min antes del kickoff
+const RESERVE_CLOSE_MS = 5 * 60 * 1000; // las reservas cierran 5 min antes del kickoff
 const MESES = ["ENE","FEB","MAR","ABR","MAY","JUN","JUL","AGO","SEP","OCT","NOV","DIC"];
 function kickoffDate(m) { return new Date(m.utc); }
 function fixtureStatus(m, now = Date.now()) {
