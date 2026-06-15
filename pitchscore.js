@@ -2525,23 +2525,36 @@ function PageRanking() {
 // ===== HEAT KANCHA — mini campo con zonas de calor =====
 function HeatKancha({ zoneStats, mode }) {
   const p = PF;
-  const vals = Object.values(zoneStats).map(s => mode === 'pts' ? s.pts : s.count);
+  const vals = Object.values(zoneStats).map(s => mode === 'pts' ? s.pts : s.count).filter(v=>v>0);
   const maxVal = Math.max(1, ...vals);
+  const isEmpty = vals.length === 0;
 
-  function heat(zoneId) {
+  // Ramp: cold (transparent) → verde tenue → gold → naranja → rojo
+  function heatColor(zoneId) {
     const s = zoneStats[zoneId];
-    if (!s) return 'rgba(0,0,0,0)';
+    if (!s) return null;
     const v = mode === 'pts' ? s.pts : s.count;
-    if (!v) return 'rgba(0,0,0,0)';
+    if (!v) return null;
     const t = Math.min(v / maxVal, 1);
-    const a = 0.12 + t * 0.82;
-    if (mode === 'pts') {
-      // gold→red gradient for earnings
-      const r = Math.round(212 - t*12), g = Math.round(168 - t*122), b = Math.round(71 - t*71);
-      return `rgba(${r},${g},${b},${a})`;
+    // 0→0.25: verde apagado, 0.25→0.55: gold, 0.55→0.8: naranja, 0.8→1: rojo
+    let r, g, b, a;
+    if (t < 0.25) {
+      const k = t / 0.25;
+      r = Math.round(82 + k * 50); g = Math.round(165 - k * 10); b = Math.round(92 - k * 92);
+      a = 0.25 + k * 0.3;
+    } else if (t < 0.55) {
+      const k = (t - 0.25) / 0.3;
+      r = Math.round(132 + k * 80); g = Math.round(155 + k * 13); b = 0;
+      a = 0.55 + k * 0.2;
+    } else if (t < 0.82) {
+      const k = (t - 0.55) / 0.27;
+      r = Math.round(212 + k * 2); g = Math.round(168 - k * 35); b = 0;
+      a = 0.75 + k * 0.1;
+    } else {
+      const k = (t - 0.82) / 0.18;
+      r = Math.round(214 - k * 14); g = Math.round(133 - k * 65); b = Math.round(k * 46);
+      a = 0.85 + k * 0.1;
     }
-    // green→lime for usage
-    const r = Math.round(80 + t*40), g = Math.round(150 + t*65), b = Math.round(60 - t*40);
     return `rgba(${r},${g},${b},${a})`;
   }
 
@@ -2550,101 +2563,121 @@ function HeatKancha({ zoneStats, mode }) {
   const spots   = ZONES.filter(z => z.kind === "spot" || z.kind === "cspot");
 
   return (
-    <svg viewBox={`0 0 ${p.W} ${p.H}`} style={{width:'100%',height:'auto',display:'block',borderRadius:'4px'}} preserveAspectRatio="xMidYMid meet">
-      <defs>
-        <linearGradient id="hkGrad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stopColor="#2a4a22"/><stop offset="100%" stopColor="#1e3a18"/>
-        </linearGradient>
-      </defs>
-      {/* Background */}
-      <rect x="0" y="0" width={p.W} height={p.H} fill="#141a12"/>
-      <rect x={p.PX0} y={p.PY0} width={p.PW} height={p.PH} fill="url(#hkGrad)"/>
-      {/* Vertical stripes */}
-      {Array.from({length:14}).map((_,i)=>(
-        <rect key={i} x={p.PX0+i*(p.PW/14)} y={p.PY0} width={p.PW/14} height={p.PH}
-          fill={i%2?"rgba(255,255,255,0.025)":"rgba(0,0,0,0.04)"}/>
-      ))}
-      {/* Heat: region zones */}
-      {regions.map(z=>{
-        const b=rectFor(z); if(!b) return null;
-        const c=heat(z.id);
-        return <rect key={z.id} x={b.x} y={b.y} width={b.w} height={b.h} fill={c}/>;
-      })}
-      {/* Heat: corners */}
-      {corners.map(z=>{
-        const cx=z.h==="izq"?p.PX0:p.PX1, cy=z.v==="n"?p.PY0:p.PY1;
-        return <circle key={z.id} cx={cx} cy={cy} r={p.CORNER_R*1.4} fill={heat(z.id)}/>;
-      })}
-      {/* Heat: penalty spots and center */}
-      {spots.map(z=>{
-        const cx=z.kind==="cspot"?p.CX:z.side==="izq"?p.PSPOT_L:p.PSPOT_R;
-        return <circle key={z.id} cx={cx} cy={p.CY} r={50} fill={heat(z.id)}/>;
-      })}
-      {/* Field lines */}
-      <g stroke="rgba(243,236,213,0.22)" strokeWidth="2.2" fill="none" style={{pointerEvents:"none"}}>
-        <rect x={p.PX0} y={p.PY0} width={p.PW} height={p.PH}/>
-        <line x1={p.CX} y1={p.PY0} x2={p.CX} y2={p.PY1}/>
-        <circle cx={p.CX} cy={p.CY} r={p.CCR}/>
-        <rect x={p.PX0} y={p.BOXY0} width={p.BOXD} height={p.BOXY1-p.BOXY0}/>
-        <rect x={p.PX1-p.BOXD} y={p.BOXY0} width={p.BOXD} height={p.BOXY1-p.BOXY0}/>
-        <rect x={p.PX0} y={p.GAY0} width={p.GA_D} height={p.GAY1-p.GAY0}/>
-        <rect x={p.PX1-p.GA_D} y={p.GAY0} width={p.GA_D} height={p.GAY1-p.GAY0}/>
-        <path d={`M ${p.PX0+p.BOXD} ${p.CY-58} A ${p.ARC} ${p.ARC} 0 0 1 ${p.PX0+p.BOXD} ${p.CY+58}`}/>
-        <path d={`M ${p.PX1-p.BOXD} ${p.CY-58} A ${p.ARC} ${p.ARC} 0 0 0 ${p.PX1-p.BOXD} ${p.CY+58}`}/>
-        <path d={`M ${p.PX0} ${p.PY0+16} A 16 16 0 0 0 ${p.PX0+16} ${p.PY0}`}/>
-        <path d={`M ${p.PX1-16} ${p.PY0} A 16 16 0 0 0 ${p.PX1} ${p.PY0+16}`}/>
-        <path d={`M ${p.PX0} ${p.PY1-16} A 16 16 0 0 1 ${p.PX0+16} ${p.PY1}`}/>
-        <path d={`M ${p.PX1-16} ${p.PY1} A 16 16 0 0 1 ${p.PX1} ${p.PY1-16}`}/>
-      </g>
-      {/* Goals */}
-      <g fill="rgba(255,255,255,0.07)" stroke="rgba(243,236,213,0.22)" strokeWidth="2.2" style={{pointerEvents:"none"}}>
-        <rect x={p.PX0-18} y={p.CY-31} width={18} height={62}/>
-        <rect x={p.PX1} y={p.CY-31} width={18} height={62}/>
-      </g>
-      {/* Zero-activity overlay message */}
-      {maxVal===1&&Object.keys(zoneStats).length===0&&(
-        <text x={p.CX} y={p.CY} textAnchor="middle" dominantBaseline="middle" fill="rgba(243,236,213,0.3)"
-          fontFamily="Saira,sans-serif" fontSize="38" letterSpacing="2">SIN DATOS AÚN</text>
-      )}
-    </svg>
+    <div style={{width:'100%', height:'160px', position:'relative', borderRadius:'4px', overflow:'hidden', background:'#0e1610'}}>
+      <svg viewBox={`0 0 ${p.W} ${p.H}`} style={{width:'100%',height:'100%',display:'block'}}
+        preserveAspectRatio="xMidYMid meet">
+        <defs>
+          <linearGradient id="hkFieldGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor="#233a1e"/><stop offset="100%" stopColor="#1a2e16"/>
+          </linearGradient>
+          <filter id="hkBlur" x="-30%" y="-30%" width="160%" height="160%">
+            <feGaussianBlur stdDeviation="18"/>
+          </filter>
+        </defs>
+        {/* Field base */}
+        <rect x="0" y="0" width={p.W} height={p.H} fill="#0e1610"/>
+        <rect x={p.PX0} y={p.PY0} width={p.PW} height={p.PH} fill="url(#hkFieldGrad)"/>
+        {/* Stripes */}
+        {Array.from({length:14}).map((_,i)=>(
+          <rect key={i} x={p.PX0+i*(p.PW/14)} y={p.PY0} width={p.PW/14} height={p.PH}
+            fill={i%2?"rgba(255,255,255,0.022)":"rgba(0,0,0,0.04)"}/>
+        ))}
+
+        {/* ── CAPA DE CALOR (con blur gaussiano) ── */}
+        <g filter="url(#hkBlur)">
+          {regions.map(z=>{
+            const b=rectFor(z); if(!b) return null;
+            const c=heatColor(z.id); if(!c) return null;
+            return <rect key={z.id} x={b.x} y={b.y} width={b.w} height={b.h} fill={c}/>;
+          })}
+          {corners.map(z=>{
+            const c=heatColor(z.id); if(!c) return null;
+            const cx=z.h==="izq"?p.PX0:p.PX1, cy=z.v==="n"?p.PY0:p.PY1;
+            return <circle key={z.id} cx={cx} cy={cy} r={p.CORNER_R*2} fill={c}/>;
+          })}
+          {spots.map(z=>{
+            const c=heatColor(z.id); if(!c) return null;
+            const cx=z.kind==="cspot"?p.CX:z.side==="izq"?p.PSPOT_L:p.PSPOT_R;
+            return <circle key={z.id} cx={cx} cy={p.CY} r={80} fill={c}/>;
+          })}
+        </g>
+
+        {/* ── LÍNEAS DEL CAMPO ── */}
+        <g stroke="rgba(243,236,213,0.25)" strokeWidth="2.5" fill="none" style={{pointerEvents:"none"}}>
+          <rect x={p.PX0} y={p.PY0} width={p.PW} height={p.PH}/>
+          <line x1={p.CX} y1={p.PY0} x2={p.CX} y2={p.PY1}/>
+          <circle cx={p.CX} cy={p.CY} r={p.CCR}/>
+          <rect x={p.PX0} y={p.BOXY0} width={p.BOXD} height={p.BOXY1-p.BOXY0}/>
+          <rect x={p.PX1-p.BOXD} y={p.BOXY0} width={p.BOXD} height={p.BOXY1-p.BOXY0}/>
+          <rect x={p.PX0} y={p.GAY0} width={p.GA_D} height={p.GAY1-p.GAY0}/>
+          <rect x={p.PX1-p.GA_D} y={p.GAY0} width={p.GA_D} height={p.GAY1-p.GAY0}/>
+          <path d={`M ${p.PX0+p.BOXD} ${p.CY-58} A ${p.ARC} ${p.ARC} 0 0 1 ${p.PX0+p.BOXD} ${p.CY+58}`}/>
+          <path d={`M ${p.PX1-p.BOXD} ${p.CY-58} A ${p.ARC} ${p.ARC} 0 0 0 ${p.PX1-p.BOXD} ${p.CY+58}`}/>
+          <path d={`M ${p.PX0} ${p.PY0+16} A 16 16 0 0 0 ${p.PX0+16} ${p.PY0}`}/>
+          <path d={`M ${p.PX1-16} ${p.PY0} A 16 16 0 0 0 ${p.PX1} ${p.PY0+16}`}/>
+          <path d={`M ${p.PX0} ${p.PY1-16} A 16 16 0 0 1 ${p.PX0+16} ${p.PY1}`}/>
+          <path d={`M ${p.PX1-16} ${p.PY1} A 16 16 0 0 1 ${p.PX1} ${p.PY1-16}`}/>
+        </g>
+        {/* Porterías */}
+        <g fill="rgba(255,255,255,0.06)" stroke="rgba(243,236,213,0.25)" strokeWidth="2.5" style={{pointerEvents:"none"}}>
+          <rect x={p.PX0-18} y={p.CY-31} width={18} height={62}/>
+          <rect x={p.PX1} y={p.CY-31} width={18} height={62}/>
+        </g>
+        {/* Mensaje si no hay datos */}
+        {isEmpty&&(
+          <text x={p.CX} y={p.CY} textAnchor="middle" dominantBaseline="middle"
+            fill="rgba(243,236,213,0.2)" fontFamily="Saira,sans-serif" fontSize="36" letterSpacing="3">
+            SIN DATOS AÚN
+          </text>
+        )}
+      </svg>
+      {/* Leyenda de colores */}
+      <div style={{position:'absolute',bottom:'6px',right:'8px',display:'flex',alignItems:'center',gap:'3px',opacity:.75}}>
+        {['#82a55c','#d4a72c','#d68546','#c8442e'].map((c,i)=>(
+          <div key={i} style={{width:'12px',height:'4px',background:c,borderRadius:'2px'}}/>
+        ))}
+        <span style={{fontSize:'8px',letterSpacing:'1px',color:'rgba(243,236,213,0.5)',marginLeft:'3px'}}>
+          {mode==='pts'?'+ PTS':'+ VECES'}
+        </span>
+      </div>
+    </div>
   );
 }
 
 function PageAmigos() {
   const [copied,setCopied]=React.useState(false);
-  const [copiedWA,setCopiedWA]=React.useState(false);
-  const [friends,setFriends]=React.useState(null); // null=loading
+  const [friends,setFriends]=React.useState(null);
   const [handle,setHandle]=React.useState('');
 
   React.useEffect(()=>{
     const db=window.supabaseClient; if(!db)return;
     db.auth.getUser().then(({data:{user}})=>{
       if(!user)return;
-      // Use email prefix as handle for referral link
       const h=(window.__KN_USER&&window.__KN_USER.name)||user.email?.split('@')[0]||'';
       setHandle(h);
-      // Load ranking to show as "friends" leaderboard (full ranking for now)
       db.from('scores').select('name,total_points,matches_played').order('total_points',{ascending:false}).limit(20)
         .then(({data})=>setFriends(data||[]));
     });
   },[]);
 
   const origin=typeof window!=="undefined"?window.location.origin:'https://pitch-score.vercel.app';
-  const refUrl=`${origin}/?ref=${encodeURIComponent(handle)}`;
-  const inviteUrl=`${origin}/login`;
+  const url=handle?`${origin}/?ref=${encodeURIComponent(handle)}`:`${origin}/login`;
 
-  function copy(url,setCop){
-    navigator.clipboard.writeText(url).then(()=>{setCop(true);setTimeout(()=>setCop(false),2500);}).catch(()=>{});
+  function copy(){
+    navigator.clipboard.writeText(url).then(()=>{setCopied(true);setTimeout(()=>setCopied(false),2500);}).catch(()=>{});
   }
   function shareWA(){
-    const txt=`🏆 Estoy jugando Kancha — el juego del Mundial 2026 donde reservas zonas del campo antes del partido y ganas puntos con cada jugada.\n\n¿Te apuntas? Entra gratis: ${refUrl}`;
+    const txt=`⚽ Estoy jugando Kancha — reservas zonas del campo antes del partido y ganas puntos con cada gol, tiro o jugada. Es el juego del Mundial 2026.\n\n¿Te apuntas? Entra gratis: ${url}`;
     window.open(`https://wa.me/?text=${encodeURIComponent(txt)}`, '_blank');
   }
   function shareEmail(){
     const subj=encodeURIComponent('Juega el Mundial 2026 conmigo en Kancha');
-    const body=encodeURIComponent(`¡Hola!\n\nTe invito a jugar Kancha: antes de cada partido del Mundial, reservas zonas del campo donde crees que pasará la acción. Ganas puntos con cada gol, tiro o jugada en tus zonas.\n\nEs gratis y muy fácil. Entra aquí:\n${refUrl}\n\n¡Hasta el pitido final!`);
+    const body=encodeURIComponent(`¡Hola!\n\nTe invito a jugar Kancha: antes de cada partido del Mundial, reservas zonas del campo donde crees que pasará la acción. Ganas puntos con cada gol, tiro o jugada en tus zonas.\n\nEs gratis y muy fácil. Entra aquí:\n${url}\n\n¡Hasta el pitido final!`);
     window.open(`mailto:?subject=${subj}&body=${body}`);
   }
+
+  const MEDAL=['🥇','🥈','🥉'];
+  const MEDAL_COL=['#ffd700','#d0d0d0','#cd7f32'];
 
   return(
     <div className="ps-page">
@@ -2652,62 +2685,110 @@ function PageAmigos() {
         <div>
           <div className="ps-page-eyebrow">TU EQUIPO</div>
           <div className="ps-page-title">AMIGOS</div>
-          <div className="ps-page-sub">Invita a tus amigos y crea tu propia liguilla.</div>
         </div>
       </div>
 
-      {/* ─── BLOQUE DE INVITACIÓN ─── */}
-      <div style={{background:'var(--sidebar-bg)',border:'2px solid var(--gold)',borderRadius:'6px',padding:'20px',marginBottom:'16px',position:'relative',overflow:'hidden'}}>
-        <div style={{position:'absolute',inset:0,backgroundImage:'repeating-linear-gradient(0deg,transparent,transparent 11px,rgba(255,255,255,0.015) 11px,rgba(255,255,255,0.015) 12px)',pointerEvents:'none'}}/>
-        <div style={{fontSize:'9px',letterSpacing:'3px',color:'var(--gold)',marginBottom:'10px',opacity:.8}}>▶ INVITA A JUGAR</div>
-        <div style={{fontSize:'15px',fontWeight:700,color:'#fff',marginBottom:'6px',letterSpacing:'.5px'}}>Cuantos más jueguen, más divertido</div>
-        <div style={{fontSize:'12px',color:'var(--ink-muted)',marginBottom:'16px',lineHeight:1.5}}>
-          Comparte tu enlace personal. Cada amigo que se registre con él aparecerá en tu clasificación privada.
-        </div>
+      {/* ── INVITACIÓN ── */}
+      <div style={{background:'var(--sidebar-bg)',border:'2px solid var(--gold)',borderRadius:'8px',padding:'18px 18px 16px',marginBottom:'14px',position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',inset:0,backgroundImage:'repeating-linear-gradient(0deg,transparent,transparent 11px,rgba(255,255,255,0.014) 11px,rgba(255,255,255,0.014) 12px)',pointerEvents:'none'}}/>
+        <div style={{fontSize:'9px',letterSpacing:'3px',color:'var(--gold)',marginBottom:'10px'}}>▶ INVITA A JUGAR</div>
+        <p style={{fontSize:'16px',fontWeight:700,color:'var(--cream)',margin:'0 0 5px',lineHeight:1.25}}>Cuantos más jugadores, más emocionante</p>
+        <p style={{fontSize:'12px',color:'rgba(232,220,192,0.65)',margin:'0 0 16px',lineHeight:1.6}}>
+          Comparte tu enlace. Quien entre por él aparecerá en tu liguilla privada cuando la lancemos.
+        </p>
 
-        {/* Enlace con ref */}
-        <div style={{background:'rgba(0,0,0,0.25)',borderRadius:'4px',padding:'10px 14px',display:'flex',alignItems:'center',gap:'10px',marginBottom:'12px',flexWrap:'wrap'}}>
-          <span style={{fontSize:'11px',color:'var(--ink-muted)',flex:1,minWidth:0,overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',fontFamily:'monospace'}}>{handle?refUrl:inviteUrl}</span>
-          <button onClick={()=>copy(handle?refUrl:inviteUrl,setCopied)} style={{background:copied?'#3a5732':'var(--gold)',color:copied?'#fff':'#000',border:'none',borderRadius:'3px',padding:'6px 14px',fontSize:'10px',fontWeight:700,letterSpacing:'2px',cursor:'pointer',flexShrink:0,transition:'background .2s'}}>
+        {/* URL box */}
+        <div style={{display:'flex',alignItems:'stretch',gap:'0',marginBottom:'10px',border:'1px solid rgba(212,168,71,0.35)',borderRadius:'5px',overflow:'hidden',background:'rgba(0,0,0,0.3)'}}>
+          <div style={{flex:1,padding:'10px 12px',fontSize:'11px',fontFamily:'monospace',color:'var(--cream)',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',lineHeight:'18px'}}>
+            {url}
+          </div>
+          <button onClick={copy} style={{
+            padding:'0 18px',background:copied?'#3a5732':'var(--gold)',
+            color:copied?'#d4f0c4':'#000',border:'none',cursor:'pointer',
+            fontSize:'10px',fontWeight:800,letterSpacing:'2px',flexShrink:0,
+            transition:'background .2s, color .2s',whiteSpace:'nowrap',
+          }}>
             {copied?'✓ COPIADO':'COPIAR'}
           </button>
         </div>
 
-        {/* Botones de compartir */}
-        <div style={{display:'flex',gap:'8px',flexWrap:'wrap'}}>
-          <button onClick={shareWA} style={{flex:1,minWidth:'120px',background:'#25D366',color:'#fff',border:'none',borderRadius:'4px',padding:'10px 14px',fontSize:'10px',fontWeight:700,letterSpacing:'2px',cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',gap:'6px'}}>
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        {/* Share buttons */}
+        <div style={{display:'flex',gap:'8px'}}>
+          <button onClick={shareWA} style={{
+            flex:1,background:'#128C7E',color:'#fff',border:'none',borderRadius:'5px',
+            padding:'11px 8px',fontSize:'11px',fontWeight:700,letterSpacing:'1.5px',
+            cursor:'pointer',display:'flex',alignItems:'center',justifyContent:'center',gap:'7px',
+          }}>
+            <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             WHATSAPP
           </button>
-          <button onClick={shareEmail} style={{flex:1,minWidth:'120px',background:'rgba(255,255,255,0.08)',color:'var(--cream)',border:'1px solid rgba(255,255,255,0.15)',borderRadius:'4px',padding:'10px 14px',fontSize:'10px',fontWeight:700,letterSpacing:'2px',cursor:'pointer'}}>
+          <button onClick={shareEmail} style={{
+            flex:1,background:'rgba(255,255,255,0.07)',color:'var(--cream)',
+            border:'1px solid rgba(255,255,255,0.18)',borderRadius:'5px',
+            padding:'11px 8px',fontSize:'11px',fontWeight:700,letterSpacing:'1.5px',cursor:'pointer',
+          }}>
             ✉ EMAIL
           </button>
         </div>
       </div>
 
-      {/* ─── CLASIFICACIÓN PÚBLICA ─── */}
-      <div style={{background:'var(--sidebar-bg)',border:'1px solid rgba(255,255,255,0.07)',borderRadius:'6px',padding:'16px',marginBottom:'16px'}}>
-        <div style={{fontSize:'9px',letterSpacing:'3px',color:'var(--gold)',marginBottom:'12px',opacity:.8}}>▶ CLASIFICACIÓN ACTUAL</div>
-        {friends===null&&<div style={{fontSize:'11px',color:'var(--ink-muted)',padding:'8px 0'}}>Cargando…</div>}
-        {friends!==null&&friends.length===0&&<div style={{fontSize:'11px',color:'var(--ink-muted)'}}>Sin jugadores aún.</div>}
-        {(friends||[]).map((f,i)=>(
-          <div key={i} style={{display:'flex',alignItems:'center',gap:'10px',padding:'7px 0',borderBottom:'1px solid rgba(255,255,255,0.04)'}}>
-            <div style={{width:'22px',fontSize:'12px',fontWeight:700,color:i===0?'#ffd700':i===1?'#c0c0c0':i===2?'#cd7f32':'var(--ink-muted)',textAlign:'center',flexShrink:0}}>
-              {i===0?'🥇':i===1?'🥈':i===2?'🥉':i+1}
+      {/* ── CLASIFICACIÓN ── */}
+      <div style={{background:'var(--sidebar-bg)',border:'1px solid rgba(255,255,255,0.08)',borderRadius:'8px',overflow:'hidden',marginBottom:'14px'}}>
+        <div style={{padding:'14px 16px 10px',borderBottom:'1px solid rgba(255,255,255,0.06)',display:'flex',alignItems:'baseline',justifyContent:'space-between'}}>
+          <span style={{fontSize:'9px',letterSpacing:'3px',color:'var(--gold)'}}>▶ CLASIFICACIÓN</span>
+          <span style={{fontSize:'10px',color:'rgba(232,220,192,0.4)',letterSpacing:'1px'}}>TOP 20</span>
+        </div>
+
+        {friends===null&&(
+          <div style={{padding:'20px 16px',fontSize:'12px',color:'rgba(232,220,192,0.45)',letterSpacing:'1px'}}>Cargando clasificación…</div>
+        )}
+        {friends!==null&&friends.length===0&&(
+          <div style={{padding:'20px 16px',fontSize:'12px',color:'rgba(232,220,192,0.45)'}}>Sin jugadores todavía.</div>
+        )}
+        {(friends||[]).map((f,i)=>{
+          const isTop=i<3;
+          const mc=MEDAL_COL[i]||'rgba(232,220,192,0.35)';
+          return(
+            <div key={i} style={{
+              display:'flex',alignItems:'center',gap:'12px',
+              padding:'10px 16px',
+              borderBottom:'1px solid rgba(255,255,255,0.04)',
+              background:isTop?`rgba(212,168,71,${0.04-i*0.01})`:'transparent',
+            }}>
+              {/* Posición */}
+              <div style={{width:'28px',textAlign:'center',flexShrink:0,fontSize:isTop?'16px':'11px',fontWeight:700,color:mc}}>
+                {isTop?MEDAL[i]:i+1}
+              </div>
+              {/* Nombre */}
+              <div style={{flex:1,minWidth:0}}>
+                <div style={{
+                  fontSize:'13px',fontWeight:isTop?700:500,
+                  color:isTop?'var(--cream)':'rgba(232,220,192,0.7)',
+                  textTransform:'uppercase',letterSpacing:'.5px',
+                  overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap',
+                }}>{f.name||'—'}</div>
+                <div style={{fontSize:'10px',color:'rgba(232,220,192,0.38)',marginTop:'1px',letterSpacing:'1px'}}>
+                  {f.matches_played||0} {f.matches_played===1?'partido':'partidos'}
+                </div>
+              </div>
+              {/* Puntos */}
+              <div style={{textAlign:'right',flexShrink:0}}>
+                <div style={{fontSize:'15px',fontWeight:700,color:isTop?mc:'var(--gold)',letterSpacing:'1px'}}>
+                  {(f.total_points||0).toLocaleString('es-ES')}
+                </div>
+                <div style={{fontSize:'9px',letterSpacing:'2px',color:'rgba(212,168,71,0.5)',marginTop:'1px'}}>PTS</div>
+              </div>
             </div>
-            <div style={{flex:1,fontSize:'12px',fontWeight:i<3?700:400,color:i<3?'#fff':'var(--ink-muted)',textTransform:'uppercase',letterSpacing:'.5px',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{f.name||'—'}</div>
-            <div style={{fontSize:'11px',color:'var(--gold)',fontWeight:700,flexShrink:0}}>{(f.total_points||0).toLocaleString('es-ES')}</div>
-            <div style={{fontSize:'10px',color:'var(--ink-muted)',width:'30px',textAlign:'right',flexShrink:0}}>{f.matches_played||0}<span style={{fontSize:'8px',opacity:.6}}> pts</span></div>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
-      {/* ─── LIGUILLA PRIVADA (próximamente) ─── */}
-      <div style={{border:'1px dashed rgba(212,168,71,0.3)',borderRadius:'6px',padding:'18px',textAlign:'center'}}>
-        <div style={{fontSize:'9px',letterSpacing:'3px',color:'var(--gold)',marginBottom:'8px',opacity:.7}}>PRÓXIMAMENTE</div>
-        <div style={{fontSize:'14px',fontWeight:700,color:'#fff',marginBottom:'6px'}}>Tu liguilla privada</div>
-        <div style={{fontSize:'11px',color:'var(--ink-muted)',lineHeight:1.5}}>
-          Crea un grupo cerrado con tus amigos y competid en vuestro propio ranking. El que mejor lea el partido gana la liguilla.
+      {/* ── LIGUILLA (próximamente) ── */}
+      <div style={{border:'1px dashed rgba(212,168,71,0.25)',borderRadius:'8px',padding:'20px',textAlign:'center'}}>
+        <div style={{fontSize:'9px',letterSpacing:'3px',color:'rgba(212,168,71,0.6)',marginBottom:'10px'}}>PRÓXIMAMENTE</div>
+        <div style={{fontSize:'16px',fontWeight:700,color:'var(--cream)',marginBottom:'8px'}}>Tu liguilla privada</div>
+        <div style={{fontSize:'12px',color:'rgba(232,220,192,0.55)',lineHeight:1.7,maxWidth:'280px',margin:'0 auto'}}>
+          Grupo cerrado con tus amigos, ranking propio y retos semanales. El que mejor lea el partido gana la liguilla.
         </div>
       </div>
     </div>
