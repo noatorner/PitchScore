@@ -530,6 +530,42 @@ async function rescoreFinalized(sbSvc) {
   return results;
 }
 
+// ─── Recalcular matches_played desde reservas de partidos FINALIZADO ─────────
+// Idempotente: corre cada minuto y corrige datos históricos automáticamente.
+
+async function syncMatchesPlayed(sbSvc) {
+  // 1. IDs de partidos finalizados
+  const finalized = await sbSvc('matches?status=eq.FINALIZADO&select=id').catch(() => []);
+  if (!finalized?.length) return 0;
+  const ids = finalized.map(m => m.id);
+
+  // 2. Reservas de esos partidos (user_id + match_id únicos)
+  const reservations = await sbSvc(
+    `reservations?match_id=in.(${ids.map(encodeURIComponent).join(',')})&select=user_id,match_id&limit=5000`
+  ).catch(() => []);
+
+  // 3. Contar partidos distintos por usuario
+  const userMatchSets = {};
+  for (const r of (reservations || [])) {
+    if (!userMatchSets[r.user_id]) userMatchSets[r.user_id] = new Set();
+    userMatchSets[r.user_id].add(r.match_id);
+  }
+
+  // 4. Actualizar scores.matches_played (solo si difiere del valor actual)
+  let updated = 0;
+  for (const [userId, matchSet] of Object.entries(userMatchSets)) {
+    const rows = await sbSvc(`scores?user_id=eq.${userId}&select=matches_played`).catch(() => []);
+    const curr = (rows || [])[0]?.matches_played || 0;
+    if (curr === matchSet.size) continue; // ya está correcto
+    await sbSvc(`scores?user_id=eq.${userId}`, {
+      method: 'PATCH',
+      body: JSON.stringify({ matches_played: matchSet.size }),
+    }).catch(() => {});
+    updated++;
+  }
+  return updated;
+}
+
 // ─── Handler Vercel ───────────────────────────────────────────────────────
 
 module.exports = async (req, res) => {
@@ -558,6 +594,9 @@ module.exports = async (req, res) => {
     // 1c. Rescore retroactivo para FINALIZADO con eventos sin puntuar
     const rescored = await rescoreFinalized(sbSvc);
 
+    // 1d. Recalcular matches_played desde reservas (arregla datos históricos)
+    const matchesPlayedUpdated = await syncMatchesPlayed(sbSvc);
+
     // 2. Procesar partidos EN VIVO
     const matches = await sbSvc(`matches?status=eq.${encodeURIComponent('EN VIVO')}&select=*`);
     if (!matches?.length) {
@@ -567,6 +606,7 @@ module.exports = async (req, res) => {
         statusUpdates,
         scoreUpdates,
         rescored,
+        matchesPlayedUpdated,
         skipped: true,
         reason: 'No hay partidos EN VIVO',
       });
