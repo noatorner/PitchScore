@@ -87,6 +87,73 @@ const FALLBACK_FIXTURE = [
   { id:"m21", home:"ENG", away:"CRO",  utc:"2026-06-17T20:00:00Z", venue:"AT&T Stadium · Dallas",             group:"L" },
   { id:"m22", home:"GHA", away:"PAN",  utc:"2026-06-17T23:00:00Z", venue:"BMO Field · Toronto",               group:"L" },
   { id:"m23", home:"UZB", away:"COL",  utc:"2026-06-18T02:00:00Z", venue:"Estadio Azteca · México",           group:"K" },
+  // Partido faltante de Jornada 3 (14 jun – UTC 15 jun)
+  { id:"m24", home:"SWE", away:"TUN",  utc:"2026-06-15T02:00:00Z", venue:"Estadio Monterrey · Guadalupe",     group:"F" },
+  // Jornada 4 segunda vuelta (18–19 jun)
+  { id:"m25", home:"CZE", away:"RSA",  utc:"2026-06-18T16:00:00Z", venue:"Mercedes-Benz Stadium · Atlanta",   group:"A" },
+  { id:"m26", home:"SUI", away:"BIH",  utc:"2026-06-18T19:00:00Z", venue:"SoFi Stadium · Los Ángeles",        group:"B" },
+  { id:"m27", home:"CAN", away:"QAT",  utc:"2026-06-18T22:00:00Z", venue:"BC Place · Vancouver",              group:"B" },
+  { id:"m28", home:"MEX", away:"KOR",  utc:"2026-06-19T01:00:00Z", venue:"Estadio Akron · Guadalajara",       group:"A" },
+  // Jornada 5 segunda vuelta (19–20 jun)
+  { id:"m29", home:"USA", away:"AUS",  utc:"2026-06-19T19:00:00Z", venue:"Lumen Field · Seattle",             group:"D" },
+  { id:"m30", home:"SCO", away:"MAR",  utc:"2026-06-19T22:00:00Z", venue:"Gillette Stadium · Boston",         group:"C" },
+  { id:"m31", home:"BRA", away:"HAI",  utc:"2026-06-20T00:30:00Z", venue:"Lincoln Financial Field · Filadelfia", group:"C" },
+  { id:"m32", home:"TUR", away:"PAR",  utc:"2026-06-20T03:00:00Z", venue:"Levi's Stadium · San Francisco",    group:"D" },
+  // Jornada 6 segunda vuelta (20–21 jun)
+  { id:"m33", home:"NED", away:"SWE",  utc:"2026-06-20T17:00:00Z", venue:"NRG Stadium · Houston",             group:"F" },
+  { id:"m34", home:"GER", away:"CIV",  utc:"2026-06-20T20:00:00Z", venue:"BMO Field · Toronto",               group:"E" },
+  { id:"m35", home:"ECU", away:"CUR",  utc:"2026-06-21T03:00:00Z", venue:"Arrowhead Stadium · Kansas City",   group:"E" },
+  { id:"m36", home:"TUN", away:"JPN",  utc:"2026-06-21T04:00:00Z", venue:"Estadio Monterrey · Guadalupe",     group:"F" },
+  // Jornada 7 (21–22 jun)
+  { id:"m37", home:"ESP", away:"KSA",  utc:"2026-06-21T16:00:00Z", venue:"Mercedes-Benz Stadium · Atlanta",   group:"H" },
+  { id:"m38", home:"BEL", away:"IRN",  utc:"2026-06-21T19:00:00Z", venue:"SoFi Stadium · Los Ángeles",        group:"G" },
+  { id:"m39", home:"URU", away:"CPV",  utc:"2026-06-21T22:00:00Z", venue:"Hard Rock Stadium · Miami",         group:"H" },
+  { id:"m40", home:"NZL", away:"EGY",  utc:"2026-06-22T01:00:00Z", venue:"BC Place · Vancouver",              group:"G" },
+  // Jornada 8 (22–23 jun)
+  { id:"m41", home:"ARG", away:"AUT",  utc:"2026-06-22T17:00:00Z", venue:"AT&T Stadium · Dallas",             group:"J" },
+  { id:"m42", home:"FRA", away:"IRQ",  utc:"2026-06-22T21:00:00Z", venue:"Lincoln Financial Field · Filadelfia", group:"I" },
+  { id:"m43", home:"NOR", away:"SEN",  utc:"2026-06-23T00:00:00Z", venue:"MetLife Stadium · Nueva York",      group:"I" },
+  { id:"m44", home:"JOR", away:"ALG",  utc:"2026-06-23T03:00:00Z", venue:"Levi's Stadium · San Francisco",    group:"J" },
+  // Jornada 9 (23–24 jun)
+  { id:"m45", home:"POR", away:"UZB",  utc:"2026-06-23T17:00:00Z", venue:"NRG Stadium · Houston",             group:"K" },
+  { id:"m46", home:"ENG", away:"GHA",  utc:"2026-06-23T20:00:00Z", venue:"Gillette Stadium · Boston",         group:"L" },
+  { id:"m47", home:"PAN", away:"CRO",  utc:"2026-06-23T23:00:00Z", venue:"BMO Field · Toronto",               group:"L" },
+  { id:"m48", home:"COL", away:"COD",  utc:"2026-06-24T02:00:00Z", venue:"Estadio Akron · Guadalajara",       group:"K" },
+  // Jornada 10 — Última jornada grupos B (24 jun, simultáneos)
+  { id:"m49", home:"SUI", away:"CAN",  utc:"2026-06-24T19:00:00Z", venue:"BC Place · Vancouver",              group:"B" },
+  { id:"m50", home:"BIH", away:"QAT",  utc:"2026-06-24T19:00:00Z", venue:"Lumen Field · Seattle",             group:"B" },
+  // Última jornada grupos C (24–25 jun, simultáneos)
+  { id:"m51", home:"SCO", away:"BRA",  utc:"2026-06-24T22:00:00Z", venue:"Hard Rock Stadium · Miami",         group:"C" },
+  { id:"m52", home:"MAR", away:"HAI",  utc:"2026-06-24T22:00:00Z", venue:"Mercedes-Benz Stadium · Atlanta",   group:"C" },
+  // Última jornada grupos A (25 jun, simultáneos)
+  { id:"m53", home:"CZE", away:"MEX",  utc:"2026-06-25T01:00:00Z", venue:"Estadio Azteca · México",           group:"A" },
+  { id:"m54", home:"RSA", away:"KOR",  utc:"2026-06-25T01:00:00Z", venue:"Estadio Monterrey · Guadalupe",     group:"A" },
+  // Última jornada grupos E y F (25–26 jun, simultáneos)
+  { id:"m55", home:"ECU", away:"GER",  utc:"2026-06-25T20:00:00Z", venue:"MetLife Stadium · Nueva York",      group:"E" },
+  { id:"m56", home:"CUR", away:"CIV",  utc:"2026-06-25T20:00:00Z", venue:"Lincoln Financial Field · Filadelfia", group:"E" },
+  { id:"m57", home:"JPN", away:"SWE",  utc:"2026-06-25T23:00:00Z", venue:"AT&T Stadium · Dallas",             group:"F" },
+  { id:"m58", home:"TUN", away:"NED",  utc:"2026-06-25T23:00:00Z", venue:"Arrowhead Stadium · Kansas City",   group:"F" },
+  // Última jornada grupos D (26 jun, simultáneos)
+  { id:"m59", home:"TUR", away:"USA",  utc:"2026-06-26T02:00:00Z", venue:"SoFi Stadium · Los Ángeles",        group:"D" },
+  { id:"m60", home:"PAR", away:"AUS",  utc:"2026-06-26T02:00:00Z", venue:"Levi's Stadium · San Francisco",    group:"D" },
+  // Última jornada grupos I (26 jun, simultáneos)
+  { id:"m61", home:"NOR", away:"FRA",  utc:"2026-06-26T19:00:00Z", venue:"Gillette Stadium · Boston",         group:"I" },
+  { id:"m62", home:"SEN", away:"IRQ",  utc:"2026-06-26T19:00:00Z", venue:"BMO Field · Toronto",               group:"I" },
+  // Última jornada grupos H (27 jun, simultáneos)
+  { id:"m63", home:"CPV", away:"KSA",  utc:"2026-06-27T00:00:00Z", venue:"NRG Stadium · Houston",             group:"H" },
+  { id:"m64", home:"URU", away:"ESP",  utc:"2026-06-27T00:00:00Z", venue:"Estadio Akron · Guadalajara",       group:"H" },
+  // Última jornada grupos G (27 jun, simultáneos)
+  { id:"m65", home:"EGY", away:"IRN",  utc:"2026-06-27T03:00:00Z", venue:"Lumen Field · Seattle",             group:"G" },
+  { id:"m66", home:"NZL", away:"BEL",  utc:"2026-06-27T03:00:00Z", venue:"BC Place · Vancouver",              group:"G" },
+  // Última jornada grupos L (27 jun, simultáneos)
+  { id:"m67", home:"PAN", away:"ENG",  utc:"2026-06-27T21:00:00Z", venue:"MetLife Stadium · Nueva York",      group:"L" },
+  { id:"m68", home:"CRO", away:"GHA",  utc:"2026-06-27T21:00:00Z", venue:"Lincoln Financial Field · Filadelfia", group:"L" },
+  // Última jornada grupos K (27–28 jun, simultáneos)
+  { id:"m69", home:"COL", away:"POR",  utc:"2026-06-27T23:30:00Z", venue:"Hard Rock Stadium · Miami",         group:"K" },
+  { id:"m70", home:"COD", away:"UZB",  utc:"2026-06-27T23:30:00Z", venue:"Mercedes-Benz Stadium · Atlanta",   group:"K" },
+  // Última jornada grupos J (28 jun, simultáneos)
+  { id:"m71", home:"ALG", away:"AUT",  utc:"2026-06-28T02:00:00Z", venue:"Arrowhead Stadium · Kansas City",   group:"J" },
+  { id:"m72", home:"JOR", away:"ARG",  utc:"2026-06-28T02:00:00Z", venue:"AT&T Stadium · Dallas",             group:"J" },
 ];
 const FIXTURE = []; // misma referencia siempre; se rellena con setFixture()
 
@@ -575,6 +642,7 @@ function Sidebar({ page, onNav, open, score, userName, onNavPerfil }) {
     { id:"inicio",   label:"Campo",        icon:"home" },
     { id:"reservas", label:"Mis Jugadas",  icon:"ticket" },
     { id:"ranking",  label:"Ranking",      icon:"trophy" },
+    { id:"amigos",   label:"Amigos",       icon:"users" },
     { id:"historial",label:"Mi Perfil",    icon:"user" },
   ];
   return (
@@ -2454,6 +2522,94 @@ function PageRanking() {
   );
 }
 
+// ===== HEAT KANCHA — mini campo con zonas de calor =====
+function HeatKancha({ zoneStats, mode }) {
+  const p = PF;
+  const vals = Object.values(zoneStats).map(s => mode === 'pts' ? s.pts : s.count);
+  const maxVal = Math.max(1, ...vals);
+
+  function heat(zoneId) {
+    const s = zoneStats[zoneId];
+    if (!s) return 'rgba(0,0,0,0)';
+    const v = mode === 'pts' ? s.pts : s.count;
+    if (!v) return 'rgba(0,0,0,0)';
+    const t = Math.min(v / maxVal, 1);
+    const a = 0.12 + t * 0.82;
+    if (mode === 'pts') {
+      // gold→red gradient for earnings
+      const r = Math.round(212 - t*12), g = Math.round(168 - t*122), b = Math.round(71 - t*71);
+      return `rgba(${r},${g},${b},${a})`;
+    }
+    // green→lime for usage
+    const r = Math.round(80 + t*40), g = Math.round(150 + t*65), b = Math.round(60 - t*40);
+    return `rgba(${r},${g},${b},${a})`;
+  }
+
+  const regions = ZONES.filter(z => ["grid","box6","boxfront","boxband"].includes(z.kind));
+  const corners = ZONES.filter(z => z.kind === "corner");
+  const spots   = ZONES.filter(z => z.kind === "spot" || z.kind === "cspot");
+
+  return (
+    <svg viewBox={`0 0 ${p.W} ${p.H}`} style={{width:'100%',height:'auto',display:'block',borderRadius:'4px'}} preserveAspectRatio="xMidYMid meet">
+      <defs>
+        <linearGradient id="hkGrad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#2a4a22"/><stop offset="100%" stopColor="#1e3a18"/>
+        </linearGradient>
+      </defs>
+      {/* Background */}
+      <rect x="0" y="0" width={p.W} height={p.H} fill="#141a12"/>
+      <rect x={p.PX0} y={p.PY0} width={p.PW} height={p.PH} fill="url(#hkGrad)"/>
+      {/* Vertical stripes */}
+      {Array.from({length:14}).map((_,i)=>(
+        <rect key={i} x={p.PX0+i*(p.PW/14)} y={p.PY0} width={p.PW/14} height={p.PH}
+          fill={i%2?"rgba(255,255,255,0.025)":"rgba(0,0,0,0.04)"}/>
+      ))}
+      {/* Heat: region zones */}
+      {regions.map(z=>{
+        const b=rectFor(z); if(!b) return null;
+        const c=heat(z.id);
+        return <rect key={z.id} x={b.x} y={b.y} width={b.w} height={b.h} fill={c}/>;
+      })}
+      {/* Heat: corners */}
+      {corners.map(z=>{
+        const cx=z.h==="izq"?p.PX0:p.PX1, cy=z.v==="n"?p.PY0:p.PY1;
+        return <circle key={z.id} cx={cx} cy={cy} r={p.CORNER_R*1.4} fill={heat(z.id)}/>;
+      })}
+      {/* Heat: penalty spots and center */}
+      {spots.map(z=>{
+        const cx=z.kind==="cspot"?p.CX:z.side==="izq"?p.PSPOT_L:p.PSPOT_R;
+        return <circle key={z.id} cx={cx} cy={p.CY} r={50} fill={heat(z.id)}/>;
+      })}
+      {/* Field lines */}
+      <g stroke="rgba(243,236,213,0.22)" strokeWidth="2.2" fill="none" style={{pointerEvents:"none"}}>
+        <rect x={p.PX0} y={p.PY0} width={p.PW} height={p.PH}/>
+        <line x1={p.CX} y1={p.PY0} x2={p.CX} y2={p.PY1}/>
+        <circle cx={p.CX} cy={p.CY} r={p.CCR}/>
+        <rect x={p.PX0} y={p.BOXY0} width={p.BOXD} height={p.BOXY1-p.BOXY0}/>
+        <rect x={p.PX1-p.BOXD} y={p.BOXY0} width={p.BOXD} height={p.BOXY1-p.BOXY0}/>
+        <rect x={p.PX0} y={p.GAY0} width={p.GA_D} height={p.GAY1-p.GAY0}/>
+        <rect x={p.PX1-p.GA_D} y={p.GAY0} width={p.GA_D} height={p.GAY1-p.GAY0}/>
+        <path d={`M ${p.PX0+p.BOXD} ${p.CY-58} A ${p.ARC} ${p.ARC} 0 0 1 ${p.PX0+p.BOXD} ${p.CY+58}`}/>
+        <path d={`M ${p.PX1-p.BOXD} ${p.CY-58} A ${p.ARC} ${p.ARC} 0 0 0 ${p.PX1-p.BOXD} ${p.CY+58}`}/>
+        <path d={`M ${p.PX0} ${p.PY0+16} A 16 16 0 0 0 ${p.PX0+16} ${p.PY0}`}/>
+        <path d={`M ${p.PX1-16} ${p.PY0} A 16 16 0 0 0 ${p.PX1} ${p.PY0+16}`}/>
+        <path d={`M ${p.PX0} ${p.PY1-16} A 16 16 0 0 1 ${p.PX0+16} ${p.PY1}`}/>
+        <path d={`M ${p.PX1-16} ${p.PY1} A 16 16 0 0 1 ${p.PX1} ${p.PY1-16}`}/>
+      </g>
+      {/* Goals */}
+      <g fill="rgba(255,255,255,0.07)" stroke="rgba(243,236,213,0.22)" strokeWidth="2.2" style={{pointerEvents:"none"}}>
+        <rect x={p.PX0-18} y={p.CY-31} width={18} height={62}/>
+        <rect x={p.PX1} y={p.CY-31} width={18} height={62}/>
+      </g>
+      {/* Zero-activity overlay message */}
+      {maxVal===1&&Object.keys(zoneStats).length===0&&(
+        <text x={p.CX} y={p.CY} textAnchor="middle" dominantBaseline="middle" fill="rgba(243,236,213,0.3)"
+          fontFamily="Saira,sans-serif" fontSize="38" letterSpacing="2">SIN DATOS AÚN</text>
+      )}
+    </svg>
+  );
+}
+
 function PageAmigos() {
   const [copied,setCopied]=React.useState(false);
   const [copiedWA,setCopiedWA]=React.useState(false);
@@ -2565,6 +2721,7 @@ function PageHistorial({ score, userName: userNameProp }) {
   const initName = userNameProp || '';
   const [state,setState]=React.useState(null); // null=loading
   const [replay,setReplay]=React.useState(null);
+  const [heatMode,setHeatMode]=React.useState('count'); // 'count' | 'pts'
 
   React.useEffect(()=>{
     const db=window.supabaseClient;
@@ -2604,12 +2761,17 @@ function PageHistorial({ score, userName: userNameProp }) {
         }
         if(cancelled)return;
 
-        // Zone frequency (top 5)
+        // Zone frequency (top 5) + earnings per zone
         const zoneCount={};
         (res||[]).forEach(r=>{ zoneCount[r.zone_id]=(zoneCount[r.zone_id]||0)+1; });
         const topZones=Object.entries(zoneCount)
           .sort((a,b)=>b[1]-a[1]).slice(0,5)
           .map(([id,count])=>({zone:ZONES.find(z=>z.id===id),count}));
+        const zoneEarnings={};
+        events.forEach(e=>{ zoneEarnings[e.zone_id]=(zoneEarnings[e.zone_id]||0)+(e.pts_value||0); });
+        const allZoneIds=new Set([...Object.keys(zoneCount),...Object.keys(zoneEarnings)]);
+        const zoneStats={};
+        allZoneIds.forEach(id=>{ zoneStats[id]={count:zoneCount[id]||0,pts:zoneEarnings[id]||0}; });
 
         // Per-match stats
         const myZonesByMatch={};
@@ -2630,7 +2792,7 @@ function PageHistorial({ score, userName: userNameProp }) {
         const avgPts=matchesPlayed>0?Math.round(totalPoints/matchesPlayed):0;
         const bestMatch=matchStats.reduce((best,m)=>m.pts>=(best?.pts||0)?m:best,null);
 
-        setState({resolvedName,totalPoints,matchesPlayed,rank,avgPts,topZones,matchStats,bestMatch,budget:scoreRow?.budget??0});
+        setState({resolvedName,totalPoints,matchesPlayed,rank,avgPts,topZones,zoneStats,matchStats,bestMatch,budget:scoreRow?.budget??0});
       }catch(e){
         console.error('[Kancha] PageHistorial load error:',e);
         if(!cancelled)setState({error:true});
@@ -2649,12 +2811,12 @@ function PageHistorial({ score, userName: userNameProp }) {
   const isLoading=state===null;
   const hasError=state?.error||state?.empty;
 
-  const{resolvedName,totalPoints,matchesPlayed,rank,avgPts,topZones,matchStats,bestMatch}=(!isLoading&&!hasError&&state)||{
+  const{resolvedName,totalPoints,matchesPlayed,rank,avgPts,topZones,zoneStats,matchStats,bestMatch}=(!isLoading&&!hasError&&state)||{
     resolvedName:initName,
     totalPoints:initTotalPts,
     matchesPlayed:initMatchesPlayed,
     rank:'—', avgPts:initMatchesPlayed>0?Math.round(initTotalPts/initMatchesPlayed):0,
-    topZones:[], matchStats:[], bestMatch:null,
+    topZones:[], zoneStats:{}, matchStats:[], bestMatch:null,
   };
   const level=levelFromPts(totalPoints);
   const initials=(resolvedName||'?').slice(0,2).toUpperCase();
@@ -2703,30 +2865,39 @@ function PageHistorial({ score, userName: userNameProp }) {
         </div>
       </div>
 
-      {/* ─── ZONAS FAVORITAS ─── */}
-      {topZones.length>0&&(
-        <div style={{background:'var(--sidebar-bg)',border:'1px solid rgba(255,255,255,0.07)',borderRadius:'6px',padding:'16px',marginBottom:'14px'}}>
-          <div style={{fontSize:'9px',letterSpacing:'3px',color:'var(--gold)',marginBottom:'12px',opacity:.8}}>▶ ZONAS FAVORITAS</div>
-          <div style={{display:'flex',flexDirection:'column',gap:'9px'}}>
-            {topZones.map(({zone,count},i)=>{
+      {/* ─── MAPA DE CALOR ─── */}
+      <div style={{background:'var(--sidebar-bg)',border:'1px solid rgba(255,255,255,0.07)',borderRadius:'6px',padding:'14px',marginBottom:'14px'}}>
+        <div style={{display:'flex',alignItems:'center',justifyContent:'space-between',marginBottom:'10px',gap:'8px'}}>
+          <div style={{fontSize:'9px',letterSpacing:'3px',color:'var(--gold)',opacity:.8}}>▶ MAPA DE CALOR</div>
+          <div style={{display:'flex',gap:'4px'}}>
+            {[['count','MÁS JUGADAS'],['pts','MÁS RENTABLE']].map(([m,lbl])=>(
+              <button key={m} onClick={()=>setHeatMode(m)} style={{
+                fontSize:'8px',letterSpacing:'1.5px',fontWeight:700,
+                padding:'4px 9px',borderRadius:'3px',border:'none',cursor:'pointer',
+                background:heatMode===m?(m==='pts'?'var(--gold)':'#4a9a3a'):'rgba(255,255,255,0.08)',
+                color:heatMode===m?'#000':'var(--ink-muted)',
+                transition:'all .15s',
+              }}>{lbl}</button>
+            ))}
+          </div>
+        </div>
+        <HeatKancha zoneStats={zoneStats||{}} mode={heatMode}/>
+        {topZones.length>0&&(
+          <div style={{marginTop:'10px',display:'flex',flexWrap:'wrap',gap:'6px'}}>
+            {topZones.slice(0,5).map(({zone,count})=>{
               if(!zone)return null;
-              const maxC=topZones[0].count||1;
-              const pct=Math.round((count/maxC)*100);
               const col=TIER_COLOR[zone.tier]||'var(--gold)';
               return(
-                <div key={zone.id} style={{display:'flex',alignItems:'center',gap:'10px'}}>
-                  <div style={{width:'14px',textAlign:'center',fontSize:'10px',color:'var(--ink-muted)',opacity:.6,flexShrink:0}}>{i+1}</div>
-                  <div style={{width:'90px',fontSize:'9px',letterSpacing:'1px',color:'var(--ink-muted)',flexShrink:0,textTransform:'uppercase',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{zone.name}</div>
-                  <div style={{flex:1,background:'rgba(255,255,255,0.05)',borderRadius:'2px',height:'5px',overflow:'hidden'}}>
-                    <div style={{width:`${pct}%`,height:'100%',background:col,borderRadius:'2px',transition:'width .5s ease'}}/>
-                  </div>
-                  <div style={{fontSize:'11px',color:col,fontWeight:700,width:'24px',textAlign:'right',flexShrink:0}}>{count}×</div>
+                <div key={zone.id} style={{fontSize:'9px',letterSpacing:'1px',color:'var(--ink-muted)',background:'rgba(255,255,255,0.05)',borderRadius:'3px',padding:'3px 8px',display:'flex',gap:'5px',alignItems:'center'}}>
+                  <span style={{width:'7px',height:'7px',borderRadius:'50%',background:col,display:'inline-block',flexShrink:0}}/>
+                  <span style={{textTransform:'uppercase'}}>{zone.name}</span>
+                  <span style={{color:col,fontWeight:700}}>{count}×</span>
                 </div>
               );
             })}
           </div>
-        </div>
-      )}
+        )}
+      </div>
 
       {/* ─── HISTORIAL DE PARTIDOS ─── */}
       <div style={{marginBottom:'8px'}}>
