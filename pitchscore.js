@@ -3082,7 +3082,7 @@ function App() {
       </button>
       {navOpen&&<div className="ps-nav-backdrop" onClick={()=>setNavOpen(false)}></div>}
       <Sidebar page={page} onNav={nav} open={navOpen} score={globalScore}/>
-      <div className={"ps-content"+(page==="ranking"?" ps-content-flow":"")} data-screen-label={page}>
+      <div className="ps-content" data-screen-label={page}>
         <PageTopbar eyebrow={pt.eb} title={pt.title} onHelp={()=>setShowHow(true)} score={globalScore}/>
         <div className="ps-content-body">
           {page==="inicio"&&<PageInicio onNav={nav} onScoreUpdate={setGlobalScore}/>}
