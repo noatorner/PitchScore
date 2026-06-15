@@ -114,7 +114,7 @@ function Hero({ t }) {
           <div className="kn-hero-claim">Antes de que pase<span className="kn-dot">.</span></div>
           <h1 className="kn-hero-headline">{HEADLINES[t.headline] || HEADLINES["Por zonas"]}</h1>
           <p className="kn-hero-sub">
-            Reserva las zonas del campo donde crees que pasará la acción. Cada gol, tiro o
+            Reserva las zonas del campo donde crees que pasará la acción y predice qué equipo actuará ahí. Cada gol, tiro o
             jugada en tus zonas suma puntos. Gana quien mejor lee el partido.
           </p>
           <div className="kn-hero-ctas">
@@ -122,7 +122,7 @@ function Hero({ t }) {
             <a className="kn-btn kn-btn-ghost-light kn-btn-lg" href="#como">Cómo funciona</a>
           </div>
           <div className="kn-hero-trust">
-            <span className="kn-star">★</span> Gratis para empezar · {ME.budget} puntos de bienvenida
+            <span className="kn-star">★</span> Gratis para empezar · 100 créditos por partido
           </div>
         </div>
         <div className="kn-hero-field"><FieldTeaser /></div>
@@ -168,15 +168,15 @@ function HowIcon({ name }) {
 
 /* ---- CÓMO FUNCIONA ---- */
 const STEPS = [
-{ n: "01", icon: "cursor", t: "Elige tus zonas", d: "Reserva hasta 5 zonas del campo con tu presupuesto de puntos." },
-{ n: "02", icon: "tv", t: "Mira el partido", d: "Sigue el encuentro en vivo, esté donde esté el balón." },
-{ n: "03", icon: "ball", t: "Suma puntos", d: "Cada acción en tus zonas reservadas suma al marcador." },
-{ n: "04", icon: "trophy", t: "Gana el marcador", d: "Quien mejor lee el partido se lleva la gloria de la jornada." }];
+{ n: "01", icon: "cursor", t: "Elige tus zonas", d: "Tienes 100 créditos por partido. Reserva hasta 5 zonas donde crees que pasará la acción." },
+{ n: "02", icon: "tv", t: "Predice el equipo", d: "Para cada zona, elige qué equipo actuará ahí. Acierta el equipo → puntos completos. Fallas → cero." },
+{ n: "03", icon: "ball", t: "Suma puntos en vivo", d: "Gol, penalti, tiro, córner… cada acción en tus zonas suma automáticamente durante el partido." },
+{ n: "04", icon: "trophy", t: "Sube en el ranking", d: "Quien mejor lee el partido sube posiciones. No es suerte — es ojo de experto." }];
 
 const FACTS = [
 { v: <>{ZONES.length}</>, l: "Zonas en juego por campo" },
 { v: <>{ME.zonesMax}</>, l: "Zonas que puedes reservar" },
-{ v: <>{ME.budget}<small>pts</small></>, l: "De bienvenida al registrarte" }];
+{ v: <>100<small>cr</small></>, l: "Créditos por partido" }];
 
 
 function ComoFunciona() {
@@ -267,7 +267,7 @@ function FinalCTA() {
       <div className="kn-cta-inner">
         <span className="kn-eyebrow-line kn-cta-eyebrow"><span className="kn-star">★</span> Mundial 2026 · arranca el 11 de junio <span className="kn-star">★</span></span>
         <h2 className="kn-cta-title">Entra antes de que pase<span className="kn-dot">.</span></h2>
-        <p className="kn-cta-sub">Crea tu cuenta gratis, recibe {ME.budget} puntos de bienvenida y reserva tu primera zona para el partido inaugural.</p>
+        <p className="kn-cta-sub">Crea tu cuenta gratis, elige tus zonas antes del pitido y predice qué equipo actuará ahí. 100 créditos por partido, sin coste.</p>
         <div className="kn-cta-actions">
           <a className="kn-btn kn-btn-primary kn-btn-lg" href={APP_URL}>Entrar al juego <span className="kn-btn-arrow">→</span></a>
           <a className="kn-btn kn-btn-ghost-light kn-btn-lg" href={APP_URL}>Crear cuenta</a>

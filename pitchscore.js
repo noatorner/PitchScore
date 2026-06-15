@@ -545,7 +545,7 @@ const HISTORIC_MATCHES = [
 ];
 
 const ME = {
-  name: (window.__KN_USER && window.__KN_USER.name) || "JuanP",
+  name: (window.__KN_USER && window.__KN_USER.name) || "",
   handle:"juanp", country:"MEX", level:"Rookie", rank:47,
   totalPoints:4287, budget:500, zonesReserved:0, zonesMax:5,
   reservations:[],
@@ -570,11 +570,12 @@ function KanchaWordmark({ fill = "#EFE5CC", className = "" }) {
 }
 
 // ===== SIDEBAR =====
-function Sidebar({ page, onNav, open, score }) {
+function Sidebar({ page, onNav, open, score, userName, onNavPerfil }) {
   const items = [
     { id:"inicio",   label:"Campo",        icon:"home" },
     { id:"reservas", label:"Mis Jugadas",  icon:"ticket" },
     { id:"ranking",  label:"Ranking",      icon:"trophy" },
+    { id:"historial",label:"Mi Perfil",    icon:"user" },
   ];
   return (
     <aside className={"ps-sidebar"+(open?" is-open":"")}>
@@ -616,6 +617,7 @@ function SidebarIcon({ name }) {
     case "ticket": return <svg viewBox="0 0 24 24" {...s}><path d="M3 9V6a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v3a2 2 0 1 0 0 4v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3a2 2 0 1 0 0-4z"/><path d="M10 7v10"/></svg>;
     case "trophy": return <svg viewBox="0 0 24 24" {...s}><path d="M8 21h8M12 17v4M7 4h10v5a5 5 0 0 1-10 0V4z"/><path d="M17 5h3v2a3 3 0 0 1-3 3M7 5H4v2a3 3 0 0 0 3 3"/></svg>;
     case "users":  return <svg viewBox="0 0 24 24" {...s}><circle cx="9" cy="8" r="3.5"/><path d="M3 21v-1a6 6 0 0 1 12 0v1"/><circle cx="17" cy="9" r="2.5"/><path d="M15 14a5 5 0 0 1 6 5v1"/></svg>;
+    case "user":   return <svg viewBox="0 0 24 24" {...s}><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a8 8 0 0 1 16 0v1"/></svg>;
     case "clock":  return <svg viewBox="0 0 24 24" {...s}><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>;
     case "logout":   return <svg viewBox="0 0 24 24" {...s}><path d="M9 4H5a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h4M16 8l4 4-4 4M9 12h11"/></svg>;
     case "calendar": return <svg viewBox="0 0 24 24" {...s}><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><circle cx="8" cy="15" r="1" fill="currentColor"/><circle cx="12" cy="15" r="1" fill="currentColor"/><circle cx="16" cy="15" r="1" fill="currentColor"/></svg>;
@@ -1920,7 +1922,6 @@ function MiniRankAnim() {
 }
 
 function HowItWorks() {
-  const pts = ME.budget;
   return (
     <div className="ps-how3">
       {/* HERO */}
@@ -1937,9 +1938,9 @@ function HowItWorks() {
         </div>
         <div className="ps-how3-block-body">
           <div className="ps-how3-n">01</div>
-          <div className="ps-how3-block-title">Marca tus zonas antes del pitido</div>
-          <div className="ps-how3-block-desc">Cada jornada recibes <strong>500 puntos</strong>. Distribúyelos en las zonas del campo donde <em>tú sabes</em> que va a ocurrir la acción: el área donde ataca el rival, la banda del mejor extremo, el córner que siempre acaba en peligro…</div>
-          <div className="ps-how3-pill">500 PTS · POR JORNADA · SE ACUMULAN</div>
+          <div className="ps-how3-block-title">Elige tus zonas antes del pitido</div>
+          <div className="ps-how3-block-desc">Tienes <strong>100 créditos por partido</strong>. Repártelos en las zonas del campo donde <em>tú sabes</em> que va a ocurrir la acción. Zona Premium cuesta 40 cr, Alta 25 cr, Media 15 cr, Baja 8 cr. Máximo 5 zonas por partido.</div>
+          <div className="ps-how3-pill">100 CRÉDITOS · MÁX. 5 ZONAS · POR PARTIDO</div>
         </div>
       </div>
 
@@ -1947,9 +1948,9 @@ function HowItWorks() {
       <div className="ps-how3-block ps-how3-block--mid">
         <div className="ps-how3-block-body">
           <div className="ps-how3-n">02</div>
-          <div className="ps-how3-block-title">Sientes cada jugada en tiempo real</div>
-          <div className="ps-how3-block-desc">Gol en tu zona. Córner en tu banda. Penalti en tu área. Cada acción que ocurre donde tú apostaste <strong>suma puntos automáticamente</strong>. El fútbol que siempre viste con rabia ahora te da la razón.</div>
-          <div className="ps-how3-pill">GOL · CÓRNER · PENALTI · OCASIÓN</div>
+          <div className="ps-how3-block-title">Predice qué equipo actuará en cada zona</div>
+          <div className="ps-how3-block-desc">Para cada zona que reservas, <strong>elige qué equipo crees que va a actuar ahí</strong>. Si el gol, el tiro o el córner salen de la zona que elegiste <em>y</em> del equipo que dijiste — ganas los puntos completos. Si el equipo no coincide, cero. No es suerte, es lectura del partido.</div>
+          <div className="ps-how3-pill">ACIERTA EL EQUIPO → PUNTOS COMPLETOS</div>
         </div>
         <div className="ps-how3-block-demo">
           <MiniFeedAnim/>
@@ -1963,16 +1964,20 @@ function HowItWorks() {
         </div>
         <div className="ps-how3-block-body">
           <div className="ps-how3-n">03</div>
-          <div className="ps-how3-block-title">Demuestra que sabes más que nadie</div>
-          <div className="ps-how3-block-desc">El ranking no miente. Los que realmente entienden el juego suben arriba temporada tras temporada. No es suerte — es <strong>ojo de experto</strong>, instinto y pasión por el fútbol. ¿Llegas al podio?</div>
-          <div className="ps-how3-pill">RANKING GLOBAL · TEMPORADA · PODIO</div>
+          <div className="ps-how3-block-title">Acumula puntos por cada acción en tus zonas</div>
+          <div className="ps-how3-block-desc">
+            Cada acción en una de tus zonas suma automáticamente:<br/>
+            <strong>⚽ Gol 40 · 🎯 Penalti 50 · 🥅 Tiro a puerta 25 · 👟 Asistencia 15 · 🚩 Córner 10 · ⬆️ Centro 10 · 🪡 Pase clave 10 · 🛡 Recuperación 5</strong><br/>
+            El ranking no miente. Los que entienden el juego suben.
+          </div>
+          <div className="ps-how3-pill">GOL · PENALTI · TIRO · CÓRNER · RANKING</div>
         </div>
       </div>
 
       {/* CTA */}
       <div className="ps-how3-cta">
-        <div className="ps-how3-cta-main">Tienes <strong>{pts.toLocaleString('es-ES')} pts</strong> listos para jugar ahora mismo</div>
-        <div className="ps-how3-cta-sub">Entra en JORNADA · Elige tu partido · Marca tus zonas</div>
+        <div className="ps-how3-cta-main">Elige tus zonas <strong>antes del pitido</strong> y demuestra que lo viste venir</div>
+        <div className="ps-how3-cta-sub">Entra en CAMPO · Elige tu partido · Marca tus zonas · Predice el equipo</div>
       </div>
     </div>
   );
@@ -2493,107 +2498,220 @@ function PageAmigos() {
 }
 
 function PageHistorial() {
-  const [resData,setResData]=React.useState(null); // null=loading
+  const [state,setState]=React.useState(null); // null=loading
+  const [replay,setReplay]=React.useState(null);
 
-  // Igual que en Mis Reservas: usuario autenticado actual, con recarga al
-  // cambiar la sesión.
   React.useEffect(()=>{
     const db=window.supabaseClient;
-    if(!db){setResData([]);return;}
+    if(!db){setState({error:true});return;}
     let cancelled=false;
+
     async function load(){
-      setResData(null);
+      setState(null);
       try{
         const{data:{user}}=await db.auth.getUser();
         if(cancelled)return;
-        if(!user){setResData([]);return;}
-        const{data}=await db.from('reservations')
-          .select('match_id,zone_id,price,predicted_team')
-          .eq('user_id',user.id)
-          .order('match_id');
-        if(!cancelled)setResData(data||[]);
-      }catch(e){if(!cancelled)setResData([]);}
+        if(!user){setState({empty:true});return;}
+
+        // Parallel: scores + reservations + global ranking
+        const[{data:scoreRow},{data:res},{data:allScores}]=await Promise.all([
+          db.from('scores').select('total_points,matches_played,budget,name').eq('user_id',user.id).maybeSingle(),
+          db.from('reservations').select('match_id,zone_id,price,predicted_team').eq('user_id',user.id).limit(1000),
+          db.from('scores').select('user_id,total_points').order('total_points',{ascending:false}).limit(1000),
+        ]);
+        if(cancelled)return;
+
+        const totalPoints=scoreRow?.total_points??0;
+        const matchesPlayed=scoreRow?.matches_played??0;
+        const resolvedName=(window.__KN_USER&&window.__KN_USER.name)||scoreRow?.name||user.email?.split('@')[0]||'—';
+        const rankIdx=(allScores||[]).findIndex(s=>s.user_id===user.id);
+        const rank=rankIdx>=0?rankIdx+1:'—';
+
+        // Events for matches where I have reservations
+        const myMatchIds=[...new Set((res||[]).map(r=>r.match_id))];
+        let events=[];
+        if(myMatchIds.length>0){
+          const{data:evs}=await db.from('agent_events')
+            .select('match_id,zone_id,pts_value,label,icon,minute')
+            .in('match_id',myMatchIds)
+            .limit(5000);
+          if(!cancelled)events=evs||[];
+        }
+        if(cancelled)return;
+
+        // Zone frequency (top 5)
+        const zoneCount={};
+        (res||[]).forEach(r=>{ zoneCount[r.zone_id]=(zoneCount[r.zone_id]||0)+1; });
+        const topZones=Object.entries(zoneCount)
+          .sort((a,b)=>b[1]-a[1]).slice(0,5)
+          .map(([id,count])=>({zone:ZONES.find(z=>z.id===id),count}));
+
+        // Per-match stats
+        const myZonesByMatch={};
+        (res||[]).forEach(r=>{(myZonesByMatch[r.match_id]=myZonesByMatch[r.match_id]||[]).push(r.zone_id);});
+
+        const matchStats=myMatchIds.map(mid=>{
+          const myZones=new Set(myZonesByMatch[mid]||[]);
+          const matchEvs=events.filter(e=>e.match_id===mid&&myZones.has(e.zone_id));
+          const pts=matchEvs.reduce((s,e)=>s+(e.pts_value||0),0);
+          const match=FIXTURE.find(m=>String(m.id)===String(mid));
+          const status=match?fixtureStatus(match):'';
+          return{mid,match,pts,eventCount:matchEvs.length,zoneCount:(myZonesByMatch[mid]||[]).length,isFinalized:status==='FINALIZADO'||match?.status==='FINALIZADO'};
+        }).sort((a,b)=>{
+          const da=a.match?.date||'';const db_=b.match?.date||'';
+          return db_.localeCompare(da)||String(b.mid).localeCompare(String(a.mid));
+        });
+
+        const avgPts=matchesPlayed>0?Math.round(totalPoints/matchesPlayed):0;
+        const bestMatch=matchStats.reduce((best,m)=>m.pts>=(best?.pts||0)?m:best,null);
+
+        setState({resolvedName,totalPoints,matchesPlayed,rank,avgPts,topZones,matchStats,bestMatch,budget:scoreRow?.budget??0});
+      }catch(e){
+        console.error('[Kancha] PageHistorial load error:',e);
+        if(!cancelled)setState({error:true});
+      }
     }
+
     load();
-    const{data:authSub}=db.auth.onAuthStateChange(()=>{ load(); });
-    return ()=>{ cancelled=true; if(authSub&&authSub.subscription)authSub.subscription.unsubscribe(); };
+    const{data:authSub}=db.auth.onAuthStateChange(()=>{load();});
+    return()=>{cancelled=true;if(authSub?.subscription)authSub.subscription.unsubscribe();};
   },[]);
 
-  if(resData===null) return (
-    <div className="ps-page"><div className="ps-empty-state"><div className="ps-empty-t">Cargando historial…</div></div></div>
+  // Replay mode
+  if(replay) return <MatchReplay match={replay} onBack={()=>setReplay(null)}/>;
+
+  // Loading
+  if(state===null) return(
+    <div className="ps-page"><div className="ps-empty-state"><div className="ps-empty-t">Cargando perfil…</div></div></div>
+  );
+  if(state.error||state.empty) return(
+    <div className="ps-page"><div className="ps-empty-state"><div className="ps-empty-icon">👤</div><div className="ps-empty-t">Sin datos aún</div><div className="ps-empty-d">Juega tu primer partido para ver tu perfil aquí.</div></div></div>
   );
 
-  // Group by match_id
-  const byMatch=resData.reduce((acc,r)=>{
-    (acc[r.match_id]=acc[r.match_id]||[]).push(r);return acc;
-  },{});
-  const matchIds=Object.keys(byMatch);
-  const totalZones=resData.length;
-  const totalSpent=resData.reduce((s,r)=>s+(r.price||0),0);
+  const{resolvedName,totalPoints,matchesPlayed,rank,avgPts,topZones,matchStats,bestMatch}=state;
+  const level=levelFromPts(totalPoints);
+  const initials=(resolvedName||'?').slice(0,2).toUpperCase();
+  const LEVEL_COL={Novato:'#82a55c',Rookie:'#d4a72c',Veterano:'#d68546',Maestro:'#c8442e'};
+  const LEVEL_ICON={Novato:'⚽',Rookie:'🌟',Veterano:'🔥',Maestro:'👑'};
+  const lc=LEVEL_COL[level]||'var(--gold)';
 
-  return (
+  return(
     <div className="ps-page">
-      <div className="ps-page-head">
-        <div><div className="ps-page-eyebrow">TU CAMINO EN EL MUNDIAL</div><div className="ps-page-title">HISTORIAL</div><div className="ps-page-sub">Tus zonas reservadas por partido.</div></div>
-        <div className="ps-stats-grid">
-          <div className="ps-big-stat"><div className="ps-bs-l">PARTIDOS</div><div className="ps-bs-v">{matchIds.length}</div></div>
-          <div className="ps-big-stat"><div className="ps-bs-l">ZONAS TOTALES</div><div className="ps-bs-v">{totalZones}</div></div>
-          <div className="ps-big-stat"><div className="ps-bs-l">PUNTOS INVERTIDOS</div><div className="ps-bs-v">{totalSpent.toLocaleString()}</div></div>
+
+      {/* ─── HERO: avatar + nombre + nivel ─── */}
+      <div style={{background:'var(--sidebar-bg)',border:'2px solid var(--gold)',borderRadius:'6px',padding:'18px 20px',marginBottom:'14px',display:'flex',alignItems:'center',gap:'16px',flexWrap:'wrap',position:'relative',overflow:'hidden'}}>
+        <div style={{position:'absolute',inset:0,backgroundImage:'repeating-linear-gradient(0deg,transparent,transparent 11px,rgba(255,255,255,0.015) 11px,rgba(255,255,255,0.015) 12px)',pointerEvents:'none'}}/>
+        {/* Avatar */}
+        <div style={{width:62,height:62,borderRadius:'50%',background:'#2a3f26',border:`3px solid ${lc}`,display:'flex',alignItems:'center',justifyContent:'center',fontSize:'20px',fontWeight:700,color:'var(--cream)',flexShrink:0,letterSpacing:'1px',boxShadow:`0 0 18px ${lc}44`}}>
+          {initials}
+        </div>
+        <div style={{flex:1,minWidth:0}}>
+          <div style={{fontSize:'19px',fontWeight:700,color:'#fff',letterSpacing:'1px',marginBottom:'6px',textTransform:'uppercase'}}>{resolvedName}</div>
+          <div style={{display:'flex',alignItems:'center',gap:'8px',flexWrap:'wrap'}}>
+            <span style={{fontSize:'10px',letterSpacing:'3px',color:lc,fontWeight:700,border:`1px solid ${lc}`,borderRadius:'3px',padding:'2px 8px',background:`${lc}18`}}>
+              {LEVEL_ICON[level]} {level.toUpperCase()}
+            </span>
+            <span style={{fontSize:'10px',letterSpacing:'2px',color:'var(--ink-muted)'}}>RANK GLOBAL #{rank}</span>
+          </div>
+        </div>
+        <div style={{textAlign:'right',flexShrink:0}}>
+          <div style={{fontSize:'30px',fontWeight:700,color:'var(--gold)',letterSpacing:'2px',lineHeight:1,textShadow:'0 0 18px rgba(212,168,71,0.4)'}}>{totalPoints.toLocaleString('es-ES')}</div>
+          <div style={{fontSize:'9px',letterSpacing:'3px',color:'var(--ink-muted)',marginTop:'4px'}}>PUNTOS TOTALES</div>
         </div>
       </div>
 
-      {matchIds.length===0&&(
-        <div className="ps-empty-state">
-          <div className="ps-empty-icon">🏟️</div>
-          <div className="ps-empty-t">Sin reservas aún</div>
-          <div className="ps-empty-d">Confirma tus primeras zonas en el partido activo para verlas aquí.</div>
+      {/* ─── STATS ─── */}
+      <div className="ps-stats-grid" style={{marginBottom:'14px'}}>
+        <div className="ps-big-stat">
+          <div className="ps-bs-l">PARTIDAS</div>
+          <div className="ps-bs-v">{matchesPlayed}</div>
+        </div>
+        <div className="ps-big-stat">
+          <div className="ps-bs-l">PROMEDIO</div>
+          <div className="ps-bs-v">{avgPts.toLocaleString('es-ES')}<span style={{fontSize:'11px',opacity:.55,marginLeft:'3px'}}>pts</span></div>
+        </div>
+        <div className="ps-big-stat">
+          <div className="ps-bs-l">MEJOR PARTIDO</div>
+          <div className="ps-bs-v" style={{color:'var(--gold)'}}>{bestMatch&&bestMatch.pts>0?bestMatch.pts.toLocaleString('es-ES'):'—'}</div>
+        </div>
+      </div>
+
+      {/* ─── ZONAS FAVORITAS ─── */}
+      {topZones.length>0&&(
+        <div style={{background:'var(--sidebar-bg)',border:'1px solid rgba(255,255,255,0.07)',borderRadius:'6px',padding:'16px',marginBottom:'14px'}}>
+          <div style={{fontSize:'9px',letterSpacing:'3px',color:'var(--gold)',marginBottom:'12px',opacity:.8}}>▶ ZONAS FAVORITAS</div>
+          <div style={{display:'flex',flexDirection:'column',gap:'9px'}}>
+            {topZones.map(({zone,count},i)=>{
+              if(!zone)return null;
+              const maxC=topZones[0].count||1;
+              const pct=Math.round((count/maxC)*100);
+              const col=TIER_COLOR[zone.tier]||'var(--gold)';
+              return(
+                <div key={zone.id} style={{display:'flex',alignItems:'center',gap:'10px'}}>
+                  <div style={{width:'14px',textAlign:'center',fontSize:'10px',color:'var(--ink-muted)',opacity:.6,flexShrink:0}}>{i+1}</div>
+                  <div style={{width:'90px',fontSize:'9px',letterSpacing:'1px',color:'var(--ink-muted)',flexShrink:0,textTransform:'uppercase',overflow:'hidden',textOverflow:'ellipsis',whiteSpace:'nowrap'}}>{zone.name}</div>
+                  <div style={{flex:1,background:'rgba(255,255,255,0.05)',borderRadius:'2px',height:'5px',overflow:'hidden'}}>
+                    <div style={{width:`${pct}%`,height:'100%',background:col,borderRadius:'2px',transition:'width .5s ease'}}/>
+                  </div>
+                  <div style={{fontSize:'11px',color:col,fontWeight:700,width:'24px',textAlign:'right',flexShrink:0}}>{count}×</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
 
-      {matchIds.length>0&&(
-        <div className="ps-hist-timeline">
-          <div className="ps-hist-timeline-title">RESERVAS POR PARTIDO</div>
-          {matchIds.map((mid,i)=>{
-            const match=FIXTURE.find(m=>m.id===mid);
-            const zones=byMatch[mid];
-            const spent=zones.reduce((s,r)=>s+(r.price||0),0);
-            return(
-              <div className="ps-timeline-row" key={mid}>
-                <div className="ps-tl-dot-col">
-                  <div className="ps-tl-dot is-win"></div>
-                  {i<matchIds.length-1&&<div className="ps-tl-line"></div>}
-                </div>
-                <div className="ps-tl-card">
-                  <div className="ps-tl-head">
-                    <div className="ps-tl-date">{match?match.date:"—"}</div>
-                    <div className="ps-tl-match">
-                      {match
-                        ?<><span><Flag code={match.home} h={18}/> {COUNTRY_NAME[match.home]}</span><span className="ps-tl-score">VS</span><span>{COUNTRY_NAME[match.away]} <Flag code={match.away} h={18}/></span></>
-                        :<span>{mid}</span>}
-                    </div>
-                    <div className="ps-tl-badge is-win">ACTIVA</div>
+      {/* ─── HISTORIAL DE PARTIDOS ─── */}
+      <div style={{marginBottom:'8px'}}>
+        <div style={{fontSize:'9px',letterSpacing:'3px',color:'var(--gold)',marginBottom:'12px',opacity:.8}}>▶ HISTORIAL DE PARTIDOS</div>
+
+        {matchStats.length===0&&(
+          <div className="ps-empty-state">
+            <div className="ps-empty-icon">🏟️</div>
+            <div className="ps-empty-t">Sin partidos aún</div>
+            <div className="ps-empty-d">Confirma tus primeras zonas en el partido activo para verlas aquí.</div>
+          </div>
+        )}
+
+        {matchStats.length>0&&(
+          <div className="ps-hist-timeline">
+            {matchStats.map(({mid,match,pts,eventCount,zoneCount:zc,isFinalized},i)=>{
+              const canReplay=isFinalized&&match;
+              return(
+                <div className="ps-timeline-row" key={mid}
+                  onClick={canReplay?()=>setReplay(match):undefined}
+                  style={{cursor:canReplay?'pointer':'default'}}
+                >
+                  <div className="ps-tl-dot-col">
+                    <div className={`ps-tl-dot${pts>0?' is-win':''}`}></div>
+                    {i<matchStats.length-1&&<div className="ps-tl-line"></div>}
                   </div>
-                  <div className="ps-tl-body">
-                    <div className="ps-tl-zones">
-                      <div className="ps-tl-zones-l">ZONAS RESERVADAS</div>
-                      <div className="ps-tl-zones-list">
-                        {zones.map(r=>{
-                          const z=ZONES.find(z=>z.id===r.zone_id);
-                          return <span className="ps-tl-zone-pill" key={r.zone_id}>{z?z.name:r.zone_id}</span>;
-                        })}
+                  <div className="ps-tl-card" style={canReplay?{borderColor:'rgba(212,168,71,0.25)',transition:'border-color .2s'}:{}}>
+                    <div className="ps-tl-head">
+                      <div className="ps-tl-date">{match?.date||'—'}</div>
+                      <div className="ps-tl-match">
+                        {match
+                          ?<><span><Flag code={match.home} h={16}/> {COUNTRY_NAME[match.home]}</span><span className="ps-tl-score">VS</span><span>{COUNTRY_NAME[match.away]} <Flag code={match.away} h={16}/></span></>
+                          :<span style={{fontSize:'10px',color:'var(--ink-muted)'}}>{mid}</span>}
+                      </div>
+                      {canReplay
+                        ?<div className="ps-tl-badge is-win" style={{background:'rgba(212,168,71,0.12)',color:'var(--gold)',border:'1px solid rgba(212,168,71,0.3)',fontSize:'9px'}}>VER REPLAY ▶</div>
+                        :<div className="ps-tl-badge">ACTIVA</div>}
+                    </div>
+                    <div className="ps-tl-body">
+                      <div className="ps-tl-result">
+                        <div><div className="ps-tl-stat-l">PUNTOS</div><div className="ps-tl-stat-v" style={{color:pts>0?'var(--gold)':'inherit'}}>{pts.toLocaleString('es-ES')}</div></div>
+                        <div><div className="ps-tl-stat-l">EVENTOS</div><div className="ps-tl-stat-v">{eventCount}</div></div>
+                        <div><div className="ps-tl-stat-l">ZONAS</div><div className="ps-tl-stat-v">{zc}</div></div>
                       </div>
                     </div>
-                    <div className="ps-tl-result">
-                      <div><div className="ps-tl-stat-l">INVERTIDO</div><div className="ps-tl-stat-v">{spent}</div></div>
-                      <div><div className="ps-tl-stat-l">ZONAS</div><div className="ps-tl-stat-v">{zones.length}</div></div>
-                    </div>
                   </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
+              );
+            })}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
@@ -3057,6 +3175,7 @@ function App() {
   const [showHow,setShowHow]=React.useState(false);
   const [navOpen,setNavOpen]=React.useState(false);
   const [fixtureReady,setFixtureReady]=React.useState(false);
+  const [userName,setUserName]=React.useState(ME.name); // "" until auth resolves
   // Marcador global: se carga una vez y se actualiza cuando PageInicio gana puntos
   const [globalScore,setGlobalScore]=React.useState({budget:ME.budget,total_points:ME.totalPoints,fichas_today:FICHAS_TOTAL});
   React.useEffect(()=>{ let on=true; loadFixture().finally(()=>{ if(on) setFixtureReady(true); }); return ()=>{ on=false; }; },[]);
@@ -3064,13 +3183,22 @@ function App() {
     const db=window.supabaseClient; if(!db) return;
     db.auth.getUser().then(({data:{user}})=>{
       if(!user) return;
-      db.from('scores').select('budget,total_points').eq('user_id',user.id).maybeSingle()
-        .then(({data})=>{ if(data){ ME.budget=data.budget??ME.budget; ME.totalPoints=data.total_points??ME.totalPoints; setGlobalScore({budget:data.budget??ME.budget,total_points:data.total_points??ME.totalPoints}); } });
+      // Resolve display name: __KN_USER → scores.name → email prefix
+      const resolvedName=(window.__KN_USER&&window.__KN_USER.name)||user.email?.split('@')[0]||'';
+      ME.name=resolvedName; setUserName(resolvedName);
+      db.from('scores').select('budget,total_points,matches_played,name').eq('user_id',user.id).maybeSingle()
+        .then(({data})=>{
+          if(data){
+            ME.budget=data.budget??ME.budget; ME.totalPoints=data.total_points??ME.totalPoints;
+            if(data.name&&!window.__KN_USER?.name){ ME.name=data.name; setUserName(data.name); }
+            setGlobalScore({budget:data.budget??ME.budget,total_points:data.total_points??ME.totalPoints,matches_played:data.matches_played??0});
+          }
+        });
     });
   },[]);
   React.useEffect(()=>{const hash=window.location.hash.replace("#","");if(hash&&["inicio","jornada","partidos","reservas","ranking","amigos","historial"].includes(hash))setPage(hash);},[]);
   function nav(p){setPage(p);setNavOpen(false);window.location.hash=p;window.scrollTo({top:0,behavior:"smooth"});}
-  const pageTitles={inicio:{eb:"MUNDIAL 2026",title:"INICIO"},jornada:{eb:"HOY",title:"JORNADA"},partidos:{eb:"FIXTURE",title:"PARTIDOS"},reservas:{eb:"TUS JUGADAS",title:"MIS RESERVAS"},ranking:{eb:"LEADERBOARD",title:"RANKING"},amigos:{eb:"TU EQUIPO",title:"AMIGOS"},historial:{eb:"TU CAMINO",title:"HISTORIAL"}};
+  const pageTitles={inicio:{eb:"MUNDIAL 2026",title:"INICIO"},jornada:{eb:"HOY",title:"JORNADA"},partidos:{eb:"FIXTURE",title:"PARTIDOS"},reservas:{eb:"TUS JUGADAS",title:"MIS RESERVAS"},ranking:{eb:"LEADERBOARD",title:"RANKING"},amigos:{eb:"TU EQUIPO",title:"AMIGOS"},historial:{eb:"TU PERFIL",title:"MI PERFIL"}};
   const pt=pageTitles[page]||pageTitles.inicio;
   if(!fixtureReady) return <FixtureSkeleton/>;
   return (
@@ -3081,9 +3209,9 @@ function App() {
         </svg>
       </button>
       {navOpen&&<div className="ps-nav-backdrop" onClick={()=>setNavOpen(false)}></div>}
-      <Sidebar page={page} onNav={nav} open={navOpen} score={globalScore}/>
+      <Sidebar page={page} onNav={nav} open={navOpen} score={globalScore} userName={userName} onNavPerfil={()=>nav("historial")}/>
       <div className="ps-content" data-screen-label={page}>
-        <PageTopbar eyebrow={pt.eb} title={pt.title} onHelp={()=>setShowHow(true)} score={globalScore}/>
+        <PageTopbar eyebrow={pt.eb} title={pt.title} onHelp={()=>setShowHow(true)} score={globalScore} userName={userName} onPerfil={()=>nav("historial")}/>
         <div className="ps-content-body">
           {page==="inicio"&&<PageInicio onNav={nav} onScoreUpdate={setGlobalScore}/>}
           {page==="jornada"&&<PageJornada onNav={nav} score={globalScore} onScoreUpdate={setGlobalScore}/>}
@@ -3136,8 +3264,11 @@ function HowModal({ onClose }) {
   );
 }
 
-function PageTopbar({ eyebrow, title, onHelp, score }) {
+function PageTopbar({ eyebrow, title, onHelp, score, userName, onPerfil }) {
   const pts = score&&score.total_points!=null ? score.total_points : ME.totalPoints;
+  const totalPts = score&&score.total_points!=null ? score.total_points : ME.totalPoints;
+  const level = levelFromPts(totalPts);
+  const initials = (userName||'?').slice(0,2).toUpperCase();
   return (
     <div className="ps-topbar-row">
       <div className="ps-topbar-l"><span className="ps-topbar-eb">{eyebrow}</span><span className="ps-topbar-divider">/</span><span className="ps-topbar-title">{title}</span></div>
@@ -3148,9 +3279,11 @@ function PageTopbar({ eyebrow, title, onHelp, score }) {
           <span className="ps-score-chip-pts">{pts.toLocaleString('es-ES')}</span>
           <span className="ps-score-chip-label">pts</span>
         </div>
-        <div className="ps-avatar">
-          <div className="ps-avatar-img"><svg viewBox="0 0 40 40" width="40" height="40"><circle cx="20" cy="20" r="20" fill="#3a5732"/><circle cx="20" cy="16" r="6" fill="#e8dcc0"/><path d="M6,40 Q6,28 20,28 Q34,28 34,40 Z" fill="#e8dcc0"/></svg></div>
-          <div className="ps-avatar-meta"><div className="ps-avatar-name">{ME.name}</div><div className="ps-avatar-level">{ME.level}</div></div>
+        <div className="ps-avatar" onClick={onPerfil} style={{cursor:onPerfil?"pointer":"default"}} title="Mi Perfil">
+          <div className="ps-avatar-img" style={{display:"flex",alignItems:"center",justifyContent:"center",width:36,height:36,borderRadius:"50%",background:"#3a5732",border:"2px solid var(--gold)",fontSize:"13px",fontWeight:700,color:"var(--cream)",letterSpacing:"0.5px"}}>
+            {userName ? initials : <svg viewBox="0 0 40 40" width="36" height="36"><circle cx="20" cy="20" r="20" fill="#3a5732"/><circle cx="20" cy="16" r="6" fill="#e8dcc0"/><path d="M6,40 Q6,28 20,28 Q34,28 34,40 Z" fill="#e8dcc0"/></svg>}
+          </div>
+          {userName&&<div className="ps-avatar-meta"><div className="ps-avatar-name">{userName}</div><div className="ps-avatar-level">{level}</div></div>}
           <span className="ps-avatar-chev">▾</span>
         </div>
       </div>
