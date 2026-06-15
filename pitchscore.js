@@ -6,6 +6,8 @@ const FLAGS = {
   ENG:"🇬🇧",BEL:"🇧🇪",URU:"🇺🇾",COL:"🇨🇴",JPN:"🇯🇵",AUS:"🇦🇺",
   CRC:"🇨🇷",PAN:"🇵🇦",NOR:"🇳🇴",SUI:"🇨🇭",CRO:"🇭🇷",
   TUR:"🇹🇷",QAT:"🇶🇦",CIV:"🇨🇮",ECU:"🇪🇨",CUR:"🇨🇼",EGY:"🇪🇬",
+  CPV:"🇨🇻",KSA:"🇸🇦",IRN:"🇮🇷",NZL:"🇳🇿",SEN:"🇸🇳",
+  IRQ:"🇮🇶",ALG:"🇩🇿",AUT:"🇦🇹",JOR:"🇯🇴",COD:"🇨🇩",GHA:"🇬🇭",UZB:"🇺🇿",
 };
 const COUNTRY_NAME = {
   MEX:"México",RSA:"Sudáfrica",KOR:"Corea del Sur",CZE:"Rep. Checa",
@@ -16,6 +18,8 @@ const COUNTRY_NAME = {
   URU:"Uruguay",COL:"Colombia",JPN:"Japón",AUS:"Australia",
   CRC:"Costa Rica",PAN:"Panamá",NOR:"Noruega",SUI:"Suiza",CRO:"Croacia",MAR:"Marruecos",
   TUR:"Turquía",QAT:"Qatar",CIV:"Costa de Marfil",ECU:"Ecuador",CUR:"Curaçao",EGY:"Egipto",
+  CPV:"Cabo Verde",KSA:"Arabia Saudí",IRN:"Irán",NZL:"Nueva Zelanda",SEN:"Senegal",
+  IRQ:"Irak",ALG:"Argelia",AUT:"Austria",JOR:"Jordania",COD:"R. D. Congo",GHA:"Ghana",UZB:"Uzbekistán",
   FCB:"Barcelona",RMA:"Real Madrid",MUN:"Man. United",JUV:"Juventus",
   LIV:"Liverpool",BAY:"Bayern Munich",BVB:"B. Dortmund",TOT:"Tottenham",
   ATM:"Atlético Madrid",ACM:"AC Milan",INT:"Inter Milan",
@@ -29,6 +33,8 @@ const FLAG_ISO = {
   ENG:"gb-eng",BEL:"be",URU:"uy",COL:"co",JPN:"jp",AUS:"au",
   CRC:"cr",PAN:"pa",NOR:"no",SUI:"ch",CRO:"hr",
   TUR:"tr",QAT:"qa",CIV:"ci",ECU:"ec",CUR:"cw",EGY:"eg",
+  CPV:"cv",KSA:"sa",IRN:"ir",NZL:"nz",SEN:"sn",
+  IRQ:"iq",ALG:"dz",AUT:"at",JOR:"jo",COD:"cd",GHA:"gh",UZB:"uz",
 };
 
 const KANCHA_LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJ4AAAATCAYAAABhq7R9AAAACXBIWXMAAAsSAAALEgHS3X78AAAFDklEQVRogc2az3HjNhTGf87sMTNyKrB8Ym6rsAHJDXC1FSxdQZwKLFewTgVSKojNBkwXsFz5Zp4iVRB7JnfngAcvBAIiCZKyvxnNLLHgx2fiw/sHHr28vPDeUBbZGHiK4uSpB57UGLpuy+ngWEVxsvHMnQNzYAJ8dEx5BtbADXCzhycFxvo6ipNFG5uFw7wnj+Ikb8vh4Bz7bG6LD2WR5cBUD0RxctTEANTLM1/uAzDrQSwTIAc2ZZF15RsDl8b1PIDT5siBjTmhLLILYAGMarhGqHc9Bb6WRXYPpI7FTDHWRLjb4tK6zgM4XiGbYVkW2XkUJ6suXAA/BRgwQe3aIUU3Ev68LLLjLpwWeuUsi+y4LLI18JV60bkwBf6RRX230KKTy2Uf9rYSniUMjSFEpzGU+NbyvGCITTnVkLoF/gQ+A79JBPkFOAPOgVsHXS+LOQQs0Wl0tvdDCwMOLToNLb7OzzFwYnCuAzkWVEX3RxQn1/ZEsTuXy5WkKtfAJ2PasiyyTR+5WF/wiE5jWRYZoWG3kcd7A9H9JfwafXm+Z+PfI+Fs7flEOL9bw2cu0bkQxckmipM56u80sWhry1DwiM62N9jz1QrvLUQXxUkKzOhffKnFqcWXBvCYuArxVPJ3bo2hac9pRRA8ojsXe8+t8SDx7Q21e7zRxcCiI4qTp7LIZuzmUV3D7hNK0Ct+hLkR7cPGzLpuep8L16jiRKPigeU9HAR7RLcCiOJkVRYZ1pzWYbcivLLI9jX2XoXRBXWi0xhCfHLPvCyyFfDF+K/QnGXbpbcl4XknRMvCmrgL5W+DOtFp9CG+NlXt9pCi0xChzOg57MrzXDnLoiVVXwXPm6Kp6DRkPDjsthHeSVlknRa7reg0BhbflTV8Kd6wKVwnFI0hvcCZ8Tt4jtdWdBpdxFcJtebJhUMoUwLD3J6WyUT48hqKCWAvSudWSxQni7LINuy++C8SNlLPbRuMk4WyyNIO3fwFuxXymcPG2tMkGzUpkzkvxd0ymZRFdrzvvcomGTv+qzbsHj1+u83Zc2S2p6pNm/bAavp0JucN1aOdGaqKPKm5tyI+yQ/N/OjMJ3DPAtyiCoe/TQ7UBjDHtsAkcDN+N4aeozg5DjnGdHCbwrtynffW9OlAtZ/0mmyM8TFqXebsX1Ov16wNtSKuCe4wV9sD84ju1uLTnJcooZi/S6qiu/fY0yXsrlBhw+z1fcJRsUZxcsNuG0Q3pMdNn2cUTSYa9QH7QMM+3QhVgC3ZXZOljNuia9zna5TjSdU2w90Dm/nu25PTzaM4maDyq2fXvR5sUbto5rCnL/HNqDaaXZhb1x9R564r34aUfG4uHu2OahQ5iPBq+nSnqI3dBveo48GUhjlf4+LCSPBNVY+AOxdxk0JC3P+YH2eYphfR2MozP0dxMjb6SUMVHGuq4vPNs18yKE/wvSyyFynG9G8D/IsK0VPrnl4a8k3QoE+3kY19inIMPhHeo86kT6M4eT16bFpw1OZ4HuNX7PbAdowPrV5D4Dmsf0CJZ0LDHM/BO0HlN3aY3+GQeSvCq9srrO8Eh8rxQqvXENQ9q/VnUeBtQyyNMJNzANGJLV7PB/zcgdeV2zrnSdrg+/LEhQfU+zuN4mTxHjxd36jzfEeP325TAr92LdUXt3Y+8x+7C/7U9PC8C8TzXVjDj8CvxrX36+EWvLUcsvmO2T1a28hvXSe0coAvkKke862lSBoUHo1c/w+ZJkA4KukbKQAAAABJRU5ErkJggg==";
@@ -66,7 +72,21 @@ const FALLBACK_FIXTURE = [
   { id:"m9",  home:"GER", away:"CUR",  utc:"2026-06-14T17:00:00Z", venue:"NRG Stadium · Houston",             group:"E", dbStatus:"FINALIZADO", score:"7-1" },
   { id:"m10", home:"NED", away:"JPN",  utc:"2026-06-14T20:00:00Z", venue:"AT&T Stadium · Dallas",             group:"F" },
   { id:"m11", home:"CIV", away:"ECU",  utc:"2026-06-14T23:00:00Z", venue:"Lincoln Financial Field · Filadelfia", group:"E" },
-  { id:"m12", home:"BEL", away:"EGY",  utc:"2026-06-15T19:00:00Z", venue:"Lumen Field · Seattle",            group:"G" },
+  // Jornada 4 (15 jun)
+  { id:"m13", home:"ESP", away:"CPV",  utc:"2026-06-15T16:00:00Z", venue:"Mercedes-Benz Stadium · Atlanta",   group:"H" },
+  { id:"m12", home:"BEL", away:"EGY",  utc:"2026-06-15T19:00:00Z", venue:"Lumen Field · Seattle",             group:"G" },
+  { id:"m14", home:"KSA", away:"URU",  utc:"2026-06-15T22:00:00Z", venue:"Hard Rock Stadium · Miami",         group:"H" },
+  { id:"m15", home:"IRN", away:"NZL",  utc:"2026-06-16T01:00:00Z", venue:"SoFi Stadium · Los Ángeles",        group:"G" },
+  // Jornada 5 (16 jun)
+  { id:"m16", home:"FRA", away:"SEN",  utc:"2026-06-16T19:00:00Z", venue:"MetLife Stadium · Nueva York",      group:"I" },
+  { id:"m17", home:"IRQ", away:"NOR",  utc:"2026-06-16T22:00:00Z", venue:"Gillette Stadium · Boston",         group:"I" },
+  { id:"m18", home:"ARG", away:"ALG",  utc:"2026-06-17T01:00:00Z", venue:"Arrowhead Stadium · Kansas City",   group:"J" },
+  // Jornada 6 (17 jun)
+  { id:"m19", home:"AUT", away:"JOR",  utc:"2026-06-17T04:00:00Z", venue:"Levi's Stadium · San Francisco",    group:"J" },
+  { id:"m20", home:"POR", away:"COD",  utc:"2026-06-17T17:00:00Z", venue:"NRG Stadium · Houston",             group:"K" },
+  { id:"m21", home:"ENG", away:"CRO",  utc:"2026-06-17T20:00:00Z", venue:"AT&T Stadium · Dallas",             group:"L" },
+  { id:"m22", home:"GHA", away:"PAN",  utc:"2026-06-17T23:00:00Z", venue:"BMO Field · Toronto",               group:"L" },
+  { id:"m23", home:"UZB", away:"COL",  utc:"2026-06-18T02:00:00Z", venue:"Estadio Azteca · México",           group:"K" },
 ];
 const FIXTURE = []; // misma referencia siempre; se rellena con setFixture()
 
