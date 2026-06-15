@@ -1295,6 +1295,10 @@ function PageInicio({ onNav, onScoreUpdate }) {
   async function confirmReservations(){
     const db=window.supabaseClient;
     if(!db||!selectedZones.length)return false;
+    // Bloqueo en tiempo real: solo se puede reservar si el partido está ABIERTO
+    // y quedan más de RESERVE_CLOSE_MS (5 min) para el kickoff.
+    const _diffNow = kickoffDate(mundialMatch) - Date.now();
+    if(fixtureStatus(mundialMatch)!=="ABIERTO"||_diffNow<=RESERVE_CLOSE_MS)return false;
     try{
       const{data:{user}}=await db.auth.getUser();
       if(!user)return false;
@@ -1436,7 +1440,7 @@ function PageInicio({ onNav, onScoreUpdate }) {
         <aside className="ps-col-right">
           <FichasCard budgetUsed={budgetUsed} fichasLeft={fichasLeft} selectedCount={selectedZones.length}/>
           <ZoneDetail zone={focused} selected={selectedZones.includes(focusZone)} atMax={selectedZones.length>=ME.zonesMax} onAdd={()=>toggleZone(focused)} fichasLeft={fichasLeft} fichasCostFn={fichasCost}/>
-          <CartCard selectedIds={selectedZones} savedIds={savedZones} zonePredictions={zonePredictions} match={mundialMatch} onRemove={(id)=>{setSelectedZones(prev=>prev.filter(x=>x!==id));setZonePredictions(prev=>{const n={...prev};delete n[id];return n;});}} onClear={()=>{setSelectedZones([]);setZonePredictions({});}} onConfirm={mundialMatch.status!=="FINALIZADO"?confirmReservations:null} matchStatus={mundialMatch.status}/>
+          <CartCard selectedIds={selectedZones} savedIds={savedZones} zonePredictions={zonePredictions} match={mundialMatch} onRemove={(id)=>{setSelectedZones(prev=>prev.filter(x=>x!==id));setZonePredictions(prev=>{const n={...prev};delete n[id];return n;});}} onClear={()=>{setSelectedZones([]);setZonePredictions({});}} onConfirm={(()=>{const _d=kickoffDate(mundialMatch)-Date.now();return fixtureStatus(mundialMatch)==="ABIERTO"&&_d>RESERVE_CLOSE_MS;})()?confirmReservations:null} matchStatus={mundialMatch.status}/>
         </aside>
       </div>
       {pendingZone&&(
@@ -3078,7 +3082,7 @@ function App() {
       </button>
       {navOpen&&<div className="ps-nav-backdrop" onClick={()=>setNavOpen(false)}></div>}
       <Sidebar page={page} onNav={nav} open={navOpen} score={globalScore}/>
-      <div className="ps-content" data-screen-label={page}>
+      <div className={"ps-content"+(page==="ranking"?" ps-content-flow":"")} data-screen-label={page}>
         <PageTopbar eyebrow={pt.eb} title={pt.title} onHelp={()=>setShowHow(true)} score={globalScore}/>
         <div className="ps-content-body">
           {page==="inicio"&&<PageInicio onNav={nav} onScoreUpdate={setGlobalScore}/>}

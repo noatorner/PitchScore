@@ -152,6 +152,10 @@ input { font-family: inherit; }
 .ps-content { display: flex; flex-direction: column; min-width: 0; height: 100vh; overflow: hidden; position: relative; }
 .ps-content-body { flex: 1 1 auto; min-height: 0; overflow: hidden; display: flex; flex-direction: column; }
 .ps-content-body > .ps-page { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+/* Ranking: scroll natural de página (sin viewport lock) */
+.ps-content-flow { height: auto; overflow: visible; }
+.ps-content-flow .ps-content-body { overflow: visible; min-height: auto; height: auto; }
+.ps-content-flow .ps-content-body > .ps-page { overflow: visible; min-height: auto; }
 
 /* ============ TOPBAR ROW ============ */
 .ps-topbar-row {
