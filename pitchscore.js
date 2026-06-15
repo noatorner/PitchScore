@@ -1044,6 +1044,7 @@ function PageInicio({ onNav, onScoreUpdate }) {
     if (sim.status==="running") { settledRef.current=false; return; }
     if (sim.status!=="done"||settledRef.current) return;
     settledRef.current=true;
+    // Sim histórica: sin predicción de equipo, puntos completos (modo libre)
     const earned=sim.events.filter(e=>e.type==="act"&&selectedRef.current.includes(e.zoneId)).reduce((s,e)=>s+(e.pts||0),0);
     if (!earned) return;
     const db=window.supabaseClient;
@@ -1084,7 +1085,11 @@ function PageInicio({ onNav, onScoreUpdate }) {
     if(typeof localStorage!=="undefined"&&parseInt(localStorage.getItem(key)||"0")>0) return;
     liveSettledRef.current=true;
     const actionPts=Object.fromEntries(ACTIONS.map(a=>[a.name,a.points]));
-    const earned=liveEvents.filter(e=>e.type==="act"&&e.zoneId&&selectedZones.includes(e.zoneId)).reduce((s,e)=>s+(e.pts||actionPts[e.action]||0),0);
+    // Con predicted_team: solo cuenta el evento si el equipo coincide con la predicción
+    const earned=liveEvents
+      .filter(e=>e.type==="act"&&e.zoneId&&selectedZones.includes(e.zoneId))
+      .filter(e=>{ const pred=zonePredictions[e.zoneId]; return !pred||e.side===pred; })
+      .reduce((s,e)=>s+(e.pts||actionPts[e.action]||0),0);
     if(typeof localStorage!=="undefined") localStorage.setItem(key,earned.toString());
     if(!earned) return;
     const db=window.supabaseClient;
@@ -2140,7 +2145,7 @@ function PageReservas({ onNav }) {
         if(cancelled)return;
         if(!user){setResData([]);return;}
         const{data}=await db.from('reservations')
-          .select('match_id,zone_id,price')
+          .select('match_id,zone_id,price,predicted_team')
           .eq('user_id',user.id)
           .order('match_id');
         if(!cancelled)setResData(data||[]);
@@ -2224,7 +2229,16 @@ function PageReservas({ onNav }) {
                         <div className="ps-rz-body">
                           <div className="ps-rz-name">{z.name}</div>
                           <div className="ps-rz-tier">{z.tier.toUpperCase()} · {z.slots} PLAZAS</div>
-                          <div className="ps-rz-pts-row"><div><div className="ps-rz-l">COSTE</div><div className="ps-rz-v">{r.price||z.price} pts</div></div><div><div className="ps-rz-l">POTENCIAL</div><div className="ps-rz-v">{z.tier==="premium"?"Muy alto":z.tier==="high"?"Alto":z.tier==="mid"?"Medio":"Bajo"}</div></div></div>
+                          {r.predicted_team&&(
+                            <div className="ps-rz-prediction">
+                              <span className="ps-rz-pred-label">TU JUGADA</span>
+                              <span className="ps-rz-pred-team">
+                                <Flag code={r.predicted_team==="home"?match.home:match.away} h={14}/>
+                                {' '}{(COUNTRY_NAME[r.predicted_team==="home"?match.home:match.away]||"").toUpperCase()}
+                              </span>
+                            </div>
+                          )}
+                          <div className="ps-rz-pts-row"><div><div className="ps-rz-l">FICHAS</div><div className="ps-rz-v">{fichasCost(z)}</div></div><div><div className="ps-rz-l">POTENCIAL</div><div className="ps-rz-v">{z.tier==="premium"?"Muy alto":z.tier==="high"?"Alto":z.tier==="mid"?"Medio":"Bajo"}</div></div></div>
                           <div className="ps-rz-actions">{ACTIONS.map(a=><span className="ps-rz-action" key={a.name}>{a.icon} +{a.points}</span>)}</div>
                           <button className="ps-rz-remove" onClick={()=>removeZone(mid,r.zone_id)}>✕ QUITAR ZONA</button>
                         </div>
@@ -2422,7 +2436,7 @@ function PageHistorial() {
         if(cancelled)return;
         if(!user){setResData([]);return;}
         const{data}=await db.from('reservations')
-          .select('match_id,zone_id,price')
+          .select('match_id,zone_id,price,predicted_team')
           .eq('user_id',user.id)
           .order('match_id');
         if(!cancelled)setResData(data||[]);
