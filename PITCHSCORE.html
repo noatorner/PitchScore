@@ -830,6 +830,24 @@ input { font-family: inherit; }
 .ps-tl-stat-l { font-size: 9px; letter-spacing: 0.14em; color: #6c604a; font-weight: 600; }
 .ps-tl-stat-v { font-family: 'Anton'; font-size: 22px; }
 
+/* Ranking / Partidos / Reservas: scroll natural en desktop */
+.ps-content[data-screen-label="ranking"] .ps-content-body,
+.ps-content[data-screen-label="partidos"] .ps-content-body,
+.ps-content[data-screen-label="reservas"] .ps-content-body,
+.ps-content[data-screen-label="historial"] .ps-content-body,
+.ps-content[data-screen-label="amigos"] .ps-content-body {
+  overflow-y: auto;
+}
+.ps-content[data-screen-label="ranking"] .ps-content-body > .ps-page,
+.ps-content[data-screen-label="partidos"] .ps-content-body > .ps-page,
+.ps-content[data-screen-label="reservas"] .ps-content-body > .ps-page,
+.ps-content[data-screen-label="historial"] .ps-content-body > .ps-page,
+.ps-content[data-screen-label="amigos"] .ps-content-body > .ps-page {
+  overflow: visible;
+  flex: none;
+  min-height: auto;
+}
+
 /* ============ RESPONSIVE ============ */
 @media (max-width: 1400px) {
   .ps-inicio-screen { grid-template-columns: 220px 1fr 290px; gap: 10px; }
@@ -837,8 +855,11 @@ input { font-family: inherit; }
   .ps-hero-flag { font-size: 20px; }
 }
 @media (max-width: 1100px) {
+  body { overflow-y: auto; }
   .ps-app { height: auto; overflow: visible; }
   .ps-content { height: auto; overflow: visible; }
+  .ps-content-body { overflow: visible; min-height: auto; }
+  .ps-content-body > .ps-page { overflow: visible; flex: none; min-height: auto; }
   .ps-inicio { height: auto; overflow: visible; }
   .ps-inicio-screen { grid-template-columns: 1fr; height: auto; overflow: visible; padding: 60px 14px 20px; }
   .ps-col-left, .ps-col-right, .ps-col-center { height: auto; overflow: visible; }
