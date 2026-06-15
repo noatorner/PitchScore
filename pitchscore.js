@@ -424,8 +424,13 @@ const ACTIONS = [
   { name:"Recuperación",  icon:"🛡", points:5  },
 ];
 
-// Zonas: límite simple, sin fichas ni presupuesto. El juego es predecir el equipo.
-const FICHAS_TOTAL = 12; // kept for legacy refs, not shown in UI
+// ===== PRESUPUESTO POR PARTIDO =====
+// Cada partido tienes MATCH_BUDGET créditos para repartir entre tus zonas.
+// Zonas premium cuestan más → te obliga a elegir estratégicamente.
+const MATCH_BUDGET = 100;
+const ZONE_COST = { premium: 40, high: 25, mid: 15, low: 8 };
+function fichasCost(zone) { return ZONE_COST[zone && zone.tier] || 8; }
+const FICHAS_TOTAL = 12; // legacy compat
 
 // Partidos reales de StatsBomb open-data; los eventos se sirven desde /data/events/{id}.json
 // (descargados con data/fetch-match.js). sbHome/sbAway son los nombres de equipo de StatsBomb.
@@ -1246,24 +1251,21 @@ function PageInicio({ onNav, onScoreUpdate }) {
       return true;
     }catch(e){return false;}
   }
-  // Límite efectivo: sub-presupuesto asignado si existe, presupuesto global si no
-  const effectiveBudget = matchAlloc !== null ? matchAlloc : budget;
+  // Presupuesto por partido: 100 créditos repartibles entre zonas
+  const budgetUsed=selectedZones.reduce((s,id)=>{const z=ZONES.find(zz=>zz.id===id);return s+(z?fichasCost(z):0);},0);
+  const fichasLeft=MATCH_BUDGET-budgetUsed; // créditos restantes
   function toggleZone(z) {
     if(z.taken>=z.slots) return;
     setFocusZone(z.id);
     if(selectedZones.includes(z.id)){
-      // Deseleccionar: quitar zona y su predicción
       setSelectedZones(prev=>prev.filter(id=>id!==z.id));
       setZonePredictions(prev=>{ const n={...prev}; delete n[z.id]; return n; });
     } else {
-      // Seleccionar: abrir team picker (límite simple: zonesMax)
       if(selectedZones.length>=ME.zonesMax) return;
+      if(budgetUsed+fichasCost(z)>MATCH_BUDGET) return; // sin crédito
       setPendingZone(z);
     }
   }
-  const totalCost=selectedZones.reduce((sum,id)=>{const z=ZONES.find(zz=>zz.id===id);return sum+(z?z.price:0);},0);
-  const remainingBudget=effectiveBudget-totalCost;
-  const fichasLeft=ME.zonesMax-selectedZones.length; // zonas restantes, no fichas
 
   const fieldBlock=(
     <>
@@ -1276,11 +1278,11 @@ function PageInicio({ onNav, onScoreUpdate }) {
       </div>
       {view==="mapa"?(
         <>
-          <PitchField zones={ZONES.map(z=>({...z,taken:selectedZones.includes(z.id)?Math.min(z.slots,z.taken+1):z.taken,overBudget:!selectedZones.includes(z.id)&&selectedZones.length>=ME.zonesMax}))} selectedIds={selectedZones} onZoneClick={toggleZone} flash={flash}/>
+          <PitchField zones={ZONES.map(z=>({...z,taken:selectedZones.includes(z.id)?Math.min(z.slots,z.taken+1):z.taken,overBudget:!selectedZones.includes(z.id)&&(selectedZones.length>=ME.zonesMax||budgetUsed+fichasCost(z)>MATCH_BUDGET)}))} selectedIds={selectedZones} onZoneClick={toggleZone} flash={flash}/>
           <PitchLegend/>
         </>
       ):(
-        <ZoneList zones={ZONES.map(z=>({...z,overBudget:!selectedZones.includes(z.id)&&selectedZones.length>=ME.zonesMax}))} selectedIds={selectedZones} onPick={toggleZone}/>
+        <ZoneList zones={ZONES.map(z=>({...z,overBudget:!selectedZones.includes(z.id)&&(selectedZones.length>=ME.zonesMax||budgetUsed+fichasCost(z)>MATCH_BUDGET)}))} selectedIds={selectedZones} onPick={toggleZone}/>
       )}
     </>
   );
@@ -1320,7 +1322,7 @@ function PageInicio({ onNav, onScoreUpdate }) {
             {fieldBlock}
           </main>
           <aside className="ps-col-right">
-            <FichasCard fichasUsed={fichasUsed} selectedCount={selectedZones.length}/>
+            <FichasCard budgetUsed={budgetUsed} fichasLeft={fichasLeft} selectedCount={selectedZones.length}/>
             <SimPanel sim={sim} countdown={countdown} speedIdx={speedIdx}
               onSpeed={(i)=>{ setSpeedIdx(i); setSimSpeed(SIM_SPEEDS[i].ms); }}
               onSimulate={beginSimulation} onStop={stopSim}/>
@@ -1358,7 +1360,7 @@ function PageInicio({ onNav, onScoreUpdate }) {
           {fieldBlock}
         </main>
         <aside className="ps-col-right">
-          <FichasCard fichasUsed={fichasUsed} selectedCount={selectedZones.length}/>
+          <FichasCard budgetUsed={budgetUsed} fichasLeft={fichasLeft} selectedCount={selectedZones.length}/>
           <ZoneDetail zone={focused} selected={selectedZones.includes(focusZone)} atMax={selectedZones.length>=ME.zonesMax} onAdd={()=>toggleZone(focused)} fichasLeft={fichasLeft} fichasCostFn={fichasCost}/>
           <CartCard selectedIds={selectedZones} savedIds={savedZones} zonePredictions={zonePredictions} match={mundialMatch} onRemove={(id)=>{setSelectedZones(prev=>prev.filter(x=>x!==id));setZonePredictions(prev=>{const n={...prev};delete n[id];return n;});}} onClear={()=>{setSelectedZones([]);setZonePredictions({});}} onConfirm={mundialMatch.status!=="FINALIZADO"?confirmReservations:null} matchStatus={mundialMatch.status}/>
         </aside>
@@ -1622,31 +1624,32 @@ function BudgetCard({ selectedCount, remaining, total=ME.budget, globalBudget=nu
   );
 }
 
-function FichasCard({ fichasUsed, selectedCount }) {
-  const left = ME.zonesMax - selectedCount;
-  const color = left > 2 ? "#3d7a3a" : left > 0 ? "#c8a73f" : "#b94234";
+function FichasCard({ budgetUsed=0, fichasLeft=MATCH_BUDGET, selectedCount=0 }) {
+  const pct = Math.round((fichasLeft / MATCH_BUDGET) * 100);
+  const color = pct > 40 ? "#3d7a3a" : pct > 15 ? "#c8a73f" : "#b94234";
   return (
-    <div className="ps-budget-row">
-      <div className="ps-stat-box">
-        <div className="ps-stat-label">ZONAS DISPONIBLES</div>
-        <div className="ps-stat-num" style={{color}}>{left}</div>
-        <div className="ps-stat-unit">PUEDES ELEGIR HASTA {ME.zonesMax}</div>
+    <div className="ps-budget-row ps-budget-card-v2">
+      <div className="ps-stat-box ps-stat-box-wide">
+        <div className="ps-stat-label">CRÉDITO RESTANTE</div>
+        <div className="ps-stat-num" style={{color}}>{fichasLeft}<span className="ps-stat-total"> / {MATCH_BUDGET}</span></div>
+        <div className="ps-budget-bar-wrap"><div className="ps-budget-bar" style={{width:Math.max(0,pct)+"%",background:color}}/></div>
+        <div className="ps-stat-hint">💡 Premium=40 · High=25 · Mid=15 · Low=8</div>
       </div>
-      <div className="ps-stat-box"><div className="ps-stat-label">ELEGIDAS</div><div className="ps-stat-num">{selectedCount} / {ME.zonesMax}</div></div>
+      <div className="ps-stat-box"><div className="ps-stat-label">ZONAS</div><div className="ps-stat-num">{selectedCount}<span className="ps-stat-total"> / {ME.zonesMax}</span></div></div>
     </div>
   );
 }
 
 function TeamPickerPanel({ zone, match, onConfirm, onCancel }) {
   const [pick,setPick]=React.useState(null);
-  const fichas=fichasCost(zone);
+  const cost=fichasCost(zone);
   return (
     <div className="ps-tp-overlay" onClick={onCancel}>
       <div className="ps-tp-panel" onClick={e=>e.stopPropagation()}>
         <div className="ps-tp-header">
           <span className={`ps-dot ps-dot-${zone.tier}`}></span>
           <span className="ps-tp-zone-name">{zone.name.toUpperCase()}</span>
-          <span className="ps-tp-cost">{zone.tier.toUpperCase()}</span>
+          <span className="ps-tp-cost">{cost} CRÉDITOS</span>
         </div>
         <div className="ps-tp-question">¿Qué equipo dominará aquí?</div>
         <div className="ps-tp-teams">
@@ -1662,7 +1665,8 @@ function TeamPickerPanel({ zone, match, onConfirm, onCancel }) {
             <span className="ps-tp-badge">VISITANTE</span>
           </button>
         </div>
-        {pick&&<div className="ps-tp-hint">Si aciertas: <strong>pts completos</strong>. Si fallas: sin puntos en esta zona.</div>}
+        <div className="ps-tp-hint ps-tp-hint-cost">Coste: <strong>{cost} créditos</strong> de tu presupuesto de {MATCH_BUDGET}.</div>
+        {pick&&<div className="ps-tp-hint">Si aciertas el equipo: <strong>puntos completos</strong>. Si fallas: 0 puntos en esta zona.</div>}
         <div className="ps-tp-actions">
           <button className="ps-btn ps-btn-ghost ps-btn-sm" onClick={onCancel}>CANCELAR</button>
           <button className="ps-btn ps-btn-primary" disabled={!pick} onClick={()=>pick&&onConfirm(pick)}>AÑADIR ZONA →</button>
@@ -1697,7 +1701,7 @@ function ZoneDetail({ zone, selected, atMax, onAdd, fichasLeft, fichasCostFn }) 
       </div>
       <div className="ps-detail-actions-label">ACCIONES QUE SUMAN</div>
       <div className="ps-actions-row">{ACTIONS.map(a=>(<div className="ps-action" key={a.name}><div className="ps-action-icon">{a.icon}</div><div className="ps-action-name">{a.name.toUpperCase()}</div><div className="ps-action-pts">+{a.points}</div></div>))}</div>
-      <button className="ps-btn ps-btn-primary" disabled={disabled} onClick={onAdd}>{selected?"QUITAR DE LA SELECCIÓN":isFull?"ZONA AGOTADA":noFichas?"SIN FICHAS SUFICIENTES":atLimit?"LÍMITE DE ZONAS ALCANZADO":"ELEGIR EQUIPO Y RESERVAR"}</button>
+      <button className="ps-btn ps-btn-primary" disabled={disabled} onClick={onAdd}>{selected?"QUITAR DE LA SELECCIÓN":isFull?"ZONA AGOTADA":noFichas?`SIN CRÉDITO (NECESITAS ${cost})`:atLimit?"LÍMITE DE ZONAS (5 MAX)":"ELEGIR EQUIPO Y RESERVAR →"}</button>
       </>)}
     </div>
   );
@@ -1707,6 +1711,7 @@ function CartCard({ selectedIds, savedIds, zonePredictions={}, match, onRemove, 
   const [saveState,setSaveState]=React.useState("idle"); // idle | saving | error
   const items=selectedIds.map(id=>ZONES.find(z=>z.id===id)).filter(Boolean);
   const fichasTotal=items.reduce((s,z)=>s+fichasCost(z),0);
+  const budgetPct=Math.round((fichasTotal/MATCH_BUDGET)*100);
 
   // ¿Las zonas seleccionadas coinciden exactamente con las guardadas en DB?
   const isConfirmed=savedIds!==null&&
@@ -1742,7 +1747,8 @@ function CartCard({ selectedIds, savedIds, zonePredictions={}, match, onRemove, 
         ))}
         {items.length===0&&<div className="ps-empty">Toca una zona en el campo para añadir tu jugada.</div>}
       </div>
-      <div className="ps-cart-total"><span>ZONAS ELEGIDAS</span><span className="ps-cart-total-num">{items.length} / {ME.zonesMax}</span></div>
+      <div className="ps-cart-total"><span>CRÉDITO USADO</span><span className="ps-cart-total-num">{fichasTotal} / {MATCH_BUDGET}</span></div>
+      <div className="ps-cart-total" style={{paddingTop:0,opacity:.7}}><span>ZONAS</span><span className="ps-cart-total-num">{items.length} / {ME.zonesMax}</span></div>
       {onConfirm&&(
         <button
           className={"ps-btn "+(saveState==="error"?"ps-btn-ghost":isConfirmed?"ps-btn-primary":"ps-btn-dark")}
@@ -1757,7 +1763,7 @@ function CartCard({ selectedIds, savedIds, zonePredictions={}, match, onRemove, 
 function ZoneList({ zones, selectedIds, onPick }) {
   return (
     <div className="ps-zone-list">
-      {zones.map(z=>(<button key={z.id} className={"ps-zone-row"+(selectedIds.includes(z.id)?" is-on":"")+(z.taken>=z.slots||z.overBudget?" is-full":"")} onClick={()=>!(z.taken>=z.slots||z.overBudget)&&onPick(z)}><span className={`ps-dot ps-dot-${z.tier}`}></span><span className="ps-zl-name">{z.name}</span><span className="ps-zl-tier">{z.tier.toUpperCase()}</span><span className="ps-zl-slots">{z.taken}/{z.slots}</span><span className="ps-zl-price">{z.price} pts</span></button>))}
+      {zones.map(z=>(<button key={z.id} className={"ps-zone-row"+(selectedIds.includes(z.id)?" is-on":"")+(z.taken>=z.slots||z.overBudget?" is-full":"")} onClick={()=>!(z.taken>=z.slots||z.overBudget)&&onPick(z)}><span className={`ps-dot ps-dot-${z.tier}`}></span><span className="ps-zl-name">{z.name}</span><span className="ps-zl-tier">{z.tier.toUpperCase()}</span><span className="ps-zl-slots">{z.taken}/{z.slots}</span><span className="ps-zl-price">{fichasCost(z)} créditos</span></button>))}
     </div>
   );
 }
@@ -2193,7 +2199,7 @@ function PageReservas({ onNav }) {
           :activeIds.map(mid=>{
             const match=FIXTURE.find(m=>m.id===mid);
             const zones=activeByMatch[mid];
-            const totalCost=zones.reduce((s,r)=>s+(r.price||0),0);
+            const totalCost=zones.reduce((s,r)=>{const z=ZONES.find(zz=>zz.id===r.zone_id);return s+(z?fichasCost(z):0);},0);
             const isOpen=openMatches.has(mid);
             const diffMs=kickoffDate(match)-Date.now();
             const canEdit=diffMs>RESERVE_CLOSE_MS&&match.dbStatus!=="CANCELADO"&&match.dbStatus!=="FINALIZADO";
@@ -2203,7 +2209,7 @@ function PageReservas({ onNav }) {
                   <div className="ps-res-banner-l">
                     <div className="ps-res-banner-eb">RESERVA ACTIVA · {fixtureStatus(match)} {isOpen?"▴":"▾"}</div>
                     <div className="ps-res-banner-teams"><span><Flag code={match.home} h={24}/> {COUNTRY_NAME[match.home].toUpperCase()}</span><span className="ps-res-banner-vs">VS</span><span>{COUNTRY_NAME[match.away].toUpperCase()} <Flag code={match.away} h={24}/></span></div>
-                    <div className="ps-res-banner-meta">{match.date} · {match.time} · {zones.length} zonas · {totalCost} pts</div>
+                    <div className="ps-res-banner-meta">{match.date} · {match.time} · {zones.length} zonas · {totalCost}/{MATCH_BUDGET} créditos</div>
                   </div>
                   <div className="ps-res-banner-r"><button className="ps-btn ps-btn-dark ps-btn-sm" onClick={(e)=>{ e.stopPropagation(); window.__KN_MUNDIAL_REQUEST=mid; onNav("inicio"); }}>{canEdit?"EDITAR":"VER →"}</button></div>
                 </div>
@@ -2226,7 +2232,7 @@ function PageReservas({ onNav }) {
                               </span>
                             </div>
                           )}
-                          <div className="ps-rz-pts-row"><div><div className="ps-rz-l">FICHAS</div><div className="ps-rz-v">{fichasCost(z)}</div></div><div><div className="ps-rz-l">POTENCIAL</div><div className="ps-rz-v">{z.tier==="premium"?"Muy alto":z.tier==="high"?"Alto":z.tier==="mid"?"Medio":"Bajo"}</div></div></div>
+                          <div className="ps-rz-pts-row"><div><div className="ps-rz-l">COSTE</div><div className="ps-rz-v">{fichasCost(z)} cr.</div></div><div><div className="ps-rz-l">POTENCIAL</div><div className="ps-rz-v">{z.tier==="premium"?"Muy alto":z.tier==="high"?"Alto":z.tier==="mid"?"Medio":"Bajo"}</div></div></div>
                           <div className="ps-rz-actions">{ACTIONS.map(a=><span className="ps-rz-action" key={a.name}>{a.icon} +{a.points}</span>)}</div>
                           <button className="ps-rz-remove" onClick={()=>removeZone(mid,r.zone_id)}>✕ QUITAR ZONA</button>
                         </div>

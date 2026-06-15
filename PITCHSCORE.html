@@ -283,10 +283,16 @@ input { font-family: inherit; }
 
 /* ============ BUDGET ============ */
 .ps-budget-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ps-budget-card-v2 { grid-template-columns: 3fr 1fr; }
 .ps-stat-box { background: #e6dcc4; border: 1px solid #cdb98a; border-radius: 5px; padding: 10px 12px; }
+.ps-stat-box-wide { grid-column: 1; }
 .ps-stat-label { font-family: var(--kn-body); font-weight: 500; font-size: 10px; letter-spacing: 0.14em; color: #6c604a; }
 .ps-stat-num { font-family: 'Anton', sans-serif; font-size: 30px; line-height: 1; color: #b94234; margin-top: 4px; }
+.ps-stat-total { font-size: 16px; opacity: 0.55; }
 .ps-stat-unit { font-size: 9px; letter-spacing: 0.18em; color: #6c604a; font-weight: 600; }
+.ps-stat-hint { font-size: 9px; color: #8a7d62; margin-top: 4px; letter-spacing: 0.06em; }
+.ps-budget-bar-wrap { background: rgba(0,0,0,0.12); border-radius: 3px; height: 4px; margin: 6px 0 2px; overflow: hidden; }
+.ps-budget-bar { height: 4px; border-radius: 3px; transition: width 0.3s ease, background 0.3s ease; }
 
 /* ============ DETAIL ============ */
 .ps-detail-head { display: flex; align-items: center; gap: 8px; font-family: var(--kn-display); font-weight: 600; letter-spacing: 0.02em; font-size: 18px; }
