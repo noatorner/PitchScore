@@ -70,8 +70,8 @@ const FALLBACK_FIXTURE = [
   { id:"m8",  home:"QAT", away:"SUI",  utc:"2026-06-13T19:00:00Z", venue:"Levi's Stadium · San Francisco",    group:"B", dbStatus:"FINALIZADO", score:"1-1" },
   // Jornada 3 (14–15 jun) — HOY
   { id:"m9",  home:"GER", away:"CUR",  utc:"2026-06-14T17:00:00Z", venue:"NRG Stadium · Houston",             group:"E", dbStatus:"FINALIZADO", score:"7-1" },
-  { id:"m10", home:"NED", away:"JPN",  utc:"2026-06-14T20:00:00Z", venue:"AT&T Stadium · Dallas",             group:"F" },
-  { id:"m11", home:"CIV", away:"ECU",  utc:"2026-06-14T23:00:00Z", venue:"Lincoln Financial Field · Filadelfia", group:"E" },
+  { id:"m10", home:"NED", away:"JPN",  utc:"2026-06-14T20:00:00Z", venue:"AT&T Stadium · Dallas",             group:"F", dbStatus:"FINALIZADO", score:"2-2" },
+  { id:"m11", home:"CIV", away:"ECU",  utc:"2026-06-14T23:00:00Z", venue:"Lincoln Financial Field · Filadelfia", group:"E", dbStatus:"FINALIZADO", score:"1-0" },
   // Jornada 4 (15 jun)
   { id:"m13", home:"ESP", away:"CPV",  utc:"2026-06-15T16:00:00Z", venue:"Mercedes-Benz Stadium · Atlanta",   group:"H" },
   { id:"m12", home:"BEL", away:"EGY",  utc:"2026-06-15T19:00:00Z", venue:"Lumen Field · Seattle",             group:"G" },

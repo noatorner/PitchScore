@@ -20,15 +20,22 @@ function rowToKancha(r, status, score, apiId) {
 async function runSync() {
   const key = process.env.APISPORTS_KEY || process.env.RAPIDAPI_KEY;
   const now = Date.now();
-  const from = new Date(now - 48 * 3600 * 1000).toISOString();
-  const to   = new Date(now + 30 * 3600 * 1000).toISOString();
+  const from = now - 48 * 3600 * 1000;
+  const to   = now + 30 * 3600 * 1000;
 
-  const rows = (await sb(`matches?select=*&kickoff_utc=gte.${from}&kickoff_utc=lte.${to}&order=kickoff_utc.asc`)) || [];
+  // Sin filtro de fecha: leemos TODOS los partidos para evitar límites de rows en Supabase.
+  // Filtramos la ventana en memoria para las llamadas a la API externa.
+  const allRows = (await sb(`matches?select=*&order=kickoff_utc.asc`)) || [];
+  const rows = allRows; // procesamos todos; el bloque de API solo pide los recientes
 
-  // Datos frescos de api-football para las fechas de la ventana
+  // Datos frescos de api-football solo para la ventana activa (última 48h + próximas 30h)
+  const windowRows = allRows.filter(r => {
+    const ko = Date.parse(r.kickoff_utc);
+    return ko >= from && ko <= to;
+  });
   const apiMatches = [];
-  if (key && rows.length) {
-    const dates = [...new Set(rows.map((r) => String(r.kickoff_utc).slice(0, 10)))];
+  if (key && windowRows.length) {
+    const dates = [...new Set(windowRows.map((r) => String(r.kickoff_utc).slice(0, 10)))];
     for (const d of dates) {
       try {
         const data = await rapid(`/fixtures?league=1&date=${d}`, key);
