@@ -2114,7 +2114,7 @@ function PageReservas({ onNav }) {
               <div className="ps-res-active" key={mid}>
                 <div className="ps-res-banner" style={{cursor:"pointer"}} onClick={()=>toggleMatch(mid)}>
                   <div className="ps-res-banner-l">
-                    <div className="ps-res-banner-eb">RESERVA ACTIVA · {mStatus} {isOpen?"▴":"▾"}</div>
+                    <div className="ps-res-banner-eb">RESERVA ACTIVA · {fixtureStatus(match)} {isOpen?"▴":"▾"}</div>
                     <div className="ps-res-banner-teams"><span><Flag code={match.home} h={24}/> {COUNTRY_NAME[match.home].toUpperCase()}</span><span className="ps-res-banner-vs">VS</span><span>{COUNTRY_NAME[match.away].toUpperCase()} <Flag code={match.away} h={24}/></span></div>
                     <div className="ps-res-banner-meta">{match.date} · {match.time} · {zones.length} zonas · {totalCost} pts</div>
                   </div>
